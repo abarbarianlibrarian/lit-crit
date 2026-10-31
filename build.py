@@ -604,9 +604,14 @@ def prepare_media(db):
 e = html.escape
 
 
+# Short forms take quotation marks; books, plays, long poems, films and periodicals take italics.
+QUOTED_TYPES = {"poem", "short story", "essay", "song", "speech", "sermon"}
+
+
 def work_title_html(w):
     t = e(w["title"])
-    return f"“{t}”" if w.get("quoted", "").strip() in ('"', "“", "”", "'") else f"<i>{t}</i>"
+    types = {x.strip().lower() for x in w.get("type", [])}
+    return f"“{t}”" if types and types <= QUOTED_TYPES else f"<i>{t}</i>"
 
 
 def rec_link(db, key, rid, cls="chip"):
