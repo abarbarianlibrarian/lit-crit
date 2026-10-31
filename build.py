@@ -1023,7 +1023,7 @@ def test_page(db, rel, t):
     body = f"""{crumbs('tests', 'Tests')}
 <article class="record">
 <h1>{e(t['title'])}</h1>
-<p class="lede">{len(qids)} question{'s' if len(qids) != 1 else ''}. Choose and confirm an answer for each one; your score appears when all are confirmed.</p>
+<p class="lede">{len(qids)} question{'s' if len(qids) != 1 else ''}. Choose an answer for each one, then press “Score test” in the score bar.</p>
 {facts([('Year', e(t['year'])), ('Contest', e(t['type'])), ('Passage', e(t['passage']))])}
 </article>
 {section('Poems and passages on this test', chips(db, 'poems', poems, sort=False))}
