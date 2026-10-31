@@ -481,3 +481,25 @@ h2.letter .count { font: 500 14px/1 var(--sans); color: var(--ink-3); margin-lef
 @media (max-width: 640px) { .my-score { white-space: normal; flex-wrap: wrap; } }
 /* Essay prompts */
 .essay-prompt { margin: 14px 0 6px; padding: 16px 20px; background: var(--paper-2); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 19px; line-height: 1.6; }
+
+/* Score report */
+.report { margin: 12px 0 18px; padding: 16px 18px 10px; border: 1px solid var(--rule); border-radius: 12px; background: var(--paper-2); }
+.report h2 { margin: 0 0 8px; }
+.rp { width: 100%; border-collapse: collapse; font: 400 14.5px/1.4 var(--sans); }
+.rp th, .rp td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+.rp thead th { font: 600 11.5px/1.4 var(--sans); text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); }
+.rp tbody th { font-weight: 600; color: var(--ink); }
+.rp tr.sub th { font-weight: 400; padding-left: 18px; color: var(--ink-2); }
+.rp tr.sub td { color: var(--ink-2); }
+.rp tfoot th, .rp tfoot td { border-bottom: 0; font-weight: 600; }
+.rp td strong { font-weight: 600; color: var(--ink); }
+.rp-bar { width: 40%; }
+.rp-bar span { display: inline-block; height: 6px; border-radius: 3px; background: #4f8a5b; vertical-align: middle; max-width: calc(100% - 46px); }
+.rp-bar em { font-style: normal; color: var(--ink-3); margin-left: 8px; font-size: 13px; }
+@media (max-width: 640px) {
+  .report { padding: 12px 12px 6px; }
+  .rp { font-size: 13.5px; }
+  .rp-bar { width: auto; }
+  .rp-bar span { display: none; }
+  .rp-bar em { margin: 0; }
+}

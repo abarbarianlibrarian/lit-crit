@@ -902,6 +902,29 @@ def multiline(text):
     return "<br>".join(e(line) for line in text.strip().split("\n"))
 
 
+def question_part(q):
+    m = re.search(r"\d+", q["part"] or "")
+    return m.group(0) if m else ""
+
+
+def part2_section(db, rel, q):
+    """Part 2 covers the reading list: the novel, the play, and the poet's poems."""
+    for w in q["rl_works"]:
+        lists = rel[("works", w)].get("reading-lists", [])
+        if any(w in db["reading-lists"][x]["novel"] for x in lists):
+            return "Novel"
+        if any(w in db["reading-lists"][x]["play"] for x in lists):
+            return "Play"
+        types = {x.lower() for x in db["works"][w]["type"]}
+        if types & {"play", "musical"}:
+            return "Play"
+        if types & {"novel", "novella"}:
+            return "Novel"
+    if q["poems"] or not q["rl_works"]:
+        return "Poetry"
+    return ""
+
+
 def question_points(q):
     """Part 1 questions are worth 1 point; Parts 2 and 3 are worth 2."""
     return 1 if q["part"].strip().lower() in ("part 1", "part i", "1") else 2
@@ -912,7 +935,7 @@ def is_redacted(q):
     return "redacted" in text or "omitted" in text
 
 
-def question_html(db, q, in_test=True):
+def question_html(db, q, in_test=True, rel=None):
     """One practice question. Choices are buttons; picking one marks every choice right or wrong
     and reveals the links (assets/quiz.js). Without JavaScript the answer sits behind "Show answer"."""
     letters = [l for l in "abcde" if q[l]]
@@ -948,7 +971,10 @@ def question_html(db, q, in_test=True):
         note = f'<p class="qauto">{why}, so its {pts} point{"s" if pts != 1 else ""} {"are" if pts != 1 else "is"} given automatically.</p>'
     else:
         note = ""
-    return f"""<li class="q{' auto' if auto else ''}"{anchor} data-qid="{q['id']}" data-correct="{e(''.join(correct), quote=True)}" data-points="{pts}"{' data-auto="1"' if auto else ''}>
+    part = question_part(q)
+    section = part2_section(db, rel, q) if rel is not None and part == "2" else ""
+    meta = f' data-part="{part}"' + (f' data-section="{section}"' if section else "")
+    return f"""<li class="q{' auto' if auto else ''}"{anchor}{meta} data-qid="{q['id']}" data-correct="{e(''.join(correct), quote=True)}" data-points="{pts}"{' data-auto="1"' if auto else ''}>
 <div class="qnum">{num}</div>
 <div class="qbody">
 {source}
@@ -996,7 +1022,7 @@ def test_part_html(db, rel, qids, shown):
     def flush():
         nonlocal out, group
         if group:
-            out += '<ol class="plain questions">' + "".join(question_html(db, db["questions"][q]) for q in group) + "</ol>"
+            out += '<ol class="plain questions">' + "".join(question_html(db, db["questions"][q], rel=rel) for q in group) + "</ol>"
             group = []
 
     for q in qids:
@@ -1031,7 +1057,7 @@ def test_page(db, rel, t):
 {section('Essay prompt', ''.join(f'<p><a class="chip" href="{x["url"]}">{e(x["title"])} essay prompt</a></p>' for x in db["essays"].values() if essay_test(db, x) is t))}
 """
     total = sum(question_points(db["questions"][q]) for q in qids)
-    body += f'<div class="quiz">{score_bar(total, len(qids))}'
+    body += f'<div class="quiz">{score_bar(total, len(qids))}<section class="report" data-report hidden></section>'
     shown_passages = set()
     for part in sorted(parts, key=lambda p: (p == "", p)):
         pts = question_points(db["questions"][parts[part][0]]) if part else 0

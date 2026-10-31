@@ -72,7 +72,53 @@
         : "<strong>Not answered.</strong> The answer is " + correct.join(", ") + ". 0 of " + p + word;
   }
 
+  // ---- score report: points by part, with Part 2 split into novel, play and poetry
+  function renderReport(quiz) {
+    var box = quiz.querySelector("[data-report]");
+    if (!box) return;
+    if (!quiz.classList.contains("scored")) { box.hidden = true; box.innerHTML = ""; return; }
+    var groups = {}, order = [];
+    function tally(key, label, q) {
+      if (!groups[key]) { groups[key] = { label: label, earned: 0, possible: 0, right: 0, count: 0 }; order.push(key); }
+      var g = groups[key], p = points(q);
+      g.possible += p; g.count++;
+      if (q.hasAttribute("data-auto") || q.classList.contains("got-it")) { g.earned += p; g.right++; }
+    }
+    var total = { earned: 0, possible: 0, right: 0, count: 0 };
+    quiz.querySelectorAll(".q").forEach(function (q) {
+      var part = q.getAttribute("data-part") || "";
+      tally("p" + part, part ? "Part " + part : "Other", q);
+      var sec = q.getAttribute("data-section");
+      if (part === "2" && sec) tally("p2-" + sec, sec, q);
+      var p = points(q);
+      total.possible += p; total.count++;
+      if (q.hasAttribute("data-auto") || q.classList.contains("got-it")) { total.earned += p; total.right++; }
+    });
+    function pct(g) { return g.possible ? Math.round(100 * g.earned / g.possible) : 0; }
+    function row(g, cls) {
+      return '<tr class="' + (cls || "") + '"><th scope="row">' + g.label + "</th>" +
+        "<td>" + g.right + " of " + g.count + "</td>" +
+        "<td><strong>" + g.earned + "</strong> / " + g.possible + "</td>" +
+        '<td class="rp-bar"><span style="width:' + pct(g) + '%"></span><em>' + pct(g) + "%</em></td></tr>";
+    }
+    var rows = "";
+    order.filter(function (k) { return k.indexOf("-") < 0; }).sort().forEach(function (k) {
+      rows += row(groups[k]);
+      if (k === "p2") {
+        ["Novel", "Play", "Poetry"].forEach(function (sec) {
+          if (groups["p2-" + sec]) rows += row(groups["p2-" + sec], "sub");
+        });
+      }
+    });
+    total.label = "Total";
+    box.innerHTML = "<h2>Score report</h2>" +
+      '<table class="rp"><thead><tr><th>Section</th><th>Correct</th><th>Points</th><th>Score</th></tr></thead>' +
+      "<tbody>" + rows + "</tbody><tfoot>" + row(total, "total") + "</tfoot></table>";
+    box.hidden = false;
+  }
+
   function update(quiz) {
+    renderReport(quiz);
     var bar = quiz.querySelector("[data-scorebar]");
     if (!bar) return;
     var qs = quiz.querySelectorAll(".q");
