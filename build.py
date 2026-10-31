@@ -1247,7 +1247,10 @@ def resources_index(db, resolver):
 
 
 def daily_term_html(db, resolver, tm):
-    first = (tm["definition"] or "").strip().split("\n\n")[0]
+    paras = [x for x in (tm["definition"] or "").strip().split("\n\n") if x.strip()]
+    first = paras[0] if paras else ""
+    if first.rstrip().endswith(":") and len(paras) > 1:  # keep the example the paragraph introduces
+        first += "\n\n" + paras[1]
     ctx = (db, resolver, tm["mentioned"] + tm["related"])
     return f"""<article class="daily-card">
   <p class="daily-label">Term of the day</p>
