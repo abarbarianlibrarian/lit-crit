@@ -103,7 +103,7 @@ TABLES = {
 }
 
 # Tables shown inside other pages rather than with pages of their own.
-NO_PAGES = {"resources", "questions", "essays", "reading-lists"}
+NO_PAGES = {"resources", "questions", "reading-lists"}
 
 SECTIONS = [  # url folder, nav label, singular label
     ("terms", "Terms", "Term"),
@@ -111,6 +111,7 @@ SECTIONS = [  # url folder, nav label, singular label
     ("works", "Works", "Work"),
     ("poems", "Poems", "Poem"),
     ("tests", "Tests", "Test"),
+    ("essays", "Essay Prompts", "Essay prompt"),
     ("reading-lists", "Reading Lists", "Reading list"),
     ("prizes", "Prizes", "Prize"),
     ("periods", "Periods", "Period"),
@@ -1027,6 +1028,7 @@ def test_page(db, rel, t):
 {facts([('Year', e(t['year'])), ('Contest', e(t['type'])), ('Passage', e(t['passage']))])}
 </article>
 {section('Poems and passages on this test', chips(db, 'poems', poems, sort=False))}
+{section('Essay prompt', ''.join(f'<p><a class="chip" href="{x["url"]}">{e(x["title"])} essay prompt</a></p>' for x in db["essays"].values() if essay_test(db, x) is t))}
 """
     total = sum(question_points(db["questions"][q]) for q in qids)
     body += f'<div class="quiz">{score_bar(total, len(qids))}'
@@ -1280,7 +1282,7 @@ def years_of(*vals):
     return None
 
 
-def catalog_page(key, label, lede, rows, cfg, browse=False, extra=""):
+def catalog_page(key, label, lede, rows, cfg, browse=False, extra="", script=""):
     """A section's listing page: rows are searched, filtered and sorted in the browser."""
     rows = [r for r in rows if r["n"].strip().lower() != "no award"]
     (OUT / "assets" / "data").mkdir(parents=True, exist_ok=True)
@@ -1300,7 +1302,8 @@ def catalog_page(key, label, lede, rows, cfg, browse=False, extra=""):
   <ul class="plain catalog" data-fallback>{fallback}</ul>
 </div>"""
     write(f"{key}/index.html", page(label, body, key, lede, f"{key}/",
-                                   extra_head=f'<script src="{BASE}assets/catalog.js?v={BUILD_ID}" defer></script>'))
+                                   extra_head=f'<script src="{BASE}assets/catalog.js?v={BUILD_ID}" defer></script>'
+                                              + (f'<script src="{BASE}assets/{script}?v={BUILD_ID}" defer></script>' if script else "")))
 
 
 def listed(db, key):
@@ -1450,7 +1453,61 @@ def tests_index(db, rel):
            "range": {"key": "year", "label": "Year"},
            "sorts": [{"label": "Newest first", "keys": ["-year", "contest"]}, {"label": "Oldest first", "keys": ["year", "contest"]},
                      {"label": "Contest", "keys": ["contest", "-year"]}]}
-    catalog_page("tests", "Tests", f"{len(rows)} released tests with {len(db['questions']):,} practice questions.", rows, cfg)
+    catalog_page("tests", "Tests", f"{len(rows)} released tests with {len(db['questions']):,} practice questions.", rows, cfg,
+                 extra='<div class="my-progress" data-my-progress hidden></div>', script="test-scores.js")
+
+
+
+def essay_test(db, x):
+    """The test an essay prompt belongs to (prompts are named after their test)."""
+    want = fold(x["title"]).replace(" essay", "").strip()
+    for t in db["tests"].values():
+        if fold(t["title"]) == want:
+            return t
+    return None
+
+
+def essay_page(db, rel, x):
+    test = essay_test(db, x)
+    poems = [p for p in x["poems"] if p in db["poems"]]
+    body = f"""{crumbs('essays', 'Essay prompts')}
+<article class="record">
+<p class="daily-label">Essay prompt</p>
+<h1>{e(x['title'])}</h1>
+{facts([('Test', f'<a href="{test["url"]}">{e(test["title"])}</a>' if test else ''),
+        ('Text', ', '.join(f'<a href="{db["poems"][p]["url"]}">{e(db["poems"][p]["title"])}</a>' for p in poems))])}
+<blockquote class="essay-prompt">{multiline(x['prompt'])}</blockquote>
+</article>
+"""
+    for pid in poems:
+        body += passage_html(db, rel, pid, True)
+    desc = (x["prompt"] or x["title"])[:250]
+    write(f"essays/{x['slug']}/index.html", page(f"{x['title']} essay prompt", body, "essays", desc, f"essays/{x['slug']}/"))
+
+
+def essays_index(db, rel):
+    rows = []
+    for x in db["essays"].values():
+        test = essay_test(db, x)
+        poems = [p for p in x["poems"] if p in db["poems"]]
+        authors = [a for p in poems for a in rel[("poems", p)].get("authors", [])]
+        what = ", ".join(db["poems"][p]["title"] for p in poems)
+        by = ", ".join(db["authors"][a]["title"] for a in dict.fromkeys(authors))
+        year = years_of(test["year"] if test else "", x["title"])
+        contest = (test["type"] if test else re.sub(r"^\d{4}\s*", "", x["title"])).strip()
+        prompt = re.sub(r"\s+", " ", x["prompt"]).strip()
+        rows.append({"n": x["title"], "u": x["url"], "s": " — ".join(v for v in (what, by) if v),
+                     "m": "", "f": {"contest": [contest] if contest else [], "year": [str(year)] if year else []},
+                     "k": {"year": year, "contest": contest, "name": sort_key(x["title"])},
+                     "x": fold(f"{x['title']} {what} {by} {prompt}")})
+    rows.sort(key=lambda r: (-(r["k"]["year"] or 0), r["k"]["contest"]))
+    cfg = {"placeholder": "Test, poem, poet or words in the prompt",
+           "filters": [{"key": "contest", "label": "Contest", "all": "All contests"},
+                       {"key": "year", "label": "Year", "all": "All years", "order": "desc"}],
+           "range": {"key": "year", "label": "Year"},
+           "sorts": [{"label": "Newest first", "keys": ["-year", "contest"]}, {"label": "Oldest first", "keys": ["year", "contest"]},
+                     {"label": "Contest", "keys": ["contest", "-year"]}]}
+    catalog_page("essays", "Essay prompts", f"{len(rows)} essay prompts from the released tests, each with its text.", rows, cfg)
 
 
 def reading_lists_index(db):
@@ -1657,6 +1714,8 @@ def search_index(db):
                 extra = ", ".join(db["authors"][a]["title"] for a in r["authors"])
             elif key == "tests":
                 extra = f'{len(r["questions"])} questions'
+            elif key == "essays":
+                extra = ", ".join(db["poems"][p]["title"] for p in r["poems"] if p in db["poems"])
             alt = r.get("alternate", "") if key == "authors" else ""
             entries.append([r["title"], singular, r["url"][len(BASE):], extra, alt])
     (OUT / "assets").mkdir(parents=True, exist_ok=True)
@@ -1727,6 +1786,8 @@ def main():
         test_page(db, rel, t)
     for p in db["poems"].values():
         poem_page(db, rel, p)
+    for x in db["essays"].values():
+        essay_page(db, rel, x)
 
     alpha_index(db, "terms", "Terms", "Definitions are cross-linked: follow any term in small capitals.")
     alpha_index(db, "authors", "Authors", "Sorted by last name.")
@@ -1737,6 +1798,7 @@ def main():
     catalog_works(db, rel)
     catalog_poems(db, rel)
     tests_index(db, rel)
+    essays_index(db, rel)
     reading_lists_index(db)
     prizes_index(db, rel)
     periods_index(db)

@@ -14,7 +14,7 @@
   document.documentElement.classList.add("quiz-ready");
 
   // ---- remembering answers and scored pages
-  var KEY = "litcrit-answers-v1", SCORED = "litcrit-scored-v1";
+  var KEY = "litcrit-answers-v1", SCORED = "litcrit-scored-v1", SCORES = "litcrit-test-scores-v1";
   function load(key) {
     try { return JSON.parse(localStorage.getItem(key)) || {}; } catch (e) { return {}; }
   }
@@ -100,10 +100,30 @@
     bar.querySelector("[data-sb-clear]").hidden = !scored && answered === quiz.querySelectorAll(".q[data-auto]").length;
   }
 
+  // A scored test's result is kept for the Tests page (score and the questions to reset).
+  function recordTest(quiz) {
+    var bar = quiz.querySelector("[data-scorebar]");
+    if (!bar || bar.getAttribute("data-test") !== "1") return;
+    var earned = 0, total = 0, right = 0, graded = 0, qids = [];
+    quiz.querySelectorAll(".q").forEach(function (q) {
+      var p = points(q);
+      total += p;
+      if (q.hasAttribute("data-auto")) { earned += p; return; }
+      qids.push(q.getAttribute("data-qid"));
+      graded++;
+      if (q.classList.contains("got-it")) { earned += p; right++; }
+    });
+    var all = load(SCORES), prev = all[location.pathname];
+    all[location.pathname] = { score: earned, total: total, right: right, graded: graded, qids: qids,
+                               key: quiz.getAttribute("data-key"), when: prev && prev.when || Date.now() };
+    store(SCORES, all);
+  }
+
   function scoreQuiz(quiz, restoring) {
     quiz.classList.add("scored");
     quiz.querySelectorAll(".q").forEach(grade);
     if (!restoring) setScored(quiz.getAttribute("data-key"), true);
+    recordTest(quiz);
     update(quiz);
   }
 
@@ -124,6 +144,11 @@
     });
     quiz.classList.remove("scored");
     setScored(quiz.getAttribute("data-key"), false);
+    var scores = load(SCORES);
+    if (scores[location.pathname] && scores[location.pathname].key === quiz.getAttribute("data-key")) {
+      delete scores[location.pathname];
+      store(SCORES, scores);
+    }
     forget(ids);
     update(quiz);
   }
