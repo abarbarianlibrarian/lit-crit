@@ -262,3 +262,31 @@ h2.letter { font: 500 28px/1 var(--serif); text-transform: none; letter-spacing:
   .years.pulitzer li { row-gap: 0; }
   .years li.head span:last-child { display: none; }
 }
+
+/* Prize filters */
+.filters {
+  display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 14px; margin: 14px 0 6px;
+  padding: 14px 16px; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 10px;
+  font-family: var(--sans);
+}
+.filters label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .05em; }
+.filters label[hidden] { display: none; }
+.filters input, .filters select {
+  font: 400 14.5px/1.2 var(--sans); color: var(--ink); background: var(--paper);
+  border: 1px solid var(--rule); border-radius: 7px; padding: 7px 9px; min-height: 34px;
+}
+.filters input:focus, .filters select:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.filters .f-search { flex: 1 1 200px; }
+.filters .f-year input { width: 84px; }
+.filters .f-check { flex-direction: row; align-items: center; gap: 7px; text-transform: none; letter-spacing: 0; font-size: 14px; font-weight: 500; color: var(--ink-2); min-height: 34px; }
+.filters .f-check input { min-height: 0; width: 16px; height: 16px; accent-color: var(--accent); }
+.f-status { flex-basis: 100%; margin: 0; font-size: 13.5px; color: var(--ink-3); display: flex; gap: 12px; align-items: center; }
+.f-status button { font: 500 13.5px/1 var(--sans); color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.empty { margin: 18px 0; }
+@media (max-width: 640px) {
+  .filters { padding: 12px; }
+  .filters label:not(.f-search):not(.f-check):not(.f-year) { flex: 1 1 45%; }
+  .filters .f-year { flex: 1 1 40%; }
+  .filters .f-year input { width: 100%; }
+}
+[hidden] { display: none !important; }

@@ -60,6 +60,7 @@ TABLES = {
     "prizes": ("tblQJKN35eT7tHHDg", {
         "name": "fldiTxVCQkVAvDFS3", "type": "fldUwkLHNeGfMnI2e", "year": "fldEsWcFc23sEt6JR",
         "works": "fldClKg0P0azExAzQ", "authors": "fldmF7hQhYRAxwwkk", "citation": "fldWKRCZrRiexXXwC",
+        "tested": "fld0F6ICj2hM81imA",
     }),
     "tags": ("tblU6sGz2WIW2IG14", {
         "name": "fldvOH4ijvCSZVJxZ", "quizlet": "fldBkxmhuqoC6YGmN", "gimkit": "fldScrugcf1FeJul3",
@@ -249,6 +250,7 @@ LIST_FIELDS = {
     "works": {"reading_list", "type", "language"},
     "resources": {"work"},
     "questions": {"correct"},
+    "prizes": {"tested"},
 }
 ATTACH_FIELDS = {"picture", "cover", "alt_cover"}
 
@@ -1121,6 +1123,20 @@ def alpha_index(db, key, label, intro):
             write(f"{key}/index.html", page(label, body, key, f"{label} in {SITE_TITLE}", f"{key}/"))
 
 
+PRIZE_CONTROLS = """<form class="filters" data-prize-filters hidden onsubmit="return false">
+  <label class="f-search"><span>Search</span><input type="search" name="q" placeholder="Winner or title"></label>
+  <label><span>Contest</span><select name="tested"><option value="">All contests</option></select></label>
+  <label data-nat-wrap><span>Nationality</span><select name="nat"><option value="">All nationalities</option></select></label>
+  <label class="f-year"><span>From</span><input type="number" name="from" inputmode="numeric" placeholder="1901"></label>
+  <label class="f-year"><span>To</span><input type="number" name="to" inputmode="numeric" placeholder="2026"></label>
+  <label><span>Sort</span><select name="sort">
+    <option value="new">Newest first</option><option value="old">Oldest first</option>
+    <option value="author">Winner A–Z</option><option value="work" data-pulitzer-only>Title A–Z</option>
+  </select></label>
+  <label class="f-check"><input type="checkbox" name="hidenone"> Hide “No Award” years</label>
+  <p class="f-status"><span data-shown></span> <button type="button" data-reset>Clear filters</button></p>
+</form>"""
+
 PULITZER_HEAD = '<li class="head" aria-hidden="true"><span>Year</span><span>Work</span><span>Author</span></li>'
 
 
@@ -1145,31 +1161,44 @@ def prizes_index(db, rel):
             authors = rel[("prizes", p["id"])].get("authors", [])
             works = rel[("prizes", p["id"])].get("works", [])
             yr = f'<span class="yr">{e(p["year"])}</span>'
-            if is_no_award(db, p, authors, works):
-                rows.append(f'<li class="none">{yr}<span class="noaward">No Award</span></li>')
+            none = is_no_award(db, p, authors, works)
+            nats = [] if none else list(dict.fromkeys(
+                db["authors"][a]["nationality"] for a in authors if db["authors"][a]["nationality"]))
+            who = ", ".join(db["authors"][a]["title"] for a in authors) if not none else ""
+            what = ", ".join(db["works"][w]["title"] for w in works) if not none else ""
+            data = {
+                "year": p["year"] or "0",
+                "author": "|".join(author_sort(db["authors"][a]) for a in authors) if not none else "",
+                "work": "|".join(sort_key(db["works"][w]["title"]) for w in works) if not none else "",
+                "nat": "|".join(nats),
+                "tested": "|".join(p["tested"]),
+                "text": fold(f"{who} {what} {' '.join(nats)}"),
+            }
+            attrs = " ".join(f'data-{k}="{e(v, quote=True)}"' for k, v in data.items())
+            if none:
+                rows.append(f'<li class="none" {attrs} data-none="1">{yr}<span class="noaward">No Award</span></li>')
                 continue
             if nobel:
-                who = ", ".join(db["authors"][a]["title"] for a in authors)
-                what = ", ".join(db["works"][w]["title"] for w in works)
                 label = " — ".join(x for x in (who, what) if x) or p["title"]
-                nats = list(dict.fromkeys(db["authors"][a]["nationality"] for a in authors if db["authors"][a]["nationality"]))
                 nat = f'<span class="nat">{e(", ".join(nats))}</span>'
-                rows.append(f'<li>{yr}<a href="{p["url"]}">{e(label)}</a>{nat}</li>')
+                rows.append(f'<li {attrs}>{yr}<a href="{p["url"]}">{e(label)}</a>{nat}</li>')
             else:
                 work_cell = ", ".join(f'<a href="{db["works"][w]["url"]}">{work_title_html(db["works"][w])}</a>' for w in works) \
                     or f'<a href="{p["url"]}">{e(p["title"])}</a>'
                 author_cell = ", ".join(f'<a href="{db["authors"][a]["url"]}">{e(db["authors"][a]["title"])}</a>' for a in authors)
-                rows.append(f'<li>{yr}<span class="pw">{work_cell}</span><span class="pa">{author_cell}</span></li>')
+                rows.append(f'<li {attrs}>{yr}<span class="pw">{work_cell}</span><span class="pa">{author_cell}</span></li>')
         cls = "plain years nobel" if nobel else "plain years pulitzer"
         tabs += (f'<a role="tab" href="#{slug}" id="tab-{slug}" aria-controls="{slug}"'
                  f'{" aria-selected=true" if i == 0 else ""}>{e(t)} <span class="count">{len(by_type[t])}</span></a>')
         panels += (f'<section class="tabpanel" id="{slug}" role="tabpanel" aria-labelledby="tab-{slug}">'
                    f'<h2 class="letter">{e(t)} <span class="count">{len(by_type[t])}</span></h2>'
-                   f'<ul class="{cls}">{"" if nobel else PULITZER_HEAD}{"".join(rows)}</ul></section>')
-    body = (f'<h1>Prizes</h1><p class="lede">{len(db["prizes"]):,} awards, newest first.</p>'
-            f'<nav class="tabs" role="tablist" aria-label="Prize">{tabs}</nav>{panels}')
+                   f'<ul class="{cls}" data-kind="{"nobel" if nobel else "pulitzer"}">{"" if nobel else PULITZER_HEAD}{"".join(rows)}</ul>'
+                   f'<p class="empty muted" hidden>No prizes match these filters.</p></section>')
+    body = (f'<h1>Prizes</h1><p class="lede">{len(db["prizes"]):,} awards.</p>'
+            f'<nav class="tabs" role="tablist" aria-label="Prize">{tabs}</nav>{PRIZE_CONTROLS}{panels}')
     write("prizes/index.html", page("Prizes", body, "prizes", "Literary prizes and their winners", "prizes/",
-                                    extra_head=f'<script src="{BASE}assets/tabs.js?v={BUILD_ID}" defer></script>'))
+                                    extra_head=f'<script src="{BASE}assets/tabs.js?v={BUILD_ID}" defer></script>'
+                                               f'<script src="{BASE}assets/prizes.js?v={BUILD_ID}" defer></script>'))
 
 
 def periods_index(db):
