@@ -17,6 +17,12 @@ rebuild it any time from the **Actions** tab → **Build site from Airtable** �
 | Historical Periods | By region in order, with previous/next period links. |
 | Tags | Term lists with Quizlet, Gimkit, Blooket and Sporcle links. |
 | Reading Resources | Grouped by work, linking to each resource's **Link**. Attached files are not copied to the site. |
+| Tests and Questions | A page per test with its questions grouped by part. Answers stay hidden until "Show answer" is clicked. Term, author, work and poem pages list the questions that mention them. |
+| Poems and Passages | Full text, author, the tests it appeared on, its essay prompts and its questions. |
+| Essay Prompts | Shown on the page of the poem or passage they belong to. |
+| Reading Lists | One table of each school year's novel, play and poet. |
+
+Attached files (test PDFs, reading list files, essay scoring guides) are not published.
 
 **Members** and **Requests** are never published.
 
@@ -36,10 +42,11 @@ rebuild it any time from the **Actions** tab → **Build site from Airtable** �
 
 ## Weekly backup
 
-Every Sunday, **Weekly Airtable backup** saves the Terms, Authors, Works, Prizes,
-Historical Periods, Tags and Reading Resources tables into the `backup/` folder:
+Every Sunday, **Weekly Airtable backup** saves every table except Members and Requests
+(including tables added later) into the `backup/` folder:
 a `.json` file (complete, for restoring) and a `.csv` file (opens in any spreadsheet)
 for each table, plus author portraits and book covers in `backup/images/`.
 Every week's version is kept in the repository's history.
-Members and Requests are never backed up, and files attached in Reading Resources are not copied.
+Members and Requests are never backed up. Attached files other than portraits and covers are not copied.
+The table structure (field types, choices, links) is saved in `backup/schema.json`.
 To back up right away: Actions tab → **Weekly Airtable backup** → **Run workflow**.

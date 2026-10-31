@@ -12,8 +12,10 @@ For each table it writes:
   backup/images/        author portraits and book covers (resized), so they survive
                         Airtable's expiring image links
 
-The Members and Requests tables are never backed up.
-Files attached in Reading Resources are not copied (only their file names are kept).
+Every table is backed up except Members and Requests, including tables added later
+(when the token has schema.bases:read). Attached files other than portraits and covers
+(test PDFs, reading list files, scoring guides, Reading Resources files) are not copied;
+only their file names are kept.
 """
 
 import csv
@@ -80,7 +82,13 @@ def fetch_schema():
     except urllib.error.HTTPError as e:
         print(f"Schema not saved (token needs schema.bases:read): HTTP {e.code}")
         return None
-    data["tables"] = [t for t in data["tables"] if t["id"] in TABLES and t["id"] not in EXCLUDED_TABLES]
+    data["tables"] = [t for t in data["tables"] if t["id"] not in EXCLUDED_TABLES]
+    # Pick up tables added to the base since this script was written.
+    for t in data["tables"]:
+        if t["id"] not in TABLES:
+            slug = re.sub(r"[^a-z0-9]+", "-", t["name"].lower()).strip("-") or t["id"]
+            primary = next(f["name"] for f in t["fields"] if f["id"] == t["primaryFieldId"])
+            TABLES[t["id"]] = (slug, primary)
     return data
 
 
@@ -164,7 +172,9 @@ def main():
             primary[t["id"]] = next(f["name"] for f in t["fields"] if f["id"] == t["primaryFieldId"])
 
     data = {}
-    for table_id, (name, primary_fallback) in TABLES.items():
+    for table_id, (name, primary_fallback) in list(TABLES.items()):
+        if table_id in EXCLUDED_TABLES:
+            continue
         print(f"Backing up {name}…", flush=True)
         data[table_id] = fetch_records(table_id)
         print(f"  {len(data[table_id])} records", flush=True)
@@ -182,8 +192,8 @@ def main():
         recs.sort(key=lambda r: r["id"])  # stable order keeps weekly changes small
         (OUT / f"{name}.json").write_text(json.dumps(recs, indent=1, ensure_ascii=False, sort_keys=True), encoding="utf-8")
 
-        if schema:
-            table = next(t for t in schema["tables"] if t["id"] == table_id)
+        table = next((t for t in schema["tables"] if t["id"] == table_id), None) if schema else None
+        if table:
             columns = [f["name"] for f in table["fields"]]
         else:
             columns = []
@@ -209,7 +219,7 @@ def main():
         f"# Airtable backup\n\nLast backup: {stamp}\n\n"
         "Each table is saved as `.json` (complete, for restoring) and `.csv` (open in any spreadsheet).\n"
         "Images are in `images/`. Earlier versions of every file are in this repository's history.\n"
-        "Members and Requests are not backed up. Files attached in Reading Resources are not copied.\n\n"
+        "Members and Requests are not backed up. Attached files other than portraits and covers are not copied.\n\n"
         "| Table | Records | |\n|---|---|---|\n" + "\n".join(summary) + "\n",
         encoding="utf-8")
     print("Backup written.")

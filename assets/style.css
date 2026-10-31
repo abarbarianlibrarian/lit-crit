@@ -189,3 +189,45 @@ h2.letter { font: 500 28px/1 var(--serif); text-transform: none; letter-spacing:
   .prose { font-size: 17.5px; }
   .results .kind { width: 52px; }
 }
+
+/* Practice tests */
+.questions { counter-reset: none; }
+.q { display: grid; grid-template-columns: 44px 1fr; gap: 4px 12px; padding: 18px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 120px; }
+.q:target { background: var(--accent-soft); border-radius: 8px; padding-left: 8px; padding-right: 8px; }
+.qnum { font: 600 14px/1.9 var(--sans); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.prompt { margin: 0 0 8px; font-size: 18px; line-height: 1.5; }
+.choices { list-style: none; padding: 0; margin: 0 0 10px; display: grid; gap: 4px; }
+.choices li { display: flex; gap: 10px; }
+.choices li::before { content: attr(data-letter) "."; font: 600 14px/1.75 var(--sans); color: var(--ink-3); min-width: 18px; }
+.answer summary {
+  display: inline-block; cursor: pointer; font: 500 13.5px/1 var(--sans); color: var(--accent);
+  padding: 7px 12px; border: 1px solid var(--rule); border-radius: 999px; list-style: none;
+}
+.answer summary::-webkit-details-marker { display: none; }
+.answer[open] summary { background: var(--accent-soft); border-color: transparent; }
+.answer p { margin: 10px 0 0; font-weight: 500; }
+.qmeta { margin: 8px 0 0; font: 400 13.5px/1.5 var(--sans); color: var(--ink-3); }
+.qlist li { padding: 7px 0; border-bottom: 1px solid var(--rule); line-height: 1.45; }
+.qlist .muted { font: 400 13px/1.4 var(--sans); white-space: nowrap; }
+
+/* Poems */
+.poem {
+  max-width: 640px; font-size: 18.5px; line-height: 1.75; padding: 22px 26px; margin: 8px 0 4px;
+  background: var(--paper-2); border-left: 3px solid var(--accent-soft); border-radius: 0 8px 8px 0;
+}
+.essay h3 { font: 600 15px/1.4 var(--sans); margin: 0 0 4px; }
+.essay p { margin: 0 0 16px; }
+
+/* Reading lists */
+.tablewrap { overflow-x: auto; margin-top: 20px; }
+.rl { width: 100%; border-collapse: collapse; font-size: 16.5px; }
+.rl th, .rl td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.rl thead th { font: 600 12.5px/1.4 var(--sans); text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); }
+.rl tbody th { font: 500 15px/1.5 var(--sans); white-space: nowrap; }
+.rl tr:target { background: var(--accent-soft); }
+@media (max-width: 640px) {
+  .q { grid-template-columns: 32px 1fr; }
+  .poem { padding: 16px 18px; font-size: 17px; }
+}
+.questions .choices li { padding: 2px 0; }
+.more .qlist { width: 100%; }

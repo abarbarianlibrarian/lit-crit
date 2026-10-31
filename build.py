@@ -75,12 +75,41 @@ TABLES = {
         "name": "fldL0NeGFsHTtCuTY", "year": "fldYjH6DrMMW8cyst", "type": "fldZFmUiDfw7dt2UV",
         "work": "fldpIadf3Zq41nZKo", "link": "fld94UO33vHDZzs7N",
     }),
+    "reading-lists": ("tblS8WrrRcpF6hhMq", {
+        "name": "fldWDcj2iJT5Q0gXp", "year": "flduoiWbyolCViqal", "novel": "fldEmmFZ4je9LxAH8",
+        "play": "fldoJMW8hA1cqts1O", "poet": "fldrAZxOHkIUojfgv",
+    }),
+    "poems": ("tblQ2KWCeyNrWshMF", {
+        "name": "fldheIjKBCv88NxiU", "text": "fldJLtOZ8fZi1FEGB", "authors": "fldycqc8GJHDMnJot",
+        "essays": "fldWFdsdA7r3ydtAR", "questions": "fld2W4ywICtx1aslc",
+    }),
+    "questions": ("tblOCo90Gz36SYv10", {
+        "name": "fldRhddsjYnpVrK71", "test": "fldilaCNMHb6EYsJn", "prompt": "fld5RLsrVQAr8fhfo",
+        "a": "fldvEEBT7MUTJKMaj", "b": "fldQRHXDdoaqBo36c", "c": "fldacm4HCaA4qtINy",
+        "d": "fldH8tlQAXyYmJ2tr", "e": "fldygihYAICaoblm9", "correct": "fldkWHxQ1rCEW06g7",
+        "number": "fldwadHhF7fbzuedS", "part": "fldJrtGYQyU2sq55x", "poems": "fldxo5vOdLp63ohVZ",
+        "rl_works": "fld8BtUvVz4VEyl6w", "terms": "fldHfOfZ0ImhwX5V7", "authors": "fldXuzM3SSDbXZoPi",
+        "works": "fldWpu4MAkgQe8Mvv",
+    }),
+    "tests": ("tblDASF9lXxJby0kz", {
+        "name": "fldkWtaAfrRmC1lpK", "year": "fld1PomM202MScaic", "type": "fldYZkncJfj653B49",
+        "questions": "fldZknvWA4ThMzBT9", "passage": "fldCF9oIUfqnGLmDe",
+    }),
+    "essays": ("tbloXypOYQ086Pf5o", {
+        "name": "fld98QHXSPFVXQVao", "prompt": "fldWhCvgV8NURzqKA", "poems": "fld51bwq2H8BR2STU",
+    }),
 }
+
+# Tables shown inside other pages rather than with pages of their own.
+NO_PAGES = {"resources", "questions", "essays", "reading-lists"}
 
 SECTIONS = [  # url folder, nav label, singular label
     ("terms", "Terms", "Term"),
     ("authors", "Authors", "Author"),
     ("works", "Works", "Work"),
+    ("poems", "Poems", "Poem"),
+    ("tests", "Tests", "Test"),
+    ("reading-lists", "Reading Lists", "Reading list"),
     ("prizes", "Prizes", "Prize"),
     ("periods", "Periods", "Period"),
     ("tags", "Tags", "Tag"),
@@ -208,11 +237,18 @@ LINK_FIELDS = {
     "tags": {"terms": "terms"},
     "periods": {"parent": "periods", "subs": "periods", "before": "periods", "after": "periods"},
     "resources": {},
+    "reading-lists": {"novel": "works", "play": "works", "poet": "authors"},
+    "poems": {"authors": "authors", "essays": "essays", "questions": "questions"},
+    "questions": {"test": "tests", "poems": "poems", "rl_works": "works", "terms": "terms",
+                  "authors": "authors", "works": "works"},
+    "tests": {"questions": "questions"},
+    "essays": {"poems": "poems"},
 }
 LIST_FIELDS = {
     "authors": {"groups", "periods", "medium"},
     "works": {"reading_list", "type", "language"},
     "resources": {"work"},
+    "questions": {"correct"},
 }
 ATTACH_FIELDS = {"picture", "cover", "alt_cover"}
 
@@ -273,16 +309,15 @@ def display_name(key, r):
         return name or f'{r["year"]} {r["type"]}'.strip() or "Prize"
     if key == "resources":
         return r["name"] or "Resource"
+    if key == "questions":
+        return (r["prompt"] or r["name"] or "Question").strip()
+    if key == "reading-lists":
+        return r["year"] or r["name"] or "Reading list"
     return r["name"] or "Untitled"
 
 
 def assign_urls(db):
     for key in db:
-        if key == "resources":
-            for r in db[key].values():
-                r["title"] = display_name(key, r)
-                r["url"] = None
-            continue
         taken = {}
         for r in sorted(db[key].values(), key=lambda r: r["id"]):
             r["title"] = display_name(key, r)
@@ -291,7 +326,12 @@ def assign_urls(db):
                 slug = f"{slug}-{r['id'][3:9].lower()}"
             taken[slug] = r["id"]
             r["slug"] = slug
-            r["url"] = f"{BASE}{key}/{slug}/"
+            r["url"] = None if key in NO_PAGES else f"{BASE}{key}/{slug}/"
+    for r in db["reading-lists"].values():
+        r["url"] = f"{BASE}reading-lists/#{r['slug']}"
+    for q in db["questions"].values():
+        test = db["tests"].get(q["test"][0]) if q["test"] else None
+        q["url"] = f"{test['url']}#q-{q['id']}" if test else None
 
 
 def author_sort(r):
@@ -343,6 +383,40 @@ def build_relations(db):
     for g in db["tags"].values():
         for t in g["terms"]:
             add("tags", g["id"], "terms", t); add("terms", t, "tags", g["id"])
+    # Practice tests, poems and reading lists.
+    for t in db["tests"].values():
+        for q in t["questions"]:
+            add("tests", t["id"], "questions", q); add("questions", q, "tests", t["id"])
+    for q in db["questions"].values():
+        for t in q["test"]:
+            add("tests", t, "questions", q["id"]); add("questions", q["id"], "tests", t)
+        for p in q["poems"]:
+            add("poems", p, "questions", q["id"]); add("questions", q["id"], "poems", p)
+        for k in ("terms", "authors", "works"):
+            for x in q[k]:
+                add(k, x, "questions", q["id"])
+        for w in q["rl_works"]:
+            add("works", w, "questions", q["id"])
+    for p in db["poems"].values():
+        for q in p["questions"]:
+            add("poems", p["id"], "questions", q); add("questions", q, "poems", p["id"])
+        for a in p["authors"]:
+            add("poems", p["id"], "authors", a); add("authors", a, "poems", p["id"])
+        for x in p["essays"]:
+            add("poems", p["id"], "essays", x)
+    for x in db["essays"].values():
+        for p in x["poems"]:
+            add("poems", p, "essays", x["id"])
+    for rl in db["reading-lists"].values():
+        for w in rl["novel"] + rl["play"]:
+            add("works", w, "reading-lists", rl["id"])
+        for a in rl["poet"]:
+            add("authors", a, "reading-lists", rl["id"])
+    # Every test a poem appeared on.
+    for p in db["poems"].values():
+        for q in rel[("poems", p["id"])].get("questions", []):
+            for t in rel[("questions", q)].get("tests", []):
+                add("poems", p["id"], "tests", t)
     return rel
 
 
@@ -654,6 +728,7 @@ def term_page(db, rel, resolver, t, periods_by_term):
 {section('Periods', chips(db, 'periods', periods_by_term.get(tid, [])))}
 {section('Authors', chips(db, 'authors', rel[('terms', tid)].get('authors', []), limit=40), len(rel[('terms', tid)].get('authors', [])))}
 {section('Tags', chips(db, 'tags', rel[('terms', tid)].get('tags', [])))}
+{questions_section(db, rel[('terms', tid)].get('questions', []))}
 """
     write(f"terms/{t['slug']}/index.html",
           page(t["title"], body, "terms", t["short"] or t["definition"][:200], f"terms/{t['slug']}/"))
@@ -692,6 +767,9 @@ def author_page(db, rel, resolver, a):
 {section('Movements and groups', chips(db, 'terms', group_ids))}
 {section('Periods', chips(db, 'terms', period_term_ids))}
 {section('Appears in these terms', chips(db, 'terms', terms, limit=60), len(terms))}
+{section('Poems and passages', chips(db, 'poems', rel[('authors', aid)].get('poems', [])), len(rel[('authors', aid)].get('poems', [])))}
+{section('Reading lists', reading_list_links(db, rel[('authors', aid)].get('reading-lists', [])))}
+{questions_section(db, rel[('authors', aid)].get('questions', []))}
 """
     desc = f"{a['title']} ({years}). " + (f"{a['nationality']} {', '.join(a['medium']).lower()}." if a["nationality"] else "")
     write(f"authors/{a['slug']}/index.html", page(a["title"], body, "authors", desc, f"authors/{a['slug']}/"))
@@ -759,10 +837,165 @@ def work_page(db, rel, resolver, w):
 {section('Prizes', f'<ul class="plain">{prize_list}</ul>' if prize_list else '')}
 {section('Terms', chips(db, 'terms', term_ids))}
 {section('Reading resources', f'<ul class="plain">{res_list}</ul>' if res_list else '')}
+{section('Reading lists', reading_list_links(db, rel[('works', wid)].get('reading-lists', [])))}
+{questions_section(db, rel[('works', wid)].get('questions', []))}
 """
     author_names = ", ".join(db["authors"][a]["title"] for a in authors)
     desc = (w["synopsis"] or f"{w['title']}" + (f" by {author_names}" if author_names else ""))[:250]
     write(f"works/{w['slug']}/index.html", page(w["title"], body, "works", desc, f"works/{w['slug']}/"))
+
+
+# ---------------------------------------------------------------- practice tests, poems, reading lists
+
+def test_label(db, q):
+    t = db["tests"].get(q["test"][0]) if q["test"] else None
+    num = f" · #{q['number']}" if q["number"] else ""
+    return (t["title"] if t else "") + num
+
+
+def test_sort(t):
+    try:
+        year = int(re.match(r"\d{4}", t["year"] or t["title"]).group(0))
+    except Exception:
+        year = 0
+    return (-year, sort_key(t["type"] or t["title"]))
+
+
+def questions_section(db, qids, title="Practice questions", limit=12):
+    qids = [q for q in dict.fromkeys(qids) if db["questions"][q]["url"]]
+    if not qids:
+        return ""
+    qids.sort(key=lambda q: (test_sort(db["tests"][db["questions"][q]["test"][0]]),
+                             int(db["questions"][q]["number"] or 0)))
+
+    def li(q):
+        r = db["questions"][q]
+        prompt = re.sub(r"\s+", " ", r["title"])
+        prompt = prompt if len(prompt) < 160 else prompt[:157].rsplit(" ", 1)[0] + "…"
+        return f'<li><a href="{r["url"]}">{e(prompt)}</a> <span class="muted">{e(test_label(db, r))}</span></li>'
+
+    items = "".join(li(q) for q in qids[:limit])
+    more = ""
+    if len(qids) > limit:
+        more = f'<details class="more"><summary>{len(qids) - limit} more</summary><ul class="plain qlist">' \
+               + "".join(li(q) for q in qids[limit:]) + "</ul></details>"
+    return section(title, f'<ul class="plain qlist">{items}</ul>{more}', len(qids))
+
+
+def reading_list_links(db, ids):
+    ids = sorted(dict.fromkeys(ids), key=lambda i: db["reading-lists"][i]["title"], reverse=True)
+    if not ids:
+        return ""
+    links = "".join(f'<a class="chip" href="{db["reading-lists"][i]["url"]}">{e(db["reading-lists"][i]["title"])}</a>'
+                    for i in ids)
+    return f'<div class="chips">{links}</div>'
+
+
+def multiline(text):
+    return "<br>".join(e(line) for line in text.strip().split("\n"))
+
+
+def question_html(db, q):
+    choices = ""
+    for letter in "abcde":
+        if q[letter]:
+            choices += f'<li data-letter="{letter.upper()}">{e(q[letter])}</li>'
+    correct = [c.strip().upper() for c in q["correct"] if c.strip()]
+    answer = ", ".join(
+        f"{c}. {e(q[c.lower()])}" if c.lower() in "abcde" and q.get(c.lower()) else e(c) for c in correct)
+    links = []
+    for p in q["poems"]:
+        links.append(f'<a href="{db["poems"][p]["url"]}">{e(db["poems"][p]["title"])}</a>')
+    for k in ("works", "authors"):
+        for x in q[k]:
+            r = db[k][x]
+            links.append(f'<a href="{r["url"]}">{work_title_html(r) if k == "works" else e(r["title"])}</a>')
+    terms = sorted(q["terms"], key=lambda t: sort_key(db["terms"][t]["title"]))
+    term_links = ", ".join(f'<a href="{db["terms"][t]["url"]}">{e(db["terms"][t]["title"])}</a>' for t in terms)
+    return f"""<li class="q" id="q-{q['id']}">
+<div class="qnum">{e(q['number'])}</div>
+<div class="qbody">
+<p class="prompt">{multiline(q['prompt'] or q['name'])}</p>
+{f'<ol class="choices">{choices}</ol>' if choices else ''}
+{f'<details class="answer"><summary>Show answer</summary><p>{answer}</p></details>' if answer else ''}
+{f'<p class="qmeta">About: {" · ".join(links)}</p>' if links else ''}
+{f'<p class="qmeta">Terms: {term_links}</p>' if term_links else ''}
+</div>
+</li>"""
+
+
+def test_page(db, rel, t):
+    qids = [q for q in rel[("tests", t["id"])].get("questions", []) if q in db["questions"]]
+    qids.sort(key=lambda q: (int(db["questions"][q]["number"] or 0), db["questions"][q]["id"]))
+    parts = defaultdict(list)
+    for q in qids:
+        parts[db["questions"][q]["part"] or ""].append(q)
+    poems = []
+    for q in qids:
+        poems += [p for p in db["questions"][q]["poems"] if p not in poems]
+    body = f"""{crumbs('tests', 'Tests')}
+<article class="record">
+<h1>{e(t['title'])}</h1>
+<p class="lede">{len(qids)} question{'s' if len(qids) != 1 else ''}. Try each one, then open “Show answer.”</p>
+{facts([('Year', e(t['year'])), ('Contest', e(t['type'])), ('Passage', e(t['passage']))])}
+</article>
+{section('Poems and passages on this test', chips(db, 'poems', poems, sort=False))}
+"""
+    for part in sorted(parts, key=lambda p: (p == "", p)):
+        heading = f'<h2 class="letter">{e(part)}</h2>' if part else ""
+        body += heading + '<ol class="plain questions">' + "".join(question_html(db, db["questions"][q]) for q in parts[part]) + "</ol>"
+    write(f"tests/{t['slug']}/index.html", page(t["title"], body, "tests", f"{len(qids)} practice questions from the {t['title']} test", f"tests/{t['slug']}/"))
+
+
+def poem_page(db, rel, p):
+    pid = p["id"]
+    authors = rel[("poems", pid)].get("authors", [])
+    by = ", ".join(f'<a href="{db["authors"][a]["url"]}">{e(db["authors"][a]["title"])}</a>' for a in authors)
+    tests = sorted(rel[("poems", pid)].get("tests", []), key=lambda x: test_sort(db["tests"][x]))
+    essays = [x for x in rel[("poems", pid)].get("essays", []) if x in db["essays"]]
+    essay_html = "".join(
+        f'<div class="essay"><h3>{e(db["essays"][x]["title"])}</h3><p>{multiline(db["essays"][x]["prompt"])}</p></div>'
+        for x in essays)
+    body = f"""{crumbs('poems', 'Poems and passages')}
+<article class="record">
+<h1>{e(p['title'])}</h1>
+{f'<p class="lede">by {by}</p>' if by else ''}
+{f'<div class="poem">{multiline(p["text"])}</div>' if p['text'] else ''}
+</article>
+{section('Appeared on', chips(db, 'tests', tests, sort=False), len(tests))}
+{section('Essay prompts', essay_html, len(essays))}
+{questions_section(db, rel[('poems', pid)].get('questions', []), 'Questions about this text', limit=30)}
+"""
+    names = ", ".join(db["authors"][a]["title"] for a in authors)
+    write(f"poems/{p['slug']}/index.html", page(p["title"], body, "poems", f"{p['title']}" + (f" by {names}" if names else ""), f"poems/{p['slug']}/"))
+
+
+def tests_index(db, rel):
+    by_year = defaultdict(list)
+    for t in db["tests"].values():
+        by_year[t["year"] or "Other"].append(t)
+    total = len(db["questions"])
+    body = f'<h1>Tests</h1><p class="lede">{len(db["tests"])} released tests with {total:,} practice questions.</p>'
+    for year in sorted(by_year, reverse=True):
+        cards = "".join(
+            f'<a class="card" href="{t["url"]}"><strong>{e(t["type"] or t["title"])}</strong>'
+            f'<span class="muted">{len(rel[("tests", t["id"])].get("questions", []))} questions</span></a>'
+            for t in sorted(by_year[year], key=lambda t: sort_key(t["type"] or t["title"])))
+        body += f'<h2 class="letter">{e(year)}</h2><div class="cards">{cards}</div>'
+    write("tests/index.html", page("Tests", body, "tests", "Released tests with practice questions", "tests/"))
+
+
+def reading_lists_index(db):
+    body = '<h1>Reading lists</h1><p class="lede">The novel, play and poet for each school year.</p>'
+    rows = ""
+    for rl in sorted(db["reading-lists"].values(), key=lambda r: r["title"], reverse=True):
+        def cell(key, ids):
+            return ", ".join(rec_link(db, key, i, "plainlink") for i in ids) or '<span class="muted">—</span>'
+        rows += (f'<tr id="{rl["slug"]}"><th scope="row">{e(rl["title"])}</th>'
+                 f'<td>{cell("works", rl["novel"])}</td><td>{cell("works", rl["play"])}</td>'
+                 f'<td>{cell("authors", rl["poet"])}</td></tr>')
+    body += f'<div class="tablewrap"><table class="rl"><thead><tr><th>Year</th><th>Novel</th><th>Play</th><th>Poet</th></tr></thead><tbody>{rows}</tbody></table></div>'
+    write("reading-lists/index.html", page("Reading lists", body, "reading-lists", "Reading lists by school year", "reading-lists/"))
 
 
 def prize_page(db, rel, p):
@@ -846,6 +1079,9 @@ def list_item(db, key, r):
         years = " – ".join(x for x in (r["birth"], r["death"]) if x)
         name = e(f'{r["last"]}, {r["first"]}') if r["last"] and r["first"] else e(r["title"])
         return f'<li><a href="{r["url"]}">{name}</a>{f" <span class=muted>{e(years)}</span>" if years else ""}</li>'
+    if key == "poems":
+        by = ", ".join(db["authors"][a]["title"] for a in r["authors"])
+        return f'<li><a href="{r["url"]}">{e(r["title"])}</a>{f" <span class=muted>{e(by)}</span>" if by else ""}</li>'
     if key == "works":
         by = ", ".join(db["authors"][a]["title"] for a in r["authors"])
         return f'<li><a href="{r["url"]}">{work_title_html(r)}</a>{f" <span class=muted>{e(by)}</span>" if by else ""}</li>'
@@ -975,7 +1211,7 @@ def search_page():
 def search_index(db):
     entries = []
     for key, _, singular in SECTIONS:
-        if key == "resources":
+        if key in NO_PAGES:
             continue
         for r in db[key].values():
             extra = ""
@@ -987,6 +1223,10 @@ def search_index(db):
                 extra = ", ".join(db["authors"][a]["title"] for a in r["authors"])
             elif key == "periods":
                 extra = r["region"]
+            elif key == "poems":
+                extra = ", ".join(db["authors"][a]["title"] for a in r["authors"])
+            elif key == "tests":
+                extra = f'{len(r["questions"])} questions'
             alt = r.get("alternate", "") if key == "authors" else ""
             entries.append([r["title"], singular, r["url"][len(BASE):], extra, alt])
     (OUT / "assets").mkdir(parents=True, exist_ok=True)
@@ -1000,7 +1240,7 @@ def sitemap(db):
     urls = [SITE_URL] + [f"{SITE_URL}{k}/" for k, _, _ in SECTIONS]
     for key in db:
         for r in db[key].values():
-            if r.get("url"):
+            if r.get("url") and "#" not in r["url"]:
                 urls.append(SITE_URL + r["url"][len(BASE):])
     body = "".join(f"<url><loc>{e(u)}</loc></url>" for u in urls)
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>')
@@ -1053,10 +1293,17 @@ def main():
         period_page(db, resolver, p)
     for g in db["tags"].values():
         tag_page(db, rel, g)
+    for t in db["tests"].values():
+        test_page(db, rel, t)
+    for p in db["poems"].values():
+        poem_page(db, rel, p)
 
     alpha_index(db, "terms", "Terms", "Definitions are cross-linked: follow any term in small capitals.")
     alpha_index(db, "authors", "Authors", "Sorted by last name.")
     alpha_index(db, "works", "Works", "Sorted by title.")
+    alpha_index(db, "poems", "Poems", "Poems and passages from the tests, with their full text.")
+    tests_index(db, rel)
+    reading_lists_index(db)
     prizes_index(db)
     periods_index(db)
     tags_index(db, rel)
