@@ -907,7 +907,8 @@ def question_points(q):
 
 
 def is_redacted(q):
-    return "redacted" in (q["prompt"] or q["name"]).lower()
+    text = (q["prompt"] or q["name"]).lower()
+    return "redacted" in text or "omitted" in text
 
 
 def question_html(db, q, in_test=True):
@@ -939,7 +940,8 @@ def question_html(db, q, in_test=True):
     pts = question_points(q)
     auto = is_redacted(q) or not correct or not choices
     if auto:
-        why = "This item was redacted in the released test" if is_redacted(q) else "No answer is recorded for this question"
+        why = ("This item was left out of the released test" if is_redacted(q) or not choices
+               else "No answer is recorded for this question")
         choices = ""
         answer = ""
         note = f'<p class="qauto">{why}, so its {pts} point{"s" if pts != 1 else ""} {"are" if pts != 1 else "is"} given automatically.</p>'
