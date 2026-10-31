@@ -883,7 +883,9 @@ def questions_section(db, qids, title="Practice questions", limit=10):
                 f'<ol class="plain questions compact">'
                 + "".join(question_html(db, db["questions"][q], in_test=False) for q in qids[limit:])
                 + "</ol></details>")
-    return section(title, f'<ol class="plain questions compact">{items}</ol>{more}', len(qids))
+    total = sum(question_points(db["questions"][q]) for q in qids)
+    return section(title, f'<div class="quiz">{score_bar(total, len(qids), test=False)}'
+                          f'<ol class="plain questions compact">{items}</ol>{more}</div>', len(qids))
 
 
 def reading_list_links(db, ids):
@@ -897,6 +899,15 @@ def reading_list_links(db, ids):
 
 def multiline(text):
     return "<br>".join(e(line) for line in text.strip().split("\n"))
+
+
+def question_points(q):
+    """Part 1 questions are worth 1 point; Parts 2 and 3 are worth 2."""
+    return 1 if q["part"].strip().lower() in ("part 1", "part i", "1") else 2
+
+
+def is_redacted(q):
+    return "redacted" in (q["prompt"] or q["name"]).lower()
 
 
 def question_html(db, q, in_test=True):
@@ -925,12 +936,22 @@ def question_html(db, q, in_test=True):
         source = f'<p class="qsource"><a href="{q["url"]}">{e(test_label(db, q))}</a></p>'
     num = e(q["number"]) if in_test else ""
     anchor = f' id="q-{q["id"]}"' if in_test else ""
-    return f"""<li class="q"{anchor} data-correct="{e(''.join(correct), quote=True)}">
+    pts = question_points(q)
+    auto = is_redacted(q) or not correct or not choices
+    if auto:
+        why = "This item was redacted in the released test" if is_redacted(q) else "No answer is recorded for this question"
+        choices = ""
+        answer = ""
+        note = f'<p class="qauto">{why}, so its {pts} point{"s" if pts != 1 else ""} {"are" if pts != 1 else "is"} given automatically.</p>'
+    else:
+        note = ""
+    return f"""<li class="q{' auto' if auto else ''}"{anchor} data-correct="{e(''.join(correct), quote=True)}" data-points="{pts}"{' data-auto="1"' if auto else ''}>
 <div class="qnum">{num}</div>
 <div class="qbody">
 {source}
 <p class="prompt">{multiline(q['prompt'] or q['name'])}</p>
 {f'<ol class="plain choices">{choices}</ol>' if choices else ''}
+{note}
 <p class="qresult" aria-live="polite"></p>
 {f'<details class="answer"><summary>Show answer</summary><p>{answer}</p></details>' if answer else ''}
 <div class="qlinks">
@@ -939,6 +960,15 @@ def question_html(db, q, in_test=True):
 </div>
 </div>
 </li>"""
+
+
+def score_bar(total_points, n_questions, test=True):
+    label = "Score" if test else "Points"
+    return f"""<div class="scorebar" data-scorebar data-test="{'1' if test else '0'}" hidden>
+  <div class="sb-main"><span class="sb-label">{label}</span> <strong data-sb-score>0</strong><span class="sb-of"> / {total_points}</span></div>
+  <div class="sb-stats"><span data-sb-answered>0 of {n_questions} answered</span><span data-sb-acc></span></div>
+  <div class="sb-track" aria-hidden="true"><span class="sb-fill-right" data-sb-right></span><span class="sb-fill-wrong" data-sb-wrong></span></div>
+</div>"""
 
 
 def test_page(db, rel, t):
@@ -958,9 +988,16 @@ def test_page(db, rel, t):
 </article>
 {section('Poems and passages on this test', chips(db, 'poems', poems, sort=False))}
 """
+    total = sum(question_points(db["questions"][q]) for q in qids)
+    body += f'<div class="quiz">{score_bar(total, len(qids))}'
     for part in sorted(parts, key=lambda p: (p == "", p)):
-        heading = f'<h2 class="letter">{e(part)}</h2>' if part else ""
+        pts = question_points(db["questions"][parts[part][0]]) if part else 0
+        note = f' <span class="count">{pts} point{"s" if pts != 1 else ""} each</span>' if part else ""
+        heading = f'<h2 class="letter">{e(part)}{note}</h2>' if part else ""
         body += heading + '<ol class="plain questions">' + "".join(question_html(db, db["questions"][q]) for q in parts[part]) + "</ol>"
+    body += "</div>"
+    if total != 100 and qids:
+        print(f"  note: {t['title']} totals {total} points ({len(qids)} questions)", flush=True)
     write(f"tests/{t['slug']}/index.html", page(t["title"], body, "tests", f"{len(qids)} practice questions from the {t['title']} test", f"tests/{t['slug']}/"))
 
 
