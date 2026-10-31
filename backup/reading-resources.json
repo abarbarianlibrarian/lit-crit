@@ -1,0 +1,1553 @@
+[
+ {
+  "createdTime": "2024-04-29T15:27:27.000Z",
+  "fields": {
+   "File": [
+    {
+     "filename": "the glass menagerie script.pdf",
+     "id": "attWTqibSs10O4s0c",
+     "size": 3042566,
+     "thumbnails": {
+      "large": {
+       "height": 652,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/BR4M5leSXGOqnysnhwamLw/32wUPM3uPTLsy4qbZn5kl2GM8gnvZR880mEy1M3KkHay0LZ9s2eAyTHF_ac29-emQq1_zc-XQxDac8m9P5_vKf5Xmf7tMuzsstlhawZE4tpZz9Tc_aG6_LKkyKe7U1LyjZHYJt7jDV8KlLquDunEsA/EV92E6CdfB0p6eIELUP_dOKIHht0_K-RZ63lA6Dov5M",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/UsZ07yY2sJiXiIdrvKT6Wg/0LfzIh7B8IeMuv6-qJFK_9TEqu-6iRF74vmP9zUU3O8qUETvY0Hg8ijj-YNtumoVNbjqJtDGJtas_JLlmSYaP9cHYfM1tKUx_VarNvRd_T7DdF-pg-BK52wi4mwWFBd0KM62cfdykpknF4Y_qV7C3w/tIkAAeJPuAB4jRKQSpWKx5L8o6kvMEj__0TSucurZ_8",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/zfqvWBO5GiURjRg92OlBhA/uZRnfS-dj6dPnq5smmzAPjxL3vBBK7ANH9IcB9mDZwTBYlG5Vntc9aQ0yTaMCdyrxsLVbTOq1X5NuEcRd6avldJLlgHaOrsxA9dSfHPVhp2g2TNbjq5QQigJPoQEB8SFGEZQFA5fs9qRYqY0pcDZ5rjg6vYEGf5vwEsmRbu_FAZsP02QqjYFgKwiiGo5sGh5/5doxt-4rIb1JZpnzqMiCcPxJDNzRCAaC3ClWQ4doVh0"
+    }
+   ],
+   "From field: Self-Link": [
+    "rec0pgTTXlmhsu6ix"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/14Jrlh4BiNt1Cci3trSH3xtcDXS23VXOF/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/14Jrlh4BiNt1Cci3trSH3xtcDXS23VXOF/view?usp=drive_link",
+   "Name": "Full Text",
+   "Record ID": "rec0pgTTXlmhsu6ix",
+   "Self-Link": [
+    "rec0pgTTXlmhsu6ix"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "The Glass Menagerie"
+   ],
+   "Work Text": "The Glass Menagerie",
+   "Year": "2023-2024"
+  },
+  "id": "rec0pgTTXlmhsu6ix"
+ },
+ {
+  "createdTime": "2024-04-29T15:59:24.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "rec1EI8k32lDdFd89"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/12893/a-coat"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/12893/a-coat",
+   "Name": "A Coat - Text",
+   "Record ID": "rec1EI8k32lDdFd89",
+   "Self-Link": [
+    "rec1EI8k32lDdFd89"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "rec1EI8k32lDdFd89"
+ },
+ {
+  "createdTime": "2024-04-29T16:21:56.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "rec3BZc3qj9s8Yz2d"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1e3HvjDWd_KAKR7uohX7zCODgC9tHpDWe/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1e3HvjDWd_KAKR7uohX7zCODgC9tHpDWe/view?usp=drive_link",
+   "Name": "Among School Children - Poetry Guide",
+   "Record ID": "rec3BZc3qj9s8Yz2d",
+   "Self-Link": [
+    "rec3BZc3qj9s8Yz2d"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "rec3BZc3qj9s8Yz2d"
+ },
+ {
+  "createdTime": "2024-04-29T15:59:30.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "rec5pZfw9v2qj8vCa"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/43288/the-wild-swans-at-coole"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/43288/the-wild-swans-at-coole",
+   "Name": "The Wild Swans at Coole - Text",
+   "Record ID": "rec5pZfw9v2qj8vCa",
+   "Self-Link": [
+    "rec5pZfw9v2qj8vCa"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "rec5pZfw9v2qj8vCa"
+ },
+ {
+  "createdTime": "2024-04-29T16:00:18.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "rec6Z7OI2i1HhCVrF"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/43291/sailing-to-byzantium"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/43291/sailing-to-byzantium",
+   "Name": "Sailing to Byzantium - Text",
+   "Record ID": "rec6Z7OI2i1HhCVrF",
+   "Self-Link": [
+    "rec6Z7OI2i1HhCVrF"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "rec6Z7OI2i1HhCVrF"
+ },
+ {
+  "createdTime": "2024-04-29T16:22:47.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recBIj8dOcSY9QDAP"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1lWKKJRyrdwQVEhr5RffRquPkIPbgVf1e/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1lWKKJRyrdwQVEhr5RffRquPkIPbgVf1e/view?usp=drive_link",
+   "Name": "No Second Troy - Poetry Guide",
+   "Record ID": "recBIj8dOcSY9QDAP",
+   "Self-Link": [
+    "recBIj8dOcSY9QDAP"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recBIj8dOcSY9QDAP"
+ },
+ {
+  "createdTime": "2024-04-29T16:00:18.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recDYq9H20o85XQdh"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/43290/the-second-coming"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/43290/the-second-coming",
+   "Name": "The Second Coming - Text",
+   "Record ID": "recDYq9H20o85XQdh",
+   "Self-Link": [
+    "recDYq9H20o85XQdh"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recDYq9H20o85XQdh"
+ },
+ {
+  "createdTime": "2024-04-29T15:34:02.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recEYn4t914hJsjJk"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/57294/the-sad-shepherd"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/57294/the-sad-shepherd",
+   "Name": "The Sad Shepherd - Text",
+   "Record ID": "recEYn4t914hJsjJk",
+   "Self-Link": [
+    "recEYn4t914hJsjJk"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recEYn4t914hJsjJk"
+ },
+ {
+  "createdTime": "2024-04-29T16:30:26.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recGj886FmjdlxuS1"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.youtube.com/playlist?list=PL8bWpleAJh_jJbfmv93edYjDiZALRo5FY&authuser=0"
+   },
+   "Link": "https://www.youtube.com/playlist?list=PL8bWpleAJh_jJbfmv93edYjDiZALRo5FY&authuser=0",
+   "Name": "Audiobook",
+   "Record ID": "recGj886FmjdlxuS1",
+   "Self-Link": [
+    "recGj886FmjdlxuS1"
+   ],
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "The Glass Menagerie"
+   ],
+   "Work Text": "The Glass Menagerie",
+   "Year": "2023-2024"
+  },
+  "id": "recGj886FmjdlxuS1"
+ },
+ {
+  "createdTime": "2024-04-29T15:34:36.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recH8TFNZoE92sIoD"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/43281/the-lake-isle-of-innisfree"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/43281/the-lake-isle-of-innisfree",
+   "Name": "The Lake Isle of Innisfree - Text",
+   "Record ID": "recH8TFNZoE92sIoD",
+   "Self-Link": [
+    "recH8TFNZoE92sIoD"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recH8TFNZoE92sIoD"
+ },
+ {
+  "createdTime": "2024-04-29T15:32:10.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recHkoVqV5PckD4Qz"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.amazon.com/Glass-Menagerie-Tennessee-Williams/dp/0811214044/ref=sr_1_1?crid=3RTZ1JDY6M2Q0&dib=eyJ2IjoiMSJ9.EnjM3cEmJLlSFmI1-iiSlxqpQRHdgJfbnDfz4My-92xy1b4Df39fUYPMKBIVv9Bl83Hkn2euiF_4VgLAgCDnk0BQ3Ry9CUovOFvt77neYrjFdzn8OcakdER3Xq89yHbnVDpvJKGi9Nkj98qabJPMlh-y9ZGN5D8pXNnwhAQLxR-Q4JIQq3YLCzfMdez-3RLLd7svmCji7oH-gRRkbpF6mRhNuj4hXnJ_lLRUDF5BzU4.PieuFc6h9YyRpfWamh-XjUQUZzr2W-GjtzEAzNRyyPA&dib_tag=se&keywords=the+glass+menagerie&qid=1714404739&sprefix=the+glass+menageri%2Caps%2C99&sr=8-1"
+   },
+   "Link": "https://www.amazon.com/Glass-Menagerie-Tennessee-Williams/dp/0811214044/ref=sr_1_1?crid=3RTZ1JDY6M2Q0&dib=eyJ2IjoiMSJ9.EnjM3cEmJLlSFmI1-iiSlxqpQRHdgJfbnDfz4My-92xy1b4Df39fUYPMKBIVv9Bl83Hkn2euiF_4VgLAgCDnk0BQ3Ry9CUovOFvt77neYrjFdzn8OcakdER3Xq89yHbnVDpvJKGi9Nkj98qabJPMlh-y9ZGN5D8pXNnwhAQLxR-Q4JIQq3YLCzfMdez-3RLLd7svmCji7oH-gRRkbpF6mRhNuj4hXnJ_lLRUDF5BzU4.PieuFc6h9YyRpfWamh-XjUQUZzr2W-GjtzEAzNRyyPA&dib_tag=se&keywords=the+glass+menagerie&qid=1714404739&sprefix=the+glass+menageri%2Caps%2C99&sr=8-1",
+   "Name": "Purchase",
+   "Record ID": "recHkoVqV5PckD4Qz",
+   "Self-Link": [
+    "recHkoVqV5PckD4Qz"
+   ],
+   "Type": "Purchase",
+   "Type Text": "Purchase",
+   "Work": [
+    "The Glass Menagerie"
+   ],
+   "Work Text": "The Glass Menagerie",
+   "Year": "2023-2024"
+  },
+  "id": "recHkoVqV5PckD4Qz"
+ },
+ {
+  "createdTime": "2024-04-29T16:24:30.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recKS8v8XA8GETjir"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1ywyk4lZHHZ-InFBnN_2DPFjj_xCUkl5M/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1ywyk4lZHHZ-InFBnN_2DPFjj_xCUkl5M/view?usp=drive_link",
+   "Name": "The Song of the Wandering Aengus - Poetry Guide",
+   "Record ID": "recKS8v8XA8GETjir",
+   "Self-Link": [
+    "recKS8v8XA8GETjir"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recKS8v8XA8GETjir"
+ },
+ {
+  "createdTime": "2024-04-29T15:30:50.000Z",
+  "fields": {
+   "File": [
+    {
+     "filename": "The-Glass-Menagerie-LitChart.pdf",
+     "id": "attwYkeGhtZj0rjIs",
+     "size": 400278,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/NZoiw1kh9TxIRZoxFQuwZw/64XkfiI7Vv6I56cF2guYFTG6szP0OBVApJ68tZb7Y8JF1_l3FWvJTnUBAXDqhGdjsnHVbDn2v32oxhBuXVpOtbEU5jpLYF6r-jSjOLANfN5InhNxrXpkZISwHhobzX3tB8k7l_2sZLkAHNeXgdcaLQ/nHJW79-MNI9mrHzKnlanzq1CKXU7cl74rhz8_X3K2Tk",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/YRXIK1XWoOXrNB9rd9Z4Jw/_ViY-qt6xzt7il1zMwFfmrwwGvfxLr0dWHpIQLAjPBe1ZEHrMKZuWW3Ec1v_Z8yn7wWiOV1VG9HtUL005qsJ_XZlxcMsVsXRPPkoXH4QdPDeBkh7GDeTtNCX2t09ZSNm7jgpXCwgF5HYNlsopHv6CQ/1D1ZzWjNqs96VtCL5LNkEZnvZyvmD9PYFSaPOK25oEs",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/pUx6il18IsYCAOEXp-56qQ/198bU6GcEXUEzkoTXZdaZPGYJbbYK4kk7hjk950QMwo2NCS3axPH5kEw9dBZ49-FB1StG4YFGPX7E16R9hyGBwjRz3iSMGlwdwRHgKPS09kOfcRlvysilzjZ3WfdbXhNq7EdykJ_Y95MG90mrbvw4YIVJ7RyAruW5fp15Urrfn-cN08yVx7mNjTXwT5GwtH3/1mI8Bnmn8g7bQHs1fpCEeyRmdwwWOn2Ge3ynb8zjLXg"
+    }
+   ],
+   "From field: Self-Link": [
+    "recLGP4Tih6kCANRR"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1hf5DTp1oVsjDaZS6gR-xgKK_P1hbv9h6/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1hf5DTp1oVsjDaZS6gR-xgKK_P1hbv9h6/view?usp=drive_link",
+   "Name": "Lit Chart",
+   "Record ID": "recLGP4Tih6kCANRR",
+   "Self-Link": [
+    "recLGP4Tih6kCANRR"
+   ],
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "The Glass Menagerie"
+   ],
+   "Work Text": "The Glass Menagerie",
+   "Year": "2023-2024"
+  },
+  "id": "recLGP4Tih6kCANRR"
+ },
+ {
+  "createdTime": "2024-04-29T14:01:27.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recLryoM9sHujwNXy"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.amazon.com/s?k=silas+marner&crid=33CM8MUQXH0T0&sprefix=silas+marner%2Caps%2C97&ref=nb_sb_noss_1"
+   },
+   "Link": "https://www.amazon.com/s?k=silas+marner&crid=33CM8MUQXH0T0&sprefix=silas+marner%2Caps%2C97&ref=nb_sb_noss_1",
+   "Name": "Purchase",
+   "Record ID": "recLryoM9sHujwNXy",
+   "Self-Link": [
+    "recLryoM9sHujwNXy"
+   ],
+   "Type": "Purchase",
+   "Type Text": "Purchase",
+   "Work": [
+    "Silas Marner"
+   ],
+   "Work Text": "Silas Marner",
+   "Year": "2023-2024"
+  },
+  "id": "recLryoM9sHujwNXy"
+ },
+ {
+  "createdTime": "2024-01-27T14:16:51.000Z",
+  "fields": {
+   "File": [
+    {
+     "filename": "CliffsNotes on Silas Marner.pdf",
+     "id": "attp6t7lUzMmYvB4h",
+     "size": 242658,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/Ukrw2cVEQuwkkVMZ0J6n9A/z3frn5t5mSUP5TxTRIQtdykMI2KIAYG3JZHZq8H_Yd1RgzwtJIsUGHbFguiKteyIsKsXt0e0zzPNZnY9JXuXGYhqyapMxf9ECoLc1tfVIk0WzW7Doh8zT-Eia9Ooa9wUMWSFQADUTlZ-K3K4UXvreQ/LnJTdcTi-yz84trnVKzM2kiAt5hNkJo05oJj55JxINQ",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/Dr6SQ-vk20p37XSuXp7AqA/SO-JXfMeNH8c0VzqALwNf91dGLsgk7UTnUiPY8FJo3fNW17GBAcMgDLzpYh_8sDw38BjWBAe0rIxKu_7Xsq5peIje83iGU6ETOk0pHbBZ4jInI7dsvyLT6TNuKtLnKSHD3lPmRaoWYa6H7DL83onYQ/ySdlPIfk-cy1U0e88emsXDXNCQTosLi3N3vdil8h5go",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/uqwtgAXXTDozQumU6HMGDg/l8Cum2aXd16xG2fiVvfPbKsUoTm6GeApKGPJCuntNl4sQIpZB-yw_ryfDVpcNiIHhP5vH2GkOPiwQdJQaMkG85LNcRE6Kcj391z_SjJOkH_lNL_VfQO4zkDeYAVp2esCotRclTnD3to3JlsaVX5X49hJWmqMlcd4mV9yVZ5EAMLyiD4DulJUI6v3X700kunK/JespTAEVrNbrsvqXTEjqjYXWHLdaFVD8E1lZM-KcjS4"
+    }
+   ],
+   "From field: Self-Link": [
+    "recMCAu4Ck3SFO31d"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/19whfH6TfyOdahE3bvs7YK-W6AUIttlWi/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/19whfH6TfyOdahE3bvs7YK-W6AUIttlWi/view?usp=drive_link",
+   "Name": "Cliffs Notes",
+   "Record ID": "recMCAu4Ck3SFO31d",
+   "Self-Link": [
+    "recMCAu4Ck3SFO31d"
+   ],
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Silas Marner"
+   ],
+   "Work Text": "Silas Marner",
+   "Year": "2023-2024"
+  },
+  "id": "recMCAu4Ck3SFO31d"
+ },
+ {
+  "createdTime": "2024-04-29T16:23:37.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recN1kv2WE3QB0f85"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1UBN14nKSYl3n2jKOI3N6yx55eYOA1Md1/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1UBN14nKSYl3n2jKOI3N6yx55eYOA1Md1/view?usp=drive_link",
+   "Name": "The Lake Isle of Innisfree - Poetry Guide",
+   "Record ID": "recN1kv2WE3QB0f85",
+   "Self-Link": [
+    "recN1kv2WE3QB0f85"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recN1kv2WE3QB0f85"
+ },
+ {
+  "createdTime": "2024-04-29T15:59:49.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recN5Jq6R5SmntRqQ"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/43289/easter-1916"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/43289/easter-1916",
+   "Name": "Easter, 1916 - Text",
+   "Record ID": "recN5Jq6R5SmntRqQ",
+   "Self-Link": [
+    "recN5Jq6R5SmntRqQ"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recN5Jq6R5SmntRqQ"
+ },
+ {
+  "createdTime": "2024-04-29T16:00:28.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recO4l7ANBfr0yNG0"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/43293/among-school-children"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/43293/among-school-children",
+   "Name": "Among School Children - Text",
+   "Record ID": "recO4l7ANBfr0yNG0",
+   "Self-Link": [
+    "recO4l7ANBfr0yNG0"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recO4l7ANBfr0yNG0"
+ },
+ {
+  "createdTime": "2024-04-29T16:23:18.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recOiRu0O6TDNqID6"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1HmYfh9hrpDpZB4RV1RcCEmoWgRP-ZAmH/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1HmYfh9hrpDpZB4RV1RcCEmoWgRP-ZAmH/view?usp=drive_link",
+   "Name": "September 1913 - Poetry Guide",
+   "Record ID": "recOiRu0O6TDNqID6",
+   "Self-Link": [
+    "recOiRu0O6TDNqID6"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recOiRu0O6TDNqID6"
+ },
+ {
+  "createdTime": "2024-04-29T15:38:18.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recUaEgrbkQkQAgnq"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/49772/no-second-troy"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/49772/no-second-troy",
+   "Name": "No Second Troy - Text",
+   "Record ID": "recUaEgrbkQkQAgnq",
+   "Self-Link": [
+    "recUaEgrbkQkQAgnq"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recUaEgrbkQkQAgnq"
+ },
+ {
+  "createdTime": "2024-04-29T14:22:27.000Z",
+  "fields": {
+   "File": [
+    {
+     "filename": "CliffsNotes on The Glass Menagerie.pdf",
+     "id": "att14p7QBJmpQ8ZvX",
+     "size": 131688,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/dRaUbm9bRzQOP-N2itixgQ/HpoxeiWj7HgJxQ0CP2l0r-CQtNjjKcOmxESY9KNbEIZBobvDhrpzbFQhV_YMCfyOzsJgacTArUfB7fLVkSDhsQzMBCSiJ-jd4iJ7vavr1jTjdIkEcGohaoaqJaTNNwBTl2thh3M0eJ07nQQJydcyAQ/AH-fSdcFvGG7LVpgPC4AVbPG_0yAdTuolceeoXylzco",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/l2giSiPjKJBV4YBprGvGXg/VNKbP150yKDHfgwWjYQUtBI5nSofv7Yz6N9DK6-UusMOvVru_K0SKmQf1q3rm1iBEffLI6pwOrhxXRzfwDsygdrNPNLajA78j03psyL0LMXuwnmuWGpvcQfAsF9bJoooj1G9xJTZWV7Wq70IYej4pQ/aNXvewxbXRsXuntI5OYsUPItgiyfdrC2q39S5kClflA",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/LYsb0CWn4pV0SjTBMFIVmw/xEuZbsn2mNX9NXeSfntV1hRQvpQGuX0VldPZcJQC2WhaVivkhlVgC2dNFBArFZ9-q2WOSHVuVVILCyIfeU3oAEiAb-LOtRp9iMp7MeY1PxHtv183NaDHT5_qAaQ16jeGJqo6pHLQPSLfeWF6F5woXljMpv2kWpcA9iVQxjfvn9yzcpYCXeZ0cdiXyZAWgcgH/-7FfPctI9xP0XxCr7E9ONp9L4fdIVuU-hwOJY5cZ5ao"
+    }
+   ],
+   "From field: Self-Link": [
+    "recUeG1dlFEgeQUvw"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/11mB5vy32-0UXgCEbHQkoSr_D3fFWE9_G/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/11mB5vy32-0UXgCEbHQkoSr_D3fFWE9_G/view?usp=drive_link",
+   "Name": "Cliffs Notes",
+   "Record ID": "recUeG1dlFEgeQUvw",
+   "Self-Link": [
+    "recUeG1dlFEgeQUvw"
+   ],
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "The Glass Menagerie"
+   ],
+   "Work Text": "The Glass Menagerie",
+   "Year": "2023-2024"
+  },
+  "id": "recUeG1dlFEgeQUvw"
+ },
+ {
+  "createdTime": "2024-04-29T16:25:41.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recVLJvoNlhRgNASv"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/19RSrDrSle65_QVnziMNePhSC3SwKsXs4/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/19RSrDrSle65_QVnziMNePhSC3SwKsXs4/view?usp=drive_link",
+   "Name": "An Irish Airman foresees his Death - Lit Charts",
+   "Record ID": "recVLJvoNlhRgNASv",
+   "Self-Link": [
+    "recVLJvoNlhRgNASv"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recVLJvoNlhRgNASv"
+ },
+ {
+  "createdTime": "2024-04-29T16:25:15.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recVSIBupJum0Iqi5"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1Ql8Pd23YO8VC_XM0_NAqyAS9YJOkPlB0/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1Ql8Pd23YO8VC_XM0_NAqyAS9YJOkPlB0/view?usp=drive_link",
+   "Name": "William Butler Yeats - Poetry Guide",
+   "Record ID": "recVSIBupJum0Iqi5",
+   "Self-Link": [
+    "recVSIBupJum0Iqi5"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recVSIBupJum0Iqi5"
+ },
+ {
+  "createdTime": "2024-04-29T16:29:40.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recVWYoEHRYadCqHL"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.youtube.com/watch?v=fLrLbTugWEQ&pp=ygUddGhlIGdsYXNzIG1lbmFnZXJpZSBhdWRpb2Jvb2s%3D"
+   },
+   "Link": "https://www.youtube.com/watch?v=fLrLbTugWEQ&pp=ygUddGhlIGdsYXNzIG1lbmFnZXJpZSBhdWRpb2Jvb2s%3D",
+   "Name": "Newman Theatre Presents: The Glass Menagerie",
+   "Record ID": "recVWYoEHRYadCqHL",
+   "Self-Link": [
+    "recVWYoEHRYadCqHL"
+   ],
+   "Type": "Video",
+   "Type Text": "Video",
+   "Work": [
+    "The Glass Menagerie"
+   ],
+   "Work Text": "The Glass Menagerie",
+   "Year": "2023-2024"
+  },
+  "id": "recVWYoEHRYadCqHL"
+ },
+ {
+  "createdTime": "2024-04-29T16:22:09.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recVp3C9go9RXf8EM"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1IPOPUTxa-lkUO_vz2UyopWtTN-ItSPhp/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1IPOPUTxa-lkUO_vz2UyopWtTN-ItSPhp/view?usp=drive_link",
+   "Name": "An Irish Airman foresees his Death - Poetry Guide",
+   "Record ID": "recVp3C9go9RXf8EM",
+   "Self-Link": [
+    "recVp3C9go9RXf8EM"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recVp3C9go9RXf8EM"
+ },
+ {
+  "createdTime": "2024-04-29T15:38:11.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recVpKKFDZDDmUVnd"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://allpoetry.com/In-The-Seven-Woods"
+   },
+   "Link": "https://allpoetry.com/In-The-Seven-Woods",
+   "Name": "In the Seven Woods - Text",
+   "Record ID": "recVpKKFDZDDmUVnd",
+   "Self-Link": [
+    "recVpKKFDZDDmUVnd"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recVpKKFDZDDmUVnd"
+ },
+ {
+  "createdTime": "2024-04-29T16:26:31.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recWZc27yELcCRYKx"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1iJmFRCfuOvD0csaADxu2AF74P4W1K_dj/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1iJmFRCfuOvD0csaADxu2AF74P4W1K_dj/view?usp=drive_link",
+   "Name": "The Second Coming - Lit Charts",
+   "Record ID": "recWZc27yELcCRYKx",
+   "Self-Link": [
+    "recWZc27yELcCRYKx"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recWZc27yELcCRYKx"
+ },
+ {
+  "createdTime": "2024-04-29T16:26:57.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recWiAxVUiD4Hbebc"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/11ozE1yCevcWkhBJSYkArDjLQEgDqKgL8/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/11ozE1yCevcWkhBJSYkArDjLQEgDqKgL8/view?usp=drive_link",
+   "Name": "The Wild Swans at Coole - Lit Charts",
+   "Record ID": "recWiAxVUiD4Hbebc",
+   "Self-Link": [
+    "recWiAxVUiD4Hbebc"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recWiAxVUiD4Hbebc"
+ },
+ {
+  "createdTime": "2024-04-29T15:38:01.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recY9DttqkKjlytDt"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/55687/the-song-of-wandering-aengus"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/55687/the-song-of-wandering-aengus",
+   "Name": "The Song of Wandering Aengus - Text",
+   "Record ID": "recY9DttqkKjlytDt",
+   "Self-Link": [
+    "recY9DttqkKjlytDt"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recY9DttqkKjlytDt"
+ },
+ {
+  "createdTime": "2024-04-29T16:18:50.000Z",
+  "fields": {
+   "File": [
+    {
+     "filename": "Yeats Poems.pdf",
+     "id": "attlPd3kruFJ4lHkt",
+     "size": 118552,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/0ewbPeYhX2LFhvHqMDC6Vw/OSSjMe6LhM6_3pQoVnb25fNYGRzH-ykRDF7tS7ij-lotb3kbvwRZFm6XWgHhmOSe_2aAQwuaJVeQpXlet7AR2h-qDhPrA96VldAO3e5N8PEQN-ThtQX6_lGXWSYN2hd2IO65nJNdYvqP4St9HXxq1w/wKLr4C-oV54IpO8BLOi6hPhIRHeWUn_8ddwIJVErhc8",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/SUxKfc2gwS7vNIPtZas5eg/CnCsVkPR6DU3oJhhPDkKy0wOd2CXz9La08zfQdj0VWQLBY-MeWjXi7HRdJP15BVTbthe-I1CA3aeiwPSPTHWhHK4OLULEIZdMLK7cPIfMAEjQJsXxK45_28nBcXm5ZA0GbGd1n2z6atZro3ozCeZ_Q/OWn0C2H1oegWd8f89GVUbcXmUrTUgAmIaVsCSjfvffE",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/gJ4cDfhQbOFluKXJ9yn-aw/1Jlx_pB2qMh-3Q9wCUXeK1SyMiqZKUsGEvmlRNDXXL2pq_IazVuGczGjB785--QdxSbs7cZMlX9ZQWRaBnEkgSgN5OPPgoQq3JTwgGJyMcrickrqGoPoqyvAkI93r0W1944lKvDGJ-6V1s_YsKg30YuIMqK3MoCqrUghn6bWLF8/xxDifpUFyINX1u_TB4XLVq16a7Zj9TQxyV0DUQB7HnM"
+    }
+   ],
+   "From field: Self-Link": [
+    "recaQzaeYTryfJMej"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://docs.google.com/document/d/13Tecxg-ri6lIE3VUdelPePOHIW-z5FqnMrjruBDC3-s/edit?usp=sharing"
+   },
+   "Link": "https://docs.google.com/document/d/13Tecxg-ri6lIE3VUdelPePOHIW-z5FqnMrjruBDC3-s/edit?usp=sharing",
+   "Name": "All Yeats Poems - Printable",
+   "Record ID": "recaQzaeYTryfJMej",
+   "Self-Link": [
+    "recaQzaeYTryfJMej"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recaQzaeYTryfJMej"
+ },
+ {
+  "createdTime": "2024-04-29T16:26:41.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recbv9mZrGCN2ObSE"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/169AFL4FFbB7GvFH9Bgz1-2CPyOM7URdW/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/169AFL4FFbB7GvFH9Bgz1-2CPyOM7URdW/view?usp=drive_link",
+   "Name": "The Song of the Wandering Aengus - Lit Charts",
+   "Record ID": "recbv9mZrGCN2ObSE",
+   "Self-Link": [
+    "recbv9mZrGCN2ObSE"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recbv9mZrGCN2ObSE"
+ },
+ {
+  "createdTime": "2024-04-29T16:23:04.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recciEEA9WVQUv51q"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1XQdEvpjcIkIsTtHIEMdx0XBvbTeBZKS9/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1XQdEvpjcIkIsTtHIEMdx0XBvbTeBZKS9/view?usp=drive_link",
+   "Name": "Sailing to Byzantium - Poetry Guide",
+   "Record ID": "recciEEA9WVQUv51q",
+   "Self-Link": [
+    "recciEEA9WVQUv51q"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recciEEA9WVQUv51q"
+ },
+ {
+  "createdTime": "2024-04-29T16:26:06.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "reccnRlF8qNsbZxYT"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1P2KasJwdOisBjQ0MitaGpYLGzO3hFMhp/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1P2KasJwdOisBjQ0MitaGpYLGzO3hFMhp/view?usp=drive_link",
+   "Name": "Sailing to Byzantium - Lit Charts",
+   "Record ID": "reccnRlF8qNsbZxYT",
+   "Self-Link": [
+    "reccnRlF8qNsbZxYT"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "reccnRlF8qNsbZxYT"
+ },
+ {
+  "createdTime": "2024-04-29T15:59:37.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recd4BvN2eqJCc5YS"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/57311/an-irish-airman-foresees-his-death"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/57311/an-irish-airman-foresees-his-death",
+   "Name": "An Irish Airman foresees his Death - Text",
+   "Record ID": "recd4BvN2eqJCc5YS",
+   "Self-Link": [
+    "recd4BvN2eqJCc5YS"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recd4BvN2eqJCc5YS"
+ },
+ {
+  "createdTime": "2024-04-29T16:27:06.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recd9yXjbXtOdZvu1"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/14ywuUTrV5sVoLi7NhkD8-SOAqxmt5M4d/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/14ywuUTrV5sVoLi7NhkD8-SOAqxmt5M4d/view?usp=drive_link",
+   "Name": "When You Are Old - Lit Charts",
+   "Record ID": "recd9yXjbXtOdZvu1",
+   "Self-Link": [
+    "recd9yXjbXtOdZvu1"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recd9yXjbXtOdZvu1"
+ },
+ {
+  "createdTime": "2024-04-29T15:59:14.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "receh0mgYZ6rfg3uS"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/57309/september-1913"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/57309/september-1913",
+   "Name": "September 1913 - Text",
+   "Record ID": "receh0mgYZ6rfg3uS",
+   "Self-Link": [
+    "receh0mgYZ6rfg3uS"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "receh0mgYZ6rfg3uS"
+ },
+ {
+  "createdTime": "2024-04-29T16:26:12.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recevu3UEnN3unfpK"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1LfxB66toAbi4VeTC56c-oiT1GtBYdssx/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1LfxB66toAbi4VeTC56c-oiT1GtBYdssx/view?usp=drive_link",
+   "Name": "September 1913 - Lit Charts",
+   "Record ID": "recevu3UEnN3unfpK",
+   "Self-Link": [
+    "recevu3UEnN3unfpK"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recevu3UEnN3unfpK"
+ },
+ {
+  "createdTime": "2024-04-29T16:24:49.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recgAnDZSBQ1AtkLq"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1qMgN5SwKUofF_u0JooQFpwlvdOh_Qw-d/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1qMgN5SwKUofF_u0JooQFpwlvdOh_Qw-d/view?usp=drive_link",
+   "Name": "The Wild Swans at Coole - Poetry Guide",
+   "Record ID": "recgAnDZSBQ1AtkLq",
+   "Self-Link": [
+    "recgAnDZSBQ1AtkLq"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recgAnDZSBQ1AtkLq"
+ },
+ {
+  "createdTime": "2024-04-29T16:00:47.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recgqKvfyFwKVW4kJ"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://allpoetry.com/Long-Legged-Fly"
+   },
+   "Link": "https://allpoetry.com/Long-Legged-Fly",
+   "Name": "Long-legged Fly - Text",
+   "Record ID": "recgqKvfyFwKVW4kJ",
+   "Self-Link": [
+    "recgqKvfyFwKVW4kJ"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recgqKvfyFwKVW4kJ"
+ },
+ {
+  "createdTime": "2024-04-29T16:26:22.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recgyJKwV24dwQZtM"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1GAXadF6LjxF3cFtNhtXAUiWMRdBfQzQB/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1GAXadF6LjxF3cFtNhtXAUiWMRdBfQzQB/view?usp=drive_link",
+   "Name": "The Lake Isle of Innisfree - Lit Charts",
+   "Record ID": "recgyJKwV24dwQZtM",
+   "Self-Link": [
+    "recgyJKwV24dwQZtM"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recgyJKwV24dwQZtM"
+ },
+ {
+  "createdTime": "2024-04-29T15:59:02.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "reckqXq4Ka71RnAx9"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/43286/the-fascination-of-whats-difficult"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/43286/the-fascination-of-whats-difficult",
+   "Name": "The Fascination of What's Difficult - Text",
+   "Record ID": "reckqXq4Ka71RnAx9",
+   "Self-Link": [
+    "reckqXq4Ka71RnAx9"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "reckqXq4Ka71RnAx9"
+ },
+ {
+  "createdTime": "2024-04-29T16:30:33.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "reclQIw8bmlgXEmHL"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.youtube.com/watch?v=dh_vmhtibmo&authuser=0"
+   },
+   "Link": "https://www.youtube.com/watch?v=dh_vmhtibmo&authuser=0",
+   "Name": "1987 Film",
+   "Record ID": "reclQIw8bmlgXEmHL",
+   "Self-Link": [
+    "reclQIw8bmlgXEmHL"
+   ],
+   "Type": "Video",
+   "Type Text": "Video",
+   "Work": [
+    "Silas Marner"
+   ],
+   "Work Text": "Silas Marner",
+   "Year": "2023-2024"
+  },
+  "id": "reclQIw8bmlgXEmHL"
+ },
+ {
+  "createdTime": "2024-01-27T14:16:51.000Z",
+  "fields": {
+   "File": [
+    {
+     "filename": "Silas Marner.pdf",
+     "id": "attWSvtTXqOhXi9wY",
+     "size": 457611,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/jfWj637KhDtEHiRteJNoNA/elYsAl9RXPWjLgvHsIjdaI22AAwLixNWEzjb0FOz0BEy5UGoSV0rkKbfFYxfH6jiekc7CsfIUGffqSfVtFaNcbUWqponLg_l-9VcLZmuqcIC99ht89vp8eVQNPZGcg_f12Qg5lEOo3U1Ih5nLfbAEg/-rcQkRxBKs6EsxHSek_cFGjETLxbg2qWVL4Nh8F_Ejk",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/kbWSF6Re-CGO-H5GIM4Dpw/QsKKLNEw7T-3ELvBkLJ8Y7jq1yR7Q8U5GkfeyplOQQz5gJnAfhxdsSvu3QQRgCge2MDw7Ypj4AvGT9C5FKbu58ixtNtkabMkbKu36b9jNu7wlmExddpUdAOuzzQhTA1SP8ZDDbnepwUrzEItrhvEEA/zrOMQaPf60AQhdhGb6PtM7qpfCyI_YiE2VWDKwO--vk",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/5YZJSC2Fe_zkio-YuA7-eA/cpDil6Tl1SLhoekbwLIkaHD1m3P-4epvUDsM8zNgYosfrUpjuS4cQncUsFszW4UyGzvjB8j2p-g2faZQV7Rf3z72wlirEDjuNV3KgU3TOZErMaO9RqmBMyIEhnCra-iVmo7QuVl3Ak_tQiaF7vJZ46GB9xi516-lXIMss-u1lNE/fkAt3THUYl-gXnz5693fDm61rExf6m7d_3y9GPwme_A"
+    }
+   ],
+   "From field: Self-Link": [
+    "reclrBmxyptMLLyqL"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1_uuNzf0b6NvGqpjZ4Nd05gSGncALr7P_/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1_uuNzf0b6NvGqpjZ4Nd05gSGncALr7P_/view?usp=drive_link",
+   "Name": "Full Text",
+   "Record ID": "reclrBmxyptMLLyqL",
+   "Self-Link": [
+    "reclrBmxyptMLLyqL"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Silas Marner"
+   ],
+   "Work Text": "Silas Marner",
+   "Year": "2023-2024"
+  },
+  "id": "reclrBmxyptMLLyqL"
+ },
+ {
+  "createdTime": "2024-04-29T16:22:32.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recq2ajETWNdtH0Xb"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1Cqx0YkkOcTBmsDPLJuYJcQZWb9BtGn-K/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1Cqx0YkkOcTBmsDPLJuYJcQZWb9BtGn-K/view?usp=drive_link",
+   "Name": "Easter, 1916 - Poetry Guide",
+   "Record ID": "recq2ajETWNdtH0Xb",
+   "Self-Link": [
+    "recq2ajETWNdtH0Xb"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recq2ajETWNdtH0Xb"
+ },
+ {
+  "createdTime": "2024-04-29T15:34:55.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recqjvfmvKixvmjM9"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://allpoetry.com/To-Some-I-Have-Talked-With-By-The-Fire"
+   },
+   "Link": "https://allpoetry.com/To-Some-I-Have-Talked-With-By-The-Fire",
+   "Name": "To Some I have Talked with by the Fire - Text",
+   "Record ID": "recqjvfmvKixvmjM9",
+   "Self-Link": [
+    "recqjvfmvKixvmjM9"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recqjvfmvKixvmjM9"
+ },
+ {
+  "createdTime": "2024-04-29T15:34:48.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recrHDdstPMVwqlKc"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/43283/when-you-are-old"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/43283/when-you-are-old",
+   "Name": "When  You Are Old - Text",
+   "Record ID": "recrHDdstPMVwqlKc",
+   "Self-Link": [
+    "recrHDdstPMVwqlKc"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recrHDdstPMVwqlKc"
+ },
+ {
+  "createdTime": "2024-04-29T16:25:32.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recsNpyQhygUp7mrr"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/16Hy_WWhoRUFTwkFIo2CXVHtNyEFPrSYg/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/16Hy_WWhoRUFTwkFIo2CXVHtNyEFPrSYg/view?usp=drive_link",
+   "Name": "Among School Children - Lit Charts",
+   "Record ID": "recsNpyQhygUp7mrr",
+   "Self-Link": [
+    "recsNpyQhygUp7mrr"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recsNpyQhygUp7mrr"
+ },
+ {
+  "createdTime": "2024-04-29T16:28:18.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recsRkVCE6tNRu0pN"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.youtube.com/watch?v=g5-sRjbkqjw&t=27s&pp=ygUWc2lsYXMgbWFybmVyIGF1ZGlvYm9vaw%3D%3D"
+   },
+   "Link": "https://www.youtube.com/watch?v=g5-sRjbkqjw&t=27s&pp=ygUWc2lsYXMgbWFybmVyIGF1ZGlvYm9vaw%3D%3D",
+   "Name": "Audiobook",
+   "Record ID": "recsRkVCE6tNRu0pN",
+   "Self-Link": [
+    "recsRkVCE6tNRu0pN"
+   ],
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Silas Marner"
+   ],
+   "Work Text": "Silas Marner",
+   "Year": "2023-2024"
+  },
+  "id": "recsRkVCE6tNRu0pN"
+ },
+ {
+  "createdTime": "2024-01-27T14:16:51.000Z",
+  "fields": {
+   "File": [
+    {
+     "filename": "Silas-Marner-LitChart.pdf",
+     "id": "attJu7G7xXX6D4q7t",
+     "size": 656709,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/xCNo4pxZm2n-ekMHYem2LA/DSIOFz1Lqel_rwW_nuOEpIN-2rDIZKjDUwVI4K9gpLVDc9trCVZu5DUuFfMwWHWaJxhPB2BzfztMxdvLm7-mEAUuqZyUTfeczB2Fw1c3OJOqPbE-ZKE8oUphudm2K_ObPysz9Z8QXMpchL3SLksFTw/3d0Ttv2Y2e8SXhVmOT8cOim0b42IekvH6wZ9jNqZ22Q",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/wXqMrqoCI5uEgQOVJCLr_w/rdx6mMGYxvGvbg64-7bH10m6GBemFB62scBAk1csaTEKKx9Adq_sqc1goEvCqmuDOFWrhoclnqql1tbnshETezmPnA5mXRVgzxyKPcxb6uKsk07TfdOYi49NEizAQxiV7HJSz2bVP0SnLMcECAU1cw/YAQ4s9oEkpL9oI1S3zQa3umFN8fNWJO2X1W-Om-Wr68",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793455200000/71VQJ9N6tEoEhJFWSj2hlQ/KLroHCq4Bw9r3yvMocTT3HjP7RjtXVoo8RmCHpSSW-K7UQpXL9zn1ZiOcr7kZc1b_7QxYj1KVxC0nHO7evNX7YH9fOejTR-MItpwIvs8kVGrxOpK8u_dlXJa4C3sGCloXL2M8V5O4rPUy4RfMhL8euiffNCOACUrXnyXvsc-EWU/shQ25kGjSXawqBS9Da1WeKhUxt5MAGJYgPyKXuujiBk"
+    }
+   ],
+   "From field: Self-Link": [
+    "recsfmg0LIoVoXnbw"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1sacEW_FK6tiHcGzNC9hDqUV8yh_kkM8t/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1sacEW_FK6tiHcGzNC9hDqUV8yh_kkM8t/view?usp=drive_link",
+   "Name": "Lit Chart",
+   "Record ID": "recsfmg0LIoVoXnbw",
+   "Self-Link": [
+    "recsfmg0LIoVoXnbw"
+   ],
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Silas Marner"
+   ],
+   "Work Text": "Silas Marner",
+   "Year": "2023-2024"
+  },
+  "id": "recsfmg0LIoVoXnbw"
+ },
+ {
+  "createdTime": "2024-04-29T16:19:53.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recsginZ0T8GQ3UvN"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1F5pPj1RKhgUzauNAg4lbSoUGlLPyLWSn/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1F5pPj1RKhgUzauNAg4lbSoUGlLPyLWSn/view?usp=drive_link",
+   "Name": "A Coat - Poetry Guide",
+   "Record ID": "recsginZ0T8GQ3UvN",
+   "Self-Link": [
+    "recsginZ0T8GQ3UvN"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recsginZ0T8GQ3UvN"
+ },
+ {
+  "createdTime": "2024-04-29T16:24:16.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recsty4n8E90ntBnz"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1C886ntRxl8xacw_7D3tueL-egElPjWXh/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1C886ntRxl8xacw_7D3tueL-egElPjWXh/view?usp=drive_link",
+   "Name": "The Second Coming - Poetry Guide",
+   "Record ID": "recsty4n8E90ntBnz",
+   "Self-Link": [
+    "recsty4n8E90ntBnz"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recsty4n8E90ntBnz"
+ },
+ {
+  "createdTime": "2024-04-29T16:25:53.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recx987FvofwkwB8j"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1NzyB0kj4R8xeTUUxE_Bcvud4p89_AIpy/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1NzyB0kj4R8xeTUUxE_Bcvud4p89_AIpy/view?usp=drive_link",
+   "Name": "Easter, 1916 - Lit Charts",
+   "Record ID": "recx987FvofwkwB8j",
+   "Self-Link": [
+    "recx987FvofwkwB8j"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recx987FvofwkwB8j"
+ },
+ {
+  "createdTime": "2024-04-29T15:34:29.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recxDVrLYoiDvOWWe"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://poets.org/poem/falling-leaves"
+   },
+   "Link": "https://poets.org/poem/falling-leaves",
+   "Name": "The Falling of the Leaves - Text",
+   "Record ID": "recxDVrLYoiDvOWWe",
+   "Self-Link": [
+    "recxDVrLYoiDvOWWe"
+   ],
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recxDVrLYoiDvOWWe"
+ },
+ {
+  "createdTime": "2024-04-29T16:23:55.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recxcHwlQbQyO7bCf"
+   ],
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://drive.google.com/file/d/1SlCH3t4_UcU6zMRHMA7cT9wl356FnSsb/view?usp=drive_link"
+   },
+   "Link": "https://drive.google.com/file/d/1SlCH3t4_UcU6zMRHMA7cT9wl356FnSsb/view?usp=drive_link",
+   "Name": "The Sad Shepherd - Poetry Guide",
+   "Record ID": "recxcHwlQbQyO7bCf",
+   "Self-Link": [
+    "recxcHwlQbQyO7bCf"
+   ],
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Yeats"
+   ],
+   "Work Text": "Yeats",
+   "Year": "2023-2024"
+  },
+  "id": "recxcHwlQbQyO7bCf"
+ }
+]

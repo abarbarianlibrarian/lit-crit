@@ -1,0 +1,843 @@
+[
+ {
+  "createdTime": "2024-01-08T17:21:13.000Z",
+  "fields": {
+   "Description": "American Period between the Stamp Act and the \"second revolution\" of Jacksonian democracy.",
+   "End Year": 1830,
+   "From field: Self-Link": [
+    "rec2csODeQLWegCC9"
+   ],
+   "Name": "Revolutionary and Early National Period",
+   "Period After": [
+    "recmQfqePazNPC5FQ"
+   ],
+   "Period Before": [
+    "rec43hZZUwfyEvzuI"
+   ],
+   "Quizlet Import": "Revolutionary and Early National Period>Colonial Period, ________________ , Romantic Period (American)<",
+   "Quizlet Prompt": "Colonial Period, ________________ , Romantic Period (American)",
+   "Record ID": "rec2csODeQLWegCC9",
+   "Region": "American",
+   "Self-Link": [
+    "rec2csODeQLWegCC9"
+   ],
+   "Start Year": 1765,
+   "Sub Periods": [
+    "recY2qvmJF4hF6uhv",
+    "recn6sMCrMQqjkbBi"
+   ],
+   "Type": "Period"
+  },
+  "id": "rec2csODeQLWegCC9"
+ },
+ {
+  "createdTime": "2024-01-08T17:21:13.000Z",
+  "fields": {
+   "Description": "From the founding of Jamestown to the Stamp Act.",
+   "End Year": 1765,
+   "From field: Self-Link": [
+    "rec43hZZUwfyEvzuI"
+   ],
+   "Name": "Colonial Period",
+   "Period After": [
+    "rec2csODeQLWegCC9"
+   ],
+   "Quizlet Import": "Colonial Period>________________ , Revolutionary and Early National Period<",
+   "Quizlet Prompt": "________________ , Revolutionary and Early National Period",
+   "Record ID": "rec43hZZUwfyEvzuI",
+   "Region": "American",
+   "Self-Link": [
+    "rec43hZZUwfyEvzuI"
+   ],
+   "Start Year": 1607,
+   "Type": "Period"
+  },
+  "id": "rec43hZZUwfyEvzuI"
+ },
+ {
+  "createdTime": "2024-01-08T18:59:36.000Z",
+  "fields": {
+   "Description": "In the period following the Civil War, modern America was born and grew to a lusty although not always happy or attractive adolescence. The Civil War had been, at least in part, a struggle between agrarian democracy and industrial-capitalist democracy, and the result of the Northern victory was the triumphant emergence of industrialism, which was to yield material advances but also to bring difficulties: severe labor disputes and economic depression.",
+   "End Year": 1900,
+   "From field: Self-Link": [
+    "rec77diWjHvoTtokB"
+   ],
+   "Name": "Realistic Period (American)",
+   "Period After": [
+    "recyEstYErUtHoxZU"
+   ],
+   "Period Before": [
+    "recmQfqePazNPC5FQ"
+   ],
+   "Quizlet Import": "Realistic Period (American)>Romantic Period (American), ________________ , Naturalistic and Symbolistic<",
+   "Quizlet Prompt": "Romantic Period (American), ________________ , Naturalistic and Symbolistic",
+   "Record ID": "rec77diWjHvoTtokB",
+   "Region": "American",
+   "Self-Link": [
+    "rec77diWjHvoTtokB"
+   ],
+   "Start Year": 1865,
+   "Type": "Period"
+  },
+  "id": "rec77diWjHvoTtokB"
+ },
+ {
+  "createdTime": "2024-01-08T19:02:40.000Z",
+  "fields": {
+   "Description": "Applied in general to the age of Charles I of England and in particular to the spirit of the court of Charles.",
+   "End Year": 1642,
+   "From field: Self-Link": [
+    "rec814mBnkVMwokwO"
+   ],
+   "Name": "Caroline Age",
+   "Period": [
+    "recUaOFZq9DeeqtzD"
+   ],
+   "Period After": [
+    "recDFVpoOtvtzYx1B"
+   ],
+   "Period Before": [
+    "recLzvNcp9oxsbEU0",
+    "reczQnuABjRQBKWk4",
+    "recXCT4mlkggezIYr"
+   ],
+   "Quizlet Import": "Caroline Age>The Renaissance: Early Tudor Age, Elizabethan Age, Jacobean Age, ________________ , Commonwealth Interregnum<",
+   "Quizlet Prompt": "The Renaissance: Early Tudor Age, Elizabethan Age, Jacobean Age, ________________ , Commonwealth Interregnum",
+   "Record ID": "rec814mBnkVMwokwO",
+   "Region": "British",
+   "Self-Link": [
+    "rec814mBnkVMwokwO"
+   ],
+   "Start Year": 1625,
+   "Type": "Sub-Period"
+  },
+  "id": "rec814mBnkVMwokwO"
+ },
+ {
+  "createdTime": "2024-01-08T19:04:20.000Z",
+  "fields": {
+   "Description": "The first age in the English Neoclassic Period; a reaction against Puritanism of the Commonwealth Interregnum",
+   "End Year": 1700,
+   "From field: Self-Link": [
+    "rec8VyaUdsnuAfKD6"
+   ],
+   "Name": "Restoration Age",
+   "Period": [
+    "recfy7MFpcT0hltnr"
+   ],
+   "Period After": [
+    "recNB1MEKuKhLiXnU",
+    "recmofTIcHmvggQkx"
+   ],
+   "Quizlet Import": "Restoration Age>Neoclassic Period: ________________ , Augustan Age, Age of Johnson<",
+   "Quizlet Prompt": "Neoclassic Period: ________________ , Augustan Age, Age of Johnson",
+   "Record ID": "rec8VyaUdsnuAfKD6",
+   "Region": "British",
+   "Self-Link": [
+    "rec8VyaUdsnuAfKD6"
+   ],
+   "Start Year": 1660,
+   "Type": "Sub-Period"
+  },
+  "id": "rec8VyaUdsnuAfKD6"
+ },
+ {
+  "createdTime": "2024-04-06T18:13:54.000Z",
+  "fields": {
+   "Description": "1870-1901 English Period between 1870 and the death of Queen Victoria; saw the full flowering of the movement toward Realism. Part of the Realistic Period in English Literature.",
+   "End Year": 901,
+   "From field: Self-Link": [
+    "recCveg6pVoIAoyNu"
+   ],
+   "Name": "Late Victorian Age",
+   "Period": [
+    "recr8IN6mocY7xSgm"
+   ],
+   "Period After": [
+    "recuJKofRxNmQLdQi"
+   ],
+   "Quizlet Import": "Late Victorian Age>Realistic Period (British): ________________ , Edwardian Age<",
+   "Quizlet Prompt": "Realistic Period (British): ________________ , Edwardian Age",
+   "Record ID": "recCveg6pVoIAoyNu",
+   "Region": "British",
+   "Self-Link": [
+    "recCveg6pVoIAoyNu"
+   ],
+   "Start Year": 1870,
+   "Type": "Sub-Period"
+  },
+  "id": "recCveg6pVoIAoyNu"
+ },
+ {
+  "createdTime": "2024-01-08T19:02:47.000Z",
+  "fields": {
+   "Description": "The last age of the Renaissance period.",
+   "End Year": 1660,
+   "From field: Self-Link": [
+    "recDFVpoOtvtzYx1B"
+   ],
+   "Name": "Commonwealth Interregnum",
+   "Period": [
+    "recUaOFZq9DeeqtzD"
+   ],
+   "Period Before": [
+    "recLzvNcp9oxsbEU0",
+    "reczQnuABjRQBKWk4",
+    "recXCT4mlkggezIYr",
+    "rec814mBnkVMwokwO"
+   ],
+   "Quizlet Import": "Commonwealth Interregnum>The Renaissance: Early Tudor Age, Elizabethan Age, Jacobean Age, Caroline Age, ________________ <",
+   "Quizlet Prompt": "The Renaissance: Early Tudor Age, Elizabethan Age, Jacobean Age, Caroline Age, ________________ ",
+   "Record ID": "recDFVpoOtvtzYx1B",
+   "Region": "British",
+   "Self-Link": [
+    "recDFVpoOtvtzYx1B"
+   ],
+   "Start Year": 1649,
+   "Type": "Sub-Period"
+  },
+  "id": "recDFVpoOtvtzYx1B"
+ },
+ {
+  "createdTime": "2024-01-08T19:01:15.000Z",
+  "fields": {
+   "Description": "English period  in which Norman-French culture dominated.",
+   "End Year": 1350,
+   "From field: Self-Link": [
+    "recDkH63G2aTPXeXo"
+   ],
+   "Name": "Anglo-Norman Period",
+   "Period After": [
+    "recl4YjIm4DmScnib"
+   ],
+   "Period Before": [
+    "recoU7I7U6QZDaiCY"
+   ],
+   "Quizlet Import": "Anglo-Norman Period>Old English Period, ________________ , Middle-English Period<",
+   "Quizlet Prompt": "Old English Period, ________________ , Middle-English Period",
+   "Record ID": "recDkH63G2aTPXeXo",
+   "Region": "British",
+   "Self-Link": [
+    "recDkH63G2aTPXeXo"
+   ],
+   "Start Year": 1100,
+   "Type": "Period"
+  },
+  "id": "recDkH63G2aTPXeXo"
+ },
+ {
+  "createdTime": "2024-01-08T19:00:36.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "recFEAzde8tpf5w2O"
+   ],
+   "Name": "Period of Confession and Postmodernism",
+   "Period Before": [
+    "recVmCLNjuivJPoHZ"
+   ],
+   "Quizlet Import": "Period of Confession and Postmodernism>Period of Modernism and Consolidation, ________________ <",
+   "Quizlet Prompt": "Period of Modernism and Consolidation, ________________ ",
+   "Record ID": "recFEAzde8tpf5w2O",
+   "Region": "American",
+   "Self-Link": [
+    "recFEAzde8tpf5w2O"
+   ],
+   "Start Year": 1960,
+   "Type": "Period"
+  },
+  "id": "recFEAzde8tpf5w2O"
+ },
+ {
+  "createdTime": "2024-01-08T19:02:07.000Z",
+  "fields": {
+   "Description": "The first age of the Renaissance  in which foreign ideas were introduced from Italy and France.\n",
+   "End Year": 1557,
+   "From field: Self-Link": [
+    "recLzvNcp9oxsbEU0"
+   ],
+   "Name": "Early Tudor Age",
+   "Period": [
+    "recUaOFZq9DeeqtzD"
+   ],
+   "Period After": [
+    "reczQnuABjRQBKWk4",
+    "recXCT4mlkggezIYr",
+    "rec814mBnkVMwokwO",
+    "recDFVpoOtvtzYx1B"
+   ],
+   "Quizlet Import": "Early Tudor Age>The Renaissance: ________________ , Elizabethan Age, Jacobean Age, Caroline Age, Commonwealth Interregnum<",
+   "Quizlet Prompt": "The Renaissance: ________________ , Elizabethan Age, Jacobean Age, Caroline Age, Commonwealth Interregnum",
+   "Record ID": "recLzvNcp9oxsbEU0",
+   "Region": "British",
+   "Self-Link": [
+    "recLzvNcp9oxsbEU0"
+   ],
+   "Start Year": 1500,
+   "Type": "Sub-Period"
+  },
+  "id": "recLzvNcp9oxsbEU0"
+ },
+ {
+  "createdTime": "2024-01-08T19:04:28.000Z",
+  "fields": {
+   "Description": "Specifically refers to the age of the Emperor Augustus of Rome. But because the time of Augustus was notable for the perfection of letters and learning, the term has, by analogy been applied to other epochs in world history when literary culture was high.",
+   "End Year": 1750,
+   "From field: Self-Link": [
+    "recNB1MEKuKhLiXnU"
+   ],
+   "Name": "Augustan Age",
+   "Period": [
+    "recfy7MFpcT0hltnr"
+   ],
+   "Period After": [
+    "recmofTIcHmvggQkx"
+   ],
+   "Period Before": [
+    "rec8VyaUdsnuAfKD6"
+   ],
+   "Quizlet Import": "Augustan Age>Neoclassic Period: Restoration Age, ________________ , Age of Johnson<",
+   "Quizlet Prompt": "Neoclassic Period: Restoration Age, ________________ , Age of Johnson",
+   "Record ID": "recNB1MEKuKhLiXnU",
+   "Region": "British",
+   "Self-Link": [
+    "recNB1MEKuKhLiXnU"
+   ],
+   "Start Year": 1700,
+   "Type": "Sub-Period"
+  },
+  "id": "recNB1MEKuKhLiXnU"
+ },
+ {
+  "createdTime": "2024-01-08T19:06:35.000Z",
+  "fields": {
+   "Description": "British Period in which wars and the Great Depression bring the \"sadly diminished age\".",
+   "End Year": 1965,
+   "From field: Self-Link": [
+    "recQjkWGiXmAPuLjq"
+   ],
+   "Name": "Modernist Period",
+   "Period After": [
+    "receVbzkMgvwVsWbE"
+   ],
+   "Period Before": [
+    "recr8IN6mocY7xSgm"
+   ],
+   "Quizlet Import": "Modernist Period>Realistic Period (British), ________________ , Post-Modernist Period<",
+   "Quizlet Prompt": "Realistic Period (British), ________________ , Post-Modernist Period",
+   "Record ID": "recQjkWGiXmAPuLjq",
+   "Region": "British",
+   "Self-Link": [
+    "recQjkWGiXmAPuLjq"
+   ],
+   "Start Year": 1914,
+   "Type": "Period"
+  },
+  "id": "recQjkWGiXmAPuLjq"
+ },
+ {
+  "createdTime": "2024-01-08T19:05:31.000Z",
+  "fields": {
+   "End Year": 1832,
+   "From field: Self-Link": [
+    "recTNHH5V1ggeEyze"
+   ],
+   "Name": "Age of the Romantic Movement",
+   "Period": [
+    "rectajNOHLWH86oHU"
+   ],
+   "Period After": [
+    "recgTWdm0gBcm5KQP"
+   ],
+   "Quizlet Import": "Age of the Romantic Movement>Romantic Period (British): ________________ , Early Victorian Age<",
+   "Quizlet Prompt": "Romantic Period (British): ________________ , Early Victorian Age",
+   "Record ID": "recTNHH5V1ggeEyze",
+   "Region": "British",
+   "Self-Link": [
+    "recTNHH5V1ggeEyze"
+   ],
+   "Start Year": 1798,
+   "Type": "Sub-Period"
+  },
+  "id": "recTNHH5V1ggeEyze"
+ },
+ {
+  "createdTime": "2024-01-08T19:01:40.000Z",
+  "fields": {
+   "Description": "The transition from the medieval to the modern world in Western Europe; means \"rebirth\"",
+   "End Year": 1660,
+   "From field: Self-Link": [
+    "recUaOFZq9DeeqtzD"
+   ],
+   "Name": "The Renaissance",
+   "Period After": [
+    "recfy7MFpcT0hltnr"
+   ],
+   "Period Before": [
+    "recl4YjIm4DmScnib"
+   ],
+   "Quizlet Import": "The Renaissance>Middle-English Period, ________________ , Neoclassic Period<",
+   "Quizlet Prompt": "Middle-English Period, ________________ , Neoclassic Period",
+   "Record ID": "recUaOFZq9DeeqtzD",
+   "Region": "British",
+   "Self-Link": [
+    "recUaOFZq9DeeqtzD"
+   ],
+   "Start Year": 1500,
+   "Sub Periods": [
+    "recLzvNcp9oxsbEU0",
+    "reczQnuABjRQBKWk4",
+    "recXCT4mlkggezIYr",
+    "rec814mBnkVMwokwO",
+    "recDFVpoOtvtzYx1B"
+   ],
+   "Type": "Period"
+  },
+  "id": "recUaOFZq9DeeqtzD"
+ },
+ {
+  "createdTime": "2024-01-08T19:00:16.000Z",
+  "fields": {
+   "End Year": 1960,
+   "From field: Self-Link": [
+    "recVmCLNjuivJPoHZ"
+   ],
+   "Name": "Period of Modernism and Consolidation",
+   "Period After": [
+    "recFEAzde8tpf5w2O"
+   ],
+   "Period Before": [
+    "recyEstYErUtHoxZU"
+   ],
+   "Quizlet Import": "Period of Modernism and Consolidation>Naturalistic and Symbolistic, ________________ , Period of Confession and Postmodernism<",
+   "Quizlet Prompt": "Naturalistic and Symbolistic, ________________ , Period of Confession and Postmodernism",
+   "Record ID": "recVmCLNjuivJPoHZ",
+   "Region": "American",
+   "Self-Link": [
+    "recVmCLNjuivJPoHZ"
+   ],
+   "Start Year": 1930,
+   "Type": "Period"
+  },
+  "id": "recVmCLNjuivJPoHZ"
+ },
+ {
+  "createdTime": "2024-01-08T19:02:33.000Z",
+  "fields": {
+   "Description": "That portion of the Renaissance during the reign of James I. It is the greatest period for the English drama; Shakespeare wrote his greatest tragedies and his tragicomedies.",
+   "End Year": 1625,
+   "From field: Self-Link": [
+    "recXCT4mlkggezIYr"
+   ],
+   "Name": "Jacobean Age",
+   "Period": [
+    "recUaOFZq9DeeqtzD"
+   ],
+   "Period After": [
+    "rec814mBnkVMwokwO",
+    "recDFVpoOtvtzYx1B"
+   ],
+   "Period Before": [
+    "recLzvNcp9oxsbEU0",
+    "reczQnuABjRQBKWk4"
+   ],
+   "Quizlet Import": "Jacobean Age>The Renaissance: Early Tudor Age, Elizabethan Age, ________________ , Caroline Age, Commonwealth Interregnum<",
+   "Quizlet Prompt": "The Renaissance: Early Tudor Age, Elizabethan Age, ________________ , Caroline Age, Commonwealth Interregnum",
+   "Record ID": "recXCT4mlkggezIYr",
+   "Region": "British",
+   "Self-Link": [
+    "recXCT4mlkggezIYr"
+   ],
+   "Start Year": 1603,
+   "Type": "Sub-Period"
+  },
+  "id": "recXCT4mlkggezIYr"
+ },
+ {
+  "createdTime": "2024-01-08T17:21:13.000Z",
+  "fields": {
+   "Description": "American period between the Stamp Act and the formation of the federal government.",
+   "End Year": 1790,
+   "From field: Self-Link": [
+    "recY2qvmJF4hF6uhv"
+   ],
+   "Name": "Revolutionary Age",
+   "Period": [
+    "rec2csODeQLWegCC9"
+   ],
+   "Period After": [
+    "recn6sMCrMQqjkbBi"
+   ],
+   "Quizlet Import": "Revolutionary Age>Revolutionary and Early National Period: ________________ , Federalist Age<",
+   "Quizlet Prompt": "Revolutionary and Early National Period: ________________ , Federalist Age",
+   "Record ID": "recY2qvmJF4hF6uhv",
+   "Region": "American",
+   "Self-Link": [
+    "recY2qvmJF4hF6uhv"
+   ],
+   "Start Year": 1765,
+   "Type": "Sub-Period"
+  },
+  "id": "recY2qvmJF4hF6uhv"
+ },
+ {
+  "createdTime": "2024-01-08T19:06:53.000Z",
+  "fields": {
+   "From field: Self-Link": [
+    "receVbzkMgvwVsWbE"
+   ],
+   "Name": "Post-Modernist Period",
+   "Period Before": [
+    "recQjkWGiXmAPuLjq"
+   ],
+   "Quizlet Import": "Post-Modernist Period>Modernist Period, ________________ <",
+   "Quizlet Prompt": "Modernist Period, ________________ ",
+   "Record ID": "receVbzkMgvwVsWbE",
+   "Region": "British",
+   "Self-Link": [
+    "receVbzkMgvwVsWbE"
+   ],
+   "Start Year": 1965,
+   "Type": "Period"
+  },
+  "id": "receVbzkMgvwVsWbE"
+ },
+ {
+  "createdTime": "2024-01-08T19:03:55.000Z",
+  "fields": {
+   "Description": "The period in English literature between the return of the Stuarts to the English throne and the publication of Lyrical Ballads.",
+   "End Year": 1798,
+   "From field: Self-Link": [
+    "recfy7MFpcT0hltnr"
+   ],
+   "Name": "Neoclassic Period",
+   "Period After": [
+    "rectajNOHLWH86oHU"
+   ],
+   "Period Before": [
+    "recUaOFZq9DeeqtzD"
+   ],
+   "Quizlet Import": "Neoclassic Period>The Renaissance, ________________ , Romantic Period (British)<",
+   "Quizlet Prompt": "The Renaissance, ________________ , Romantic Period (British)",
+   "Record ID": "recfy7MFpcT0hltnr",
+   "Region": "British",
+   "Self-Link": [
+    "recfy7MFpcT0hltnr"
+   ],
+   "Start Year": 1660,
+   "Sub Periods": [
+    "rec8VyaUdsnuAfKD6",
+    "recNB1MEKuKhLiXnU",
+    "recmofTIcHmvggQkx"
+   ],
+   "Type": "Period"
+  },
+  "id": "recfy7MFpcT0hltnr"
+ },
+ {
+  "createdTime": "2024-01-08T19:05:46.000Z",
+  "fields": {
+   "Description": "Age of the Romantic Period in England, which eventually transitioned into realism.",
+   "End Year": 1870,
+   "From field: Self-Link": [
+    "recgTWdm0gBcm5KQP"
+   ],
+   "Name": "Early Victorian Age",
+   "Period": [
+    "rectajNOHLWH86oHU"
+   ],
+   "Period Before": [
+    "recTNHH5V1ggeEyze"
+   ],
+   "Quizlet Import": "Early Victorian Age>Romantic Period (British): Age of the Romantic Movement, ________________ <",
+   "Quizlet Prompt": "Romantic Period (British): Age of the Romantic Movement, ________________ ",
+   "Record ID": "recgTWdm0gBcm5KQP",
+   "Region": "British",
+   "Self-Link": [
+    "recgTWdm0gBcm5KQP"
+   ],
+   "Start Year": 1832,
+   "Type": "Sub-Period"
+  },
+  "id": "recgTWdm0gBcm5KQP"
+ },
+ {
+  "createdTime": "2024-01-08T19:01:26.000Z",
+  "fields": {
+   "Description": "English Period between the replacement of French by Middle English as the language of the court and early Modern English writing.",
+   "End Year": 1500,
+   "From field: Self-Link": [
+    "recl4YjIm4DmScnib"
+   ],
+   "Name": "Middle-English Period",
+   "Period After": [
+    "recUaOFZq9DeeqtzD"
+   ],
+   "Period Before": [
+    "recDkH63G2aTPXeXo"
+   ],
+   "Quizlet Import": "Middle-English Period>Anglo-Norman Period, ________________ , The Renaissance<",
+   "Quizlet Prompt": "Anglo-Norman Period, ________________ , The Renaissance",
+   "Record ID": "recl4YjIm4DmScnib",
+   "Region": "British",
+   "Self-Link": [
+    "recl4YjIm4DmScnib"
+   ],
+   "Start Year": 1350,
+   "Type": "Period"
+  },
+  "id": "recl4YjIm4DmScnib"
+ },
+ {
+  "createdTime": "2024-01-08T18:59:22.000Z",
+  "fields": {
+   "Description": "The period between the \"second revolution\" of the Jacksonian Era and the close of the Civil War in America saw the testing of a nation and its development by ordeal. ",
+   "End Year": 1865,
+   "From field: Self-Link": [
+    "recmQfqePazNPC5FQ"
+   ],
+   "Name": "Romantic Period (American)",
+   "Period After": [
+    "rec77diWjHvoTtokB"
+   ],
+   "Period Before": [
+    "rec2csODeQLWegCC9"
+   ],
+   "Quizlet Import": "Romantic Period (American)>Revolutionary and Early National Period, ________________ , Realistic Period (American)<",
+   "Quizlet Prompt": "Revolutionary and Early National Period, ________________ , Realistic Period (American)",
+   "Record ID": "recmQfqePazNPC5FQ",
+   "Region": "American",
+   "Self-Link": [
+    "recmQfqePazNPC5FQ"
+   ],
+   "Start Year": 1830,
+   "Type": "Period"
+  },
+  "id": "recmQfqePazNPC5FQ"
+ },
+ {
+  "createdTime": "2024-01-08T19:04:28.000Z",
+  "fields": {
+   "Description": "Age of the British Neoclassic Period; an age of transition dominated by the prose of Samuel Johnson.",
+   "End Year": 1798,
+   "From field: Self-Link": [
+    "recmofTIcHmvggQkx"
+   ],
+   "Name": "Age of Johnson",
+   "Period": [
+    "recfy7MFpcT0hltnr"
+   ],
+   "Period Before": [
+    "rec8VyaUdsnuAfKD6",
+    "recNB1MEKuKhLiXnU"
+   ],
+   "Quizlet Import": "Age of Johnson>Neoclassic Period: Restoration Age, Augustan Age, ________________ <",
+   "Quizlet Prompt": "Neoclassic Period: Restoration Age, Augustan Age, ________________ ",
+   "Record ID": "recmofTIcHmvggQkx",
+   "Region": "British",
+   "Self-Link": [
+    "recmofTIcHmvggQkx"
+   ],
+   "Start Year": 1750,
+   "Type": "Sub-Period"
+  },
+  "id": "recmofTIcHmvggQkx"
+ },
+ {
+  "createdTime": "2024-01-08T18:58:32.000Z",
+  "fields": {
+   "Description": "Second Age in the Revolutionary and Early National Period of American Literature, between the formation of the national government and the \"Second Revolution\" of Jacksonian Democracy",
+   "End Year": 1830,
+   "From field: Self-Link": [
+    "recn6sMCrMQqjkbBi"
+   ],
+   "Name": "Federalist Age",
+   "Period": [
+    "rec2csODeQLWegCC9"
+   ],
+   "Period Before": [
+    "recY2qvmJF4hF6uhv"
+   ],
+   "Quizlet Import": "Federalist Age>Revolutionary and Early National Period: Revolutionary Age, ________________ <",
+   "Quizlet Prompt": "Revolutionary and Early National Period: Revolutionary Age, ________________ ",
+   "Record ID": "recn6sMCrMQqjkbBi",
+   "Region": "American",
+   "Self-Link": [
+    "recn6sMCrMQqjkbBi"
+   ],
+   "Start Year": 1790,
+   "Type": "Sub-Period"
+  },
+  "id": "recn6sMCrMQqjkbBi"
+ },
+ {
+  "createdTime": "2024-01-08T19:01:02.000Z",
+  "fields": {
+   "Description": "English Period from the invasion of Angles, Saxon, Jutes to the establishment of Norman rule.",
+   "End Year": 1100,
+   "From field: Self-Link": [
+    "recoU7I7U6QZDaiCY"
+   ],
+   "Name": "Old English Period",
+   "Period After": [
+    "recDkH63G2aTPXeXo"
+   ],
+   "Quizlet Import": "Old English Period>________________ , Anglo-Norman Period<",
+   "Quizlet Prompt": "________________ , Anglo-Norman Period",
+   "Record ID": "recoU7I7U6QZDaiCY",
+   "Region": "British",
+   "Self-Link": [
+    "recoU7I7U6QZDaiCY"
+   ],
+   "Start Year": 428,
+   "Type": "Period"
+  },
+  "id": "recoU7I7U6QZDaiCY"
+ },
+ {
+  "createdTime": "2024-01-08T19:06:10.000Z",
+  "fields": {
+   "Description": "In the latter portion of the reign of Queen Victoria and during the reign of Edward VII, the reaction to Romanticism reached its peak in full-fledged Realism, and by the beginning of the First World War the reaction had itself begun to come under attack.",
+   "End Year": 1914,
+   "From field: Self-Link": [
+    "recr8IN6mocY7xSgm"
+   ],
+   "Name": "Realistic Period (British)",
+   "Period After": [
+    "recQjkWGiXmAPuLjq"
+   ],
+   "Period Before": [
+    "rectajNOHLWH86oHU"
+   ],
+   "Quizlet Import": "Realistic Period (British)>Romantic Period (British), ________________ , Modernist Period<",
+   "Quizlet Prompt": "Romantic Period (British), ________________ , Modernist Period",
+   "Record ID": "recr8IN6mocY7xSgm",
+   "Region": "British",
+   "Self-Link": [
+    "recr8IN6mocY7xSgm"
+   ],
+   "Start Year": 1870,
+   "Sub Periods": [
+    "recuJKofRxNmQLdQi"
+   ],
+   "Type": "Period"
+  },
+  "id": "recr8IN6mocY7xSgm"
+ },
+ {
+  "createdTime": "2024-01-08T19:05:02.000Z",
+  "fields": {
+   "Description": "In the period between the publication of Lyrical Ballads (1798) and the death of Dickens in English Literature.",
+   "End Year": 1870,
+   "From field: Self-Link": [
+    "rectajNOHLWH86oHU"
+   ],
+   "Name": "Romantic Period (British)",
+   "Period After": [
+    "recr8IN6mocY7xSgm"
+   ],
+   "Period Before": [
+    "recfy7MFpcT0hltnr"
+   ],
+   "Quizlet Import": "Romantic Period (British)>Neoclassic Period, ________________ , Realistic Period (British)<",
+   "Quizlet Prompt": "Neoclassic Period, ________________ , Realistic Period (British)",
+   "Record ID": "rectajNOHLWH86oHU",
+   "Region": "British",
+   "Self-Link": [
+    "rectajNOHLWH86oHU"
+   ],
+   "Start Year": 1798,
+   "Sub Periods": [
+    "recTNHH5V1ggeEyze",
+    "recgTWdm0gBcm5KQP"
+   ],
+   "Type": "Period"
+  },
+  "id": "rectajNOHLWH86oHU"
+ },
+ {
+  "createdTime": "2024-01-08T19:07:51.000Z",
+  "fields": {
+   "Description": "Period in British Literature: The period between the death of Victoria in 1901 and the beginning of the First World War in 1914. There was a growing distrust of authority in religion, morality, and art, a basic doubt of the conventional \"virtues,\" and a deep-felt need to examine existing institutions.",
+   "End Year": 1914,
+   "From field: Self-Link": [
+    "recuJKofRxNmQLdQi"
+   ],
+   "Name": "Edwardian Age",
+   "Period": [
+    "recr8IN6mocY7xSgm"
+   ],
+   "Period Before": [
+    "recCveg6pVoIAoyNu"
+   ],
+   "Quizlet Import": "Edwardian Age>Realistic Period (British): Late Victorian Age, ________________ <",
+   "Quizlet Prompt": "Realistic Period (British): Late Victorian Age, ________________ ",
+   "Record ID": "recuJKofRxNmQLdQi",
+   "Region": "British",
+   "Self-Link": [
+    "recuJKofRxNmQLdQi"
+   ],
+   "Start Year": 1901,
+   "Type": "Sub-Period"
+  },
+  "id": "recuJKofRxNmQLdQi"
+ },
+ {
+  "createdTime": "2024-01-08T18:59:47.000Z",
+  "fields": {
+   "Description": "The period in American literature sharply divided by WWI and ended by the Stock Market Crash.",
+   "End Year": 1930,
+   "From field: Self-Link": [
+    "recyEstYErUtHoxZU"
+   ],
+   "Name": "Naturalistic and Symbolistic",
+   "Period After": [
+    "recVmCLNjuivJPoHZ"
+   ],
+   "Period Before": [
+    "rec77diWjHvoTtokB"
+   ],
+   "Quizlet Import": "Naturalistic and Symbolistic>Realistic Period (American), ________________ , Period of Modernism and Consolidation<",
+   "Quizlet Prompt": "Realistic Period (American), ________________ , Period of Modernism and Consolidation",
+   "Record ID": "recyEstYErUtHoxZU",
+   "Region": "American",
+   "Self-Link": [
+    "recyEstYErUtHoxZU"
+   ],
+   "Start Year": 1900,
+   "Type": "Period"
+  },
+  "id": "recyEstYErUtHoxZU"
+ },
+ {
+  "createdTime": "2024-01-08T19:02:14.000Z",
+  "fields": {
+   "Description": "The second age of the Renaissance;\nCharacteristics: \n- highest development of drama\n- much lyric poetry and interest in criticism\n- called the “Golden Age of English Literature”\n- age of great nationalism, religious controversy, & commercial growth\n- Marlowe, Sidney, Spenser, & Shakespeare flourished\n- Bacon, Jonson, & Donne first stepped forward",
+   "End Year": 1603,
+   "From field: Self-Link": [
+    "reczQnuABjRQBKWk4"
+   ],
+   "Name": "Elizabethan Age",
+   "Period": [
+    "recUaOFZq9DeeqtzD"
+   ],
+   "Period After": [
+    "recXCT4mlkggezIYr",
+    "rec814mBnkVMwokwO",
+    "recDFVpoOtvtzYx1B"
+   ],
+   "Period Before": [
+    "recLzvNcp9oxsbEU0"
+   ],
+   "Quizlet Import": "Elizabethan Age>The Renaissance: Early Tudor Age, ________________ , Jacobean Age, Caroline Age, Commonwealth Interregnum<",
+   "Quizlet Prompt": "The Renaissance: Early Tudor Age, ________________ , Jacobean Age, Caroline Age, Commonwealth Interregnum",
+   "Record ID": "reczQnuABjRQBKWk4",
+   "Region": "British",
+   "Self-Link": [
+    "reczQnuABjRQBKWk4"
+   ],
+   "Start Year": 1558,
+   "Type": "Sub-Period"
+  },
+  "id": "reczQnuABjRQBKWk4"
+ }
+]
