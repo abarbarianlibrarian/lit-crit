@@ -45,6 +45,7 @@
     var natList = Object.keys(nats).sort();
     fillSelect(f.nat, natList, f.nat.value);
     natWrap.hidden = natList.length < 2;
+    if (natWrap.hidden) f.nat.value = "";
     var pulitzer = panel.querySelector("ul").dataset.kind === "pulitzer";
     workSort.hidden = workSort.disabled = !pulitzer;
     if (!pulitzer && f.sort.value === "work") f.sort.value = "new";
