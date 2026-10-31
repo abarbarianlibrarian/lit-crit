@@ -947,7 +947,7 @@ def question_html(db, q, in_test=True):
         note = f'<p class="qauto">{why}, so its {pts} point{"s" if pts != 1 else ""} {"are" if pts != 1 else "is"} given automatically.</p>'
     else:
         note = ""
-    return f"""<li class="q{' auto' if auto else ''}"{anchor} data-correct="{e(''.join(correct), quote=True)}" data-points="{pts}"{' data-auto="1"' if auto else ''}>
+    return f"""<li class="q{' auto' if auto else ''}"{anchor} data-qid="{q['id']}" data-correct="{e(''.join(correct), quote=True)}" data-points="{pts}"{' data-auto="1"' if auto else ''}>
 <div class="qnum">{num}</div>
 <div class="qbody">
 {source}
@@ -969,6 +969,7 @@ def score_bar(total_points, n_questions, test=True):
     return f"""<div class="scorebar" data-scorebar data-test="{'1' if test else '0'}" hidden>
   <div class="sb-main"><span class="sb-label">{label}</span> <strong data-sb-score>0</strong><span class="sb-of"> / {total_points}</span></div>
   <div class="sb-stats"><span data-sb-answered>0 of {n_questions} answered</span><span data-sb-acc></span></div>
+  <button type="button" class="sb-clear" data-sb-clear hidden>Clear my answers</button>
   <div class="sb-track" aria-hidden="true"><span class="sb-fill-right" data-sb-right></span><span class="sb-fill-wrong" data-sb-wrong></span></div>
 </div>"""
 

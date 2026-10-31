@@ -17,6 +17,22 @@
   setOffset();
   window.addEventListener("resize", setOffset);
 
+  // Answers are remembered in this browser (localStorage), across every page with questions.
+  var KEY = "litcrit-answers-v1";
+  function loadSaved() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; }
+  }
+  function saveAnswer(id, letter) {
+    try { var all = loadSaved(); all[id] = letter; localStorage.setItem(KEY, JSON.stringify(all)); } catch (e) {}
+  }
+  function forget(ids) {
+    try {
+      var all = loadSaved();
+      ids.forEach(function (id) { delete all[id]; });
+      localStorage.setItem(KEY, JSON.stringify(all));
+    } catch (e) {}
+  }
+
   function points(q) { return parseInt(q.getAttribute("data-points"), 10) || 1; }
 
   function update(quiz) {
@@ -39,9 +55,10 @@
     bar.querySelector("[data-sb-right]").style.width = (100 * earned / total) + "%";
     bar.querySelector("[data-sb-wrong]").style.width = (100 * lost / total) + "%";
     bar.classList.toggle("done", answered === qs.length);
+    bar.querySelector("[data-sb-clear]").hidden = graded === 0;
   }
 
-  function answer(q, picked) {
+  function answer(q, picked, restoring) {
     var correct = (q.getAttribute("data-correct") || "").split("").filter(Boolean);
     var right = correct.indexOf(picked) >= 0;
     q.classList.add("answered", right ? "got-it" : "missed");
@@ -60,12 +77,43 @@
     q.querySelector(".qresult").innerHTML = right
       ? "<strong>Correct.</strong> +" + p + word
       : "<strong>Not quite.</strong> The answer is " + correct.join(", ") + ". 0 of " + p + word;
-    update(q.closest(".quiz"));
+    if (!restoring) {
+      saveAnswer(q.getAttribute("data-qid"), picked);
+      update(q.closest(".quiz"));
+    }
   }
 
+  function clearQuiz(quiz) {
+    var ids = [];
+    quiz.querySelectorAll(".q.answered").forEach(function (q) {
+      ids.push(q.getAttribute("data-qid"));
+      q.classList.remove("answered", "got-it", "missed");
+      q.querySelector(".qresult").innerHTML = "";
+      q.querySelectorAll(".choice").forEach(function (b) {
+        b.classList.remove("right", "wrong", "picked");
+        b.disabled = false;
+        b.setAttribute("aria-pressed", "false");
+        b.removeAttribute("aria-label");
+        b.querySelector(".cmark").textContent = "";
+      });
+    });
+    forget(ids);
+    update(quiz);
+  }
+
+  var saved = loadSaved();
   quizzes.forEach(function (quiz) {
+    quiz.querySelectorAll(".q:not([data-auto])").forEach(function (q) {
+      var letter = saved[q.getAttribute("data-qid")];
+      if (letter && q.querySelector('.choice[data-letter="' + letter + '"]')) answer(q, letter, true);
+    });
     var bar = quiz.querySelector("[data-scorebar]");
-    if (bar) bar.hidden = false;
+    if (bar) {
+      bar.hidden = false;
+      bar.querySelector("[data-sb-clear]").addEventListener("click", function () {
+        if (confirm("Clear your answers to the questions on this page? You can then answer them again.")) clearQuiz(quiz);
+      });
+    }
     update(quiz);
   });
 
