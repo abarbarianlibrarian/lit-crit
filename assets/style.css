@@ -248,3 +248,17 @@ h2.letter { font: 500 28px/1 var(--serif); text-transform: none; letter-spacing:
   .years.nobel li { grid-template-columns: 56px 1fr; }
   .nat { grid-column: 2; text-align: left; line-height: 1.2; }
 }
+.years.pulitzer li { grid-template-columns: 110px minmax(0, 1.3fr) minmax(0, 1fr); }
+.years li.none { grid-template-columns: 110px 1fr; }
+.noaward { color: var(--ink-3); font-style: italic; }
+.pa { font-size: 16px; }
+@media (max-width: 640px) {
+  .years.pulitzer li { grid-template-columns: 56px 1fr; }
+  .years li.none { grid-template-columns: 56px 1fr; }
+  .pa { grid-column: 2; font-size: 15px; }
+}
+.years li.head { font: 600 12px/1.4 var(--sans); text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); padding-top: 12px; }
+@media (max-width: 640px) {
+  .years.pulitzer li { row-gap: 0; }
+  .years li.head span:last-child { display: none; }
+}
