@@ -106,11 +106,33 @@ def cell_to_text(v, names):
     return str(v)
 
 
-def save_images(table_id, records):
+IMAGE_TIME_BUDGET = 20 * 60  # seconds per run; images not reached are saved next week
+_started = time.monotonic()
+
+
+def _save_one(att, path):
     from PIL import Image
+    if time.monotonic() - _started > IMAGE_TIME_BUDGET:
+        return "late"
+    thumbs = att.get("thumbnails") or {}
+    src = (thumbs.get("full") or {}).get("url") or att["url"]
+    try:
+        with urllib.request.urlopen(src, timeout=60) as r:
+            im = Image.open(io.BytesIO(r.read()))
+        im = im.convert("RGB")
+        im.thumbnail((900, 1800))
+        im.save(path, "WEBP", quality=82)
+        return "ok"
+    except Exception as e:
+        print(f"  image skipped ({att.get('filename')}): {e}", flush=True)
+        return "error"
+
+
+def save_images(table_id, records):
+    import concurrent.futures
     folder = OUT / "images" / TABLES[table_id][0]
     folder.mkdir(parents=True, exist_ok=True)
-    added = 0
+    jobs = []
     for rec in records:
         for v in rec["fields"].values():
             if not (isinstance(v, list) and v and isinstance(v[0], dict) and "filename" in v[0]):
@@ -121,18 +143,15 @@ def save_images(table_id, records):
                 if (att.get("width") or 99) < 8 or (att.get("height") or 99) < 8:
                     continue
                 path = folder / f"{rec['id']}-{att['id']}.webp"
-                if path.exists():
-                    continue
-                try:
-                    with urllib.request.urlopen(att["url"], timeout=60) as r:
-                        im = Image.open(io.BytesIO(r.read()))
-                    im = im.convert("RGB")
-                    im.thumbnail((900, 1800))
-                    im.save(path, "WEBP", quality=82)
-                    added += 1
-                except Exception as e:
-                    print(f"  image skipped ({att.get('filename')}): {e}")
-    return added
+                if not path.exists():
+                    jobs.append((att, path))
+    print(f"  {len(jobs)} new images to save", flush=True)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=16) as ex:
+        results = list(ex.map(lambda j: _save_one(*j), jobs))
+    late = results.count("late")
+    if late:
+        print(f"  {late} images left for the next backup (time limit)", flush=True)
+    return results.count("ok")
 
 
 def main():
