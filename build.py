@@ -953,7 +953,7 @@ def home(db, rel):
   <h1>{e(SITE_TITLE)}</h1>
   <p class="lede">A cross-referenced reference to literary terms, authors, works, prizes and periods.</p>
   <form class="search big" action="{BASE}search/" role="search" autocomplete="off">
-    <input type="search" name="q" placeholder="Try “sonnet”, “Toni Morrison” or “Beloved”" aria-label="Search" data-search>
+    <input type="search" name="q" placeholder="Try “sonnet” or “Beloved”" aria-label="Search" data-search>
     <div class="results" hidden data-results></div>
   </form>
 </section>
