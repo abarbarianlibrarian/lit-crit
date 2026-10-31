@@ -420,3 +420,14 @@ h2.letter { font: 500 28px/1 var(--serif); text-transform: none; letter-spacing:
   .sb-main strong { font-size: 22px; }
 }
 h2.letter .count { font: 500 14px/1 var(--sans); color: var(--ink-3); margin-left: 8px; }
+
+/* Passages printed ahead of their questions */
+.passage { margin: 26px 0 6px; padding: 18px 0 4px; border-top: 2px solid var(--accent-soft); }
+.passage-label { margin: 0 0 2px; font: 600 12px/1.4 var(--sans); letter-spacing: .07em; text-transform: uppercase; color: var(--accent); }
+.passage-title { font: 500 24px/1.25 var(--serif); margin: 0; }
+.passage-title a { color: var(--ink); text-decoration: none; }
+.passage-title a:hover { text-decoration: underline; }
+.passage-by { margin: 2px 0 10px; font-style: italic; color: var(--ink-2); }
+.passage .poem { margin-top: 6px; }
+.passage.again { padding-top: 12px; }
+.passage.again .passage-title { font-size: 19px; }

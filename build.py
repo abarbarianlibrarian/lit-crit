@@ -973,6 +973,43 @@ def score_bar(total_points, n_questions, test=True):
 </div>"""
 
 
+def passage_html(db, rel, pid, first):
+    """A poem or passage printed ahead of the questions about it."""
+    p = db["poems"][pid]
+    authors = rel[("poems", pid)].get("authors", [])
+    by = ", ".join(f'<a href="{db["authors"][a]["url"]}">{e(db["authors"][a]["title"])}</a>' for a in authors)
+    head = (f'<p class="passage-label">Passage</p><h3 class="passage-title"><a href="{p["url"]}">{e(p["title"])}</a></h3>'
+            + (f'<p class="passage-by">by {by}</p>' if by else ""))
+    if not first:
+        return (f'<div class="passage again">{head}<p class="muted"><a href="#passage-{pid}">See the text above</a></p></div>')
+    text = f'<div class="poem">{multiline(p["text"])}</div>' if p["text"] else \
+        '<p class="muted">The text of this passage isn’t in the database yet.</p>'
+    return f'<div class="passage" id="passage-{pid}">{head}{text}</div>'
+
+
+def test_part_html(db, rel, qids, shown):
+    """Questions in order, with each passage printed before the first question in its set."""
+    out, group, current = "", [], None
+
+    def flush():
+        nonlocal out, group
+        if group:
+            out += '<ol class="plain questions">' + "".join(question_html(db, db["questions"][q]) for q in group) + "</ol>"
+            group = []
+
+    for q in qids:
+        poems = tuple(db["questions"][q]["poems"])
+        if poems and poems != current:
+            flush()
+            for pid in poems:
+                out += passage_html(db, rel, pid, pid not in shown)
+                shown.add(pid)
+        current = poems or current
+        group.append(q)
+    flush()
+    return out
+
+
 def test_page(db, rel, t):
     qids = [q for q in rel[("tests", t["id"])].get("questions", []) if q in db["questions"]]
     qids.sort(key=lambda q: (int(db["questions"][q]["number"] or 0), db["questions"][q]["id"]))
@@ -992,11 +1029,12 @@ def test_page(db, rel, t):
 """
     total = sum(question_points(db["questions"][q]) for q in qids)
     body += f'<div class="quiz">{score_bar(total, len(qids))}'
+    shown_passages = set()
     for part in sorted(parts, key=lambda p: (p == "", p)):
         pts = question_points(db["questions"][parts[part][0]]) if part else 0
         note = f' <span class="count">{pts} point{"s" if pts != 1 else ""} each</span>' if part else ""
         heading = f'<h2 class="letter">{e(part)}{note}</h2>' if part else ""
-        body += heading + '<ol class="plain questions">' + "".join(question_html(db, db["questions"][q]) for q in parts[part]) + "</ol>"
+        body += heading + test_part_html(db, rel, parts[part], shown_passages)
     body += "</div>"
     if total != 100 and qids:
         print(f"  note: {t['title']} totals {total} points ({len(qids)} questions)", flush=True)
