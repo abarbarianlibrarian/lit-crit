@@ -33,3 +33,13 @@ rebuild it any time from the **Actions** tab → **Build site from Airtable** �
 - The site uses Airtable field IDs, so renaming a *field* in Airtable is safe. Deleting a field
   the site uses just makes that detail disappear from the pages.
 - Images are copied into the site at build time, because Airtable's own image links expire after a few hours.
+
+## Weekly backup
+
+Every Sunday, **Weekly Airtable backup** saves the Terms, Authors, Works, Prizes,
+Historical Periods, Tags and Reading Resources tables into the `backup/` folder:
+a `.json` file (complete, for restoring) and a `.csv` file (opens in any spreadsheet)
+for each table, plus author portraits and book covers in `backup/images/`.
+Every week's version is kept in the repository's history.
+Members and Requests are never backed up, and files attached in Reading Resources are not copied.
+To back up right away: Actions tab → **Weekly Airtable backup** → **Run workflow**.
