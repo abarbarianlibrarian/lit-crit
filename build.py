@@ -978,34 +978,6 @@ def poem_page(db, rel, p):
     write(f"poems/{p['slug']}/index.html", page(p["title"], body, "poems", f"{p['title']}" + (f" by {names}" if names else ""), f"poems/{p['slug']}/"))
 
 
-def tests_index(db, rel):
-    by_year = defaultdict(list)
-    for t in db["tests"].values():
-        by_year[t["year"] or "Other"].append(t)
-    total = len(db["questions"])
-    body = f'<h1>Tests</h1><p class="lede">{len(db["tests"])} released tests with {total:,} practice questions.</p>'
-    for year in sorted(by_year, reverse=True):
-        cards = "".join(
-            f'<a class="card" href="{t["url"]}"><strong>{e(t["type"] or t["title"])}</strong>'
-            f'<span class="muted">{len(rel[("tests", t["id"])].get("questions", []))} questions</span></a>'
-            for t in sorted(by_year[year], key=lambda t: sort_key(t["type"] or t["title"])))
-        body += f'<h2 class="letter">{e(year)}</h2><div class="cards">{cards}</div>'
-    write("tests/index.html", page("Tests", body, "tests", "Released tests with practice questions", "tests/"))
-
-
-def reading_lists_index(db):
-    body = '<h1>Reading lists</h1><p class="lede">The novel, play and poet for each school year.</p>'
-    rows = ""
-    for rl in sorted(db["reading-lists"].values(), key=lambda r: r["title"], reverse=True):
-        def cell(key, ids):
-            return ", ".join(rec_link(db, key, i, "plainlink") for i in ids) or '<span class="muted">—</span>'
-        rows += (f'<tr id="{rl["slug"]}"><th scope="row">{e(rl["title"])}</th>'
-                 f'<td>{cell("works", rl["novel"])}</td><td>{cell("works", rl["play"])}</td>'
-                 f'<td>{cell("authors", rl["poet"])}</td></tr>')
-    body += f'<div class="tablewrap"><table class="rl"><thead><tr><th>Year</th><th>Novel</th><th>Play</th><th>Poet</th></tr></thead><tbody>{rows}</tbody></table></div>'
-    write("reading-lists/index.html", page("Reading lists", body, "reading-lists", "Reading lists by school year", "reading-lists/"))
-
-
 def prize_page(db, rel, p):
     pid = p["id"]
     works = rel[("prizes", pid)].get("works", [])
@@ -1096,16 +1068,20 @@ def list_item(db, key, r):
     return f'<li><a href="{r["url"]}">{e(r["title"])}</a></li>'
 
 
+BROWSE_FIRST = {}
+
+
 def alpha_index(db, key, label, intro):
-    recs = list(db[key].values())
+    recs = [r for r in db[key].values() if r["title"].strip().lower() != "no award"]
     sorter = author_sort if key == "authors" else (lambda r: sort_key(r["title"]))
     recs.sort(key=sorter)
     groups = defaultdict(list)
     for r in recs:
         groups[letter_of(r["last"] if key == "authors" and r["last"] else r["title"])].append(r)
     letters = sorted(groups, key=lambda L: (L == "#", L))
-    split = len(recs) > 700
-    head = f'<h1>{label}</h1><p class="lede">{len(recs):,} {label.lower()}. {intro}</p>'
+    split = True
+    head = (f'<h1>{label}: A–Z</h1><p class="lede">{len(recs):,} {label.lower()}. {intro} '
+            f'<a href="{BASE}{key}/">Search and filter instead</a>.</p>')
     if not split:
         body = head + letter_bar(letters, None, key, False)
         for L in letters:
@@ -1120,8 +1096,7 @@ def alpha_index(db, key, label, intro):
         slug = L.lower() if L != "#" else "other"
         html_ = page(f"{label}: {L}", body, key, f"{label} beginning with {L}", f"{key}/browse/{slug}/")
         write(f"{key}/browse/{slug}/index.html", html_)
-        if i == 0:
-            write(f"{key}/index.html", page(label, body, key, f"{label} in {SITE_TITLE}", f"{key}/"))
+        BROWSE_FIRST.setdefault(key, slug)
 
 
 PRIZE_CONTROLS = """<form class="filters" data-prize-filters hidden onsubmit="return false">
@@ -1202,48 +1177,263 @@ def prizes_index(db, rel):
                                                f'<script src="{BASE}assets/prizes.js?v={BUILD_ID}" defer></script>'))
 
 
+
+# ---------------------------------------------------------------- searchable section listings
+
+def ordinal(n):
+    suffix = "th" if 10 <= n % 100 <= 20 else {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return f"{n}{suffix}"
+
+
+def years_of(*vals):
+    for v in vals:
+        m = re.search(r"-?\d{3,4}", v or "")
+        if m:
+            return int(m.group(0))
+    return None
+
+
+def catalog_page(key, label, lede, rows, cfg, browse=False, extra=""):
+    """A section's listing page: rows are searched, filtered and sorted in the browser."""
+    rows = [r for r in rows if r["n"].strip().lower() != "no award"]
+    (OUT / "assets" / "data").mkdir(parents=True, exist_ok=True)
+    (OUT / "assets" / "data" / f"{key}.json").write_text(
+        json.dumps(rows, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    browse_link = (f' <a href="{BASE}{key}/browse/{BROWSE_FIRST[key]}/">Browse A–Z</a>' if browse and key in BROWSE_FIRST else "")
+    # Without JavaScript (and for search engines), the first rows are listed as plain links.
+    fallback = ""
+    for r in rows[:300]:
+        if r.get("u"):
+            sub = f' <span class="muted">{e(r["s"])}</span>' if r.get("s") else ""
+            fallback += f'<li><a href="{e(r["u"], quote=True)}">{e(r["n"])}</a>{sub}</li>'
+    body = f"""<h1>{e(label)}</h1>
+<p class="lede">{e(lede)}{browse_link}</p>
+{extra}
+<div data-catalog data-src="{BASE}assets/data/{key}.json?v={BUILD_ID}" data-config="{e(json.dumps(cfg, ensure_ascii=False), quote=True)}">
+  <ul class="plain catalog" data-fallback>{fallback}</ul>
+</div>"""
+    write(f"{key}/index.html", page(label, body, key, lede, f"{key}/",
+                                   extra_head=f'<script src="{BASE}assets/catalog.js?v={BUILD_ID}" defer></script>'))
+
+
+def listed(db, key):
+    """Records shown in listings: everything except "No Award" placeholders."""
+    return [r for r in db[key].values() if r["title"].strip().lower() != "no award"]
+
+
+def style_of(w):
+    return "q" if work_title_html(w).startswith("“") else "i"
+
+
+def catalog_terms(db, rel):
+    rows = []
+    for t in listed(db, "terms"):
+        tid = t["id"]
+        nq = len(rel[("terms", tid)].get("questions", []))
+        nm = len(rel[("terms", tid)].get("rev:terms:mentioned", []))
+        tags = sorted(db["tags"][g]["title"] for g in rel[("terms", tid)].get("tags", []))
+        rows.append({
+            "n": t["title"], "u": t["url"], "s": t["short"],
+            "m": f"{nq} question{'s' if nq != 1 else ''}" if nq else "",
+            "f": {"tag": tags, "hasq": ["yes"] if nq else [], "hasauth": ["yes"] if rel[("terms", tid)].get("authors") else []},
+            "k": {"name": sort_key(t["title"]), "q": nq, "ref": nm + len(t["related"])},
+            "x": fold(f'{t["title"]} {t["short"]}'),
+        })
+    rows.sort(key=lambda r: r["k"]["name"])
+    cfg = {"placeholder": "Term or short definition",
+           "filters": [{"key": "tag", "label": "Tag", "all": "All tags"}],
+           "checks": [{"key": "hasq", "label": "On practice tests"}, {"key": "hasauth", "label": "Linked to authors"}],
+           "sorts": [{"label": "A–Z", "key": "name"}, {"label": "Z–A", "key": "-name"},
+                     {"label": "Most practice questions", "keys": ["-q", "name"]},
+                     {"label": "Most cross-referenced", "keys": ["-ref", "name"]}]}
+    catalog_page("terms", "Terms", f"{len(rows):,} literary terms, cross-linked.", rows, cfg, browse=True)
+
+
+def catalog_authors(db, rel):
+    rows = []
+    for a in listed(db, "authors"):
+        aid = a["id"]
+        born = years_of(a["birth"])
+        works = rel[("authors", aid)].get("works", [])
+        nq = len(rel[("authors", aid)].get("questions", []))
+        prizes = sorted({db["prizes"][p]["type"] for p in rel[("authors", aid)].get("prizes", []) if db["prizes"][p]["type"]})
+        years = " – ".join(x for x in (a["birth"], a["death"]) if x)
+        sub = " · ".join(x for x in (years, a["nationality"], ", ".join(a["medium"])) if x)
+        century = ordinal((born - 1) // 100 + 1) + " century" if born and born > 0 else ""
+        rows.append({
+            "n": a["title"], "u": a["url"], "s": sub,
+            "m": f"{len(works)} work{'s' if len(works) != 1 else ''}" if works else "",
+            "f": {"nat": [a["nationality"]] if a["nationality"] else [], "medium": a["medium"],
+                  "period": a["periods"], "prize": prizes, "century": [century] if century else [],
+                  "hasq": ["yes"] if nq else [], "rl": ["yes"] if rel[("authors", aid)].get("reading-lists") else []},
+            "k": {"name": author_sort(a), "born": born, "works": len(works), "q": nq},
+            "x": fold(f'{a["title"]} {a["alternate"]}'),
+        })
+    rows.sort(key=lambda r: r["k"]["name"])
+    cfg = {"placeholder": "Name",
+           "filters": [{"key": "nat", "label": "Nationality", "all": "All nationalities"},
+                       {"key": "medium", "label": "Known as", "all": "Any"},
+                       {"key": "century", "label": "Born", "all": "Any century"},
+                       {"key": "period", "label": "Period", "all": "Any period"},
+                       {"key": "prize", "label": "Prize", "all": "Any or none"}],
+           "range": {"key": "born", "label": "Born"},
+           "checks": [{"key": "hasq", "label": "On practice tests"}, {"key": "rl", "label": "On a reading list"}],
+           "sorts": [{"label": "Last name A–Z", "key": "name"}, {"label": "Born, earliest first", "keys": ["born", "name"]},
+                     {"label": "Born, latest first", "keys": ["-born", "name"]},
+                     {"label": "Most works", "keys": ["-works", "name"]},
+                     {"label": "Most practice questions", "keys": ["-q", "name"]}]}
+    catalog_page("authors", "Authors", f"{len(rows):,} authors.", rows, cfg, browse=True)
+
+
+def catalog_works(db, rel):
+    rows = []
+    for w in listed(db, "works"):
+        wid = w["id"]
+        authors = rel[("works", wid)].get("authors", [])
+        year = years_of(w["year_written"], w["published"])
+        lists = sorted(set(w["reading_list"]) | {db["reading-lists"][x]["title"] for x in rel[("works", wid)].get("reading-lists", [])})
+        prizes = sorted({db["prizes"][p]["type"] for p in rel[("works", wid)].get("prizes", []) if db["prizes"][p]["type"]})
+        by = ", ".join(db["authors"][a]["title"] for a in authors)
+        rows.append({
+            "n": w["title"], "u": w["url"], "i": style_of(w), "s": by,
+            "m": str(year) if year is not None else "",
+            "f": {"type": w["type"], "lang": w["language"], "rl": lists, "prize": prizes,
+                  "notable": ["yes"] if w["notable"] else [],
+                  "hasq": ["yes"] if rel[("works", wid)].get("questions") else []},
+            "k": {"name": sort_key(w["title"]),
+                  "author": author_sort(db["authors"][authors[0]]) if authors else "",
+                  "year": year},
+            "x": fold(f'{w["title"]} {by}'),
+        })
+    rows.sort(key=lambda r: r["k"]["name"])
+    cfg = {"placeholder": "Title or author",
+           "filters": [{"key": "type", "label": "Form", "all": "All forms", "order": "count"},
+                       {"key": "lang", "label": "Language", "all": "All languages", "order": "count"},
+                       {"key": "rl", "label": "Reading list", "all": "Any or none", "order": "desc"},
+                       {"key": "prize", "label": "Prize", "all": "Any or none"}],
+           "range": {"key": "year", "label": "Year"},
+           "checks": [{"key": "notable", "label": "Notable only"}, {"key": "hasq", "label": "On practice tests"}],
+           "sorts": [{"label": "Title A–Z", "key": "name"}, {"label": "Author A–Z", "keys": ["author", "year"]},
+                     {"label": "Oldest first", "keys": ["year", "name"]}, {"label": "Newest first", "keys": ["-year", "name"]}]}
+    catalog_page("works", "Works", f"{len(rows):,} works.", rows, cfg, browse=True)
+
+
+def catalog_poems(db, rel):
+    rows = []
+    for p in listed(db, "poems"):
+        pid = p["id"]
+        authors = rel[("poems", pid)].get("authors", [])
+        tests = sorted(rel[("poems", pid)].get("tests", []), key=lambda x: test_sort(db["tests"][x]))
+        latest = db["tests"][tests[0]] if tests else None
+        by = ", ".join(db["authors"][a]["title"] for a in authors)
+        rows.append({
+            "n": p["title"], "u": p["url"], "s": by,
+            "m": latest["title"] + (f" +{len(tests) - 1}" if len(tests) > 1 else "") if latest else "",
+            "f": {"contest": sorted({db["tests"][x]["type"] for x in tests if db["tests"][x]["type"]}),
+                  "year": sorted({db["tests"][x]["year"] for x in tests if db["tests"][x]["year"]}),
+                  "text": ["yes"] if p["text"] else [], "essay": ["yes"] if rel[("poems", pid)].get("essays") else []},
+            "k": {"name": sort_key(p["title"]),
+                  "author": author_sort(db["authors"][authors[0]]) if authors else "",
+                  "latest": years_of(latest["year"], latest["title"]) if latest else None},
+            "x": fold(f'{p["title"]} {by}'),
+        })
+    rows.sort(key=lambda r: r["k"]["name"])
+    cfg = {"placeholder": "Title or author",
+           "filters": [{"key": "contest", "label": "Contest", "all": "All contests"},
+                       {"key": "year", "label": "Test year", "all": "All years", "order": "desc"}],
+           "checks": [{"key": "text", "label": "Has full text"}, {"key": "essay", "label": "Has essay prompts"}],
+           "sorts": [{"label": "Title A–Z", "key": "name"}, {"label": "Author A–Z", "keys": ["author", "name"]},
+                     {"label": "Most recent test", "keys": ["-latest", "name"]}]}
+    catalog_page("poems", "Poems and passages", f"{len(rows):,} poems and passages from the tests.", rows, cfg, browse=True)
+
+
+def tests_index(db, rel):
+    rows = []
+    for t in db["tests"].values():
+        nq = len(rel[("tests", t["id"])].get("questions", []))
+        year = years_of(t["year"], t["title"])
+        rows.append({"n": t["title"], "u": t["url"], "m": f"{nq} questions",
+                     "f": {"contest": [t["type"]] if t["type"] else [], "year": [t["year"]] if t["year"] else []},
+                     "k": {"year": year, "contest": t["type"], "name": sort_key(t["title"])},
+                     "x": fold(t["title"])})
+    rows.sort(key=lambda r: (-(r["k"]["year"] or 0), r["k"]["contest"]))
+    cfg = {"placeholder": "Test name",
+           "filters": [{"key": "contest", "label": "Contest", "all": "All contests"},
+                       {"key": "year", "label": "Year", "all": "All years", "order": "desc"}],
+           "range": {"key": "year", "label": "Year"},
+           "sorts": [{"label": "Newest first", "keys": ["-year", "contest"]}, {"label": "Oldest first", "keys": ["year", "contest"]},
+                     {"label": "Contest", "keys": ["contest", "-year"]}]}
+    catalog_page("tests", "Tests", f"{len(rows)} released tests with {len(db['questions']):,} practice questions.", rows, cfg)
+
+
+def reading_lists_index(db):
+    rows = []
+    for rl in db["reading-lists"].values():
+        def group(label, key, ids):
+            return [label, [[db[key][i]["title"], db[key][i]["url"], style_of(db[key][i]) if key == "works" else ""] for i in ids]]
+        names = [db["works"][i]["title"] for i in rl["novel"] + rl["play"]] + [db["authors"][i]["title"] for i in rl["poet"]]
+        rows.append({"n": rl["title"], "id": rl["slug"],
+                     "l": [group("Novel", "works", rl["novel"]), group("Play", "works", rl["play"]), group("Poet", "authors", rl["poet"])],
+                     "k": {"year": rl["title"]}, "x": fold(rl["title"] + " " + " ".join(names))})
+    rows.sort(key=lambda r: r["k"]["year"], reverse=True)
+    cfg = {"placeholder": "Year, title or poet", "layout": "rl-list",
+           "sorts": [{"label": "Newest first", "key": "-year"}, {"label": "Oldest first", "key": "year"}]}
+    catalog_page("reading-lists", "Reading lists", "The novel, play and poet for each school year.", rows, cfg)
+
+
 def periods_index(db):
-    by_region = defaultdict(list)
+    rows = []
     for p in db["periods"].values():
-        by_region[p["region"] or "Other"].append(p)
-    body = '<h1>Periods</h1><p class="lede">Literary periods by region, in order.</p>'
-    for region in sorted(by_region):
-        rows = "".join(
-            f'<li><span class="yr">{e(" – ".join(x for x in (p["start"], p["end"]) if x))}</span>'
-            f'<a href="{p["url"]}">{e(p["title"])}</a>'
-            f'{" <span class=muted>(" + e(p["type"]) + ")</span>" if p["type"] and p["type"] != "Period" else ""}</li>'
-            for p in sorted(by_region[region], key=lambda p: (int(p["start"] or 0), sort_key(p["title"]))))
-        body += f'<h2 class="letter">{e(region)}</h2><ul class="plain years">{rows}</ul>'
-    write("periods/index.html", page("Periods", body, "periods", "Literary periods by region", "periods/"))
+        years = " – ".join(x for x in (p["start"], p["end"]) if x)
+        rows.append({"n": p["title"], "u": p["url"], "s": years, "m": p["region"],
+                     "f": {"region": [p["region"]] if p["region"] else [], "type": [p["type"]] if p["type"] else []},
+                     "k": {"start": years_of(p["start"]), "region": p["region"], "name": sort_key(p["title"])},
+                     "x": fold(f'{p["title"]} {p["description"]}')})
+    rows.sort(key=lambda r: (r["k"]["region"], r["k"]["start"] or 0))
+    cfg = {"placeholder": "Period name or description",
+           "filters": [{"key": "region", "label": "Region", "all": "All regions"},
+                       {"key": "type", "label": "Kind", "all": "All kinds"}],
+           "range": {"key": "start", "label": "Began"},
+           "sorts": [{"label": "By region, in order", "keys": ["region", "start"]},
+                     {"label": "Chronological", "keys": ["start", "name"]}, {"label": "A–Z", "key": "name"}]}
+    catalog_page("periods", "Periods", "Literary periods by region.", rows, cfg)
 
 
 def tags_index(db, rel):
-    tags = sorted(db["tags"].values(), key=lambda g: sort_key(g["title"]))
-    cards = "".join(
-        f'<a class="card" href="{g["url"]}"><strong>{e(g["title"])}</strong>'
-        f'<span class="muted">{len(rel[("tags", g["id"])].get("terms", []))} terms</span></a>' for g in tags)
-    body = f'<h1>Tags</h1><p class="lede">Terms grouped by topic, with study sets.</p><div class="cards">{cards}</div>'
-    write("tags/index.html", page("Tags", body, "tags", "Literary terms grouped by topic", "tags/"))
+    rows = []
+    for g in db["tags"].values():
+        n = len(rel[("tags", g["id"])].get("terms", []))
+        sets = [name for name, url in (("Quizlet", g["quizlet"]), ("Gimkit", g["gimkit"]),
+                                       ("Blooket", g["blooket"]), ("Sporcle", g["sporcle"])) if url]
+        rows.append({"n": g["title"], "u": g["url"], "s": " · ".join(sets), "m": f"{n} terms",
+                     "f": {"set": sets}, "k": {"name": sort_key(g["title"]), "n": n}, "x": fold(g["title"])})
+    rows.sort(key=lambda r: r["k"]["name"])
+    cfg = {"placeholder": "Tag name",
+           "filters": [{"key": "set", "label": "Study set", "all": "Any or none"}],
+           "sorts": [{"label": "A–Z", "key": "name"}, {"label": "Most terms", "keys": ["-n", "name"]},
+                     {"label": "Fewest terms", "keys": ["n", "name"]}]}
+    catalog_page("tags", "Tags", "Terms grouped by topic, with study sets.", rows, cfg)
 
 
 def resources_index(db, resolver):
-    by_work = defaultdict(list)
+    rows = []
     for r in db["resources"].values():
-        by_work[", ".join(r["work"]) or "General"].append(r)
-    body = '<h1>Reading resources</h1><p class="lede">Texts, audio and study materials, grouped by work.</p>'
-    for name in sorted(by_work, key=sort_key):
-        wid = resolver.find("works", name) or resolver.find("authors", name)
-        heading = e(name)
-        if wid and wid in db["works"]:
-            heading = f'<a href="{db["works"][wid]["url"]}">{work_title_html(db["works"][wid])}</a>'
-        elif wid and wid in db["authors"]:
-            heading = f'<a href="{db["authors"][wid]["url"]}">{e(name)}</a>'
-        rows = "".join(
-            f'<li>{ext_link(r["link"], r["title"]) or e(r["title"])}'
-            f'{" <span class=muted>" + e(r["type"]) + (" · " + e(r["year"]) if r["year"] else "") + "</span>" if r["type"] or r["year"] else ""}</li>'
-            for r in sorted(by_work[name], key=lambda r: sort_key(r["title"])))
-        body += f'<h2 class="letter">{heading}</h2><ul class="plain">{rows}</ul>'
-    write("resources/index.html", page("Reading resources", body, "resources", "Reading resources by work", "resources/"))
+        work = ", ".join(r["work"]) or "General"
+        wid = resolver.find("works", work)
+        title = f"{work}: {r['title']}"
+        rows.append({"n": title, "u": r["link"] if re.match(r"^https?://", r["link"] or "") else "", "ext": True,
+                     "s": "", "m": " · ".join(x for x in (r["type"], r["year"]) if x),
+                     "f": {"type": [r["type"]] if r["type"] else [], "year": [r["year"]] if r["year"] else [],
+                           "work": r["work"] or ["General"]},
+                     "k": {"work": sort_key(work), "name": sort_key(r["title"]), "year": r["year"]},
+                     "x": fold(f"{work} {r['title']} {r['type']}")})
+    rows.sort(key=lambda x: (x["k"]["work"], x["k"]["name"]))
+    cfg = {"placeholder": "Work or resource",
+           "filters": [{"key": "work", "label": "Work", "all": "All works"},
+                       {"key": "type", "label": "Type", "all": "All types"},
+                       {"key": "year", "label": "School year", "all": "All years", "order": "desc"}],
+           "sorts": [{"label": "By work", "keys": ["work", "name"]}, {"label": "Newest school year", "keys": ["-year", "work"]}]}
+    catalog_page("resources", "Reading resources", "Texts, audio and study materials for the reading list works.", rows, cfg)
 
 
 def daily_term_html(db, resolver, tm):
@@ -1365,6 +1555,8 @@ def search_index(db):
         if key in NO_PAGES:
             continue
         for r in db[key].values():
+            if r["title"].strip().lower() == "no award":
+                continue
             extra = ""
             if key == "terms":
                 extra = r["short"][:90]
@@ -1452,7 +1644,11 @@ def main():
     alpha_index(db, "terms", "Terms", "Definitions are cross-linked: follow any term in small capitals.")
     alpha_index(db, "authors", "Authors", "Sorted by last name.")
     alpha_index(db, "works", "Works", "Sorted by title.")
-    alpha_index(db, "poems", "Poems", "Poems and passages from the tests, with their full text.")
+    alpha_index(db, "poems", "Poems", "Poems and passages from the tests.")
+    catalog_terms(db, rel)
+    catalog_authors(db, rel)
+    catalog_works(db, rel)
+    catalog_poems(db, rel)
     tests_index(db, rel)
     reading_lists_index(db)
     prizes_index(db, rel)
