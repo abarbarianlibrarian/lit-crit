@@ -158,7 +158,7 @@ h2.letter { font: 500 28px/1 var(--serif); text-transform: none; letter-spacing:
 /* Home */
 .hero { padding: 24px 0 8px; }
 .hero h1 { font-size: clamp(38px, 7vw, 60px); }
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 10px; margin: 30px 0 10px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(86px, 1fr)); gap: 8px; margin: 30px 0 10px; }
 .stat {
   display: flex; flex-direction: column; padding: 14px 16px; border-radius: 10px; background: var(--paper-2);
   border: 1px solid var(--rule); text-decoration: none; color: var(--ink);
@@ -290,3 +290,33 @@ h2.letter { font: 500 28px/1 var(--serif); text-transform: none; letter-spacing:
   .filters .f-year input { width: 100%; }
 }
 [hidden] { display: none !important; }
+
+/* Term and author of the day */
+.today { margin: 34px 0 10px; }
+.daily { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.daily-card {
+  background: var(--paper-2); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px 8px;
+  min-width: 0;
+}
+.daily-label { margin: 0 0 6px; font: 600 12px/1.4 var(--sans); letter-spacing: .07em; text-transform: uppercase; color: var(--accent); }
+.daily-title { font: 500 30px/1.15 var(--serif); letter-spacing: -.005em; text-transform: none; color: var(--ink); margin: 0 0 6px; }
+.daily-title a { color: inherit; text-decoration: none; }
+.daily-title a:hover { text-decoration: underline; }
+.daily-card .lede { font-size: 18px; margin-bottom: 10px; }
+.daily-def { font-size: 17px; line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+.daily-author-body { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: start; }
+.daily-author-body:not(:has(img)) { grid-template-columns: 1fr; }
+.daily-author .portrait { width: 120px; }
+.daily-about { margin: 0 0 8px; font: 400 14.5px/1.5 var(--sans); color: var(--ink-2); }
+.daily-works li { padding: 2px 0; font-size: 16px; }
+.more-link { font: 500 14px/1 var(--sans); text-decoration: none; }
+.more-link:hover { text-decoration: underline; }
+@media (max-width: 760px) {
+  .daily { grid-template-columns: 1fr; }
+  .daily-author-body { grid-template-columns: 96px 1fr; }
+  .daily-author .portrait { width: 96px; }
+  .daily-title { font-size: 26px; }
+}
+.stat { padding: 12px 12px; }
+.stat strong { font-size: 24px; }
+.stat span { font-size: 12.5px; line-height: 1.3; }

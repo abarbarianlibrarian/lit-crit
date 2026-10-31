@@ -39,7 +39,7 @@ TABLES = {
     "terms": ("tblcPkKHdlXKFszGP", {
         "name": "fldaPMxNZYkY7p84x", "short": "fldGMKdtfyu03CK6B", "definition": "fldEWol0G9ksi5tGC",
         "mentioned": "fldJhXfzL9A99oyos", "related": "fldXvNAT4jPJaR3E7", "tags": "fld0t6v2AZqeWicCI",
-        "authors": "fld7yDp5hGXqHPeFG",
+        "authors": "fld7yDp5hGXqHPeFG", "date": "fld6XeHIEPN4OjisU", "today": "fldHS2sW665ELiWYo",
     }),
     "authors": ("tblv2LTIvL1vj36zt", {
         "name": "fldir5h8wsLHZmNkd", "nationality": "fldNiSyQVIr0teads", "birth": "fldf97H8m30BZfQuE",
@@ -48,6 +48,7 @@ TABLES = {
         "youtube": "fldCqLxv0I0o7sIwJ", "periods": "fldOoPpnA2yNHkANz", "medium": "fldEGUGQHuKJxaxiR",
         "first": "fldSm5ftkHEn0C596", "last": "fld3cDnR7vH49g28M", "alternate": "fld83eZxzidKWyNUC",
         "terms": "fldJhoUfxqtEGQHwi", "works": "fldvgfsTJz4vMzRxj",
+        "date": "fldWBIqAW0L1a9VDl", "today": "fldt7E7Wqjn2tjVeA",
     }),
     "works": ("tblOom8qyFC4XhuTI", {
         "name": "fldu0qLBaWaNcb8h2", "authors": "fldsMj4EbbCQnngB4", "quoted": "fldqR6C6tqa2Xm6Zl",
@@ -1245,7 +1246,84 @@ def resources_index(db, resolver):
     write("resources/index.html", page("Reading resources", body, "resources", "Reading resources by work", "resources/"))
 
 
-def home(db, rel):
+def daily_term_html(db, resolver, tm):
+    first = (tm["definition"] or "").strip().split("\n\n")[0]
+    ctx = (db, resolver, tm["mentioned"] + tm["related"])
+    return f"""<article class="daily-card">
+  <p class="daily-label">Term of the day</p>
+  <h2 class="daily-title"><a href="{tm['url']}">{e(tm['title'])}</a></h2>
+  {f'<p class="lede">{e(tm["short"])}</p>' if tm['short'] else ''}
+  <div class="prose daily-def">{md_to_html(first, ctx)}</div>
+  <p><a class="more-link" href="{tm['url']}">Read the full entry →</a></p>
+</article>"""
+
+
+def daily_author_html(db, rel, a):
+    img = a.get("image") or (a["picture_url"] if re.match(r"^https?://", a["picture_url"]) else None)
+    portrait = (f'<img class="portrait" src="{e(img, quote=True)}" alt="Portrait of {e(a["title"], quote=True)}" '
+                f'loading="lazy" onerror="this.remove()">') if img else ""
+    years = " – ".join(x for x in (a["birth"], a["death"]) if x)
+    about = ", ".join(x for x in (a["nationality"], ", ".join(a["medium"]).lower()) if x)
+    works = rel[("authors", a["id"])].get("works", [])
+    works.sort(key=lambda w: (not db["works"][w]["notable"], db["works"][w]["year_written"] or "9999"))
+    shown = "".join(f'<li><a href="{db["works"][w]["url"]}">{work_title_html(db["works"][w])}</a></li>' for w in works[:5])
+    return f"""<article class="daily-card daily-author">
+  <p class="daily-label">Author of the day</p>
+  <div class="daily-author-body">
+    {portrait}
+    <div>
+      <h2 class="daily-title"><a href="{a['url']}">{e(a['title'])}</a></h2>
+      {f'<p class="lede">{e(years)}</p>' if years else ''}
+      {f'<p class="daily-about">{e(about[:1].upper() + about[1:])}</p>' if about else ''}
+      {f'<ul class="plain daily-works">{shown}</ul>' if shown else ''}
+      <p><a class="more-link" href="{a['url']}">More about {e(a['title'])} →</a></p>
+    </div>
+  </div>
+</article>"""
+
+
+def daily_section(db, rel, resolver):
+    """Term and author of the day. The page carries a few days' picks, so it switches at the
+    visitor's local midnight; the record marked Today = 1 is the one shown without JavaScript."""
+    def by_date(key):
+        out = {}
+        for r in db[key].values():
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", r.get("date", "")):
+                out.setdefault(r["date"], r)
+        return out
+    terms, authors = by_date("terms"), by_date("authors")
+    today_term = next((r for r in db["terms"].values() if r.get("today") == "1"), None)
+    today_author = next((r for r in db["authors"].values() if r.get("today") == "1"), None)
+    if not today_term and not today_author:
+        return ""
+    build_day = (today_term or today_author)["date"]
+    try:
+        center = datetime.date.fromisoformat(build_day)
+    except ValueError:
+        center = datetime.date.today()
+    days = [(center + datetime.timedelta(days=d)).isoformat() for d in range(-1, 3)]
+    blocks = ""
+    for d in days:
+        tm = today_term if d == build_day else terms.get(d)
+        au = today_author if d == build_day else authors.get(d)
+        if not tm and not au:
+            continue
+        cards = (daily_term_html(db, resolver, tm) if tm else "") + (daily_author_html(db, rel, au) if au else "")
+        hidden = "" if d == build_day else " hidden"
+        blocks += f'<div class="daily" data-date="{d}"{hidden}>{cards}</div>'
+    script = """<script>
+(function () {
+  var n = new Date(), p = function (x) { return (x < 10 ? "0" : "") + x; };
+  var d = n.getFullYear() + "-" + p(n.getMonth() + 1) + "-" + p(n.getDate());
+  var match = document.querySelector('.daily[data-date="' + d + '"]');
+  if (!match) return;
+  document.querySelectorAll(".daily").forEach(function (b) { b.hidden = b !== match; });
+})();
+</script>"""
+    return f'<section class="today">{blocks}</section>{script}'
+
+
+def home(db, rel, resolver):
     counts = "".join(
         f'<a class="stat" href="{BASE}{k}/"><strong>{len(db[k]):,}</strong><span>{label}</span></a>'
         for k, label, _ in SECTIONS if db[k])
@@ -1262,6 +1340,7 @@ def home(db, rel):
     <div class="results" hidden data-results></div>
   </form>
 </section>
+{daily_section(db, rel, resolver)}
 <div class="stats">{counts}</div>
 {section('Good places to start', f'<div class="chips">{start}</div>')}
 """
@@ -1377,7 +1456,7 @@ def main():
     periods_index(db)
     tags_index(db, rel)
     resources_index(db, resolver)
-    home(db, rel)
+    home(db, rel, resolver)
     search_page()
     search_index(db)
     sitemap(db)
