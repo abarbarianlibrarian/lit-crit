@@ -699,6 +699,7 @@ def page(title, body, active=None, description="", path="", extra_head=""):
 <footer class="foot"><div class="wrap">Updated {BUILD_DATE} · <a href="{BASE}">{e(SITE_TITLE)}</a></div></footer>
 <script>window.SITE_BASE = "{BASE}";</script>
 <script src="{BASE}assets/search.js?v={BUILD_ID}" defer></script>
+<script src="{BASE}assets/quiz.js?v={BUILD_ID}" defer></script>
 </body>
 </html>
 """
@@ -869,25 +870,20 @@ def test_sort(t):
     return (-year, sort_key(t["type"] or t["title"]))
 
 
-def questions_section(db, qids, title="Practice questions", limit=12):
+def questions_section(db, qids, title="Practice questions", limit=10):
     qids = [q for q in dict.fromkeys(qids) if db["questions"][q]["url"]]
     if not qids:
         return ""
     qids.sort(key=lambda q: (test_sort(db["tests"][db["questions"][q]["test"][0]]),
                              int(db["questions"][q]["number"] or 0)))
-
-    def li(q):
-        r = db["questions"][q]
-        prompt = re.sub(r"\s+", " ", r["title"])
-        prompt = prompt if len(prompt) < 160 else prompt[:157].rsplit(" ", 1)[0] + "…"
-        return f'<li><a href="{r["url"]}">{e(prompt)}</a> <span class="muted">{e(test_label(db, r))}</span></li>'
-
-    items = "".join(li(q) for q in qids[:limit])
+    items = "".join(question_html(db, db["questions"][q], in_test=False) for q in qids[:limit])
     more = ""
     if len(qids) > limit:
-        more = f'<details class="more"><summary>{len(qids) - limit} more</summary><ul class="plain qlist">' \
-               + "".join(li(q) for q in qids[limit:]) + "</ul></details>"
-    return section(title, f'<ul class="plain qlist">{items}</ul>{more}', len(qids))
+        more = (f'<details class="more more-q"><summary>{len(qids) - limit} more questions</summary>'
+                f'<ol class="plain questions compact">'
+                + "".join(question_html(db, db["questions"][q], in_test=False) for q in qids[limit:])
+                + "</ol></details>")
+    return section(title, f'<ol class="plain questions compact">{items}</ol>{more}', len(qids))
 
 
 def reading_list_links(db, ids):
@@ -903,14 +899,18 @@ def multiline(text):
     return "<br>".join(e(line) for line in text.strip().split("\n"))
 
 
-def question_html(db, q):
-    choices = ""
-    for letter in "abcde":
-        if q[letter]:
-            choices += f'<li data-letter="{letter.upper()}">{e(q[letter])}</li>'
+def question_html(db, q, in_test=True):
+    """One practice question. Choices are buttons; picking one marks every choice right or wrong
+    and reveals the links (assets/quiz.js). Without JavaScript the answer sits behind "Show answer"."""
+    letters = [l for l in "abcde" if q[l]]
     correct = [c.strip().upper() for c in q["correct"] if c.strip()]
     answer = ", ".join(
         f"{c}. {e(q[c.lower()])}" if c.lower() in "abcde" and q.get(c.lower()) else e(c) for c in correct)
+    choices = "".join(
+        f'<li><button type="button" class="choice" data-letter="{l.upper()}" aria-pressed="false">'
+        f'<span class="cletter">{l.upper()}</span><span class="ctext">{e(q[l])}</span>'
+        f'<span class="cmark" aria-hidden="true"></span></button></li>'
+        for l in letters)
     links = []
     for p in q["poems"]:
         links.append(f'<a href="{db["poems"][p]["url"]}">{e(db["poems"][p]["title"])}</a>')
@@ -920,14 +920,23 @@ def question_html(db, q):
             links.append(f'<a href="{r["url"]}">{work_title_html(r) if k == "works" else e(r["title"])}</a>')
     terms = sorted(q["terms"], key=lambda t: sort_key(db["terms"][t]["title"]))
     term_links = ", ".join(f'<a href="{db["terms"][t]["url"]}">{e(db["terms"][t]["title"])}</a>' for t in terms)
-    return f"""<li class="q" id="q-{q['id']}">
-<div class="qnum">{e(q['number'])}</div>
+    source = ""
+    if not in_test and q["url"]:
+        source = f'<p class="qsource"><a href="{q["url"]}">{e(test_label(db, q))}</a></p>'
+    num = e(q["number"]) if in_test else ""
+    anchor = f' id="q-{q["id"]}"' if in_test else ""
+    return f"""<li class="q"{anchor} data-correct="{e(''.join(correct), quote=True)}">
+<div class="qnum">{num}</div>
 <div class="qbody">
+{source}
 <p class="prompt">{multiline(q['prompt'] or q['name'])}</p>
-{f'<ol class="choices">{choices}</ol>' if choices else ''}
+{f'<ol class="plain choices">{choices}</ol>' if choices else ''}
+<p class="qresult" aria-live="polite"></p>
 {f'<details class="answer"><summary>Show answer</summary><p>{answer}</p></details>' if answer else ''}
+<div class="qlinks">
 {f'<p class="qmeta">About: {" · ".join(links)}</p>' if links else ''}
 {f'<p class="qmeta">Terms: {term_links}</p>' if term_links else ''}
+</div>
 </div>
 </li>"""
 
@@ -944,7 +953,7 @@ def test_page(db, rel, t):
     body = f"""{crumbs('tests', 'Tests')}
 <article class="record">
 <h1>{e(t['title'])}</h1>
-<p class="lede">{len(qids)} question{'s' if len(qids) != 1 else ''}. Try each one, then open “Show answer.”</p>
+<p class="lede">{len(qids)} question{'s' if len(qids) != 1 else ''}. Pick an answer to check it.</p>
 {facts([('Year', e(t['year'])), ('Contest', e(t['type'])), ('Passage', e(t['passage']))])}
 </article>
 {section('Poems and passages on this test', chips(db, 'poems', poems, sort=False))}

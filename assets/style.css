@@ -197,8 +197,6 @@ h2.letter { font: 500 28px/1 var(--serif); text-transform: none; letter-spacing:
 .qnum { font: 600 14px/1.9 var(--sans); color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .prompt { margin: 0 0 8px; font-size: 18px; line-height: 1.5; }
 .choices { list-style: none; padding: 0; margin: 0 0 10px; display: grid; gap: 4px; }
-.choices li { display: flex; gap: 10px; }
-.choices li::before { content: attr(data-letter) "."; font: 600 14px/1.75 var(--sans); color: var(--ink-3); min-width: 18px; }
 .answer summary {
   display: inline-block; cursor: pointer; font: 500 13.5px/1 var(--sans); color: var(--accent);
   padding: 7px 12px; border: 1px solid var(--rule); border-radius: 999px; list-style: none;
@@ -229,7 +227,6 @@ h2.letter { font: 500 28px/1 var(--serif); text-transform: none; letter-spacing:
   .q { grid-template-columns: 32px 1fr; }
   .poem { padding: 16px 18px; font-size: 17px; }
 }
-.questions .choices li { padding: 2px 0; }
 .more .qlist { width: 100%; }
 
 /* Tabs */
@@ -353,3 +350,45 @@ h2.letter { font: 500 28px/1 var(--serif); text-transform: none; letter-spacing:
   .filters.open .f-toggle::after { content: " ▴"; }
   .filters:not(.open) label:not(.f-search) { display: none; }
 }
+
+/* Interactive questions */
+.choices { gap: 6px; }
+.choices li { padding: 0; }
+.choice {
+  display: flex; align-items: baseline; gap: 10px; width: 100%; text-align: left;
+  font: 400 17px/1.45 var(--serif); color: var(--ink); background: var(--paper);
+  border: 1px solid var(--rule); border-radius: 8px; padding: 8px 12px; cursor: pointer;
+}
+.choice:hover:not(:disabled) { border-color: var(--accent); background: var(--paper-2); }
+.choice:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.choice:disabled { cursor: default; color: var(--ink); }
+.cletter { font: 600 13.5px/1.9 var(--sans); color: var(--ink-3); min-width: 16px; }
+.ctext { flex: 1; }
+.cmark { font: 600 16px/1.5 var(--sans); min-width: 16px; text-align: right; }
+.choice.right { border-color: #4f8a5b; background: #e7f2e8; }
+.choice.right .cmark, .choice.right .cletter { color: #2f6b3c; }
+.choice.wrong { opacity: .75; }
+.choice.wrong .cmark { color: #a33a2a; }
+.choice.wrong.picked { opacity: 1; border-color: #b4483a; background: #f8e3df; }
+.choice.picked { box-shadow: 0 0 0 1px currentColor inset; }
+@media (prefers-color-scheme: dark) {
+  .choice.right { border-color: #6fae7b; background: #1f3324; }
+  .choice.right .cmark, .choice.right .cletter { color: #9fd3a9; }
+  .choice.wrong.picked { border-color: #d0705f; background: #3a201b; }
+  .choice.wrong .cmark { color: #e3907f; }
+}
+.qresult { margin: 8px 0 0; font: 400 14.5px/1.5 var(--sans); }
+.qresult:empty { display: none; }
+.got-it .qresult strong { color: #2f6b3c; }
+.missed .qresult strong { color: #a33a2a; }
+@media (prefers-color-scheme: dark) { .got-it .qresult strong { color: #9fd3a9; } .missed .qresult strong { color: #e3907f; } }
+.retry { font: 500 13.5px/1 var(--sans); color: var(--accent); background: none; border: 0; padding: 0 0 0 6px; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.quiz-ready .answer { display: none; }
+.quiz-ready .q:not(.answered) .qlinks { display: none; }
+.qsource { margin: 0 0 4px; font: 500 12.5px/1.4 var(--sans); text-transform: uppercase; letter-spacing: .04em; }
+.qsource a { color: var(--ink-3); text-decoration: none; }
+.qsource a:hover { color: var(--accent); }
+.questions.compact .q { grid-template-columns: 1fr; }
+.questions.compact .qnum { display: none; }
+.more-q { display: block !important; }
+.more-q summary { margin-top: 10px; }
