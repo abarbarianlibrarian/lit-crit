@@ -1005,7 +1005,7 @@ def prize_page(db, rel, p):
     body = f"""{crumbs('prizes', 'Prizes')}
 <article class="record">
 <h1>{e(p['title'])}</h1>
-{facts([('Prize', e(p['type'])), ('Year', e(p['year']))])}
+{facts([('Prize', e(p['type'])), ('Year', e(p['year'])), ('Nationality', e(', '.join(dict.fromkeys(db['authors'][a]['nationality'] for a in authors if db['authors'][a]['nationality']))) if 'nobel' in p['type'].lower() else '')])}
 {f'<blockquote class="citation">{e(p["citation"])}</blockquote>' if p['citation'] else ''}
 </article>
 {section('Winner', chips(db, 'authors', authors))}
@@ -1116,20 +1116,37 @@ def alpha_index(db, key, label, intro):
             write(f"{key}/index.html", page(label, body, key, f"{label} in {SITE_TITLE}", f"{key}/"))
 
 
-def prizes_index(db):
+def prizes_index(db, rel):
     by_type = defaultdict(list)
     for p in db["prizes"].values():
         by_type[p["type"] or "Other"].append(p)
-    body = f'<h1>Prizes</h1><p class="lede">{len(db["prizes"]):,} awards, newest first.</p>'
-    for t in sorted(by_type, key=lambda t: (-len(by_type[t]), t)):
+    types = sorted(by_type, key=lambda t: (-len(by_type[t]), t))
+    tabs, panels = "", ""
+    for i, t in enumerate(types):
+        slug = slugify(t)
+        nobel = "nobel" in t.lower()
         rows = []
-        for p in sorted(by_type[t], key=lambda p: -int(p["year"] or 0)):
-            who = ", ".join(db["authors"][a]["title"] for a in p["authors"])
-            what = ", ".join(db["works"][w]["title"] for w in p["works"])
+        for p in sorted(by_type[t], key=lambda p: (-int(p["year"] or 0), p["title"])):
+            authors = rel[("prizes", p["id"])].get("authors", [])
+            works = rel[("prizes", p["id"])].get("works", [])
+            who = ", ".join(db["authors"][a]["title"] for a in authors)
+            what = ", ".join(db["works"][w]["title"] for w in works)
             label = " — ".join(x for x in (who, what) if x) or p["title"]
-            rows.append(f'<li><span class="yr">{e(p["year"])}</span><a href="{p["url"]}">{e(label)}</a></li>')
-        body += f'<h2 class="letter">{e(t)} <span class="count">{len(by_type[t])}</span></h2><ul class="plain years">{"".join(rows)}</ul>'
-    write("prizes/index.html", page("Prizes", body, "prizes", "Literary prizes and their winners", "prizes/"))
+            nat = ""
+            if nobel:
+                nats = list(dict.fromkeys(db["authors"][a]["nationality"] for a in authors if db["authors"][a]["nationality"]))
+                nat = f'<span class="nat">{e(", ".join(nats))}</span>' if nats else '<span class="nat"></span>'
+            rows.append(f'<li><span class="yr">{e(p["year"])}</span><a href="{p["url"]}">{e(label)}</a>{nat}</li>')
+        cls = "plain years nobel" if nobel else "plain years"
+        tabs += (f'<a role="tab" href="#{slug}" id="tab-{slug}" aria-controls="{slug}"'
+                 f'{" aria-selected=true" if i == 0 else ""}>{e(t)} <span class="count">{len(by_type[t])}</span></a>')
+        panels += (f'<section class="tabpanel" id="{slug}" role="tabpanel" aria-labelledby="tab-{slug}">'
+                   f'<h2 class="letter">{e(t)} <span class="count">{len(by_type[t])}</span></h2>'
+                   f'<ul class="{cls}">{"".join(rows)}</ul></section>')
+    body = (f'<h1>Prizes</h1><p class="lede">{len(db["prizes"]):,} awards, newest first.</p>'
+            f'<nav class="tabs" role="tablist" aria-label="Prize">{tabs}</nav>{panels}')
+    write("prizes/index.html", page("Prizes", body, "prizes", "Literary prizes and their winners", "prizes/",
+                                    extra_head=f'<script src="{BASE}assets/tabs.js?v={BUILD_ID}" defer></script>'))
 
 
 def periods_index(db):
@@ -1304,7 +1321,7 @@ def main():
     alpha_index(db, "poems", "Poems", "Poems and passages from the tests, with their full text.")
     tests_index(db, rel)
     reading_lists_index(db)
-    prizes_index(db)
+    prizes_index(db, rel)
     periods_index(db)
     tags_index(db, rel)
     resources_index(db, resolver)

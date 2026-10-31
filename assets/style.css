@@ -231,3 +231,20 @@ h2.letter { font: 500 28px/1 var(--serif); text-transform: none; letter-spacing:
 }
 .questions .choices li { padding: 2px 0; }
 .more .qlist { width: 100%; }
+
+/* Tabs */
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 22px 0 6px; font-family: var(--sans); }
+.tabs a {
+  padding: 8px 13px; border-radius: 999px; background: var(--chip); color: var(--ink-2);
+  text-decoration: none; font-size: 14px; font-weight: 500; white-space: nowrap;
+}
+.tabs a:hover { background: var(--chip-hover); color: var(--ink); }
+.tabs a[aria-selected="true"] { background: var(--accent); color: var(--paper); }
+.tabs a[aria-selected="true"] .count { color: inherit; opacity: .8; }
+.has-tabs .tabpanel h2.letter { display: none; }
+.years.nobel li { grid-template-columns: 110px 1fr auto; }
+.nat { font: 400 14px/1.9 var(--sans); color: var(--ink-3); text-align: right; white-space: nowrap; }
+@media (max-width: 640px) {
+  .years.nobel li { grid-template-columns: 56px 1fr; }
+  .nat { grid-column: 2; text-align: left; line-height: 1.2; }
+}
