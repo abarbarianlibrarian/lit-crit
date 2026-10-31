@@ -1,0 +1,3580 @@
+{
+ "tables": [
+  {
+   "id": "tblcPkKHdlXKFszGP",
+   "name": "Terms",
+   "primaryFieldId": "fldaPMxNZYkY7p84x",
+   "fields": [
+    {
+     "type": "singleLineText",
+     "id": "fldaPMxNZYkY7p84x",
+     "name": "Term"
+    },
+    {
+     "type": "multilineText",
+     "id": "fldGMKdtfyu03CK6B",
+     "name": "Short Definition"
+    },
+    {
+     "type": "richText",
+     "id": "fldEWol0G9ksi5tGC",
+     "name": "Definition"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblcPkKHdlXKFszGP",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldAznR1x68dQY0B4"
+     },
+     "id": "fldJhXfzL9A99oyos",
+     "name": "Mentioned Terms"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblcPkKHdlXKFszGP",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fld1G37Xz73L13YOG"
+     },
+     "id": "fldXvNAT4jPJaR3E7",
+     "name": "Related Terms"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "flda3zLGAsqOWUu2Y",
+     "name": "Number of Appearances"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldF3ePMTn71geCrM",
+     "name": "Number of Correct Answers"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({flda3zLGAsqOWUu2Y}, \" Uses\")",
+      "referencedFieldIds": [
+       "flda3zLGAsqOWUu2Y"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldfwEXY6qC7zr7RW",
+     "name": "Uses Text"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldaPMxNZYkY7p84x}, \">\")",
+      "referencedFieldIds": [
+       "fldaPMxNZYkY7p84x"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldMGN9uPyo3Jv1mo",
+     "name": "Quizlet Format Term"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldGMKdtfyu03CK6B}, \"<\")",
+      "referencedFieldIds": [
+       "fldGMKdtfyu03CK6B"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fld1MMNC8vJpSdNCY",
+     "name": "Quizlet Format Def"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblU6sGz2WIW2IG14",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldIji0wvpgvCdiS7"
+     },
+     "id": "fld0t6v2AZqeWicCI",
+     "name": "Tags Link"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fld0t6v2AZqeWicCI})",
+      "referencedFieldIds": [
+       "fld0t6v2AZqeWicCI"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldjFhC0R6xl0j2iE",
+     "name": "Tags Text"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fld0t6v2AZqeWicCI",
+      "fieldIdInLinkedTable": "fldvOH4ijvCSZVJxZ",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "doesNotContain",
+         "operands": [
+          "fldvOH4ijvCSZVJxZ",
+          "00"
+         ]
+        }
+       ]
+      },
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldr8ZehY3pKxh9Mo",
+     "name": "Tags Display"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "ARRAYJOIN({fldr8ZehY3pKxh9Mo}, ', ')",
+      "referencedFieldIds": [
+       "fldr8ZehY3pKxh9Mo"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldio3i1Wvu70lJzW",
+     "name": "Tags Display Text",
+     "description": "Joins all tags from the 'Tags Display' field into a single string, separated by ', '"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 1
+     },
+     "id": "fld2ukdDcfC25YxpB",
+     "name": "Rand"
+    },
+    {
+     "type": "date",
+     "options": {
+      "dateFormat": {
+       "name": "local",
+       "format": "l"
+      }
+     },
+     "id": "fld6XeHIEPN4OjisU",
+     "name": "Date"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "IF({fld6XeHIEPN4OjisU}=TODAY(), TRUE(), FALSE())",
+      "referencedFieldIds": [
+       "fld6XeHIEPN4OjisU"
+      ],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldHS2sW665ELiWYo",
+     "name": "Today"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldbOJwZEyqdm7JBr",
+     "name": "Stats Throwaway"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldMGN9uPyo3Jv1mo}, {fld1MMNC8vJpSdNCY})",
+      "referencedFieldIds": [
+       "fldMGN9uPyo3Jv1mo",
+       "fld1MMNC8vJpSdNCY"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldrwWvE0Nbfi4QLv",
+     "name": "Quizlet Unit"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "RECORD_ID()",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldPOo4TKim6UatOQ",
+     "name": "recordID"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldh1EAqTMAHeEbaA",
+     "name": "Imported table"
+    },
+    {
+     "type": "createdTime",
+     "options": {
+      "result": {
+       "type": "dateTime",
+       "options": {
+        "dateFormat": {
+         "name": "local",
+         "format": "l"
+        },
+        "timeFormat": {
+         "name": "12hour",
+         "format": "h:mma"
+        },
+        "timeZone": "client"
+       }
+      }
+     },
+     "id": "fldpc43MkrwdcPaOF",
+     "name": "Created"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblv2LTIvL1vj36zt",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldJhoUfxqtEGQHwi"
+     },
+     "id": "fld7yDp5hGXqHPeFG",
+     "name": "Authors 4"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblcPkKHdlXKFszGP",
+      "isReversed": false,
+      "prefersSingleRecordLink": true,
+      "inverseLinkFieldId": "fldKuCEVtONcG6cZ1"
+     },
+     "id": "fldGoQ90fPJyMeJS4",
+     "name": "Self-Link"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblcPkKHdlXKFszGP",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldJhXfzL9A99oyos"
+     },
+     "id": "fldAznR1x68dQY0B4",
+     "name": "From field: Mentioned Terms 4"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblcPkKHdlXKFszGP",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldXvNAT4jPJaR3E7"
+     },
+     "id": "fld1G37Xz73L13YOG",
+     "name": "From field: Related Terms 3"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblcPkKHdlXKFszGP",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldGoQ90fPJyMeJS4"
+     },
+     "id": "fldKuCEVtONcG6cZ1",
+     "name": "From field: Self-Link"
+    }
+   ],
+   "views": [
+    {
+     "id": "viwVCPbI8epcRNW3k",
+     "name": "All terms.",
+     "type": "grid"
+    },
+    {
+     "id": "viwMvvRPqY3QisbE3",
+     "name": "Flashcard Export",
+     "type": "grid"
+    },
+    {
+     "id": "viweTqT5vsKsBHcud",
+     "name": "Gallery",
+     "type": "gallery"
+    },
+    {
+     "id": "viwOLPeXjFsP8NLwX",
+     "name": "Term of the Day",
+     "type": "grid"
+    },
+    {
+     "id": "viwYNT6n8186aAMik",
+     "name": "Grid 4",
+     "type": "grid"
+    }
+   ]
+  },
+  {
+   "id": "tblv2LTIvL1vj36zt",
+   "name": "Authors",
+   "primaryFieldId": "fldir5h8wsLHZmNkd",
+   "fields": [
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "REGEX_REPLACE(TRIM(CONCATENATE({fldNdeKWYxpil6wnc}, \" \", {fldSm5ftkHEn0C596}, \" \", {fld3cDnR7vH49g28M}, \" \", {fldvU0RzaT3Ml1Gmt})), \"  \", \" \")",
+      "referencedFieldIds": [
+       "fldNdeKWYxpil6wnc",
+       "fldSm5ftkHEn0C596",
+       "fld3cDnR7vH49g28M",
+       "fldvU0RzaT3Ml1Gmt"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldir5h8wsLHZmNkd",
+     "name": "Name"
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "seluxp3Cat4DfrhOE",
+        "name": "American",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selVuGik9CdiuDXpm",
+        "name": "British",
+        "color": "cyanLight2"
+       },
+       {
+        "id": "selw9N1y6nqcFErNM",
+        "name": "French",
+        "color": "tealLight2"
+       },
+       {
+        "id": "selX2JlTkKfKVAAHS",
+        "name": "German",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selNLbqZHEYtvEr7T",
+        "name": "Spanish",
+        "color": "yellowLight2"
+       },
+       {
+        "id": "selsDcqrUY9Nz27mo",
+        "name": "Other",
+        "color": "orangeLight2"
+       },
+       {
+        "id": "selzmOmMaUw3xRv5O",
+        "name": "Irish",
+        "color": "grayLight1"
+       },
+       {
+        "id": "selcYl5WhkR0ZverT",
+        "name": "Norwegian",
+        "color": "purpleBright"
+       },
+       {
+        "id": "selyRJ5xNAYgzQmsU",
+        "name": "Polish",
+        "color": "pinkDark1"
+       },
+       {
+        "id": "selYQbuy5StU0pjjE",
+        "name": "Italian",
+        "color": "grayBright"
+       },
+       {
+        "id": "selDfYHQyFCw2dbyZ",
+        "name": "Swedish",
+        "color": "purpleLight2"
+       },
+       {
+        "id": "seluRne53yR8efS6B",
+        "name": "Belgian",
+        "color": "purpleLight1"
+       },
+       {
+        "id": "selSUZpVk5WGDDdPx",
+        "name": "Indian",
+        "color": "greenLight1"
+       },
+       {
+        "id": "selxjcWLsySJZYyTP",
+        "name": "Danish",
+        "color": "cyanLight1"
+       },
+       {
+        "id": "sel6NbasYxobp6dHX",
+        "name": "Swiss",
+        "color": "redLight2"
+       },
+       {
+        "id": "sel5NjN7qIBTgO8SI",
+        "name": "English",
+        "color": "redLight1"
+       },
+       {
+        "id": "selxPsDg41ogevleT",
+        "name": "Finnish",
+        "color": "cyanBright"
+       },
+       {
+        "id": "selzpwep7L9EmgGMk",
+        "name": "Chilean",
+        "color": "pinkBright"
+       },
+       {
+        "id": "selyr33h5CKO6fb6B",
+        "name": "Icelandic",
+        "color": "grayDark1"
+       },
+       {
+        "id": "sel0oX1aucM9Yn0Vj",
+        "name": "Russian",
+        "color": "grayLight2"
+       },
+       {
+        "id": "seldLoNAWnefZpSOr",
+        "name": "Yugoslav",
+        "color": "blueLight1"
+       },
+       {
+        "id": "selGMlTvBoD97glQr",
+        "name": "Greek",
+        "color": "cyanDark1"
+       },
+       {
+        "id": "sellatuhbPR8LBeKa",
+        "name": "Israeli",
+        "color": "pinkLight1"
+       },
+       {
+        "id": "sel9bnTYryZWehQLX",
+        "name": "Guatemalan",
+        "color": "orangeLight1"
+       },
+       {
+        "id": "sel6QzqFf1O6wOwbd",
+        "name": "Japanese",
+        "color": "yellowLight1"
+       },
+       {
+        "id": "selv9JS8YNXvAwo6X",
+        "name": "Anglo-French",
+        "color": "redDark1"
+       },
+       {
+        "id": "selPahWkZX6bD2Bjm",
+        "name": "Australian",
+        "color": "yellowDark1"
+       },
+       {
+        "id": "selih3U8mJ4HAokAn",
+        "name": "Amerigan",
+        "color": "tealBright"
+       },
+       {
+        "id": "selmGlfGypkSAriNS",
+        "name": "Polish-American",
+        "color": "orangeDark1"
+       },
+       {
+        "id": "selNytEDD7BMsAr3x",
+        "name": "Bulgarian",
+        "color": "pinkLight2"
+       },
+       {
+        "id": "selvkw4Z3F7zD50bf",
+        "name": "Colombian",
+        "color": "blueBright"
+       },
+       {
+        "id": "selGd8UrWrjWlykD0",
+        "name": "Czech",
+        "color": "tealLight1"
+       },
+       {
+        "id": "selkDQJX9xxKb9hnK",
+        "name": "Nigerian",
+        "color": "orangeBright"
+       },
+       {
+        "id": "sel8myi5eKpDKFyVk",
+        "name": "Russian-American",
+        "color": "greenBright"
+       },
+       {
+        "id": "selIaFAwNVoQ8kAc9",
+        "name": "Egyptian",
+        "color": "redBright"
+       },
+       {
+        "id": "selR3V4SFc0fwrlBd",
+        "name": "Mexican",
+        "color": "tealDark1"
+       },
+       {
+        "id": "seld1skyzI5gFhZuf",
+        "name": "South African",
+        "color": "blueDark1"
+       },
+       {
+        "id": "seltdkBsm5Z7gljmS",
+        "name": "West Indian",
+        "color": "yellowBright"
+       },
+       {
+        "id": "selv73EW6SvkkdVoM",
+        "name": "Portuguese",
+        "color": "purpleDark1"
+       },
+       {
+        "id": "selwsEkzyaSFto9w8",
+        "name": "Chinese",
+        "color": "greenDark1"
+       },
+       {
+        "id": "seltQp6TuVQRXiiKg",
+        "name": "British-Indian",
+        "color": "blueBright"
+       },
+       {
+        "id": "sellOvCNspUOGHgGL",
+        "name": "Hungarian",
+        "color": "redDark1"
+       },
+       {
+        "id": "seliDUFsilM6hRKaD",
+        "name": "Austrian",
+        "color": "purpleLight1"
+       },
+       {
+        "id": "selZT5Jfr0LpKx8mA",
+        "name": "Turkish",
+        "color": "orangeLight1"
+       },
+       {
+        "id": "selwLYAzJNDXIjFLm",
+        "name": "Peruvian",
+        "color": "pinkLight1"
+       },
+       {
+        "id": "selgNRWxbBqfIVTS9",
+        "name": "Canadian",
+        "color": "cyanLight1"
+       },
+       {
+        "id": "sel32JYtQQhQ2Iwfi",
+        "name": "Belarusian",
+        "color": "cyanBright"
+       },
+       {
+        "id": "selOaJEQSftDze5IZ",
+        "name": "Tanzanian-British",
+        "color": "greenDark1"
+       },
+       {
+        "id": "selAgpWfrjKKRdo0C",
+        "name": "Scottish",
+        "color": "grayBright"
+       },
+       {
+        "id": "selAYW5bBbTPx41Zq",
+        "name": "British-American",
+        "color": "tealLight1"
+       },
+       {
+        "id": "selDU6r0LHXuTTFW3",
+        "name": "Anglo-Irish",
+        "color": "purpleBright"
+       },
+       {
+        "id": "selsSt7t7THOye1HF",
+        "name": "Romano-British",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selhwjVwhQfaXbGT5",
+        "name": "Welsh",
+        "color": "cyanLight2"
+       },
+       {
+        "id": "sel3ytdY5mdcbzqFq",
+        "name": "Libyan",
+        "color": "tealLight2"
+       },
+       {
+        "id": "sel7r9nYvUTf4datl",
+        "name": "Roman",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selI20cUwshSMPH42",
+        "name": "Venezuelan",
+        "color": "yellowLight2"
+       },
+       {
+        "id": "selRgJiyzHMkGtGWG",
+        "name": "Argentine",
+        "color": "orangeLight2"
+       },
+       {
+        "id": "sel8rGyoOxNvkmJAl",
+        "name": "Ghanaian",
+        "color": "redLight2"
+       },
+       {
+        "id": "seludUIpx4sOY3hx6",
+        "name": "Romanian",
+        "color": "pinkLight2"
+       },
+       {
+        "id": "selQmIgIJ2E13Sn5U",
+        "name": "Dutch",
+        "color": "purpleLight2"
+       },
+       {
+        "id": "selXjiwWcGHUNZoA3",
+        "name": "Persian",
+        "color": "grayLight2"
+       },
+       {
+        "id": "seldyREBeHikQtZAc",
+        "name": "New Zealander",
+        "color": "blueLight1"
+       },
+       {
+        "id": "sel0IaNfxhdRZUAuJ",
+        "name": "Arab",
+        "color": "cyanLight1"
+       },
+       {
+        "id": "selGztE3ZlW4H344F",
+        "name": "Soviet",
+        "color": "tealLight1"
+       },
+       {
+        "id": "seln8gMN52T6DqT18",
+        "name": "Korean",
+        "color": "greenLight1"
+       },
+       {
+        "id": "selWf9uVPKIgBDWN1",
+        "name": "St. Lucian",
+        "color": "yellowLight1"
+       },
+       {
+        "id": "selXAGFyKdM4WOzsR",
+        "name": "Guyanese",
+        "color": "orangeLight1"
+       }
+      ]
+     },
+     "id": "fldNiSyQVIr0teads",
+     "name": "Nationality"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "ARRAYJOIN({fldlzEPIhz9FB5IKd}, \", \")",
+      "referencedFieldIds": [
+       "fldlzEPIhz9FB5IKd"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldJmkfXj9jVpDn7x",
+     "name": "Notable Works"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "{fldYwAcza9A8qNjFN}",
+      "referencedFieldIds": [
+       "fldYwAcza9A8qNjFN"
+      ],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldbUUKNeVBuVPmSQ",
+     "name": "# of Occurences"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldYwAcza9A8qNjFN",
+     "name": "Appearances"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldf97H8m30BZfQuE",
+     "name": "Birth Year"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldCDFWFnZJKY3mqm",
+     "name": "Death Year"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldJhoUfxqtEGQHwi",
+      "fieldIdInLinkedTable": "fldaPMxNZYkY7p84x",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "hasAnyOf",
+         "operands": [
+          "fld0t6v2AZqeWicCI",
+          [
+           "recGasD3e9vbqNtuz"
+          ]
+         ]
+        }
+       ]
+      },
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldx28iQe6cYRk0pa",
+     "name": "Groups"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblQJKN35eT7tHHDg",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldmF7hQhYRAxwwkk"
+     },
+     "id": "fldf8HBg9txnPnabO",
+     "name": "Prizes"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldf8HBg9txnPnabO",
+      "fieldIdInLinkedTable": "fldiTxVCQkVAvDFS3",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldKVvwWabwHLeFXH",
+     "name": "Prize Rollup"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldKVvwWabwHLeFXH})",
+      "referencedFieldIds": [
+       "fldKVvwWabwHLeFXH"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldyIm5d3Vkq2vYdj",
+     "name": "Prizes Text"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldir5h8wsLHZmNkd}, \">\")",
+      "referencedFieldIds": [
+       "fldir5h8wsLHZmNkd"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldXjHzvUvNoSPltW",
+     "name": "FlashCardAuthor"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldJmkfXj9jVpDn7x}, \"<\")",
+      "referencedFieldIds": [
+       "fldJmkfXj9jVpDn7x"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldQ8AIEpIcUelyR8",
+     "name": "FlashCardDescription"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE(RIGHT({fldf97H8m30BZfQuE}, 4), \" - \", RIGHT({fldCDFWFnZJKY3mqm}, 4))",
+      "referencedFieldIds": [
+       "fldf97H8m30BZfQuE",
+       "fldCDFWFnZJKY3mqm"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldq5P5kVAXo2ZgXu",
+     "name": "Year Range"
+    },
+    {
+     "type": "multipleAttachments",
+     "options": {
+      "isReversed": false
+     },
+     "id": "fldluSS0389Zj68Zl",
+     "name": "Picture"
+    },
+    {
+     "type": "url",
+     "id": "fldzmCf0XXpX4c5Tb",
+     "name": "Picture copy"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE(\"https://en.wikipedia.org/wiki/\", SUBSTITUTE({fldir5h8wsLHZmNkd}, \" \", \"_\"))",
+      "referencedFieldIds": [
+       "fldir5h8wsLHZmNkd"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldAAuog6Fwr9drOP",
+     "name": "Wikipedia Page"
+    },
+    {
+     "type": "url",
+     "id": "fldCqLxv0I0o7sIwJ",
+     "name": "YouTube Link"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 1
+     },
+     "id": "fldD6B6xRZsotDbdU",
+     "name": "RAND"
+    },
+    {
+     "type": "date",
+     "options": {
+      "dateFormat": {
+       "name": "local",
+       "format": "l"
+      }
+     },
+     "id": "fldWBIqAW0L1a9VDl",
+     "name": "Date"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "IF({fldWBIqAW0L1a9VDl}=TODAY(), TRUE(), FALSE())",
+      "referencedFieldIds": [
+       "fldWBIqAW0L1a9VDl"
+      ],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldt7E7Wqjn2tjVeA",
+     "name": "Today"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "IF({fldYwAcza9A8qNjFN}>2, 1, 0)",
+      "referencedFieldIds": [
+       "fldYwAcza9A8qNjFN"
+      ],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldrIhJKR5ruAZLNf",
+     "name": "Occurrences Boolean"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldJhoUfxqtEGQHwi",
+      "fieldIdInLinkedTable": "fldaPMxNZYkY7p84x",
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "hasAnyOf",
+         "operands": [
+          "fld0t6v2AZqeWicCI",
+          [
+           "recUgj0zxD9B9kSbx"
+          ]
+         ]
+        }
+       ]
+      },
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldOoPpnA2yNHkANz",
+     "name": "Historical Period"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldvgfsTJz4vMzRxj",
+      "fieldIdInLinkedTable": "fldu0qLBaWaNcb8h2",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldlzEPIhz9FB5IKd",
+     "name": "Notable Rollup"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldf8HBg9txnPnabO",
+      "fieldIdInLinkedTable": "fldEsWcFc23sEt6JR",
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldUwkLHNeGfMnI2e",
+          "sel4D3KxF7TJOFKrq"
+         ]
+        }
+       ]
+      },
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldEEAc3LRxHmzmVF",
+     "name": "Nobel Year"
+    },
+    {
+     "type": "multipleSelects",
+     "options": {
+      "choices": [
+       {
+        "id": "selpBffQhQgf7nQGT",
+        "name": "Novelist",
+        "color": "blueLight2"
+       },
+       {
+        "id": "seln5ABkiiYhSeKRf",
+        "name": "Poet",
+        "color": "cyanLight2"
+       },
+       {
+        "id": "selk7cKxnvuls55K8",
+        "name": "Essayist",
+        "color": "tealLight2"
+       },
+       {
+        "id": "selgcz1xL1KSGgC4D",
+        "name": "Playwright",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel7kRbwtZGVbYayc",
+        "name": "Short Story Writer",
+        "color": "yellowLight2"
+       },
+       {
+        "id": "selJd15wZBuE6bX1z",
+        "name": "Journalist",
+        "color": "orangeLight1"
+       },
+       {
+        "id": "selRir4eN7ynxFzdJ",
+        "name": "Translator",
+        "color": "purpleLight1"
+       },
+       {
+        "id": "selcQbuXsWpI43iFF",
+        "name": "Philosopher",
+        "color": "grayBright"
+       },
+       {
+        "id": "selBWRH4przVehEga",
+        "name": "Director",
+        "color": "blueLight2"
+       },
+       {
+        "id": "sel5843HCByB8o2by",
+        "name": "Scholar",
+        "color": "cyanLight2"
+       },
+       {
+        "id": "seljbnavYu9sgzYpe",
+        "name": "Linguist",
+        "color": "tealLight2"
+       },
+       {
+        "id": "selCubMjPkKkI99vv",
+        "name": "Theologian",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selL8vqHLZG5qaraA",
+        "name": "Critic",
+        "color": "yellowLight2"
+       },
+       {
+        "id": "selBqwM6IjogtePgc",
+        "name": "Screenwriter",
+        "color": "orangeLight2"
+       },
+       {
+        "id": "selnXYcSorFOnwZRC",
+        "name": "Hymnist",
+        "color": "redLight2"
+       },
+       {
+        "id": "selucNMRroZOSS7y3",
+        "name": "Biographer",
+        "color": "pinkLight2"
+       },
+       {
+        "id": "selREe7v0pyndId2J",
+        "name": "Historian",
+        "color": "purpleLight2"
+       },
+       {
+        "id": "selwHTCreQuDLT6m6",
+        "name": "Humorist",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selQa52ZbZGHJsGVB",
+        "name": "Memoirist",
+        "color": "blueLight1"
+       },
+       {
+        "id": "seldaD06jxtTihuKB",
+        "name": "Composer",
+        "color": "cyanLight1"
+       },
+       {
+        "id": "seldSjnGaewJoC3Zr",
+        "name": "Statesman",
+        "color": "tealLight1"
+       },
+       {
+        "id": "seljuEJZAGpXmRTGh",
+        "name": "Political Writer",
+        "color": "greenLight1"
+       },
+       {
+        "id": "selQQEgXCeNLwCZSU",
+        "name": "Social Scientist",
+        "color": "yellowLight1"
+       },
+       {
+        "id": "selCB93tQUJx5oovb",
+        "name": "Bishop",
+        "color": "orangeLight1"
+       },
+       {
+        "id": "selz3pvEdTiaP7wZq",
+        "name": "Monastic Reformer",
+        "color": "redLight1"
+       },
+       {
+        "id": "selP6ZNkKsXej9ygx",
+        "name": "Scientist",
+        "color": "pinkLight1"
+       },
+       {
+        "id": "selziJDrfGNC88PlM",
+        "name": "Artist",
+        "color": "purpleLight1"
+       },
+       {
+        "id": "sel78Ar4FPTgjXeLx",
+        "name": "Editor",
+        "color": "grayLight1"
+       },
+       {
+        "id": "selZUbHaASCNYf7zm",
+        "name": "Oral Historian",
+        "color": "blueBright"
+       },
+       {
+        "id": "selG62MIJF6tiHkNB",
+        "name": "King of Wessex",
+        "color": "cyanBright"
+       },
+       {
+        "id": "selCxACfXUqC7oq9s",
+        "name": "Children's Writer",
+        "color": "tealBright"
+       },
+       {
+        "id": "sel4dp3yowc2eVfKZ",
+        "name": "Filmmaker",
+        "color": "greenBright"
+       },
+       {
+        "id": "sel2xMOHNavTTNtc2",
+        "name": "Anonymous",
+        "color": "yellowBright"
+       },
+       {
+        "id": "selNt9KFN4iJYwsm9",
+        "name": "Producer/Publisher",
+        "color": "orangeBright"
+       },
+       {
+        "id": "selMZBIFiuZoCMVP4",
+        "name": "Rhetorician",
+        "color": "redBright"
+       },
+       {
+        "id": "selEceOF2x3oYYahf",
+        "name": "Lexicographer",
+        "color": "pinkBright"
+       },
+       {
+        "id": "selYKL8VMzlGOa1Uv",
+        "name": "Satirist",
+        "color": "purpleBright"
+       },
+       {
+        "id": "selvmrEbdCoyviqqk",
+        "name": "Actor",
+        "color": "grayBright"
+       },
+       {
+        "id": "sel5xexA3pcgU8aNj",
+        "name": "Letter Writer",
+        "color": "blueDark1"
+       },
+       {
+        "id": "seljr9JyoDU8oGiX7",
+        "name": "Travel Writer",
+        "color": "cyanDark1"
+       },
+       {
+        "id": "selJE6W16grQ93QkL",
+        "name": "Choreographer",
+        "color": "tealDark1"
+       },
+       {
+        "id": "selYd2c5IdoFxVcTy",
+        "name": "Songwriter",
+        "color": "greenDark1"
+       },
+       {
+        "id": "selmgZ9fj9F0Ktrwk",
+        "name": "Psychologist",
+        "color": "yellowDark1"
+       },
+       {
+        "id": "selwPIUtNhSnWpBy5",
+        "name": "Diarist",
+        "color": "orangeDark1"
+       },
+       {
+        "id": "seli6WaLDFLTiiB4g",
+        "name": "Lyricist",
+        "color": "redDark1"
+       },
+       {
+        "id": "selSo8s5xiD6PKD42",
+        "name": "Musician",
+        "color": "pinkDark1"
+       },
+       {
+        "id": "selkSnX7YnJSNd4OW",
+        "name": "Folk Figure",
+        "color": "purpleDark1"
+       },
+       {
+        "id": "selhF268gfVYeYVq8",
+        "name": "Peace Activist",
+        "color": "grayDark1"
+       },
+       {
+        "id": "sel298hx3p7zNfqoo",
+        "name": "Orator",
+        "color": "blueLight2"
+       },
+       {
+        "id": "sellhleAKDUcvMadT",
+        "name": "Economist",
+        "color": "cyanLight2"
+       },
+       {
+        "id": "selyaM1tSkFeaYI9V",
+        "name": "Writer",
+        "color": "tealLight2"
+       },
+       {
+        "id": "selDdX2eO9BCOyLDQ",
+        "name": "Prose Writer",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel2Fh99b0d7V359s",
+        "name": "King of England",
+        "color": "yellowLight2"
+       },
+       {
+        "id": "selcTF2eaSZU4p371",
+        "name": "Puppeteer",
+        "color": "orangeLight2"
+       },
+       {
+        "id": "selBkV42n0thB7JgA",
+        "name": "Figure Skater",
+        "color": "redLight2"
+       },
+       {
+        "id": "selCYFUWE2D58W9E3",
+        "name": "Anthropologist",
+        "color": "pinkLight2"
+       },
+       {
+        "id": "selpOAWufGYOGxg4s",
+        "name": "Comedian",
+        "color": "purpleLight2"
+       },
+       {
+        "id": "selVsNLzmqmsC7CU9",
+        "name": "Folk Singer",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selj5TRvi1eNUHto9",
+        "name": "Spy",
+        "color": "blueLight1"
+       },
+       {
+        "id": "selEFgqJPKy0uipuw",
+        "name": "Children's Author",
+        "color": "cyanLight1"
+       },
+       {
+        "id": "selWcTvxsXM5rpoBD",
+        "name": "Illustrator",
+        "color": "tealLight1"
+       },
+       {
+        "id": "selEAzDK2b4dNUH3q",
+        "name": "Literary Subject",
+        "color": "greenLight1"
+       },
+       {
+        "id": "selHYEJF2SbyYwGmm",
+        "name": "Naturalist",
+        "color": "yellowLight1"
+       }
+      ]
+     },
+     "id": "fldEGUGQHuKJxaxiR",
+     "name": "Medium"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldvgfsTJz4vMzRxj",
+      "fieldIdInLinkedTable": "fldu0qLBaWaNcb8h2",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldF8q8ug9VvGmR0U",
+     "name": "Number of Works"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldNdeKWYxpil6wnc",
+     "name": "Prefix"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldSm5ftkHEn0C596",
+     "name": "First Name"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fld3cDnR7vH49g28M",
+     "name": "Last Name"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldvU0RzaT3Ml1Gmt",
+     "name": "Suffix"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fld83eZxzidKWyNUC",
+     "name": "Alternate Names"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fld0zeDN8YiP5M64r",
+     "name": "Associated Handbook Terms"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblcPkKHdlXKFszGP",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fld7yDp5hGXqHPeFG"
+     },
+     "id": "fldJhoUfxqtEGQHwi",
+     "name": "Terms"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblOom8qyFC4XhuTI",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldsMj4EbbCQnngB4"
+     },
+     "id": "fldvgfsTJz4vMzRxj",
+     "name": "Works"
+    },
+    {
+     "type": "button",
+     "id": "fld5c8YJ2V3mOBlqH",
+     "name": "Open URL"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "IF({fldir5h8wsLHZmNkd}, \"https://commons.wikimedia.org/w/index.php?title=Special:MediaSearch&type=image&search=\" & ENCODE_URL_COMPONENT({fldir5h8wsLHZmNkd}))",
+      "referencedFieldIds": [
+       "fldir5h8wsLHZmNkd"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldnuqs67Bh7hRnEE",
+     "name": "Find Portrait",
+     "description": "Wikimedia Commons image search for this author. Pick a portrait and paste its link into Picture copy."
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblv2LTIvL1vj36zt",
+      "isReversed": false,
+      "prefersSingleRecordLink": true,
+      "inverseLinkFieldId": "fldpXK73GJFzzK7wu"
+     },
+     "id": "fld5jdCPXcki8JaKF",
+     "name": "Self-Link"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblv2LTIvL1vj36zt",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fld5jdCPXcki8JaKF"
+     },
+     "id": "fldpXK73GJFzzK7wu",
+     "name": "From field: Self-Link"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "RECORD_ID()",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldaQcaHdzrXtSqhF",
+     "name": "Record ID"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblS8WrrRcpF6hhMq",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldrAZxOHkIUojfgv"
+     },
+     "id": "fld1ZLNqHueySVZf5",
+     "name": "Reading Lists"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblQ2KWCeyNrWshMF",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldycqc8GJHDMnJot"
+     },
+     "id": "fldGdlxpB65wnYA1W",
+     "name": "Poems and Passages"
+    }
+   ],
+   "views": [
+    {
+     "id": "viwUlv7YSlTOFK1tE",
+     "name": "Grid view",
+     "type": "grid"
+    },
+    {
+     "id": "viwiO8lg7KCunIWvK",
+     "name": "Public View",
+     "type": "grid"
+    },
+    {
+     "id": "viwAXs8LN14tVAce6",
+     "name": "Author Entry",
+     "type": "form"
+    },
+    {
+     "id": "viwPtNvPfq2IRAe4y",
+     "name": "Needs Work",
+     "type": "grid"
+    },
+    {
+     "id": "viwm8EzT0D6NmLtEB",
+     "name": "Gallery",
+     "type": "gallery"
+    },
+    {
+     "id": "viwdVBxa1e4PHY55k",
+     "name": "Flashcard Export",
+     "type": "grid"
+    },
+    {
+     "id": "viwVnDIIbbjWkym4U",
+     "name": "Quick Entry",
+     "type": "grid"
+    },
+    {
+     "id": "viwvg1qtQzWQ4Qbai",
+     "name": "Grid 6",
+     "type": "grid"
+    },
+    {
+     "id": "viwhzjRrg0bYjvzcC",
+     "name": "Author of the Day",
+     "type": "grid"
+    },
+    {
+     "id": "viwsyjCIZFJoAKrly",
+     "name": "Image Import",
+     "type": "grid"
+    },
+    {
+     "id": "viwYZjYoCJ4PtRDkO",
+     "name": "Manual Images",
+     "type": "grid"
+    }
+   ]
+  },
+  {
+   "id": "tblOom8qyFC4XhuTI",
+   "name": "Works",
+   "primaryFieldId": "fldu0qLBaWaNcb8h2",
+   "fields": [
+    {
+     "type": "singleLineText",
+     "id": "fldu0qLBaWaNcb8h2",
+     "name": "Title"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldsMj4EbbCQnngB4",
+      "fieldIdInLinkedTable": "fldir5h8wsLHZmNkd",
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fld1Wz99eLKAHmpBs",
+     "name": "Author"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblv2LTIvL1vj36zt",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldvgfsTJz4vMzRxj"
+     },
+     "id": "fldsMj4EbbCQnngB4",
+     "name": "Author Link"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldqR6C6tqa2Xm6Zl",
+     "name": "Quotation Marks"
+    },
+    {
+     "type": "singleLineText",
+     "id": "flds3WJ6k8wuJnzKY",
+     "name": "Notable"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldLCXwyb6RW68WgM",
+     "name": "Terms"
+    },
+    {
+     "type": "multipleAttachments",
+     "options": {
+      "isReversed": false
+     },
+     "id": "fldKYCRLep2hovNU3",
+     "name": "Cover"
+    },
+    {
+     "type": "multipleAttachments",
+     "options": {
+      "isReversed": false
+     },
+     "id": "fld4DY1vNagsGnu9f",
+     "name": "Alt Cover"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldOu2uKdFLTtPL52",
+     "name": "ISBN13"
+    },
+    {
+     "type": "multilineText",
+     "id": "fldQe8T7dpNeMNreD",
+     "name": "Synopsis"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldyKjrbbQFgN0t9I",
+     "name": "Published"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE(\"https://covers.openlibrary.org/b/isbn/\",{fldOu2uKdFLTtPL52},\"-L.jpg\")",
+      "referencedFieldIds": [
+       "fldOu2uKdFLTtPL52"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fld8ntIkt4xV5B12W",
+     "name": "Library Covers Link"
+    },
+    {
+     "type": "checkbox",
+     "options": {
+      "icon": "check",
+      "color": "greenBright"
+     },
+     "id": "flddXd0kKeQyP0eRu",
+     "name": "Fail-Safe"
+    },
+    {
+     "type": "createdTime",
+     "options": {
+      "result": {
+       "type": "dateTime",
+       "options": {
+        "dateFormat": {
+         "name": "local",
+         "format": "l"
+        },
+        "timeFormat": {
+         "name": "12hour",
+         "format": "h:mma"
+        },
+        "timeZone": "client"
+       }
+      }
+     },
+     "id": "fldyFKa4vEj6bPSXb",
+     "name": "Created Time"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fld0VLBgFqYpkHlj2",
+     "name": "Pages"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldyJHS3MAmC9Y3xB",
+      "fieldIdInLinkedTable": "fldaKPUQIB3mV1FiS",
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldaDAMQonPTRKEGH",
+     "name": "Prizes Lookup"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE(LEFT(RIGHT(CONCATENATE({fldOu2uKdFLTtPL52}), 10),9), IF({fldZyu2Q1EvFdQHzk}=10, \"X\", IF({fldZyu2Q1EvFdQHzk}=11, 0, {fldZyu2Q1EvFdQHzk})))",
+      "referencedFieldIds": [
+       "fldOu2uKdFLTtPL52",
+       "fldZyu2Q1EvFdQHzk"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldPNKuRQbTK7VYje",
+     "name": "ISBN-10"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "11-MOD(SUM(\r\n(RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 1),1)-0)*10,  (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 2),1)-0)*9, (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 3),1)-0)*8, (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 4),1)-0)*7, (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 5),1)-0)*6, (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 6),1)-0)*5, (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 7),1)-0)*4, (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 8),1)-0)*3, (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 9),1)-0)*2), 11)",
+      "referencedFieldIds": [
+       "fldOx6eYcvSu1XqzC"
+      ],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldZyu2Q1EvFdQHzk",
+     "name": "Check Digit"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE(LEFT(RIGHT(CONCATENATE({fldOu2uKdFLTtPL52}), 10),9))",
+      "referencedFieldIds": [
+       "fldOu2uKdFLTtPL52"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldOx6eYcvSu1XqzC",
+     "name": "ISBN-10 Base"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE(\r\n(RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 1),1)), (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 2),1)), (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 3),1)), (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 4),1)), (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 5),1)), (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 6),1)), (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 7),1)), (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 8),1)), (RIGHT(LEFT({fldOx6eYcvSu1XqzC}, 9),1)))",
+      "referencedFieldIds": [
+       "fldOx6eYcvSu1XqzC"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldMV4NWMBWogYG3m",
+     "name": "formula"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE(\"https://www.amazon.com/s?k=\", SUBSTITUTE({fldsMj4EbbCQnngB4}, \" \", \"+\"), SUBSTITUTE({fldu0qLBaWaNcb8h2}, \" \", \"+\"), \"&i=stripbooks\")",
+      "referencedFieldIds": [
+       "fldsMj4EbbCQnngB4",
+       "fldu0qLBaWaNcb8h2"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldkuB5ovOMGj9rOU",
+     "name": "Amazon Search"
+    },
+    {
+     "type": "button",
+     "id": "fldKLOBLcQZPTaGi4",
+     "name": "Retrieve Work"
+    },
+    {
+     "type": "multipleSelects",
+     "options": {
+      "choices": [
+       {
+        "id": "selLu3Y3aaOM1e2jy",
+        "name": "2023-2024 Reading List",
+        "color": "blueLight2"
+       }
+      ]
+     },
+     "id": "fldLlvDw9OSMcJgp7",
+     "name": "Reading List"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fld86iV02juDhEp44",
+     "name": "Reading Resources"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fld0VavM96rXTHOv5",
+     "name": "Year Written"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldQvZTtLBrQyPAwp",
+     "name": "First"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldG0V7sxNDpUpkIf",
+     "name": "Tags"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblQJKN35eT7tHHDg",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldClKg0P0azExAzQ"
+     },
+     "id": "fldyJHS3MAmC9Y3xB",
+     "name": "Prizes"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldsMj4EbbCQnngB4",
+      "fieldIdInLinkedTable": "fldWBIqAW0L1a9VDl",
+      "result": {
+       "type": "date",
+       "options": {
+        "dateFormat": {
+         "name": "local",
+         "format": "l"
+        }
+       }
+      }
+     },
+     "id": "fldunYBaZuY5zgyha",
+     "name": "Date Lookup"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldsMj4EbbCQnngB4",
+      "fieldIdInLinkedTable": "fldF8q8ug9VvGmR0U",
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldwEKfOHNhEFAJ3K",
+     "name": "Author Works Number"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldyJHS3MAmC9Y3xB",
+      "fieldIdInLinkedTable": "fldEsWcFc23sEt6JR",
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldCiN33b2dxNE218",
+     "name": "Prize Year"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "{fldCiN33b2dxNE218}-1",
+      "referencedFieldIds": [
+       "fldCiN33b2dxNE218"
+      ],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldmnCth1Ww16LFAA",
+     "name": "Publish Year from Prize"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldsMj4EbbCQnngB4",
+      "fieldIdInLinkedTable": "fldlzEPIhz9FB5IKd",
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldi0217jaPu9gL57",
+     "name": "Author's Notable Works"
+    },
+    {
+     "type": "multipleSelects",
+     "options": {
+      "choices": [
+       {
+        "id": "selKTdMOO2iyoEBgA",
+        "name": "Musical",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selfku91oH1lAxdVY",
+        "name": "Essay",
+        "color": "cyanLight2"
+       },
+       {
+        "id": "selGEjFIuIfPTytxs",
+        "name": "Autobiography/Memoir",
+        "color": "tealLight2"
+       },
+       {
+        "id": "sel4XS75o1NfilLcM",
+        "name": "Literary Criticism",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selXbZk8TygGh74iB",
+        "name": "Novel",
+        "color": "yellowLight2"
+       },
+       {
+        "id": "selAleukvIy80QVQo",
+        "name": "Poetry Collection",
+        "color": "orangeLight2"
+       },
+       {
+        "id": "selhBxIJs2LbIloDb",
+        "name": "Biography",
+        "color": "redLight2"
+       },
+       {
+        "id": "sel6iijj8qPJgSmQJ",
+        "name": "Play",
+        "color": "pinkLight2"
+       },
+       {
+        "id": "selJjCQWbQYKBwMeP",
+        "name": "History",
+        "color": "purpleLight2"
+       },
+       {
+        "id": "selwSWlV6y0cnuRVn",
+        "name": "Periodical",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel5Caht8W5ckoXBM",
+        "name": "Nonfiction",
+        "color": "blueLight1"
+       },
+       {
+        "id": "selg5crImSsll98iS",
+        "name": "Musical Composition",
+        "color": "cyanLight1"
+       },
+       {
+        "id": "selByOQ3o8KFzX4Xs",
+        "name": "Poem",
+        "color": "tealLight1"
+       },
+       {
+        "id": "selBbEvoL9lUv4qBp",
+        "name": "Philosophy",
+        "color": "greenLight1"
+       },
+       {
+        "id": "selwJEOG9B06WbjhD",
+        "name": "Sermon",
+        "color": "yellowLight1"
+       },
+       {
+        "id": "selNvy48boHGzGI1a",
+        "name": "Religious Writing",
+        "color": "orangeLight1"
+       },
+       {
+        "id": "selUkpqPblTfyuePP",
+        "name": "Novella",
+        "color": "redLight1"
+       },
+       {
+        "id": "sel3rFBYNHPUIWtS3",
+        "name": "Short Story",
+        "color": "pinkLight1"
+       },
+       {
+        "id": "selPpxL2tpyuhTw0A",
+        "name": "Translation",
+        "color": "purpleLight1"
+       },
+       {
+        "id": "selrTpl2h4hERTmeA",
+        "name": "Anthology/Edition",
+        "color": "grayLight1"
+       },
+       {
+        "id": "sel2dEMpbEy73zICJ",
+        "name": "Long Poem",
+        "color": "blueBright"
+       },
+       {
+        "id": "selsgxbKjXBeT66Df",
+        "name": "Film",
+        "color": "cyanBright"
+       },
+       {
+        "id": "selVAX9yqqRX7m626",
+        "name": "Reference Work",
+        "color": "tealBright"
+       },
+       {
+        "id": "sel4Hyoou3OgOmn2b",
+        "name": "Short Story Collection",
+        "color": "greenBright"
+       },
+       {
+        "id": "selLQ6v9QOGSVIMUl",
+        "name": "Essay Collection",
+        "color": "yellowBright"
+       },
+       {
+        "id": "selRYm6u7HpUShPMv",
+        "name": "Diary/Journal",
+        "color": "orangeBright"
+       },
+       {
+        "id": "selo3Rl8JHbLJj9VK",
+        "name": "Artwork",
+        "color": "redBright"
+       },
+       {
+        "id": "selCyLWt22Pb2L1ab",
+        "name": "Song",
+        "color": "pinkBright"
+       },
+       {
+        "id": "selLrGLyb6LIf0per",
+        "name": "Letters",
+        "color": "purpleBright"
+       },
+       {
+        "id": "selba9palJWTNFLoP",
+        "name": "Children's Book",
+        "color": "grayBright"
+       },
+       {
+        "id": "selm1YP22iHUNxeQ2",
+        "name": "Speech",
+        "color": "blueDark1"
+       }
+      ]
+     },
+     "id": "fldpr9qhkWAbYr4kS",
+     "name": "Type"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldo0UeTOQcZHlf82",
+     "name": "ISBN-10 Import"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblOom8qyFC4XhuTI",
+      "isReversed": false,
+      "prefersSingleRecordLink": true,
+      "inverseLinkFieldId": "fldJeMGtiGYKeNYA6"
+     },
+     "id": "fldpRh7O9ChYokyme",
+     "name": "Self-Link"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblOom8qyFC4XhuTI",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldpRh7O9ChYokyme"
+     },
+     "id": "fldJeMGtiGYKeNYA6",
+     "name": "From field: Self-Link"
+    },
+    {
+     "type": "multipleSelects",
+     "options": {
+      "choices": [
+       {
+        "id": "selCIvSxZLF4BFETd",
+        "name": "English",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selFNHPQ6BSuyLfuv",
+        "name": "Spanish",
+        "color": "cyanLight2"
+       },
+       {
+        "id": "selO1xQY5ulCgDOZY",
+        "name": "French",
+        "color": "tealLight2"
+       },
+       {
+        "id": "selRA3Q5oUbjhlA5x",
+        "name": "German",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selbei6J4PV405VS9",
+        "name": "Swedish",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selrE5nGj4qnORXxz",
+        "name": "Polish",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sellTHfUIEQc437mB",
+        "name": "Italian",
+        "color": "grayLight2"
+       }
+      ]
+     },
+     "id": "fldQVWc56BcCOZMLs",
+     "name": "Langauge"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldsMj4EbbCQnngB4",
+      "fieldIdInLinkedTable": "fldbUUKNeVBuVPmSQ",
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldgX4YTY910B2pYR",
+     "name": "Author Occurrences"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "RECORD_ID()",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldDTdLf3lvafUOmw",
+     "name": "Record ID"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldsMj4EbbCQnngB4",
+      "fieldIdInLinkedTable": "fldaQcaHdzrXtSqhF",
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldAnrARdQA26afuG",
+     "name": "Author Record ID"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblS8WrrRcpF6hhMq",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldEmmFZ4je9LxAH8"
+     },
+     "id": "fldFdwwRSPX2wrJPy",
+     "name": "Reading Lists"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblS8WrrRcpF6hhMq",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldoJMW8hA1cqts1O"
+     },
+     "id": "fldvEmSRrlvq7wUtt",
+     "name": "Reading Lists copy"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldguZ7a1L4KqkIri",
+     "name": "Tests"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblOCo90Gz36SYv10",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fld8BtUvVz4VEyl6w"
+     },
+     "id": "fld5upscS0sofsm9f",
+     "name": "Questions"
+    }
+   ],
+   "views": [
+    {
+     "id": "viwuaQH1vHsjC0v7D",
+     "name": "Grid view",
+     "type": "grid"
+    },
+    {
+     "id": "viwC1mXz5LJxXcIq5",
+     "name": "Available",
+     "type": "grid"
+    },
+    {
+     "id": "viwzpKKvLG4QwnA7L",
+     "name": "From Authors that are on Tests",
+     "type": "grid"
+    }
+   ]
+  },
+  {
+   "id": "tblQJKN35eT7tHHDg",
+   "name": "Prizes",
+   "primaryFieldId": "fldiTxVCQkVAvDFS3",
+   "fields": [
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldEsWcFc23sEt6JR}, \" \", {fldUwkLHNeGfMnI2e}, \" - \", IF({fldUwkLHNeGfMnI2e}=\"Nobel Prize for Literature\", ARRAYJOIN({fldmF7hQhYRAxwwkk}, \" & \"), {fldClKg0P0azExAzQ}))",
+      "referencedFieldIds": [
+       "fldEsWcFc23sEt6JR",
+       "fldUwkLHNeGfMnI2e",
+       "fldmF7hQhYRAxwwkk",
+       "fldClKg0P0azExAzQ"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldiTxVCQkVAvDFS3",
+     "name": "Name"
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selE1qqkaYn7c96HP",
+        "name": "Pulitzer Prize for Fiction",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selIrr9jRyeXJOBsR",
+        "name": "Pulitzer Prize for Drama",
+        "color": "cyanLight2"
+       },
+       {
+        "id": "selruTJxLInrSgdTD",
+        "name": "Pulitzer Prize for Poetry",
+        "color": "tealLight2"
+       },
+       {
+        "id": "sel4D3KxF7TJOFKrq",
+        "name": "Nobel Prize for Literature",
+        "color": "greenLight2"
+       }
+      ]
+     },
+     "id": "fldUwkLHNeGfMnI2e",
+     "name": "Prize Type"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldEsWcFc23sEt6JR",
+     "name": "Year"
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selKeSRKCn3lK8nja",
+        "name": "Invitational A",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selZlLm76biHPMyg3",
+        "name": "Invitational B",
+        "color": "cyanLight2"
+       },
+       {
+        "id": "selacBmfoNVPimdRu",
+        "name": "District",
+        "color": "tealLight2"
+       },
+       {
+        "id": "sel5mNadoHFHYxMqq",
+        "name": "Region",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selTL9sj6Nt9YPDB1",
+        "name": "State",
+        "color": "yellowLight2"
+       },
+       {
+        "id": "sel4Qy4isDmDiUotr",
+        "name": "All Tests",
+        "color": "orangeLight2"
+       }
+      ]
+     },
+     "id": "fld0F6ICj2hM81imA",
+     "name": "Tested On"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblOom8qyFC4XhuTI",
+      "isReversed": false,
+      "prefersSingleRecordLink": true,
+      "inverseLinkFieldId": "fldyJHS3MAmC9Y3xB"
+     },
+     "id": "fldClKg0P0azExAzQ",
+     "name": "Work"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblv2LTIvL1vj36zt",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldf8HBg9txnPnabO"
+     },
+     "id": "fldmF7hQhYRAxwwkk",
+     "name": "Author"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldmF7hQhYRAxwwkk",
+      "fieldIdInLinkedTable": "fldNiSyQVIr0teads",
+      "result": {
+       "type": "singleSelect",
+       "options": {
+        "choices": [
+         {
+          "id": "seluxp3Cat4DfrhOE",
+          "name": "American",
+          "color": "blueLight2"
+         },
+         {
+          "id": "selVuGik9CdiuDXpm",
+          "name": "British",
+          "color": "cyanLight2"
+         },
+         {
+          "id": "selw9N1y6nqcFErNM",
+          "name": "French",
+          "color": "tealLight2"
+         },
+         {
+          "id": "selX2JlTkKfKVAAHS",
+          "name": "German",
+          "color": "greenLight2"
+         },
+         {
+          "id": "selNLbqZHEYtvEr7T",
+          "name": "Spanish",
+          "color": "yellowLight2"
+         },
+         {
+          "id": "selsDcqrUY9Nz27mo",
+          "name": "Other",
+          "color": "orangeLight2"
+         },
+         {
+          "id": "selzmOmMaUw3xRv5O",
+          "name": "Irish",
+          "color": "grayLight1"
+         },
+         {
+          "id": "selcYl5WhkR0ZverT",
+          "name": "Norwegian",
+          "color": "purpleBright"
+         },
+         {
+          "id": "selyRJ5xNAYgzQmsU",
+          "name": "Polish",
+          "color": "pinkDark1"
+         },
+         {
+          "id": "selYQbuy5StU0pjjE",
+          "name": "Italian",
+          "color": "grayBright"
+         },
+         {
+          "id": "selDfYHQyFCw2dbyZ",
+          "name": "Swedish",
+          "color": "purpleLight2"
+         },
+         {
+          "id": "seluRne53yR8efS6B",
+          "name": "Belgian",
+          "color": "purpleLight1"
+         },
+         {
+          "id": "selSUZpVk5WGDDdPx",
+          "name": "Indian",
+          "color": "greenLight1"
+         },
+         {
+          "id": "selxjcWLsySJZYyTP",
+          "name": "Danish",
+          "color": "cyanLight1"
+         },
+         {
+          "id": "sel6NbasYxobp6dHX",
+          "name": "Swiss",
+          "color": "redLight2"
+         },
+         {
+          "id": "sel5NjN7qIBTgO8SI",
+          "name": "English",
+          "color": "redLight1"
+         },
+         {
+          "id": "selxPsDg41ogevleT",
+          "name": "Finnish",
+          "color": "cyanBright"
+         },
+         {
+          "id": "selzpwep7L9EmgGMk",
+          "name": "Chilean",
+          "color": "pinkBright"
+         },
+         {
+          "id": "selyr33h5CKO6fb6B",
+          "name": "Icelandic",
+          "color": "grayDark1"
+         },
+         {
+          "id": "sel0oX1aucM9Yn0Vj",
+          "name": "Russian",
+          "color": "grayLight2"
+         },
+         {
+          "id": "seldLoNAWnefZpSOr",
+          "name": "Yugoslav",
+          "color": "blueLight1"
+         },
+         {
+          "id": "selGMlTvBoD97glQr",
+          "name": "Greek",
+          "color": "cyanDark1"
+         },
+         {
+          "id": "sellatuhbPR8LBeKa",
+          "name": "Israeli",
+          "color": "pinkLight1"
+         },
+         {
+          "id": "sel9bnTYryZWehQLX",
+          "name": "Guatemalan",
+          "color": "orangeLight1"
+         },
+         {
+          "id": "sel6QzqFf1O6wOwbd",
+          "name": "Japanese",
+          "color": "yellowLight1"
+         },
+         {
+          "id": "selv9JS8YNXvAwo6X",
+          "name": "Anglo-French",
+          "color": "redDark1"
+         },
+         {
+          "id": "selPahWkZX6bD2Bjm",
+          "name": "Australian",
+          "color": "yellowDark1"
+         },
+         {
+          "id": "selih3U8mJ4HAokAn",
+          "name": "Amerigan",
+          "color": "tealBright"
+         },
+         {
+          "id": "selmGlfGypkSAriNS",
+          "name": "Polish-American",
+          "color": "orangeDark1"
+         },
+         {
+          "id": "selNytEDD7BMsAr3x",
+          "name": "Bulgarian",
+          "color": "pinkLight2"
+         },
+         {
+          "id": "selvkw4Z3F7zD50bf",
+          "name": "Colombian",
+          "color": "blueBright"
+         },
+         {
+          "id": "selGd8UrWrjWlykD0",
+          "name": "Czech",
+          "color": "tealLight1"
+         },
+         {
+          "id": "selkDQJX9xxKb9hnK",
+          "name": "Nigerian",
+          "color": "orangeBright"
+         },
+         {
+          "id": "sel8myi5eKpDKFyVk",
+          "name": "Russian-American",
+          "color": "greenBright"
+         },
+         {
+          "id": "selIaFAwNVoQ8kAc9",
+          "name": "Egyptian",
+          "color": "redBright"
+         },
+         {
+          "id": "selR3V4SFc0fwrlBd",
+          "name": "Mexican",
+          "color": "tealDark1"
+         },
+         {
+          "id": "seld1skyzI5gFhZuf",
+          "name": "South African",
+          "color": "blueDark1"
+         },
+         {
+          "id": "seltdkBsm5Z7gljmS",
+          "name": "West Indian",
+          "color": "yellowBright"
+         },
+         {
+          "id": "selv73EW6SvkkdVoM",
+          "name": "Portuguese",
+          "color": "purpleDark1"
+         },
+         {
+          "id": "selwsEkzyaSFto9w8",
+          "name": "Chinese",
+          "color": "greenDark1"
+         },
+         {
+          "id": "seltQp6TuVQRXiiKg",
+          "name": "British-Indian",
+          "color": "blueBright"
+         },
+         {
+          "id": "sellOvCNspUOGHgGL",
+          "name": "Hungarian",
+          "color": "redDark1"
+         },
+         {
+          "id": "seliDUFsilM6hRKaD",
+          "name": "Austrian",
+          "color": "purpleLight1"
+         },
+         {
+          "id": "selZT5Jfr0LpKx8mA",
+          "name": "Turkish",
+          "color": "orangeLight1"
+         },
+         {
+          "id": "selwLYAzJNDXIjFLm",
+          "name": "Peruvian",
+          "color": "pinkLight1"
+         },
+         {
+          "id": "selgNRWxbBqfIVTS9",
+          "name": "Canadian",
+          "color": "cyanLight1"
+         },
+         {
+          "id": "sel32JYtQQhQ2Iwfi",
+          "name": "Belarusian",
+          "color": "cyanBright"
+         },
+         {
+          "id": "selOaJEQSftDze5IZ",
+          "name": "Tanzanian-British",
+          "color": "greenDark1"
+         },
+         {
+          "id": "selAgpWfrjKKRdo0C",
+          "name": "Scottish",
+          "color": "grayBright"
+         },
+         {
+          "id": "selAYW5bBbTPx41Zq",
+          "name": "British-American",
+          "color": "tealLight1"
+         },
+         {
+          "id": "selDU6r0LHXuTTFW3",
+          "name": "Anglo-Irish",
+          "color": "purpleBright"
+         },
+         {
+          "id": "selsSt7t7THOye1HF",
+          "name": "Romano-British",
+          "color": "blueLight2"
+         },
+         {
+          "id": "selhwjVwhQfaXbGT5",
+          "name": "Welsh",
+          "color": "cyanLight2"
+         },
+         {
+          "id": "sel3ytdY5mdcbzqFq",
+          "name": "Libyan",
+          "color": "tealLight2"
+         },
+         {
+          "id": "sel7r9nYvUTf4datl",
+          "name": "Roman",
+          "color": "greenLight2"
+         },
+         {
+          "id": "selI20cUwshSMPH42",
+          "name": "Venezuelan",
+          "color": "yellowLight2"
+         },
+         {
+          "id": "selRgJiyzHMkGtGWG",
+          "name": "Argentine",
+          "color": "orangeLight2"
+         },
+         {
+          "id": "sel8rGyoOxNvkmJAl",
+          "name": "Ghanaian",
+          "color": "redLight2"
+         },
+         {
+          "id": "seludUIpx4sOY3hx6",
+          "name": "Romanian",
+          "color": "pinkLight2"
+         },
+         {
+          "id": "selQmIgIJ2E13Sn5U",
+          "name": "Dutch",
+          "color": "purpleLight2"
+         },
+         {
+          "id": "selXjiwWcGHUNZoA3",
+          "name": "Persian",
+          "color": "grayLight2"
+         },
+         {
+          "id": "seldyREBeHikQtZAc",
+          "name": "New Zealander",
+          "color": "blueLight1"
+         },
+         {
+          "id": "sel0IaNfxhdRZUAuJ",
+          "name": "Arab",
+          "color": "cyanLight1"
+         },
+         {
+          "id": "selGztE3ZlW4H344F",
+          "name": "Soviet",
+          "color": "tealLight1"
+         },
+         {
+          "id": "seln8gMN52T6DqT18",
+          "name": "Korean",
+          "color": "greenLight1"
+         },
+         {
+          "id": "selWf9uVPKIgBDWN1",
+          "name": "St. Lucian",
+          "color": "yellowLight1"
+         },
+         {
+          "id": "selXAGFyKdM4WOzsR",
+          "name": "Guyanese",
+          "color": "orangeLight1"
+         }
+        ]
+       }
+      }
+     },
+     "id": "fldcMMOJAqsBpXygW",
+     "name": "Nationality"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldWKRCZrRiexXXwC",
+     "name": "Nobel For:"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldEsWcFc23sEt6JR}, \" \", {fldUwkLHNeGfMnI2e})",
+      "referencedFieldIds": [
+       "fldEsWcFc23sEt6JR",
+       "fldUwkLHNeGfMnI2e"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fld3ety8Ah4IxSx5Z",
+     "name": "Prize + Year"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "IF({fldUwkLHNeGfMnI2e}=\"Nobel Prize for Literature\", {fldmF7hQhYRAxwwkk}, {fldClKg0P0azExAzQ})",
+      "referencedFieldIds": [
+       "fldUwkLHNeGfMnI2e",
+       "fldmF7hQhYRAxwwkk",
+       "fldClKg0P0azExAzQ"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldBRBGTGQqFNJPc6",
+     "name": "Main Info"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "IF({fldUwkLHNeGfMnI2e}=\"Nobel Prize for Literature\", {fldcMMOJAqsBpXygW}, {fldmF7hQhYRAxwwkk})",
+      "referencedFieldIds": [
+       "fldUwkLHNeGfMnI2e",
+       "fldcMMOJAqsBpXygW",
+       "fldmF7hQhYRAxwwkk"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fld1HSircxabHVbwr",
+     "name": "Secondary Info"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblQJKN35eT7tHHDg",
+      "isReversed": false,
+      "prefersSingleRecordLink": true,
+      "inverseLinkFieldId": "fldSzItZPfXHHkzMp"
+     },
+     "id": "fldSY6ntqJ0gjKfHV",
+     "name": "Self-Link"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "RECORD_ID()",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldqJkazt1ymxrsMm",
+     "name": "Record ID"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldmF7hQhYRAxwwkk})",
+      "referencedFieldIds": [
+       "fldmF7hQhYRAxwwkk"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fld8Og8oPGEKLmZ8u",
+     "name": "Author Text"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldClKg0P0azExAzQ",
+      "fieldIdInLinkedTable": "fldQe8T7dpNeMNreD",
+      "result": {
+       "type": "multilineText"
+      }
+     },
+     "id": "fldfWObHzhJzSEOCn",
+     "name": "Work Synopsis"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldClKg0P0azExAzQ",
+      "fieldIdInLinkedTable": "fldKYCRLep2hovNU3",
+      "result": {
+       "type": "multipleAttachments",
+       "options": {
+        "isReversed": false
+       }
+      }
+     },
+     "id": "fldolTggULKjZr2sB",
+     "name": "Cover"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldEsWcFc23sEt6JR}, \" \", {fldUwkLHNeGfMnI2e})",
+      "referencedFieldIds": [
+       "fldEsWcFc23sEt6JR",
+       "fldUwkLHNeGfMnI2e"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldaKPUQIB3mV1FiS",
+     "name": "Year and Type"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "{fldClKg0P0azExAzQ}",
+      "referencedFieldIds": [
+       "fldClKg0P0azExAzQ"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldwpfPTEHKPVEUMA",
+     "name": "Work Text"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fld8Og8oPGEKLmZ8u}, \">\", {fldwpfPTEHKPVEUMA}, \" (\", {fldEsWcFc23sEt6JR}, \")<\")",
+      "referencedFieldIds": [
+       "fld8Og8oPGEKLmZ8u",
+       "fldwpfPTEHKPVEUMA",
+       "fldEsWcFc23sEt6JR"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldxUOz0d6hAwyfm1",
+     "name": "Quizlet Export"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblQJKN35eT7tHHDg",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldSY6ntqJ0gjKfHV"
+     },
+     "id": "fldSzItZPfXHHkzMp",
+     "name": "From field: Self-Link"
+    }
+   ],
+   "views": [
+    {
+     "id": "viwzNK6iHijQ85hU6",
+     "name": "Grid view",
+     "type": "grid"
+    },
+    {
+     "id": "viw4C2SmJhi6FuZ0Y",
+     "name": "District",
+     "type": "grid"
+    },
+    {
+     "id": "viwSAVWnVqAf3XWhx",
+     "name": "Region",
+     "type": "grid"
+    }
+   ]
+  },
+  {
+   "id": "tblU6sGz2WIW2IG14",
+   "name": "Tags",
+   "primaryFieldId": "fldvOH4ijvCSZVJxZ",
+   "fields": [
+    {
+     "type": "singleLineText",
+     "id": "fldvOH4ijvCSZVJxZ",
+     "name": "Name"
+    },
+    {
+     "type": "url",
+     "id": "fldBkxmhuqoC6YGmN",
+     "name": "Quizlet Link"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldIji0wvpgvCdiS7",
+      "fieldIdInLinkedTable": "fldrwWvE0Nbfi4QLv",
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldE7Zecm6zzEXHe8",
+     "name": "Quizlet Import Text"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldIji0wvpgvCdiS7",
+      "fieldIdInLinkedTable": "fldaPMxNZYkY7p84x",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fld9Vxi5ZrFWsdJjx",
+     "name": "Number of Terms"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fld9Vxi5ZrFWsdJjx}, \" Terms\")",
+      "referencedFieldIds": [
+       "fld9Vxi5ZrFWsdJjx"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldmcbOodiHNSqoBm",
+     "name": "Number of Terms Text"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldIji0wvpgvCdiS7",
+      "fieldIdInLinkedTable": "fldaPMxNZYkY7p84x",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldibCrK1BVl3Aw6Q",
+     "name": "Terms List"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldIji0wvpgvCdiS7",
+      "fieldIdInLinkedTable": "flda3zLGAsqOWUu2Y",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldi1U43gLYp8LFqq",
+     "name": "Total Test Uses"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "{fldibCrK1BVl3Aw6Q}",
+      "referencedFieldIds": [
+       "fldibCrK1BVl3Aw6Q"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldKX44XfhSE1Zg26",
+     "name": "Terms List Text"
+    },
+    {
+     "type": "url",
+     "id": "fldYT1YMHqsu19GJi",
+     "name": "quizlet embed"
+    },
+    {
+     "type": "url",
+     "id": "fldScrugcf1FeJul3",
+     "name": "GimKit Link"
+    },
+    {
+     "type": "url",
+     "id": "fldhw7lQl2EnxAWhv",
+     "name": "Blooket Link"
+    },
+    {
+     "type": "createdTime",
+     "options": {
+      "result": {
+       "type": "dateTime",
+       "options": {
+        "dateFormat": {
+         "name": "local",
+         "format": "l"
+        },
+        "timeFormat": {
+         "name": "12hour",
+         "format": "h:mma"
+        },
+        "timeZone": "client"
+       }
+      }
+     },
+     "id": "fld69o3A4GomQtz7U",
+     "name": "Created"
+    },
+    {
+     "type": "checkbox",
+     "options": {
+      "icon": "check",
+      "color": "greenBright"
+     },
+     "id": "fldUCOnPx5x5LbcGd",
+     "name": "Show as Set"
+    },
+    {
+     "type": "button",
+     "id": "fldqwe6RdZrfylkTt",
+     "name": "Quizlet"
+    },
+    {
+     "type": "button",
+     "id": "fldtpGYPNH45tpkHW",
+     "name": "GimKit"
+    },
+    {
+     "type": "button",
+     "id": "fldEFqNVT3DcwSYG6",
+     "name": "Blooket"
+    },
+    {
+     "type": "url",
+     "id": "fldxE93XJKltnxDad",
+     "name": "Sporcle Link"
+    },
+    {
+     "type": "button",
+     "id": "fldTNKBcYMyLtnrfz",
+     "name": "Sporcle"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblcPkKHdlXKFszGP",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fld0t6v2AZqeWicCI"
+     },
+     "id": "fldIji0wvpgvCdiS7",
+     "name": "Terms"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblU6sGz2WIW2IG14",
+      "isReversed": false,
+      "prefersSingleRecordLink": true,
+      "inverseLinkFieldId": "fld7DJWeCvJRw24w5"
+     },
+     "id": "fldpCmoAhypPenleE",
+     "name": "Self-Link"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblU6sGz2WIW2IG14",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldpCmoAhypPenleE"
+     },
+     "id": "fld7DJWeCvJRw24w5",
+     "name": "From field: Self-Link"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "RECORD_ID()",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldk09x20wKX8fxc8",
+     "name": "Record ID"
+    }
+   ],
+   "views": [
+    {
+     "id": "viwv9LjWVwbztZMKH",
+     "name": "Grid view",
+     "type": "grid"
+    },
+    {
+     "id": "viw8Q0gRH8kXnqVHD",
+     "name": "Sets Master List",
+     "type": "grid"
+    },
+    {
+     "id": "viwF6TtoUH6RdIGqi",
+     "name": "Grid 3",
+     "type": "grid"
+    }
+   ]
+  },
+  {
+   "id": "tbleQuxeILnTHy6gM",
+   "name": "Historical Periods",
+   "primaryFieldId": "fldDzTb5g2hEHja3u",
+   "fields": [
+    {
+     "type": "singleLineText",
+     "id": "fldDzTb5g2hEHja3u",
+     "name": "Name"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldCfyUiRMr5wnrNi",
+     "name": "Start Year"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldfRzdL6btKIbe1M",
+     "name": "End Year"
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selo8PxT0cqYTTZZx",
+        "name": "British",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selNLPykOr9erXTG7",
+        "name": "American",
+        "color": "cyanLight2"
+       }
+      ]
+     },
+     "id": "fldyRjkfKVuCqoi8E",
+     "name": "Region"
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selvtsIVovKdFih6v",
+        "name": "Period",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selaC7ep8nQPZDAmg",
+        "name": "Sub-Period",
+        "color": "cyanLight2"
+       }
+      ]
+     },
+     "id": "fld9sIAqYvlrJxPr6",
+     "name": "Type"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tbleQuxeILnTHy6gM",
+      "isReversed": false,
+      "prefersSingleRecordLink": true
+     },
+     "id": "fldH7t7R5MoxLTHkx",
+     "name": "Period"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tbleQuxeILnTHy6gM",
+      "isReversed": false,
+      "prefersSingleRecordLink": false
+     },
+     "id": "fld1B4YPME8C0zhvG",
+     "name": "Sub Periods"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldBJ9BCvzlDdoln6",
+     "name": "Term Link"
+    },
+    {
+     "type": "multilineText",
+     "id": "fldRXBfOEy41LZikz",
+     "name": "Description"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tbleQuxeILnTHy6gM",
+      "isReversed": false,
+      "prefersSingleRecordLink": false
+     },
+     "id": "fldcZhoaB2Q1L90M9",
+     "name": "Period Before"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tbleQuxeILnTHy6gM",
+      "isReversed": false,
+      "prefersSingleRecordLink": false
+     },
+     "id": "fldzPxGFR9EVyeZkb",
+     "name": "Period After"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE(IF({fld9sIAqYvlrJxPr6}=\"Sub-Period\", CONCATENATE({fldH7t7R5MoxLTHkx}, \": \")), {fldcZhoaB2Q1L90M9}, IF({fldcZhoaB2Q1L90M9}!=\"\", \", \", \"\"), \"________________ \", IF({fldzPxGFR9EVyeZkb}!=\"\", \", \", \"\"), {fldzPxGFR9EVyeZkb})",
+      "referencedFieldIds": [
+       "fld9sIAqYvlrJxPr6",
+       "fldH7t7R5MoxLTHkx",
+       "fldcZhoaB2Q1L90M9",
+       "fldzPxGFR9EVyeZkb"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldeqL1EQMxR6qTqW",
+     "name": "Quizlet Prompt"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldDzTb5g2hEHja3u}, \">\", {fldeqL1EQMxR6qTqW}, \"<\")",
+      "referencedFieldIds": [
+       "fldDzTb5g2hEHja3u",
+       "fldeqL1EQMxR6qTqW"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldvDyfozDzFyfyPA",
+     "name": "Quizlet Import"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tbleQuxeILnTHy6gM",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fld5EPM1dG2qWQhww"
+     },
+     "id": "fldmwM49G15FJSCEH",
+     "name": "Self-Link"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "RECORD_ID()",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldlMi1dwyUCB0I9o",
+     "name": "Record ID"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": false,
+      "recordLinkFieldId": null,
+      "fieldIdInLinkedTable": "fldGMKdtfyu03CK6B",
+      "result": null
+     },
+     "id": "fldev6aKEc8bj1Qk5",
+     "name": "Short Definition (from Term Link)"
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldIUl2gIB7M8e3tR",
+     "name": "Authors"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tbleQuxeILnTHy6gM",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldmwM49G15FJSCEH"
+     },
+     "id": "fld5EPM1dG2qWQhww",
+     "name": "From field: Self-Link"
+    }
+   ],
+   "views": [
+    {
+     "id": "viwzi6FDkICX56Irr",
+     "name": "Grid view",
+     "type": "grid"
+    }
+   ]
+  },
+  {
+   "id": "tblfrvM5B3HwYgqh3",
+   "name": "Reading Resources",
+   "primaryFieldId": "fldL0NeGFsHTtCuTY",
+   "fields": [
+    {
+     "type": "singleLineText",
+     "id": "fldL0NeGFsHTtCuTY",
+     "name": "Name"
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selojOvS7OtgKdyox",
+        "name": "2023-2024",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selJKfHrZhmv7G5yk",
+        "name": "2024-2025",
+        "color": "cyanLight2"
+       }
+      ]
+     },
+     "id": "fldYjH6DrMMW8cyst",
+     "name": "Year"
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selOiLAXmp3cpMQTT",
+        "name": "Text",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selQDbxPLS1QOmenh",
+        "name": "Summary",
+        "color": "cyanLight2"
+       },
+       {
+        "id": "sel8azSlmu1IWA36J",
+        "name": "Poetry Guide",
+        "color": "tealLight2"
+       },
+       {
+        "id": "sel7qeSRzpR6yx35c",
+        "name": "Video",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selrQtcaHJEK7BSmk",
+        "name": "Audio",
+        "color": "yellowLight2"
+       },
+       {
+        "id": "selSDsRN4k2FPChP6",
+        "name": "Purchase",
+        "color": "orangeLight2"
+       }
+      ]
+     },
+     "id": "fldZFmUiDfw7dt2UV",
+     "name": "Type"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldZFmUiDfw7dt2UV})",
+      "referencedFieldIds": [
+       "fldZFmUiDfw7dt2UV"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "flduYr795k1wyWaip",
+     "name": "Type Text"
+    },
+    {
+     "type": "multipleSelects",
+     "options": {
+      "choices": [
+       {
+        "id": "selPDsW2To1PZEn26",
+        "name": "Silas Marner",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selcBgkkKb3VkgNVu",
+        "name": "The Glass Menagerie",
+        "color": "redLight1"
+       },
+       {
+        "id": "selOz6BMDjI3btfpX",
+        "name": "Yeats",
+        "color": "yellowBright"
+       }
+      ]
+     },
+     "id": "fldpIadf3Zq41nZKo",
+     "name": "Work"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldpIadf3Zq41nZKo})",
+      "referencedFieldIds": [
+       "fldpIadf3Zq41nZKo"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fld5GSO8peEsKKxuO",
+     "name": "Work Text"
+    },
+    {
+     "type": "url",
+     "id": "fld94UO33vHDZzs7N",
+     "name": "Link"
+    },
+    {
+     "type": "button",
+     "id": "fldQMaqfkIbfHpLkQ",
+     "name": "Go to Resource"
+    },
+    {
+     "type": "multipleAttachments",
+     "options": {
+      "isReversed": false
+     },
+     "id": "fldBxMbT6tJ7TlwFk",
+     "name": "File"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblfrvM5B3HwYgqh3",
+      "isReversed": false,
+      "prefersSingleRecordLink": true,
+      "inverseLinkFieldId": "fldb0jzaf5KJGFDOw"
+     },
+     "id": "fldjYF0OOJ5pEbkwH",
+     "name": "Self-Link"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblfrvM5B3HwYgqh3",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldjYF0OOJ5pEbkwH"
+     },
+     "id": "fldb0jzaf5KJGFDOw",
+     "name": "From field: Self-Link"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "RECORD_ID()",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fld6ABrLp0Ey5LJex",
+     "name": "Record ID"
+    }
+   ],
+   "views": [
+    {
+     "id": "viw6zSQtcg49Zmyhk",
+     "name": "Grid view",
+     "type": "grid"
+    }
+   ]
+  }
+ ]
+}
