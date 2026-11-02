@@ -49,7 +49,7 @@ TABLES = {
         "youtube": "fldCqLxv0I0o7sIwJ", "periods": "fldOoPpnA2yNHkANz", "medium": "fldEGUGQHuKJxaxiR",
         "first": "fldSm5ftkHEn0C596", "last": "fld3cDnR7vH49g28M", "alternate": "fld83eZxzidKWyNUC",
         "terms": "fldJhoUfxqtEGQHwi", "works": "fldvgfsTJz4vMzRxj",
-        "date": "fldWBIqAW0L1a9VDl", "today": "fldt7E7Wqjn2tjVeA",
+        "date": "fldWBIqAW0L1a9VDl", "today": "fldt7E7Wqjn2tjVeA", "appearances": "fldYwAcza9A8qNjFN",
     }),
     "works": ("tblOom8qyFC4XhuTI", {
         "name": "fldu0qLBaWaNcb8h2", "authors": "fldsMj4EbbCQnngB4", "quoted": "fldqR6C6tqa2Xm6Zl",
@@ -426,19 +426,103 @@ def build_relations(db):
     return rel
 
 
+DATE_SUFFIX = re.compile(r",?\s*\d{3,4}\s*[-–—]\s*(?:\d{3,4})?\s*$")
+QUOTES = "“”\"‘’'"
+
+# Cross-references whose wording differs from the term's name: adjective forms, alternate names,
+# and period names. Values are term names; when several are listed, the one linked from the
+# definition (Mentioned/Related Terms) wins, then one sharing "American"/"English" with the page.
+XREF_ALIASES = {
+    "iambic": ["Iamb (or Iambus)"], "trochaic": ["Trochee"], "spondaic": ["Spondee"], "dactylic": ["Dactyl"],
+    "anapestic": ["Anapest"], "chiastic": ["Chiasmus"], "choriambic": ["Choriambus"], "choriambs": ["Choriambus"],
+    "choliamb": ["Choliambus"], "allegorical": ["Allegory"], "alliterative": ["Alliteration"],
+    "apocryphal": ["Apocrypha"], "autobiographical": ["Autobiography"], "boustrophedonic": ["Boustrophedon"],
+    "chorographic": ["Chorography"], "deductive": ["Deduction"], "inductive": ["Induction"],
+    "didactic": ["Didacticism"], "epicurean": ["Epicureanism"], "mimetic": ["Mimesis"], "parodic": ["Parody"],
+    "pluralistic": ["Pluralism"], "puritan": ["Puritanism"], "realistic": ["Realism"], "romantic": ["Romanticism"],
+    "satiric": ["Satire"], "satirical": ["Satire"], "sentimental": ["Sentimentalism"], "melodramatic": ["Melodrama"],
+    "figurative": ["Figurative Language"], "octosyllabic": ["Octosyllabic Verse"],
+    "hendecasyllabic": ["Hendecasyllabic Verse"], "hendecasyllabics": ["Hendecasyllabic Verse"],
+    "metrical": ["Meter"], "metrics": ["Meter"], "quantitative": ["Quantitative Versification"],
+    "quantitative verse": ["Quantitative Versification"], "quantitative scansion": ["Quantitative Versification"],
+    "qualitative": ["Qualitative Versification"], "accentual-syllabic": ["Accentual-Syllabic Verse"],
+    "picaresque": ["Picaresque Novel"], "menippean": ["Menippean Satire"], "petrarchan": ["Petrarchan Sonnet"],
+    "shakespearean": ["Shakespearean Sonnet"], "elizabethan": ["Elizabethan Age"], "jacobean": ["Jacobean Age"],
+    "senecan": ["Senecan Tragedy"], "horatian": ["Horatian Ode"], "irregular": ["Irregular Ode"],
+    "pindaric": ["Pindarism"], "omniscient": ["Omniscient Point of View"], "panoramic": ["Panoramic Method"],
+    "occasional": ["Occasional Verse"], "demotic": ["Demotic Style"], "headless": ["Headless Line"],
+    "headless iambic": ["Headless Line"], "antirealistic": ["Antirealistic Novel"], "heroic": ["Heroic Verse"],
+    "feminine": ["Feminine Ending"], "masculine": ["Masculine Rhyme"], "neoclassic": ["Neoclassicism"],
+    "naturalistic": ["Naturalism"], "postmodernist": ["Postmodernism"], "modernist": ["Modernism"],
+    "symbolistic": ["Symbolism"], "symbolists": ["Symbolism"], "surrealists": ["Surrealism"], "dada": ["Dadaism"],
+    "pre-raphaelites": ["Pre-Raphaelitism"], "formalists": ["Formalism (Russian)"],
+    "russian formalism": ["Formalism (Russian)"], "cyclic": ["Cyclic Drama"], "cyclic plays": ["Cyclic Drama"],
+    "miracle": ["Miracle Play"], "saints’ plays": ["Miracle Play"], "saints’": ["Saints’ Lives"],
+    "kabuki plays": ["Kabuki"], "metaphysical poets": ["Metaphysical Poetry"],
+    "confidante": ["Confidant (feminine, Confidante)"], "kabbalism": ["Kabbalah (also Cabala, Caballa, Kaballa)"],
+    "jn memoriam stanza": ["In Memoriam Stanza"], "iv medias res": ["In Medias Res"],
+    "commedia dell’ arte": ["Commedia dell’Arte"], "girt books": ["Gift Books"], "poets laureate": ["Poet Laureate"],
+    "new critics": ["New Criticism"], "household poets": ["Fireside Poets"], "half": ["Half Rhyme"],
+    "slant": ["Slant Rhyme"], "editorial page": ["Editorial"], "roman policier": ["Policier"],
+    "popular etymology": ["Folk Etymology"], "long cross": ["Dagger"], "consonance rhyme": ["Consonance"],
+    "distributed stress": ["Hovering Stress (or Accent)"], "seven liberal arts": ["Liberal Arts"],
+    "local color": ["Local Color Writing"], "standard habbie": ["Habbie"], "agrarianism": ["Agrarians"],
+    "restoration": ["Restoration Age"], "dramatic propriety": ["Decorum"],
+    "end-stopped": ["End-Stopped Lines"], "one-act": ["One-Act Play"], "feet": ["Foot"],
+    "choral": ["Chorus"], "choric": ["Chorus"], "amphisbaenic": ["Amphisbaenic Rhyme"],
+    "femmes fatales": ["Femme Fatale"], "horn-book": ["Hornbook"], "fleshly school": ["Fleshly School of Poetry, The"],
+    "age of the romantic movement": ["Age of the Romantic Movement in England, 1798-1832"],
+    "romantic movement": ["Age of the Romantic Movement in England, 1798-1832"],
+    "topographical": ["Topographical Poetry"], "topographical poems": ["Topographical Poetry"],
+    "detective novel": ["Detective Story"], "play on words": ["Pun"], "old english language": ["Old English (Language)"],
+    "tail rhyme stanza": ["Tail-Rhyme Stanza"], "tail-rhyme": ["Tail-Rhyme Stanza"],
+    "english": ["English Sonnet"], "italian": ["Italian Sonnet"], "sleight of": ["Sleight of “and”"],
+    # periods
+    "romantic period": ["Romantic Period in English Literature, 1798-1870", "Romantic Period in American Literature, 1830-1865"],
+    "realistic period": ["Realistic Period in English Literature, 1870-1914", "Realistic Period in American Literature, 1865-1900"],
+    "victorian age": ["Victorian"], "caroline age": ["Caroline"], "augustan age": ["Augustan"],
+    "renaissance period": ["Renaissance"], "modernist period": ["Modernist Period in English Literature"],
+    "present postmodernist": ["Postmodernist Period in English Literature, 1965—"],
+    "contemporary period": ["Postmodernist Period in English Literature, 1965—"],
+    "federalist age": ["Federalist Age in American Literature"],
+    "colonial period": ["Colonial Period in American Literature, 1607-1765"],
+    "revolutionary and early national period": ["Revolutionary and Early National Period in American Literature, 1765-1830"],
+    "naturalistic and symbolistic period": ["Naturalistic and Symbolistic Period in American Literature"],
+    "period of conformity and criticism": ["Period of Modernism and Consolidation in American Literature, 1930-1960"],
+    "period of the confessional self": ["Period of Confession and Postmodernism in American Literature, 1960—"],
+    "postmodern period": ["Period of Confession and Postmodernism in American Literature, 1960—"],
+}
+
+
 class Resolver:
     """Finds records by name, for text fields that hold names instead of links."""
 
     def __init__(self, db):
         self.by_name = {k: {} for k in db}
+        self.secondary = {k: {} for k in db}
         for key, recs in db.items():
             for r in sorted(recs.values(), key=lambda r: r["id"], reverse=True):
                 for n in self.name_variants(r["title"]):
                     self.by_name[key][n] = r["id"]
+                for n in self.secondary_variants(r["title"]):
+                    self.secondary[key].setdefault(n, r["id"])
                 if key == "authors" and r.get("alternate"):
                     for alt in re.split(r"[;,]", r["alternate"]):
                         for n in self.name_variants(alt):
-                            self.by_name[key].setdefault(n, r["id"])
+                            self.secondary[key].setdefault(n, r["id"])
+        self.aliases = {}
+        self.term_titles = {i: r["title"] for i, r in db.get("terms", {}).items()}
+        if "terms" in db:
+            for phrase, names in XREF_ALIASES.items():
+                ids = [self.by_name["terms"].get(fold(n)) for n in names]
+                ids = [i for i in ids if i]
+                if ids:
+                    self.aliases[fold(phrase)] = ids
+
+    @staticmethod
+    def clean(name):
+        name = DATE_SUFFIX.sub("", name.strip()).strip()
+        return name.strip(QUOTES).strip()
 
     @staticmethod
     def name_variants(name):
@@ -446,23 +530,65 @@ class Resolver:
         if not name:
             return []
         out = {fold(name)}
-        m = re.match(r"^(.*?)\s*\((?:or|also|also called|sometimes)\s+(.*?)\)\s*$", name, re.I)
-        if m:
-            out.add(fold(m.group(1)))
-            for alt in re.split(r",|\bor\b", m.group(2)):
-                if alt.strip():
-                    out.add(fold(alt.strip()))
-        base = re.sub(r"\s*\(.*?\)\s*", " ", name).strip()
-        if base:
-            out.add(fold(base))
-        m = re.match(r"^(.*),\s*(the|a|an)$", name, re.I)
-        if m:
-            out.add(fold(f"{m.group(2)} {m.group(1)}"))
-            out.add(fold(m.group(1)))
+        for nm in {name, Resolver.clean(name)}:
+            out.add(fold(nm))
+            m = re.match(r"^(.*?)\s*\((?:or|also|also called|sometimes)\s+(.*?)\)\s*$", nm, re.I)
+            if m:
+                out.add(fold(m.group(1)))
+                for alt in re.split(r",|\bor\b", m.group(2)):
+                    if alt.strip():
+                        out.add(fold(alt.strip()))
+            base = re.sub(r"\s*\(.*?\)\s*", " ", nm).strip()
+            for b in {nm, base}:
+                if b:
+                    out.add(fold(b))
+                m = re.match(r"^(.*),\s*(the|a|an)$", b, re.I)
+                if m:
+                    out.add(fold(f"{m.group(2)} {m.group(1)}"))
+                    out.add(fold(m.group(1)))
         return [o.strip() for o in out if o.strip()]
 
+    @staticmethod
+    def secondary_variants(name):
+        """Weaker matches: each name in "Skald, Scald" or "Lake Poets and Lake School",
+        and inverted names such as "Forgeries, Literary" read as "Literary Forgeries"."""
+        nm = re.sub(r"\s*\(.*?\)\s*", " ", Resolver.clean(name)).strip()
+        out = set()
+        if "," in nm:
+            first, rest = nm.split(",", 1)
+            rest = rest.strip()
+            out.add(fold(f"{rest} {first}"))
+            for part in [first] + rest.split(","):
+                if part.strip():
+                    out.add(fold(part.strip()))
+        elif re.search(r"\band\b", nm):
+            parts = re.split(r"\s+and\s+", nm)
+            if len(parts) == 2 and all(1 <= len(x.split()) <= 3 for x in parts):
+                out.update(fold(x) for x in parts)
+        out.discard(fold(nm))
+        return [o for o in out if o]
+
     def find(self, key, name):
-        return self.by_name[key].get(fold(name.strip()))
+        k = fold(name.strip())
+        return self.by_name[key].get(k) or self.secondary[key].get(k)
+
+    def find_term(self, name, prefer=(), title=""):
+        """Term for a cross-reference: exact or alternate name first, then the curated aliases."""
+        hit = self.find("terms", name)
+        if hit:
+            return hit
+        ids = self.aliases.get(fold(name.strip()))
+        if not ids:
+            return None
+        for i in ids:
+            if i in prefer:
+                return i
+        for word in ("american", "english"):
+            if word in fold(title):
+                for i in ids:
+                    if word in fold(self.term_titles.get(i, "")):
+                        return i
+        return ids[0]
 
 
 # ---------------------------------------------------------------- rich text
@@ -482,38 +608,105 @@ def number_forms(word):
     return out
 
 
+CAP = r"[A-ZÀ-Þ][A-ZÀ-Þ’'\-]+"
+CAPS_PHRASE = CAP + r"(?:\s+(?:OF|AND|THE|IN|A|" + CAP + r"))*"
+XREF_PHRASE = re.compile(r"(?<![\w/#&])(?:A\s+)?" + CAPS_PHRASE + r"(?![\w])")
+XREF_JOIN = re.compile(r"\s*,\s*|\s*[(\[]\s*|\s*[~—]\s*")
+CONNECTORS = {"OF", "AND", "THE", "IN", "A"}
+
+
 def autolink_caps(text_html, ctx):
     """In definitions, words set in CAPITALS are cross-references to other terms."""
     if not ctx:
         return text_html
-    db, resolver, prefer = ctx
+    db, resolver, prefer = ctx[:3]
+    title = ctx[3] if len(ctx) > 3 else ""
 
-    def repl(m):
-        phrase = m.group(0)
-        if len(re.sub(r"[^A-Z]", "", phrase)) < 3:
-            return phrase
-        candidates = [phrase]
-        words = phrase.split()
-        # The head noun is the last word, or the word before OF ("FIGURE OF SPEECH").
-        heads = [len(words) - 1] + [i - 1 for i, w in enumerate(words) if w == "OF" and i > 0]
-        for i in heads:
-            for form in number_forms(words[i]):
-                c = " ".join(words[:i] + [form] + words[i + 1:])
-                if c not in candidates:
-                    candidates.append(c)
-        tid = None
+    def lookup(text):
+        """Term id for a reference, trying singular/plural forms and dropping a leading THE/A/AND/OF."""
+        words = html.unescape(text).split()
+        forms = [words]
+        while len(words) > 1 and words[0] in CONNECTORS:
+            words = words[1:]
+            forms.append(words)
+        if not words or len(re.sub(r"[^A-ZÀ-Þ]", "", "".join(words))) < 3:
+            return None
+        candidates = []
+        for ws in forms:
+            candidates.append(" ".join(ws))
+            heads = [len(ws) - 1] + [i - 1 for i, w in enumerate(ws) if w == "OF" and i > 0]
+            for i in heads:
+                for form in number_forms(ws[i]):
+                    c = " ".join(ws[:i] + [form] + ws[i + 1:])
+                    if c not in candidates:
+                        candidates.append(c)
         for c in candidates:
-            key = fold(html.unescape(c))
-            hits = [x for x in prefer if key in Resolver.name_variants(db["terms"][x]["title"])]
-            tid = hits[0] if hits else resolver.find("terms", html.unescape(c))
+            key = fold(c)
+            hits = [x for x in prefer if x in db["terms"] and key in Resolver.name_variants(db["terms"][x]["title"])]
+            tid = hits[0] if hits else resolver.find_term(c, prefer, title)
             if tid:
-                break
-        if not tid:
-            return phrase
-        return f'<a class="xref" href="{db["terms"][tid]["url"]}">{phrase.lower()}</a>'
+                return tid
+        return None
 
-    return re.sub(r"(?<![\w/#&])[A-Z][A-Z’'\-]+(?:\s+(?:OF|AND|THE|IN|A|[A-Z][A-Z’'\-]+))*(?![\w])",
-                  repl, text_html)
+    def link(text, tid):
+        return f'<a class="xref" href="{db["terms"][tid]["url"]}">{text.lower()}</a>'
+
+    def single(phrase):
+        tid = lookup(phrase)
+        if tid:
+            return link(phrase, tid)
+        # No term for the whole phrase: link it in pieces ("IAMBIC PENTAMETER", "TENOR AND VEHICLE"),
+        # but only when every word other than AND/OF/THE belongs to a linked piece.
+        parts = re.split(r"(\s+)", phrase)
+        words, gaps = parts[0::2], parts[1::2] + [""]
+        out, i, missed = "", 0, False
+        while i < len(words):
+            for j in range(len(words), i, -1):
+                if words[i] in CONNECTORS or words[j - 1] in CONNECTORS:
+                    continue
+                piece = "".join(w + g for w, g in zip(words[i:j], gaps[i:j - 1] + [""]))
+                tid = lookup(piece)
+                if tid:
+                    out += link(piece, tid) + gaps[j - 1]
+                    i = j
+                    break
+            else:
+                missed = missed or words[i] not in CONNECTORS
+                out += words[i] + gaps[i]
+                i += 1
+        return phrase if missed else out
+
+    sleight = resolver.find_term("Sleight of “and”")
+    if sleight:
+        text_html = re.sub(r"SLEIGHT OF ‘AND,?’",
+                           lambda m: link(m.group(0), sleight), text_html)
+    matches = [m for m in XREF_PHRASE.finditer(text_html)
+               if not re.search(r'class="xref"[^>]*>[^<]*$', text_html[:m.start()])]
+    out, pos, k = [], 0, 0
+    while k < len(matches):
+        m = matches[k]
+        out.append(text_html[pos:m.start()])
+        # A reference split in two: "ABSURD, THEATER OF THE", "FORMALISM (RUSSIAN)", "TAIL~RHYME STANZA".
+        if k + 1 < len(matches):
+            n = matches[k + 1]
+            sep = text_html[m.end():n.start()]
+            if XREF_JOIN.fullmatch(sep):
+                a_, b_ = m.group(0), n.group(0)
+                bracket = "(" in sep or "[" in sep
+                close = text_html[n.end():n.end() + 1] if bracket and text_html[n.end():n.end() + 1] in ")]" else ""
+                combos = ([f"{a_} ({b_})"] if bracket else []) + \
+                         ([f"{a_}-{b_}"] if "~" in sep or "—" in sep else []) + [f"{b_} {a_}", f"{a_}, {b_}", f"{a_} {b_}"]
+                tid = next((x for x in (lookup(c) for c in combos) if x), None)
+                if tid:
+                    out.append(link(a_, tid) + sep + link(b_, tid) + close)
+                    pos = n.end() + len(close)
+                    k += 2
+                    continue
+        out.append(single(m.group(0)))
+        pos = m.end()
+        k += 1
+    out.append(text_html[pos:])
+    return "".join(out)
 
 
 def inline_md(s, ctx=None):
@@ -746,7 +939,7 @@ def term_page(db, rel, resolver, t, periods_by_term):
     mentioned = [x for x in t["mentioned"] if x not in related]
     mentioned_in = rel[("terms", tid)].get("rev:terms:mentioned", [])
     related_by = [x for x in rel[("terms", tid)].get("rev:terms:related", []) if x not in related and x not in mentioned_in]
-    ctx = (db, resolver, t["mentioned"] + t["related"])
+    ctx = (db, resolver, t["mentioned"] + t["related"], t["title"])
     body = f"""{crumbs('terms', 'Terms')}
 <article class="record">
 <h1>{e(t['title'])}</h1>
@@ -1404,7 +1597,8 @@ def catalog_authors(db, rel):
             "f": {"nat": [a["nationality"]] if a["nationality"] else [], "medium": a["medium"],
                   "period": a["periods"], "prize": prizes, "century": [century] if century else [],
                   "hasq": ["yes"] if nq else [], "rl": ["yes"] if rel[("authors", aid)].get("reading-lists") else []},
-            "k": {"name": author_sort(a), "born": born, "works": len(works), "q": nq},
+            "k": {"name": author_sort(a), "born": born, "works": len(works), "q": nq,
+                  "app": int(float(a["appearances"] or 0))},
             "x": fold(f'{a["title"]} {a["alternate"]}'),
         })
     rows.sort(key=lambda r: r["k"]["name"])
@@ -1419,6 +1613,7 @@ def catalog_authors(db, rel):
            "sorts": [{"label": "Last name A–Z", "key": "name"}, {"label": "Born, earliest first", "keys": ["born", "name"]},
                      {"label": "Born, latest first", "keys": ["-born", "name"]},
                      {"label": "Most works", "keys": ["-works", "name"]},
+                     {"label": "Most test appearances", "keys": ["-app", "name"]},
                      {"label": "Most practice questions", "keys": ["-q", "name"]}]}
     catalog_page("authors", "Authors", f"{len(rows):,} authors.", rows, cfg, browse=True)
 
@@ -1633,7 +1828,7 @@ def daily_term_html(db, resolver, tm):
     first = paras[0] if paras else ""
     if first.rstrip().endswith(":") and len(paras) > 1:  # keep the example the paragraph introduces
         first += "\n\n" + paras[1]
-    ctx = (db, resolver, tm["mentioned"] + tm["related"])
+    ctx = (db, resolver, tm["mentioned"] + tm["related"], tm["title"])
     return f"""<article class="daily-card">
   <p class="daily-label">Term of the day</p>
   <h2 class="daily-title"><a href="{tm['url']}">{e(tm['title'])}</a></h2>
