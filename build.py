@@ -124,8 +124,8 @@ SITE_TITLE = os.environ.get("SITE_TITLE", "Literary Criticism")
 GA_ID = os.environ.get("GA_ID", "G-CRQBFM26RK")  # Google Analytics measurement ID
 # Accounts (Supabase). The project URL and its publishable (anon) key are public by design: what each
 # visitor can read or write is enforced by the database's row-level security. Leave both blank to hide sign-in.
-SUPABASE_URL = os.environ.get("SUPABASE_URL", "")
-SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "")
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "https://dxyfxmacwdbbkeirvsdx.supabase.co")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "sb_publishable_PHMTnFf2AOIbVbFGTcBuRw_eFY2WLu4")
 SUPABASE_LIB = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"
 BASE = "/" + os.environ.get("BASE_PATH", "/").strip("/") + "/"
 BASE = "/" if BASE == "//" else BASE
