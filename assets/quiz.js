@@ -6,9 +6,11 @@
  *     after scoring, answers are locked until "Clear my answers";
  *   - unanswered questions score 0; redacted questions score their points automatically.
  * Part 1 questions are worth 1 point, Parts 2 and 3 are worth 2.
- * Selections, and whether a page has been scored, are remembered in this browser (localStorage).
+ * Selections, and whether a page has been scored, are remembered in this browser (localStorage);
+ * for signed-in visitors auth.js also saves them to their account.
  */
-(function () {
+// Signed-in visitors: wait until their saved progress has been loaded (auth.js).
+(window.litcritReady || Promise.resolve()).then(function () {
   var quizzes = document.querySelectorAll(".quiz");
   if (!quizzes.length) return;
   document.documentElement.classList.add("quiz-ready");
@@ -238,4 +240,4 @@
     select(q, choice.getAttribute("data-letter"), false);
     update(quiz);
   });
-})();
+});

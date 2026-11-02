@@ -122,6 +122,11 @@ SECTIONS = [  # url folder, nav label, singular label
 
 SITE_TITLE = os.environ.get("SITE_TITLE", "Literary Criticism")
 GA_ID = os.environ.get("GA_ID", "G-CRQBFM26RK")  # Google Analytics measurement ID
+# Accounts (Supabase). The project URL and its publishable (anon) key are public by design: what each
+# visitor can read or write is enforced by the database's row-level security. Leave both blank to hide sign-in.
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "")
+SUPABASE_LIB = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"
 BASE = "/" + os.environ.get("BASE_PATH", "/").strip("/") + "/"
 BASE = "/" if BASE == "//" else BASE
 SITE_URL = os.environ.get("SITE_URL", "").rstrip("/") + "/" if os.environ.get("SITE_URL") else ""
@@ -920,6 +925,7 @@ def page(title, body, active=None, description="", path="", extra_head=""):
       <input type="search" name="q" placeholder="Search terms, authors, works…" aria-label="Search" data-search>
       <div class="results" hidden data-results></div>
     </form>
+    <a class="acct-link" href="{BASE}account/" data-acct hidden>Sign in</a>
   </div>
   <nav class="wrap nav" aria-label="Sections">{nav}</nav>
 </header>
@@ -927,7 +933,8 @@ def page(title, body, active=None, description="", path="", extra_head=""):
 {body}
 </main>
 <footer class="foot"><div class="wrap">Updated {BUILD_DATE} · <a href="{BASE}">{e(SITE_TITLE)}</a></div></footer>
-<script>window.SITE_BASE = "{BASE}";</script>
+<script>window.SITE_BASE = "{BASE}"; window.LITCRIT_AUTH = {json.dumps({"url": SUPABASE_URL, "key": SUPABASE_KEY, "lib": SUPABASE_LIB})};</script>
+<script src="{BASE}assets/auth.js?v={BUILD_ID}"></script>
 <script src="{BASE}assets/search.js?v={BUILD_ID}" defer></script>
 <script src="{BASE}assets/quiz.js?v={BUILD_ID}" defer></script>
 </body>
@@ -1941,6 +1948,61 @@ def home(db, rel, resolver):
     write("index.html", page(SITE_TITLE, body, "home", "A cross-referenced reference to literary terms, authors, works, prizes and periods.", ""))
 
 
+def account_page():
+    """Sign in / create account / password reset, and the signed-in account summary (assets/account.js)."""
+    def field(name, label, kind="text", auto=""):
+        return (f'<label class="acct-field"><span>{label}</span>'
+                f'<input name="{name}" type="{kind}" autocomplete="{auto}" required></label>')
+    email = field("email", "Email", "email", "email")
+    body = f"""<section class="account" data-account>
+<h1>Your account</h1>
+<p class="lede">Sign in to save your practice answers and test scores to your account, so they follow you to any browser or device. You can still practice without an account; your progress is then kept in this browser only.</p>
+<div data-view="loading"><p class="muted">Loading…</p></div>
+<div data-view="off" hidden><p>Accounts aren't switched on yet. Your progress is saved in this browser.</p></div>
+<form id="acct-signin" data-view="signin" hidden novalidate>
+  <h2>Sign in</h2>
+  {email}
+  {field("password", "Password", "password", "current-password")}
+  <button type="submit" class="acct-btn">Sign in</button>
+  <p class="acct-msg" role="status"></p>
+  <p class="acct-alt"><a href="#" data-go="forgot">Forgot your password?</a> · No account yet? <a href="#" data-go="signup">Create one</a></p>
+</form>
+<form id="acct-signup" data-view="signup" hidden novalidate>
+  <h2>Create an account</h2>
+  {email}
+  {field("password", "Password (at least 8 characters)", "password", "new-password")}
+  {field("password2", "Password again", "password", "new-password")}
+  <button type="submit" class="acct-btn">Create account</button>
+  <p class="acct-msg" role="status"></p>
+  <p class="acct-alt">Anything you've already answered in this browser will be saved to your new account. Already have an account? <a href="#" data-go="signin">Sign in</a></p>
+</form>
+<form id="acct-forgot" data-view="forgot" hidden novalidate>
+  <h2>Forgot your password?</h2>
+  <p>Enter your email and we'll send you a link to set a new password.</p>
+  {email}
+  <button type="submit" class="acct-btn">Send the link</button>
+  <p class="acct-msg" role="status"></p>
+  <p class="acct-alt"><a href="#" data-go="signin">Back to sign in</a></p>
+</form>
+<form id="acct-reset" data-view="reset" hidden novalidate>
+  <h2>Set a new password</h2>
+  {field("password", "New password (at least 8 characters)", "password", "new-password")}
+  {field("password2", "New password again", "password", "new-password")}
+  <button type="submit" class="acct-btn">Save password</button>
+  <p class="acct-msg" role="status"></p>
+</form>
+<div data-view="account" hidden>
+  <p class="acct-who">Signed in as <strong data-acct-email></strong></p>
+  <p>Saved to your account: <span data-acct-count></span>. <span class="acct-status muted" data-acct-status></span></p>
+  <p><a class="acct-btn" href="{BASE}tests/">Go to practice tests</a></p>
+  <p class="acct-alt"><a href="#" data-go="reset">Change password</a> · <button type="button" class="linkish" data-signout>Sign out</button></p>
+  <p class="muted small">Signing out clears your progress from this browser; it stays saved in your account.</p>
+</div>
+</section>
+<script src="{BASE}assets/account.js?v={BUILD_ID}" defer></script>"""
+    write("account/index.html", page("Your account", body, None, "Sign in to save your practice test progress.", "account/"))
+
+
 def search_page():
     body = """<h1>Search</h1>
 <form class="search big" action="" role="search" autocomplete="off">
@@ -2063,6 +2125,7 @@ def main():
     resources_index(db, resolver)
     home(db, rel, resolver)
     search_page()
+    account_page()
     search_index(db)
     sitemap(db)
     write("404.html", page("Page not found", f'<h1>Page not found</h1><p class="lede">That page may have been renamed. Try searching, or go <a href="{BASE}">home</a>.</p>'))

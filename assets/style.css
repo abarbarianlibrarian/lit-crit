@@ -507,3 +507,34 @@ h2.letter .count { font: 500 14px/1 var(--sans); color: var(--ink-3); margin-lef
   .rp-bar span { display: none; }
   .rp-bar em { margin: 0; }
 }
+
+/* Accounts */
+.acct-link { font: 500 14px/1 var(--sans); color: var(--ink-2); text-decoration: none; white-space: nowrap;
+  padding: 8px 12px; border: 1px solid var(--rule); border-radius: 999px; max-width: 220px; overflow: hidden; text-overflow: ellipsis; }
+.acct-link:hover { color: var(--accent); border-color: var(--accent); }
+.acct-link.signed-in::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: #3f8a4f; margin-right: 7px; vertical-align: 1px; }
+@media (max-width: 640px) { .acct-link { margin-left: auto; padding: 6px 10px; order: 2; max-width: 55vw; } .top-inner .search { order: 3; } }
+.account { max-width: 520px; }
+.account form, .account [data-view="account"] { background: var(--paper-2); border: 1px solid var(--rule); border-radius: 12px; padding: 20px 22px; margin: 8px 0 24px; }
+.account h2 { margin: 0 0 14px; font: 600 22px/1.2 var(--serif); text-transform: none; letter-spacing: 0; color: var(--ink); }
+.acct-field { display: block; margin: 0 0 14px; }
+.acct-field span { display: block; font: 500 13.5px/1.3 var(--sans); color: var(--ink-2); margin-bottom: 5px; }
+.acct-field input { width: 100%; font: 400 16px/1.3 var(--sans); padding: 10px 12px; border: 1px solid var(--rule);
+  border-radius: 8px; background: var(--paper); color: var(--ink); }
+.acct-field input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.acct-btn { display: inline-block; font: 600 15px/1 var(--sans); color: #fff; background: var(--accent); border: 0;
+  border-radius: 8px; padding: 12px 18px; cursor: pointer; text-decoration: none; }
+@media (prefers-color-scheme: dark) { .acct-btn { color: #17150f; } }
+.acct-btn:hover { filter: brightness(1.08); }
+.acct-btn:disabled { opacity: .6; cursor: progress; }
+.acct-msg { font: 400 14.5px/1.45 var(--sans); margin: 12px 0 0; min-height: 0; }
+.acct-msg:empty { display: none; }
+.acct-msg.err { color: #b3261e; }
+.acct-msg.ok { color: #2f6f3e; }
+@media (prefers-color-scheme: dark) { .acct-msg.err { color: #f2a59d; } .acct-msg.ok { color: #9fd4a9; } }
+.acct-alt { font: 400 14px/1.5 var(--sans); color: var(--ink-2); margin: 14px 0 0; }
+.acct-who { font-family: var(--sans); font-size: 15px; }
+.acct-status { font: 400 13px/1.4 var(--sans); }
+.linkish { font: inherit; color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.small { font-size: 13px; font-family: var(--sans); }

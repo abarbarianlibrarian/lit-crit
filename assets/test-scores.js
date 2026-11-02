@@ -2,7 +2,8 @@
  * Tests page: shows this browser's score for each completed test, with a Reset button,
  * and a short summary above the list. Scores are saved by quiz.js when a test is scored.
  */
-(function () {
+// Signed-in visitors: wait until their saved progress has been loaded (auth.js).
+(window.litcritReady || Promise.resolve()).then(function () {
   var SCORES = "litcrit-test-scores-v1", ANSWERS = "litcrit-answers-v1", SCORED = "litcrit-scored-v1";
   function load(key) { try { return JSON.parse(localStorage.getItem(key)) || {}; } catch (e) { return {}; } }
   function store(key, v) { try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) {} }
@@ -23,7 +24,7 @@
     var best = Math.max.apply(null, list.map(function (x) { return x.score; }));
     summary.innerHTML = "<strong>Your progress</strong> " + list.length + " test" + (list.length === 1 ? "" : "s") +
       " completed · average score " + avg + " · best " + best +
-      ' <span class="muted">(saved in this browser)</span>';
+      ' <span class="muted">(' + (window.litcritUser ? "saved to your account" : "saved in this browser") + ')</span>';
     summary.hidden = false;
   }
 
@@ -71,4 +72,4 @@
   window.addEventListener("pageshow", function () { observer.disconnect(); decorate(); observe(); });
   decorate();
   observe();
-})();
+});
