@@ -467,6 +467,21 @@ class Resolver:
 
 # ---------------------------------------------------------------- rich text
 
+def number_forms(word):
+    """Singular and plural spellings of a capitalized word, for matching cross-references."""
+    out = []
+    for suffix, rep in (("'S", ""), ("’S", ""), ("IES", "Y"), ("ES", ""), ("S", "")):
+        if word.endswith(suffix) and len(word) > len(suffix) + 2:
+            out.append(word[: -len(suffix)] + rep)
+    if word.endswith("Y") and len(word) > 2 and word[-2] not in "AEIOU":
+        out.append(word[:-1] + "IES")
+    elif word.endswith(("S", "X", "Z", "CH", "SH")):
+        out.append(word + "ES")
+    else:
+        out.append(word + "S")
+    return out
+
+
 def autolink_caps(text_html, ctx):
     """In definitions, words set in CAPITALS are cross-references to other terms."""
     if not ctx:
@@ -479,10 +494,13 @@ def autolink_caps(text_html, ctx):
             return phrase
         candidates = [phrase]
         words = phrase.split()
-        last = words[-1]
-        for suffix, rep in (("IES", "Y"), ("ES", ""), ("S", ""), ("'S", ""), ("’S", "")):
-            if last.endswith(suffix) and len(last) > len(suffix) + 2:
-                candidates.append(" ".join(words[:-1] + [last[: -len(suffix)] + rep]))
+        # The head noun is the last word, or the word before OF ("FIGURE OF SPEECH").
+        heads = [len(words) - 1] + [i - 1 for i, w in enumerate(words) if w == "OF" and i > 0]
+        for i in heads:
+            for form in number_forms(words[i]):
+                c = " ".join(words[:i] + [form] + words[i + 1:])
+                if c not in candidates:
+                    candidates.append(c)
         tid = None
         for c in candidates:
             key = fold(html.unescape(c))
