@@ -121,6 +121,7 @@ SECTIONS = [  # url folder, nav label, singular label
 ]
 
 SITE_TITLE = os.environ.get("SITE_TITLE", "Literary Criticism")
+GA_ID = os.environ.get("GA_ID", "G-CRQBFM26RK")  # Google Analytics measurement ID
 BASE = "/" + os.environ.get("BASE_PATH", "/").strip("/") + "/"
 BASE = "/" if BASE == "//" else BASE
 SITE_URL = os.environ.get("SITE_URL", "").rstrip("/") + "/" if os.environ.get("SITE_URL") else ""
@@ -682,6 +683,8 @@ def page(title, body, active=None, description="", path="", extra_head=""):
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{BASE}assets/style.css?v={BUILD_ID}">
 <link rel="icon" href="{BASE}assets/icon.svg" type="image/svg+xml">
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){{dataLayer.push(arguments);}} gtag('js', new Date()); gtag('config', '{GA_ID}');</script>
 {extra_head}
 </head>
 <body>
