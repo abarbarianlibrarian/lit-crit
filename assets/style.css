@@ -438,8 +438,12 @@ h2.letter .count { font: 500 14px/1 var(--sans); color: var(--ink-3); margin-lef
 @media (max-width: 640px) { .sb-clear { grid-column: 1; justify-self: start; } }
 
 /* Select, then confirm; graded only when the whole set is confirmed */
-.choice.selected:not(.right):not(.wrong) { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 1px var(--accent) inset; }
-.choice.selected:not(.right):not(.wrong) .cletter { color: var(--accent); }
+.choice.selected:not(.right):not(.wrong) { border-color: #3d3a35; background: #e6e2da; box-shadow: 0 0 0 1px #3d3a35 inset; }
+.choice.selected:not(.right):not(.wrong) .cletter { color: #3d3a35; }
+@media (prefers-color-scheme: dark) {
+  .choice.selected:not(.right):not(.wrong) { border-color: #d8d2c6; background: #3a362f; box-shadow: 0 0 0 1px #d8d2c6 inset; }
+  .choice.selected:not(.right):not(.wrong) .cletter { color: #d8d2c6; }
+}
 .quiz-ready .q.answered:not(.graded) .qlinks { display: none; }
 .scorebar:not(.revealed) .sb-main { display: none; }
 .scorebar:not(.revealed) .sb-stats { justify-content: flex-start; grid-column: 1 / -1; }
