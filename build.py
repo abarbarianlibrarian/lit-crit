@@ -659,7 +659,7 @@ def ext_link(url, label):
 
 
 def page(title, body, active=None, description="", path="", extra_head=""):
-    nav = "".join(
+    nav = f'<a href="{BASE}"{" aria-current=page" if active == "home" else ""}>Home</a>' + "".join(
         f'<a href="{BASE}{k}/"{" aria-current=page" if k == active else ""}>{label}</a>'
         for k, label, _ in SECTIONS
     )
@@ -1707,7 +1707,7 @@ def home(db, rel, resolver):
 <div class="stats">{counts}</div>
 {section('Good places to start', f'<div class="chips">{start}</div>')}
 """
-    write("index.html", page(SITE_TITLE, body, None, "A cross-referenced reference to literary terms, authors, works, prizes and periods.", ""))
+    write("index.html", page(SITE_TITLE, body, "home", "A cross-referenced reference to literary terms, authors, works, prizes and periods.", ""))
 
 
 def search_page():
