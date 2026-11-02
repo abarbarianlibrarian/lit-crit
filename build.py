@@ -1351,7 +1351,7 @@ def catalog_terms(db, rel):
         tags = sorted(db["tags"][g]["title"] for g in rel[("terms", tid)].get("tags", []))
         rows.append({
             "n": t["title"], "u": t["url"], "s": t["short"],
-            "m": f"{nq} question{'s' if nq != 1 else ''}" if nq else "",
+            "m": (lambda n: f"{n} test appearance{'s' if n != 1 else ''}" if n else "")(int(float(t["appearances"] or 0))),
             "f": {"tag": tags, "hasq": ["yes"] if nq else [], "hasauth": ["yes"] if rel[("terms", tid)].get("authors") else []},
             "k": {"name": sort_key(t["title"]), "q": nq, "app": int(float(t["appearances"] or 0))},
             "x": fold(f'{t["title"]} {t["short"]}'),
