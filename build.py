@@ -40,6 +40,7 @@ TABLES = {
         "name": "fldaPMxNZYkY7p84x", "short": "fldGMKdtfyu03CK6B", "definition": "fldEWol0G9ksi5tGC",
         "mentioned": "fldJhXfzL9A99oyos", "related": "fldXvNAT4jPJaR3E7", "tags": "fld0t6v2AZqeWicCI",
         "authors": "fld7yDp5hGXqHPeFG", "date": "fld6XeHIEPN4OjisU", "today": "fldHS2sW665ELiWYo",
+        "appearances": "flda3zLGAsqOWUu2Y",
     }),
     "authors": ("tblv2LTIvL1vj36zt", {
         "name": "fldir5h8wsLHZmNkd", "nationality": "fldNiSyQVIr0teads", "birth": "fldf97H8m30BZfQuE",
@@ -1352,7 +1353,7 @@ def catalog_terms(db, rel):
             "n": t["title"], "u": t["url"], "s": t["short"],
             "m": f"{nq} question{'s' if nq != 1 else ''}" if nq else "",
             "f": {"tag": tags, "hasq": ["yes"] if nq else [], "hasauth": ["yes"] if rel[("terms", tid)].get("authors") else []},
-            "k": {"name": sort_key(t["title"]), "q": nq, "ref": nm + len(t["related"])},
+            "k": {"name": sort_key(t["title"]), "q": nq, "app": int(float(t["appearances"] or 0))},
             "x": fold(f'{t["title"]} {t["short"]}'),
         })
     rows.sort(key=lambda r: r["k"]["name"])
@@ -1361,7 +1362,7 @@ def catalog_terms(db, rel):
            "checks": [{"key": "hasq", "label": "On practice tests"}, {"key": "hasauth", "label": "Linked to authors"}],
            "sorts": [{"label": "A–Z", "key": "name"}, {"label": "Z–A", "key": "-name"},
                      {"label": "Most practice questions", "keys": ["-q", "name"]},
-                     {"label": "Most cross-referenced", "keys": ["-ref", "name"]}]}
+                     {"label": "Most appearances", "keys": ["-app", "name"]}]}
     catalog_page("terms", "Terms", f"{len(rows):,} literary terms, cross-linked.", rows, cfg, browse=True)
 
 
