@@ -477,6 +477,12 @@ XREF_ALIASES = {
     "detective novel": ["Detective Story"], "play on words": ["Pun"], "old english language": ["Old English (Language)"],
     "tail rhyme stanza": ["Tail-Rhyme Stanza"], "tail-rhyme": ["Tail-Rhyme Stanza"],
     "english": ["English Sonnet"], "italian": ["Italian Sonnet"], "sleight of": ["Sleight of “and”"],
+    "successive": ["Successive Patterning"], "alternating": ["Alternating Patterning"],
+    "fabliaux": ["Fabliau (plural, Fabliaux)"], "nonsense": ["Nonsense Verse"], "scholia": ["Scholium (plural Scholia)"],
+    "self-effacing": ["Self-Effacing Author"], "tableaux": ["Tableau"], "primitive": ["Primitivism"],
+    "catalectic": ["Catalexis"], "pyramid": ["Freytag’s Pyramid"], "sinking": ["Dip"],
+    "apocalypse": ["Apocalyptic"], "prose-rhythm": ["Prose Rhythm"], "prose-rhythms": ["Prose Rhythm"],
+    "schlusselroman": ["Roman à Clef"], "motion pictures": ["Motion Picture"],
     # periods
     "romantic period": ["Romantic Period in English Literature, 1798-1870", "Romantic Period in American Literature, 1830-1865"],
     "realistic period": ["Realistic Period in English Literature, 1870-1914", "Realistic Period in American Literature, 1865-1900"],
@@ -492,6 +498,11 @@ XREF_ALIASES = {
     "period of the confessional self": ["Period of Confession and Postmodernism in American Literature, 1960—"],
     "postmodern period": ["Period of Confession and Postmodernism in American Literature, 1960—"],
 }
+
+
+# Aliases used only on pages whose title contains one of these words (or that link the term),
+# so "ITALIAN writers" in another entry stays plain text.
+ALIAS_CONTEXT = {"english": ("sonnet", "stanza", "quatrain"), "italian": ("sonnet", "stanza", "quatrain")}
 
 
 class Resolver:
@@ -583,6 +594,9 @@ class Resolver:
         for i in ids:
             if i in prefer:
                 return i
+        need = ALIAS_CONTEXT.get(fold(name.strip()))
+        if need and not any(w in fold(title) for w in need):
+            return None
         for word in ("american", "english"):
             if word in fold(title):
                 for i in ids:
