@@ -101,10 +101,16 @@ TABLES = {
     "essays": ("tbloXypOYQ086Pf5o", {
         "name": "fld98QHXSPFVXQVao", "prompt": "fldWhCvgV8NURzqKA", "poems": "fld51bwq2H8BR2STU",
     }),
+    # Shown only on the Periods timeline, beside the period each event falls in.
+    "events": ("tblzOtL2DxbE7LloC", {
+        "name": "fldpJz4MhYPahF6c8", "start": "fldyxtQkzXzmNakxP", "end": "flduwh0Y6SgQTaSMd",
+        "approximate": "fldR1rV5hM81oPnlM", "region": "fldNx7tvpqqRZ9wf7", "category": "fldJ2rfQdHa28YqDs",
+        "description": "fldNEt626OuUJaq0E", "periods": "fldLjD9C2paQ4XtvD",
+    }),
 }
 
 # Tables shown inside other pages rather than with pages of their own.
-NO_PAGES = {"resources", "questions", "reading-lists"}
+NO_PAGES = {"resources", "questions", "reading-lists", "events"}
 
 SECTIONS = [  # url folder, nav label, singular label
     ("terms", "Terms", "Term"),
@@ -282,6 +288,7 @@ LINK_FIELDS = {
     "prizes": {"works": "works", "authors": "authors"},
     "tags": {"terms": "terms"},
     "periods": {"parent": "periods", "subs": "periods", "before": "periods", "after": "periods"},
+    "events": {"periods": "periods"},
     "resources": {},
     "reading-lists": {"novel": "works", "play": "works", "poet": "authors"},
     "poems": {"authors": "authors", "essays": "essays", "questions": "questions"},
@@ -1874,12 +1881,57 @@ def periods_index(db):
         return (f'<li class="tl-sub"><a href="{c["url"]}"><span class="tl-name">{e(c["title"])}</span>'
                 f'<span class="tl-years">{e(years(c))}</span></a></li>')
 
-    def major_html(p, subs):
+    # Historical events, by the timeline they belong on. World events go on both timelines.
+    EVENT_REGION = {"united states": "American", "britain": "British"}
+
+    def ev_num(v):
+        v = (v or "").strip()
+        return int(float(v)) if re.fullmatch(r"-?\d+(\.0+)?", v) else years_of(v)
+
+    def event_year(y):
+        n = ev_num(y)
+        return None if n is None else (f"{-n} BCE" if n < 0 else str(n))
+
+    def event_html(ev):
+        a, b = event_year(ev["start"]), event_year(ev["end"])
+        when = f"{a}–{b}" if a and b and b != a else a
+        if ev["approximate"].lower() in ("true", "1", "checked") and when:
+            when = "c. " + when
+        world = fold(ev["region"]) == "world"
+        tip = f' title="{e(ev["description"], quote=True)}"' if ev["description"] else ""
+        return (f'<li class="tl-event{" tl-world" if world else ""}"{tip}><span class="tl-ev-years">{e(when or "")}</span>'
+                f'<span class="tl-ev-name">{e(ev["title"])}</span>'
+                f'{"<span class=tl-ev-tag>World</span>" if world else ""}</li>')
+
+    def events_for(region, majors):
+        """{major id: [event html]} for one timeline; events before its first period are left out."""
+        starts = [(yr(m["start"]), m) for m in majors if yr(m["start"]) != 99999]
+        if not starts:
+            return {}
+        out = {m["id"]: [] for m in majors}
+        major_ids = set(out)
+        for ev in sorted(db.get("events", {}).values(), key=lambda v: (ev_num(v["start"]) if ev_num(v["start"]) is not None else 99999, sort_key(v["title"]))):
+            y = ev_num(ev["start"])
+            reg = fold(ev["region"])
+            if y is None or not (EVENT_REGION.get(reg) == region or reg == "world"):
+                continue
+            if y < starts[0][0]:
+                continue  # before this timeline's periods begin
+            linked = [p for p in ev["periods"] if p in major_ids]
+            if linked and reg != "world":
+                home = linked[0]
+            else:
+                home = [m for s0, m in starts if s0 <= y][-1]["id"]
+            out[home].append(event_html(ev))
+        return out
+
+    def major_html(p, subs, evs):
         b = blurb(p)
         kids = (f'<ol class="tl-subs">{"".join(sub_html(c) for c in subs)}</ol>' if subs else "")
-        return (f'<li class="tl-major"><a class="tl-head" href="{p["url"]}"><span class="tl-years">{e(years(p))}</span>'
+        events = f'<ol class="tl-events" aria-label="Historical events">{"".join(evs)}</ol>' if evs else '<div class="tl-events"></div>'
+        return (f'<li class="tl-major">{events}<div class="tl-body"><a class="tl-head" href="{p["url"]}"><span class="tl-years">{e(years(p))}</span>'
                 f'<span class="tl-name">{e(p["title"])}</span></a>'
-                f'{f"<p class=tl-blurb>{e(b)}</p>" if b else ""}{kids}</li>')
+                f'{f"<p class=tl-blurb>{e(b)}</p>" if b else ""}{kids}</div></li>')
 
     cols, placed = [], []
     regions = sorted({p["region"] for p in periods.values() if p["region"]}, key=lambda r: (r != "American", r))
@@ -1889,11 +1941,12 @@ def periods_index(db):
         majors = [p for p in mine if not (set(p["parent"]) & ids) or fold(p["type"] or "") == "period"]
         major_ids = {p["id"] for p in majors}
         majors.sort(key=lambda p: (yr(p["start"]), sort_key(p["title"])))
+        evmap = events_for(region, majors)
         items = []
         for m in majors:
             subs = [periods[c] for c in mine_ids_children(m, mine, major_ids)]
             subs.sort(key=lambda c: (yr(c["start"]), sort_key(c["title"])))
-            html_ = major_html(m, subs)
+            html_ = major_html(m, subs, evmap.get(m["id"], []))
             items.append(html_)
             placed.append((ci, yr(m["start"]), html_))
         key = slugify(region)
@@ -1921,9 +1974,12 @@ def periods_index(db):
     pills = "".join(f'<button type="button" class="res-pill" data-region-pick="{slugify(r)}" aria-pressed="false">{e(r)}</button>'
                     for r in regions)
     pills += '<button type="button" class="res-pill" data-region-pick="both" aria-pressed="true">Both</button>'
+    n_events = len(db.get("events", {}))
+    toggle = ('<label class="res-free-toggle tl-ev-toggle"><input type="checkbox" data-events-toggle> Show historical events</label>'
+              if n_events else "")
     body = f"""<h1>Periods</h1>
 <p class="lede">The periods of American and British literature, in order. Major periods sit on the line; their sub-periods are listed beneath them.</p>
-<div class="res-pills tl-pills" role="group" aria-label="Show a region">{pills}</div>
+<div class="tl-controls"><div class="res-pills tl-pills" role="group" aria-label="Show a region">{pills}</div>{toggle}</div>
 <div class="tl-wrap" data-showing="both">{grid}<div class="tl-cols">{"".join(cols)}</div></div>
 <script>
 (function () {{
@@ -1935,6 +1991,18 @@ def periods_index(db):
     document.querySelectorAll("[data-region-pick]").forEach(function (b) {{ b.setAttribute("aria-pressed", String(b.getAttribute("data-region-pick") === r)); }});
   }}
   show(new URLSearchParams(location.search).get("region") || "both");
+  var tog = document.querySelector("[data-events-toggle]");
+  function events(on) {{
+    if (on) wrap.setAttribute("data-events", ""); else wrap.removeAttribute("data-events");
+    if (tog) tog.checked = on;
+  }}
+  events(new URLSearchParams(location.search).get("events") === "1");
+  if (tog) tog.addEventListener("change", function () {{
+    events(tog.checked);
+    var u = new URL(location.href);
+    if (tog.checked) u.searchParams.set("events", "1"); else u.searchParams.delete("events");
+    history.replaceState(null, "", u);
+  }});
   document.addEventListener("click", function (ev) {{
     var b = ev.target.closest("[data-region-pick]");
     if (!b) return;
