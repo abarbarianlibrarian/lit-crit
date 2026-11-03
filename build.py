@@ -1144,23 +1144,47 @@ def test_sort(t):
     return (-year, sort_key(t["type"] or t["title"]))
 
 
-def questions_section(db, qids, title="Practice questions", limit=10):
+def questions_section(db, qids, title="Practice questions", limit=10, skip_poem=None):
     qids = [q for q in dict.fromkeys(qids) if db["questions"][q]["url"]]
     if not qids:
         return ""
     qids.sort(key=lambda q: (test_sort(db["tests"][db["questions"][q]["test"][0]]),
                              int(db["questions"][q]["number"] or 0)))
-    items = "".join(question_html(db, db["questions"][q], in_test=False) for q in qids[:limit])
+    # A question that depends on a passage carries it: open the first time it appears on the page,
+    # folded on later questions that share it. A poem's own page already shows its text, so it is skipped.
+    shown = {("skip", skip_poem)} if skip_poem else set()
+
+    def one(q):
+        return question_html(db, db["questions"][q], in_test=False, shown_passages=shown)
+    items = "".join(one(q) for q in qids[:limit])
     more = ""
     if len(qids) > limit:
         more = (f'<details class="more more-q"><summary>{len(qids) - limit} more questions</summary>'
                 f'<ol class="plain questions compact">'
-                + "".join(question_html(db, db["questions"][q], in_test=False) for q in qids[limit:])
+                + "".join(one(q) for q in qids[limit:])
                 + "</ol></details>")
-    total = sum(question_points(db["questions"][q]) for q in qids)
     # Outside practice tests, each question is marked as soon as a choice is clicked, and nothing is saved.
     return section(title, f'<div class="quiz" data-instant>'
                           f'<ol class="plain questions compact">{items}</ol>{more}</div>', len(qids))
+
+
+def question_passages(db, q, shown):
+    """The passage(s) a question is about, for questions shown outside their practice test.
+    `shown` holds passages already printed on the page; ("skip", id) marks one the page itself shows."""
+    out = ""
+    for pid in q["poems"]:
+        p = db["poems"].get(pid)
+        if not p or ("skip", pid) in shown:
+            continue
+        first = pid not in shown
+        shown.add(pid)
+        text = (f'<div class="poem">{multiline(p["text"])}</div>' if p["text"]
+                else '<p class="muted">The text of this passage isn’t in the database yet.</p>')
+        label = "Passage" if first else "Passage (also above)"
+        out += (f'<details class="qpassage"{" open" if first else ""}><summary><span class="passage-label">{label}</span> '
+                f'<span class="qpassage-title">{e(p["title"])}</span></summary>'
+                f'{text}<p class="qpassage-link"><a href="{p["url"]}">Open {e(p["title"])}</a></p></details>')
+    return out
 
 
 def reading_list_links(db, ids):
@@ -1209,7 +1233,7 @@ def is_redacted(q):
     return "redacted" in text or "omitted" in text
 
 
-def question_html(db, q, in_test=True, rel=None):
+def question_html(db, q, in_test=True, rel=None, shown_passages=None):
     """One practice question. Choices are buttons; picking one marks every choice right or wrong
     and reveals the links (assets/quiz.js). Without JavaScript the answer sits behind "Show answer"."""
     letters = [l for l in "abcde" if q[l]]
@@ -1252,6 +1276,7 @@ def question_html(db, q, in_test=True, rel=None):
 <div class="qnum">{num}</div>
 <div class="qbody">
 {source}
+{question_passages(db, q, shown_passages) if shown_passages is not None else ''}
 <p class="prompt">{multiline(q['prompt'] or q['name'])}</p>
 {f'<ol class="plain choices">{choices}</ol>' if choices else ''}
 {note}
@@ -1361,7 +1386,7 @@ def poem_page(db, rel, p):
 </article>
 {section('Appeared on', chips(db, 'tests', tests, sort=False), len(tests))}
 {section('Essay prompts', essay_html, len(essays))}
-{questions_section(db, rel[('poems', pid)].get('questions', []), 'Questions about this text', limit=30)}
+{questions_section(db, rel[('poems', pid)].get('questions', []), 'Questions about this text', limit=30, skip_poem=pid)}
 """
     names = ", ".join(db["authors"][a]["title"] for a in authors)
     write(f"poems/{p['slug']}/index.html", page(p["title"], body, "poems", f"{p['title']}" + (f" by {names}" if names else ""), f"poems/{p['slug']}/"))
