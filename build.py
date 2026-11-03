@@ -137,14 +137,15 @@ MEDIA_CACHE = Path(".media-cache")
 
 # ---------------------------------------------------------------- fetching
 
-def fetch_table(token, table_id, field_ids):
+def fetch_table(token, table_id, field_ids, base_id=None):
+    base_id = base_id or BASE_ID
     records, offset = [], None
     while True:
         params = [("pageSize", "100"), ("returnFieldsByFieldId", "true")]
         params += [("fields[]", f) for f in field_ids]
         if offset:
             params.append(("offset", offset))
-        url = f"https://api.airtable.com/v0/{BASE_ID}/{table_id}?" + urllib.parse.urlencode(params)
+        url = f"https://api.airtable.com/v0/{base_id}/{table_id}?" + urllib.parse.urlencode(params)
         req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
         for attempt in range(6):
             try:
@@ -181,6 +182,41 @@ def load_data(args):
             Path(args.save_data).mkdir(parents=True, exist_ok=True)
             (Path(args.save_data) / f"{key}.json").write_text(json.dumps(raw[key]))
     return raw
+
+
+# UIL schools for the Account page's school picker: the Schools Master table in the Master Tab Room
+# base. The AIRTABLE_TOKEN needs read access to that base too; without it the picker falls back to
+# a free-text school field.
+SCHOOLS_BASE = "appHrIvllzeW3qy1N"
+SCHOOLS_TABLE = "tblJsPynFPK8hsMJ9"
+SCHOOLS_FIELDS = {"name": "fldlZwlGP5vLaT700", "city": "fld15uwKgLHMymFaC", "class": "flduVvPYSGAsqqjYH"}
+
+
+def load_schools(args):
+    """[[record id, name, city, classification], …] sorted by name, or None if unavailable."""
+    try:
+        if args.fixtures:
+            p = Path(args.fixtures) / "schools.json"
+            recs = json.loads(p.read_text()) if p.exists() else None
+        else:
+            token = os.environ.get("AIRTABLE_TOKEN")
+            print("Fetching UIL schools…", flush=True)
+            recs = fetch_table(token, SCHOOLS_TABLE, list(SCHOOLS_FIELDS.values()), SCHOOLS_BASE)
+    except (SystemExit, Exception) as err:
+        print(f"  note: UIL school list not available ({err}); the school field will be free text", flush=True)
+        return None
+    if recs is None:
+        return None
+    out = []
+    for r in recs:
+        f = r.get("fields", {})
+        name = as_text(f.get(SCHOOLS_FIELDS["name"])).strip()
+        if name:
+            out.append([r["id"], name, as_text(f.get(SCHOOLS_FIELDS["city"])).strip(),
+                        as_text(f.get(SCHOOLS_FIELDS["class"])).strip()])
+    out.sort(key=lambda x: (fold(x[1]), fold(x[2])))
+    print(f"  {len(out)} schools", flush=True)
+    return out
 
 
 # ---------------------------------------------------------------- normalizing cell values
@@ -1955,6 +1991,26 @@ def account_page():
         return (f'<label class="acct-field"><span>{label}</span>'
                 f'<input name="{name}" type="{kind}" autocomplete="{auto}" required></label>')
     email = field("email", "Email", "email", "email")
+    today = datetime.date.today()
+    first = today.year + (1 if today.month >= 8 else 0)          # this school year's seniors
+    years = "".join(f'<option value="{y}">{y}</option>' for y in range(first, first + 4))
+
+    def profile_fields(prefix):
+        return f"""<div class="acct-field"><span>I'm a</span>
+  <div class="acct-choices">
+    <label><input type="radio" name="role" value="student"> Student</label>
+    <label><input type="radio" name="role" value="coach"> Coach</label>
+  </div></div>
+  <label class="acct-field" data-grad hidden><span>Graduation year</span>
+    <select name="graduation_year"><option value="">Choose…</option>{years}<option value="other">Other</option></select></label>
+  <label class="acct-field" data-grad-other hidden><span>Graduation year (other)</span>
+    <input name="graduation_year_other" type="number" min="2000" max="2100" inputmode="numeric"></label>
+  <label class="acct-field"><span>School</span>
+    <input name="school" type="text" maxlength="120" autocomplete="off" list="uil-schools-{prefix}"
+      placeholder="Start typing your school's name" data-school-input></label>
+  <datalist id="uil-schools-{prefix}" data-school-list></datalist>
+  <label class="acct-check" data-school-other hidden><input type="checkbox" name="school_other"> My school isn't on the list</label>"""
+
     body = f"""<section class="account" data-account>
 <h1>Your account</h1>
 <p class="lede">Sign in to save your practice answers and test scores to your account, so they follow you to any browser or device. You can still practice without an account; your progress is then kept in this browser only.</p>
@@ -1973,6 +2029,9 @@ def account_page():
   {email}
   {field("password", "Password (at least 8 characters)", "password", "new-password")}
   {field("password2", "Password again", "password", "new-password")}
+  <fieldset class="acct-profile"><legend>About you <span class="muted">(optional; you can change this later)</span></legend>
+  {profile_fields("su")}
+  </fieldset>
   <button type="submit" class="acct-btn">Create account</button>
   <p class="acct-msg" role="status"></p>
   <p class="acct-alt">Anything you've already answered in this browser will be saved to your new account. Already have an account? <a href="#" data-go="signin">Sign in</a></p>
@@ -1996,10 +2055,19 @@ def account_page():
   <p class="acct-who">Signed in as <strong data-acct-email></strong></p>
   <p>Saved to your account: <span data-acct-count></span>. <span class="acct-status muted" data-acct-status></span></p>
   <p><a class="acct-btn" href="{BASE}tests/">Go to practice tests</a></p>
+</div>
+<form id="acct-profile" data-view-also="account" hidden novalidate>
+  <h2>Your profile</h2>
+  {profile_fields("pf")}
+  <button type="submit" class="acct-btn">Save profile</button>
+  <p class="acct-msg" role="status"></p>
+</form>
+<div data-view-also="account" hidden>
   <p class="acct-alt"><a href="#" data-go="reset">Change password</a> · <button type="button" class="linkish" data-signout>Sign out</button></p>
   <p class="muted small">Signing out clears your progress from this browser; it stays saved in your account.</p>
 </div>
 </section>
+<script>window.LITCRIT_SCHOOLS = "{BASE}assets/data/schools.json?v={BUILD_ID}";</script>
 <script src="{BASE}assets/account.js?v={BUILD_ID}" defer></script>"""
     write("account/index.html", page("Your account", body, None, "Sign in to save your practice test progress.", "account/"))
 
@@ -2079,6 +2147,10 @@ def main():
     OUT.mkdir()
     shutil.copytree(Path(__file__).parent / "assets", OUT / "assets")
     (OUT / ".nojekyll").write_text("")
+    schools = load_schools(args)
+    if schools:
+        (OUT / "assets" / "data").mkdir(parents=True, exist_ok=True)
+        (OUT / "assets" / "data" / "schools.json").write_text(json.dumps(schools, ensure_ascii=False, separators=(",", ":")))
 
     if not args.no_images:
         prepare_media(db)
