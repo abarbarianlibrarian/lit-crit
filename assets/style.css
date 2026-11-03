@@ -619,8 +619,20 @@ h2.letter .count { font: 500 14px/1 var(--sans); color: var(--ink-3); margin-lef
 /* Periods timeline */
 .tl-pills { margin: 8px 0 24px; }
 .tl-cols { display: grid; gap: 40px; }
-.tl-cols[data-showing="both"] { grid-template-columns: 1fr 1fr; }
-@media (max-width: 760px) { .tl-cols[data-showing="both"] { grid-template-columns: 1fr; } }
+/* Both, on wide screens: the year-aligned grid; one region, or Both on phones: plain columns */
+.tl-grid { display: none; column-gap: 40px; }
+.tl-wrap[data-showing="both"] .tl-grid { display: grid; }
+.tl-wrap[data-showing="both"] .tl-cols { display: none; }
+@media (max-width: 760px) {
+  .tl-wrap[data-showing="both"] .tl-grid { display: none; }
+  .tl-wrap[data-showing="both"] .tl-cols { display: grid; }
+}
+.tl-grid-head { font: 600 13px/1.2 var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); margin: 0 0 14px; }
+.tl-cell .timeline::before { top: 0; bottom: 0; }
+.tl-cell.tl-first .timeline::before { top: 8px; }
+.tl-cell { min-width: 0; }
+.tl-before { margin: 0 0 0 0; padding: 4px 0 0 26px; font: 400 14px/1.4 var(--sans); color: var(--ink-3); font-style: italic;
+  border-left: 2px dashed var(--rule); margin-left: 7px; padding-left: 19px; }
 .tl-col h2 { font: 600 13px/1.2 var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); margin: 0 0 14px; }
 .timeline { list-style: none; margin: 0; padding: 0 0 0 26px; position: relative; }
 .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--rule); }

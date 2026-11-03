@@ -1856,9 +1856,9 @@ def periods_index(db):
                 f'<span class="tl-name">{e(p["title"])}</span></a>'
                 f'{f"<p class=tl-blurb>{e(b)}</p>" if b else ""}{kids}</li>')
 
-    cols = []
+    cols, placed = [], []
     regions = sorted({p["region"] for p in periods.values() if p["region"]}, key=lambda r: (r != "American", r))
-    for region in regions:
+    for ci, region in enumerate(regions):
         mine = [p for p in periods.values() if p["region"] == region]
         ids = {p["id"] for p in mine}
         majors = [p for p in mine if not (set(p["parent"]) & ids) or fold(p["type"] or "") == "period"]
@@ -1868,20 +1868,41 @@ def periods_index(db):
         for m in majors:
             subs = [periods[c] for c in mine_ids_children(m, mine, major_ids)]
             subs.sort(key=lambda c: (yr(c["start"]), sort_key(c["title"])))
-            items.append(major_html(m, subs))
+            html_ = major_html(m, subs)
+            items.append(html_)
+            placed.append((ci, yr(m["start"]), html_))
         key = slugify(region)
         cols.append(f'<section class="tl-col" data-region="{key}"><h2>{e(region)} literature</h2>'
                     f'<ol class="timeline">{"".join(items)}</ol></section>')
+
+    # "Both": one grid whose rows are the years where any major period starts, so the two
+    # timelines line up by year (a period spans the rows until the next period in its column).
+    bounds = sorted({y for _, y, _ in placed})
+    row_of = {y: i + 2 for i, y in enumerate(bounds)}
+    last_row = len(bounds) + 2
+    cells = [f'<h2 class="tl-grid-head" style="grid-column:{ci + 1};grid-row:1">{e(r)} literature</h2>'
+             for ci, r in enumerate(regions)]
+    for ci in range(len(regions)):
+        mine = sorted([x for x in placed if x[0] == ci], key=lambda x: x[1])
+        for k, (_, y, html_) in enumerate(mine):
+            end = row_of[mine[k + 1][1]] if k + 1 < len(mine) else last_row
+            first = " tl-first" if k == 0 else ""
+            cells.append(f'<div class="tl-cell{first}" style="grid-column:{ci + 1};grid-row:{row_of[y]} / {end}">'
+                         f'<ol class="timeline">{html_}</ol></div>')
+        if mine and row_of[mine[0][1]] > 2:
+            cells.append(f'<p class="tl-before" style="grid-column:{ci + 1};grid-row:2 / {row_of[mine[0][1]]}">'
+                         f'{e(regions[ci])} literature begins in {mine[0][1]}.</p>')
+    grid = f'<div class="tl-grid" style="grid-template-columns:repeat({len(regions)}, 1fr)">{"".join(cells)}</div>'
     pills = "".join(f'<button type="button" class="res-pill" data-region-pick="{slugify(r)}" aria-pressed="false">{e(r)}</button>'
                     for r in regions)
     pills += '<button type="button" class="res-pill" data-region-pick="both" aria-pressed="true">Both</button>'
     body = f"""<h1>Periods</h1>
 <p class="lede">The periods of American and British literature, in order. Major periods sit on the line; their sub-periods are listed beneath them.</p>
 <div class="res-pills tl-pills" role="group" aria-label="Show a region">{pills}</div>
-<div class="tl-cols" data-showing="both">{"".join(cols)}</div>
+<div class="tl-wrap" data-showing="both">{grid}<div class="tl-cols">{"".join(cols)}</div></div>
 <script>
 (function () {{
-  var wrap = document.querySelector(".tl-cols");
+  var wrap = document.querySelector(".tl-wrap");
   function show(r) {{
     if (!document.querySelector('[data-region-pick="' + r + '"]')) r = "both";
     wrap.setAttribute("data-showing", r);
