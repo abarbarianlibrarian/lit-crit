@@ -1861,24 +1861,91 @@ def tags_index(db, rel):
 
 
 def resources_index(db, resolver):
-    rows = []
-    for r in db["resources"].values():
-        work = ", ".join(r["work"]) or "General"
-        wid = resolver.find("works", work)
-        title = f"{work}: {r['title']}"
-        rows.append({"n": title, "u": r["link"] if re.match(r"^https?://", r["link"] or "") else "", "ext": True,
-                     "s": "", "m": " · ".join(x for x in (r["type"], r["year"]) if x),
-                     "f": {"type": [r["type"]] if r["type"] else [], "year": [r["year"]] if r["year"] else [],
-                           "work": r["work"] or ["General"]},
-                     "k": {"work": sort_key(work), "name": sort_key(r["title"]), "year": r["year"]},
-                     "x": fold(f"{work} {r['title']} {r['type']}")})
-    rows.sort(key=lambda x: (x["k"]["work"], x["k"]["name"]))
-    cfg = {"placeholder": "Work or resource",
-           "filters": [{"key": "work", "label": "Work", "all": "All works"},
-                       {"key": "type", "label": "Type", "all": "All types"},
-                       {"key": "year", "label": "School year", "all": "All years", "order": "desc"}],
-           "sorts": [{"label": "By work", "keys": ["work", "name"]}, {"label": "Newest school year", "keys": ["-year", "work"]}]}
-    catalog_page("resources", "Reading resources", "Texts, audio and study materials for the reading list works.", rows, cfg)
+    """Resources page: pick a reading list, then see its resources grouped by novel (or short stories),
+    play and poetry. A resource belongs to a list by its School Year, and to a group by its Work
+    (matched against the list's novel, play and poet), with Poetry Guides falling back to poetry."""
+    lists = sorted(db["reading-lists"].values(), key=lambda rl: rl["title"], reverse=True)
+
+    def names_match(a, b):
+        a, b = fold(a), fold(b)
+        if not a or not b:
+            return False
+        return a == b or a in b or b in a or a.split()[-1] == b.split()[-1]
+
+    def slot_of(r, rl):
+        works = r["work"] or []
+        for key, ids, table in (("novel", rl["novel"], "works"), ("play", rl["play"], "works"), ("poet", rl["poet"], "authors")):
+            for i in ids:
+                if any(names_match(w, db[table][i]["title"]) for w in works):
+                    return key
+        if fold(r["type"] or "").startswith("poetry"):
+            return "poet"
+        return "general"
+
+    def item(r):
+        link = r["link"] if re.match(r"^https?://", r["link"] or "") else ""
+        name = (f'<a class="ext" href="{e(link, quote=True)}" target="_blank" rel="noopener">{e(r["title"])} ↗</a>'
+                if link else e(r["title"]))
+        kind = f'<span class="chip res-type">{e(r["type"])}</span>' if r["type"] else ""
+        return f'<li class="res-item"><span class="res-name">{name}</span>{kind}</li>'
+
+    sections, options, default = [], [], None
+    for rl in lists:
+        mine = [r for r in db["resources"].values() if (r["year"] or "") == rl["year"]]
+        groups = {"novel": [], "play": [], "poet": [], "general": []}
+        for r in mine:
+            groups[slot_of(r, rl)].append(r)
+        novel_titles = [db["works"][i]["title"] for i in rl["novel"]]
+        novel_label = "Short stories" if any("short stor" in fold(t) for t in novel_titles) else "Novel"
+        heads = {
+            "novel": (novel_label, ", ".join(f'<a href="{db["works"][i]["url"]}">{work_title_html(db["works"][i])}</a>' for i in rl["novel"])),
+            "play": ("Play", ", ".join(f'<a href="{db["works"][i]["url"]}">{work_title_html(db["works"][i])}</a>' for i in rl["play"])),
+            "poet": ("Poetry", ", ".join(f'<a href="{db["authors"][i]["url"]}">{e(db["authors"][i]["title"])}</a>' for i in rl["poet"])),
+            "general": ("General", ""),
+        }
+        blocks = []
+        for key in ("novel", "play", "poet", "general"):
+            rs = sorted(groups[key], key=lambda r: (sort_key(r["type"] or "~"), sort_key(r["title"])))
+            if key == "general" and not rs:
+                continue
+            label, what = heads[key]
+            body = (f'<ul class="res-list">{"".join(item(r) for r in rs)}</ul>' if rs
+                    else '<p class="muted res-none">No resources yet.</p>')
+            blocks.append(f'<section class="res-group"><h2>{label}{": " + what if what else ""}'
+                          f' <span class="count">{len(rs)}</span></h2>{body}</section>')
+        n = len(mine)
+        if default is None and n:
+            default = rl["slug"]
+        note = "" if n else '<p class="lede res-empty">No resources have been added for this reading list yet.</p>'
+        sections.append(f'<div class="res-list-panel" data-rl="{rl["slug"]}" hidden>{note}{"".join(blocks)}</div>')
+        options.append(f'<option value="{rl["slug"]}">{e(rl["title"])} · '
+                       f'{n} resource{"" if n == 1 else "s"}</option>')
+    default = default or (lists[0]["slug"] if lists else "")
+    body = f"""<h1>Reading resources</h1>
+<p class="lede">Texts, audio and study materials for each year's reading list.</p>
+<label class="res-pick"><span>Reading list</span>
+<select data-rl-pick>{"".join(options)}</select></label>
+{"".join(sections)}
+<script>
+(function () {{
+  var pick = document.querySelector("[data-rl-pick]"), panels = document.querySelectorAll("[data-rl]");
+  function show(slug) {{
+    var found = false;
+    panels.forEach(function (p) {{ var on = p.getAttribute("data-rl") === slug; p.hidden = !on; found = found || on; }});
+    if (!found && panels.length) {{ slug = {json.dumps(default)}; return show(slug); }}
+    pick.value = slug;
+  }}
+  var q = new URLSearchParams(location.search).get("list");
+  show(q || {json.dumps(default)});
+  pick.addEventListener("change", function () {{
+    show(pick.value);
+    var u = new URL(location.href); u.searchParams.set("list", pick.value); history.replaceState(null, "", u);
+  }});
+}})();
+</script>
+<noscript><style>.res-list-panel[hidden] {{ display: block; }}</style></noscript>"""
+    write("resources/index.html", page("Reading resources", body, "resources",
+                                       "Texts, audio and study materials for each year's reading list.", "resources/"))
 
 
 def daily_term_html(db, resolver, tm):
