@@ -76,7 +76,7 @@ TABLES = {
     }),
     "resources": ("tblfrvM5B3HwYgqh3", {
         "name": "fldL0NeGFsHTtCuTY", "year": "fldYjH6DrMMW8cyst", "type": "fldZFmUiDfw7dt2UV",
-        "work": "fldpIadf3Zq41nZKo", "link": "fld94UO33vHDZzs7N",
+        "work": "fldpIadf3Zq41nZKo", "link": "fld94UO33vHDZzs7N", "access": "fldM8Y98hILZsxrqI",
     }),
     "reading-lists": ("tblS8WrrRcpF6hhMq", {
         "name": "fldWDcj2iJT5Q0gXp", "year": "flduoiWbyolCViqal", "novel": "fldEmmFZ4je9LxAH8",
@@ -1882,12 +1882,54 @@ def resources_index(db, resolver):
             return "poet"
         return "general"
 
-    def item(r):
+    ACCESS_CLASS = {"free": "free", "free preview": "preview", "paid": "paid"}
+
+    def item(r, label=None):
         link = r["link"] if re.match(r"^https?://", r["link"] or "") else ""
-        name = (f'<a class="ext" href="{e(link, quote=True)}" target="_blank" rel="noopener">{e(r["title"])} ↗</a>'
-                if link else e(r["title"]))
+        text = e(label or r["title"])
+        name = (f'<a class="ext" href="{e(link, quote=True)}" target="_blank" rel="noopener">{text} \u2197</a>'
+                if link else text)
         kind = f'<span class="chip res-type">{e(r["type"])}</span>' if r["type"] else ""
-        return f'<li class="res-item"><span class="res-name">{name}</span>{kind}</li>'
+        acc = (r.get("access") or "").strip()
+        badge = (f'<span class="res-access res-{ACCESS_CLASS.get(fold(acc), "free")}">{e(acc)}</span>' if acc else "")
+        return f'<li class="res-item"><span class="res-name">{name}</span><span class="res-tags">{badge}{kind}</span></li>'
+
+    PART = re.compile(r"\s*\((part \d+)\)\s*$", re.I)
+
+    def by_work(rs, general_words):
+        """Split "Young Goodman Brown - Lit Charts" into the story or poem and the rest, so a group
+        lists each story or poem under its own heading. Collections, purchases and anything naming
+        the author go under "Collections and general"."""
+        items = []
+        for r in rs:
+            title = r["title"] or ""
+            if " - " in title:
+                key, rest = title.split(" - ", 1)
+            else:
+                key, rest = "", title
+            m = PART.search(key)
+            if m:
+                key, rest = key[:m.start()].strip(), f"{rest} ({m.group(1)})"
+            k = fold(key)
+            if (not key or fold(r["type"] or "") == "purchase" or any(w in k for w in general_words)
+                    or re.search(r"audiobook|full text", fold(rest))):
+                key, rest = "", title
+            items.append([key, rest, r])
+        # "In Reference to her Children, 23 June 1659" and "In Reference to her Children" are one poem.
+        keys = sorted({x[0] for x in items if x[0]}, key=len)
+        canon = {}
+        for k in keys:
+            short = next((c for c in canon.values() if fold(k).startswith(fold(c)) and
+                          fold(k)[len(fold(c)):len(fold(c)) + 1] in (",", " ", "(", ":", ";")), None)
+            canon[k] = short or k
+        groups = defaultdict(list)
+        for key, rest, r in items:
+            groups[canon.get(key, "")].append((rest, r))
+        out = []
+        for key in sorted(groups, key=lambda k: (k != "", sort_key(k))):
+            rows = sorted(groups[key], key=lambda x: (sort_key(x[1]["type"] or "~"), sort_key(x[0])))
+            out.append((key or "Collections and general", rows))
+        return out
 
     sections, options, default = [], [], None
     for rl in lists:
@@ -1903,14 +1945,26 @@ def resources_index(db, resolver):
             "poet": ("Poetry", ", ".join(f'<a href="{db["authors"][i]["url"]}">{e(db["authors"][i]["title"])}</a>' for i in rl["poet"])),
             "general": ("General", ""),
         }
+        general_words = {fold(db["authors"][i]["title"]).split()[-1] for i in rl["poet"]}
+        general_words |= {re.sub(r"[’']s$", "", w) for t in novel_titles for w in fold(t).split()
+                          if len(w) > 5 and w not in ("short", "stories")}
         blocks = []
         for key in ("novel", "play", "poet", "general"):
-            rs = sorted(groups[key], key=lambda r: (sort_key(r["type"] or "~"), sort_key(r["title"])))
+            rs = groups[key]
             if key == "general" and not rs:
                 continue
             label, what = heads[key]
-            body = (f'<ul class="res-list">{"".join(item(r) for r in rs)}</ul>' if rs
-                    else '<p class="muted res-none">No resources yet.</p>')
+            many = key == "poet" or (key == "novel" and novel_label == "Short stories")
+            if not rs:
+                body = '<p class="muted res-none">No resources yet.</p>'
+            elif many:
+                body = "".join(
+                    f'<h3 class="res-sub">{e(sub)}</h3><ul class="res-list">'
+                    f'{"".join(item(r, rest if sub != "Collections and general" else None) for rest, r in rows)}</ul>'
+                    for sub, rows in by_work(rs, general_words))
+            else:
+                rs = sorted(rs, key=lambda r: (sort_key(r["type"] or "~"), sort_key(r["title"])))
+                body = f'<ul class="res-list">{"".join(item(r) for r in rs)}</ul>'
             blocks.append(f'<section class="res-group"><h2>{label}{": " + what if what else ""}'
                           f' <span class="count">{len(rs)}</span></h2>{body}</section>')
         n = len(mine)
@@ -1923,6 +1977,7 @@ def resources_index(db, resolver):
     default = default or (lists[0]["slug"] if lists else "")
     body = f"""<h1>Reading resources</h1>
 <p class="lede">Texts, audio and study materials for each year's reading list.</p>
+<p class="res-key"><span class="res-access res-free">Free</span> free to use · <span class="res-access res-preview">Free preview</span> part of it is free; the rest needs a subscription · <span class="res-access res-paid">Paid</span> costs money</p>
 <label class="res-pick"><span>Reading list</span>
 <select data-rl-pick>{"".join(options)}</select></label>
 {"".join(sections)}
