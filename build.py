@@ -1828,21 +1828,86 @@ def reading_lists_index(db):
 
 
 def periods_index(db):
-    rows = []
-    for p in db["periods"].values():
-        years = " – ".join(x for x in (p["start"], p["end"]) if x)
-        rows.append({"n": p["title"], "u": p["url"], "s": years, "m": p["region"],
-                     "f": {"region": [p["region"]] if p["region"] else [], "type": [p["type"]] if p["type"] else []},
-                     "k": {"start": years_of(p["start"]), "region": p["region"], "name": sort_key(p["title"])},
-                     "x": fold(f'{p["title"]} {p["description"]}')})
-    rows.sort(key=lambda r: (r["k"]["region"], r["k"]["start"] or 0))
-    cfg = {"placeholder": "Period name or description",
-           "filters": [{"key": "region", "label": "Region", "all": "All regions"},
-                       {"key": "type", "label": "Kind", "all": "All kinds"}],
-           "range": {"key": "start", "label": "Began"},
-           "sorts": [{"label": "By region, in order", "keys": ["region", "start"]},
-                     {"label": "Chronological", "keys": ["start", "name"]}, {"label": "A–Z", "key": "name"}]}
-    catalog_page("periods", "Periods", "Literary periods by region.", rows, cfg)
+    """Periods page: a vertical timeline per region (American, British), major periods on the line
+    with their sub-periods indented beneath; pills show one region or both side by side."""
+    periods = db["periods"]
+
+    def yr(v):
+        y = years_of(v)
+        return y if y is not None else 99999
+
+    def years(p):
+        a, b = p["start"], p["end"]
+        return f"{a}–{b}" if a and b else f"{a}–present" if a else b
+
+    def blurb(p):
+        d = re.sub(r"\s+", " ", p["description"] or "").strip()
+        m = re.match(r"(.{40,180}?[.!?])(\s|$)", d)
+        return m.group(1) if m else (d[:160].rsplit(" ", 1)[0].rstrip(",;:—– ") + "…" if len(d) > 160 else d)
+
+    def sub_html(c):
+        return (f'<li class="tl-sub"><a href="{c["url"]}"><span class="tl-name">{e(c["title"])}</span>'
+                f'<span class="tl-years">{e(years(c))}</span></a></li>')
+
+    def major_html(p, subs):
+        b = blurb(p)
+        kids = (f'<ol class="tl-subs">{"".join(sub_html(c) for c in subs)}</ol>' if subs else "")
+        return (f'<li class="tl-major"><a class="tl-head" href="{p["url"]}"><span class="tl-years">{e(years(p))}</span>'
+                f'<span class="tl-name">{e(p["title"])}</span></a>'
+                f'{f"<p class=tl-blurb>{e(b)}</p>" if b else ""}{kids}</li>')
+
+    cols = []
+    regions = sorted({p["region"] for p in periods.values() if p["region"]}, key=lambda r: (r != "American", r))
+    for region in regions:
+        mine = [p for p in periods.values() if p["region"] == region]
+        ids = {p["id"] for p in mine}
+        majors = [p for p in mine if not (set(p["parent"]) & ids) or fold(p["type"] or "") == "period"]
+        major_ids = {p["id"] for p in majors}
+        majors.sort(key=lambda p: (yr(p["start"]), sort_key(p["title"])))
+        items = []
+        for m in majors:
+            subs = [periods[c] for c in mine_ids_children(m, mine, major_ids)]
+            subs.sort(key=lambda c: (yr(c["start"]), sort_key(c["title"])))
+            items.append(major_html(m, subs))
+        key = slugify(region)
+        cols.append(f'<section class="tl-col" data-region="{key}"><h2>{e(region)} literature</h2>'
+                    f'<ol class="timeline">{"".join(items)}</ol></section>')
+    pills = "".join(f'<button type="button" class="res-pill" data-region-pick="{slugify(r)}" aria-pressed="false">{e(r)}</button>'
+                    for r in regions)
+    pills += '<button type="button" class="res-pill" data-region-pick="both" aria-pressed="true">Both</button>'
+    body = f"""<h1>Periods</h1>
+<p class="lede">The periods of American and British literature, in order. Major periods sit on the line; their sub-periods are listed beneath them.</p>
+<div class="res-pills tl-pills" role="group" aria-label="Show a region">{pills}</div>
+<div class="tl-cols" data-showing="both">{"".join(cols)}</div>
+<script>
+(function () {{
+  var wrap = document.querySelector(".tl-cols");
+  function show(r) {{
+    if (!document.querySelector('[data-region-pick="' + r + '"]')) r = "both";
+    wrap.setAttribute("data-showing", r);
+    wrap.querySelectorAll("[data-region]").forEach(function (c) {{ c.hidden = r !== "both" && c.getAttribute("data-region") !== r; }});
+    document.querySelectorAll("[data-region-pick]").forEach(function (b) {{ b.setAttribute("aria-pressed", String(b.getAttribute("data-region-pick") === r)); }});
+  }}
+  show(new URLSearchParams(location.search).get("region") || "both");
+  document.addEventListener("click", function (ev) {{
+    var b = ev.target.closest("[data-region-pick]");
+    if (!b) return;
+    var r = b.getAttribute("data-region-pick"); show(r);
+    var u = new URL(location.href);
+    if (r === "both") u.searchParams.delete("region"); else u.searchParams.set("region", r);
+    history.replaceState(null, "", u);
+  }});
+}})();
+</script>"""
+    write("periods/index.html", page("Periods", body, "periods", "The periods of American and British literature as a timeline.", "periods/"))
+
+
+def mine_ids_children(major, mine, major_ids):
+    """Sub-periods of a major period: those linked as its Sub Periods or naming it as their parent."""
+    ids = {p["id"] for p in mine}
+    kids = [c for c in major["subs"] if c in ids and c not in major_ids]
+    kids += [p["id"] for p in mine if major["id"] in p["parent"] and p["id"] not in major_ids and p["id"] not in kids]
+    return kids
 
 
 def tags_index(db, rel):
