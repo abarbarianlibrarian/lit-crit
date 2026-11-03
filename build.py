@@ -127,6 +127,9 @@ SECTIONS = [  # url folder, nav label, singular label
     ("flashcards", "Flashcards", "Deck"),
 ]
 
+# Sections left out of the menu at the top of every page (their pages still exist and are linked elsewhere).
+NAV_HIDDEN = {"works", "tags"}
+
 SITE_TITLE = os.environ.get("SITE_TITLE", "Literary Criticism")
 GA_ID = os.environ.get("GA_ID", "G-CRQBFM26RK")  # Google Analytics measurement ID
 # Accounts (Supabase). The project URL and its publishable (anon) key are public by design: what each
@@ -937,7 +940,7 @@ def ext_link(url, label):
 def page(title, body, active=None, description="", path="", extra_head=""):
     nav = f'<a href="{BASE}"{" aria-current=page" if active == "home" else ""}>Home</a>' + "".join(
         f'<a href="{BASE}{k}/"{" aria-current=page" if k == active else ""}>{label}</a>'
-        for k, label, _ in SECTIONS
+        for k, label, _ in SECTIONS if k not in NAV_HIDDEN
     )
     full_title = f"{title} · {SITE_TITLE}" if title != SITE_TITLE else SITE_TITLE
     desc = e(re.sub(r"\s+", " ", description).strip()[:300], quote=True)
