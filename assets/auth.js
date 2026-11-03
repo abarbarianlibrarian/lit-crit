@@ -1,5 +1,6 @@
 /*
- * Accounts (Supabase): optional sign-in that saves practice answers, scored pages and test scores
+ * Accounts (Supabase): optional sign-in that saves practice answers, scored pages, test scores,
+ * the flashcard schedule and custom flashcard decks
  * to the visitor's account, so they follow them between browsers and devices.
  *
  * Guests: nothing changes; progress stays in this browser (localStorage), and the Supabase library
@@ -13,7 +14,8 @@
  */
 (function () {
   var cfg = window.LITCRIT_AUTH || {};
-  var KEYS = { answers: "litcrit-answers-v1", scored: "litcrit-scored-v1", scores: "litcrit-test-scores-v1" };
+  var KEYS = { answers: "litcrit-answers-v1", scored: "litcrit-scored-v1", scores: "litcrit-test-scores-v1",
+               cards: "litcrit-cards-v1", decks: "litcrit-decks-v1" };
   var META = "litcrit-sync-v1";          // {uid, dirty}: whose progress this browser holds, and unsaved changes
   var SESSION = "litcrit-auth";          // where the Supabase library keeps the session
   var BASE = window.SITE_BASE || "/";
@@ -30,11 +32,11 @@
   function storedUser() {
     try { var s = JSON.parse(get(SESSION)); return s && s.user ? s.user : null; } catch (e) { return null; }
   }
-  function localData() { return { answers: json(KEYS.answers), scored: json(KEYS.scored), scores: json(KEYS.scores) }; }
+  function localData() { var d = {}; Object.keys(KEYS).forEach(function (k) { d[k] = json(KEYS[k]); }); return d; }
   function writeLocal(d) {
     Object.keys(KEYS).forEach(function (k) { put(KEYS[k], JSON.stringify((d && d[k]) || {})); });
   }
-  function isEmpty(d) { return !Object.keys(d.answers).length && !Object.keys(d.scored).length && !Object.keys(d.scores).length; }
+  function isEmpty(d) { return Object.keys(KEYS).every(function (k) { return !Object.keys(d[k] || {}).length; }); }
   function merge(remote, local) {     // local wins where both have an entry
     var out = {};
     Object.keys(KEYS).forEach(function (k) { out[k] = Object.assign({}, (remote && remote[k]) || {}, local[k] || {}); });
@@ -86,7 +88,7 @@
     clearTimeout(pushTimer);
     pushTimer = setTimeout(push, 700);
   }
-  // Watch the quiz scripts' writes to the three progress keys.
+  // Watch the quiz and flashcard scripts' writes to the progress keys.
   var watched = {}; Object.keys(KEYS).forEach(function (k) { watched[KEYS[k]] = 1; });
   Storage.prototype.setItem = function (k, v) {
     rawSet.call(this, k, v);
@@ -111,7 +113,7 @@
       } else if (m.uid === uid) {
         result = local; needPush = true;              // changes made here weren't saved yet
       } else {
-        result = merge(remote, m.uid ? {answers: {}, scored: {}, scores: {}} : local); // guest progress joins the account
+        result = merge(remote, m.uid ? {} : local); // guest progress joins the account
         needPush = !remote || !isEmpty(local);
       }
       writeLocal(result);

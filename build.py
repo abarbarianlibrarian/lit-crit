@@ -124,6 +124,7 @@ SECTIONS = [  # url folder, nav label, singular label
     ("periods", "Periods", "Period"),
     ("tags", "Tags", "Tag"),
     ("resources", "Resources", "Resource"),
+    ("flashcards", "Flashcards", "Deck"),
 ]
 
 SITE_TITLE = os.environ.get("SITE_TITLE", "Literary Criticism")
@@ -1008,6 +1009,7 @@ def term_page(db, rel, resolver, t, periods_by_term):
     body = f"""{crumbs('terms', 'Terms')}
 <article class="record">
 <h1 data-record="{t['id']}">{e(t['title'])}</h1>
+{add_card_slot('t', t)}
 {f'<p class="lede">{e(t["short"])}</p>' if t['short'] else ''}
 <div class="prose">{md_to_html(t['definition'], ctx)}</div>
 </article>
@@ -1021,7 +1023,7 @@ def term_page(db, rel, resolver, t, periods_by_term):
 {questions_section(db, rel[('terms', tid)].get('questions', []))}
 """
     write(f"terms/{t['slug']}/index.html",
-          page(t["title"], body, "terms", t["short"] or t["definition"][:200], f"terms/{t['slug']}/"))
+          page(t["title"], body, "terms", t["short"] or t["definition"][:200], f"terms/{t['slug']}/", extra_head=FC_SCRIPT))
 
 
 def author_page(db, rel, resolver, a):
@@ -1047,6 +1049,7 @@ def author_page(db, rel, resolver, a):
 {portrait}
 <div>
 <h1 data-record="{a['id']}">{e(a['title'])}</h1>
+{add_card_slot('a', a)}
 {f'<p class="lede">{e(years)}</p>' if years else ''}
 {meta}
 {f'<p class="links">{links}</p>' if links else ''}
@@ -1062,7 +1065,7 @@ def author_page(db, rel, resolver, a):
 {questions_section(db, rel[('authors', aid)].get('questions', []))}
 """
     desc = f"{a['title']} ({years}). " + (f"{a['nationality']} {', '.join(a['medium']).lower()}." if a["nationality"] else "")
-    write(f"authors/{a['slug']}/index.html", page(a["title"], body, "authors", desc, f"authors/{a['slug']}/"))
+    write(f"authors/{a['slug']}/index.html", page(a["title"], body, "authors", desc, f"authors/{a['slug']}/", extra_head=FC_SCRIPT))
 
 
 def work_list(db, ids):
@@ -1120,6 +1123,7 @@ def work_page(db, rel, resolver, w):
 <div>
 <h1 data-record="{w['id']}">{work_title_html(w)}{star}</h1>
 {f'<p class="lede">by {by}</p>' if by else ''}
+{add_card_slot('w', w)}
 {meta}
 </div>
 </article>
@@ -1132,7 +1136,7 @@ def work_page(db, rel, resolver, w):
 """
     author_names = ", ".join(db["authors"][a]["title"] for a in authors)
     desc = (w["synopsis"] or f"{w['title']}" + (f" by {author_names}" if author_names else ""))[:250]
-    write(f"works/{w['slug']}/index.html", page(w["title"], body, "works", desc, f"works/{w['slug']}/"))
+    write(f"works/{w['slug']}/index.html", page(w["title"], body, "works", desc, f"works/{w['slug']}/", extra_head=FC_SCRIPT))
 
 
 # ---------------------------------------------------------------- practice tests, poems, reading lists
@@ -1406,13 +1410,14 @@ def prize_page(db, rel, p):
     body = f"""{crumbs('prizes', 'Prizes')}
 <article class="record">
 <h1 data-record="{p['id']}">{e(p['title'])}</h1>
+{add_card_slot('p', p)}
 {facts([('Prize', e(p['type'])), ('Year', e(p['year'])), ('Nationality', e(', '.join(dict.fromkeys(db['authors'][a]['nationality'] for a in authors if db['authors'][a]['nationality']))) if 'nobel' in p['type'].lower() else '')])}
 {f'<blockquote class="citation">{e(p["citation"])}</blockquote>' if p['citation'] else ''}
 </article>
 {section('Winner', chips(db, 'authors', authors))}
 {section('Winning work', chips(db, 'works', works))}
 """
-    write(f"prizes/{p['slug']}/index.html", page(p["title"], body, "prizes", p["citation"] or p["title"], f"prizes/{p['slug']}/"))
+    write(f"prizes/{p['slug']}/index.html", page(p["title"], body, "prizes", p["citation"] or p["title"], f"prizes/{p['slug']}/", extra_head=FC_SCRIPT))
 
 
 def period_page(db, resolver, p):
@@ -1454,11 +1459,192 @@ def tag_page(db, rel, g):
 <article class="record">
 <h1 data-record="{g['id']}">{e(g['title'])}</h1>
 <p class="lede">{len(terms)} term{'s' if len(terms) != 1 else ''}</p>
-{f'<p class="links">Study this set: {study}</p>' if study else ''}
+{f'<p class="links">Study this set: <a href="{BASE}flashcards/tag-{g["slug"]}/">Flashcards</a> {study}</p>' if terms else ''}
 </article>
 {f'<ul class="plain defs">{rows}</ul>' if rows else ''}
 """
     write(f"tags/{g['slug']}/index.html", page(g["title"], body, "tags", f"{len(terms)} literary terms tagged {g['title']}", f"tags/{g['slug']}/"))
+
+
+# ---------------------------------------------------------------- flashcards
+#
+# Card data: assets/cards/{t,a,w,p}.json = {record id: [front, back html, page path, reverse front?]}
+#   t = terms (term -> short definition), a = authors (author -> works),
+#   w = works (title -> author), p = prizes (prize -> winner).
+# A card's id is "<letter>:<record id>", so a term studied in two decks shares one schedule.
+# Deck pages list card ids (or "all of a letter"); assets/flashcards.js does the studying,
+# the spaced-repetition schedule and custom decks.
+
+CARD_IDS = {"t": set(), "a": set(), "w": set(), "p": set()}
+FC_SCRIPT = ""          # set once BASE/BUILD_ID are known (see card_data)
+CARD_KINDS = {"t": "terms", "a": "authors", "w": "works", "p": "prizes"}
+
+
+def add_card_slot(letter, r):
+    """Placeholder on a record page; flashcards.js turns it into the "Add to flashcards" button."""
+    if r["id"] not in CARD_IDS[letter]:
+        return ""
+    return f'<div class="fc-add" data-add-card="{letter}:{r["id"]}" data-title="{e(r["title"], quote=True)}" hidden></div>'
+
+
+def cap_first(s):
+    s = (s or "").strip()
+    return s[:1].upper() + s[1:]
+
+
+def year_of(*vals):
+    for v in vals:
+        m = re.search(r"\b(1\d{3}|20\d{2}|\d{3})\b", v or "")
+        if m:
+            return m.group(1)
+    return ""
+
+
+def card_data(db, rel):
+    global FC_SCRIPT
+    FC_SCRIPT = f'<script>window.FC_V = "{BUILD_ID}";</script><script src="{BASE}assets/flashcards.js?v={BUILD_ID}" defer></script>'
+    path = lambda r: r["url"][len(BASE):]
+    out = {k: {} for k in CARD_KINDS}
+
+    def by_line(author_ids):
+        return ", ".join(db["authors"][a]["title"] for a in author_ids)
+
+    for t in db["terms"].values():
+        short = cap_first(t["short"] or re.sub(r"\s+", " ", t["definition"])[:240])
+        if not short:
+            continue
+        out["t"][t["id"]] = [t["title"], f'<p class="fc-def">{e(short)}</p>', path(t), short]
+
+    tested_w = {w for w in db["works"] if rel[("works", w)].get("questions")}
+    for a in db["authors"].values():
+        works = [w for w in rel[("authors", a["id"])].get("works", []) if db["works"][w]["title"].strip().lower() != "no award"]
+        if not works or a["title"].strip().lower() == "no award":
+            continue
+        works.sort(key=lambda w: (w not in tested_w, not db["works"][w]["notable"],
+                                  year_of(db["works"][w]["year_written"], db["works"][w]["published"]) or "9999",
+                                  sort_key(db["works"][w]["title"])))
+        shown = works[:8]
+        items = "".join(f"<li>{work_title_html(db['works'][w])}"
+                        + (f' <span class="muted">{year_of(db["works"][w]["year_written"], db["works"][w]["published"])}</span>'
+                           if year_of(db["works"][w]["year_written"], db["works"][w]["published"]) else "")
+                        + "</li>" for w in shown)
+        more = f'<p class="muted fc-more">and {len(works) - 8} more</p>' if len(works) > 8 else ""
+        years = " – ".join(x for x in (a["birth"], a["death"]) if x)
+        sub = " · ".join(x for x in (a["nationality"], years) if x)
+        out["a"][a["id"]] = [a["title"], (f'<p class="fc-sub">{e(sub)}</p>' if sub else "") + f'<ul class="fc-list">{items}</ul>{more}', path(a)]
+
+    for w in db["works"].values():
+        authors = rel[("works", w["id"])].get("authors", [])
+        if not authors or w["title"].strip().lower() == "no award":
+            continue
+        yr = year_of(w["year_written"], w["published"])
+        sub = " · ".join(x for x in (yr, ", ".join(w["type"])) if x)
+        out["w"][w["id"]] = [w["title"], f'<p class="fc-big">{e(by_line(authors))}</p>' + (f'<p class="fc-sub">{e(sub)}</p>' if sub else ""), path(w)]
+
+    for p in db["prizes"].values():
+        authors = rel[("prizes", p["id"])].get("authors", [])
+        works = rel[("prizes", p["id"])].get("works", [])
+        if is_no_award(db, p, authors, works) or not (authors or works):
+            continue
+        lines = []
+        for w in works:
+            wa = [a for a in rel[("works", w)].get("authors", [])]
+            lines.append(f"{work_title_html(db['works'][w])}" + (f" <span class=\"muted\">by {e(by_line(wa))}</span>" if wa else ""))
+        listed_authors = {a for w in works for a in rel[("works", w)].get("authors", [])}
+        lines += [e(db["authors"][a]["title"]) for a in authors if a not in listed_authors]
+        out["p"][p["id"]] = [p["title"], '<ul class="fc-list">' + "".join(f"<li>{x}</li>" for x in lines) + "</ul>", path(p)]
+
+    (OUT / "assets" / "cards").mkdir(parents=True, exist_ok=True)
+    for k, cards in out.items():
+        CARD_IDS[k] = set(cards)
+        (OUT / "assets" / "cards" / f"{k}.json").write_text(json.dumps(cards, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    print("Flashcards: " + ", ".join(f"{len(v)} {CARD_KINDS[k]}" for k, v in out.items()), flush=True)
+
+
+def deck_page(slug, title, lede, letters, ids=None, crumb=True, flip_label=None):
+    """A study page. ids=None means every card of the given letters."""
+    spec = {"title": title, "letters": letters, "ids": ids, "flip": flip_label}
+    body = f"""{f'<p class="crumbs"><a href="{BASE}flashcards/">Flashcards</a></p>' if crumb else ''}
+<h1>{e(title)}</h1>
+<p class="lede">{e(lede)}</p>
+<div class="fc" data-deck="{e(json.dumps(spec, ensure_ascii=False), quote=True)}">
+  <noscript><p>Flashcards need JavaScript turned on.</p></noscript>
+</div>"""
+    write(f"flashcards/{slug}/index.html", page(title, body, "flashcards", lede, f"flashcards/{slug}/", extra_head=FC_SCRIPT))
+
+
+def flashcard_pages(db, rel):
+    n = {k: len(v) for k, v in CARD_IDS.items()}
+    tiles = []      # (group, slug, title, count, blurb)
+
+    def deck(group, slug, title, lede, letters, ids=None, blurb="", flip=None):
+        count = len(ids) if ids is not None else sum(n[l] for l in letters)
+        if not count:
+            return
+        deck_page(slug, title, lede, letters, ids, flip_label=flip)
+        tiles.append((group, slug, title, count, blurb))
+
+    term_flip = "Definition first"
+    deck("Terms", "terms", "All terms", "Every term on the site: name the definition.", ["t"], blurb="Term → definition", flip=term_flip)
+    tagged = []
+    for g in db["tags"].values():
+        ids = [f"t:{t}" for t in rel[("tags", g["id"])].get("terms", []) if t in CARD_IDS["t"]]
+        ids.sort(key=lambda c: sort_key(db["terms"][c[2:]]["title"]))
+        if ids:
+            deck_page(f"tag-{g['slug']}", g["title"], f"{len(ids)} terms tagged {g['title']}.", ["t"], ids, flip_label=term_flip)
+            tagged.append((g, len(ids)))
+
+    tested_a = sorted((a for a in CARD_IDS["a"] if rel[("authors", a)].get("questions")), key=lambda a: author_sort(db["authors"][a]))
+    tested_w = sorted((w for w in CARD_IDS["w"] if rel[("works", w)].get("questions")), key=lambda w: sort_key(db["works"][w]["title"]))
+    deck("Authors and works", "authors-tested", "Authors on past tests", "Authors named in released UIL questions: name their works.",
+         ["a"], [f"a:{a}" for a in tested_a], "Author → works")
+    deck("Authors and works", "works-tested", "Works on past tests", "Works named in released UIL questions: who wrote them?",
+         ["w"], [f"w:{w}" for w in tested_w], "Work → author")
+    deck("Authors and works", "authors", "All authors", "Every author with works on the site: name their works.", ["a"], blurb="Author → works")
+    deck("Authors and works", "works", "All works", "Every work on the site: who wrote it?", ["w"], blurb="Work → author")
+
+    by_type = defaultdict(list)
+    for p in CARD_IDS["p"]:
+        by_type[db["prizes"][p]["type"] or "Other"].append(p)
+    psort = lambda p: (-(int(db["prizes"][p]["year"]) if str(db["prizes"][p]["year"]).isdigit() else 0), sort_key(db["prizes"][p]["title"]))
+    deck("Prizes", "prizes", "All prize winners", "Every prize on the site: who won?", ["p"], blurb="Prize → winner")
+    for ptype, ids in sorted(by_type.items(), key=lambda x: (-len(x[1]), x[0])):
+        if len(ids) >= 5:
+            deck("Prizes", f"prizes-{slugify(ptype)}", ptype, f"{ptype} winners: who won?", ["p"],
+                 [f"p:{p}" for p in sorted(ids, key=psort)], "Prize → winner")
+
+    # My decks and the review-everything page are filled in by flashcards.js.
+    deck_page("my", "My deck", "A deck you made.", ["t", "a", "w", "p"], [], flip_label=term_flip)
+    deck_page("review", "Everything due", "Every card you've studied that is due today, from all decks.", ["t", "a", "w", "p"], "due", flip_label=term_flip)
+
+    def tile(slug, title, count, blurb):
+        return (f'<a class="fc-tile" href="{BASE}flashcards/{slug}/" data-deck-link="{slug}">'
+                f'<span class="fc-tile-t">{e(title)}</span>'
+                f'<span class="fc-tile-m">{count:,} card{"s" if count != 1 else ""}{" · " + e(blurb) if blurb else ""}</span></a>')
+
+    groups = ""
+    for group in dict.fromkeys(g for g, *_ in tiles):
+        items = "".join(tile(s, t, c, b) for g, s, t, c, b in tiles if g == group)
+        if group == "Terms" and tagged:
+            tag_items = "".join(f'<li><a href="{BASE}flashcards/tag-{g["slug"]}/">{e(g["title"])}</a> <span class="muted">{c}</span></li>'
+                                for g, c in sorted(tagged, key=lambda x: sort_key(x[0]["title"])))
+            items += f'</div><h3 class="fc-subhead">By tag</h3><ul class="plain cols fc-tags">{tag_items}</ul><div class="fc-tiles">'
+        groups += section(group, f'<div class="fc-tiles">{items}</div>')
+    body = f"""<h1>Flashcards</h1>
+<p class="lede">Cards come back just before you'd forget them: grade each one and the ones you know show up less and less often.</p>
+<div class="fc-home" data-fc-home>
+  <a class="fc-due" href="{BASE}flashcards/review/" data-fc-due hidden></a>
+  <section class="block"><h2>My decks</h2>
+    <p class="muted" data-fc-mine-empty>Make your own deck, then add cards from any term, author, work or prize page with the <strong>Add to flashcards</strong> button.</p>
+    <div class="fc-tiles" data-fc-mine></div>
+    <p><button type="button" class="fc-btn" data-fc-new>New deck</button></p>
+  </section>
+</div>
+{groups}
+<p class="muted fc-sync" data-fc-sync></p>"""
+    write("flashcards/index.html", page("Flashcards", body, "flashcards",
+                                        "Spaced-repetition flashcards for literary terms, authors, works and prizes.",
+                                        "flashcards/", extra_head=FC_SCRIPT))
 
 
 # ---------------------------------------------------------------- index pages
@@ -2325,7 +2511,7 @@ def daily_section(db, rel, resolver):
 def home(db, rel, resolver):
     counts = "".join(
         f'<a class="stat" href="{BASE}{k}/"><strong>{len(db[k]):,}</strong><span>{label}</span></a>'
-        for k, label, _ in SECTIONS if db[k])
+        for k, label, _ in SECTIONS if db.get(k))
     # A few well-connected terms to start from.
     popular = sorted(db["terms"].values(),
                      key=lambda t: -(len(rel[("terms", t["id"])].get("rev:terms:mentioned", [])) + len(t["related"])))[:24]
@@ -2445,7 +2631,7 @@ def search_page():
 def search_index(db):
     entries = []
     for key, _, singular in SECTIONS:
-        if key in NO_PAGES:
+        if key in NO_PAGES or key not in db:
             continue
         for r in db[key].values():
             if r["title"].strip().lower() == "no award":
@@ -2522,6 +2708,8 @@ def main():
         if tid:
             periods_by_term[tid].append(p["id"])
 
+    card_data(db, rel)
+
     print("Writing pages…", flush=True)
     for t in db["terms"].values():
         term_page(db, rel, resolver, t, periods_by_term)
@@ -2557,6 +2745,7 @@ def main():
     periods_index(db)
     tags_index(db, rel)
     resources_index(db, resolver)
+    flashcard_pages(db, rel)
     home(db, rel, resolver)
     search_page()
     account_page()

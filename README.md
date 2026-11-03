@@ -21,10 +21,18 @@ rebuild it any time from the **Actions** tab → **Build site from Airtable** �
 | Poems and Passages | Full text, author, the tests it appeared on, its essay prompts and its questions. |
 | Essay Prompts | Shown on the page of the poem or passage they belong to. |
 | Reading Lists | One table of each school year's novel, play and poet. |
+| (Flashcards) | Spaced-repetition decks built from the tables above: all terms, terms by tag, authors → works and works → author (all, or just those on past tests), and prize winners. Students can also make their own decks with the **Add to flashcards** button on any term, author, work or prize page. |
 
 Attached files (test PDFs, reading list files, essay scoring guides) are not published.
 
 **Members** and **Requests** are never published.
+
+## Flashcards
+
+Cards come from each term's **Short Definition**, each author's works, each work's author, and each prize's winners,
+so editing those in Airtable updates the cards on the next build. Students grade each card Again, Hard, Good or Easy,
+and the site schedules when it comes back (like Anki). Schedules and custom decks are kept in the student's browser,
+and in their account when they're signed in. Nothing about flashcards is stored in Airtable.
 
 ## Settings
 

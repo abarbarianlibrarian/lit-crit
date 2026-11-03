@@ -3,7 +3,7 @@
 
 create table if not exists public.progress (
   user_id    uuid primary key references auth.users (id) on delete cascade,
-  data       jsonb not null default '{}'::jsonb,   -- {answers, scored, scores}, as the site keeps them
+  data       jsonb not null default '{}'::jsonb,   -- {answers, scored, scores, cards, decks}, as the site keeps them
   updated_at timestamptz not null default now()
 );
 
