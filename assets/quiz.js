@@ -8,6 +8,8 @@
  * Part 1 questions are worth 1 point, Parts 2 and 3 are worth 2.
  * Selections, and whether a page has been scored, are remembered in this browser (localStorage);
  * for signed-in visitors auth.js also saves them to their account.
+ * Outside practice tests (term, author, work and poem pages: .quiz[data-instant]) each question is
+ * marked the moment a choice is clicked, its links appear, and nothing is saved or restored.
  */
 // Signed-in visitors: wait until their saved progress has been loaded (auth.js).
 (window.litcritReady || Promise.resolve()).then(function () {
@@ -67,6 +69,11 @@
         (isRight ? " (correct answer)" : " (incorrect)") + (letter === picked ? ", your choice" : ""));
     });
     var p = points(q), word = p === 1 ? " point" : " points";
+    if (q.closest("[data-instant]")) {
+      q.querySelector(".qresult").innerHTML = right ? "<strong>Correct.</strong>"
+        : "<strong>Not quite.</strong> The answer is " + correct.join(", ") + ".";
+      return;
+    }
     q.querySelector(".qresult").innerHTML = right
       ? "<strong>Correct.</strong> +" + p + word
       : picked
@@ -204,6 +211,7 @@
   // ---- start up
   var saved = load(KEY), scoredPages = load(SCORED);
   quizzes.forEach(function (quiz, i) {
+    if (quiz.hasAttribute("data-instant")) return;   // instant questions: nothing to restore
     quiz.setAttribute("data-key", quizKey(quiz, i));
     quiz.querySelectorAll(".q:not([data-auto])").forEach(function (q) {
       var letter = saved[q.getAttribute("data-qid")];
@@ -236,6 +244,12 @@
     var choice = ev.target.closest(".choice");
     if (!choice) return;
     var q = choice.closest(".q"), quiz = q.closest(".quiz");
+    if (quiz.hasAttribute("data-instant")) {
+      if (q.classList.contains("graded")) return;
+      select(q, choice.getAttribute("data-letter"), true);   // true: don't save
+      grade(q);
+      return;
+    }
     if (quiz.classList.contains("scored")) return;
     select(q, choice.getAttribute("data-letter"), false);
     update(quiz);

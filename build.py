@@ -1158,7 +1158,8 @@ def questions_section(db, qids, title="Practice questions", limit=10):
                 + "".join(question_html(db, db["questions"][q], in_test=False) for q in qids[limit:])
                 + "</ol></details>")
     total = sum(question_points(db["questions"][q]) for q in qids)
-    return section(title, f'<div class="quiz">{score_bar(total, len(qids), test=False)}'
+    # Outside practice tests, each question is marked as soon as a choice is clicked, and nothing is saved.
+    return section(title, f'<div class="quiz" data-instant>'
                           f'<ol class="plain questions compact">{items}</ol>{more}</div>', len(qids))
 
 
