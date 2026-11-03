@@ -1892,7 +1892,8 @@ def resources_index(db, resolver):
         kind = f'<span class="chip res-type">{e(r["type"])}</span>' if r["type"] else ""
         acc = (r.get("access") or "").strip()
         badge = (f'<span class="res-access res-{ACCESS_CLASS.get(fold(acc), "free")}">{e(acc)}</span>' if acc else "")
-        return f'<li class="res-item"><span class="res-name">{name}</span><span class="res-tags">{badge}{kind}</span></li>'
+        return (f'<li class="res-item" data-access="{ACCESS_CLASS.get(fold(acc), "free") if acc else "free"}">'
+                f'<span class="res-name">{name}</span><span class="res-tags">{badge}{kind}</span></li>')
 
     PART = re.compile(r"\s*\((part \d+)\)\s*$", re.I)
 
@@ -1949,6 +1950,7 @@ def resources_index(db, resolver):
         general_words |= {re.sub(r"[’']s$", "", w) for t in novel_titles for w in fold(t).split()
                           if len(w) > 5 and w not in ("short", "stories")}
         blocks = []
+        pills = ['<button type="button" class="res-pill" data-sec-pick="all" aria-pressed="true">All</button>']
         for key in ("novel", "play", "poet", "general"):
             rs = groups[key]
             if key == "general" and not rs:
@@ -1965,21 +1967,25 @@ def resources_index(db, resolver):
             else:
                 rs = sorted(rs, key=lambda r: (sort_key(r["type"] or "~"), sort_key(r["title"])))
                 body = f'<ul class="res-list">{"".join(item(r) for r in rs)}</ul>'
-            blocks.append(f'<section class="res-group"><h2>{label}{": " + what if what else ""}'
+            blocks.append(f'<section class="res-group" data-sec="{key}"><h2>{label}{": " + what if what else ""}'
                           f' <span class="count">{len(rs)}</span></h2>{body}</section>')
+            pills.append(f'<button type="button" class="res-pill" data-sec-pick="{key}" aria-pressed="false">'
+                         f'{label} <span class="count">{len(rs)}</span></button>')
         n = len(mine)
         if default is None and n:
             default = rl["slug"]
         note = "" if n else '<p class="lede res-empty">No resources have been added for this reading list yet.</p>'
-        sections.append(f'<div class="res-list-panel" data-rl="{rl["slug"]}" hidden>{note}{"".join(blocks)}</div>')
+        pill_bar = f'<div class="res-pills" role="group" aria-label="Show a section">{"".join(pills)}</div>' if n else ""
+        sections.append(f'<div class="res-list-panel" data-rl="{rl["slug"]}" hidden>{note}{pill_bar}{"".join(blocks)}</div>')
         options.append(f'<option value="{rl["slug"]}">{e(rl["title"])} · '
                        f'{n} resource{"" if n == 1 else "s"}</option>')
     default = default or (lists[0]["slug"] if lists else "")
     body = f"""<h1>Reading resources</h1>
 <p class="lede">Texts, audio and study materials for each year's reading list.</p>
 <p class="res-key"><span class="res-access res-free">Free</span> free to use · <span class="res-access res-preview">Free preview</span> part of it is free; the rest needs a subscription · <span class="res-access res-paid">Paid</span> costs money</p>
-<label class="res-pick"><span>Reading list</span>
+<div class="res-controls"><label class="res-pick"><span>Reading list</span>
 <select data-rl-pick>{"".join(options)}</select></label>
+<label class="res-free-toggle"><input type="checkbox" data-free-only> Free resources only</label></div>
 {"".join(sections)}
 <script>
 (function () {{
@@ -1990,11 +1996,59 @@ def resources_index(db, resolver):
     if (!found && panels.length) {{ slug = {json.dumps(default)}; return show(slug); }}
     pick.value = slug;
   }}
+  var sec = new URLSearchParams(location.search).get("section") || "all";
+  var freeBox = document.querySelector("[data-free-only]");
+  freeBox.checked = new URLSearchParams(location.search).get("free") === "1";
+  function applyFree() {{
+    var only = freeBox.checked;
+    document.querySelectorAll(".res-item").forEach(function (li) {{ li.hidden = only && li.getAttribute("data-access") !== "free"; }});
+    document.querySelectorAll(".res-list").forEach(function (ul) {{
+      var any = ul.querySelector(".res-item:not([hidden])");
+      ul.hidden = !any;
+      var h = ul.previousElementSibling;
+      if (h && h.classList.contains("res-sub")) h.hidden = !any;
+    }});
+    document.querySelectorAll(".res-group").forEach(function (g) {{
+      var shown = g.querySelectorAll(".res-item:not([hidden])").length, total = g.querySelectorAll(".res-item").length;
+      var c = g.querySelector("h2 .count"); if (c) c.textContent = shown;
+      var none = g.querySelector(".res-none-free");
+      if (total && !shown) {{
+        if (!none) {{ none = document.createElement("p"); none.className = "muted res-none res-none-free"; none.textContent = "No free resources here."; g.appendChild(none); }}
+        none.hidden = false;
+      }} else if (none) none.hidden = true;
+    }});
+    document.querySelectorAll("[data-sec-pick]").forEach(function (b) {{
+      var name = b.getAttribute("data-sec-pick"), c = b.querySelector(".count");
+      if (!c) return;
+      var g = b.closest(".res-list-panel").querySelector('[data-sec="' + name + '"]');
+      c.textContent = g ? g.querySelectorAll(".res-item:not([hidden])").length : 0;
+    }});
+  }}
+  function showSection(name) {{
+    panels.forEach(function (p) {{
+      var has = name === "all" || p.querySelector('[data-sec="' + name + '"]');
+      var want = has ? name : "all";
+      p.querySelectorAll("[data-sec]").forEach(function (g) {{ g.hidden = want !== "all" && g.getAttribute("data-sec") !== want; }});
+      p.querySelectorAll("[data-sec-pick]").forEach(function (b) {{ b.setAttribute("aria-pressed", String(b.getAttribute("data-sec-pick") === want)); }});
+    }});
+    sec = name;
+  }}
+  function remember() {{
+    var u = new URL(location.href); u.searchParams.set("list", pick.value);
+    if (sec === "all") u.searchParams.delete("section"); else u.searchParams.set("section", sec);
+    if (freeBox.checked) u.searchParams.set("free", "1"); else u.searchParams.delete("free");
+    history.replaceState(null, "", u);
+  }}
   var q = new URLSearchParams(location.search).get("list");
   show(q || {json.dumps(default)});
-  pick.addEventListener("change", function () {{
-    show(pick.value);
-    var u = new URL(location.href); u.searchParams.set("list", pick.value); history.replaceState(null, "", u);
+  showSection(sec);
+  applyFree();
+  freeBox.addEventListener("change", function () {{ applyFree(); remember(); }});
+  pick.addEventListener("change", function () {{ show(pick.value); showSection(sec); remember(); }});
+  document.addEventListener("click", function (ev) {{
+    var b = ev.target.closest("[data-sec-pick]");
+    if (!b) return;
+    showSection(b.getAttribute("data-sec-pick")); remember();
   }});
 }})();
 </script>
