@@ -24,3 +24,9 @@ create policy "update own progress" on public.progress
 
 grant select, insert, update on public.progress to authenticated;
 revoke all on public.progress from anon;
+
+-- Keep-awake ping (called twice a week by .github/workflows/keepalive.yml).
+create or replace function public.keepalive()
+returns timestamptz language sql stable security invoker set search_path = '' as $$ select now() $$;
+revoke all on function public.keepalive() from public;
+grant execute on function public.keepalive() to anon, authenticated;
