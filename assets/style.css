@@ -538,3 +538,24 @@ h2.letter .count { font: 500 14px/1 var(--sans); color: var(--ink-3); margin-lef
 .acct-status { font: 400 13px/1.4 var(--sans); }
 .linkish { font: inherit; color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
 .small { font-size: 13px; font-family: var(--sans); }
+
+/* Flag an error */
+.q { position: relative; padding-right: 36px; }
+.flag-q { position: absolute; top: 16px; right: 0; font: 500 14px/1 var(--sans); color: var(--ink-3); background: none;
+  border: 1px solid transparent; border-radius: 6px; padding: 5px 7px; cursor: pointer; opacity: .55; }
+.flag-q:hover, .flag-q:focus-visible { opacity: 1; color: var(--accent); border-color: var(--rule); background: var(--paper); }
+.flag-q.sent, .flag-link.sent { color: #2f6f3e; opacity: 1; }
+.flag-page { margin: 36px 0 0; padding-top: 14px; border-top: 1px solid var(--rule); }
+.flag-link { font: 500 13.5px/1 var(--sans); color: var(--ink-2); background: none; border: 0; padding: 4px 0; cursor: pointer; }
+.flag-link:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.flag-dialog { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); color: var(--ink);
+  padding: 22px 24px; width: min(480px, calc(100vw - 32px)); box-shadow: 0 10px 40px rgba(0,0,0,.18); }
+.flag-dialog::backdrop { background: rgba(20, 16, 10, .45); }
+.flag-dialog h2 { margin: 0 0 4px; font: 600 22px/1.2 var(--serif); text-transform: none; letter-spacing: 0; color: var(--ink); }
+.flag-about { font: 400 14px/1.4 var(--sans); color: var(--ink-2); margin: 0 0 16px; }
+.flag-dialog select, .flag-dialog textarea { width: 100%; font: 400 15px/1.4 var(--sans); padding: 10px 12px;
+  border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); color: var(--ink); }
+.flag-dialog textarea { resize: vertical; min-height: 96px; }
+.flag-dialog select:focus, .flag-dialog textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.flag-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.flag-actions { display: flex; align-items: center; gap: 16px; margin-top: 14px; }

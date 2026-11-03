@@ -937,6 +937,7 @@ def page(title, body, active=None, description="", path="", extra_head=""):
 <script src="{BASE}assets/auth.js?v={BUILD_ID}"></script>
 <script src="{BASE}assets/search.js?v={BUILD_ID}" defer></script>
 <script src="{BASE}assets/quiz.js?v={BUILD_ID}" defer></script>
+<script src="{BASE}assets/flag.js?v={BUILD_ID}" defer></script>
 </body>
 </html>
 """
@@ -963,7 +964,7 @@ def term_page(db, rel, resolver, t, periods_by_term):
     ctx = (db, resolver, t["mentioned"] + t["related"], t["title"])
     body = f"""{crumbs('terms', 'Terms')}
 <article class="record">
-<h1>{e(t['title'])}</h1>
+<h1 data-record="{t['id']}">{e(t['title'])}</h1>
 {f'<p class="lede">{e(t["short"])}</p>' if t['short'] else ''}
 <div class="prose">{md_to_html(t['definition'], ctx)}</div>
 </article>
@@ -1002,7 +1003,7 @@ def author_page(db, rel, resolver, a):
 <article class="record person">
 {portrait}
 <div>
-<h1>{e(a['title'])}</h1>
+<h1 data-record="{a['id']}">{e(a['title'])}</h1>
 {f'<p class="lede">{e(years)}</p>' if years else ''}
 {meta}
 {f'<p class="links">{links}</p>' if links else ''}
@@ -1074,7 +1075,7 @@ def work_page(db, rel, resolver, w):
 <article class="record work">
 {cover_html(w)}
 <div>
-<h1>{work_title_html(w)}{star}</h1>
+<h1 data-record="{w['id']}">{work_title_html(w)}{star}</h1>
 {f'<p class="lede">by {by}</p>' if by else ''}
 {meta}
 </div>
@@ -1285,7 +1286,7 @@ def test_page(db, rel, t):
         poems += [p for p in db["questions"][q]["poems"] if p not in poems]
     body = f"""{crumbs('tests', 'Tests')}
 <article class="record">
-<h1>{e(t['title'])}</h1>
+<h1 data-record="{t['id']}">{e(t['title'])}</h1>
 <p class="lede">{len(qids)} question{'s' if len(qids) != 1 else ''}. Choose an answer for each one, then press “Score test” in the score bar.</p>
 {facts([('Year', e(t['year'])), ('Contest', e(t['type'])), ('Passage', e(t['passage']))])}
 </article>
@@ -1317,7 +1318,7 @@ def poem_page(db, rel, p):
         for x in essays)
     body = f"""{crumbs('poems', 'Poems and passages')}
 <article class="record">
-<h1>{e(p['title'])}</h1>
+<h1 data-record="{p['id']}">{e(p['title'])}</h1>
 {f'<p class="lede">by {by}</p>' if by else ''}
 {f'<div class="poem">{multiline(p["text"])}</div>' if p['text'] else ''}
 </article>
@@ -1335,7 +1336,7 @@ def prize_page(db, rel, p):
     authors = rel[("prizes", pid)].get("authors", [])
     body = f"""{crumbs('prizes', 'Prizes')}
 <article class="record">
-<h1>{e(p['title'])}</h1>
+<h1 data-record="{p['id']}">{e(p['title'])}</h1>
 {facts([('Prize', e(p['type'])), ('Year', e(p['year'])), ('Nationality', e(', '.join(dict.fromkeys(db['authors'][a]['nationality'] for a in authors if db['authors'][a]['nationality']))) if 'nobel' in p['type'].lower() else '')])}
 {f'<blockquote class="citation">{e(p["citation"])}</blockquote>' if p['citation'] else ''}
 </article>
@@ -1361,7 +1362,7 @@ def period_page(db, resolver, p):
         nav = f'<nav class="seq"><div>{prev}</div><div>{nxt}</div></nav>'
     body = f"""{crumbs('periods', 'Periods')}
 <article class="record">
-<h1>{e(p['title'])}</h1>
+<h1 data-record="{p['id']}">{e(p['title'])}</h1>
 {f'<p class="lede">{e(years)}</p>' if years else ''}
 {facts([('Region', e(p['region'])), ('Kind', e(p['type']) if p['type'] != 'Period' else '')])}
 {f'<div class="prose"><p>{e(p["description"])}</p></div>' if p['description'] else ''}
@@ -1382,7 +1383,7 @@ def tag_page(db, rel, g):
     rows = "".join(list_item(db, "terms", db["terms"][t]) for t in terms)
     body = f"""{crumbs('tags', 'Tags')}
 <article class="record">
-<h1>{e(g['title'])}</h1>
+<h1 data-record="{g['id']}">{e(g['title'])}</h1>
 <p class="lede">{len(terms)} term{'s' if len(terms) != 1 else ''}</p>
 {f'<p class="links">Study this set: {study}</p>' if study else ''}
 </article>
@@ -1737,7 +1738,7 @@ def essay_page(db, rel, x):
     body = f"""{crumbs('essays', 'Essay prompts')}
 <article class="record">
 <p class="daily-label">Essay prompt</p>
-<h1>{e(x['title'])}</h1>
+<h1 data-record="{x['id']}">{e(x['title'])}</h1>
 {facts([('Test', f'<a href="{test["url"]}">{e(test["title"])}</a>' if test else ''),
         ('Text', ', '.join(f'<a href="{db["poems"][p]["url"]}">{e(db["poems"][p]["title"])}</a>' for p in poems))])}
 <blockquote class="essay-prompt">{multiline(x['prompt'])}</blockquote>

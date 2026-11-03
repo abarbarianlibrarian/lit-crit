@@ -30,3 +30,17 @@ create or replace function public.keepalive()
 returns timestamptz language sql stable security invoker set search_path = '' as $$ select now() $$;
 revoke all on function public.keepalive() from public;
 grant execute on function public.keepalive() to anon, authenticated;
+
+-- "Flag an error" reports (written only by the `flag` Edge Function in supabase/functions/flag).
+create table if not exists public.flags (
+  id bigint generated always as identity primary key, created_at timestamptz not null default now(),
+  category text not null, message text not null, item text, item_id text, page_url text, email text, name text,
+  user_id uuid references auth.users (id) on delete set null, ip_hash text, forwarded boolean not null default false
+);
+create index if not exists flags_ip_time on public.flags (ip_hash, created_at);
+alter table public.flags enable row level security;
+revoke all on public.flags from anon, authenticated;
+-- Private settings for Edge Functions: airtable_flag_webhook (the Airtable automation's webhook URL) and ip_salt.
+create table if not exists public.app_config (key text primary key, value text not null);
+alter table public.app_config enable row level security;
+revoke all on public.app_config from anon, authenticated;
