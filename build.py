@@ -105,7 +105,7 @@ TABLES = {
     "events": ("tblzOtL2DxbE7LloC", {
         "name": "fldpJz4MhYPahF6c8", "start": "fldyxtQkzXzmNakxP", "end": "flduwh0Y6SgQTaSMd",
         "approximate": "fldR1rV5hM81oPnlM", "region": "fldNx7tvpqqRZ9wf7", "category": "fldJ2rfQdHa28YqDs",
-        "description": "fldNEt626OuUJaq0E", "periods": "fldLjD9C2paQ4XtvD",
+        "description": "fldNEt626OuUJaq0E", "periods": "fldLjD9C2paQ4XtvD", "us": "fldsazlxfF81QP4NE",
     }),
 }
 
@@ -1881,7 +1881,8 @@ def periods_index(db):
         return (f'<li class="tl-sub"><a href="{c["url"]}"><span class="tl-name">{e(c["title"])}</span>'
                 f'<span class="tl-years">{e(years(c))}</span></a></li>')
 
-    # Historical events, by the timeline they belong on. World events go on both timelines.
+    # Historical events, by the timeline they belong on. World events go on the British timeline, and on the
+    # American one too when their "Involves America" box is checked.
     EVENT_REGION = {"united states": "American", "britain": "British"}
 
     def ev_num(v):
@@ -1892,10 +1893,13 @@ def periods_index(db):
         n = ev_num(y)
         return None if n is None else (f"{-n} BCE" if n < 0 else str(n))
 
+    def checked(v):
+        return (v or "").strip().lower() in ("true", "1", "checked")
+
     def event_html(ev):
         a, b = event_year(ev["start"]), event_year(ev["end"])
         when = f"{a}–{b}" if a and b and b != a else a
-        if ev["approximate"].lower() in ("true", "1", "checked") and when:
+        if checked(ev["approximate"]) and when:
             when = "c. " + when
         world = fold(ev["region"]) == "world"
         tip = f' title="{e(ev["description"], quote=True)}"' if ev["description"] else ""
@@ -1913,7 +1917,8 @@ def periods_index(db):
         for ev in sorted(db.get("events", {}).values(), key=lambda v: (ev_num(v["start"]) if ev_num(v["start"]) is not None else 99999, sort_key(v["title"]))):
             y = ev_num(ev["start"])
             reg = fold(ev["region"])
-            if y is None or not (EVENT_REGION.get(reg) == region or reg == "world"):
+            world_here = reg == "world" and (region != "American" or checked(ev["us"]))
+            if y is None or not (EVENT_REGION.get(reg) == region or world_here):
                 continue
             if y < starts[0][0]:
                 continue  # before this timeline's periods begin
