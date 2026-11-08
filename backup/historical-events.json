@@ -1,0 +1,1621 @@
+[
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Charles II returns from exile and takes the throne.",
+   "Event": "Restoration of the monarchy",
+   "Historical Periods": [
+    "recfy7MFpcT0hltnr",
+    "rec8VyaUdsnuAfKD6"
+   ],
+   "Region": "Britain",
+   "Start Year": 1660
+  },
+  "id": "rec0303Io1IUbnNKU"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Pope Leo III crowns Charlemagne emperor of the Romans.",
+   "Event": "Charlemagne crowned emperor",
+   "Region": "World",
+   "Start Year": 800
+  },
+  "id": "rec23ZyLKcIrgmcJs"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The federal government rebuilds the South and passes the 13th, 14th and 15th Amendments.",
+   "End Year": 1877,
+   "Event": "Reconstruction",
+   "Historical Periods": [
+    "rec77diWjHvoTtokB"
+   ],
+   "Region": "United States",
+   "Start Year": 1865
+  },
+  "id": "rec437gViIcHQWXas"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "George I of Hanover becomes king.",
+   "Event": "Hanoverian succession",
+   "Historical Periods": [
+    "recfy7MFpcT0hltnr",
+    "recNB1MEKuKhLiXnU"
+   ],
+   "Region": "Britain",
+   "Start Year": 1714
+  },
+  "id": "rec4qYkIgdJYNoD7I"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "Fire destroys much of the old City of London.",
+   "Event": "Great Fire of London",
+   "Historical Periods": [
+    "recfy7MFpcT0hltnr",
+    "rec8VyaUdsnuAfKD6"
+   ],
+   "Region": "Britain",
+   "Start Year": 1666
+  },
+  "id": "rec5YtWdXnJRgw9hH"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The Soviet Union breaks up into fifteen independent states.",
+   "Event": "Dissolution of the Soviet Union",
+   "Region": "World",
+   "Start Year": 1991
+  },
+  "id": "rec74yTB5iFumjQkt"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "The last major outbreak of bubonic plague in England kills about a fifth of London's people.",
+   "Event": "Great Plague of London",
+   "Historical Periods": [
+    "recfy7MFpcT0hltnr",
+    "rec8VyaUdsnuAfKD6"
+   ],
+   "Region": "Britain",
+   "Start Year": 1665
+  },
+  "id": "rec75gIuz7oIkDGPz"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "Free health care at the point of use becomes available to everyone in Britain.",
+   "Event": "National Health Service founded",
+   "Historical Periods": [
+    "recQjkWGiXmAPuLjq"
+   ],
+   "Region": "Britain",
+   "Start Year": 1948
+  },
+  "id": "rec79P5ZGMFWuSiwn"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "King John agrees to a charter limiting royal power.",
+   "Event": "Magna Carta",
+   "Historical Periods": [
+    "recDkH63G2aTPXeXo"
+   ],
+   "Region": "Britain",
+   "Start Year": 1215
+  },
+  "id": "rec7M5Bnt4lcMNXHM"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The Allies defeat Germany, Italy and Japan; the Holocaust kills six million Jews.",
+   "End Year": 1945,
+   "Event": "World War II",
+   "Involves America": true,
+   "Region": "World",
+   "Start Year": 1939
+  },
+  "id": "rec7jG2xyKc2vR0bs"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Fifty-one countries found the United Nations after World War II.",
+   "Event": "United Nations founded",
+   "Involves America": true,
+   "Region": "World",
+   "Start Year": 1945
+  },
+  "id": "rec7pZNvujE3geD2f"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Science and technology",
+   "Description": "William Caxton sets up the first printing press in England, at Westminster.",
+   "Event": "Caxton's printing press",
+   "Historical Periods": [
+    "recl4YjIm4DmScnib"
+   ],
+   "Region": "Britain",
+   "Start Year": 1476
+  },
+  "id": "rec8EojAjVQqbQgYI"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Parliament extends the vote and redistributes seats.",
+   "Event": "Great Reform Act",
+   "Historical Periods": [
+    "rectajNOHLWH86oHU",
+    "recgTWdm0gBcm5KQP"
+   ],
+   "Region": "Britain",
+   "Start Year": 1832
+  },
+  "id": "rec8QHjijYgPZW2Pe"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Congress authorizes the forced relocation of Native American nations west of the Mississippi, leading to the Trail of Tears.",
+   "Event": "Indian Removal Act",
+   "Historical Periods": [
+    "recmQfqePazNPC5FQ"
+   ],
+   "Region": "United States",
+   "Start Year": 1830
+  },
+  "id": "rec8RvIJA9MjK6Jem"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "Bubonic plague kills perhaps a third or more of England's population.",
+   "End Year": 1349,
+   "Event": "Black Death in England",
+   "Historical Periods": [
+    "recDkH63G2aTPXeXo"
+   ],
+   "Region": "Britain",
+   "Start Year": 1348
+  },
+  "id": "rec8ZgbldweWyjcb4"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Exploration and expansion",
+   "Description": "The first permanent English settlement in North America is established in Virginia.",
+   "Event": "Founding of Jamestown",
+   "Historical Periods": [
+    "rec43hZZUwfyEvzuI"
+   ],
+   "Region": "United States",
+   "Start Year": 1607
+  },
+  "id": "rec8afyYkfubuEqtN"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Science and technology",
+   "Description": "The Union Pacific and Central Pacific lines meet at Promontory Summit, Utah.",
+   "Event": "Transcontinental railroad completed",
+   "Historical Periods": [
+    "rec77diWjHvoTtokB"
+   ],
+   "Region": "United States",
+   "Start Year": 1869
+  },
+  "id": "rec9EbrPbt4a8DoZd"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Alfred defends Wessex against the Vikings and promotes learning in English.",
+   "End Year": 899,
+   "Event": "Reign of Alfred the Great",
+   "Historical Periods": [
+    "recoU7I7U6QZDaiCY"
+   ],
+   "Region": "Britain",
+   "Start Year": 871
+  },
+  "id": "rec9N5v6zGqG7yGhj"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "A Catholic conspiracy to blow up Parliament and King James is discovered.",
+   "Event": "Gunpowder Plot",
+   "Historical Periods": [
+    "recUaOFZq9DeeqtzD",
+    "recXCT4mlkggezIYr"
+   ],
+   "Region": "Britain",
+   "Start Year": 1605
+  },
+  "id": "rec9b9ZAuduz8E1Br"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The last Western Roman emperor, Romulus Augustulus, is deposed.",
+   "Event": "Fall of the Western Roman Empire",
+   "Region": "World",
+   "Start Year": 476
+  },
+  "id": "rec9u9UOPWEtfsZgF"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The Allied and Central Powers fight a global war.",
+   "End Year": 1918,
+   "Event": "World War I",
+   "Involves America": true,
+   "Region": "World",
+   "Start Year": 1914
+  },
+  "id": "recA3FqWGFWIKq84G"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Napoleon Bonaparte crowns himself Emperor of the French.",
+   "Event": "Napoleon crowned emperor",
+   "Region": "World",
+   "Start Year": 1804
+  },
+  "id": "recB37l8F7dck9O6j"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "Terrorist attacks on New York and Washington kill nearly 3,000 people.",
+   "Event": "September 11 attacks",
+   "Historical Periods": [
+    "recFEAzde8tpf5w2O"
+   ],
+   "Region": "United States",
+   "Start Year": 2001
+  },
+  "id": "recClOcXM14mCl6am"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Approximate": true,
+   "Category": "Politics and government",
+   "Description": "Cleisthenes' reforms establish democracy in Athens.",
+   "Event": "Athenian democracy",
+   "Region": "World",
+   "Start Year": -508
+  },
+  "id": "recDPlIfyL3XY6S2A"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "The manufacture and sale of alcohol are banned under the 18th Amendment until its repeal.",
+   "End Year": 1933,
+   "Event": "Prohibition",
+   "Historical Periods": [
+    "recyEstYErUtHoxZU"
+   ],
+   "Region": "United States",
+   "Start Year": 1920
+  },
+  "id": "recE85XaAovGOsh83"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The Ottoman Turks capture the Byzantine capital.",
+   "Event": "Fall of Constantinople",
+   "Region": "World",
+   "Start Year": 1453
+  },
+  "id": "recEUCe6fMTh4TZYC"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "East Germany opens the border; Germany reunifies in 1990.",
+   "Event": "Fall of the Berlin Wall",
+   "Region": "World",
+   "Start Year": 1989
+  },
+  "id": "recEZ7ie4MAE9Aklo"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "James VI of Scotland becomes James I of England, beginning the Stuart line.",
+   "Event": "Union of the Crowns",
+   "Historical Periods": [
+    "recUaOFZq9DeeqtzD",
+    "recXCT4mlkggezIYr"
+   ],
+   "Region": "Britain",
+   "Start Year": 1603
+  },
+  "id": "recEyHC5nbv8YepUB"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Approximate": true,
+   "Category": "Exploration and expansion",
+   "Description": "Angles, Saxons and Jutes begin settling in Britain; 449 is the traditional date.",
+   "Event": "Anglo-Saxon settlement",
+   "Historical Periods": [
+    "recoU7I7U6QZDaiCY"
+   ],
+   "Region": "Britain",
+   "Start Year": 449
+  },
+  "id": "recFCrwTJGQCGr7Sl"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Women over 30 who meet property qualifications gain the vote.",
+   "Event": "Representation of the People Act",
+   "Historical Periods": [
+    "recQjkWGiXmAPuLjq"
+   ],
+   "Region": "Britain",
+   "Start Year": 1918
+  },
+  "id": "recFQQimVsRq9hSTD"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "Parliamentarians led by Oliver Cromwell defeat the Royalists.",
+   "End Year": 1651,
+   "Event": "English Civil Wars",
+   "Historical Periods": [
+    "recUaOFZq9DeeqtzD"
+   ],
+   "Region": "Britain",
+   "Start Year": 1642
+  },
+  "id": "recHAAzGsiRTFUiWR"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Britain's first woman prime minister leads three Conservative governments.",
+   "End Year": 1990,
+   "Event": "Margaret Thatcher as prime minister",
+   "Historical Periods": [
+    "receVbzkMgvwVsWbE"
+   ],
+   "Region": "Britain",
+   "Start Year": 1979
+  },
+  "id": "recHmr2Aat59cwsOx"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Exploration and expansion",
+   "Description": "Separatists from England arrive on the Mayflower and sign the Mayflower Compact.",
+   "Event": "Pilgrims land at Plymouth",
+   "Historical Periods": [
+    "rec43hZZUwfyEvzuI"
+   ],
+   "Region": "United States",
+   "Start Year": 1620
+  },
+  "id": "recHsZDbRBCmRnLES"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "President Lincoln declares enslaved people in the Confederate states free.",
+   "Event": "Emancipation Proclamation",
+   "Historical Periods": [
+    "recmQfqePazNPC5FQ"
+   ],
+   "Region": "United States",
+   "Start Year": 1863
+  },
+  "id": "recI3m6125GxXKHdz"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "Sparta and its allies defeat Athens.",
+   "End Year": -404,
+   "Event": "Peloponnesian War",
+   "Region": "World",
+   "Start Year": -431
+  },
+  "id": "recIlrUK02ZhvSV2t"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The thirteen colonies fight for and win independence from Britain.",
+   "End Year": 1783,
+   "Event": "American Revolutionary War",
+   "Historical Periods": [
+    "rec2csODeQLWegCC9",
+    "recY2qvmJF4hF6uhv"
+   ],
+   "Region": "United States",
+   "Start Year": 1775
+  },
+  "id": "recItdfMtBmC3pnvE"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "British and Prussian forces defeat Napoleon, ending the Napoleonic Wars.",
+   "Event": "Battle of Waterloo",
+   "Historical Periods": [
+    "rectajNOHLWH86oHU",
+    "recTNHH5V1ggeEyze"
+   ],
+   "Region": "Britain",
+   "Start Year": 1815
+  },
+  "id": "recJLPwtBa1vUmjmL"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The Union defeats the Confederacy, preserving the nation and ending slavery.",
+   "End Year": 1865,
+   "Event": "American Civil War",
+   "Historical Periods": [
+    "recmQfqePazNPC5FQ"
+   ],
+   "Region": "United States",
+   "Start Year": 1861
+  },
+  "id": "recJmjZSAwFr1Qo4P"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "A religious and political war devastates central Europe.",
+   "End Year": 1648,
+   "Event": "Thirty Years' War",
+   "Region": "World",
+   "Start Year": 1618
+  },
+  "id": "recJpD37JzS8dXcEE"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "Athens defeats a Persian invasion force.",
+   "Event": "Battle of Marathon",
+   "Region": "World",
+   "Start Year": -490
+  },
+  "id": "recKmfFgb7Il8d8rd"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "An international exhibition at the Crystal Palace in London showcases industry.",
+   "Event": "Great Exhibition",
+   "Historical Periods": [
+    "rectajNOHLWH86oHU",
+    "recgTWdm0gBcm5KQP"
+   ],
+   "Region": "Britain",
+   "Start Year": 1851
+  },
+  "id": "recKsJns98eTRpxIn"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Approximate": true,
+   "Category": "Religion",
+   "Description": "A wave of Protestant revivals sweeps the colonies, led by preachers such as Jonathan Edwards and George Whitefield.",
+   "End Year": 1755,
+   "Event": "First Great Awakening",
+   "Historical Periods": [
+    "rec43hZZUwfyEvzuI"
+   ],
+   "Region": "United States",
+   "Start Year": 1730
+  },
+  "id": "recL07jgL0alDEUsX"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "England and France fight a long series of wars over the French throne.",
+   "End Year": 1453,
+   "Event": "Hundred Years' War",
+   "Historical Periods": [
+    "recDkH63G2aTPXeXo"
+   ],
+   "Region": "Britain",
+   "Start Year": 1337
+  },
+  "id": "recLfddU3JhiQcWcx"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Great Britain and Ireland unite as the United Kingdom.",
+   "Event": "Act of Union with Ireland",
+   "Historical Periods": [
+    "rectajNOHLWH86oHU",
+    "recTNHH5V1ggeEyze"
+   ],
+   "Region": "Britain",
+   "Start Year": 1801
+  },
+  "id": "recMBN9zpcwyklUmz"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "England and Scotland unite as the Kingdom of Great Britain.",
+   "Event": "Acts of Union with Scotland",
+   "Historical Periods": [
+    "recfy7MFpcT0hltnr",
+    "recNB1MEKuKhLiXnU"
+   ],
+   "Region": "Britain",
+   "Start Year": 1707
+  },
+  "id": "recMWGabsXIsXaEpG"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Exploration and expansion",
+   "Description": "The United States buys the Louisiana Territory from France, doubling the nation's size.",
+   "Event": "Louisiana Purchase",
+   "Historical Periods": [
+    "rec2csODeQLWegCC9",
+    "recn6sMCrMQqjkbBi"
+   ],
+   "Region": "United States",
+   "Start Year": 1803
+  },
+  "id": "recNGXKtfqxePlNud"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "Britain and France fight for control of North America; British victory removes France from the continent.",
+   "End Year": 1763,
+   "Event": "French and Indian War",
+   "Historical Periods": [
+    "rec43hZZUwfyEvzuI"
+   ],
+   "Region": "United States",
+   "Start Year": 1754
+  },
+  "id": "recNGpX3Z9AXRnLdV"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "From the Montgomery bus boycott onward, a mass movement campaigns to end segregation and secure voting rights.",
+   "End Year": 1968,
+   "Event": "Civil Rights Movement",
+   "Historical Periods": [
+    "recVmCLNjuivJPoHZ"
+   ],
+   "Region": "United States",
+   "Start Year": 1955
+  },
+  "id": "recNIfSg8kCWwaDUV"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The king is beheaded and England becomes a commonwealth without a monarch.",
+   "Event": "Execution of Charles I",
+   "Historical Periods": [
+    "recUaOFZq9DeeqtzD",
+    "recDFVpoOtvtzYx1B"
+   ],
+   "Region": "Britain",
+   "Start Year": 1649
+  },
+  "id": "recNidxD1kmoDOSy1"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Henry VII wins the Battle of Bosworth Field and takes the throne.",
+   "Event": "Tudor dynasty begins",
+   "Historical Periods": [
+    "recl4YjIm4DmScnib"
+   ],
+   "Region": "Britain",
+   "Start Year": 1485
+  },
+  "id": "recNqbHESKBUuYsid"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "British rule in India ends with partition into two independent states.",
+   "Event": "Independence of India and Pakistan",
+   "Historical Periods": [
+    "recQjkWGiXmAPuLjq"
+   ],
+   "Region": "Britain",
+   "Start Year": 1947
+  },
+  "id": "recO0TCRPGXfbfAHE"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The Supreme Court rules that racial segregation in public schools is unconstitutional.",
+   "Event": "Brown v. Board of Education",
+   "Historical Periods": [
+    "recVmCLNjuivJPoHZ"
+   ],
+   "Region": "United States",
+   "Start Year": 1954
+  },
+  "id": "recPPiKSN19jerKsf"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "War with Mexico ends with the United States gaining California and much of the Southwest.",
+   "End Year": 1848,
+   "Event": "Mexican–American War",
+   "Historical Periods": [
+    "recmQfqePazNPC5FQ"
+   ],
+   "Region": "United States",
+   "Start Year": 1846
+  },
+  "id": "recPXatAuAuv0hTWB"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Uprisings spread across Europe; Marx and Engels publish The Communist Manifesto.",
+   "Event": "Revolutions of 1848",
+   "Region": "World",
+   "Start Year": 1848
+  },
+  "id": "recPfogwVNkfYNoRJ"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Lincoln is shot by John Wilkes Booth days after the Confederate surrender at Appomattox.",
+   "Event": "Assassination of Abraham Lincoln",
+   "Historical Periods": [
+    "rec77diWjHvoTtokB"
+   ],
+   "Region": "United States",
+   "Start Year": 1865
+  },
+  "id": "recR3C8jXNKaQfwvQ"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "President Kennedy is shot in Dallas on November 22.",
+   "Event": "Assassination of John F. Kennedy",
+   "Historical Periods": [
+    "recFEAzde8tpf5w2O"
+   ],
+   "Region": "United States",
+   "Start Year": 1963
+  },
+  "id": "recRBA7SOWigCEsDa"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "The first college in the English colonies is founded in Massachusetts.",
+   "Event": "Harvard College founded",
+   "Historical Periods": [
+    "rec43hZZUwfyEvzuI"
+   ],
+   "Region": "United States",
+   "Start Year": 1636
+  },
+  "id": "recREPOBrXwYUTpCa"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The Constitutional Convention drafts a new framework of government, ratified in 1788.",
+   "End Year": 1788,
+   "Event": "U.S. Constitution drafted and ratified",
+   "Historical Periods": [
+    "rec2csODeQLWegCC9",
+    "recY2qvmJF4hF6uhv"
+   ],
+   "Region": "United States",
+   "Start Year": 1787
+  },
+  "id": "recS4YuinIOcJpe6j"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The houses of Lancaster and York fight for the English crown.",
+   "End Year": 1485,
+   "Event": "Wars of the Roses",
+   "Historical Periods": [
+    "recl4YjIm4DmScnib"
+   ],
+   "Region": "Britain",
+   "Start Year": 1455
+  },
+  "id": "recSWep8VXCpo3PiW"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The United Kingdom leaves the European Union on January 31.",
+   "Event": "Brexit",
+   "Historical Periods": [
+    "receVbzkMgvwVsWbE"
+   ],
+   "Region": "Britain",
+   "Start Year": 2020
+  },
+  "id": "recUgClU9mAnxLGbP"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "European Christians capture Jerusalem.",
+   "End Year": 1099,
+   "Event": "First Crusade",
+   "Region": "World",
+   "Start Year": 1096
+  },
+  "id": "recUmcYtCUBSXqYVF"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "The stock market crash of October 1929 begins the worst economic collapse in American history.",
+   "End Year": 1939,
+   "Event": "Great Depression",
+   "Historical Periods": [
+    "recyEstYErUtHoxZU"
+   ],
+   "Region": "United States",
+   "Start Year": 1929
+  },
+  "id": "recV3fJzwHlSV0HaT"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Approximate": true,
+   "Category": "Society and culture",
+   "Description": "Traditional date of the first games at Olympia in Greece.",
+   "Event": "First Olympic Games",
+   "Region": "World",
+   "Start Year": -776
+  },
+  "id": "recV79FcNRzwcKL2m"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The United States defeats Spain and gains Puerto Rico, Guam and the Philippines.",
+   "Event": "Spanish–American War",
+   "Historical Periods": [
+    "rec77diWjHvoTtokB"
+   ],
+   "Region": "United States",
+   "Start Year": 1898
+  },
+  "id": "recWVyWNxwMkL7s0X"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Nixon resigns the presidency over the Watergate scandal.",
+   "Event": "Resignation of Richard Nixon",
+   "Historical Periods": [
+    "recFEAzde8tpf5w2O"
+   ],
+   "Region": "United States",
+   "Start Year": 1974
+  },
+  "id": "recWrkdRuoBescXAt"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Religion",
+   "Description": "The Authorized Version of the Bible in English is published.",
+   "Event": "King James Bible",
+   "Historical Periods": [
+    "recUaOFZq9DeeqtzD",
+    "recXCT4mlkggezIYr"
+   ],
+   "Region": "Britain",
+   "Start Year": 1611
+  },
+  "id": "recYrDZZSCaha7BNq"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Religion",
+   "Description": "The Eastern Orthodox and Roman Catholic churches split.",
+   "Event": "East–West Schism",
+   "Region": "World",
+   "Start Year": 1054
+  },
+  "id": "recYurYB0O91iVp6V"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "The first women's rights convention in the United States issues the Declaration of Sentiments.",
+   "Event": "Seneca Falls Convention",
+   "Historical Periods": [
+    "recmQfqePazNPC5FQ"
+   ],
+   "Region": "United States",
+   "Start Year": 1848
+  },
+  "id": "recaIPmJAFy7tuNED"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "Britain declares war on Germany in September 1939; the Battle of Britain is fought in 1940.",
+   "End Year": 1945,
+   "Event": "Britain in World War II",
+   "Historical Periods": [
+    "recQjkWGiXmAPuLjq"
+   ],
+   "Region": "Britain",
+   "Start Year": 1939
+  },
+  "id": "recaUuOlpq6YVLXXK"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Religion",
+   "Description": "Muhammad and his followers move from Mecca to Medina; the Islamic calendar begins.",
+   "Event": "The Hijra",
+   "Region": "World",
+   "Start Year": 622
+  },
+  "id": "recaqvi4bRsWVjcbf"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "A set of laws admits California as a free state and strengthens the Fugitive Slave Act.",
+   "Event": "Compromise of 1850",
+   "Historical Periods": [
+    "recmQfqePazNPC5FQ"
+   ],
+   "Region": "United States",
+   "Start Year": 1850
+  },
+  "id": "recbL5MINIFZ7Ep4a"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The Continental Congress declares the colonies independent of Britain on July 4.",
+   "Event": "Declaration of Independence",
+   "Historical Periods": [
+    "rec2csODeQLWegCC9",
+    "recY2qvmJF4hF6uhv"
+   ],
+   "Region": "United States",
+   "Start Year": 1776
+  },
+  "id": "reccq9ZVO16f37M8h"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Religion",
+   "Description": "Henry VIII breaks with Rome and becomes head of the Church of England.",
+   "Event": "Act of Supremacy",
+   "Historical Periods": [
+    "recUaOFZq9DeeqtzD",
+    "recLzvNcp9oxsbEU0"
+   ],
+   "Region": "Britain",
+   "Start Year": 1534
+  },
+  "id": "recg87IMcEBXgAaIz"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Approximate": true,
+   "Category": "Politics and government",
+   "Description": "Traditional date of Rome's founding by Romulus.",
+   "Event": "Founding of Rome",
+   "Region": "World",
+   "Start Year": -753
+  },
+  "id": "rechMCzhd4mSYNe1W"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The vote is extended to many working-class men in towns.",
+   "Event": "Second Reform Act",
+   "Historical Periods": [
+    "rectajNOHLWH86oHU",
+    "recgTWdm0gBcm5KQP"
+   ],
+   "Region": "Britain",
+   "Start Year": 1867
+  },
+  "id": "rechgLAmj8m0ZJvdm"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "William of Normandy defeats Harold II at the Battle of Hastings and becomes king.",
+   "Event": "Norman Conquest",
+   "Historical Periods": [
+    "recoU7I7U6QZDaiCY"
+   ],
+   "Region": "Britain",
+   "Start Year": 1066
+  },
+  "id": "reciFHEEITP0oH5xi"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Colonists dump East India Company tea into Boston Harbor to protest the Tea Act.",
+   "Event": "Boston Tea Party",
+   "Historical Periods": [
+    "rec2csODeQLWegCC9",
+    "recY2qvmJF4hF6uhv"
+   ],
+   "Region": "United States",
+   "Start Year": 1773
+  },
+  "id": "recjXXfRReVX4PmQP"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Alexander of Macedon conquers an empire from Greece to India.",
+   "End Year": -323,
+   "Event": "Reign of Alexander the Great",
+   "Region": "World",
+   "Start Year": -336
+  },
+  "id": "reckOixyfGcR5tKlK"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The United Kingdom becomes a member of the EEC.",
+   "Event": "Britain joins the European Economic Community",
+   "Historical Periods": [
+    "receVbzkMgvwVsWbE"
+   ],
+   "Region": "Britain",
+   "Start Year": 1973
+  },
+  "id": "reckQ8arf7e1EWSUH"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The Roman Republic gives way to the Roman Empire.",
+   "Event": "Augustus becomes first Roman emperor",
+   "Region": "World",
+   "Start Year": -27
+  },
+  "id": "recl0aH2AYnOVFjvI"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "Britain declares war on Germany in August 1914.",
+   "End Year": 1918,
+   "Event": "Britain in World War I",
+   "Historical Periods": [
+    "recQjkWGiXmAPuLjq"
+   ],
+   "Region": "Britain",
+   "Start Year": 1914
+  },
+  "id": "reclSZs0ElXlWukXt"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Congress outlaws discrimination based on race, color, religion, sex or national origin.",
+   "Event": "Civil Rights Act",
+   "Historical Periods": [
+    "recFEAzde8tpf5w2O"
+   ],
+   "Region": "United States",
+   "Start Year": 1964
+  },
+  "id": "reclq9rGTOjmUcrpO"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Victoria reigns for 63 years over an expanding empire.",
+   "End Year": 1901,
+   "Event": "Reign of Queen Victoria",
+   "Historical Periods": [
+    "rectajNOHLWH86oHU",
+    "recgTWdm0gBcm5KQP"
+   ],
+   "Region": "Britain",
+   "Start Year": 1837
+  },
+  "id": "recm2rNa1iIfp3Iqr"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Religion",
+   "Description": "Accusations of witchcraft in Salem, Massachusetts, lead to the execution of twenty people.",
+   "End Year": 1693,
+   "Event": "Salem witch trials",
+   "Historical Periods": [
+    "rec43hZZUwfyEvzuI"
+   ],
+   "Region": "United States",
+   "Start Year": 1692
+  },
+  "id": "recm74EZfL67TLBTX"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The armies of the emperor Claudius invade, beginning nearly four centuries of Roman rule.",
+   "Event": "Roman conquest of Britain begins",
+   "Region": "Britain",
+   "Start Year": 43
+  },
+  "id": "recmmaORvRGlZuZdD"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The French monarchy is overthrown and a republic is declared.",
+   "End Year": 1799,
+   "Event": "French Revolution",
+   "Region": "World",
+   "Start Year": 1789
+  },
+  "id": "recmz55VmbV756Kre"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Approximate": true,
+   "Category": "Science and technology",
+   "Description": "Johannes Gutenberg develops printing with movable metal type in Germany.",
+   "Event": "Gutenberg's printing press",
+   "Region": "World",
+   "Start Year": 1440
+  },
+  "id": "recn9MYUCZnidwuzh"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Most of Ireland becomes self-governing; Northern Ireland remains in the United Kingdom.",
+   "Event": "Irish Free State established",
+   "Historical Periods": [
+    "recQjkWGiXmAPuLjq"
+   ],
+   "Region": "Britain",
+   "Start Year": 1922
+  },
+  "id": "recoYmiQsFvxtofIE"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The United States drops atomic bombs on two Japanese cities, and Japan surrenders.",
+   "Event": "Atomic bombings of Hiroshima and Nagasaki",
+   "Involves America": true,
+   "Region": "World",
+   "Start Year": 1945
+  },
+  "id": "recohcinE77JM97hg"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The tsar is overthrown and the Bolsheviks take power.",
+   "Event": "Russian Revolution",
+   "Region": "World",
+   "Start Year": 1917
+  },
+  "id": "recozXRE3RKCdxrFw"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "Exploration and expansion",
+   "Description": "Christopher Columbus's first voyage lands in the Caribbean.",
+   "Event": "Columbus reaches the Americas",
+   "Region": "World",
+   "Start Year": 1492
+  },
+  "id": "recpkbtZ8vJVBWmWV"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "Plague kills perhaps a third to a half of Europe's population.",
+   "End Year": 1351,
+   "Event": "Black Death in Europe",
+   "Region": "World",
+   "Start Year": 1347
+  },
+  "id": "recqXPzA5iFrlmTEF"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "England turns back the Spanish fleet sent to invade it.",
+   "Event": "Defeat of the Spanish Armada",
+   "Historical Periods": [
+    "recUaOFZq9DeeqtzD",
+    "reczQnuABjRQBKWk4"
+   ],
+   "Region": "Britain",
+   "Start Year": 1588
+  },
+  "id": "recr7Z3QUUqtF2Bdc"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Elizabeth II reigns for 70 years, the longest in British history.",
+   "End Year": 2022,
+   "Event": "Reign of Elizabeth II",
+   "Historical Periods": [
+    "recQjkWGiXmAPuLjq"
+   ],
+   "Region": "Britain",
+   "Start Year": 1952
+  },
+  "id": "recrMsczUbm9rnXih"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Missouri enters the Union as a slave state and Maine as a free state, and slavery is barred north of 36°30′ in the Louisiana Territory.",
+   "Event": "Missouri Compromise",
+   "Historical Periods": [
+    "rec2csODeQLWegCC9",
+    "recn6sMCrMQqjkbBi"
+   ],
+   "Region": "United States",
+   "Start Year": 1820
+  },
+  "id": "recrijAVGTgkIDugF"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Science and technology",
+   "Description": "Neil Armstrong and Buzz Aldrin become the first people to walk on the Moon.",
+   "Event": "Apollo 11 Moon landing",
+   "Historical Periods": [
+    "recFEAzde8tpf5w2O"
+   ],
+   "Region": "United States",
+   "Start Year": 1969
+  },
+  "id": "recrqJPVp2byelJd2"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "Science and technology",
+   "Description": "Charles Darwin sets out the theory of evolution by natural selection.",
+   "Event": "Darwin's On the Origin of Species",
+   "Region": "World",
+   "Start Year": 1859
+  },
+  "id": "recs51FZPDOuNr6t6"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Mao Zedong's Communists take power in China.",
+   "Event": "People's Republic of China established",
+   "Region": "World",
+   "Start Year": 1949
+  },
+  "id": "recsYueTvkfxY8k7D"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Women gain the right to vote nationwide.",
+   "Event": "Nineteenth Amendment",
+   "Historical Periods": [
+    "recyEstYErUtHoxZU"
+   ],
+   "Region": "United States",
+   "Start Year": 1920
+  },
+  "id": "rect9AMYthATdbbuZ"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The United States sends combat troops to Vietnam; the last withdraw in 1973.",
+   "End Year": 1973,
+   "Event": "Vietnam War (U.S. combat role)",
+   "Historical Periods": [
+    "recFEAzde8tpf5w2O"
+   ],
+   "Region": "United States",
+   "Start Year": 1965
+  },
+  "id": "rectE2lGobNXV3tGC"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The United States enters the war on the side of the Allies in April 1917.",
+   "End Year": 1918,
+   "Event": "United States in World War I",
+   "Historical Periods": [
+    "recyEstYErUtHoxZU"
+   ],
+   "Region": "United States",
+   "Start Year": 1917
+  },
+  "id": "rectEIosRFrfX4LNu"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The United States fights Britain over trade restrictions and the impressment of American sailors.",
+   "End Year": 1815,
+   "Event": "War of 1812",
+   "Historical Periods": [
+    "rec2csODeQLWegCC9",
+    "recn6sMCrMQqjkbBi"
+   ],
+   "Region": "United States",
+   "Start Year": 1812
+  },
+  "id": "rectw4tMncx0lKwBd"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Religion",
+   "Description": "Pope Gregory the Great sends Augustine to convert the Anglo-Saxons to Christianity.",
+   "Event": "Augustine's mission to Kent",
+   "Historical Periods": [
+    "recoU7I7U6QZDaiCY"
+   ],
+   "Region": "Britain",
+   "Start Year": 597
+  },
+  "id": "recuDIeIsdalp1zSj"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "James II is deposed and William III and Mary II take the throne; the Bill of Rights follows in 1689.",
+   "Event": "Glorious Revolution",
+   "Historical Periods": [
+    "recfy7MFpcT0hltnr",
+    "rec8VyaUdsnuAfKD6"
+   ],
+   "Region": "Britain",
+   "Start Year": 1688
+  },
+  "id": "recuxtekqoxqVu9WH"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Religion",
+   "Description": "Constantine and Licinius grant toleration to Christians in the Roman Empire.",
+   "Event": "Edict of Milan",
+   "Region": "World",
+   "Start Year": 313
+  },
+  "id": "recvl2O6gNYgvZFvw"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "Parliament taxes printed materials in the colonies, provoking widespread protest.",
+   "Event": "Stamp Act",
+   "Historical Periods": [
+    "rec2csODeQLWegCC9",
+    "recY2qvmJF4hF6uhv"
+   ],
+   "Region": "United States",
+   "Start Year": 1765
+  },
+  "id": "recvpCzO4jK0lIUqc"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The United States and the Soviet Union compete for global power.",
+   "End Year": 1991,
+   "Event": "Cold War",
+   "Involves America": true,
+   "Region": "World",
+   "Start Year": 1947
+  },
+  "id": "recw6gITcyxKxfF5V"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "A nine-day strike in support of coal miners halts much of the country.",
+   "Event": "General Strike",
+   "Historical Periods": [
+    "recQjkWGiXmAPuLjq"
+   ],
+   "Region": "Britain",
+   "Start Year": 1926
+  },
+  "id": "recwAjdHwfEsWBcV0"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Approximate": true,
+   "Category": "Society and culture",
+   "Description": "An outpouring of African American art, music and literature centered in Harlem, New York.",
+   "End Year": 1937,
+   "Event": "Harlem Renaissance",
+   "Historical Periods": [
+    "recyEstYErUtHoxZU"
+   ],
+   "Region": "United States",
+   "Start Year": 1918
+  },
+  "id": "recxOwD1FvHQ6nR4f"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "Potato blight causes mass starvation and emigration from Ireland.",
+   "End Year": 1852,
+   "Event": "Great Famine in Ireland",
+   "Historical Periods": [
+    "rectajNOHLWH86oHU",
+    "recgTWdm0gBcm5KQP"
+   ],
+   "Region": "Britain",
+   "Start Year": 1845
+  },
+  "id": "recxxi5OLa9Ie4nxW"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The last Tudor monarch presides over a golden age of English drama and poetry.",
+   "End Year": 1603,
+   "Event": "Reign of Elizabeth I",
+   "Historical Periods": [
+    "recUaOFZq9DeeqtzD",
+    "reczQnuABjRQBKWk4"
+   ],
+   "Region": "Britain",
+   "Start Year": 1558
+  },
+  "id": "recyAeZLzKh7TLx33"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "War and conflict",
+   "Description": "The Japanese attack on Pearl Harbor on December 7, 1941, brings the United States into the war.",
+   "End Year": 1945,
+   "Event": "United States in World War II",
+   "Historical Periods": [
+    "recVmCLNjuivJPoHZ"
+   ],
+   "Region": "United States",
+   "Start Year": 1941
+  },
+  "id": "recyL8waHym0BZTgZ"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Society and culture",
+   "Description": "Rebels led by Wat Tyler march on London over taxation and serfdom.",
+   "Event": "Peasants' Revolt",
+   "Historical Periods": [
+    "recl4YjIm4DmScnib"
+   ],
+   "Region": "Britain",
+   "Start Year": 1381
+  },
+  "id": "recyMCNtipF3d9f99"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:00.000Z",
+  "fields": {
+   "Approximate": true,
+   "Category": "Science and technology",
+   "Description": "Mechanized industry, steam power and factories transform British society.",
+   "End Year": 1840,
+   "Event": "Industrial Revolution",
+   "Historical Periods": [
+    "recfy7MFpcT0hltnr",
+    "recmofTIcHmvggQkx"
+   ],
+   "Region": "Britain",
+   "Start Year": 1760
+  },
+  "id": "recySFefHb6GqCdH4"
+ },
+ {
+  "createdTime": "2026-11-03T17:17:37.000Z",
+  "fields": {
+   "Category": "Religion",
+   "Description": "Martin Luther posts his Ninety-five Theses in Wittenberg.",
+   "Event": "Protestant Reformation begins",
+   "Region": "World",
+   "Start Year": 1517
+  },
+  "id": "recycRHkGwGPbP361"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Religion",
+   "Description": "The Archbishop of Canterbury is killed in his cathedral; his shrine becomes England's great pilgrimage site.",
+   "Event": "Murder of Thomas Becket",
+   "Historical Periods": [
+    "recDkH63G2aTPXeXo"
+   ],
+   "Region": "Britain",
+   "Start Year": 1170
+  },
+  "id": "reczWYy9vDpogHPd1"
+ },
+ {
+  "createdTime": "2026-11-03T17:15:13.000Z",
+  "fields": {
+   "Category": "Politics and government",
+   "Description": "The Supreme Court rules that Black Americans cannot be citizens and that Congress cannot ban slavery in the territories.",
+   "Event": "Dred Scott decision",
+   "Historical Periods": [
+    "recmQfqePazNPC5FQ"
+   ],
+   "Region": "United States",
+   "Start Year": 1857
+  },
+  "id": "reczbGJM7JQVPxcFY"
+ }
+]

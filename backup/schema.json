@@ -3292,7 +3292,7 @@
   },
   {
    "id": "tbleQuxeILnTHy6gM",
-   "name": "Historical Periods",
+   "name": "Historical Periods and Events",
    "primaryFieldId": "fldDzTb5g2hEHja3u",
    "fields": [
     {
@@ -3329,6 +3329,11 @@
         "id": "selNLPykOr9erXTG7",
         "name": "American",
         "color": "cyanLight2"
+       },
+       {
+        "id": "selOx7mu0fe8FlrcR",
+        "name": "Majority World",
+        "color": "tealLight2"
        }
       ]
      },
@@ -3348,6 +3353,11 @@
         "id": "selaC7ep8nQPZDAmg",
         "name": "Sub-Period",
         "color": "cyanLight2"
+       },
+       {
+        "id": "seloWoXDyJ26qeV1h",
+        "name": "Historical Event",
+        "color": "tealLight2"
        }
       ]
      },
@@ -3488,6 +3498,17 @@
      },
      "id": "fld5EPM1dG2qWQhww",
      "name": "From field: Self-Link"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblzOtL2DxbE7LloC",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldLjD9C2paQ4XtvD"
+     },
+     "id": "fldcgBkwqezpFe6UU",
+     "name": "Historical Events"
     }
    ],
    "views": [
@@ -3521,6 +3542,11 @@
         "id": "selJKfHrZhmv7G5yk",
         "name": "2024-2025",
         "color": "cyanLight2"
+       },
+       {
+        "id": "selaLRLA9JQUe7zWE",
+        "name": "2026-2027",
+        "color": "blueLight2"
        }
       ]
      },
@@ -3599,6 +3625,21 @@
         "id": "selOz6BMDjI3btfpX",
         "name": "Yeats",
         "color": "yellowBright"
+       },
+       {
+        "id": "selqQWjedfzBhBYV4",
+        "name": "Hawthorne",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selPr4jTlK3iBXsac",
+        "name": "Lost in Yonkers",
+        "color": "cyanLight2"
+       },
+       {
+        "id": "sel7SXjvyvkFk96ef",
+        "name": "Bradstreet",
+        "color": "blueLight2"
        }
       ]
      },
@@ -3672,6 +3713,31 @@
      },
      "id": "fld6ABrLp0Ey5LJex",
      "name": "Record ID"
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "sellQQtK8cOvnBhb1",
+        "name": "Free",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel78qkvnHQHc8a6Y",
+        "name": "Free preview",
+        "color": "yellowLight2"
+       },
+       {
+        "id": "selcYrYCx9m9pWs0e",
+        "name": "Paid",
+        "color": "orangeLight2"
+       }
+      ]
+     },
+     "id": "fldM8Y98hILZsxrqI",
+     "name": "Access",
+     "description": "Free, Free preview (part of it is behind a paywall or needs a subscription), or Paid. Shown on the website's Resources page."
     }
    ],
    "views": [
@@ -4470,6 +4536,144 @@
    "views": [
     {
      "id": "viwLhW5CSGhnDxXhV",
+     "name": "Grid view",
+     "type": "grid"
+    }
+   ]
+  },
+  {
+   "id": "tblzOtL2DxbE7LloC",
+   "name": "Historical Events",
+   "description": "Major historical events in the United States, Britain and the wider world, as background for the literary periods. Years before the Common Era are negative (e.g. -490 for 490 BCE).",
+   "primaryFieldId": "fldpJz4MhYPahF6c8",
+   "fields": [
+    {
+     "type": "singleLineText",
+     "id": "fldpJz4MhYPahF6c8",
+     "name": "Event"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldyxtQkzXzmNakxP",
+     "name": "Start Year",
+     "description": "Negative for BCE."
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "flduwh0Y6SgQTaSMd",
+     "name": "End Year",
+     "description": "Blank for a single-year event."
+    },
+    {
+     "type": "checkbox",
+     "options": {
+      "icon": "check",
+      "color": "grayBright"
+     },
+     "id": "fldR1rV5hM81oPnlM",
+     "name": "Approximate",
+     "description": "Checked when the dates are traditional or approximate (shown as c.)."
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selHpSvP8FbyeY2ye",
+        "name": "United States",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selFxm7gPmNJywz3a",
+        "name": "Britain",
+        "color": "redLight2"
+       },
+       {
+        "id": "sel1YktrJajI6nek8",
+        "name": "World",
+        "color": "greenLight2"
+       }
+      ]
+     },
+     "id": "fldNx7tvpqqRZ9wf7",
+     "name": "Region"
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selurYJxg11CeSUiS",
+        "name": "Politics and government",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selTPCFCisTiXZyRF",
+        "name": "War and conflict",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selhygbta3n3uHrTJ",
+        "name": "Religion",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel1BODT1dUHAEcvn",
+        "name": "Society and culture",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selZO5QYcaFBodRru",
+        "name": "Science and technology",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selxVuA4XqAEztDWS",
+        "name": "Exploration and expansion",
+        "color": "grayLight2"
+       }
+      ]
+     },
+     "id": "fldJ2rfQdHa28YqDs",
+     "name": "Category"
+    },
+    {
+     "type": "multilineText",
+     "id": "fldNEt626OuUJaq0E",
+     "name": "Description"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tbleQuxeILnTHy6gM",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldcgBkwqezpFe6UU"
+     },
+     "id": "fldLjD9C2paQ4XtvD",
+     "name": "Historical Periods",
+     "description": "The literary periods (and sub-periods) the event's start year falls in, for its region."
+    },
+    {
+     "type": "checkbox",
+     "options": {
+      "icon": "check",
+      "color": "blueBright"
+     },
+     "id": "fldsazlxfF81QP4NE",
+     "name": "Involves America",
+     "description": "For World events: checked ones also appear on the American timeline on the website's Periods page. Unchecked World events appear on the British timeline only."
+    }
+   ],
+   "views": [
+    {
+     "id": "viwlzKmuOC7YO06Az",
      "name": "Grid view",
      "type": "grid"
     }

@@ -1,7 +1,29 @@
 [
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_16_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_16_hawthorne_64kb.mp3",
+   "Name": "The Artist of the Beautiful (Part 1) - Audio",
+   "Record ID": "rec0hhoqSDhMXqr5B",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "rec0hhoqSDhMXqr5B"
+ },
+ {
   "createdTime": "2024-04-29T15:27:27.000Z",
   "fields": {
+   "Access": "Free",
    "File": [
     {
      "filename": "the glass menagerie script.pdf",
@@ -10,17 +32,17 @@
      "thumbnails": {
       "large": {
        "height": 652,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/1lkCeVhjQULOptom1EPIZg/kjnR6ysuQmY4I5ONN4zAb8CF1CwmEUTsGTQXub9j-ouawLyJ-SaM--25_CSmvug06ffECvdUoM0ufEgz79zE_DLXEmy6yMXiI79rAPizf1JPjPBNa7edf_Hv2PDwZxchhDN_XnRHNd6HvL9lWhOVjw/7K4T2e9MR499UwykgBspdl599Y199FEdDZR_uhp-M4k",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/TFQfIAYC9dl-U7PTmY70Xw/SK5pc3WskdWa8Abv55j-xlRpNEgWyZ16IoSOOZUB2IlU0jaUzCavQFvMAvMS9kifoZBiX7la2fwrKxfQTHS8no6r9fztf3yArSaQZjdc94gn3Lxcqwdff1ifujL9E8YN1cX5w7Wutw1LrfaHRvXg-Q/45gv1XzfbKAjsWLeeWGPGUSoCB8uP8PiaykS2fbn8XI",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/KiI4BC5wY1wTqukv37tGzg/eQMPkCpD2YVa-L3AuCtwdYqIk7dThiigfuO6eOxL1zHbNqFoKUtUH-_qpRWxoyE7RoYby4LWs6wikK2c0hfQACi4TYZ8JWTU2rwpLcfatOOCCUJc_E2g7ZCxZtnK-vLu29PycSOZ0KRzlvQ8zmswSg/D-sO-T7d5nBCX1Z9qqTj9fJQOq5TwCLaI9weNIDqX_A",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/VYpc789dg2qzikw4WTvP6A/NrVZr2tNrkxHMT6NcKbTDa1yTeb9Ia3y_J57wZW_SNOwVljeujqTHIoF7ZeO5zfo_i0VlEEkr5r_IPtRrLz7uo4Xte2TsD1rztvvrfAqr-3N9pW-Hd8SWmkDJ9P_75FRQ2xMpYPxO5pD8DcrQ1T_MQ/6K9RKII7i1dpPMglDA0CH-jKEmf2fCw2XVT0nJ0Gwgs",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/ngFFua3qzcXFLRqgHWSIrA/gWvOMq_7bfLXw05Qyj1cR56sgPqX5zBQwDU1MiwePBBk-_2uwGfS5smSRJ6zipOOIKwON2hhyZu2HI5gUKdN5citEIv1MRnKrtDaIh8KG7JgHALljidVRjpY87Ekqa93F2TJZbb4z8Mo2u2dvITNfgyKqNkDRdeIKBNZCOdoAUJGF-L4HzRsnSHv6lDkforK/sz0T-rhkMWCV84aEH6sK3K1y6dnH-64MA52J90vX9kw"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/dANp9PU10R4UgmCxF_UZbg/dxq9r-Jf2_Cc8Mv0br3lmhlmdIQ7jXBh4z-AgRBTsmeUk7Tl7SzAle_wVA9Mak745adGrnJ3kwnqn3eC6BwhU_k6CGm9VHrAt09Ydx7VDJ9uD3aJuU-j5bU2Y3BP-KIyUNa9J1LijlZKiMuK2xSZEu5L-lBviQyrm-XyijUIKhBNdPQ5cVCZrG5SoboBHz7Y/6m2tzZ9FFPdi2HcKhKYpQjHbYN84GTHsQbdQExckTD8"
     }
    ],
    "From field: Self-Link": [
@@ -47,8 +69,30 @@
   "id": "rec0pgTTXlmhsu6ix"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Paid",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.audible.ca/pd/Lost-in-Yonkers-Audiobook/B002V8HIFY"
+   },
+   "Link": "https://www.audible.ca/pd/Lost-in-Yonkers-Audiobook/B002V8HIFY",
+   "Name": "L.A. Theatre Works Full-Cast Recording",
+   "Record ID": "rec0wiN4WT4ldPv3K",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Lost in Yonkers"
+   ],
+   "Work Text": "Lost in Yonkers",
+   "Year": "2026-2027"
+  },
+  "id": "rec0wiN4WT4ldPv3K"
+ },
+ {
   "createdTime": "2024-04-29T15:59:24.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "rec1EI8k32lDdFd89"
    ],
@@ -73,8 +117,135 @@
   "id": "rec1EI8k32lDdFd89"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://rpo.library.utoronto.ca/content/prologue"
+   },
+   "Link": "https://rpo.library.utoronto.ca/content/prologue",
+   "Name": "The Prologue - Text",
+   "Record ID": "rec1NyUjnJ0ceTcs3",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "rec1NyUjnJ0ceTcs3"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free preview",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.coursehero.com/lit/Wakefield/"
+   },
+   "Link": "https://www.coursehero.com/lit/Wakefield/",
+   "Name": "Wakefield - Course Hero",
+   "Record ID": "rec1SazoXI2usYpqS",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "rec1SazoXI2usYpqS"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://rpo.library.utoronto.ca/content/night-when-others-soundly-slept"
+   },
+   "Link": "https://rpo.library.utoronto.ca/content/night-when-others-soundly-slept",
+   "Name": "By Night when Others Soundly Slept - Text",
+   "Record ID": "rec1UvVwUaqE1T9w0",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "rec1UvVwUaqE1T9w0"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.gutenberg.org/ebooks/9231"
+   },
+   "Link": "https://www.gutenberg.org/ebooks/9231",
+   "Name": "Earth's Holocaust - Text",
+   "Record ID": "rec2GVU98iRumV7ii",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "rec2GVU98iRumV7ii"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://librivox.org/the-poems-of-mrs-anne-bradstreet-together-with-her-prose-remains/"
+   },
+   "Link": "https://librivox.org/the-poems-of-mrs-anne-bradstreet-together-with-her-prose-remains/",
+   "Name": "Poems of Mrs. Anne Bradstreet - Audiobook",
+   "Record ID": "rec2J9G6V5uwjDEXW",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "rec2J9G6V5uwjDEXW"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_05_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_05_hawthorne_64kb.mp3",
+   "Name": "The May-Pole of Merry Mount - Audio",
+   "Record ID": "rec2imlEvPuiVnOBs",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "rec2imlEvPuiVnOBs"
+ },
+ {
   "createdTime": "2024-04-29T16:21:56.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "rec3BZc3qj9s8Yz2d"
    ],
@@ -99,8 +270,156 @@
   "id": "rec3BZc3qj9s8Yz2d"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Paid",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.primevideo.com/detail/0NYGDP77YPKFS5TPZ2UT02DIKM"
+   },
+   "Link": "https://www.primevideo.com/detail/0NYGDP77YPKFS5TPZ2UT02DIKM",
+   "Name": "1993 Film",
+   "Record ID": "rec3CCNptPj2DbeCu",
+   "Type": "Video",
+   "Type Text": "Video",
+   "Work": [
+    "Lost in Yonkers"
+   ],
+   "Work Text": "Lost in Yonkers",
+   "Year": "2026-2027"
+  },
+  "id": "rec3CCNptPj2DbeCu"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.gradesaver.com/lost-in-yonkers"
+   },
+   "Link": "https://www.gradesaver.com/lost-in-yonkers",
+   "Name": "GradeSaver",
+   "Record ID": "rec3Fv4R2BvRdpKBH",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Lost in Yonkers"
+   ],
+   "Work Text": "Lost in Yonkers",
+   "Year": "2026-2027"
+  },
+  "id": "rec3Fv4R2BvRdpKBH"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_28_bradstreet_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_28_bradstreet_64kb.mp3",
+   "Name": "To My Dear and Loving Husband - Audio",
+   "Record ID": "rec46LSxxSiICFPAB",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "rec46LSxxSiICFPAB"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://librivox.org/mosses-from-an-old-manse-by-nathaniel-hawthorne/"
+   },
+   "Link": "https://librivox.org/mosses-from-an-old-manse-by-nathaniel-hawthorne/",
+   "Name": "Mosses from an Old Manse - Audiobook",
+   "Record ID": "rec4OChG68LgB8QdV",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "rec4OChG68LgB8QdV"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://eada.lib.umd.edu/text-entries/before-the-birth-of-one-of-her-children/"
+   },
+   "Link": "https://eada.lib.umd.edu/text-entries/before-the-birth-of-one-of-her-children/",
+   "Name": "Before the Birth of One of Her Children - Text",
+   "Record ID": "rec4ZwqQDsXYJ8Kdv",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "rec4ZwqQDsXYJ8Kdv"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Paid",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.concordtheatricals.com/s/2758/lost-in-yonkers"
+   },
+   "Link": "https://www.concordtheatricals.com/s/2758/lost-in-yonkers",
+   "Name": "Purchase",
+   "Record ID": "rec5JE2Ibxs6TcDjx",
+   "Type": "Purchase",
+   "Type Text": "Purchase",
+   "Work": [
+    "Lost in Yonkers"
+   ],
+   "Work Text": "Lost in Yonkers",
+   "Year": "2026-2027"
+  },
+  "id": "rec5JE2Ibxs6TcDjx"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_20_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_20_hawthorne_64kb.mp3",
+   "Name": "Dr. Heidegger's Experiment - Audio",
+   "Record ID": "rec5ekWW68Wqv0nS1",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "rec5ekWW68Wqv0nS1"
+ },
+ {
   "createdTime": "2024-04-29T15:59:30.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "rec5pZfw9v2qj8vCa"
    ],
@@ -125,8 +444,72 @@
   "id": "rec5pZfw9v2qj8vCa"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://rpo.library.utoronto.ca/content/reference-her-children-23-june-1659"
+   },
+   "Link": "https://rpo.library.utoronto.ca/content/reference-her-children-23-june-1659",
+   "Name": "In Reference to her Children, 23 June 1659 - Text",
+   "Record ID": "rec6AigKmuxMpetgJ",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "rec6AigKmuxMpetgJ"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.litcharts.com/lit/young-goodman-brown"
+   },
+   "Link": "https://www.litcharts.com/lit/young-goodman-brown",
+   "Name": "Young Goodman Brown - Lit Charts",
+   "Record ID": "rec6GXW8FSsVrxl5s",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "rec6GXW8FSsVrxl5s"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free preview",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.supersummary.com/the-ambitious-guest/summary"
+   },
+   "Link": "https://www.supersummary.com/the-ambitious-guest/summary",
+   "Name": "The Ambitious Guest - SuperSummary",
+   "Record ID": "rec6NsTqjSLQZBpj4",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "rec6NsTqjSLQZBpj4"
+ },
+ {
   "createdTime": "2024-04-29T16:00:18.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "rec6Z7OI2i1HhCVrF"
    ],
@@ -151,8 +534,177 @@
   "id": "rec6Z7OI2i1HhCVrF"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://librivox.org/twice-told-tales-by-nathaniel-hawthorne/"
+   },
+   "Link": "https://librivox.org/twice-told-tales-by-nathaniel-hawthorne/",
+   "Name": "Twice-Told Tales - Audiobook",
+   "Record ID": "rec6d04OO1N8t5UCo",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "rec6d04OO1N8t5UCo"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_06_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_06_hawthorne_64kb.mp3",
+   "Name": "The Gentle Boy (Part 1) - Audio",
+   "Record ID": "rec8nmH6LAW3MSlAV",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "rec8nmH6LAW3MSlAV"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://interestingliterature.com/2019/01/17/a-short-analysis-of-anne-bradstreet-to-her-father-with-some-verses/"
+   },
+   "Link": "https://interestingliterature.com/2019/01/17/a-short-analysis-of-anne-bradstreet-to-her-father-with-some-verses/",
+   "Name": "To Her Father with Some Verses - Interesting Literature",
+   "Record ID": "rec9NOWLN7meI59co",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "rec9NOWLN7meI59co"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.ebsco.com/research-starters/literature-and-writing/lost-yonkers-neil-simon"
+   },
+   "Link": "https://www.ebsco.com/research-starters/literature-and-writing/lost-yonkers-neil-simon",
+   "Name": "EBSCO Research Starter",
+   "Record ID": "rec9NVq1FSkkM0WIz",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Lost in Yonkers"
+   ],
+   "Work Text": "Lost in Yonkers",
+   "Year": "2026-2027"
+  },
+  "id": "rec9NVq1FSkkM0WIz"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_29_bradstreet_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_29_bradstreet_64kb.mp3",
+   "Name": "A Letter to Her Husband - Audio",
+   "Record ID": "rec9qTkxNdQWIMVYy",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "rec9qTkxNdQWIMVYy"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.litcharts.com/poetry/anne-bradstreet/the-author-to-her-book"
+   },
+   "Link": "https://www.litcharts.com/poetry/anne-bradstreet/the-author-to-her-book",
+   "Name": "The Author to Her Book - Lit Charts",
+   "Record ID": "recAYRp6oz1G0A4zR",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recAYRp6oz1G0A4zR"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.vcu.edu/engweb/webtexts/Bradstreet/index.html"
+   },
+   "Link": "https://www.vcu.edu/engweb/webtexts/Bradstreet/index.html",
+   "Name": "Bradstreet Study Texts - VCU",
+   "Record ID": "recB6wyhobstoSa0i",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recB6wyhobstoSa0i"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_42_bradstreet_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_42_bradstreet_64kb.mp3",
+   "Name": "For Deliverance from a Fever - Audio",
+   "Record ID": "recBAmmV8xLx8Tznt",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recBAmmV8xLx8Tznt"
+ },
+ {
   "createdTime": "2024-04-29T16:22:47.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recBIj8dOcSY9QDAP"
    ],
@@ -177,8 +729,114 @@
   "id": "recBIj8dOcSY9QDAP"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_08_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_08_hawthorne_64kb.mp3",
+   "Name": "Rappaccini's Daughter (Part 2) - Audio",
+   "Record ID": "recCBxpcK1m0UgWgM",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recCBxpcK1m0UgWgM"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_39_bradstreet_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_39_bradstreet_64kb.mp3",
+   "Name": "Meditations Divine and Moral - Audio",
+   "Record ID": "recCLIo9TLr5Y7aLR",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recCLIo9TLr5Y7aLR"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.litcharts.com/lit/dr-heidegger-s-experiment"
+   },
+   "Link": "https://www.litcharts.com/lit/dr-heidegger-s-experiment",
+   "Name": "Dr. Heidegger's Experiment - Lit Charts",
+   "Record ID": "recD5YlGWvHuIEeVW",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recD5YlGWvHuIEeVW"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://andrucki.catapult.bates.edu/lost-in-yonkers.html"
+   },
+   "Link": "https://andrucki.catapult.bates.edu/lost-in-yonkers.html",
+   "Name": "Bates College Audience Guide",
+   "Record ID": "recDLtpdTmjSbTyI3",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Lost in Yonkers"
+   ],
+   "Work Text": "Lost in Yonkers",
+   "Year": "2026-2027"
+  },
+  "id": "recDLtpdTmjSbTyI3"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/articles/69434/anne-bradstreet-to-my-dear-and-loving-husband"
+   },
+   "Link": "https://www.poetryfoundation.org/articles/69434/anne-bradstreet-to-my-dear-and-loving-husband",
+   "Name": "To My Dear and Loving Husband - Poetry Foundation Guide",
+   "Record ID": "recDThxAXORea4kjU",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recDThxAXORea4kjU"
+ },
+ {
   "createdTime": "2024-04-29T16:00:18.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recDYq9H20o85XQdh"
    ],
@@ -203,8 +861,30 @@
   "id": "recDYq9H20o85XQdh"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://rpo.library.utoronto.ca/content/my-dear-and-loving-husband"
+   },
+   "Link": "https://rpo.library.utoronto.ca/content/my-dear-and-loving-husband",
+   "Name": "To My Dear and Loving Husband - Text",
+   "Record ID": "recEBgFUmXX4XW0RZ",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recEBgFUmXX4XW0RZ"
+ },
+ {
   "createdTime": "2024-04-29T15:34:02.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recEYn4t914hJsjJk"
    ],
@@ -229,8 +909,51 @@
   "id": "recEYn4t914hJsjJk"
  },
  {
+  "createdTime": "2026-11-03T15:29:50.000Z",
+  "fields": {
+   "Access": "Paid",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.amazon.com/s?k=9780674050273"
+   },
+   "Link": "https://www.amazon.com/s?k=9780674050273",
+   "Name": "Purchase",
+   "Record ID": "recEkCXnBHou49bYC",
+   "Type": "Purchase",
+   "Type Text": "Purchase",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recEkCXnBHou49bYC"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.vcu.edu/engweb/webtexts/Bradstreet/bradlet.htm"
+   },
+   "Link": "https://www.vcu.edu/engweb/webtexts/Bradstreet/bradlet.htm",
+   "Name": "A Letter to Her Husband, Absent upon Public Employment - Text",
+   "Record ID": "recF8ff1qIMU523cO",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recF8ff1qIMU523cO"
+ },
+ {
   "createdTime": "2024-04-29T16:30:26.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recGj886FmjdlxuS1"
    ],
@@ -255,8 +978,30 @@
   "id": "recGj886FmjdlxuS1"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://poemanalysis.com/anne-bradstreet/to-her-father-with-some-verses"
+   },
+   "Link": "https://poemanalysis.com/anne-bradstreet/to-her-father-with-some-verses",
+   "Name": "To Her Father with Some Verses - Poem Analysis",
+   "Record ID": "recGwwpHAoK0hFirP",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recGwwpHAoK0hFirP"
+ },
+ {
   "createdTime": "2024-04-29T15:34:36.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recH8TFNZoE92sIoD"
    ],
@@ -281,8 +1026,30 @@
   "id": "recH8TFNZoE92sIoD"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_07_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_07_hawthorne_64kb.mp3",
+   "Name": "The Gentle Boy (Part 2) - Audio",
+   "Record ID": "recHPxpagtLVFzL6A",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recHPxpagtLVFzL6A"
+ },
+ {
   "createdTime": "2024-04-29T15:32:10.000Z",
   "fields": {
+   "Access": "Paid",
    "From field: Self-Link": [
     "recHkoVqV5PckD4Qz"
    ],
@@ -307,8 +1074,135 @@
   "id": "recHkoVqV5PckD4Qz"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_04_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_04_hawthorne_64kb.mp3",
+   "Name": "The Minister's Black Veil - Audio",
+   "Record ID": "recHqyV7tebYdPzCq",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recHqyV7tebYdPzCq"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.litcharts.com/lit/the-minister-s-black-veil"
+   },
+   "Link": "https://www.litcharts.com/lit/the-minister-s-black-veil",
+   "Name": "The Minister's Black Veil - Lit Charts",
+   "Record ID": "recI8wCZBe0eyFAmq",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recI8wCZBe0eyFAmq"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://interestingliterature.com/2021/06/nathaniel-hawthorne-artist-of-the-beautiful-summary-analysis"
+   },
+   "Link": "https://interestingliterature.com/2021/06/nathaniel-hawthorne-artist-of-the-beautiful-summary-analysis",
+   "Name": "The Artist of the Beautiful - Interesting Literature",
+   "Record ID": "recISGnzL6107MnV9",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recISGnzL6107MnV9"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_10_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_10_hawthorne_64kb.mp3",
+   "Name": "Wakefield - Audio",
+   "Record ID": "recIvOI9p0bCg32QK",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recIvOI9p0bCg32QK"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_04_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_04_hawthorne_64kb.mp3",
+   "Name": "The Birthmark - Audio",
+   "Record ID": "recJYIn7s1g4MbFlm",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recJYIn7s1g4MbFlm"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.whatsoproudlywehail.org/wp-content/uploads/2013/08/May-Pole-of-Merry-Mount-Study-Guide.pdf"
+   },
+   "Link": "https://www.whatsoproudlywehail.org/wp-content/uploads/2013/08/May-Pole-of-Merry-Mount-Study-Guide.pdf",
+   "Name": "The May-Pole of Merry Mount - Study Guide",
+   "Record ID": "recJnliHswGQXKSDQ",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recJnliHswGQXKSDQ"
+ },
+ {
   "createdTime": "2024-04-29T16:24:30.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recKS8v8XA8GETjir"
    ],
@@ -333,8 +1227,30 @@
   "id": "recKS8v8XA8GETjir"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_24_bradstreet_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_24_bradstreet_64kb.mp3",
+   "Name": "The Author to Her Book - Audio",
+   "Record ID": "recKnYUAcfd01m91p",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recKnYUAcfd01m91p"
+ },
+ {
   "createdTime": "2024-04-29T15:30:50.000Z",
   "fields": {
+   "Access": "Free",
    "File": [
     {
      "filename": "The-Glass-Menagerie-LitChart.pdf",
@@ -343,17 +1259,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/oD7QKZWYW7MukbPIzmuDEg/dGs7XwBGEFSsJCuVdNsjjGRXLmuV3W2jHvS5Au8cMNZustvqbxREkSOwBqVfvbH0K0tbxrYyK9R8BnhAdOAUrOSUvy65UjdLsv7IFU5BOLPA5DWtQ_tRTzxi8acqmNLKcafgjHbDL2v_rRGNacOMEw/uBRktS7Kl6eP78ZlGn6L9N6DFHWdkZKrU-dyZxalBuI",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/21HGyBuuCbgZTCRlimoDMg/Gn94oxG1-Zxmf8V9ufo0gNLB8RDK-teX7_GHHW-w4xGwWjuZp0bngaLQ6W6rY5sByjEUBPQAfodSygTEOIPDx8duLInXvyfSqOFr8Kvy1-_FYuJziLC77y8lYnnwj1NIdxqWYlME3KUS23SekVI0TA/uq1ZDNa6K94KwvqkLxYZwqzQAeREKKD5tEhcm3AY-Ag",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/C1I9MmbpyGvG0pRYQMS2IA/6j4k-BS_MeHuyKLMKJ-0X1Zdia1g9jp1TlBacIiuVPInNWBrFkRw2K_4bjt_htCnGN1XimrHaC2pe_cHN-9YaE_hVzSPbXMA5GpCUDcqx0-DG7zYYwlGOI9Lw1s2sdMiMnseMwJAX-OuKNvX8eu0SA/zUGwQgvYNrX5gUsSateqPtIx7xIyguKKEE73IIxImOs",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/vB0HAvZF4BvnkZ4ogVn-_Q/4G4XiNoovYYwk33E4vu_WLdx0b44khskLk8qW1eCyNdMZ1C03pkLAEzgpEnTwojpeXVJ6_vDSVGp-ZsqFsvw8-enb5NolMPScNdo8VviM4jm7a__5RjataoUgSlj47mZI4MFbn5AZid7hABFFrhKig/Q2GGP5zjE-ZmV-AEd_vS_C3JP4G-UsKwi32pDQOdXKk",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/KZ5rhNyocEkgIuwmGcAiBg/rNrckG00gJSggEa91ddQFccM2kU4TQ8KR0fdU5I9DBb39ocidtHNEt978_g1nF7_fC6eDOfkbz7e5c8AZyrAl0NGq9JxU0KCa8P5hLfh6AK-lf54ggOMZ0cX31tY-COZoIbUMEXVmcv19IgTMCV3eDMPpziu2Om-ab5Ihm7C_3E-7sXInimwB4Qo2K2UNbLJ/ZQ5eI2nYvba6pC_yss8EZukh1ub0QszkAVQYGPuQEx0"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/8Kls-vL4OIKctGNBkk_Bgw/InBAgU2DgjxL7s5g9d2pFs8zS0UgpfKtJvOdjKiZOOYuqlfuJ0QSm4gdOiC7FzAJyUuExZ0B0fJaN1HxlG-GrsDaUkj4Wxh9xk3r6gMpxhLsBo38ZTPsTfrlaJNU2n9QI2W3WOmdIDCwPrNRfuFq5qcjuTZ0S5DM4RX-N7ysApsXh-VJGVcn4HYMTVuxNOjB/g0qHZbubaO8HeNOu2DlMaSzJLcNBnrSPtvXuKNuJe60"
     }
    ],
    "From field: Self-Link": [
@@ -382,6 +1298,7 @@
  {
   "createdTime": "2024-04-29T14:01:27.000Z",
   "fields": {
+   "Access": "Paid",
    "From field: Self-Link": [
     "recLryoM9sHujwNXy"
    ],
@@ -406,8 +1323,30 @@
   "id": "recLryoM9sHujwNXy"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_07_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_07_hawthorne_64kb.mp3",
+   "Name": "Rappaccini's Daughter (Part 1) - Audio",
+   "Record ID": "recMA4gF03yz3KXPY",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recMA4gF03yz3KXPY"
+ },
+ {
   "createdTime": "2024-01-27T14:16:51.000Z",
   "fields": {
+   "Access": "Free",
    "File": [
     {
      "filename": "CliffsNotes on Silas Marner.pdf",
@@ -416,17 +1355,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/gsnbTMi_4KNTwEvV4opf7A/U_48audUQJmlkxYWtdDpxDofj8ZwCgqbVRmmdEtP8Is76m6rdFISFe_uvpR_QfOS1CZm8BWNZLntd5ZdqUa4c_GIcLs3gPwP9HcHqbM3rKcy66--J5Ja-h0NerxfHNWXKK0rT3Cjgpvu55WUOe5DFA/w8ndxR4P_NJswVW_2UzOMRIgGwQyWau2lvYfdAIFECE",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/f_nIPlFdgLgLLehJ0Ry1dQ/gD9tNs_3lbXZijjOjBJ_KSClHqHQpMXhPIHGmKyqk0a4lJVeoslhdhYRk2LytADqNGtubUuVy3EPWj0y7-vjiUilG_RbOObXeYOy13su9exXiSca_GtJyqj7CwSSnL2Bz2KKPEFMYgyjM67qdm2GbQ/X7lqSogctlNG8cVCoPvNs5_T7wI-ddicbX6Yg3rmr-I",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/hhaquGVwSGe6aFvHCkf7vQ/fq3-9T4gOzVOdL3CE6YDQWg28PS8y9367Lo-5DmNr_xlhtf3ipryRp9AAQSdXMHSUfrpf_xurlaijS9BsDrJtzYGRxhAL5melQtQvXImrtoLIomoaPvz4Go8T5OyutG3lplvjGLDW02EzDlosrk5Mw/YuUb1KGfhjM2kp-BvCypxeB6gqZqcRdPkRmYENtRNq8",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/b3U77jERIG__IKT9ycReTQ/XYdHh16pvsvUwA3GS3WdGywh9LRGUHcmH16yX-dg0T98wjr1zghSYWJTTH8thGQmY5Q2c0bSPIzjvp4r4AupOO-gKHDAVhIUqKtdFbqYNInA9RSiYabmCmSgnqcEfKJr41n6-_btWLKv_wI7Ch84TA/MCY_RxkBtCHv-KjrX5gRVPeKAc8pex8XH-sfROk7C4k",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/Yk-D2_DXZojESdwHjfcHCA/EsPbO2VJwTUUEkf4P8q8VS9SWyuwUgowE-fzoyOsgnfnvm4oDegmF3AVKPEywvM2q4KSeAPS8assaHDM3yLug2dLViD_zBp4ysWEbYZuA8FFbnGlEUgQKdUIsd49zIG6HAOoXYGa6q8ig3r6tQoyqrha4_s1VaJ34HjshTnTKllRa4QDpZKjpxv-4eNrACa6/ZbFadTXg27BefVo2vlVNAiGoYmUfOgnPSGSNOmSbLIE"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/i2-XI8OR7O0qC--zM5_H3A/Ji7aefsX75QJWa_q3y9OOFhjfcCX7fP48F6RwXBvxUKGkZyEHTf_hc_A1hQAyqSnPWVAD_WAH6m_u8T9qSxrKXKj7Oj1T72oYDH5iFiUwrC8ZXCdx0EYLPXYnxSyeQyMDgjFmkBHLxYC07SMn7DoqWClmec-rnkl4TBRkJnYx0Q1yxeUiUAfBToiurTHtg8W/6OgSyHwppxbqmqWTE5SVQucUJDR5D55nRQSZSgtPWFQ"
     }
    ],
    "From field: Self-Link": [
@@ -455,6 +1394,7 @@
  {
   "createdTime": "2024-04-29T16:23:37.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recN1kv2WE3QB0f85"
    ],
@@ -481,6 +1421,7 @@
  {
   "createdTime": "2024-04-29T15:59:49.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recN5Jq6R5SmntRqQ"
    ],
@@ -505,8 +1446,30 @@
   "id": "recN5Jq6R5SmntRqQ"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.gutenberg.org/ebooks/512"
+   },
+   "Link": "https://www.gutenberg.org/ebooks/512",
+   "Name": "Mosses from an Old Manse - Full Text",
+   "Record ID": "recO20JlqdqEuZEFr",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recO20JlqdqEuZEFr"
+ },
+ {
   "createdTime": "2024-04-29T16:00:28.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recO4l7ANBfr0yNG0"
    ],
@@ -531,8 +1494,51 @@
   "id": "recO4l7ANBfr0yNG0"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_32_bradstreet_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_32_bradstreet_64kb.mp3",
+   "Name": "In Reference to her Children - Audio",
+   "Record ID": "recOFewuQGHZKSkuc",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recOFewuQGHZKSkuc"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.litcharts.com/poetry/anne-bradstreet/to-my-dear-and-loving-husband"
+   },
+   "Link": "https://www.litcharts.com/poetry/anne-bradstreet/to-my-dear-and-loving-husband",
+   "Name": "To My Dear and Loving Husband - Lit Charts",
+   "Record ID": "recOJZXdVGGzampny",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recOJZXdVGGzampny"
+ },
+ {
   "createdTime": "2024-04-29T16:23:18.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recOiRu0O6TDNqID6"
    ],
@@ -557,8 +1563,114 @@
   "id": "recOiRu0O6TDNqID6"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_41_bradstreet_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_41_bradstreet_64kb.mp3",
+   "Name": "By Night when Others Soundly Slept - Audio",
+   "Record ID": "recP6z1Vn8XjU2Itj",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recP6z1Vn8XjU2Itj"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.litcharts.com/poetry/anne-bradstreet/before-the-birth-of-one-of-her-children"
+   },
+   "Link": "https://www.litcharts.com/poetry/anne-bradstreet/before-the-birth-of-one-of-her-children",
+   "Name": "Before the Birth of One of Her Children - Lit Charts",
+   "Record ID": "recPSUQgUwmbeuhRX",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recPSUQgUwmbeuhRX"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_27_bradstreet_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_27_bradstreet_64kb.mp3",
+   "Name": "Before the Birth of One of Her Children - Audio",
+   "Record ID": "recPp7J5FbyuECk19",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recPp7J5FbyuECk19"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://lecturia.org/en/summaries/nathaniel-hawthorne-earths-holocaust-summary-and-analysis/22301/"
+   },
+   "Link": "https://lecturia.org/en/summaries/nathaniel-hawthorne-earths-holocaust-summary-and-analysis/22301/",
+   "Name": "Earth's Holocaust - Lecturia Summary",
+   "Record ID": "recRjadJcA0DC6xst",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recRjadJcA0DC6xst"
+ },
+ {
+  "createdTime": "2026-11-03T15:29:50.000Z",
+  "fields": {
+   "Access": "Paid",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.amazon.com/s?k=9780679408901"
+   },
+   "Link": "https://www.amazon.com/s?k=9780679408901",
+   "Name": "Purchase - Random House Edition",
+   "Record ID": "recT7yMjbshLt2LRI",
+   "Type": "Purchase",
+   "Type Text": "Purchase",
+   "Work": [
+    "Lost in Yonkers"
+   ],
+   "Work Text": "Lost in Yonkers",
+   "Year": "2026-2027"
+  },
+  "id": "recT7yMjbshLt2LRI"
+ },
+ {
   "createdTime": "2024-04-29T15:38:18.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recUaEgrbkQkQAgnq"
    ],
@@ -583,8 +1695,30 @@
   "id": "recUaEgrbkQkQAgnq"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_23_bradstreet_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_23_bradstreet_64kb.mp3",
+   "Name": "The Vanity of All Worldly Things - Audio",
+   "Record ID": "recUdGIYPiqJXS0Tb",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recUdGIYPiqJXS0Tb"
+ },
+ {
   "createdTime": "2024-04-29T14:22:27.000Z",
   "fields": {
+   "Access": "Free",
    "File": [
     {
      "filename": "CliffsNotes on The Glass Menagerie.pdf",
@@ -593,17 +1727,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/33tr0q9cBK3TXVtH_Sa14g/IcVa5y20dN0wwShN_kNbb5XK1PZO91aoyBXY2BfjJ0GySW9JbjgN__MqmOCsuExDazBD0UM9ZMVMOEAYmLcw0OkjUrM7ZX8mgBTvHafvSu96a9HCqUAJy4G6NwPESTIrjeDJKNsWMXhg_iAr2J5zQg/djrhG6MHsq58vgrUDv67uj7YvXogHdDmLSOXKoXPeDE",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/Vro2KkJcA2sk85wKygELxQ/fLszFxY4qpdtoVQb8hsETM0YkD5_KRHLd2WMs__NCW53uMhUc5S0jhZiZhIGdE5DqtW0SgqYtMNHoSTMVPzkNVJIReX3Y1bQubkONXTVi5G-pHzxUxjrH7HDI3VxPEjhjK0UXuHFUJfrMlNFXrusfw/WbZ6SH-6EwnSqc8IyjMoI-NRczaDLq3j-C7NiLKRJ_8",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/hXMxTIE_FToM7CyxC8h4DQ/cEDt1D45rYC8awV1NMoZt6u-xXO5VmTJ_4pWElWYnxEbAKxdCHk_OuATHnY-cna1kbBl7i2RUf7pxZpyd7pOPtYf5ATenBnOT12Sq_r1Q9WfADvlmIB8jx6WlSDbb_f4M_sEO7tRpSwy0um5mr_4Ow/ttUkdkFVuO6fA2olFNUsgDgumH6faZqwWPHpkJAART8",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/_VkF8N2R7uxdV5o4XMLgjA/FFyj0DxwXyoZ7XWRP2Y1ZSgpHtfDBpn9xhq_gwlNQZPydLQ-aCqS0rJ5_dLeCEA4nMjYiAjnqkQ-71OpLhJpdB6m-23_pViRfWLItrXTQtgq8KWl5E8XZ64U1xuV2j5PN521YGtEH2scJBvkzTg6Pg/LL-PKcycSR05pHPioVgLDKfPfhMAudBwQDpTVA3EF04",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/ZEOixI196abdsiJOnQTQOw/lOXXLAu61mfwgU7VBR_lhL1qbcZfLaPHHeKpyMUBFUnDXfnx2zijCTQOAAieGvMXK4mJt72ztYTqGHTcyWRIdK8luzPRAwvCukTwg_cHW3RLSg3NLmlE1WwWZTSiRZLNTi07wlpSAXFgVlo1821LpVFU1ozHRrJa6rG0rJbfSZnp-hD2WhFzATuf0SQRMfOV/3rdOUGJXEYld9WFaIBx7hsJsH_F5RuhMtoiRTAx9N0M"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/WWWlLWm60lV1xmwb_1DKVA/E0fKgpQApzBSLDNg3fpUwEbTRTjmK7OLCV2KsBtk7jk1B3DgutfxpSmL2mWKAjGBX_M29qfZqp2GFkHKzYjZJqBjFyD5psi5POMZtm8nZNo1xLbvLvdRYIqRpEG6LA9mElw595v0aCDSjrc6sVuAZrpkiq_XJ38vlUQMRHCNVpOGKbUChWdSk39xel3vYe_x/JmLr0wnw-LQaPe4QDtJM-_p3nwQpIi_PoboXNDaZkLE"
     }
    ],
    "From field: Self-Link": [
@@ -632,6 +1766,7 @@
  {
   "createdTime": "2024-04-29T16:25:41.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recVLJvoNlhRgNASv"
    ],
@@ -658,6 +1793,7 @@
  {
   "createdTime": "2024-04-29T16:25:15.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recVSIBupJum0Iqi5"
    ],
@@ -684,6 +1820,7 @@
  {
   "createdTime": "2024-04-29T16:29:40.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recVWYoEHRYadCqHL"
    ],
@@ -708,8 +1845,51 @@
   "id": "recVWYoEHRYadCqHL"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.encyclopedia.com/arts/educational-magazines/lost-yonkers"
+   },
+   "Link": "https://www.encyclopedia.com/arts/educational-magazines/lost-yonkers",
+   "Name": "Drama for Students",
+   "Record ID": "recVil6zJSXC7HUDZ",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Lost in Yonkers"
+   ],
+   "Work Text": "Lost in Yonkers",
+   "Year": "2026-2027"
+  },
+  "id": "recVil6zJSXC7HUDZ"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_27_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_27_hawthorne_64kb.mp3",
+   "Name": "The Ambitious Guest - Audio",
+   "Record ID": "recVk0y0C7YOHf9Br",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recVk0y0C7YOHf9Br"
+ },
+ {
   "createdTime": "2024-04-29T16:22:09.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recVp3C9go9RXf8EM"
    ],
@@ -736,6 +1916,7 @@
  {
   "createdTime": "2024-04-29T15:38:11.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recVpKKFDZDDmUVnd"
    ],
@@ -760,8 +1941,30 @@
   "id": "recVpKKFDZDDmUVnd"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free preview",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.supersummary.com/lost-in-yonkers/summary/"
+   },
+   "Link": "https://www.supersummary.com/lost-in-yonkers/summary/",
+   "Name": "SuperSummary",
+   "Record ID": "recVtiK8o3C5uTuBK",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Lost in Yonkers"
+   ],
+   "Work Text": "Lost in Yonkers",
+   "Year": "2026-2027"
+  },
+  "id": "recVtiK8o3C5uTuBK"
+ },
+ {
   "createdTime": "2024-04-29T16:26:31.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recWZc27yELcCRYKx"
    ],
@@ -788,6 +1991,7 @@
  {
   "createdTime": "2024-04-29T16:26:57.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recWiAxVUiD4Hbebc"
    ],
@@ -812,8 +2016,30 @@
   "id": "recWiAxVUiD4Hbebc"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_17_bradstreet_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_17_bradstreet_64kb.mp3",
+   "Name": "In Honour of Queen Elizabeth - Audio",
+   "Record ID": "recY147zlklYnCli4",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recY147zlklYnCli4"
+ },
+ {
   "createdTime": "2024-04-29T15:38:01.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recY9DttqkKjlytDt"
    ],
@@ -838,8 +2064,51 @@
   "id": "recY9DttqkKjlytDt"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://rpo.library.utoronto.ca/content/flesh-and-spirit"
+   },
+   "Link": "https://rpo.library.utoronto.ca/content/flesh-and-spirit",
+   "Name": "The Flesh and the Spirit - Text",
+   "Record ID": "recYo505pAdWMLczi",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recYo505pAdWMLczi"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_06_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_06_hawthorne_64kb.mp3",
+   "Name": "Young Goodman Brown - Audio",
+   "Record ID": "recZfmOrjwRAMSW5M",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recZfmOrjwRAMSW5M"
+ },
+ {
   "createdTime": "2024-04-29T16:18:50.000Z",
   "fields": {
+   "Access": "Free",
    "File": [
     {
      "filename": "Yeats Poems.pdf",
@@ -848,17 +2117,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/LeUdTAeehVrAwjDqUIhvYA/ZrvtZVelsEtE5z5Jnkz2I5URyYnWRv7H3komt6wEFr90wa8v-XN4E4Mo6SUcqZ02OxFTD95gTSylQtPYrC7OTGG8h0WSanX7vaYyFFu0Y9pZpieJwHYDewHbe-pRUKkIwdERnqlO2AMbqm37HUUobQ/PIIIVO326K7z6mm3WS7NXRF7H-57OIgJpwzcYMnd_uc",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/_XrvZ-BPLODB_dB0QKjboA/h5UZO45Omc1MKjwtT_K3DwXrOtcZLYas019Z8HCtwuoYz2AGrz9k-cA9z00jiIHR5A6uNWqh0muFQIAsmqmUFyZ8elCV9wbqWatduCyR7Hd__TX-gdt5aCSu03CKw7CJgUycUWdwkLq5-IhQ3ri_DQ/afXPzx9AVLe89R702G3NVzHFWXGUs0tzMs4GGHSRhJE",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/yLYkZOKVy-ZQIGAwRXc7Fg/q1WcYh1tDta-LtGe0U4KQ-xD9kX-i1pM6TZIbjmz_pqwyO_Ispkpww5d0z5YrXdydF1r_HtMJAKVv5a4VuqFnk0PtIFWjiyFjO791Ax_DeNJx0YSE3ik3-9CblCOLWUPoWLqjkwHRo0NFwYKfltoQQ/vp4pKJwUXLvZ8UAQYIT7RG6EyiVIdVWBF0JVhpYDu-4",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/Nc6xreeJpxcV4OLqzzEtvQ/Cl2KyCGqvjz6MaAlQDxXV27wGFgAMMZiSYIRu7TP81Zl65KiHZtHmXTcm0s1ATkfm2V6DpKA0TzKrPFQze7aMfCgvHwSqQNg2sw_ZSYN2mMVHRY06g88u1BHxd0y1t20Sl7FU8KwQWaH7DleTxFmRw/ZFuQxyAUXDb-HBb_0VFbcqO60pocD7b1ay1nCynMuLY",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/wdc2nV9tfnclfkFQQf0t8g/1J-BCRzFSOh6_-tlZP48irbP771wLPkUM1GCpe989AFr8anKEbfIKfo3x9DA_laNL_Wc2pzuSKj2D8eCmJM6PNxxjVeCTBL94TLY4lJtIFPSUWoXdDbLBEsf4uoaPffdc3Mr5Hp68rYWVdgYpYlkGtNgQB-CVLWbX7qbqybJ5Yw/lZrdmGseVlL_0BbnOzIJv1BlK9nTeqL8xEVZ9u5mU0c"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/HEFQPf_0C_y9ft9bKtv14g/sxyNdo0offdoB5HhyUYGrS8VIjfRi69XT7-49IGS5wjiWghjpchFG8rqoFD3vuCvb24VQ-PgApVWy5T5PTsc-LLKU0-utbbo29cUtaCIoBZNjysZ16-29CGzRhCp0713006TAdke2Ait8KX8HOa7Kf1mzmq4cDxwvUU62F7nmwk/8lHib9uIXvl2LXxkmrpF9wMc6H7SPwfNsjhUDqL3FRI"
     }
    ],
    "From field: Self-Link": [
@@ -887,6 +2156,7 @@
  {
   "createdTime": "2024-04-29T16:26:41.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recbv9mZrGCN2ObSE"
    ],
@@ -911,8 +2181,51 @@
   "id": "recbv9mZrGCN2ObSE"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.litcharts.com/lit/the-birthmark"
+   },
+   "Link": "https://www.litcharts.com/lit/the-birthmark",
+   "Name": "The Birthmark - Lit Charts",
+   "Record ID": "reccK2BwbbBnwogw2",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "reccK2BwbbBnwogw2"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.litcharts.com/lit/rappaccini-s-daughter"
+   },
+   "Link": "https://www.litcharts.com/lit/rappaccini-s-daughter",
+   "Name": "Rappaccini's Daughter - Lit Charts",
+   "Record ID": "reccQ1fmnmJ3OR1um",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "reccQ1fmnmJ3OR1um"
+ },
+ {
   "createdTime": "2024-04-29T16:23:04.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recciEEA9WVQUv51q"
    ],
@@ -939,6 +2252,7 @@
  {
   "createdTime": "2024-04-29T16:26:06.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "reccnRlF8qNsbZxYT"
    ],
@@ -965,6 +2279,7 @@
  {
   "createdTime": "2024-04-29T15:59:37.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recd4BvN2eqJCc5YS"
    ],
@@ -991,6 +2306,7 @@
  {
   "createdTime": "2024-04-29T16:27:06.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recd9yXjbXtOdZvu1"
    ],
@@ -1015,8 +2331,30 @@
   "id": "recd9yXjbXtOdZvu1"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://interestingliterature.com/2017/11/29/the-best-anne-bradstreet-poems-everyone-should-read/"
+   },
+   "Link": "https://interestingliterature.com/2017/11/29/the-best-anne-bradstreet-poems-everyone-should-read/",
+   "Name": "The Best Anne Bradstreet Poems - Interesting Literature",
+   "Record ID": "recdpN1OskdbH7Gnf",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recdpN1OskdbH7Gnf"
+ },
+ {
   "createdTime": "2024-04-29T15:59:14.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "receh0mgYZ6rfg3uS"
    ],
@@ -1043,6 +2381,7 @@
  {
   "createdTime": "2024-04-29T16:26:12.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recevu3UEnN3unfpK"
    ],
@@ -1067,8 +2406,51 @@
   "id": "recevu3UEnN3unfpK"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_03_bradstreet_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_03_bradstreet_64kb.mp3",
+   "Name": "The Prologue - Audio",
+   "Record ID": "recfngH4KEJCZs63z",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recfngH4KEJCZs63z"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_26_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_26_hawthorne_64kb.mp3",
+   "Name": "Earth's Holocaust - Audio",
+   "Record ID": "recfqC2FqGN17NQxj",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recfqC2FqGN17NQxj"
+ },
+ {
   "createdTime": "2024-04-29T16:24:49.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recgAnDZSBQ1AtkLq"
    ],
@@ -1093,8 +2475,30 @@
   "id": "recgAnDZSBQ1AtkLq"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://rpo.library.utoronto.ca/content/author-her-book"
+   },
+   "Link": "https://rpo.library.utoronto.ca/content/author-her-book",
+   "Name": "The Author to Her Book - Text",
+   "Record ID": "recgFbzAFWuO4hUv9",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recgFbzAFWuO4hUv9"
+ },
+ {
   "createdTime": "2024-04-29T16:00:47.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recgqKvfyFwKVW4kJ"
    ],
@@ -1121,6 +2525,7 @@
  {
   "createdTime": "2024-04-29T16:26:22.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recgyJKwV24dwQZtM"
    ],
@@ -1145,8 +2550,51 @@
   "id": "recgyJKwV24dwQZtM"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_10_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_10_hawthorne_64kb.mp3",
+   "Name": "The Celestial Railroad - Audio",
+   "Record ID": "rech9oQVTGyJqIKSx",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "rech9oQVTGyJqIKSx"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_22_bradstreet_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_22_bradstreet_64kb.mp3",
+   "Name": "The Flesh and the Spirit - Audio",
+   "Record ID": "reckWwHKnjKqjMHTq",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "reckWwHKnjKqjMHTq"
+ },
+ {
   "createdTime": "2024-04-29T15:59:02.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "reckqXq4Ka71RnAx9"
    ],
@@ -1173,6 +2621,7 @@
  {
   "createdTime": "2024-04-29T16:30:33.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "reclQIw8bmlgXEmHL"
    ],
@@ -1199,6 +2648,7 @@
  {
   "createdTime": "2024-01-27T14:16:51.000Z",
   "fields": {
+   "Access": "Free",
    "File": [
     {
      "filename": "Silas Marner.pdf",
@@ -1207,17 +2657,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/5YV31rK2eFRAhb2LFMwrJQ/Pi-fCqfU5F8LLlFbLHvZzSEGLRxYHoNX40navTamm_Fwy5GBRpon2yERGVlwleoPVwutLe-hMPgfH1wHpnUtVSRF_WJV0kMImoywVPxN3a3oOCmDxsAPdV60Ywa9x8tyocbjNt6iLY75DjGTQ-hlBg/O_ojcNmKYxwIc4qE-nf9upAMPbERWOGLh1Uz0QnJR4Y",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/A8cTz9CusYzDjqPp8rcR_w/EEAUxfpQ4dYN3QySOmdozvr8cQunopc22jDVSaxgbNZsjDZma4tIUPHqfMKnfg8ekxM1UmmEkq_oX0-vdaZsl3t-7ND98f7J9Gltkp-ccU9N2hSYu1Xwtsyx1MqbKlBe1u7_NpbhCcfVVeKO_dg2qQ/NkyOl19hK-XL-4rQWJOkDiVhX15Zg-A7hC9Ja7iSnxo",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/Jqu7SAiK0C0CqVojOAuOqA/JwC4KYODUvCM5y7USeZ_o-zPQ780cXjA6jvxV1R6dn0ChPvhd6yiftpejmMt0FkDkrwR3mZ4Sp-dF2P1imCeHDzs9WgePlWpDlh80RsNwuCzLw_A2uemeysF0umXrOEtDRFxBQnFhwePLYYT4fK5Ow/gYV89_9hC9EyabNEP_0MPlBTqGPwHM_N4MOV6DL3xVk",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/kg4AjZp2ah8N-6vaMle9iw/CrqKNxViLmRXBZjQk2qDBdDQprikGiAejgf-a25LlHuengVhteWnxhpSL86o-hGDV3mC4HwTLYHqq1dNNa7YSScBTvUb5ciPNtnJaniKE46TxuNKZq7bh2zIDaYsvZJwrFYRmEvF7LcPG5tp9n27GQ/NEXz0vjuxCN4duU7cnmaveti2n3Xtfq1SfPqXPW0JGg",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/-TxaEHeEbZz_iyLLgjQRqA/JBpo0aWco3C75W5xgYMAYh6y2P_pM3cfnD-PqWKhc35dVcNpEDq4_mRcd7Uz-MFcBunPWy3LIkSASxC28NHhAjSdN3RtQeUZsJb_ZEvqSJEnKd-UG_ihmvZ9KkOIMQkun7xwUtqJN3avfltQ64CCRbmPKY8xeIMRW3uQFEAFSHc/Xk7P8MJ7VJTfCcX-okKnrWiL-P-2WrVQaJVIiFRrNKI"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/8dw05FpkcNLzJYAxaPEb8A/ERZL3VsDXeag53xI6lJX_X1kR6tAYVXwu6fZKBwUWMKoHHXf8qjC6OmEPClLVsrLgWpGN44nnqrOh9BRZGXA79VHwmNbAK6hfREw3jfXFziZZfYf7_JVh5bLHABkbdMEAt6vNwizdBdMfutg6Xbv0oAmBXvgeAqnMXFEc4aXaxY/5_DXAQOfcUXE_oMW6tCM7WFYA-vQUj3-shLB2nFf4cc"
     }
    ],
    "From field: Self-Link": [
@@ -1246,6 +2696,7 @@
  {
   "createdTime": "2024-04-29T16:22:32.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recq2ajETWNdtH0Xb"
    ],
@@ -1270,8 +2721,30 @@
   "id": "recq2ajETWNdtH0Xb"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://eada.lib.umd.edu/text-entries/here-follow-several-occasional-meditations/"
+   },
+   "Link": "https://eada.lib.umd.edu/text-entries/here-follow-several-occasional-meditations/",
+   "Name": "Occasional Meditations (incl. For Deliverance from a Fever) - Text",
+   "Record ID": "recq3SyINVQmUWIHL",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recq3SyINVQmUWIHL"
+ },
+ {
   "createdTime": "2024-04-29T15:34:55.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recqjvfmvKixvmjM9"
    ],
@@ -1298,6 +2771,7 @@
  {
   "createdTime": "2024-04-29T15:34:48.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recrHDdstPMVwqlKc"
    ],
@@ -1322,8 +2796,51 @@
   "id": "recrHDdstPMVwqlKc"
  },
  {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.flyingcarsandfoodpills.com/the-celestial-rail-road"
+   },
+   "Link": "https://www.flyingcarsandfoodpills.com/the-celestial-rail-road",
+   "Name": "The Celestial Railroad - Summary and Annotated Text",
+   "Record ID": "recsJQVjSCWeDWOvg",
+   "Type": "Summary",
+   "Type Text": "Summary",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recsJQVjSCWeDWOvg"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_17_hawthorne_64kb.mp3"
+   },
+   "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_17_hawthorne_64kb.mp3",
+   "Name": "The Artist of the Beautiful (Part 2) - Audio",
+   "Record ID": "recsM2Hs1Fa7JgEEZ",
+   "Type": "Audio",
+   "Type Text": "Audio",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recsM2Hs1Fa7JgEEZ"
+ },
+ {
   "createdTime": "2024-04-29T16:25:32.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recsNpyQhygUp7mrr"
    ],
@@ -1350,6 +2867,7 @@
  {
   "createdTime": "2024-04-29T16:28:18.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recsRkVCE6tNRu0pN"
    ],
@@ -1376,6 +2894,7 @@
  {
   "createdTime": "2024-01-27T14:16:51.000Z",
   "fields": {
+   "Access": "Free",
    "File": [
     {
      "filename": "Silas-Marner-LitChart.pdf",
@@ -1384,17 +2903,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/bJfyyRjgUqTm5AoFY7LPZg/vlOp0heVjFC3A-tgM1y7lrUWQ9blesgsYFfF0s5DqiHswp2bCOWM1JqyDPVDdz_cA36BsNbefz3wxQhJEd4y3iQa_TjhgLMgo2UHSV5rbtCFLZOT0baY2fYQSGKz6PixkMSAzvDlvibgrWlbCt8Igg/_sS802iPjGaKPqsw7s0XkJpgtUIiJ9xCHF81jWSp3eo",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/239JZnZFOzf4nC7uKwMIJg/8zwSWQsJWpGgVCGqe7bFWHymHuQeJZ50oaAkL02Mri4WrRZkvuCd-iDgeyngQywZR80d97DJLYAZ0Q4NDzbarJpvvEEVUsv2t1z1veIch8U2MvJogESowbu4i5AZ-1apLl6l8x0vPfTbq2Om4TjA0g/w2fb8Pv4VW0kMiwlu5f-ywTJRveDZg68XOxaTw5gCeY",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/UjSnMdW4vj7D0r3K6TKgxw/lFDlJxy5SClHcGr7p6O6LXBJtoN_d69nnR07MTN-c7F-Y-VXBLcmP-_DgOxQczYcdJwpdNRRJip7lWaDiqoT29C2B0GAMBYTkcp5mGPT_dOPWm6L4SGV5BzqIXYmfO3uEU2rU_Y_yV5HvXb5DtHInw/UqyFZ3Ocu-PfYzkob9adY6FUv2lNDLbxFNzBINLS3rA",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/NGBldiuCG3EIQvbvcCGkIg/j7RvKBSUTrlX9T7sN4-eGep1dqrfvJZnhDBKtueyw5Z-xJlllo-Ugip4_9vjNibtygvA5SHvu96kQHzTL4SqVOBcf2WDLVNWtadVWAJK9GI69MLEOgee2iIAT6i7f96ZdRJEILiQuN-ZgM8NyysZvw/vK0RHemPTZm_vmvhZ57LVo6h3jHkbLfGSUZH95UQjIc",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/58/58/1793556000000/YGfOn1dRJb15rX8TZnrUkg/b8RdMY8Ku8TX6ET7-FepVMgK1TsvqSEIsYUtiZAA9Ry4RFy9ie3sPQgn85UG-Z-jTxCpf-9k4zwEmpbg83187pf0hMGq4D4zG06eTbNpntX6i8vxWaaW4kJutRCVjmtfnYd2OhGr0wucON_1W1o2-GV03SDwGyrZd8ZPew4mS8w/TIEBmyyW-2_oapCbVVJ4ECgh3lA1lzyFMFKDokUqf_Y"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/dY54K6KyCa2sr6li46jz9Q/Xb3TpUSyyAt9YRQa7Y-pLfRewEuXWhP6b4N1laOenB_bpfNxYNnh5i9AwNg9vEuXkmMxuiDj9t_m_bwyCpa2k1QzfCRtWdhzx-qlsGJ68iqew2X38R6likVLHe1gpA1Fd0DO-eroGZQ9ROXz-liLQS_N5qfQrIMWyJxpV37mQPY/JmhHQo5CcVuzzNI0-oXoKQFyRigji1lR7vv24Pdnx2Q"
     }
    ],
    "From field: Self-Link": [
@@ -1423,6 +2942,7 @@
  {
   "createdTime": "2024-04-29T16:19:53.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recsginZ0T8GQ3UvN"
    ],
@@ -1449,6 +2969,7 @@
  {
   "createdTime": "2024-04-29T16:24:16.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recsty4n8E90ntBnz"
    ],
@@ -1473,8 +2994,93 @@
   "id": "recsty4n8E90ntBnz"
  },
  {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free preview",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.enotes.com/topics/reference-her-children-23-june-1659"
+   },
+   "Link": "https://www.enotes.com/topics/reference-her-children-23-june-1659",
+   "Name": "In Reference to her Children - eNotes",
+   "Record ID": "rectsfjFvtVmmmfc9",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "rectsfjFvtVmmmfc9"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.poetryfoundation.org/poems/43703/in-honour-of-that-high-and-mighty-princess-queen-elizabeth"
+   },
+   "Link": "https://www.poetryfoundation.org/poems/43703/in-honour-of-that-high-and-mighty-princess-queen-elizabeth",
+   "Name": "In Honour of that High and Mighty Princess, Queen Elizabeth - Text",
+   "Record ID": "recu2Jx5yYrBgHbfc",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recu2Jx5yYrBgHbfc"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.gradesaver.com/anne-bradstreet-poems"
+   },
+   "Link": "https://www.gradesaver.com/anne-bradstreet-poems",
+   "Name": "Anne Bradstreet: Poems - GradeSaver",
+   "Record ID": "recuEFwsuP8H5vZGi",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recuEFwsuP8H5vZGi"
+ },
+ {
+  "createdTime": "2026-11-03T15:29:50.000Z",
+  "fields": {
+   "Access": "Paid",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.amazon.com/s?k=9780307741219"
+   },
+   "Link": "https://www.amazon.com/s?k=9780307741219",
+   "Name": "Purchase",
+   "Record ID": "recuTCkQMSoy8RjqR",
+   "Type": "Purchase",
+   "Type Text": "Purchase",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recuTCkQMSoy8RjqR"
+ },
+ {
   "createdTime": "2024-04-29T16:25:53.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recx987FvofwkwB8j"
    ],
@@ -1501,6 +3107,7 @@
  {
   "createdTime": "2024-04-29T15:34:29.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recxDVrLYoiDvOWWe"
    ],
@@ -1527,6 +3134,7 @@
  {
   "createdTime": "2024-04-29T16:23:55.000Z",
   "fields": {
+   "Access": "Free",
    "From field: Self-Link": [
     "recxcHwlQbQyO7bCf"
    ],
@@ -1549,5 +3157,89 @@
    "Year": "2023-2024"
   },
   "id": "recxcHwlQbQyO7bCf"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://openlibrary.org/works/OL35420W"
+   },
+   "Link": "https://openlibrary.org/works/OL35420W",
+   "Name": "Borrow - Open Library",
+   "Record ID": "recxqfmuLyyMcvI68",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Lost in Yonkers"
+   ],
+   "Work Text": "Lost in Yonkers",
+   "Year": "2026-2027"
+  },
+  "id": "recxqfmuLyyMcvI68"
+ },
+ {
+  "createdTime": "2026-11-03T14:48:53.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://www.gutenberg.org/ebooks/13707"
+   },
+   "Link": "https://www.gutenberg.org/ebooks/13707",
+   "Name": "Twice-Told Tales - Full Text",
+   "Record ID": "recyO0EwFSSNwwbS8",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Hawthorne"
+   ],
+   "Work Text": "Hawthorne",
+   "Year": "2026-2027"
+  },
+  "id": "recyO0EwFSSNwwbS8"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://archive.org/details/worksofannebrads00brad"
+   },
+   "Link": "https://archive.org/details/worksofannebrads00brad",
+   "Name": "Works of Anne Bradstreet (Ellis, 1867) - Full Text",
+   "Record ID": "recyYeoEy8Qd5KmtQ",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recyYeoEy8Qd5KmtQ"
+ },
+ {
+  "createdTime": "2026-11-03T14:49:54.000Z",
+  "fields": {
+   "Access": "Free",
+   "Go to Resource": {
+    "label": "Resource",
+    "url": "https://archive.org/details/cu31924020766345/"
+   },
+   "Link": "https://archive.org/details/cu31924020766345/",
+   "Name": "Poems of Mrs. Anne Bradstreet (Norton, 1897) - Full Text",
+   "Record ID": "recyh3JhcgaUQCYur",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recyh3JhcgaUQCYur"
  }
 ]
