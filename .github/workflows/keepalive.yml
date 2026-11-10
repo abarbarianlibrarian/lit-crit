@@ -3,7 +3,7 @@ name: Keep Supabase awake
 # Supabase pauses free projects that show low database activity over 7 days.
 # Its docs say "a few user requests to the database each day" is typically enough,
 # so this runs twice a day and makes several real database requests each time:
-# the public.keepalive function (returns the time) plus small table reads.
+# the public.keepalive function (returns the time), called five times.
 on:
   schedule:
     - cron: "17 13 * * *"   # daily, about 7:17 a.m. Central
@@ -23,7 +23,7 @@ jobs:
         run: |
           call() {
             curl -s -o response.txt -w "%{http_code}" "$@" \
-              -H "apikey: $SUPABASE_KEY" -H "Authorization: Bearer $SUPABASE_KEY"
+              -H "apikey: $SUPABASE_KEY"
           }
           ok=0
           for attempt in 1 2 3; do
@@ -36,14 +36,9 @@ jobs:
             echo "::error::Supabase did not answer. If the project is paused, open the Supabase dashboard and click Restore."
             exit 1
           fi
-          # A few more ordinary reads so the activity looks like normal app traffic.
-          for t in app_config profiles progress flags; do
-            code=$(call "$SUPABASE_URL/rest/v1/$t?select=*&limit=1")
-            echo "read $t: HTTP $code"
-            sleep 2
-          done
-          for i in 1 2; do
+          # A few more database requests so the activity counts as regular use.
+          for i in 1 2 3 4; do
+            sleep 5
             code=$(call -X POST "$SUPABASE_URL/rest/v1/rpc/keepalive" -H "Content-Type: application/json" -d '{}')
             echo "keepalive extra $i: HTTP $code"
-            sleep 2
           done
