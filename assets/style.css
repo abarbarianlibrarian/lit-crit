@@ -811,6 +811,7 @@ button.fc-tag:hover { background: var(--chip-hover); }
 
 /* Study something specific */
 .fc-builder-box { border: 1px solid var(--rule); border-radius: 14px; background: var(--paper); padding: 20px; display: flex; flex-direction: column; gap: 20px; font: 400 15px/1.4 var(--sans); }
+.fc-builder-lede { margin: 0; color: var(--ink-2); }
 .fc-step { display: flex; flex-direction: column; gap: 10px; }
 .fc-step-inline { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
 .fc-step-h { font-weight: 600; }

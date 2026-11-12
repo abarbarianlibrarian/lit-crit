@@ -337,7 +337,7 @@
     of: function (card) { return Cats.sorted().filter(function (x) { return x.cat.c.indexOf(card) >= 0; }); }
   };
   function askName(def) {
-    var n = window.prompt("Name for this category:", def || "");
+    var n = window.prompt("Name for this set:", def || "");
     n = (n || "").replace(/\s+/g, " ").trim().slice(0, 80);
     return n || null;
   }
@@ -381,7 +381,7 @@
     var k = src.split(":")[0], v = src.slice(k.length + 1);
     if (k === "set") return "Set: " + ((sm.sets[v] || [v])[0]);
     if (k === "deck") return sm.decks[v] || "A ready-made deck";
-    if (k === "cat") { var g = S.cats()[v]; return g ? g.n : "A category"; }
+    if (k === "cat") { var g = S.cats()[v]; return g ? g.n : "A custom set"; }
     return { page: "Added from its page", top: "Most-tested", old: "Your old decks", add: "Added from this list" }[k] || "Added";
   }
 
@@ -422,13 +422,13 @@
     box.className = "fc-catpick";
     function draw() {
       var list = Cats.sorted();
-      box.innerHTML = '<p class="fc-pop-h">Categories</p>' +
-        (list.length ? "" : '<p class="muted fc-pop-none">No categories yet.</p>') +
+      box.innerHTML = '<p class="fc-pop-h">My custom sets</p>' +
+        (list.length ? "" : '<p class="muted fc-pop-none">No custom sets yet.</p>') +
         list.map(function (x) {
           return '<label class="fc-pop-row"><input type="checkbox" data-cat="' + esc(x.id) + '"' + (x.cat.c.indexOf(cardId) >= 0 ? " checked" : "") +
             "> <span>" + esc(x.cat.n) + '</span><span class="muted">' + x.cat.c.length + "</span></label>";
         }).join("") +
-        '<form class="fc-pop-new"><input maxlength="80" placeholder="New category" aria-label="New category name"><button class="fc-btn small" type="submit">Add</button></form>';
+        '<form class="fc-pop-new"><input maxlength="80" placeholder="New set" aria-label="New set name"><button class="fc-btn small" type="submit">Add</button></form>';
     }
     box.addEventListener("change", function (ev) {
       var cb = ev.target.closest("[data-cat]"); if (!cb) return;
@@ -662,7 +662,7 @@
         (o.today && p.more.length && !q.get("more") ? '<p>You can get ahead: ' + plural(p.more.length, "more weekly or monthly card", "more weekly or monthly cards") + " are due this week or month.</p>" +
           '<p class="fc-done-btns"><a class="btn btn-study" href="' + url("flashcards/review/", { more: 1 }) + '">Keep going</a></p>' : "") +
         (o.filter && o.filter.d ? '<p class="fc-done-btns"><a class="fc-btn" href="' + location.pathname + location.search.replace(/([?&])d=1/, "$1d=0") + '">Study them even though they aren’t due</a></p>' : "") +
-        (noScope ? '<p>To study cards that aren’t in your flashcards, pick a set or category first.</p>' : "") +
+        (noScope ? '<p>To study cards that aren’t in your flashcards, pick a set first.</p>' : "") +
         '<p><a href="' + BASE + 'flashcards/">← Flashcards</a></p></div>';
     }
 
@@ -755,14 +755,14 @@
       function drawCats() {
         var box = R("cats"), id = cur.id, st = S.cards()[id];
         box.innerHTML = "";
-        var html = (st ? "" : '<button type="button" class="fc-tag add" data-addbank>+ Add to my flashcards</button>') + '<span class="fc-cats-h">Categories</span>';
+        var html = (st ? "" : '<button type="button" class="fc-tag add" data-addbank>+ Add to my flashcards</button>') + '<span class="fc-cats-h">Sets</span>';
         Cats.of(id).forEach(function (x) {
           html += '<button type="button" class="fc-tag" data-rm="' + esc(x.id) + '" aria-label="Remove from ' + esc(x.cat.n) + '">' + esc(x.cat.n) + ' <span aria-hidden="true">×</span></button>';
         });
         (o.sm.setsOf[id] || []).slice().sort(function (x, y) { return o.sm.sets[x][0].localeCompare(o.sm.sets[y][0]); }).forEach(function (s) {
           html += '<span class="fc-tag set" title="Sets come from the site and can’t be removed">Set: ' + esc(o.sm.sets[s][0]) + "</span>";
         });
-        html += '<span class="fc-add-box"><button type="button" class="fc-tag add" data-pick>+ Category</button><span class="fc-pop up" data-pop></span></span>';
+        html += '<span class="fc-add-box"><button type="button" class="fc-tag add" data-pick>+ Custom set</button><span class="fc-pop up" data-pop></span></span>';
         box.innerHTML = html;
         $$(box, "[data-rm]").forEach(function (b) {
           b.addEventListener("click", function () { Cats.set(b.getAttribute("data-rm"), id, false); drawCats(); });
@@ -883,7 +883,7 @@
       if (ev.target.closest("[data-pauseask]")) {
         sea.innerHTML = '<h3>Pause until next season?</h3><p>Everything stays exactly where it is while you’re away:</p>' +
           "<ul><li>Your " + plural(curStreak(S.meta()), "day") + " streak is frozen, not lost.</li><li>No cards come due, so nothing piles up.</li>" +
-          "<li>Your boxes, categories and weekly and monthly progress are kept.</li></ul><p class=\"muted\">Come back any time and press Resume.</p>" +
+          "<li>Your boxes, custom sets and weekly and monthly progress are kept.</li></ul><p class=\"muted\">Come back any time and press Resume.</p>" +
           '<p class="fc-row"><button type="button" class="btn btn-study btn-sm" data-pausego>Pause flashcards</button><button type="button" class="fc-btn" data-pausecancel>Cancel</button></p>';
         $(sea, "[data-pausego]").focus();
       } else if (ev.target.closest("[data-pausego]")) { pause(); close(); }
@@ -906,7 +906,7 @@
         html += '<section class="fc-today paused"><div class="fc-paused-row"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>' +
           '<div><p class="fc-today-n">Paused for the off-season</p><p class="muted">Since ' + dateLabel(m.paused) + " · " + plural(curStreak(m), "day") + " streak and " + plural(Object.keys(c).length, "card") + " saved</p></div>" +
           '<button type="button" class="btn btn-study" data-resume>Resume studying</button></div>' +
-          '<p class="muted fc-small">You can still add cards and make categories while paused.</p></section>';
+          '<p class="muted fc-small">You can still add cards and make custom sets while paused.</p></section>';
       } else {
         var n = p.today.length;
         html += '<section class="fc-today"><button type="button" class="fc-gear" data-settings aria-label="Flashcard settings">' + GEAR + "</button>" +
@@ -949,7 +949,7 @@
         (pick.length ? '<div class="fc-chips">' + pick.slice(0, 10).map(function (x) { return '<span class="fc-tag set">' + esc(x[1]) + "</span>"; }).join("") +
           (pick.length > 10 ? '<span class="fc-tag set fc-tag-more">+ ' + (pick.length - 10) + " more</span>" : "") + "</div>" +
           '<p class="fc-row"><button type="button" class="btn btn-study" data-topgo>Add ' + plural(pick.length, noun) + ' to Study daily</button><a href="' + BASE + 'flashcards/add/">Choose cards myself</a></p>' +
-          '<p class="muted fc-small">They start today and go in a category called “Most-tested ' + noun + "s.”</p>"
+          '<p class="muted fc-small">They start today and go in a custom set called “Most-tested ' + noun + "s.”</p>"
           : '<p class="muted">You already have every tested ' + noun + ".</p>") + "</div>";
     }
 
@@ -967,18 +967,19 @@
       var quick = cats.filter(function (x) { return sel.c.indexOf(x.id) < 0; }).slice(0, 8)
         .map(function (x) { return '<button type="button" class="fc-tag add" data-sel="c:' + esc(x.id) + '">+ ' + esc(x.cat.n) + "</button>"; }).join("");
       var bc = function (b, name) { return '<label class="fc-check' + (boxes[b] ? " on" : "") + '"><input type="checkbox" data-box="' + b + '"' + (boxes[b] ? " checked" : "") + "> " + (name || SHORT[b]) + ' <span class="muted" data-bc="' + b + '"></span></label>'; };
-      return '<section class="block fc-builder"><h2>Study something specific</h2><div class="fc-builder-box">' +
-        '<div class="fc-step"><label class="fc-step-h" for="fc-scope">1. What do you want to study?</label>' +
-        '<div class="fc-search"><input id="fc-scope" autocomplete="off" placeholder="Search your categories and the site’s sets…" data-scopeq><div class="fc-sugg" data-sugg hidden></div></div>' +
+      return '<section class="block fc-builder"><h2>Make a custom set</h2><div class="fc-builder-box">' +
+        '<p class="fc-builder-lede">Choose cards, then save them as a set you can come back to, or just study them now.</p>' +
+        '<div class="fc-step"><label class="fc-step-h" for="fc-scope">1. Start from</label>' +
+        '<div class="fc-search"><input id="fc-scope" autocomplete="off" placeholder="Search your custom sets and the site’s sets…" data-scopeq><div class="fc-sugg" data-sugg hidden></div></div>' +
         (chips ? '<div class="fc-chips">' + chips + "</div>" : "") +
-        (quick ? '<div class="fc-chips quick"><span class="muted">Your categories:</span>' + quick + "</div>" : "") +
-        '<span class="muted fc-small">Pick nothing to use all your flashcards.</span></div>' +
+        (quick ? '<div class="fc-chips quick"><span class="muted">Your custom sets:</span>' + quick + "</div>" : "") +
+        '<span class="muted fc-small">Pick one or more of your custom sets or the site’s sets, or nothing to use all your flashcards.</span></div>' +
         '<div class="fc-step"><span class="fc-step-h">2. Which boxes?</span><div class="fc-checks">' + bc(1) + bc(2) + bc(3) + bc(4) + bc(0, "Waiting line") + bc(5, "Not in my boxes") + "</div>" +
-        '<span class="muted fc-small">Waiting line and Not in my boxes are practice only: studying them doesn’t move them into a box. Not in my boxes needs a set or category from step 1.</span></div>' +
+        '<span class="muted fc-small">Waiting line and Not in my boxes are practice only: studying them doesn’t move them into a box. Not in my boxes needs a set from step 1.</span></div>' +
         '<div class="fc-step fc-step-inline"><span class="fc-step-h">3. Card types</span>' + "tawp".split("").map(function (l) {
           return '<label class="fc-row"><input type="checkbox" data-kind="' + l + '"' + (kinds[l] ? " checked" : "") + "> " + KINDS[l] + "</label>";
         }).join("") + "</div>" +
-        '<div class="fc-builder-go"><span data-summary></span><button type="button" class="fc-btn" data-savecat>Save as a category</button><a class="btn btn-study btn-sm" data-go href="#">Study</a></div>' +
+        '<div class="fc-builder-go"><span data-summary></span><button type="button" class="fc-btn" data-savecat>Save as new set</button><a class="btn btn-study btn-sm" data-go href="#">Study without saving</a></div>' +
         '<p class="fc-ok fc-small" data-savemsg aria-live="polite"></p></div></section>';
     }
     function recount(sm) {
@@ -1001,7 +1002,7 @@
       var sum = $(root, "[data-summary]"), go = $(root, "[data-go]");
       if (!sum) return;
       sum.innerHTML = "<b>" + plural(n, "card") + "</b>" + (dueOnly && !boxes[0] && !boxes[5] ? " due now" : "") + (names.length ? " from " + names.map(function (x) { return "<b>" + esc(x) + "</b>"; }).join(", ") : "");
-      go.textContent = n ? "Study these " + n.toLocaleString() : "Nothing to study";
+      go.textContent = n ? "Study without saving" : "No cards to study";
       var sv = $(root, "[data-savecat]"); if (sv) sv.disabled = !n;
       go.classList.toggle("disabled", !n);
       go.setAttribute("aria-disabled", n ? "false" : "true");
@@ -1009,13 +1010,13 @@
     }
     function myCats(c) {
       var list = Cats.sorted();
-      return '<section class="block fc-mycats"><div class="fc-h2row"><h2>My categories</h2><button type="button" class="fc-link" data-newcat>+ New category</button></div>' +
+      return '<section class="block fc-mycats"><div class="fc-h2row"><h2>My custom sets</h2><button type="button" class="fc-link" data-newcat>+ New set</button></div>' +
         (list.length ? '<ul class="fc-list-rows">' + list.map(function (x) {
           var n = x.cat.c.length;
           return '<li><a href="' + url("flashcards/study/", { c: x.id, b: ALLB }) + '">' + esc(x.cat.n) + '</a><span class="muted">' + plural(n, "card") +
             ' · <a href="' + url("flashcards/my/", { d: x.id }) + '" aria-label="Edit ' + esc(x.cat.n) + '">Edit</a></span></li>';
         }).join("") + '</ul><p class="muted fc-small">Click a name to study it.</p>'
-          : '<p class="muted">Your own labels for cards: “Region week,” “Hard ones,” anything. Add cards to them from the <b>Add to flashcards</b> button on any term, author, work or prize page, while you study, or save one from <b>Study something specific</b>. Cards in a category aren’t scheduled until you add them to your flashcards.</p>') +
+          : '<p class="muted">Your own labels for cards: “Region week,” “Hard ones,” anything. Add cards to them from the <b>Add to flashcards</b> button on any term, author, work or prize page, while you study, or make one under <b>Make a custom set</b>. Cards in a custom set aren’t scheduled until you add them to your flashcards.</p>') +
         "</section>";
     }
 
@@ -1041,8 +1042,8 @@
         Cats.addMany(cid, saved);
         draw(sm);
         var msg = $(root, "[data-savemsg]");
-        if (msg) msg.innerHTML = "Saved " + plural(saved.length, "card") + " as “" + esc(nm) + "”. They aren’t added to your boxes or waiting line. " +
-          '<a href="' + url("flashcards/my/", { d: cid }) + '">Open it</a> to study it or add the cards to your flashcards.';
+        if (msg) msg.innerHTML = "Saved “" + esc(nm) + "” with " + plural(saved.length, "card") + ". It’s under My custom sets; its cards aren’t added to your boxes or waiting line. " +
+          '<a href="' + url("flashcards/study/", { c: cid, b: ALLB }) + '">Study it now</a> · <a href="' + url("flashcards/my/", { d: cid }) + '">See the set</a>';
         return;
       }
       if (t.closest("[data-newcat]")) {
@@ -1066,7 +1067,7 @@
     });
     function options(sm, q) {
       var term = q.value.trim().toLowerCase();
-      var o = Cats.sorted().filter(function (x) { return sel.c.indexOf(x.id) < 0; }).map(function (x) { return ["c:" + x.id, x.cat.n, "Your category"]; })
+      var o = Cats.sorted().filter(function (x) { return sel.c.indexOf(x.id) < 0; }).map(function (x) { return ["c:" + x.id, x.cat.n, "Your custom set"]; })
         .concat(Object.keys(sm.sets).filter(function (s) { return sel.s.indexOf(s) < 0; })
           .sort(function (x, y) { return sm.sets[x][0].localeCompare(sm.sets[y][0]); })
           .map(function (s) { return ["s:" + s, sm.sets[s][0], "Set · " + sm.sets[s][1].length + " terms"]; }));
@@ -1077,7 +1078,7 @@
       var q = $(root, "[data-scopeq]"), sugg = $(root, "[data-sugg]"); if (!q || !sugg || !smRef) return;
       var o = options(smRef, q);
       sugg.innerHTML = o.length ? o.map(function (x) { return '<button type="button" data-sel="' + esc(x[0]) + '"><span>' + esc(x[1]) + "</span><small>" + esc(x[2]) + "</small></button>"; }).join("")
-        : '<p class="muted">No categories or sets match.</p>';
+        : '<p class="muted">No sets match.</p>';
       sugg.hidden = false;
     }
     root.addEventListener("input", function (ev) { if (ev.target.hasAttribute("data-scopeq")) showSugg(); });
@@ -1117,9 +1118,9 @@
     var id = new URLSearchParams(location.search).get("d"), g = S.cats()[id];
     var h1 = document.querySelector("main h1"), lede = document.querySelector("main .lede");
     if (!g) {
-      h1.textContent = "Category not found";
+      h1.textContent = "Set not found";
       lede.textContent = "";
-      root.innerHTML = '<p>This category isn’t in this browser or your account. <a href="' + BASE + 'flashcards/">See your flashcards</a></p>';
+      root.innerHTML = '<p>This set isn’t in this browser or your account. <a href="' + BASE + 'flashcards/">See your flashcards</a></p>';
       return;
     }
     document.title = g.n + " · " + document.title.split(" · ").slice(1).join(" · ");
@@ -1133,8 +1134,8 @@
         var due = ids.filter(function (x) { return c[x] && isDue(c[x], t); }).length;
         var out = ids.filter(function (x) { return !c[x]; });
         lede.innerHTML = plural(ids.length, "card") + (due ? " · " + due + " due now" : "") +
-          ' · <button type="button" class="fc-link" data-ren>Rename</button> · <button type="button" class="fc-link warn" data-del>Delete category</button>';
-        root.innerHTML = '<p class="fc-row"><a class="btn btn-study" href="' + url("flashcards/study/", { c: id, b: ALLB }) + '">Study this category</a>' +
+          ' · <button type="button" class="fc-link" data-ren>Rename</button> · <button type="button" class="fc-link warn" data-del>Delete set</button>';
+        root.innerHTML = '<p class="fc-row"><a class="btn btn-study" href="' + url("flashcards/study/", { c: id, b: ALLB }) + '">Study this set</a>' +
           (due ? '<a class="fc-btn" href="' + url("flashcards/study/", { c: id, d: 1 }) + '">Only the ' + due + " due now</a>" : "") + "</p>" +
           (out.length ? '<div class="fc-addall"><button type="button" class="btn btn-study btn-sm" data-catadd="end">+ Add ' + (out.length === ids.length ? (out.length === 1 ? "it" : "all " + out.length) : "the other " + out.length) +
             " to my flashcards</button>" + '<button type="button" class="fc-btn" data-catadd="daily">Start ' + (out.length === 1 ? "it" : "them") + " today</button>" +
@@ -1145,12 +1146,12 @@
               '<span class="muted">' + (c[x] ? (c[x][0] === 0 ? "Waiting" : BOX[c[x][0]]) : "Not in your flashcards") +
               ' <button type="button" class="fc-link" data-rm="' + esc(x) + '">Remove</button></span></li>';
           }).join("") + "</ul>"
-            : '<p class="muted">This category is empty. Use <b>Add to flashcards</b> on any term, author, work or prize page, or “+ Category” while you study.</p>');
+            : '<p class="muted">This set is empty. Use <b>Add to flashcards</b> on any term, author, work or prize page, or “+ Custom set” while you study.</p>');
         $$(root, "[data-catadd]").forEach(function (b) { b.addEventListener("click", function () { addCards(out, "cat:" + id, b.getAttribute("data-catadd")); draw(); }); });
         $$(root, "[data-rm]").forEach(function (b) { b.addEventListener("click", function () { Cats.set(id, b.getAttribute("data-rm"), false); draw(); }); });
         $(lede, "[data-ren]").addEventListener("click", function () { var n = askName(gg.n); if (n) { Cats.rename(id, n); h1.textContent = n; draw(); } });
         $(lede, "[data-del]").addEventListener("click", function () {
-          if (window.confirm("Delete “" + gg.n + "”? Only the category goes; cards in your flashcards stay there.")) { Cats.remove(id); location.href = BASE + "flashcards/"; }
+          if (window.confirm("Delete “" + gg.n + "”? Only the set goes; cards in your flashcards stay there.")) { Cats.remove(id); location.href = BASE + "flashcards/"; }
         });
       }
       draw();
@@ -1177,7 +1178,7 @@
         '<div class="fc-row fc-reorder"><span class="muted">Reorder the whole line:</span><select aria-label="Reorder by" data-ro><option value="apps">Most tested first</option><option value="az">A–Z</option><option value="t">Terms first</option><option value="a">Authors first</option><option value="old">Oldest added first</option><option value="new">Newest added first</option><option value="mix">Shuffle</option></select><button type="button" class="fc-btn" data-rogo>Reorder</button></div>' +
         '<div class="fc-wl"><div class="fc-bulk" data-bulk hidden><span data-bulkn></span>' +
         '<button type="button" class="fc-btn small" data-b="front">Move to front</button><button type="button" class="fc-btn small" data-b="end">Move to end</button>' +
-        '<button type="button" class="fc-btn small" data-b="daily">Add to Study daily now</button><span class="fc-add-box"><button type="button" class="fc-btn small" data-b="cat">Add to category…</button><span class="fc-pop" data-catpop></span></span>' +
+        '<button type="button" class="fc-btn small" data-b="daily">Add to Study daily now</button><span class="fc-add-box"><button type="button" class="fc-btn small" data-b="cat">Add to a custom set…</button><span class="fc-pop" data-catpop></span></span>' +
         '<button type="button" class="fc-btn small warn" data-b="remove">Remove</button></div>' +
         '<div class="fc-wl-head"><input type="checkbox" aria-label="Select all shown" data-all><span></span><span class="pos">#</span><span>Card</span><span>Kind</span><span>From</span><span class="ap">On tests</span><span></span></div>' +
         '<ol class="fc-wl-list" data-list></ol><p class="fc-wl-more" data-more></p></div>' +
@@ -1308,7 +1309,7 @@
         var lst = Cats.sorted();
         catPop.innerHTML = '<p class="fc-pop-h">Add ' + plural(Object.keys(picked).length, "card") + " to:</p>" +
           lst.map(function (x) { return '<button type="button" class="fc-pop-row btnrow" data-tocat="' + esc(x.id) + '">' + esc(x.cat.n) + "</button>"; }).join("") +
-          '<form class="fc-pop-new"><input maxlength="80" placeholder="New category" aria-label="New category name"><button class="fc-btn small" type="submit">Add</button></form>';
+          '<form class="fc-pop-new"><input maxlength="80" placeholder="New set" aria-label="New set name"><button class="fc-btn small" type="submit">Add</button></form>';
       };
       catPop.addEventListener("click", function (ev) {
         var b = ev.target.closest("[data-tocat]"); if (!b) return;
@@ -1413,9 +1414,9 @@
       studyTile();
       var sync = document.querySelector("[data-fc-sync]");
       if (sync) {
-        if (signedIn()) sync.textContent = "Your boxes, categories and streak are saved to your account.";
+        if (signedIn()) sync.textContent = "Your boxes, custom sets and streak are saved to your account.";
         else if (window.litcritAuth && window.litcritAuth.enabled) {
-          sync.innerHTML = 'Your boxes, categories and streak are saved in this browser. <a href="' + BASE + "account/?next=" + encodeURIComponent(location.pathname) + '">Sign in</a> to keep them on every device.';
+          sync.innerHTML = 'Your boxes, custom sets and streak are saved in this browser. <a href="' + BASE + "account/?next=" + encodeURIComponent(location.pathname) + '">Sign in</a> to keep them on every device.';
         }
       }
     });

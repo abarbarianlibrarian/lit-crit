@@ -1685,7 +1685,7 @@ def flashcard_pages(db, rel):
             f'<div class="fc" data-deck="{e(json.dumps({"mode": "today"}), quote=True)}"></div>', "Today’s flashcards")
     fc_page("study", "Study", "Cards from your flashcards.",
             f'<div class="fc" data-deck="{e(json.dumps({"mode": "filter"}), quote=True)}"></div>', "Study flashcards")
-    fc_page("my", "Category", "", '<div data-fc-cat></div>', "A flashcard category")
+    fc_page("my", "Custom set", "", '<div data-fc-cat></div>', "A custom flashcard set")
     fc_page("waiting", "Waiting cards", "", '<div data-fc-waiting></div>', "New flashcards waiting to start")
 
     def tile(slug, title, count, blurb):
