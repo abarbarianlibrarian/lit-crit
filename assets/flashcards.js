@@ -1052,7 +1052,7 @@
           .sort(function (x, y) { return sm.sets[x][0].localeCompare(sm.sets[y][0]); })
           .map(function (s) { return ["s:" + s, sm.sets[s][0], "Set · " + sm.sets[s][1].length + " terms"]; }));
       if (term) o = o.filter(function (x) { return x[1].toLowerCase().indexOf(term) >= 0; });
-      return o.slice(0, 8);
+      return o;
     }
     function showSugg() {
       var q = $(root, "[data-scopeq]"), sugg = $(root, "[data-sugg]"); if (!q || !sugg || !smRef) return;
@@ -1064,6 +1064,14 @@
     root.addEventListener("input", function (ev) { if (ev.target.hasAttribute("data-scopeq")) showSugg(); });
     root.addEventListener("focusin", function (ev) { if (ev.target.hasAttribute && ev.target.hasAttribute("data-scopeq")) showSugg(); });
     root.addEventListener("keydown", function (ev) {
+      var opt = ev.target.closest && ev.target.closest("[data-sugg] [data-sel]");
+      if (opt && (ev.key === "ArrowDown" || ev.key === "ArrowUp")) {
+        ev.preventDefault();
+        var all = [].slice.call(opt.parentNode.querySelectorAll("[data-sel]")), i = all.indexOf(opt) + (ev.key === "ArrowDown" ? 1 : -1);
+        if (i < 0) $(root, "[data-scopeq]").focus(); else if (all[i]) all[i].focus();
+        return;
+      }
+      if (opt && ev.key === "Escape") { opt.parentNode.hidden = true; $(root, "[data-scopeq]").focus(); return; }
       if (!ev.target.hasAttribute || !ev.target.hasAttribute("data-scopeq")) return;
       var sugg = $(root, "[data-sugg]");
       if (ev.key === "Enter") { ev.preventDefault(); var f = $(sugg, "[data-sel]"); if (f) f.click(); }
