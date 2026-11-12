@@ -1009,3 +1009,16 @@ h2.letter .count { font: 500 14px/1 var(--sans); color: var(--ink-3); margin-lef
 .qfold-quiz { margin: 12px 0 0; font: 500 14px/1.4 var(--sans); }
 .record .studybox, .person .studybox, .work .studybox { display: inline-block; max-width: 100%; }
 .qfold-body .questions { margin-top: 10px; }
+
+/* Examples (term of the day and term pages) */
+.examples { margin: 0 0 14px; }
+.examples .ex { padding: 6px 0; border-top: 1px solid var(--rule); font-size: 16.5px; line-height: 1.45; }
+.examples .ex:first-child { border-top: 0; }
+.ex-title { font-style: italic; }
+.ex-block { display: block; padding: 2px 0 2px 14px; border-left: 3px solid var(--accent-soft); font-style: italic; color: var(--ink); }
+.ex-by { font: 400 13.5px/1.5 var(--sans); color: var(--ink-2); }
+.ex-block + .ex-by { display: block; margin: 4px 0 0 17px; }
+.ex-by a { color: inherit; }
+.ex-more { margin-left: 8px; font: 500 12px/1 var(--sans); letter-spacing: 0; text-transform: none; }
+.block .examples { columns: 2 320px; column-gap: 32px; }
+.block .examples .ex { break-inside: avoid; border-top: 0; border-bottom: 1px solid var(--rule); }

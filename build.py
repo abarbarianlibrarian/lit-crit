@@ -101,6 +101,12 @@ TABLES = {
     "essays": ("tbloXypOYQ086Pf5o", {
         "name": "fld98QHXSPFVXQVao", "prompt": "fldWhCvgV8NURzqKA", "poems": "fld51bwq2H8BR2STU",
     }),
+    # Examples of terms (titles, lines, phrases, words, excerpts): shown with the term of the day
+    # and on term pages.
+    "examples": ("tbl2mnqFYsmEbZLNI", {
+        "name": "fldMuFpEEdQXCJFxV", "terms": "flddn4E1MBLKKMbFN", "authors": "fldSUnsDOMgQhVHWB",
+        "type": "fldAtL3CTouqYymWz", "source": "fldWq5bC5kj3W4AQG",
+    }),
     # Shown only on the Periods timeline, beside the period each event falls in.
     "events": ("tblzOtL2DxbE7LloC", {
         "name": "fldpJz4MhYPahF6c8", "start": "fldyxtQkzXzmNakxP", "end": "flduwh0Y6SgQTaSMd",
@@ -110,7 +116,7 @@ TABLES = {
 }
 
 # Tables shown inside other pages rather than with pages of their own.
-NO_PAGES = {"resources", "questions", "reading-lists", "events"}
+NO_PAGES = {"resources", "questions", "reading-lists", "events", "examples"}
 
 SECTIONS = [  # url folder, nav label, singular label
     ("terms", "Terms", "Term"),
@@ -308,6 +314,7 @@ LINK_FIELDS = {
                   "authors": "authors", "works": "works"},
     "tests": {"questions": "questions"},
     "essays": {"poems": "poems"},
+    "examples": {"terms": "terms", "authors": "authors"},
 }
 LIST_FIELDS = {
     "authors": {"groups", "periods", "medium"},
@@ -1019,6 +1026,7 @@ def term_page(db, rel, resolver, t, periods_by_term):
     related_by = [x for x in rel[("terms", tid)].get("rev:terms:related", []) if x not in related and x not in mentioned_in]
     ctx = (db, resolver, t["mentioned"] + t["related"], t["title"])
     tq = rel[('terms', tid)].get('questions', [])
+    exs = term_examples(db, rel, tid)
     apps = int(float(t["appearances"] or 0))
     stats = facts([("Test appearances", f"{apps:,}" if apps else ""), ("Practice questions", f"{len(tq):,}" if tq else "")])
     body = f"""{crumbs('terms', 'Terms')}
@@ -1033,6 +1041,7 @@ def term_page(db, rel, resolver, t, periods_by_term):
 {f'<div class="statbox">{stats}</div>' if stats else ''}
 </div>
 </div>
+{f'<div id="examples">{section("Examples", examples_list(db, exs), len(exs))}</div>' if exs else ''}
 {section('Related terms', chips(db, 'terms', related), len(related))}
 {section('Terms mentioned', chips(db, 'terms', mentioned), len(mentioned))}
 {section('Mentioned in', chips(db, 'terms', mentioned_in, limit=40), len(mentioned_in))}
@@ -2457,17 +2466,68 @@ def resources_index(db, resolver):
                                        "Texts, audio and study materials for each year's reading list.", "resources/"))
 
 
-def daily_term_html(db, resolver, tm):
-    paras = [x for x in (tm["definition"] or "").strip().split("\n\n") if x.strip()]
-    first = paras[0] if paras else ""
-    if first.rstrip().endswith(":") and len(paras) > 1:  # keep the example the paragraph introduces
-        first += "\n\n" + paras[1]
-    ctx = (db, resolver, tm["mentioned"] + tm["related"], tm["title"])
+EXAMPLE_ORDER = {"Title": 0, "Line": 1, "Phrase": 2, "Word": 3, "Poem": 4, "Excerpt": 5}
+
+
+def term_examples(db, rel, tid):
+    """A term's examples, shortest kinds first (titles, lines, phrases, words, then poems and excerpts)."""
+    ids = rel[("terms", tid)].get("rev:examples:terms", [])
+    exs = [db["examples"][x] for x in ids if db["examples"][x]["name"].strip()]
+    return sorted(exs, key=lambda x: (EXAMPLE_ORDER.get(x["type"], 3), len(x["name"])))
+
+
+def example_html(db, x):
+    text = x["name"].strip()
+    kind = x["type"]
+    if kind in ("Excerpt", "Poem") or "\n" in text:
+        body = f'<span class="ex-block">{multiline(text)}</span>'
+    elif kind == "Title":
+        body = f'<cite class="ex-title">{e(text)}</cite>'
+    elif kind == "Word":
+        body = f'<i class="ex-word">{e(text)}</i>'
+    else:
+        body = f'<span class="ex-quote">“{e(text.strip(QUOTES))}”</span>'
+    who = []
+    for a in x["authors"]:
+        who.append(f'<a href="{db["authors"][a]["url"]}">{e(db["authors"][a]["title"])}</a>')
+    if x["source"] and x["source"].strip() != text:
+        who.append(f'<i>{e(x["source"].strip())}</i>')
+    by = f' <span class="ex-by">{"by " if kind == "Title" and x["authors"] else "— "}{", ".join(who)}</span>' if who else ""
+    return f'<li class="ex ex-{slugify(kind or "other")}">{body}{by}</li>'
+
+
+def examples_list(db, exs, limit=None):
+    shown = exs[:limit] if limit else exs
+    return f'<ul class="plain examples">{"".join(example_html(db, x) for x in shown)}</ul>' if shown else ""
+
+
+def daily_term_html(db, rel, resolver, tm):
+    short = tm["short"]
+    if not short:  # no Short Definition: fall back to the definition's first paragraph
+        paras = [x for x in (tm["definition"] or "").strip().split("\n\n") if x.strip()]
+        short = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", paras[0])).strip() if paras else ""
+    exs = term_examples(db, rel, tm["id"])
+    # Up to four examples, with at most one long excerpt.
+    picked, long_ = [], 0
+    for x in exs:
+        is_long = x["type"] in ("Excerpt", "Poem") or "\n" in x["name"].strip()
+        if is_long and long_:
+            continue
+        long_ += is_long
+        picked.append(x)
+        if len(picked) == 4:
+            break
+    more = len(exs) - len(picked)
+    ex_html = ""
+    if picked:
+        more_link = f' <a class="ex-more" href="{tm["url"]}#examples">{more} more</a>' if more > 0 else ""
+        ex_html = (f'<h3 class="daily-sub">Example{"s" if len(exs) != 1 else ""}{more_link}</h3>'
+                   + examples_list(db, picked))
     return f"""<article class="daily-card">
   <p class="daily-label">Term of the day</p>
   <h2 class="daily-title"><a href="{tm['url']}">{e(tm['title'])}</a></h2>
-  {f'<p class="daily-short">{e(cap_first(tm["short"]))}</p>' if tm['short'] and not fold(first).startswith(fold(tm['short'])[:40]) else ''}
-  <div class="prose daily-def">{md_to_html(first, ctx)}</div>
+  {f'<p class="daily-short">{e(cap_first(short))}</p>' if short else ''}
+  {ex_html}
   <div class="daily-links"><a href="{tm['url']}">Read the full entry</a>{add_card_slot('t', tm)}</div>
 </article>"""
 
@@ -2534,7 +2594,7 @@ def daily_section(db, rel, resolver):
         au = today_author if d == build_day else authors.get(d)
         if not tm and not au:
             continue
-        cards = (daily_term_html(db, resolver, tm) if tm else "") + (daily_author_html(db, rel, au) if au else "")
+        cards = (daily_term_html(db, rel, resolver, tm) if tm else "") + (daily_author_html(db, rel, au) if au else "")
         hidden = "" if d == build_day else " hidden"
         blocks += f'<div class="daily" data-date="{d}"{hidden}>{cards}</div>'
     script = """<script>
