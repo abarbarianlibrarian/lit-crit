@@ -2907,6 +2907,7 @@ def period_authors(db):
     return out
 
 
+SET_QUIZ_MIN = 10  # fewest qualifying questions for a set to be offered as a quiz topic
 ANSWER_LEAD = re.compile(r"^(?:the|an?|a\(n\)|an?\(n\)|both|either)\s+", re.I)
 
 
@@ -2964,12 +2965,14 @@ def quiz_bank(db, rel):
             poems[pid] = [p["title"], p["url"], p["text"], rel[("poems", pid)].get("authors", [])]
             used["authors"].update(poems[pid][3])
     # Topics: sets (terms), reading lists (works and authors), periods (authors).
-    # A set quiz uses only questions whose correct answer is one of the set's terms ("ta").
-    answered = set()
-    for x in qs:
-        answered.update(x["ta"])
-    sets = {g["id"]: [g["title"], rel[("tags", g["id"])].get("terms", [])] for g in db["tags"].values()
-            if answered.intersection(rel[("tags", g["id"])].get("terms", []))}
+    # A set quiz uses only questions whose correct answer is one of the set's terms ("ta"),
+    # and a set is offered only when at least SET_QUIZ_MIN questions qualify.
+    sets = {}
+    for g in db["tags"].values():
+        terms = rel[("tags", g["id"])].get("terms", [])
+        ts = set(terms)
+        if sum(1 for x in qs if ts.intersection(x["ta"])) >= SET_QUIZ_MIN:
+            sets[g["id"]] = [g["title"], terms]
     lists = {}
     for r in sorted(db["reading-lists"].values(), key=lambda r: r["year"], reverse=True):
         authors = list(r["poet"])
