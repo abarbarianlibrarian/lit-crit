@@ -573,11 +573,19 @@
     Object.keys(count).forEach(function (id) { if (!all || count[id] === groups.length) o[id] = 1; });
     return o;
   }
+  // Test appearances filter: null = any; 0 = never on a test; N = at least N. Prizes have no count, so any filter leaves them out.
+  var APPS = [["", "Any number"], ["0", "Never on a test"], ["1", "1 or more"], ["3", "3 or more"], ["5", "5 or more"], ["10", "10 or more"], ["20", "20 or more"], ["50", "50 or more"]];
+  function appsOK(id, min, sm) {
+    if (min == null || isNaN(min)) return true;
+    if (id[0] === "p") return false;
+    var n = sm.apps[id] || 0;
+    return min === 0 ? n === 0 : n >= min;
+  }
   function readFilter(q) {
     var list = function (k) { return (q.get(k) || "").split(",").filter(Boolean); };
     var b = (q.get("b") || "123").split("").map(Number).filter(function (x) { return x >= 0 && x <= 5; });
     return { c: list("c"), s: list("s"), all: q.get("m") === "all", b: b.length ? b : [1, 2, 3], d: q.get("d") === "1",
-             k: (q.get("k") || "tawp").split("").filter(function (l) { return KIND[l]; }) };
+             k: (q.get("k") || "tawp").split("").filter(function (l) { return KIND[l]; }), a: q.get("a") == null || q.get("a") === "" ? null : +q.get("a") };
   }
   function filterIds(c, f, sm, t) {
     var scope = scopeOf(f.c, f.s, f.all, sm);
@@ -590,6 +598,7 @@
       if (f.b.indexOf(b) < 0) return false;
       if (scope && !scope[id]) return false;
       if (f.k.indexOf(id[0]) < 0) return false;
+      if (!appsOK(id, f.a, sm)) return false;
       if (f.d && b >= 1 && b <= 4 && !isDue(st, t)) return false;
       return true;
     });
@@ -906,7 +915,7 @@
   function home(root) {
     intro();
     siteMeta().then(function (sm) { draw(sm); });
-    var sel = { c: [], s: [], all: false }, boxes = { 0: false, 1: true, 2: true, 3: true, 4: false, 5: false }, dueOnly = false, kinds = { t: true, a: true, w: true, p: true };
+    var sel = { c: [], s: [], all: false }, minApps = "", boxes = { 0: false, 1: true, 2: true, 3: true, 4: false, 5: false }, dueOnly = false, kinds = { t: true, a: true, w: true, p: true };
     var topKind = "t", topN = 20, matched = [];
 
     function draw(sm) {
@@ -986,6 +995,9 @@
         '<div class="fc-step fc-step-inline"><span class="fc-step-h">3. Card types</span>' + "tawp".split("").map(function (l) {
           return '<label class="fc-row"><input type="checkbox" data-kind="' + l + '"' + (kinds[l] ? " checked" : "") + "> " + KINDS[l] + "</label>";
         }).join("") + "</div>" +
+        '<div class="fc-step"><div class="fc-step-inline"><label class="fc-step-h" for="fc-apps">4. Test appearances</label>' +
+        '<select id="fc-apps" class="fc-select" data-apps>' + APPS.map(function (o) { return '<option value="' + o[0] + '"' + (o[0] === minApps ? " selected" : "") + ">" + o[1] + "</option>"; }).join("") + "</select></div>" +
+        '<span class="muted fc-small">How often a term, author or work has come up on released UIL tests. Prizes are left out when this is set.</span></div>' +
         '<div class="fc-builder-go"><span data-summary></span><button type="button" class="fc-btn" data-savecat>Save as new set</button><a class="btn btn-study btn-sm" data-go href="#">Study without saving</a></div>' +
         '<p class="fc-ok fc-small" data-savemsg aria-live="polite"></p></div></section>';
     }
@@ -999,6 +1011,7 @@
       ids.forEach(function (id) {
         var st = c[id], b = st ? st[0] : 5;
         if ((scope && !scope[id]) || f.k.indexOf(id[0]) < 0) return;
+        if (!appsOK(id, minApps === "" ? null : +minApps, sm)) return;
         if (dueOnly && b >= 1 && b <= 4 && !isDue(st, t)) return;
         per[b]++;
         if (f.b.indexOf(b) >= 0) { n++; matched.push(id); }
@@ -1014,7 +1027,7 @@
       var sv = $(root, "[data-savecat]"); if (sv) sv.disabled = !n;
       go.classList.toggle("disabled", !n);
       go.setAttribute("aria-disabled", n ? "false" : "true");
-      go.href = url("flashcards/study/", { c: sel.c.join(","), s: sel.s.join(","), m: both ? "all" : "", b: f.b.join(""), d: dueOnly ? 1 : 0, k: f.k.length === 4 ? "" : f.k.join("") });
+      go.href = url("flashcards/study/", { c: sel.c.join(","), s: sel.s.join(","), m: both ? "all" : "", a: minApps, b: f.b.join(""), d: dueOnly ? 1 : 0, k: f.k.length === 4 ? "" : f.k.join("") });
     }
     function myCats(c) {
       var list = Cats.sorted();
@@ -1073,6 +1086,7 @@
         $$(root, "[data-mode]").forEach(function (r) { r.parentNode.classList.toggle("on", r.checked); });
       } else if (tg.hasAttribute("data-box")) { boxes[tg.getAttribute("data-box")] = tg.checked; tg.parentNode.classList.toggle("on", tg.checked); }
       else if (tg.hasAttribute("data-kind")) kinds[tg.getAttribute("data-kind")] = tg.checked;
+      else if (tg.hasAttribute("data-apps")) minApps = tg.value;
       else return;
       recount(sm);
     });

@@ -1706,6 +1706,11 @@ def flashcard_pages(db, rel):
                 top[letter].append([f"{letter}:{rid}", db[table][rid]["title"], k])
         top[letter].sort(key=lambda x: (-x[2], sort_key(x[1])))
         top[letter] = top[letter][:300]
+    # Works have no appearances field: count the released questions linked to each work.
+    for rid in CARD_IDS["w"]:
+        k = len(set(rel[("works", rid)].get("questions", [])))
+        if k:
+            apps[f"w:{rid}"] = k
     meta = {"sets": sets, "core": [slug for slug, _, _ in core], "decks": decks, "apps": apps, "top": top}
     (OUT / "assets" / "cards" / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
