@@ -127,6 +127,14 @@ SECTIONS = [  # url folder, nav label, singular label
     ("flashcards", "Flashcards", "Deck"),
 ]
 
+# Web-address folder for a section when it differs from its key: the Tags table is shown as "Sets".
+FOLDERS = {"tags": "sets"}
+
+
+def folder(key):
+    return FOLDERS.get(key, key)
+
+
 # Sections left out of the menu at the top of every page (their pages still exist and are linked elsewhere).
 NAV_HIDDEN = {"works", "tags"}
 
@@ -384,7 +392,7 @@ def assign_urls(db):
                 slug = f"{slug}-{r['id'][3:9].lower()}"
             taken[slug] = r["id"]
             r["slug"] = slug
-            r["url"] = None if key in NO_PAGES else f"{BASE}{key}/{slug}/"
+            r["url"] = None if key in NO_PAGES else f"{BASE}{folder(key)}/{slug}/"
     for r in db["reading-lists"].values():
         r["url"] = f"{BASE}reading-lists/#{r['slug']}"
     for q in db["questions"].values():
@@ -998,7 +1006,7 @@ def write(path, content):
 
 
 def crumbs(key, label):
-    return f'<p class="crumbs"><a href="{BASE}{key}/">{label}</a></p>'
+    return f'<p class="crumbs"><a href="{BASE}{folder(key)}/">{label}</a></p>'
 
 
 # ---------------------------------------------------------------- record pages
@@ -1484,7 +1492,7 @@ def tag_page(db, rel, g):
 </article>
 {f'<ul class="plain defs">{rows}</ul>' if rows else ''}
 """
-    write(f"tags/{g['slug']}/index.html", page(g["title"], body, "tags", f"{len(terms)} literary terms tagged {g['title']}", f"tags/{g['slug']}/"))
+    write(f"sets/{g['slug']}/index.html", page(g["title"], body, "tags", f"{len(terms)} literary terms in the set {g['title']}", f"sets/{g['slug']}/"))
 
 
 # ---------------------------------------------------------------- flashcards
@@ -1840,7 +1848,7 @@ def catalog_page(key, label, lede, rows, cfg, browse=False, extra="", script="")
 <div data-catalog data-src="{BASE}assets/data/{key}.json?v={BUILD_ID}" data-config="{e(json.dumps(cfg, ensure_ascii=False), quote=True)}">
   <ul class="plain catalog" data-fallback>{fallback}</ul>
 </div>"""
-    write(f"{key}/index.html", page(label, body, key, lede, f"{key}/",
+    write(f"{folder(key)}/index.html", page(label, body, key, lede, f"{folder(key)}/",
                                    extra_head=f'<script src="{BASE}assets/catalog.js?v={BUILD_ID}" defer></script>'
                                               + (f'<script src="{BASE}assets/{script}?v={BUILD_ID}" defer></script>' if script else "")))
 
@@ -2593,7 +2601,7 @@ def build_nav_menus(db):
     n = lambda k: f"{len(listed(db, k)):,}"
     NAV_MENUS["ref"] = (
         '<div>' + mi("terms/", "Terms", f"{n('terms')} definitions, cross-linked")
-        + mi("tags/", "Sets", "Terms grouped by topic")
+        + mi("sets/", "Sets", "Terms grouped by topic")
         + mi("periods/", "Periods", "American and British timelines")
         + mi("prizes/", "Prizes", "Nobel, Pulitzer and more") + '</div>'
         + '<div>' + mi("authors/", "Authors", f"{n('authors')} writers with works and dates")
@@ -2671,7 +2679,7 @@ def reference_page(db):
         ("prizes", "Prizes", f"{len(db['prizes']):,}", "Nobel, Pulitzer and other major literary prizes"),
     ]
     items = "".join(
-        f'<li><a class="refrow" href="{BASE}{k}/"><span class="refrow-text"><span class="refrow-top">'
+        f'<li><a class="refrow" href="{BASE}{folder(k)}/"><span class="refrow-text"><span class="refrow-top">'
         f'<b>{label}</b><span class="refrow-count">{count}</span></span>'
         f'<span class="refrow-sub">{sub}</span></span><span class="refrow-arrow" aria-hidden="true">→</span></a></li>'
         for k, label, count, sub in rows)
@@ -3006,11 +3014,24 @@ def search_index(db):
     (OUT / "assets" / "search.json").write_text(json.dumps(entries, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
 
+def old_address_redirects(db):
+    """Pages at the old /tags/ addresses that forward to /sets/, so saved links and bookmarks keep working."""
+    def stub(to):
+        return (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Moved</title>'
+                f'<meta name="robots" content="noindex"><link rel="canonical" href="{to}">'
+                f'<meta http-equiv="refresh" content="0; url={to}">'
+                f'<script>location.replace("{to}" + location.search + location.hash)</script></head>'
+                f'<body><p>This page has moved to <a href="{to}">{to}</a>.</p></body></html>')
+    write("tags/index.html", stub(f"{BASE}sets/"))
+    for g in db["tags"].values():
+        write(f"tags/{g['slug']}/index.html", stub(g["url"]))
+
+
 def sitemap(db):
     write("robots.txt", "User-agent: *\nAllow: /\n" + (f"Sitemap: {SITE_URL}sitemap.xml\n" if SITE_URL else ""))
     if not SITE_URL:
         return
-    urls = [SITE_URL] + [f"{SITE_URL}{k}/" for k, _, _ in SECTIONS]
+    urls = [SITE_URL] + [f"{SITE_URL}{folder(k)}/" for k, _, _ in SECTIONS]
     for key in db:
         for r in db[key].values():
             if r.get("url") and "#" not in r["url"]:
@@ -3106,6 +3127,7 @@ def main():
     account_page()
     search_index(db)
     sitemap(db)
+    old_address_redirects(db)
     write("404.html", page("Page not found", f'<h1>Page not found</h1><p class="lede">That page may have been renamed. Try searching, or go <a href="{BASE}">home</a>.</p>'))
 
     n = sum(1 for _ in OUT.rglob("*.html"))

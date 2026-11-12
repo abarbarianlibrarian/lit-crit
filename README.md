@@ -19,7 +19,7 @@ reading list, Resources). The home page shows the term and author of the day, th
   reading list, test years, or only ones the student missed before. Term, author, work and poem pages link to it
   with **Quiz me**.
 - On term, author, work and poem pages the practice questions are folded into one box that opens on request.
-- The Tags table is called **Sets** on the site (its web addresses still start with `/tags/`).
+- The Tags table is called **Sets** on the site, at `/sets/`. Old `/tags/` addresses forward to the matching `/sets/` page.
 
 | Airtable table | On the site |
 |---|---|
