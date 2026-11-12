@@ -37,21 +37,7 @@
     }).join("");
   }
 
-  // ---- flashcards due today (schedule: {card: [due day, ...]})
-  var cards = load("litcrit-cards-v1"), ids = Object.keys(cards);
-  if (ids.length) {
-    var due = ids.filter(function (c) { return cards[c][0] <= today; }).length;
-    $("[data-fc-big]").textContent = plural(due, "card");
-    var go = $("[data-fc-go]");
-    if (due) {
-      $("[data-fc-sub]").textContent = "Due today, from every deck you’ve studied. About " +
-        Math.max(1, Math.round(due / 4)) + " minute" + (Math.round(due / 4) > 1 ? "s" : "") + ".";
-      go.textContent = "Review now"; go.href = base + "flashcards/review/";
-    } else {
-      $("[data-fc-sub]").textContent = "Nothing due today. You’ve studied " + plural(ids.length, "card") + " so far.";
-      go.textContent = "Study new cards";
-    }
-  }
+  // ---- flashcards: filled in by flashcards.js (Today’s flashcards tile)
 
   // ---- practice tests
   var scores = load("litcrit-test-scores-v1"), list = Object.keys(scores).map(function (k) { return scores[k]; });

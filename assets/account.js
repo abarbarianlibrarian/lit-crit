@@ -46,9 +46,10 @@
   function counts() {
     var p = auth.progress();
     var tests = Object.keys(p.scores).length, answers = Object.keys(p.answers).length;
-    var cards = Object.keys(p.cards || {}).length, decks = Object.keys(p.decks || {}).length;
+    var fc = p.fcCards && Object.keys(p.fcCards).length ? p.fcCards : p.cards || {};
+    var cards = Object.keys(fc).length, cats = Object.keys((p.fcCats && Object.keys(p.fcCats).length ? p.fcCats : p.decks) || {}).length;
     return answers + (answers === 1 ? " answer" : " answers") + ", " + tests + (tests === 1 ? " scored test" : " scored tests") +
-      ", " + cards + (cards === 1 ? " flashcard studied" : " flashcards studied") + " and " + decks + (decks === 1 ? " flashcard deck" : " flashcard decks");
+      ", " + cards + (cards === 1 ? " flashcard" : " flashcards") + " and " + cats + (cats === 1 ? " flashcard category" : " flashcard categories");
   }
   // ---- profile (public.profiles: role, graduation_year, school)
   function syncGrad(form) {

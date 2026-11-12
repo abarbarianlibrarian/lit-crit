@@ -1498,10 +1498,19 @@ def tag_page(db, rel, g):
 <h1 data-record="{g['id']}">{e(g['title'])}</h1>
 <p class="lede">{len(terms)} term{'s' if len(terms) != 1 else ''}</p>
 {f'<p class="links">Study this set: <a href="{BASE}flashcards/tag-{g["slug"]}/">Flashcards</a> {study}</p>' if terms else ''}
+{tag_addall(g, terms)}
 </article>
 {f'<ul class="plain defs">{rows}</ul>' if rows else ''}
 """
-    write(f"sets/{g['slug']}/index.html", page(g["title"], body, "tags", f"{len(terms)} literary terms in the set {g['title']}", f"sets/{g['slug']}/"))
+    write(f"sets/{g['slug']}/index.html", page(g["title"], body, "tags", f"{len(terms)} literary terms in the set {g['title']}", f"sets/{g['slug']}/", extra_head=FC_SCRIPT))
+
+
+def tag_addall(g, terms):
+    ids = [f"t:{t}" for t in terms if t in CARD_IDS["t"]]
+    if not ids:
+        return ""
+    spec = {"ids": ids, "src": f"set:{g['slug']}"}
+    return f'<div class="fc-addall-slot" data-fc-addall="{e(json.dumps(spec), quote=True)}"></div>'
 
 
 # ---------------------------------------------------------------- flashcards
@@ -1599,89 +1608,121 @@ def card_data(db, rel):
     print("Flashcards: " + ", ".join(f"{len(v)} {CARD_KINDS[k]}" for k, v in out.items()), flush=True)
 
 
-def deck_page(slug, title, lede, letters, ids=None, crumb=True, flip_label=None):
-    """A study page. ids=None means every card of the given letters."""
-    spec = {"title": title, "letters": letters, "ids": ids, "flip": flip_label}
-    body = f"""{f'<p class="crumbs"><a href="{BASE}flashcards/">Flashcards</a></p>' if crumb else ''}
+def fc_page(slug, title, lede, inner, desc=None):
+    body = f"""<p class="crumbs"><a href="{BASE}flashcards/">Flashcards</a></p>
 <h1>{e(title)}</h1>
-<p class="lede">{e(lede)}</p>
-<div class="fc" data-deck="{e(json.dumps(spec, ensure_ascii=False), quote=True)}">
-  <noscript><p>Flashcards need JavaScript turned on.</p></noscript>
-</div>"""
-    write(f"flashcards/{slug}/index.html", page(title, body, "flashcards", lede, f"flashcards/{slug}/", extra_head=FC_SCRIPT))
+<p class="lede">{lede}</p>
+{inner}
+<noscript><p>Flashcards need JavaScript turned on.</p></noscript>"""
+    write(f"flashcards/{slug}/index.html", page(title, body, "flashcards", desc or title, f"flashcards/{slug}/", extra_head=FC_SCRIPT))
+
+
+def deck_page(slug, title, lede, letters, ids=None, src=None):
+    """A ready-made deck: add its cards to your flashcards, or practice them. ids=None = every card of those letters."""
+    spec = {"mode": "source", "letters": letters, "ids": ids, "src": src or f"deck:{slug}"}
+    fc_page(slug, title, e(lede), f'<div class="fc" data-deck="{e(json.dumps(spec, ensure_ascii=False), quote=True)}"></div>', lede)
 
 
 def flashcard_pages(db, rel):
     n = {k: len(v) for k, v in CARD_IDS.items()}
     tiles = []      # (group, slug, title, count, blurb)
+    decks = {}
 
-    def deck(group, slug, title, lede, letters, ids=None, blurb="", flip=None):
+    def deck(group, slug, title, lede, letters, ids=None, blurb=""):
         count = len(ids) if ids is not None else sum(n[l] for l in letters)
         if not count:
             return
-        deck_page(slug, title, lede, letters, ids, flip_label=flip)
+        deck_page(slug, title, lede, letters, ids)
         tiles.append((group, slug, title, count, blurb))
+        decks[slug] = title
 
-    term_flip = "Definition first"
-    deck("Terms", "terms", "All terms", "Every term on the site: name the definition.", ["t"], blurb="Term → definition", flip=term_flip)
+    deck("Terms", "terms", "All terms", "Every term on the site: term → definition.", ["t"], blurb="Term → definition")
+    sets = {}
     tagged = []
     for g in db["tags"].values():
         ids = [f"t:{t}" for t in rel[("tags", g["id"])].get("terms", []) if t in CARD_IDS["t"]]
         ids.sort(key=lambda c: sort_key(db["terms"][c[2:]]["title"]))
         if ids:
-            deck_page(f"tag-{g['slug']}", g["title"], f"{len(ids)} terms tagged {g['title']}.", ["t"], ids, flip_label=term_flip)
+            deck_page(f"tag-{g['slug']}", g["title"], f"{len(ids)} terms in the set {g['title']}.", ["t"], ids, src=f"set:{g['slug']}")
             tagged.append((g, len(ids)))
+            sets[g["slug"]] = [g["title"], ids]
 
     tested_a = sorted((a for a in CARD_IDS["a"] if rel[("authors", a)].get("questions")), key=lambda a: author_sort(db["authors"][a]))
     tested_w = sorted((w for w in CARD_IDS["w"] if rel[("works", w)].get("questions")), key=lambda w: sort_key(db["works"][w]["title"]))
-    deck("Authors and works", "authors-tested", "Authors on past tests", "Authors named in released UIL questions: name their works.",
+    deck("Authors and works", "authors-tested", "Authors on past tests", "Authors named in released UIL questions: author → works.",
          ["a"], [f"a:{a}" for a in tested_a], "Author → works")
-    deck("Authors and works", "works-tested", "Works on past tests", "Works named in released UIL questions: who wrote them?",
+    deck("Authors and works", "works-tested", "Works on past tests", "Works named in released UIL questions: work → author.",
          ["w"], [f"w:{w}" for w in tested_w], "Work → author")
-    deck("Authors and works", "authors", "All authors", "Every author with works on the site: name their works.", ["a"], blurb="Author → works")
-    deck("Authors and works", "works", "All works", "Every work on the site: who wrote it?", ["w"], blurb="Work → author")
+    deck("Authors and works", "authors", "All authors", "Every author with works on the site: author → works.", ["a"], blurb="Author → works")
+    deck("Authors and works", "works", "All works", "Every work on the site: work → author.", ["w"], blurb="Work → author")
 
     by_type = defaultdict(list)
     for p in CARD_IDS["p"]:
         by_type[db["prizes"][p]["type"] or "Other"].append(p)
     psort = lambda p: (-(int(db["prizes"][p]["year"]) if str(db["prizes"][p]["year"]).isdigit() else 0), sort_key(db["prizes"][p]["title"]))
-    deck("Prizes", "prizes", "All prize winners", "Every prize on the site: who won?", ["p"], blurb="Prize → winner")
+    deck("Prizes", "prizes", "All prize winners", "Every prize on the site: prize → winner.", ["p"], blurb="Prize → winner")
     for ptype, ids in sorted(by_type.items(), key=lambda x: (-len(x[1]), x[0])):
         if len(ids) >= 5:
-            deck("Prizes", f"prizes-{slugify(ptype)}", ptype, f"{ptype} winners: who won?", ["p"],
+            deck("Prizes", f"prizes-{slugify(ptype)}", ptype, f"{ptype} winners: prize → winner.", ["p"],
                  [f"p:{p}" for p in sorted(ids, key=psort)], "Prize → winner")
 
-    # My decks and the review-everything page are filled in by flashcards.js.
-    deck_page("my", "My deck", "A deck you made.", ["t", "a", "w", "p"], [], flip_label=term_flip)
-    deck_page("review", "Everything due", "Every card you've studied that is due today, from all decks.", ["t", "a", "w", "p"], "due", flip_label=term_flip)
+    # Site data for flashcards.js: sets, deck names, test appearances and the most-tested terms and authors.
+    apps = {}
+    top = {"t": [], "a": []}
+    for letter, table in (("t", "terms"), ("a", "authors")):
+        for rid in CARD_IDS[letter]:
+            k = int(float(db[table][rid]["appearances"] or 0))
+            if k:
+                apps[f"{letter}:{rid}"] = k
+                top[letter].append([f"{letter}:{rid}", db[table][rid]["title"], k])
+        top[letter].sort(key=lambda x: (-x[2], sort_key(x[1])))
+        top[letter] = top[letter][:300]
+    meta = {"sets": sets, "decks": decks, "apps": apps, "top": top}
+    (OUT / "assets" / "cards" / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+
+    # Pages filled in by flashcards.js
+    fc_page("review", "Today’s cards", "Your daily cards plus today’s share of your weekly and monthly boxes.",
+            f'<div class="fc" data-deck="{e(json.dumps({"mode": "today"}), quote=True)}"></div>', "Today’s flashcards")
+    fc_page("study", "Study", "Cards from your flashcards.",
+            f'<div class="fc" data-deck="{e(json.dumps({"mode": "filter"}), quote=True)}"></div>', "Study flashcards")
+    fc_page("my", "Category", "", '<div data-fc-cat></div>', "A flashcard category")
+    fc_page("waiting", "Waiting cards", "", '<div data-fc-waiting></div>', "New flashcards waiting to start")
 
     def tile(slug, title, count, blurb):
-        return (f'<a class="fc-tile" href="{BASE}flashcards/{slug}/" data-deck-link="{slug}">'
+        return (f'<a class="fc-tile" href="{BASE}flashcards/{slug}/">'
                 f'<span class="fc-tile-t">{e(title)}</span>'
                 f'<span class="fc-tile-m">{count:,} card{"s" if count != 1 else ""}{" · " + e(blurb) if blurb else ""}</span></a>')
 
     groups = ""
     for group in dict.fromkeys(g for g, *_ in tiles):
         items = "".join(tile(s, t, c, b) for g, s, t, c, b in tiles if g == group)
+        gid = {"Terms": "terms", "Authors and works": "authors", "Prizes": "prizes"}.get(group, slugify(group))
         if group == "Terms" and tagged:
             tag_items = "".join(f'<li><a href="{BASE}flashcards/tag-{g["slug"]}/">{e(g["title"])}</a> <span class="muted">{c}</span></li>'
                                 for g, c in sorted(tagged, key=lambda x: sort_key(x[0]["title"])))
-            items += f'</div><h3 class="fc-subhead">By tag</h3><ul class="plain cols fc-tags">{tag_items}</ul><div class="fc-tiles">'
-        groups += section(group, f'<div class="fc-tiles">{items}</div>')
-    body = f"""<h1>Flashcards</h1>
-<p class="lede">Cards come back just before you'd forget them: grade each one and the ones you know show up less and less often.</p>
-<div class="fc-home" data-fc-home>
-  <a class="fc-due" href="{BASE}flashcards/review/" data-fc-due hidden></a>
-  <section class="block"><h2>My decks</h2>
-    <p class="muted" data-fc-mine-empty>Make your own deck, then add cards from any term, author, work or prize page with the <strong>Add to flashcards</strong> button.</p>
-    <div class="fc-tiles" data-fc-mine></div>
-    <p><button type="button" class="fc-btn" data-fc-new>New deck</button></p>
-  </section>
-</div>
-{groups}
-<p class="muted fc-sync" data-fc-sync></p>"""
+            items += f'</div><h3 class="fc-subhead" id="sets">By set</h3><ul class="plain cols fc-tags">{tag_items}</ul><div class="fc-tiles">'
+        groups += f'<section class="block" id="{gid}"><h2>{e(group)}</h2><div class="fc-tiles">{items}</div></section>'
+    fc_page("add", "Add cards", "Pick a ready-made deck or set. New cards wait in line and join Study daily a few a day.", groups,
+            "Ready-made flashcard decks: terms by set, authors, works and prize winners.")
+
+    body = f"""<p class="crumbs"><a href="{BASE}study/">Study</a></p>
+<h1>Flashcards</h1>
+<p class="lede">Get a card right a few times in a row and you’ll see it less often. Miss it and it’s back every day.</p>
+<div class="fc-home" data-fc-home><p class="muted">Loading your flashcards…</p></div>
+<section class="block fc-addcards"><h2>Add cards</h2>
+<ul class="fc-list-rows">
+<li><a href="{BASE}flashcards/add/#sets">Terms by set</a><span class="muted">term → definition</span></li>
+<li><a href="{BASE}flashcards/authors-tested/">Authors on past tests</a><span class="muted">author → works</span></li>
+<li><a href="{BASE}flashcards/works-tested/">Works on past tests</a><span class="muted">work → author</span></li>
+<li><a href="{BASE}flashcards/add/#prizes">Prize winners</a><span class="muted">prize → winner</span></li>
+<li><a href="{BASE}flashcards/add/">Every ready-made deck</a><span class="muted">all terms, authors, works and prizes</span></li>
+</ul>
+<p class="muted fc-small">Or use <b>Add to flashcards</b> on any term, author, work or prize page.</p>
+</section>
+<div class="fc-foot-row"><p class="muted fc-sync" data-fc-sync></p><a href="{BASE}flashcards/#settings" data-fc-settings-link>Flashcard settings</a></div>
+<noscript><p>Flashcards need JavaScript turned on.</p></noscript>"""
     write("flashcards/index.html", page("Flashcards", body, "flashcards",
-                                        "Spaced-repetition flashcards for literary terms, authors, works and prizes.",
+                                        "Leitner-box flashcards for literary terms, authors, works and prizes: study daily, weekly and monthly.",
                                         "flashcards/", extra_head=FC_SCRIPT))
 
 
@@ -2681,7 +2722,7 @@ def build_nav_menus(db):
         + mi("study/quiz/", "Quick quiz", "10 questions by part or topic")
         + mi("essays/", "Essay prompts", "Past prompts with the full poem") + '</div>'
         + '<div>' + mi("flashcards/", "Flashcards", "Terms, authors, works and prizes")
-        + mi("flashcards/review/", "Cards due today", "Everything you’ve studied that’s due")
+        + mi("flashcards/review/", "Today’s cards", "Your daily cards plus today’s share of the rest")
         + this_year + mi("resources/", "Resources", "Guides and texts, free ones marked") + '</div>')
 
 
@@ -2769,7 +2810,7 @@ def study_page(db, rel):
         for href, title, sub in (
             ("tests/", "Practice tests", "Full released tests, scored out of 100"),
             ("study/quiz/", "Quick quiz", "10 questions by part, set, period or reading list"),
-            ("flashcards/", "Flashcards", "Terms by set, authors and works, prize winners"),
+            ("flashcards/", "Flashcards", "Daily, weekly and monthly boxes, with a study streak"),
             ("essays/", "Essay prompts", f"{len(db['essays'])} prompts with the poem’s full text")))
     body = f"""<p class="eyebrow">Study</p>
 <h1>Your study home</h1>
@@ -2783,10 +2824,10 @@ def study_page(db, rel):
     <ul class="plain cd-list" data-cd-list></ul>
   </section>
   <section class="tile">
-    <h2>Flashcards due</h2>
+    <h2>Today’s flashcards</h2>
     <b class="tile-big" data-fc-big>0 cards</b>
-    <span class="tile-sub" data-fc-sub>Start with a deck, and cards you study come back here when they’re due.</span>
-    <a class="btn btn-study btn-sm" href="{BASE}flashcards/" data-fc-go>Choose a deck</a>
+    <span class="tile-sub" data-fc-sub>Add cards and they sort themselves into daily, weekly and monthly boxes.</span>
+    <a class="btn btn-study btn-sm" href="{BASE}flashcards/" data-fc-go>Open flashcards</a>
   </section>
   <section class="tile">
     <h2>Practice tests</h2>
@@ -2801,7 +2842,7 @@ def study_page(db, rel):
 {year_html}
 """
     write("study/index.html", page("Study", body, "study", "Practice tests, quick quizzes, flashcards and essay prompts for UIL Literary Criticism.",
-                                   "study/", extra_head=f'<script src="{BASE}assets/study.js?v={BUILD_ID}" defer></script>'))
+                                   "study/", extra_head=f'<script src="{BASE}assets/study.js?v={BUILD_ID}" defer></script>' + FC_SCRIPT))
 
 
 def period_core(name):

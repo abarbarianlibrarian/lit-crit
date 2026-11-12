@@ -15,7 +15,8 @@
 (function () {
   var cfg = window.LITCRIT_AUTH || {};
   var KEYS = { answers: "litcrit-answers-v1", scored: "litcrit-scored-v1", scores: "litcrit-test-scores-v1",
-               cards: "litcrit-cards-v1", decks: "litcrit-decks-v1", quiz: "litcrit-quiz-v1", last: "litcrit-last-v1" };
+               cards: "litcrit-cards-v1", decks: "litcrit-decks-v1", quiz: "litcrit-quiz-v1", last: "litcrit-last-v1",
+               fcCards: "litcrit-fc-cards-v2", fcCats: "litcrit-fc-cats-v2", fcMeta: "litcrit-fc-meta-v2" };
   var META = "litcrit-sync-v1";          // {uid, dirty}: whose progress this browser holds, and unsaved changes
   var SESSION = "litcrit-auth";          // where the Supabase library keeps the session
   var BASE = window.SITE_BASE || "/";
