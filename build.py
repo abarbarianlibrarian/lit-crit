@@ -122,7 +122,7 @@ SECTIONS = [  # url folder, nav label, singular label
     ("reading-lists", "Reading Lists", "Reading list"),
     ("prizes", "Prizes", "Prize"),
     ("periods", "Periods", "Period"),
-    ("tags", "Tags", "Tag"),
+    ("tags", "Sets", "Set"),
     ("resources", "Resources", "Resource"),
     ("flashcards", "Flashcards", "Deck"),
 ]
@@ -938,10 +938,10 @@ def ext_link(url, label):
 
 
 def page(title, body, active=None, description="", path="", extra_head=""):
-    nav = f'<a href="{BASE}"{" aria-current=page" if active == "home" else ""}>Home</a>' + "".join(
-        f'<a href="{BASE}{k}/"{" aria-current=page" if k == active else ""}>{label}</a>'
-        for k, label, _ in SECTIONS if k not in NAV_HIDDEN
-    )
+    mode = "home" if active == "home" else "study" if active in STUDY_KEYS else "ref" if active else ""
+    nav = (f'<a class="navlink" href="{BASE}"{" aria-current=page" if mode == "home" else ""}>Home</a>'
+           + nav_menu("ref", "Reference", "reference/", mode == "ref", NAV_MENUS.get("ref", ""))
+           + nav_menu("study", "Study", "study/", mode == "study", NAV_MENUS.get("study", "")))
     full_title = f"{title} · {SITE_TITLE}" if title != SITE_TITLE else SITE_TITLE
     desc = e(re.sub(r"\s+", " ", description).strip()[:300], quote=True)
     canon = f'<link rel="canonical" href="{SITE_URL}{path}">' if SITE_URL else ""
@@ -964,7 +964,7 @@ def page(title, body, active=None, description="", path="", extra_head=""):
 <script>window.dataLayer = window.dataLayer || []; function gtag(){{dataLayer.push(arguments);}} gtag('js', new Date()); gtag('config', '{GA_ID}');</script>
 {extra_head}
 </head>
-<body>
+<body class="mode-{mode or 'none'}">
 <header class="top">
   <div class="wrap top-inner">
     <a class="brand" href="{BASE}"><span class="mark">¶</span>{e(SITE_TITLE)}</a>
@@ -974,7 +974,7 @@ def page(title, body, active=None, description="", path="", extra_head=""):
     </form>
     <a class="acct-link" href="{BASE}account/" data-acct hidden>Sign in</a>
   </div>
-  <nav class="wrap nav" aria-label="Sections">{nav}</nav>
+  <nav class="wrap nav" aria-label="Main">{nav}</nav>
 </header>
 <main class="wrap">
 {body}
@@ -982,6 +982,7 @@ def page(title, body, active=None, description="", path="", extra_head=""):
 <footer class="foot"><div class="wrap">Updated {BUILD_DATE} · <a href="{BASE}">{e(SITE_TITLE)}</a></div></footer>
 <script>window.SITE_BASE = "{BASE}"; window.LITCRIT_AUTH = {json.dumps({"url": SUPABASE_URL, "key": SUPABASE_KEY, "lib": SUPABASE_LIB})};</script>
 <script src="{BASE}assets/auth.js?v={BUILD_ID}"></script>
+<script src="{BASE}assets/nav.js?v={BUILD_ID}" defer></script>
 <script src="{BASE}assets/search.js?v={BUILD_ID}" defer></script>
 <script src="{BASE}assets/quiz.js?v={BUILD_ID}" defer></script>
 <script src="{BASE}assets/flag.js?v={BUILD_ID}" defer></script>
@@ -1009,21 +1010,29 @@ def term_page(db, rel, resolver, t, periods_by_term):
     mentioned_in = rel[("terms", tid)].get("rev:terms:mentioned", [])
     related_by = [x for x in rel[("terms", tid)].get("rev:terms:related", []) if x not in related and x not in mentioned_in]
     ctx = (db, resolver, t["mentioned"] + t["related"], t["title"])
+    tq = rel[('terms', tid)].get('questions', [])
+    apps = int(float(t["appearances"] or 0))
+    stats = facts([("Test appearances", f"{apps:,}" if apps else ""), ("Practice questions", f"{len(tq):,}" if tq else "")])
     body = f"""{crumbs('terms', 'Terms')}
+<div class="with-aside">
 <article class="record">
 <h1 data-record="{t['id']}">{e(t['title'])}</h1>
-{add_card_slot('t', t)}
 {f'<p class="lede">{e(t["short"])}</p>' if t['short'] else ''}
 <div class="prose">{md_to_html(t['definition'], ctx)}</div>
 </article>
+<div class="aside">
+{study_box("term", "term", tid, len(tq), add_card_slot('t', t))}
+{f'<div class="statbox">{stats}</div>' if stats else ''}
+</div>
+</div>
 {section('Related terms', chips(db, 'terms', related), len(related))}
 {section('Terms mentioned', chips(db, 'terms', mentioned), len(mentioned))}
 {section('Mentioned in', chips(db, 'terms', mentioned_in, limit=40), len(mentioned_in))}
 {section('Also see', chips(db, 'terms', related_by, limit=40), len(related_by))}
 {section('Periods', chips(db, 'periods', periods_by_term.get(tid, [])))}
 {section('Authors', chips(db, 'authors', rel[('terms', tid)].get('authors', []), limit=40), len(rel[('terms', tid)].get('authors', [])))}
-{section('Tags', chips(db, 'tags', rel[('terms', tid)].get('tags', [])))}
-{questions_section(db, rel[('terms', tid)].get('questions', []))}
+{section('Sets', chips(db, 'tags', rel[('terms', tid)].get('tags', [])))}
+{questions_section(db, tq, 'term', 'term', tid)}
 """
     write(f"terms/{t['slug']}/index.html",
           page(t["title"], body, "terms", t["short"] or t["definition"][:200], f"terms/{t['slug']}/", extra_head=FC_SCRIPT))
@@ -1052,10 +1061,10 @@ def author_page(db, rel, resolver, a):
 {portrait}
 <div>
 <h1 data-record="{a['id']}">{e(a['title'])}</h1>
-{add_card_slot('a', a)}
 {f'<p class="lede">{e(years)}</p>' if years else ''}
 {meta}
 {f'<p class="links">{links}</p>' if links else ''}
+{study_box("author", "author", aid, len(rel[('authors', aid)].get('questions', [])), add_card_slot('a', a))}
 </div>
 </article>
 {section('Works', work_list(db, works), len(works))}
@@ -1065,7 +1074,7 @@ def author_page(db, rel, resolver, a):
 {section('Appears in these terms', chips(db, 'terms', terms, limit=60), len(terms))}
 {section('Poems and passages', chips(db, 'poems', rel[('authors', aid)].get('poems', [])), len(rel[('authors', aid)].get('poems', [])))}
 {section('Reading lists', reading_list_links(db, rel[('authors', aid)].get('reading-lists', [])))}
-{questions_section(db, rel[('authors', aid)].get('questions', []))}
+{questions_section(db, rel[('authors', aid)].get('questions', []), 'author', 'author', aid)}
 """
     desc = f"{a['title']} ({years}). " + (f"{a['nationality']} {', '.join(a['medium']).lower()}." if a["nationality"] else "")
     write(f"authors/{a['slug']}/index.html", page(a["title"], body, "authors", desc, f"authors/{a['slug']}/", extra_head=FC_SCRIPT))
@@ -1126,8 +1135,8 @@ def work_page(db, rel, resolver, w):
 <div>
 <h1 data-record="{w['id']}">{work_title_html(w)}{star}</h1>
 {f'<p class="lede">by {by}</p>' if by else ''}
-{add_card_slot('w', w)}
 {meta}
+{study_box("work", "work", wid, len(rel[('works', wid)].get('questions', [])), add_card_slot('w', w))}
 </div>
 </article>
 {section('Synopsis', f'<div class="prose">{md_to_html(w["synopsis"])}</div>' if w['synopsis'] else '')}
@@ -1135,7 +1144,7 @@ def work_page(db, rel, resolver, w):
 {section('Terms', chips(db, 'terms', term_ids))}
 {section('Reading resources', f'<ul class="plain">{res_list}</ul>' if res_list else '')}
 {section('Reading lists', reading_list_links(db, rel[('works', wid)].get('reading-lists', [])))}
-{questions_section(db, rel[('works', wid)].get('questions', []))}
+{questions_section(db, rel[('works', wid)].get('questions', []), 'work', 'work', wid)}
 """
     author_names = ", ".join(db["authors"][a]["title"] for a in authors)
     desc = (w["synopsis"] or f"{w['title']}" + (f" by {author_names}" if author_names else ""))[:250]
@@ -1158,7 +1167,8 @@ def test_sort(t):
     return (-year, sort_key(t["type"] or t["title"]))
 
 
-def questions_section(db, qids, title="Practice questions", limit=10, skip_poem=None):
+def questions_section(db, qids, about="term", quiz_param="", rid="", limit=10, skip_poem=None):
+    """Practice questions on a reference page, folded into one box that opens on request."""
     qids = [q for q in dict.fromkeys(qids) if db["questions"][q]["url"]]
     if not qids:
         return ""
@@ -1177,9 +1187,16 @@ def questions_section(db, qids, title="Practice questions", limit=10, skip_poem=
                 f'<ol class="plain questions compact">'
                 + "".join(one(q) for q in qids[limit:])
                 + "</ol></details>")
+    n = len(qids)
+    heading = "Questions about this text" if about == "text" else f"Practice questions that mention this {about}"
+    quiz = (f'<p class="qfold-quiz"><a href="{BASE}study/quiz/?{quiz_param}={rid}">Or take a {min(n, 10)}-question quiz instead →</a></p>'
+            if quiz_param and n > 1 else "")
     # Outside practice tests, each question is marked as soon as a choice is clicked, and nothing is saved.
-    return section(title, f'<div class="quiz" data-instant>'
-                          f'<ol class="plain questions compact">{items}</ol>{more}</div>', len(qids))
+    return (f'<details class="qfold" id="practice"><summary><span class="qfold-text"><b>{heading}</b>'
+            f'<span>{n} question{"s" if n != 1 else ""} from released tests</span></span>'
+            f'<span class="qfold-cta" aria-hidden="true"></span></summary>'
+            f'<div class="qfold-body">{quiz}<div class="quiz" data-instant>'
+            f'<ol class="plain questions compact">{items}</ol>{more}</div></div></details>')
 
 
 def question_passages(db, q, shown):
@@ -1396,11 +1413,12 @@ def poem_page(db, rel, p):
 <article class="record">
 <h1 data-record="{p['id']}">{e(p['title'])}</h1>
 {f'<p class="lede">by {by}</p>' if by else ''}
+{study_box("text", "poem", pid, len(rel[('poems', pid)].get('questions', [])), '')}
 {f'<div class="poem">{multiline(p["text"])}</div>' if p['text'] else ''}
 </article>
 {section('Appeared on', chips(db, 'tests', tests, sort=False), len(tests))}
 {section('Essay prompts', essay_html, len(essays))}
-{questions_section(db, rel[('poems', pid)].get('questions', []), 'Questions about this text', limit=30, skip_poem=pid)}
+{questions_section(db, rel[('poems', pid)].get('questions', []), 'text', 'poem', pid, limit=30, skip_poem=pid)}
 """
     names = ", ".join(db["authors"][a]["title"] for a in authors)
     write(f"poems/{p['slug']}/index.html", page(p["title"], body, "poems", f"{p['title']}" + (f" by {names}" if names else ""), f"poems/{p['slug']}/"))
@@ -1458,7 +1476,7 @@ def tag_page(db, rel, g):
     study = " ".join(x for x in (ext_link(g["quizlet"], "Quizlet"), ext_link(g["gimkit"], "Gimkit"),
                                  ext_link(g["blooket"], "Blooket"), ext_link(g["sporcle"], "Sporcle")) if x)
     rows = "".join(list_item(db, "terms", db["terms"][t]) for t in terms)
-    body = f"""{crumbs('tags', 'Tags')}
+    body = f"""{crumbs('tags', 'Sets')}
 <article class="record">
 <h1 data-record="{g['id']}">{e(g['title'])}</h1>
 <p class="lede">{len(terms)} term{'s' if len(terms) != 1 else ''}</p>
@@ -1852,7 +1870,7 @@ def catalog_terms(db, rel):
         })
     rows.sort(key=lambda r: r["k"]["name"])
     cfg = {"placeholder": "Term or short definition",
-           "filters": [{"key": "tag", "label": "Tag", "all": "All tags"}],
+           "filters": [{"key": "tag", "label": "Set", "all": "All sets"}],
            "checks": [{"key": "hasq", "label": "On practice tests"}, {"key": "hasauth", "label": "Linked to authors"}],
            "sorts": [{"label": "A–Z", "key": "name"}, {"label": "Z–A", "key": "-name"},
                      {"label": "Most practice questions", "keys": ["-q", "name"]},
@@ -2227,11 +2245,11 @@ def tags_index(db, rel):
         rows.append({"n": g["title"], "u": g["url"], "s": " · ".join(sets), "m": f"{n} terms",
                      "f": {"set": sets}, "k": {"name": sort_key(g["title"]), "n": n}, "x": fold(g["title"])})
     rows.sort(key=lambda r: r["k"]["name"])
-    cfg = {"placeholder": "Tag name",
+    cfg = {"placeholder": "Set name",
            "filters": [{"key": "set", "label": "Study set", "all": "Any or none"}],
            "sorts": [{"label": "A–Z", "key": "name"}, {"label": "Most terms", "keys": ["-n", "name"]},
                      {"label": "Fewest terms", "keys": ["n", "name"]}]}
-    catalog_page("tags", "Tags", "Terms grouped by topic, with study sets.", rows, cfg)
+    catalog_page("tags", "Sets", "Terms grouped by topic, with links to Quizlet and other study sets.", rows, cfg)
 
 
 def resources_index(db, resolver):
@@ -2440,9 +2458,9 @@ def daily_term_html(db, resolver, tm):
     return f"""<article class="daily-card">
   <p class="daily-label">Term of the day</p>
   <h2 class="daily-title"><a href="{tm['url']}">{e(tm['title'])}</a></h2>
-  {f'<p class="lede">{e(tm["short"])}</p>' if tm['short'] else ''}
+  {f'<p class="daily-short">{e(cap_first(tm["short"]))}</p>' if tm['short'] and not fold(first).startswith(fold(tm['short'])[:40]) else ''}
   <div class="prose daily-def">{md_to_html(first, ctx)}</div>
-  <p><a class="more-link" href="{tm['url']}">Read the full entry →</a></p>
+  <div class="daily-links"><a href="{tm['url']}">Read the full entry</a>{add_card_slot('t', tm)}</div>
 </article>"""
 
 
@@ -2450,23 +2468,35 @@ def daily_author_html(db, rel, a):
     img = a.get("image") or (a["picture_url"] if re.match(r"^https?://", a["picture_url"]) else None)
     portrait = (f'<img class="portrait" src="{e(img, quote=True)}" alt="Portrait of {e(a["title"], quote=True)}" '
                 f'loading="lazy" onerror="this.remove()">') if img else ""
-    years = " – ".join(x for x in (a["birth"], a["death"]) if x)
-    about = ", ".join(x for x in (a["nationality"], ", ".join(a["medium"]).lower()) if x)
-    works = rel[("authors", a["id"])].get("works", [])
-    works.sort(key=lambda w: (not db["works"][w]["notable"], db["works"][w]["year_written"] or "9999"))
-    shown = "".join(f'<li><a href="{db["works"][w]["url"]}">{work_title_html(db["works"][w])}</a></li>' for w in works[:5])
+    years = "–".join(x for x in (a["birth"], a["death"]) if x)
+    about = " ".join(x for x in (a["nationality"], (a["medium"][0].lower() if a["medium"] else "")) if x)
+    line = ", ".join(x for x in (cap_first(about), years) if x)
+    if rel[("authors", a["id"])].get("reading-lists"):
+        rl = current_list(db)
+        if rl and rl["id"] in rel[("authors", a["id"])]["reading-lists"]:
+            line += " · on this year’s reading list"
+    works = list(rel[("authors", a["id"])].get("works", []))
+    works.sort(key=lambda w: (not db["works"][w]["notable"], db["works"][w]["year_written"] or db["works"][w]["published"] or "9999",
+                              sort_key(db["works"][w]["title"])))
+    def wli(w):
+        r = db["works"][w]
+        year = year_of(r["year_written"], r["published"])
+        return (f'<li><a href="{r["url"]}">{work_title_html(r)}</a>'
+                f'{f"<span class=muted>{e(year)}</span>" if year else ""}</li>')
+    shown = "".join(wli(w) for w in works[:6])
+    nq = len(rel[("authors", a["id"])].get("questions", []))
+    quiz = f'<a href="{BASE}study/quiz/?author={a["id"]}">Quiz on {e(a["last"] or a["title"])}</a>' if nq else ""
     return f"""<article class="daily-card daily-author">
   <p class="daily-label">Author of the day</p>
   <div class="daily-author-body">
     {portrait}
     <div>
       <h2 class="daily-title"><a href="{a['url']}">{e(a['title'])}</a></h2>
-      {f'<p class="lede">{e(years)}</p>' if years else ''}
-      {f'<p class="daily-about">{e(about[:1].upper() + about[1:])}</p>' if about else ''}
-      {f'<ul class="plain daily-works">{shown}</ul>' if shown else ''}
-      <p><a class="more-link" href="{a['url']}">More about {e(a['title'])} →</a></p>
+      {f'<p class="daily-about">{e(line)}</p>' if line else ''}
     </div>
   </div>
+  {f'<h3 class="daily-sub">Notable works</h3><ul class="plain daily-works">{shown}</ul>' if shown else ''}
+  <div class="daily-links"><a href="{a['url']}">Full author page</a>{quiz}{add_card_slot('a', a)}</div>
 </article>"""
 
 
@@ -2511,28 +2541,344 @@ def daily_section(db, rel, resolver):
     return f'<section class="today">{blocks}</section>{script}'
 
 
+# ---------------------------------------------------------------- modes: menu, Reference and Study pages
+
+# Pages that belong to Study in the menu; every other section belongs to Reference.
+STUDY_KEYS = {"tests", "essays", "flashcards", "resources", "study"}
+RESOLVER = None
+NAV_MENUS = {}          # filled by build_nav_menus once the data is loaded
+
+# Contest dates shown on the Study page countdown. Update every school year.
+CONTEST_DATES = [
+    ("Invitational A deadline", "2027-01-16"),
+    ("Invitational B deadline", "2027-02-13"),
+    ("District", "2027-04-03"),
+    ("Region", "2027-04-24"),
+    ("State", "2027-05-17"),
+]
+
+CHEVRON = ('<svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" '
+           'stroke-width="1.6" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg>')
+
+
+def nav_menu(key, label, href, on, menu):
+    cur = ' aria-current="true"' if on else ""
+    return (f'<div class="dd" data-dd><a class="ddbtn{" on" if on else ""}" href="{BASE}{href}"{cur} '
+            f'aria-haspopup="true" aria-expanded="false" aria-controls="menu-{key}">{label}{CHEVRON}</a>'
+            f'<div class="menu" id="menu-{key}">{menu}</div></div>')
+
+
+def current_list(db):
+    lists = [r for r in db["reading-lists"].values() if r["year"]]
+    return max(lists, key=lambda r: r["year"]) if lists else None
+
+
+def list_parts(db, rl):
+    """(label, record, kind) for a reading list's novel, play and poet."""
+    out = []
+    for field, kind in (("novel", "works"), ("play", "works"), ("poet", "authors")):
+        for x in rl[field]:
+            r = db[kind].get(x)
+            if r:
+                label = {"novel": "Novel", "play": "Play", "poet": "Poet"}[field]
+                if field == "novel" and re.search(r"short stor", r["title"], re.I):
+                    label = "Short stories"
+                out.append((label, r, kind))
+    return out
+
+
+def build_nav_menus(db):
+    def mi(href, title, sub=""):
+        return f'<a class="mi" href="{BASE}{href}"><b>{title}</b>{f"<small>{sub}</small>" if sub else ""}</a>'
+    n = lambda k: f"{len(listed(db, k)):,}"
+    NAV_MENUS["ref"] = (
+        '<div>' + mi("terms/", "Terms", f"{n('terms')} definitions, cross-linked")
+        + mi("tags/", "Sets", "Terms grouped by topic")
+        + mi("periods/", "Periods", "American and British timelines")
+        + mi("prizes/", "Prizes", "Nobel, Pulitzer and more") + '</div>'
+        + '<div>' + mi("authors/", "Authors", f"{n('authors')} writers with works and dates")
+        + mi("works/", "Works", f"{n('works')} novels, plays, poems and stories")
+        + mi("poems/", "Poems and passages", "Full texts from past tests")
+        + mi("reading-lists/", "Reading lists", "Every year’s novel, play and poet")
+        + f'<a class="mi all" href="{BASE}reference/"><b>All of Reference →</b></a></div>')
+    rl = current_list(db)
+    this_year = ""
+    if rl:
+        names = " · ".join(work_title_html(r) if k == "works" else e(r["title"]) for _, r, k in list_parts(db, rl))
+        this_year = (f'<div class="gl">This year · {e(rl["year"].replace("-", "–"))}</div>'
+                     + mi("study/#this-year", "Reading list", names))
+    NAV_MENUS["study"] = (
+        '<div>' + mi("study/", "Study home", "Countdown, cards due, your scores")
+        + mi("tests/", "Practice tests", f"{len(db['tests'])} released tests, scored out of 100")
+        + mi("study/quiz/", "Quick quiz", "10 questions by part or topic")
+        + mi("essays/", "Essay prompts", "Past prompts with the full poem") + '</div>'
+        + '<div>' + mi("flashcards/", "Flashcards", "Terms, authors, works and prizes")
+        + mi("flashcards/review/", "Cards due today", "Everything you’ve studied that’s due")
+        + this_year + mi("resources/", "Resources", "Guides and texts, free ones marked") + '</div>')
+
+
 def home(db, rel, resolver):
-    counts = "".join(
-        f'<a class="stat" href="{BASE}{k}/"><strong>{len(db[k]):,}</strong><span>{label}</span></a>'
-        for k, label, _ in SECTIONS if db.get(k))
-    # A few well-connected terms to start from.
-    popular = sorted(db["terms"].values(),
-                     key=lambda t: -(len(rel[("terms", t["id"])].get("rev:terms:mentioned", [])) + len(t["related"])))[:24]
-    start = "".join(f'<a class="chip" href="{t["url"]}">{e(t["title"])}</a>' for t in popular)
+    door_ref = """<section class="door door-ref" aria-labelledby="door-ref">
+  <div class="door-head"><span class="door-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></span>
+  <div><p class="eyebrow">Reference</p><h2 id="door-ref">Look something up</h2></div></div>
+  <p class="door-sub">Everything in one cross-linked library.</p>
+  <ul class="door-list">
+    <li>Terms with linked cross-references</li>
+    <li>Authors, works and full poem texts</li>
+    <li>Periods on a timeline, and literary prizes</li>
+    <li>Every past reading list</li>
+  </ul>
+  <a class="btn btn-ref" href="{base}reference/">Open the reference →</a>
+</section>"""
+    door_study = """<section class="door door-study" aria-labelledby="door-study">
+  <div class="door-head"><span class="door-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span>
+  <div><p class="eyebrow">Study</p><h2 id="door-study">Practice for the contest</h2></div></div>
+  <p class="door-sub">Practice for the UIL contest and track your progress.</p>
+  <ul class="door-list">
+    <li>Released tests, scored like the real contest</li>
+    <li>Quick quizzes on any topic</li>
+    <li>Flashcards that remember what you know</li>
+    <li>Essay prompts and this year’s reading list</li>
+  </ul>
+  <a class="btn btn-study" href="{base}study/">Start studying →</a>
+</section>"""
+    lede = "Everything you need for the UIL Literary Criticism contest: a cross-referenced library to look things up, and a place to practice."
     body = f"""
 <section class="hero">
   <h1>{e(SITE_TITLE)}</h1>
-  <p class="lede">A cross-referenced reference to literary terms, authors, works, prizes and periods.</p>
+  <p class="lede">{lede}</p>
   <form class="search big" action="{BASE}search/" role="search" autocomplete="off">
-    <input type="search" name="q" placeholder="Try “sonnet” or “Beloved”" aria-label="Search" data-search>
+    <input type="search" name="q" placeholder="Try “sonnet” or “The Scarlet Letter”" aria-label="Search" data-search>
     <div class="results" hidden data-results></div>
   </form>
 </section>
 {daily_section(db, rel, resolver)}
-<div class="stats">{counts}</div>
-{section('Good places to start', f'<div class="chips">{start}</div>')}
+<div class="doors">{door_ref.format(base=BASE)}{door_study.format(base=BASE)}</div>
 """
-    write("index.html", page(SITE_TITLE, body, "home", "A cross-referenced reference to literary terms, authors, works, prizes and periods.", ""))
+    write("index.html", page(SITE_TITLE, body, "home", lede, "", extra_head=FC_SCRIPT))
+
+
+def reference_page(db):
+    rl_years = sorted(r["year"] for r in db["reading-lists"].values() if r["year"])
+    rows = [
+        ("terms", "Terms", f"{len(listed(db, 'terms')):,}", "Definitions with cross-links to related terms"),
+        ("tags", "Sets", f"{len(db['tags']):,}", "Terms grouped by topic, like tropes, poetic feet and the Top 200"),
+        ("authors", "Authors", f"{len(listed(db, 'authors')):,}", "Dates, nationality, works, prizes and periods"),
+        ("works", "Works", f"{len(listed(db, 'works')):,}", "Novels, plays, poems and stories with synopses"),
+        ("poems", "Poems and passages", f"{len(db['poems']):,}", "Full texts from released tests"),
+        ("reading-lists", "Reading lists", f"Since {rl_years[0][:4]}" if rl_years else "", "Each school year’s novel, play and poet"),
+        ("periods", "Periods", f"{len(db['periods']):,}", "American and British timelines, with historical events"),
+        ("prizes", "Prizes", f"{len(db['prizes']):,}", "Nobel, Pulitzer and other major literary prizes"),
+    ]
+    items = "".join(
+        f'<li><a class="refrow" href="{BASE}{k}/"><span class="refrow-text"><span class="refrow-top">'
+        f'<b>{label}</b><span class="refrow-count">{count}</span></span>'
+        f'<span class="refrow-sub">{sub}</span></span><span class="refrow-arrow" aria-hidden="true">→</span></a></li>'
+        for k, label, count, sub in rows)
+    lede = "Every entry links to related entries and to the released test questions that mention it."
+    body = f"""<div class="narrow">
+<p class="eyebrow">Reference</p>
+<h1>Look something up</h1>
+<p class="lede">{lede}</p>
+<ul class="plain reflist">{items}</ul>
+<a class="cta-study" href="{BASE}study/"><span><b>Ready to practice?</b><span>Tests, quick quizzes and flashcards are in Study.</span></span>
+<span class="btn btn-study">Go to Study →</span></a>
+</div>"""
+    write("reference/index.html", page("Reference", body, "reference", lede, "reference/"))
+
+
+def study_page(db, rel):
+    rl = current_list(db)
+    year_html = ""
+    if rl:
+        cards = ""
+        for label, r, kind in list_parts(db, rl):
+            title = work_title_html(r) if kind == "works" else e(r["title"])
+            if kind == "works":
+                by = ", ".join(db["authors"][a]["title"] for a in rel[("works", r["id"])].get("authors", []))
+            else:
+                by = ", ".join(x for x in (r["nationality"], "–".join(y for y in (r["birth"], r["death"]) if y)) if x)
+            cards += (f'<div class="rlcard"><span class="eyebrow-sm">{label}</span>'
+                      f'<a class="rlcard-title" href="{r["url"]}">{title}</a>'
+                      f'{f"<span class=rlcard-by>{e(by)}</span>" if by else ""}'
+                      f'<span class="rlcard-links"><a href="{BASE}resources/?list={e(rl["year"], quote=True)}">Resources</a>'
+                      f'<a href="{BASE}study/quiz/?{"work" if kind == "works" else "author"}={r["id"]}">Quiz on it</a></span></div>')
+        year_html = f"""<section class="block" id="this-year"><h2>This year’s reading list · {e(rl['year'].replace('-', '–'))}</h2>
+<div class="rlcards">{cards}</div>
+<p class="more-line"><a href="{BASE}study/quiz/?list={rl['id']}">Quiz on the whole list →</a> · <a href="{BASE}reading-lists/">Past reading lists</a></p></section>"""
+    tests = [{"p": t["url"], "t": t["title"]} for t in sorted(db["tests"].values(), key=test_sort)]
+    data = {"dates": CONTEST_DATES, "tests": len(tests)}
+    tools = "".join(
+        f'<a class="tool" href="{BASE}{href}"><b>{title}</b><span>{sub}</span></a>'
+        for href, title, sub in (
+            ("tests/", "Practice tests", "Full released tests, scored out of 100"),
+            ("study/quiz/", "Quick quiz", "10 questions by part, set, period or reading list"),
+            ("flashcards/", "Flashcards", "Terms by set, authors and works, prize winners"),
+            ("essays/", "Essay prompts", f"{len(db['essays'])} prompts with the poem’s full text")))
+    body = f"""<p class="eyebrow">Study</p>
+<h1>Your study home</h1>
+<p class="guest-note" data-guest hidden>You’re studying as a guest, so your progress is saved in this browser only.
+<a href="{BASE}account/">Sign in or create an account</a> to keep it on any device.</p>
+<div class="tiles" data-study="{e(json.dumps(data), quote=True)}">
+  <section class="tile tile-dark" data-countdown>
+    <h2>Next contest date</h2>
+    <b class="tile-big" data-cd-big>&nbsp;</b>
+    <span class="tile-sub" data-cd-sub></span>
+    <ul class="plain cd-list" data-cd-list></ul>
+  </section>
+  <section class="tile">
+    <h2>Flashcards due</h2>
+    <b class="tile-big" data-fc-big>0 cards</b>
+    <span class="tile-sub" data-fc-sub>Start with a deck, and cards you study come back here when they’re due.</span>
+    <a class="btn btn-study btn-sm" href="{BASE}flashcards/" data-fc-go>Choose a deck</a>
+  </section>
+  <section class="tile">
+    <h2>Practice tests</h2>
+    <b class="tile-big" data-ts-big>0 of {len(tests)}</b>
+    <span class="tile-sub" data-ts-sub>Take a released test and score it to see your progress here.</span>
+    <a class="btn btn-study btn-sm" href="{BASE}tests/">See all tests</a>
+  </section>
+</div>
+<a class="resume" href="#" data-resume hidden><span><span class="eyebrow-sm">Pick up where you left off</span>
+<b data-resume-title></b><span class="resume-sub" data-resume-sub></span></span><span class="btn btn-soft">Resume →</span></a>
+<section class="block"><h2>Ways to study</h2><div class="tools">{tools}</div></section>
+{year_html}
+"""
+    write("study/index.html", page("Study", body, "study", "Practice tests, quick quizzes, flashcards and essay prompts for UIL Literary Criticism.",
+                                   "study/", extra_head=f'<script src="{BASE}assets/study.js?v={BUILD_ID}" defer></script>'))
+
+
+def period_core(name):
+    """'Romantic Period in English Literature, 1798-1870' -> ('romantic', 'British')."""
+    region = ("American" if re.search(r"american", name, re.I)
+              else "British" if re.search(r"english|british|england", name, re.I) else "")
+    name = re.sub(r"\(.*?\)", " ", name).replace("Post-", "Post")
+    name = re.split(r",| in | 1\d{3}", name)[0]
+    words = [w for w in re.findall(r"[a-z]+", name.lower()) if w not in {"the", "period", "age", "of", "and"}]
+    return " ".join(words), region
+
+
+def period_authors(db):
+    """Authors by Historical Periods record, matched from each author's Historical Period names."""
+    cores = [(period_core(p["title"])[0], p["region"], p["id"]) for p in db["periods"].values()]
+    out = defaultdict(list)
+    for a in db["authors"].values():
+        for name in a["periods"]:
+            core, region = period_core(name)
+            if not core:
+                continue
+            ok = lambda reg: not region or not reg or reg == region
+            match = [pid for c, reg, pid in cores if c == core and ok(reg)]
+            if not match:
+                match = [pid for c, reg, pid in cores if c and (c.startswith(core + " ") or core.startswith(c + " ")) and ok(reg)]
+            if len(match) == 1:
+                out[match[0]].append(a["id"])
+    return out
+
+
+def quiz_bank(db, rel):
+    """Every answerable released question, for the Quick quiz page (assets/data/qbank.json)."""
+    tests, test_ix = [], {}
+    for t in sorted(db["tests"].values(), key=test_sort):
+        test_ix[t["id"]] = len(tests)
+        tests.append([t["title"], t["url"], int(years_of(t["year"], t["title"]) or 0)])
+    qs, used = [], {"terms": set(), "authors": set(), "works": set(), "poems": set()}
+    for q in db["questions"].values():
+        letters = [l for l in "abcde" if q[l]]
+        correct = "".join(c.strip().upper() for c in q["correct"] if c.strip())
+        if not q["test"] or q["test"][0] not in test_ix or is_redacted(q) or not letters or not correct:
+            continue
+        works = list(dict.fromkeys(q["works"] + q["rl_works"]))
+        qs.append({"i": q["id"], "p": int(question_part(q) or 0), "t": test_ix[q["test"][0]], "n": q["number"],
+                   "q": (q["prompt"] or q["name"]).strip(), "c": [q[l] for l in letters], "l": "".join(letters).upper(),
+                   "a": correct, "tm": q["terms"], "au": q["authors"], "w": works, "po": q["poems"]})
+        used["terms"].update(q["terms"]); used["authors"].update(q["authors"])
+        used["works"].update(works); used["poems"].update(q["poems"])
+    qs.sort(key=lambda x: (x["t"], int(x["n"] or 0)))
+    poems = {}
+    for pid in used["poems"]:
+        p = db["poems"].get(pid)
+        if p:
+            poems[pid] = [p["title"], p["url"], p["text"], rel[("poems", pid)].get("authors", [])]
+            used["authors"].update(poems[pid][3])
+    # Topics: sets (terms), reading lists (works and authors), periods (authors).
+    sets = {g["id"]: [g["title"], rel[("tags", g["id"])].get("terms", [])] for g in db["tags"].values()}
+    lists = {}
+    for r in sorted(db["reading-lists"].values(), key=lambda r: r["year"], reverse=True):
+        authors = list(r["poet"])
+        for w in r["novel"] + r["play"]:
+            authors += rel[("works", w)].get("authors", [])
+        lists[r["id"]] = [r["year"].replace("-", "–"), r["novel"] + r["play"], authors]
+    periods = {}
+    by_period = period_authors(db)
+    for p in sorted(db["periods"].values(), key=lambda p: (p["region"], int(p["start"] or 0))):
+        ids = list(by_period.get(p["id"], []))
+        for sub in p["subs"]:
+            ids += by_period.get(sub, [])
+        if ids:
+            periods[p["id"]] = [f'{p["title"]} ({p["region"]})' if p["region"] and p["region"] not in p["title"] else p["title"],
+                                list(dict.fromkeys(ids))]
+    def names(kind, ids, html=False):
+        return {x: [work_title_html(db[kind][x]) if html else db[kind][x]["title"], db[kind][x]["url"]]
+                for x in ids if x in db[kind]}
+    bank = {"tests": tests, "q": qs, "poems": poems, "sets": sets, "lists": lists, "periods": periods,
+            "terms": names("terms", used["terms"]), "authors": names("authors", used["authors"]),
+            "works": names("works", used["works"], html=True)}
+    (OUT / "assets" / "data").mkdir(parents=True, exist_ok=True)
+    (OUT / "assets" / "data" / "qbank.json").write_text(json.dumps(bank, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    return bank
+
+
+def quiz_page(db, rel):
+    bank = quiz_bank(db, rel)
+    lists = sorted(db["reading-lists"].values(), key=lambda r: r["year"], reverse=True)
+    sets = sorted((g for g in db["tags"].values() if g["id"] in bank["sets"]), key=lambda g: sort_key(g["title"]))
+    opt = lambda v, label: f'<option value="{v}">{e(label)}</option>'
+    topics = opt("", "Any topic")
+    if lists:
+        topics += opt(f"list:{lists[0]['id']}", f"This year’s reading list ({lists[0]['year'].replace('-', '–')})")
+    topics += '<optgroup label="Sets">' + "".join(opt(f"set:{g['id']}", g["title"]) for g in sets) + "</optgroup>"
+    topics += '<optgroup label="Periods">' + "".join(opt(f"period:{k}", v[0]) for k, v in bank["periods"].items()) + "</optgroup>"
+    topics += '<optgroup label="Reading lists">' + "".join(opt(f"list:{r['id']}", r["year"].replace("-", "–")) for r in lists) + "</optgroup>"
+    body = f"""<p class="crumbs-study"><a href="{BASE}study/">Study</a> › Quick quiz</p>
+<h1>Quick quiz</h1>
+<div class="qq" data-qq data-src="{BASE}assets/data/qbank.json?v={BUILD_ID}">
+<form class="qq-form" data-qq-form onsubmit="return false">
+  <h2>Build a quiz</h2>
+  <fieldset class="qq-parts"><legend>Part of the test</legend>
+    <div class="pills">
+      <label><input type="radio" name="part" value="" checked><span>Any</span></label>
+      <label><input type="radio" name="part" value="1"><span>Part 1</span></label>
+      <label><input type="radio" name="part" value="2"><span>Part 2</span></label>
+      <label><input type="radio" name="part" value="3"><span>Part 3</span></label>
+    </div>
+  </fieldset>
+  <label for="qq-topic">Topic</label>
+  <select id="qq-topic" name="topic">{topics}</select>
+  <label for="qq-years">Tests from</label>
+  <select id="qq-years" name="years"><option value="">All years</option><option value="5">Last 5 years</option><option value="3">Last 3 years</option></select>
+  <label for="qq-n">Questions</label>
+  <select id="qq-n" name="n"><option>10</option><option>20</option><option>30</option></select>
+  <label class="check"><input type="checkbox" name="missed"> Only ones I missed before</label>
+  <p class="qq-count" data-qq-count aria-live="polite"></p>
+  <button type="submit" class="btn btn-study qq-go" data-qq-go>New quiz</button>
+</form>
+<section class="qq-main" data-qq-main aria-live="polite">
+  <noscript><p>The quick quiz needs JavaScript turned on. You can still take the <a href="{BASE}tests/">practice tests</a>.</p></noscript>
+  <p class="qq-empty" data-qq-empty>Pick what to practice, then press <b>New quiz</b>. Questions come from the {len(bank['tests'])} released tests.</p>
+</section>
+</div>"""
+    write("study/quiz/index.html", page("Quick quiz", body, "study", "Ten-question quizzes from released UIL Literary Criticism tests.",
+                                        "study/quiz/", extra_head=f'<script src="{BASE}assets/quickquiz.js?v={BUILD_ID}" defer></script>'))
+
+
+def study_box(kind_label, quiz_param, rid, nq, card_slot):
+    """The "Study this" panel on term, author, work and poem pages."""
+    quiz = (f'<a class="btn btn-study btn-sm" href="{BASE}study/quiz/?{quiz_param}={rid}">Quiz me: '
+            f'{min(nq, 10)} question{"s" if min(nq, 10) != 1 else ""}</a>') if nq else ""
+    if not quiz and not card_slot:
+        return ""
+    return f'<aside class="studybox"><p class="eyebrow-sm">Study this {kind_label}</p><div class="studybox-row">{card_slot}{quiz}</div></aside>'
 
 
 def account_page():
@@ -2712,6 +3058,9 @@ def main():
             periods_by_term[tid].append(p["id"])
 
     card_data(db, rel)
+    global RESOLVER
+    RESOLVER = resolver
+    build_nav_menus(db)
 
     print("Writing pages…", flush=True)
     for t in db["terms"].values():
@@ -2750,6 +3099,9 @@ def main():
     resources_index(db, resolver)
     flashcard_pages(db, rel)
     home(db, rel, resolver)
+    reference_page(db)
+    study_page(db, rel)
+    quiz_page(db, rel)
     search_page()
     account_page()
     search_index(db)

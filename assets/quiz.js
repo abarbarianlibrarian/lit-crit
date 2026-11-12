@@ -29,6 +29,16 @@
   function forget(ids) { var a = load(KEY); ids.forEach(function (id) { delete a[id]; }); store(KEY, a); }
   function quizKey(quiz, i) { return location.pathname + "#" + i; }
   function setScored(key, on) { var s = load(SCORED); if (on) s[key] = 1; else delete s[key]; store(SCORED, s); }
+  // The practice test answered most recently, for the Study page's "Pick up where you left off".
+  var LAST = "litcrit-last-v1";
+  function saveLast(quiz) {
+    var bar = quiz.querySelector("[data-scorebar]");
+    if (!bar || bar.getAttribute("data-test") !== "1") return;
+    var h1 = document.querySelector("h1");
+    store(LAST, { p: location.pathname, t: h1 ? h1.textContent.trim() : document.title,
+                  a: quiz.querySelectorAll(".q.answered:not([data-auto])").length,
+                  n: quiz.querySelectorAll(".q:not([data-auto])").length, when: Date.now() });
+  }
 
   // ---- keep the score bar just under the sticky site header
   function setOffset() {
@@ -206,6 +216,7 @@
     }
     forget(ids);
     update(quiz);
+    if (load(LAST).p === location.pathname) saveLast(quiz);
   }
 
   // ---- start up
@@ -253,5 +264,6 @@
     if (quiz.classList.contains("scored")) return;
     select(q, choice.getAttribute("data-letter"), false);
     update(quiz);
+    saveLast(quiz);
   });
 });

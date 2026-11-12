@@ -8,6 +8,19 @@ rebuild it any time from the **Actions** tab â†’ **Build site from Airtable** â†
 
 ## What's on the site
 
+The menu has three parts: **Home**, **Reference** (Terms, Sets, Authors, Works, Poems and passages, Reading lists,
+Periods, Prizes) and **Study** (Study home, Practice tests, Quick quiz, Essay prompts, Flashcards, this year's
+reading list, Resources). The home page shows the term and author of the day, then a door into each.
+
+- **Study home** (`/study/`): countdown to the next contest date, flashcards due, practice-test progress,
+  "Pick up where you left off", and this year's reading list. Contest dates are `CONTEST_DATES` near the top
+  of the Modes section in `build.py`: update them every school year.
+- **Quick quiz** (`/study/quiz/`): 10, 20 or 30 random released questions, filtered by part, set, period,
+  reading list, test years, or only ones the student missed before. Term, author, work and poem pages link to it
+  with **Quiz me**.
+- On term, author, work and poem pages the practice questions are folded into one box that opens on request.
+- The Tags table is called **Sets** on the site (its web addresses still start with `/tags/`).
+
 | Airtable table | On the site |
 |---|---|
 | Terms | A page per term. Words in CAPITALS in a definition become links to that term. Shows related terms, terms it mentions, terms that mention it, authors, tags and periods. |
