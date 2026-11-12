@@ -559,20 +559,28 @@
   }
 
   // ---------------------------------------------------------------- study screen
+  // The cards in the chosen custom sets (cats) and site sets: in any of them (union), or in all of them (intersection).
+  function scopeOf(cats, sets, all, sm) {
+    if (!cats.length && !sets.length) return null;
+    var g = S.cats(), groups = [];
+    cats.forEach(function (k) { if (g[k]) groups.push(g[k].c); });
+    sets.forEach(function (x) { if (sm.sets[x]) groups.push(sm.sets[x][1]); });
+    var count = {}, o = {};
+    groups.forEach(function (ids) {
+      var seen = {};
+      ids.forEach(function (id) { if (!seen[id]) { seen[id] = 1; count[id] = (count[id] || 0) + 1; } });
+    });
+    Object.keys(count).forEach(function (id) { if (!all || count[id] === groups.length) o[id] = 1; });
+    return o;
+  }
   function readFilter(q) {
     var list = function (k) { return (q.get(k) || "").split(",").filter(Boolean); };
     var b = (q.get("b") || "123").split("").map(Number).filter(function (x) { return x >= 0 && x <= 5; });
-    return { c: list("c"), s: list("s"), b: b.length ? b : [1, 2, 3], d: q.get("d") === "1",
+    return { c: list("c"), s: list("s"), all: q.get("m") === "all", b: b.length ? b : [1, 2, 3], d: q.get("d") === "1",
              k: (q.get("k") || "tawp").split("").filter(function (l) { return KIND[l]; }) };
   }
   function filterIds(c, f, sm, t) {
-    var scope = null;
-    if (f.c.length || f.s.length) {
-      scope = {};
-      var g = S.cats();
-      f.c.forEach(function (k) { if (g[k]) g[k].c.forEach(function (id) { scope[id] = 1; }); });
-      f.s.forEach(function (s) { if (sm.sets[s]) sm.sets[s][1].forEach(function (id) { scope[id] = 1; }); });
-    }
+    var scope = scopeOf(f.c, f.s, f.all, sm);
     // Box 0 is the waiting line and 5 means "not in my flashcards" (only from a chosen set or category).
     // Cards outside the four boxes are practice: grading them changes nothing, and "due only" doesn't apply.
     var ids = Object.keys(c);
@@ -612,7 +620,7 @@
         var ids2 = filterIds(c, f, sm, t).sort(function (x, y) { return hash(x + t) - hash(y + t); });
         var h1 = document.querySelector("main h1");
         if (h1 && names.length) h1.textContent = joinNames(names);
-        session(ids2, { label: names.length ? joinNames(names) : "Your flashcards", sm: sm, filter: f });
+        session(ids2, { label: names.length ? (f.all && names.length > 1 ? "In all of " : "") + joinNames(names) : "Your flashcards", sm: sm, filter: f });
       }
     });
 
@@ -898,7 +906,7 @@
   function home(root) {
     intro();
     siteMeta().then(function (sm) { draw(sm); });
-    var sel = { c: [], s: [] }, boxes = { 0: false, 1: true, 2: true, 3: true, 4: false, 5: false }, dueOnly = false, kinds = { t: true, a: true, w: true, p: true };
+    var sel = { c: [], s: [], all: false }, boxes = { 0: false, 1: true, 2: true, 3: true, 4: false, 5: false }, dueOnly = false, kinds = { t: true, a: true, w: true, p: true };
     var topKind = "t", topN = 20, matched = [];
 
     function draw(sm) {
@@ -955,13 +963,7 @@
           : '<p class="muted">You already have every tested ' + noun + ".</p>") + "</div>";
     }
 
-    function scopeIds(sm) {
-      if (!sel.c.length && !sel.s.length) return null;
-      var g = S.cats(), o = {};
-      sel.c.forEach(function (k) { if (g[k]) g[k].c.forEach(function (id) { o[id] = 1; }); });
-      sel.s.forEach(function (s) { if (sm.sets[s]) sm.sets[s][1].forEach(function (id) { o[id] = 1; }); });
-      return o;
-    }
+    function scopeIds(sm) { return scopeOf(sel.c, sel.s, sel.all && sel.c.length + sel.s.length > 1, sm); }
     function builder(sm, c) {
       var cats = Cats.sorted();
       var chips = sel.c.map(function (k) { var g = S.cats()[k]; return g ? '<button type="button" class="fc-tag on" data-unsel="c:' + esc(k) + '" aria-label="Remove ' + esc(g.n) + '">' + esc(g.n) + ' <span aria-hidden="true">×</span></button>' : ""; }).join("") +
@@ -974,6 +976,9 @@
         '<div class="fc-step"><label class="fc-step-h" for="fc-scope">1. Start from</label>' +
         '<div class="fc-search"><input id="fc-scope" autocomplete="off" placeholder="Search your custom sets and the site’s sets…" data-scopeq><div class="fc-sugg" data-sugg hidden></div></div>' +
         (chips ? '<div class="fc-chips">' + chips + "</div>" : "") +
+        (sel.c.length + sel.s.length > 1 ? '<div class="fc-combine" role="radiogroup" aria-label="Combine the sets"><span class="fc-combine-h">Combine them:</span>' +
+          '<label class="fc-check' + (sel.all ? "" : " on") + '"><input type="radio" name="fc-mode" value="any" data-mode' + (sel.all ? "" : " checked") + '> <span>Cards in <b>any</b> of these <span class="muted">(union)</span></span></label>' +
+          '<label class="fc-check' + (sel.all ? " on" : "") + '"><input type="radio" name="fc-mode" value="all" data-mode' + (sel.all ? " checked" : "") + '> <span>Only cards in <b>all</b> of these <span class="muted">(intersection)</span></span></label></div>' : "") +
         (quick ? '<div class="fc-chips quick"><span class="muted">Your custom sets:</span>' + quick + "</div>" : "") +
         '<span class="muted fc-small">Pick one or more of your custom sets or the site’s sets, or nothing to use all your flashcards.</span></div>' +
         '<div class="fc-step"><span class="fc-step-h">2. Which boxes?</span><div class="fc-checks">' + bc(1) + bc(2) + bc(3) + bc(4) + bc(0, "Waiting line") + bc(5, "Not in my boxes") + "</div>" +
@@ -1001,14 +1006,15 @@
       [0, 1, 2, 3, 4, 5].forEach(function (b) { var s = $(root, '[data-bc="' + b + '"]'); if (s) s.textContent = per[b]; });
       var names = sel.c.map(function (k) { var g = S.cats()[k]; return g ? g.n : ""; }).filter(Boolean)
         .concat(sel.s.map(function (s) { return sm.sets[s] ? sm.sets[s][0] : ""; }).filter(Boolean));
+      var both = sel.all && sel.c.length + sel.s.length > 1;
       var sum = $(root, "[data-summary]"), go = $(root, "[data-go]");
       if (!sum) return;
-      sum.innerHTML = "<b>" + plural(n, "card") + "</b>" + (dueOnly && !boxes[0] && !boxes[5] ? " due now" : "") + (names.length ? " from " + names.map(function (x) { return "<b>" + esc(x) + "</b>"; }).join(", ") : "");
+      sum.innerHTML = "<b>" + plural(n, "card") + "</b>" + (dueOnly && !boxes[0] && !boxes[5] ? " due now" : "") + (names.length ? (both ? " in all of " : " from ") + names.map(function (x) { return "<b>" + esc(x) + "</b>"; }).join(both ? " and " : ", ") : "");
       go.textContent = n ? "Study without saving" : "No cards to study";
       var sv = $(root, "[data-savecat]"); if (sv) sv.disabled = !n;
       go.classList.toggle("disabled", !n);
       go.setAttribute("aria-disabled", n ? "false" : "true");
-      go.href = url("flashcards/study/", { c: sel.c.join(","), s: sel.s.join(","), b: f.b.join(""), d: dueOnly ? 1 : 0, k: f.k.length === 4 ? "" : f.k.join("") });
+      go.href = url("flashcards/study/", { c: sel.c.join(","), s: sel.s.join(","), m: both ? "all" : "", b: f.b.join(""), d: dueOnly ? 1 : 0, k: f.k.length === 4 ? "" : f.k.join("") });
     }
     function myCats(c) {
       var list = Cats.sorted();
@@ -1038,7 +1044,7 @@
       }
       if (t.closest("[data-savecat]")) {
         if (!matched.length) return;
-        var def = sel.c.map(function (k) { var g = S.cats()[k]; return g ? g.n : ""; }).concat(sel.s.map(function (s) { return sm.sets[s] ? sm.sets[s][0] : ""; })).filter(Boolean).join(" + ");
+        var def = sel.c.map(function (k) { var g = S.cats()[k]; return g ? g.n : ""; }).concat(sel.s.map(function (s) { return sm.sets[s] ? sm.sets[s][0] : ""; })).filter(Boolean).join(sel.all && sel.c.length + sel.s.length > 1 ? " ∩ " : " + ");
         var nm = askName(def); if (!nm) return;
         var cid = Cats.create(nm), saved = matched.slice();
         Cats.addMany(cid, saved);
@@ -1062,7 +1068,10 @@
       var sm = smRef, tg = ev.target; if (!sm) return;
       if (tg.hasAttribute("data-topn")) { topN = clampInt(tg.value, 1, 100, 20); draw(sm); return; }
       if (tg.hasAttribute("data-topkind")) { topKind = tg.value; draw(sm); return; }
-      if (tg.hasAttribute("data-box")) { boxes[tg.getAttribute("data-box")] = tg.checked; tg.parentNode.classList.toggle("on", tg.checked); }
+      if (tg.hasAttribute("data-mode")) {
+        sel.all = tg.value === "all";
+        $$(root, "[data-mode]").forEach(function (r) { r.parentNode.classList.toggle("on", r.checked); });
+      } else if (tg.hasAttribute("data-box")) { boxes[tg.getAttribute("data-box")] = tg.checked; tg.parentNode.classList.toggle("on", tg.checked); }
       else if (tg.hasAttribute("data-kind")) kinds[tg.getAttribute("data-kind")] = tg.checked;
       else return;
       recount(sm);
