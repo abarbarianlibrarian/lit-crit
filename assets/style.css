@@ -1198,3 +1198,22 @@ button.fc-tag:hover { background: var(--chip-hover); }
 .block .examples { columns: 2 320px; column-gap: 32px; }
 .block .examples .ex { break-inside: avoid; border-top: 0; border-bottom: 1px solid var(--rule); }
 .fc-btn:disabled { opacity: .5; cursor: default; }
+
+/* Hover cards on term and author links (assets/preview.js) */
+.pv-card {
+  position: absolute; z-index: 60; width: min(340px, calc(100vw - 16px));
+  background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .14); padding: 12px 14px; pointer-events: none;
+  font: 400 15px/1.45 var(--serif);
+}
+.pv-card[hidden] { display: none; }
+.pv-card p { margin: 0; }
+.pv-kind { font: 600 11px/1.2 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 2px !important; }
+.pv-title { font-weight: 600; font-size: 17px; line-height: 1.3; }
+.pv-text { margin-top: 6px !important; }
+.pv-meta { font: 400 13px/1.45 var(--sans); color: var(--ink-2); margin-top: 2px !important; }
+.pv-sub { font: 600 12px/1.2 var(--sans); color: var(--ink-2); margin-top: 10px !important; }
+.pv-works { list-style: none; margin: 4px 0 0; padding: 0; }
+.pv-works li { margin: 2px 0; }
+.pv-muted { color: var(--ink-3); font-size: 13px; }
+.pv-more { margin-top: 2px !important; font-family: var(--sans); }

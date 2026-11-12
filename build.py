@@ -1001,6 +1001,7 @@ def page(title, body, active=None, description="", path="", extra_head=""):
 <script src="{BASE}assets/search.js?v={BUILD_ID}" defer></script>
 <script src="{BASE}assets/quiz.js?v={BUILD_ID}" defer></script>
 <script src="{BASE}assets/flag.js?v={BUILD_ID}" defer></script>
+<script src="{BASE}assets/preview.js?v={BUILD_ID}" defer></script>
 </body>
 </html>
 """
@@ -3176,6 +3177,47 @@ def search_index(db):
     (OUT / "assets" / "search.json").write_text(json.dumps(entries, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
 
+def hover_previews(db, rel):
+    """Data for the hover cards on term and author links (assets/preview.js), keyed by page path.
+    Two files so a visitor only downloads the one for the kind of link they hover."""
+    terms = {}
+    for t in db["terms"].values():
+        if not t["url"]:
+            continue
+        short = t["short"]
+        if not short:  # no Short Definition: the definition's first paragraph, as on the term of the day
+            paras = [x for x in (t["definition"] or "").strip().split("\n\n") if x.strip()]
+            short = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", paras[0])).strip() if paras else ""
+        short = cap_first(short)
+        if len(short) > 260:
+            short = short[:250].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+        terms[t["url"][len(BASE):]] = [t["title"], short]
+    authors = {}
+    for a in db["authors"].values():
+        if not a["url"] or a["title"].strip().lower() == "no award":
+            continue
+        works = [w for w in rel[("authors", a["id"])].get("works", [])
+                 if db["works"][w]["title"].strip().lower() != "no award"]
+        notable = [w for w in works if db["works"][w]["notable"]] or works
+        # The four most often tested of the notable works, listed oldest first.
+        notable.sort(key=lambda w: (-len(rel[("works", w)].get("questions", [])), sort_key(db["works"][w]["title"])))
+        picked = sorted(notable[:4], key=lambda w: (year_of(db["works"][w]["year_written"], db["works"][w]["published"]) or "9999",
+                                                    sort_key(db["works"][w]["title"])))
+        shown = []
+        for w in picked:
+            r = db["works"][w]
+            types = {x.strip().lower() for x in r.get("type", [])}
+            shown.append([r["title"], year_of(r["year_written"], r["published"]) or "",
+                          1 if types and types <= QUOTED_TYPES else 0])
+        years = "–".join(x for x in (a["birth"], a["death"]) if x)
+        authors[a["url"][len(BASE):]] = [a["title"], a["nationality"], ", ".join(a["medium"]), years,
+                                          shown, max(0, len(notable) - 4)]
+    out = OUT / "assets" / "data"
+    out.mkdir(parents=True, exist_ok=True)
+    for name, data in (("terms", terms), ("authors", authors)):
+        (out / f"preview-{name}.json").write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+
+
 def old_address_redirects(db):
     """Pages at the old /tags/ addresses that forward to /sets/, so saved links and bookmarks keep working."""
     def stub(to):
@@ -3288,6 +3330,7 @@ def main():
     search_page()
     account_page()
     search_index(db)
+    hover_previews(db, rel)
     sitemap(db)
     old_address_redirects(db)
     write("404.html", page("Page not found", f'<h1>Page not found</h1><p class="lede">That page may have been renamed. Try searching, or go <a href="{BASE}">home</a>.</p>'))
