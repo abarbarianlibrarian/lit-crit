@@ -1666,6 +1666,35 @@ def flashcard_pages(db, rel):
             deck("Prizes", f"prizes-{slugify(ptype)}", ptype, f"{ptype} winners: prize → winner.", ["p"],
                  [f"p:{p}" for p in sorted(ids, key=psort)], "Prize → winner")
 
+    # Built-in sets for "Make a custom set" (listed first, in this order). They aren't shown as "Set:" chips on cards.
+    def appears(letter, table, rid):
+        return int(float(db[table][rid]["appearances"] or 0)) > 0
+    terms_az = sorted(CARD_IDS["t"], key=lambda t: sort_key(db["terms"][t]["title"]))
+    authors_az = sorted(CARD_IDS["a"], key=lambda a: author_sort(db["authors"][a]))
+    works_az = sorted(CARD_IDS["w"], key=lambda w: sort_key(db["works"][w]["title"]))
+    prizes_all = sorted(CARD_IDS["p"], key=psort)
+    ptype = lambda p: (db["prizes"][p]["type"] or "").lower()
+    tested_on = lambda p, contest: any(x in (contest, "All Tests") for x in (db["prizes"][p]["tested"] or []))
+    core = [
+        ("all-terms", "All Terms", [f"t:{t}" for t in terms_az]),
+        ("all-tested-terms", "All Tested Terms", [f"t:{t}" for t in terms_az if appears("t", "terms", t)]),
+        ("all-authors", "All Authors", [f"a:{a}" for a in authors_az]),
+        ("all-tested-authors", "All Tested Authors", [f"a:{a}" for a in authors_az if appears("a", "authors", a)]),
+        ("all-works", "All Works", [f"w:{w}" for w in works_az]),
+        ("all-tested-works", "All Tested Works", [f"w:{w}" for w in works_az if rel[("works", w)].get("questions")]),
+        ("all-prizes", "All Prizes", [f"p:{p}" for p in prizes_all]),
+        ("all-pulitzer-prizes", "All Pulitzer Prizes", [f"p:{p}" for p in prizes_all if "pulitzer" in ptype(p)]),
+        ("all-nobel-prizes", "All Nobel Prizes", [f"p:{p}" for p in prizes_all if "nobel" in ptype(p)]),
+        ("all-pulitzer-fiction", "All Pulitzer Prizes for Fiction", [f"p:{p}" for p in prizes_all if "pulitzer" in ptype(p) and "fiction" in ptype(p)]),
+        ("all-pulitzer-drama", "All Pulitzer Prizes for Drama", [f"p:{p}" for p in prizes_all if "pulitzer" in ptype(p) and "drama" in ptype(p)]),
+        ("all-pulitzer-poetry", "All Pulitzer Prizes for Poetry", [f"p:{p}" for p in prizes_all if "pulitzer" in ptype(p) and "poetry" in ptype(p)]),
+    ] + [(f"prizes-{slugify(c)}", f"{c} Prizes", [f"p:{p}" for p in prizes_all if tested_on(p, c)])
+         for c in ("Invitational A", "Invitational B", "District", "Region", "State")]
+    core = [x for x in core if x[2]]
+    for slug, title, ids in core:
+        sets[slug] = [title, ids]
+    print("Built-in flashcard sets: " + ", ".join(f"{t} {len(i)}" for _, t, i in core), flush=True)
+
     # Site data for flashcards.js: sets, deck names, test appearances and the most-tested terms and authors.
     apps = {}
     top = {"t": [], "a": []}
@@ -1677,7 +1706,7 @@ def flashcard_pages(db, rel):
                 top[letter].append([f"{letter}:{rid}", db[table][rid]["title"], k])
         top[letter].sort(key=lambda x: (-x[2], sort_key(x[1])))
         top[letter] = top[letter][:300]
-    meta = {"sets": sets, "decks": decks, "apps": apps, "top": top}
+    meta = {"sets": sets, "core": [slug for slug, _, _ in core], "decks": decks, "apps": apps, "top": top}
     (OUT / "assets" / "cards" / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
     # Pages filled in by flashcards.js

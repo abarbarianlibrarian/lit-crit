@@ -367,8 +367,10 @@
         .then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })
         .then(function (d) {
           d.sets = d.sets || {}; d.decks = d.decks || {}; d.apps = d.apps || {}; d.top = d.top || { t: [], a: [] };
-          d.setsOf = {};
+          d.setsOf = {}; d.core = d.core || [];
+          var core = {}; d.core.forEach(function (s) { core[s] = 1; });
           Object.keys(d.sets).forEach(function (s) {
+            if (core[s]) return;   // built-in sets (All Terms, …) aren't shown as chips on cards
             d.sets[s][1].forEach(function (id) { (d.setsOf[id] = d.setsOf[id] || []).push(s); });
           });
           return d;
@@ -1068,9 +1070,11 @@
     function options(sm, q) {
       var term = q.value.trim().toLowerCase();
       var o = Cats.sorted().filter(function (x) { return sel.c.indexOf(x.id) < 0; }).map(function (x) { return ["c:" + x.id, x.cat.n, "Your custom set"]; })
-        .concat(Object.keys(sm.sets).filter(function (s) { return sel.s.indexOf(s) < 0; })
-          .sort(function (x, y) { return sm.sets[x][0].localeCompare(sm.sets[y][0]); })
-          .map(function (s) { return ["s:" + s, sm.sets[s][0], "Set · " + sm.sets[s][1].length + " terms"]; }));
+        .concat(sm.core.filter(function (s) { return sm.sets[s] && sel.s.indexOf(s) < 0; })
+          .concat(Object.keys(sm.sets).filter(function (s) { return sel.s.indexOf(s) < 0 && sm.core.indexOf(s) < 0; })
+            .sort(function (x, y) { return sm.sets[x][0].localeCompare(sm.sets[y][0]); }))
+          .map(function (s) { var ids = sm.sets[s][1], L = ids.length && ids[0][0];
+            return ["s:" + s, sm.sets[s][0], "Set · " + plural(ids.length, L ? KIND[L].toLowerCase() : "card")]; }));
       if (term) o = o.filter(function (x) { return x[1].toLowerCase().indexOf(term) >= 0; });
       return o;
     }
