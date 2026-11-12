@@ -864,7 +864,7 @@ h2.letter .count { font: 500 14px/1 var(--sans); color: var(--ink-3); margin-lef
 .daily-works .muted { font: 400 13px/1.6 var(--sans); white-space: nowrap; }
 .daily-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; font: 500 14px/1.4 var(--sans); }
 .daily-links .fc-add { margin: 0; }
-.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 40px 0 8px; }
+.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 32px 0 0; }
 .door { display: flex; flex-direction: column; gap: 14px; padding: 26px; border: 1px solid var(--rule); border-radius: 16px; background: var(--paper-2); }
 .door-head { display: flex; align-items: center; gap: 12px; }
 .door-head .eyebrow { margin: 0 0 4px; }

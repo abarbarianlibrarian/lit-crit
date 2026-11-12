@@ -2690,24 +2690,12 @@ def home(db, rel, resolver):
   <div class="door-head"><span class="door-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></span>
   <div><p class="eyebrow">Reference</p><h2 id="door-ref">Look something up</h2></div></div>
   <p class="door-sub">Everything in one cross-linked library.</p>
-  <ul class="door-list">
-    <li>Terms with linked cross-references</li>
-    <li>Authors, works and full poem texts</li>
-    <li>Periods on a timeline, and literary prizes</li>
-    <li>Every past reading list</li>
-  </ul>
   <a class="btn btn-ref" href="{base}reference/">Open the reference →</a>
 </section>"""
     door_study = """<section class="door door-study" aria-labelledby="door-study">
   <div class="door-head"><span class="door-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span>
   <div><p class="eyebrow">Study</p><h2 id="door-study">Practice for the contest</h2></div></div>
   <p class="door-sub">Practice for the UIL contest and track your progress.</p>
-  <ul class="door-list">
-    <li>Released tests, scored like the real contest</li>
-    <li>Quick quizzes on any topic</li>
-    <li>Flashcards that remember what you know</li>
-    <li>Essay prompts and this year’s reading list</li>
-  </ul>
   <a class="btn btn-study" href="{base}study/">Start studying →</a>
 </section>"""
     lede = "Everything you need for the UIL Literary Criticism contest: a cross-referenced library to look things up, and a place to practice."
@@ -2720,8 +2708,8 @@ def home(db, rel, resolver):
     <div class="results" hidden data-results></div>
   </form>
 </section>
-{daily_section(db, rel, resolver)}
 <div class="doors">{door_ref.format(base=BASE)}{door_study.format(base=BASE)}</div>
+{daily_section(db, rel, resolver)}
 """
     write("index.html", page(SITE_TITLE, body, "home", lede, "", extra_head=FC_SCRIPT))
 
