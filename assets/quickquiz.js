@@ -5,6 +5,8 @@
  * Filters: part, topic (set, period, reading list, or a term, author, work or poem passed in the
  * address as ?term=, ?author=, ?work=, ?poem=, ?set=, ?period=, ?list=), test years, number of
  * questions, and "only ones I missed before". A topic in the address starts a quiz right away.
+ * A set topic uses only questions whose correct answer is one of the set's terms (q.ta,
+ * from answer_terms in build.py), not every question that mentions one.
  *
  * Each answer is marked at once. Results are kept in localStorage "litcrit-quiz-v1"
  * ({question id: 1 right, 0 wrong}, the latest try) and synced to the account by auth.js.
@@ -83,7 +85,7 @@
         if (kind === "author" && authorsOf(q).indexOf(id) < 0) return false;
         if (kind === "work" && q.w.indexOf(id) < 0) return false;
         if (kind === "poem" && q.po.indexOf(id) < 0) return false;
-        if (kind === "set" && !any(q.tm, terms)) return false;
+        if (kind === "set" && !any(q.ta || [], terms)) return false; // correct answer is in the set
         if (kind === "period" && !any(authorsOf(q), authors)) return false;
         if (kind === "list" && !any(q.w, works) && !any(authorsOf(q), authors)) return false;
         if (missed) {

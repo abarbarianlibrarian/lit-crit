@@ -2907,6 +2907,37 @@ def period_authors(db):
     return out
 
 
+ANSWER_LEAD = re.compile(r"^(?:the|an?|a\(n\)|an?\(n\)|both|either)\s+", re.I)
+
+
+def answer_terms(q, resolver):
+    """Terms named by a question's correct answer: the choice text matched to term names,
+    trying singular and plural forms, alternate names, and each half of "X and Y"."""
+    if not resolver:
+        return []
+    out = []
+    for letter in "".join(c.strip().lower() for c in q["correct"] if c.strip()):
+        text = re.sub(r"<[^>]+>", "", q.get(letter) or "").strip().rstrip(".;:,!?").strip()
+        if not text:
+            continue
+        pieces = [text] + [x for x in re.split(r"\s*,\s*|\s+and\s+", text) if x and x != text]
+        for piece in pieces:
+            name = piece.strip(QUOTES).strip()
+            while ANSWER_LEAD.match(name):
+                name = ANSWER_LEAD.sub("", name, count=1)
+            if len(name) < 3:
+                continue
+            words = name.split()
+            forms = [name] + [" ".join(words[:-1] + [f]) for f in number_forms(words[-1].upper())]
+            for form in forms:
+                hit = resolver.find_term(form) if form == name else resolver.find("terms", form)
+                if hit:
+                    if hit not in out:
+                        out.append(hit)
+                    break
+    return out
+
+
 def quiz_bank(db, rel):
     """Every answerable released question, for the Quick quiz page (assets/data/qbank.json)."""
     tests, test_ix = [], {}
@@ -2922,7 +2953,7 @@ def quiz_bank(db, rel):
         works = list(dict.fromkeys(q["works"] + q["rl_works"]))
         qs.append({"i": q["id"], "p": int(question_part(q) or 0), "t": test_ix[q["test"][0]], "n": q["number"],
                    "q": (q["prompt"] or q["name"]).strip(), "c": [q[l] for l in letters], "l": "".join(letters).upper(),
-                   "a": correct, "tm": q["terms"], "au": q["authors"], "w": works, "po": q["poems"]})
+                   "a": correct, "tm": q["terms"], "ta": answer_terms(q, RESOLVER), "au": q["authors"], "w": works, "po": q["poems"]})
         used["terms"].update(q["terms"]); used["authors"].update(q["authors"])
         used["works"].update(works); used["poems"].update(q["poems"])
     qs.sort(key=lambda x: (x["t"], int(x["n"] or 0)))
@@ -2933,7 +2964,12 @@ def quiz_bank(db, rel):
             poems[pid] = [p["title"], p["url"], p["text"], rel[("poems", pid)].get("authors", [])]
             used["authors"].update(poems[pid][3])
     # Topics: sets (terms), reading lists (works and authors), periods (authors).
-    sets = {g["id"]: [g["title"], rel[("tags", g["id"])].get("terms", [])] for g in db["tags"].values()}
+    # A set quiz uses only questions whose correct answer is one of the set's terms ("ta").
+    answered = set()
+    for x in qs:
+        answered.update(x["ta"])
+    sets = {g["id"]: [g["title"], rel[("tags", g["id"])].get("terms", [])] for g in db["tags"].values()
+            if answered.intersection(rel[("tags", g["id"])].get("terms", []))}
     lists = {}
     for r in sorted(db["reading-lists"].values(), key=lambda r: r["year"], reverse=True):
         authors = list(r["poet"])
