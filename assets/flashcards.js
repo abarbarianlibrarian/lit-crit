@@ -573,13 +573,11 @@
     Object.keys(count).forEach(function (id) { if (!all || count[id] === groups.length) o[id] = 1; });
     return o;
   }
-  // Test appearances filter: null = any; 0 = never on a test; N = at least N. Prizes have no count, so any filter leaves them out.
-  var APPS = [["", "Any number"], ["0", "Never on a test"], ["1", "1 or more"], ["3", "3 or more"], ["5", "5 or more"], ["10", "10 or more"], ["20", "20 or more"], ["50", "50 or more"]];
+  // Test appearances filter: at least `min` (blank or 0 = any). Prizes have no count, so a minimum leaves them out.
   function appsOK(id, min, sm) {
-    if (min == null || isNaN(min)) return true;
+    if (!min || isNaN(min)) return true;
     if (id[0] === "p") return false;
-    var n = sm.apps[id] || 0;
-    return min === 0 ? n === 0 : n >= min;
+    return (sm.apps[id] || 0) >= min;
   }
   function readFilter(q) {
     var list = function (k) { return (q.get(k) || "").split(",").filter(Boolean); };
@@ -996,8 +994,8 @@
           return '<label class="fc-row"><input type="checkbox" data-kind="' + l + '"' + (kinds[l] ? " checked" : "") + "> " + KINDS[l] + "</label>";
         }).join("") + "</div>" +
         '<div class="fc-step"><div class="fc-step-inline"><label class="fc-step-h" for="fc-apps">4. Test appearances</label>' +
-        '<select id="fc-apps" class="fc-select" data-apps>' + APPS.map(function (o) { return '<option value="' + o[0] + '"' + (o[0] === minApps ? " selected" : "") + ">" + o[1] + "</option>"; }).join("") + "</select></div>" +
-        '<span class="muted fc-small">How often a term, author or work has come up on released UIL tests. Prizes are left out when this is set.</span></div>' +
+        '<span class="fc-row">At least <input id="fc-apps" class="fc-num" type="number" min="0" max="999" step="1" inputmode="numeric" placeholder="any" value="' + esc(minApps) + '" data-apps aria-label="Minimum test appearances"> appearances</span></div>' +
+        '<span class="muted fc-small">How often a term, author or work has come up on released UIL tests. Leave it blank for any. Prizes are left out when a number is set.</span></div>' +
         '<div class="fc-builder-go"><span data-summary></span><button type="button" class="fc-btn" data-savecat>Save as new set</button><a class="btn btn-study btn-sm" data-go href="#">Study without saving</a></div>' +
         '<p class="fc-ok fc-small" data-savemsg aria-live="polite"></p></div></section>';
     }
@@ -1011,7 +1009,7 @@
       ids.forEach(function (id) {
         var st = c[id], b = st ? st[0] : 5;
         if ((scope && !scope[id]) || f.k.indexOf(id[0]) < 0) return;
-        if (!appsOK(id, minApps === "" ? null : +minApps, sm)) return;
+        if (!appsOK(id, +minApps, sm)) return;
         if (dueOnly && b >= 1 && b <= 4 && !isDue(st, t)) return;
         per[b]++;
         if (f.b.indexOf(b) >= 0) { n++; matched.push(id); }
@@ -1086,7 +1084,7 @@
         $$(root, "[data-mode]").forEach(function (r) { r.parentNode.classList.toggle("on", r.checked); });
       } else if (tg.hasAttribute("data-box")) { boxes[tg.getAttribute("data-box")] = tg.checked; tg.parentNode.classList.toggle("on", tg.checked); }
       else if (tg.hasAttribute("data-kind")) kinds[tg.getAttribute("data-kind")] = tg.checked;
-      else if (tg.hasAttribute("data-apps")) minApps = tg.value;
+      else if (tg.hasAttribute("data-apps")) { var v = parseInt(tg.value, 10); minApps = v > 0 ? String(Math.min(v, 999)) : ""; tg.value = minApps; }
       else return;
       recount(sm);
     });
@@ -1108,7 +1106,10 @@
         : '<p class="muted">No sets match.</p>';
       sugg.hidden = false;
     }
-    root.addEventListener("input", function (ev) { if (ev.target.hasAttribute("data-scopeq")) showSugg(); });
+    root.addEventListener("input", function (ev) {
+      if (ev.target.hasAttribute("data-scopeq")) showSugg();
+      else if (ev.target.hasAttribute("data-apps") && smRef) { var v = parseInt(ev.target.value, 10); minApps = v > 0 ? String(Math.min(v, 999)) : ""; recount(smRef); }
+    });
     root.addEventListener("focusin", function (ev) { if (ev.target.hasAttribute && ev.target.hasAttribute("data-scopeq")) showSugg(); });
     root.addEventListener("keydown", function (ev) {
       var opt = ev.target.closest && ev.target.closest("[data-sugg] [data-sel]");
