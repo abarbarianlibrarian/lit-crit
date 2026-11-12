@@ -560,7 +560,7 @@
   // ---------------------------------------------------------------- study screen
   function readFilter(q) {
     var list = function (k) { return (q.get(k) || "").split(",").filter(Boolean); };
-    var b = (q.get("b") || "123").split("").map(Number).filter(function (x) { return x >= 1 && x <= 4; });
+    var b = (q.get("b") || "123").split("").map(Number).filter(function (x) { return x >= 0 && x <= 5; });
     return { c: list("c"), s: list("s"), b: b.length ? b : [1, 2, 3], d: q.get("d") === "1",
              k: (q.get("k") || "tawp").split("").filter(function (l) { return KIND[l]; }) };
   }
@@ -572,12 +572,16 @@
       f.c.forEach(function (k) { if (g[k]) g[k].c.forEach(function (id) { scope[id] = 1; }); });
       f.s.forEach(function (s) { if (sm.sets[s]) sm.sets[s][1].forEach(function (id) { scope[id] = 1; }); });
     }
-    return Object.keys(c).filter(function (id) {
-      var st = c[id];
-      if (st[0] === 0 || f.b.indexOf(st[0]) < 0) return false;
+    // Box 0 is the waiting line and 5 means "not in my flashcards" (only from a chosen set or category).
+    // Cards outside the four boxes are practice: grading them changes nothing, and "due only" doesn't apply.
+    var ids = Object.keys(c);
+    if (scope && f.b.indexOf(5) >= 0) Object.keys(scope).forEach(function (id) { if (!c[id]) ids.push(id); });
+    return ids.filter(function (id) {
+      var st = c[id], b = st ? st[0] : 5;
+      if (f.b.indexOf(b) < 0) return false;
       if (scope && !scope[id]) return false;
       if (f.k.indexOf(id[0]) < 0) return false;
-      if (f.d && !isDue(st, t)) return false;
+      if (f.d && b >= 1 && b <= 4 && !isDue(st, t)) return false;
       return true;
     });
   }
@@ -654,10 +658,12 @@
     function empty(o) {
       var c = S.cards(), p = plan(c, S.meta(), today());
       var msg = o.today ? (Object.keys(c).length ? "Nothing left for today." : "You don’t have any flashcards yet.") : "No cards match.";
+      var noScope = o.filter && o.filter.b.indexOf(5) >= 0 && !o.filter.c.length && !o.filter.s.length;
       root.innerHTML = '<div class="fc-done"><h2>' + msg + "</h2>" +
         (o.today && p.more.length && !q.get("more") ? '<p>You can get ahead: ' + plural(p.more.length, "more weekly or monthly card", "more weekly or monthly cards") + " are due this week or month.</p>" +
           '<p class="fc-done-btns"><a class="btn btn-study" href="' + url("flashcards/review/", { more: 1 }) + '">Keep going</a></p>' : "") +
         (o.filter && o.filter.d ? '<p class="fc-done-btns"><a class="fc-btn" href="' + location.pathname + location.search.replace(/([?&])d=1/, "$1d=0") + '">Study them even though they aren’t due</a></p>' : "") +
+        (noScope ? '<p>To study cards that aren’t in your flashcards, pick a set or category first.</p>' : "") +
         '<p><a href="' + BASE + 'flashcards/">← Flashcards</a></p></div>';
     }
 
@@ -665,7 +671,7 @@
       var m = S.meta(), defFirst = m.defFirst;
       var queue = ids.map(function (id) { return { id: id, again: false }; });
       var total = queue.length, done = 0, cur = null, shown = false;
-      var tally = { got: 0, missed: 0, moves: {}, stay: 0, practice: 0, missedIds: [], marked: false };
+      var tally = { got: 0, missed: 0, moves: {}, stay: 0, practice: 0, outside: 0, missedIds: [], marked: false };
       var hasTerms = ids.some(function (id) { return id[0] === "t"; });
 
       host.innerHTML =
@@ -739,7 +745,7 @@
             } else if (!got) { tally.moves.missed1 = (tally.moves.missed1 || 0) + 1; msg = "Streak starts over."; }
             else if (res.counted) { tally.stay++; msg = "Right " + S.cards()[id][1] + " of " + NEED[res.to] + " " + UNIT[res.to] + "."; }
             else tally.practice++;
-          }
+          } else tally.outside++;
         }
         R("toast").textContent = msg;
         if (!got) queue.splice(Math.min(4, queue.length), 0, { id: id, again: true });
@@ -791,6 +797,7 @@
           if (rows.length) html += '<div class="fc-moves"><p class="fc-moves-h">Where your cards went</p>' + rows.map(function (r) {
             return '<p><span>' + r[0] + '</span><span class="' + r[2] + '">' + plural(r[1], "card") + (r[2] === "up" ? " ↑" : r[2] === "down" ? " ↓" : "") + "</span></p>";
           }).join("") + "</div>";
+          if (tally.outside) html += '<p class="muted">' + plural(tally.outside, "card was", "cards were") + " outside your boxes, so " + (tally.outside === 1 ? "it was" : "they were") + " practice only.</p>";
           if (tally.marked) html += '<p class="fc-streak-won">' + FLAME + " <span><b>" + curStreak(mm) + "-day streak!</b> Daily cards finished for today.</span></p>";
           var bs = boxStats(c, t);
           var bits = [];
@@ -893,7 +900,7 @@
   function home(root) {
     intro();
     siteMeta().then(function (sm) { draw(sm); });
-    var sel = { c: [], s: [] }, boxes = { 1: true, 2: true, 3: true, 4: false }, dueOnly = true, kinds = { t: true, a: true, w: true, p: true };
+    var sel = { c: [], s: [] }, boxes = { 0: false, 1: true, 2: true, 3: true, 4: false, 5: false }, dueOnly = true, kinds = { t: true, a: true, w: true, p: true };
     var topKind = "t", topN = 20;
 
     function draw(sm) {
@@ -923,7 +930,7 @@
             p.more.length ? '<a class="btn btn-study" href="' + url("flashcards/review/", { more: 1 }) + '">Get ahead: ' + plural(p.more.length, "more card") + "</a>" : "") +
           (extras.length ? '<span class="muted">' + extras.join(" &nbsp;·&nbsp; ") + "</span>" : "") + "</div></section>";
       }
-      if (Object.keys(c).length) html += builder(sm, c);
+      html += builder(sm, c);
       html += myCats(c);
       root.innerHTML = html;
       wire(sm);
@@ -963,7 +970,7 @@
         sel.s.map(function (s) { return sm.sets[s] ? '<button type="button" class="fc-tag on" data-unsel="s:' + esc(s) + '" aria-label="Remove ' + esc(sm.sets[s][0]) + '">Set: ' + esc(sm.sets[s][0]) + ' <span aria-hidden="true">×</span></button>' : ""; }).join("");
       var quick = cats.filter(function (x) { return sel.c.indexOf(x.id) < 0; }).slice(0, 8)
         .map(function (x) { return '<button type="button" class="fc-tag add" data-sel="c:' + esc(x.id) + '">+ ' + esc(x.cat.n) + "</button>"; }).join("");
-      var bc = function (b) { return '<label class="fc-check' + (boxes[b] ? " on" : "") + '"><input type="checkbox" data-box="' + b + '"' + (boxes[b] ? " checked" : "") + "> " + SHORT[b] + ' <span class="muted" data-bc="' + b + '"></span></label>'; };
+      var bc = function (b, name) { return '<label class="fc-check' + (boxes[b] ? " on" : "") + '"><input type="checkbox" data-box="' + b + '"' + (boxes[b] ? " checked" : "") + "> " + (name || SHORT[b]) + ' <span class="muted" data-bc="' + b + '"></span></label>'; };
       return '<section class="block fc-builder"><h2>Study something specific</h2><div class="fc-builder-box">' +
         '<div class="fc-step"><label class="fc-step-h" for="fc-scope">1. What do you want to study?</label>' +
         '<div class="fc-search"><input id="fc-scope" autocomplete="off" placeholder="Search your categories and the site’s sets…" data-scopeq><div class="fc-sugg" data-sugg hidden></div></div>' +
@@ -971,7 +978,9 @@
         (quick ? '<div class="fc-chips quick"><span class="muted">Your categories:</span>' + quick + "</div>" : "") +
         '<span class="muted fc-small">Pick nothing to use all your flashcards.</span></div>' +
         '<div class="fc-step"><span class="fc-step-h">2. Which boxes?</span><div class="fc-checks">' + bc(1) + bc(2) + bc(3) + bc(4) + "</div>" +
-        '<label class="fc-row"><input type="checkbox" data-dueonly' + (dueOnly ? " checked" : "") + "> Only cards that are due now</label></div>" +
+        '<label class="fc-row"><input type="checkbox" data-dueonly' + (dueOnly ? " checked" : "") + "> Only cards that are due now</label>" +
+        '<span class="fc-step-sub">Outside your boxes</span><div class="fc-checks">' + bc(0, "Waiting line") + bc(5, "Not in my flashcards") + "</div>" +
+        '<span class="muted fc-small">Practice only: studying these doesn’t move them into a box. “Not in my flashcards” needs a set or category from step 1.</span></div>' +
         '<div class="fc-step fc-step-inline"><span class="fc-step-h">3. Card types</span>' + "tawp".split("").map(function (l) {
           return '<label class="fc-row"><input type="checkbox" data-kind="' + l + '"' + (kinds[l] ? " checked" : "") + "> " + KINDS[l] + "</label>";
         }).join("") + "</div>" +
@@ -979,21 +988,23 @@
     }
     function recount(sm) {
       var c = S.cards(), t = today(), scope = scopeIds(sm);
-      var f = { b: [1, 2, 3, 4].filter(function (b) { return boxes[b]; }), k: "tawp".split("").filter(function (l) { return kinds[l]; }), d: dueOnly };
-      var per = { 1: 0, 2: 0, 3: 0, 4: 0 }, n = 0;
-      Object.keys(c).forEach(function (id) {
-        var st = c[id];
-        if (st[0] === 0 || (scope && !scope[id]) || f.k.indexOf(id[0]) < 0) return;
-        if (dueOnly && !isDue(st, t)) return;
-        per[st[0]]++;
-        if (f.b.indexOf(st[0]) >= 0) n++;
+      var f = { b: [0, 1, 2, 3, 4, 5].filter(function (b) { return boxes[b]; }), k: "tawp".split("").filter(function (l) { return kinds[l]; }), d: dueOnly };
+      var per = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 }, n = 0;
+      var ids = Object.keys(c);
+      if (scope) Object.keys(scope).forEach(function (id) { if (!c[id]) ids.push(id); });
+      ids.forEach(function (id) {
+        var st = c[id], b = st ? st[0] : 5;
+        if ((scope && !scope[id]) || f.k.indexOf(id[0]) < 0) return;
+        if (dueOnly && b >= 1 && b <= 4 && !isDue(st, t)) return;
+        per[b]++;
+        if (f.b.indexOf(b) >= 0) n++;
       });
-      [1, 2, 3, 4].forEach(function (b) { var s = $(root, '[data-bc="' + b + '"]'); if (s) s.textContent = per[b]; });
+      [0, 1, 2, 3, 4, 5].forEach(function (b) { var s = $(root, '[data-bc="' + b + '"]'); if (s) s.textContent = per[b]; });
       var names = sel.c.map(function (k) { var g = S.cats()[k]; return g ? g.n : ""; }).filter(Boolean)
         .concat(sel.s.map(function (s) { return sm.sets[s] ? sm.sets[s][0] : ""; }).filter(Boolean));
       var sum = $(root, "[data-summary]"), go = $(root, "[data-go]");
       if (!sum) return;
-      sum.innerHTML = "<b>" + plural(n, "card") + "</b>" + (dueOnly ? " due now" : "") + (names.length ? " from " + names.map(function (x) { return "<b>" + esc(x) + "</b>"; }).join(", ") : "");
+      sum.innerHTML = "<b>" + plural(n, "card") + "</b>" + (dueOnly && !boxes[0] && !boxes[5] ? " due now" : "") + (names.length ? " from " + names.map(function (x) { return "<b>" + esc(x) + "</b>"; }).join(", ") : "");
       go.textContent = n ? "Study these " + n.toLocaleString() : "Nothing to study";
       go.classList.toggle("disabled", !n);
       go.setAttribute("aria-disabled", n ? "false" : "true");
