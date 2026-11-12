@@ -781,6 +781,7 @@ h2.letter .count { font: 500 14px/1 var(--sans); color: var(--ink-3); margin-lef
 .fc-wd.now { color: var(--fc-fire); font-weight: 600; }
 .fc-wd.opt > span { border-style: dashed; }
 .fc-wd.miss > span { opacity: .5; }
+.fc-wd.rest > span { border: 1.5px solid var(--rule); background: var(--paper-2); color: var(--ink-3); }
 .fc-boxes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 20px; font: 400 13px/1.35 var(--sans); }
 .fc-boxline { display: flex; flex-direction: column; gap: 6px; }
 .fc-boxline .muted { color: var(--ink-2); }

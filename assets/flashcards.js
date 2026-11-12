@@ -20,7 +20,8 @@
  *   Got it on a card that isn't due is practice and changes nothing.
  * Weekly and monthly cards are spread out: today's share is what's left ÷ days left in the week or month.
  * New cards wait in line and join Study daily a few a day (paused while Daily is over the student's limit).
- * Study streak: a day counts when no Daily cards are left due after studying. Weekends never break it.
+ * Study streak: a day counts when the student finishes the Daily cards due that day. Weekends never break it,
+ * and neither does a day with no cards in Study daily at all (that day doesn't add to it either).
  * Day numbers are days since 1970-01-01 in the visitor's own time zone.
  */
 (function () {
@@ -129,8 +130,11 @@
   function intro() {
     var m = S.meta(), t = today();
     if (m.paused != null) return 0;
-    if (m.introDay !== t) { m.introDay = t; m.introN = 0; S.saveMeta(m); }
-    var c = S.cards(), wait = waitingIds(c);
+    var c = S.cards(), before = JSON.stringify([m.introDay, m.emptyFrom, m.neutral]);
+    if (m.introDay !== t) { m.introDay = t; m.introN = 0; }
+    syncEmpty(c, m, t);
+    if (JSON.stringify([m.introDay, m.emptyFrom, m.neutral]) !== before) S.saveMeta(m);
+    var wait = waitingIds(c);
     if (!wait.length) return 0;
     var room = (m.perDay || 0) - (m.introN || 0);
     if (m.capOn) room = Math.min(room, Math.max(0, (m.cap || 0) - countBox(c, 1)));
@@ -139,6 +143,7 @@
     go.forEach(function (id) { c[id][0] = 1; c[id][1] = 0; c[id][2] = null; });
     S.saveCards(c);
     m.introN = (m.introN || 0) + go.length;
+    syncEmpty(c, m, t);
     S.saveMeta(m);
     return go.length;
   }
@@ -158,32 +163,53 @@
       if (where === "daily") c[id] = [1, 0, null, 0, src || "", now];
       else c[id] = [0, 0, null, where === "front" ? --lo : ++hi, src || "", now];
     });
-    S.saveCards(c);
+    saveCards(c);
     if (where !== "daily") intro();
     return n;
   }
   function moveToDaily(ids) {
     var c = S.cards(), n = 0;
     ids.forEach(function (id) { if (c[id] && c[id][0] === 0) { c[id][0] = 1; c[id][1] = 0; c[id][2] = null; n++; } });
-    S.saveCards(c);
+    saveCards(c);
     return n;
   }
   function removeCards(ids) {
     var c = S.cards(), g = S.cats(), set = {};
     ids.forEach(function (id) { set[id] = 1; delete c[id]; });
     Object.keys(g).forEach(function (k) { g[k].c = g[k].c.filter(function (x) { return !set[x]; }); });
-    S.saveCards(c); S.saveCats(g);
+    saveCards(c); S.saveCats(g);
   }
 
-  function gapOK(a, b) {
-    if (b - a > 9) return false;
-    for (var d = a + 1; d < b; d++) if (!weekend(d)) return false;
+  // Days with no cards at all in Study daily neither break nor add to the streak.
+  // m.emptyFrom: the day Study daily last became empty (still empty); m.neutral: earlier [from, to] spans.
+  function syncEmpty(c, m, t) {
+    var n = countBox(c, 1);
+    if (!n) { if (m.emptyFrom == null) m.emptyFrom = t; }
+    else if (m.emptyFrom != null) {
+      if (t - 1 >= m.emptyFrom) m.neutral = (m.neutral || []).concat([[m.emptyFrom, t - 1]]).slice(-20);
+      m.emptyFrom = null;
+    }
+  }
+  function saveCards(c) {
+    S.saveCards(c);
+    var m = S.meta(), before = JSON.stringify([m.emptyFrom, m.neutral]);
+    syncEmpty(c, m, today());
+    if (JSON.stringify([m.emptyFrom, m.neutral]) !== before) S.saveMeta(m);
+  }
+  function neutralDay(m, d) {
+    if (m.emptyFrom != null && d >= m.emptyFrom) return true;
+    return (m.neutral || []).some(function (r) { return d >= r[0] && d <= r[1]; });
+  }
+  function dailyEmpty(m) { return m.emptyFrom != null; }
+  function gapOK(a, b, m) {
+    if (b - a > 400) return false;
+    for (var d = a + 1; d < b; d++) if (!weekend(d) && !neutralDay(m, d)) return false;
     return true;
   }
   function markDay(m, t) {
     var s = m.streak;
     if (s.last === t) return false;
-    s.n = s.last != null && gapOK(s.last, t) ? (s.n || 0) + 1 : 1;
+    s.n = s.last != null && gapOK(s.last, t, m) ? (s.n || 0) + 1 : 1;
     s.last = t;
     s.best = Math.max(s.best || 0, s.n);
     s.days = (s.days || []).concat([t]).slice(-30);
@@ -192,7 +218,7 @@
   function curStreak(m) {
     var s = m.streak, t = m.paused != null ? m.paused : today();
     if (s.last == null) return 0;
-    return s.last === t || gapOK(s.last, t) ? s.n : 0;
+    return s.last === t || gapOK(s.last, t, m) ? s.n : 0;
   }
 
   // Grade a card in the student's flashcards. Returns {from, to, counted, due} or null.
@@ -200,6 +226,7 @@
     var c = S.cards(), st = c[id], m = S.meta(), t = today();
     if (!st || st[0] === 0) return null;
     var from = st[0], due = isDue(st, t), res = { from: from, to: from, counted: false, due: due, marked: false };
+    if (from === 1) m.dailyDay = t;
     if (due && (from === 2 || from === 3)) {
       if (m.doneDay !== t) { m.doneDay = t; m.doneW = 0; m.doneM = 0; }
       if (from === 2) m.doneW = (m.doneW || 0) + 1; else m.doneM = (m.doneM || 0) + 1;
@@ -212,7 +239,8 @@
     } else if (from === 4) { st[2] = t; }
     c[id] = st;
     S.saveCards(c);
-    if (dailyDue(c, t) === 0) res.marked = markDay(m, t);
+    syncEmpty(c, m, t);
+    if (m.dailyDay === t && dailyDue(c, t) === 0) res.marked = markDay(m, t);
     S.saveMeta(m);
     return res;
   }
@@ -237,6 +265,8 @@
       S.saveCards(c);
       if (m.streak.last != null) m.streak.last += sh;
       m.streak.days = (m.streak.days || []).map(function (d) { return d + sh; });
+      if (m.emptyFrom != null) m.emptyFrom += sh;
+      m.neutral = (m.neutral || []).map(function (r) { return [r[0] + sh, r[1] + sh]; });
     }
     m.paused = null; m.doneDay = null;
     S.saveMeta(m);
@@ -371,8 +401,8 @@
     (m.streak.days || []).forEach(function (d) { done[d] = 1; });
     var parts = [], said = [];
     for (var i = 0; i < 7; i++) {
-      var d = mon + i, cls = done[d] ? "done" : d === t ? "now" : i >= 5 ? "opt" : d < t ? "miss" : "todo";
-      parts.push('<span class="fc-wd ' + cls + '"><span>' + (done[d] ? "✓" : "") + "</span>" + names[i] + "</span>");
+      var d = mon + i, cls = done[d] ? "done" : d === t ? (neutralDay(m, d) ? "rest now" : "now") : i >= 5 ? "opt" : d <= t && neutralDay(m, d) ? "rest" : d < t ? "miss" : "todo";
+      parts.push('<span class="fc-wd ' + cls + '"><span>' + (done[d] ? "✓" : /rest/.test(cls) ? "–" : "") + "</span>" + names[i] + "</span>");
       if (done[d]) said.push(names[i]);
     }
     return '<span class="fc-week" role="img" aria-label="This week: ' + (said.length ? "studied " + said.join(", ") : "nothing yet") +
@@ -381,7 +411,7 @@
   function streakBadge(m) {
     var n = curStreak(m);
     return '<div class="fc-streak">' + FLAME +
-      '<span class="fc-streak-n"><b>' + n + '</b> day streak<small>' + (m.streak.best ? "Best: " + plural(m.streak.best, "day") : "Finish your daily cards to start one") + "</small></span>" +
+      '<span class="fc-streak-n"><b>' + n + '</b> day streak<small>' + (dailyEmpty(m) && m.paused == null ? "Paused until you add daily cards" : m.streak.best ? "Best: " + plural(m.streak.best, "day") : "Finish your daily cards to start one") + "</small></span>" +
       weekDots(m) + "</div>";
   }
 
@@ -814,7 +844,7 @@
       '<p><a href="' + BASE + 'flashcards/waiting/">View and edit the waiting cards →</a></p></section>' +
       '<section><h3>Studying</h3><label class="fc-row"><input type="checkbox" data-df' + (m.defFirst ? " checked" : "") + "> Show the definition first on term cards</label></section>" +
       '<section><h3>Streak</h3><p><b>' + plural(curStreak(m), "day") + "</b> now" + (m.streak.best ? " · best " + plural(m.streak.best, "day") : "") + "</p>" +
-      '<p class="muted">A day counts when you finish your daily cards. Weekends are optional: studying adds a day, skipping doesn’t break your streak.</p></section>' +
+      '<p class="muted">A day counts when you finish your daily cards. Weekends are optional: studying adds a day, skipping doesn’t break your streak. Days with no cards in Study daily don’t count either way.</p></section>' +
       '<section data-season><h3>Off-season</h3>' + (m.paused != null
         ? '<p>Paused since ' + dateLabel(m.paused) + '.</p><p><button type="button" class="btn btn-study btn-sm" data-resume>Resume studying</button></p>'
         : '<p class="muted">Done for the year? Pausing freezes your streak and all your boxes so nothing piles up while you’re away.</p><p><button type="button" class="fc-btn" data-pauseask>Pause until next season</button></p>') +
