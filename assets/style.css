@@ -1194,3 +1194,4 @@ button.fc-tag:hover { background: var(--chip-hover); }
 .ex-more { margin-left: 8px; font: 500 12px/1 var(--sans); letter-spacing: 0; text-transform: none; }
 .block .examples { columns: 2 320px; column-gap: 32px; }
 .block .examples .ex { break-inside: avoid; border-top: 0; border-bottom: 1px solid var(--rule); }
+.fc-btn:disabled { opacity: .5; cursor: default; }

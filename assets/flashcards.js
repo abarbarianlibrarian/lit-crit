@@ -35,6 +35,7 @@
   var BOX = ["Waiting", "Study daily", "Study weekly", "Study monthly", "Mastered"];
   var SHORT = ["Waiting", "Daily", "Weekly", "Monthly", "Mastered"];
   var NEED = [0, 3, 2, 1, 0];
+  var ALLB = "012345";   // study filter: every box, the waiting line, and cards not in the flashcards
   var UNIT = ["", "days", "weeks", "month", ""];
   var FLAME = '<svg class="fc-flame" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c.8 3.4 4.9 5.6 4.9 10.6A4.9 4.9 0 0 1 12 18a4.9 4.9 0 0 1-4.9-4.9c0-2.3 1.2-3.8 2.6-4.9.3 1.7 1.1 2.8 2.6 3.3-.6-3.1-1-6.1-.3-9z" fill="#f08a2c" stroke="#c2410c" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 17.9a3.2 3.2 0 0 1-3.2-3.2c0-1.6 1.2-2.5 1.9-3.4.3 1 .9 1.6 1.7 1.9.2-.9.1-1.8.6-2.6 1.2 1 2.2 2.3 2.2 4.1a3.2 3.2 0 0 1-3.2 3.2z" fill="#ffc857"/></svg>';
   var GEAR = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>';
@@ -173,11 +174,11 @@
     saveCards(c);
     return n;
   }
+  // Categories are independent of the boxes: removing a card from the flashcards leaves it in its categories.
   function removeCards(ids) {
-    var c = S.cards(), g = S.cats(), set = {};
-    ids.forEach(function (id) { set[id] = 1; delete c[id]; });
-    Object.keys(g).forEach(function (k) { g[k].c = g[k].c.filter(function (x) { return !set[x]; }); });
-    saveCards(c); S.saveCats(g);
+    var c = S.cards();
+    ids.forEach(function (id) { delete c[id]; });
+    saveCards(c);
   }
 
   // Days with no cards at all in Study daily neither break nor add to the streak.
@@ -431,7 +432,6 @@
     }
     box.addEventListener("change", function (ev) {
       var cb = ev.target.closest("[data-cat]"); if (!cb) return;
-      if (cb.checked && !S.cards()[cardId]) addCards([cardId], "cat:" + cb.getAttribute("data-cat"), "end");
       Cats.set(cb.getAttribute("data-cat"), cardId, cb.checked);
       draw(); onChange && onChange();
     });
@@ -440,7 +440,6 @@
       var inp = $(box, "input:not([type])"), name = inp.value.replace(/\s+/g, " ").trim().slice(0, 80);
       if (!name) { inp.focus(); return; }
       var id = Cats.create(name);
-      if (!S.cards()[cardId]) addCards([cardId], "cat:" + id, "end");
       Cats.set(id, cardId, true);
       draw(); onChange && onChange();
       var again = $(box, "input:not([type])"); if (again) again.focus();
@@ -756,12 +755,7 @@
       function drawCats() {
         var box = R("cats"), id = cur.id, st = S.cards()[id];
         box.innerHTML = "";
-        if (!st) {
-          box.innerHTML = '<button type="button" class="fc-tag add" data-addbank>+ Add to my flashcards</button>';
-          $(box, "[data-addbank]").addEventListener("click", function () { addCards([id], o.all ? "add" : "page", "end"); drawCats(); });
-          return;
-        }
-        var html = '<span class="fc-cats-h">Categories</span>';
+        var html = (st ? "" : '<button type="button" class="fc-tag add" data-addbank>+ Add to my flashcards</button>') + '<span class="fc-cats-h">Categories</span>';
         Cats.of(id).forEach(function (x) {
           html += '<button type="button" class="fc-tag" data-rm="' + esc(x.id) + '" aria-label="Remove from ' + esc(x.cat.n) + '">' + esc(x.cat.n) + ' <span aria-hidden="true">×</span></button>';
         });
@@ -773,6 +767,8 @@
         $$(box, "[data-rm]").forEach(function (b) {
           b.addEventListener("click", function () { Cats.set(b.getAttribute("data-rm"), id, false); drawCats(); });
         });
+        var ab = $(box, "[data-addbank]");
+        if (ab) ab.addEventListener("click", function () { addCards([id], o.all ? "add" : "page", "end"); drawCats(); });
         var pop = R("pop");
         pop.appendChild(catPicker(id, function () {}));
         popover($(box, "[data-pick]"), pop, function () { if (cur && cur.id === id) drawCats(); });
@@ -901,7 +897,7 @@
     intro();
     siteMeta().then(function (sm) { draw(sm); });
     var sel = { c: [], s: [] }, boxes = { 0: false, 1: true, 2: true, 3: true, 4: false, 5: false }, dueOnly = true, kinds = { t: true, a: true, w: true, p: true };
-    var topKind = "t", topN = 20;
+    var topKind = "t", topN = 20, matched = [];
 
     function draw(sm) {
       var c = S.cards(), m = S.meta(), t = today(), p = plan(c, m, t), bs = boxStats(c, t), wait = bs[0];
@@ -984,7 +980,8 @@
         '<div class="fc-step fc-step-inline"><span class="fc-step-h">3. Card types</span>' + "tawp".split("").map(function (l) {
           return '<label class="fc-row"><input type="checkbox" data-kind="' + l + '"' + (kinds[l] ? " checked" : "") + "> " + KINDS[l] + "</label>";
         }).join("") + "</div>" +
-        '<div class="fc-builder-go"><span data-summary></span><a class="btn btn-study btn-sm" data-go href="#">Study</a></div></div></section>';
+        '<div class="fc-builder-go"><span data-summary></span><button type="button" class="fc-btn" data-savecat>Save as a category</button><a class="btn btn-study btn-sm" data-go href="#">Study</a></div>' +
+        '<p class="fc-ok fc-small" data-savemsg aria-live="polite"></p></div></section>';
     }
     function recount(sm) {
       var c = S.cards(), t = today(), scope = scopeIds(sm);
@@ -992,12 +989,13 @@
       var per = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 }, n = 0;
       var ids = Object.keys(c);
       if (scope) Object.keys(scope).forEach(function (id) { if (!c[id]) ids.push(id); });
+      matched = [];
       ids.forEach(function (id) {
         var st = c[id], b = st ? st[0] : 5;
         if ((scope && !scope[id]) || f.k.indexOf(id[0]) < 0) return;
         if (dueOnly && b >= 1 && b <= 4 && !isDue(st, t)) return;
         per[b]++;
-        if (f.b.indexOf(b) >= 0) n++;
+        if (f.b.indexOf(b) >= 0) { n++; matched.push(id); }
       });
       [0, 1, 2, 3, 4, 5].forEach(function (b) { var s = $(root, '[data-bc="' + b + '"]'); if (s) s.textContent = per[b]; });
       var names = sel.c.map(function (k) { var g = S.cats()[k]; return g ? g.n : ""; }).filter(Boolean)
@@ -1006,6 +1004,7 @@
       if (!sum) return;
       sum.innerHTML = "<b>" + plural(n, "card") + "</b>" + (dueOnly && !boxes[0] && !boxes[5] ? " due now" : "") + (names.length ? " from " + names.map(function (x) { return "<b>" + esc(x) + "</b>"; }).join(", ") : "");
       go.textContent = n ? "Study these " + n.toLocaleString() : "Nothing to study";
+      var sv = $(root, "[data-savecat]"); if (sv) sv.disabled = !n;
       go.classList.toggle("disabled", !n);
       go.setAttribute("aria-disabled", n ? "false" : "true");
       go.href = url("flashcards/study/", { c: sel.c.join(","), s: sel.s.join(","), b: f.b.join(""), d: dueOnly ? 1 : 0, k: f.k.length === 4 ? "" : f.k.join("") });
@@ -1014,11 +1013,11 @@
       var list = Cats.sorted();
       return '<section class="block fc-mycats"><div class="fc-h2row"><h2>My categories</h2><button type="button" class="fc-link" data-newcat>+ New category</button></div>' +
         (list.length ? '<ul class="fc-list-rows">' + list.map(function (x) {
-          var n = x.cat.c.filter(function (id) { return c[id]; }).length;
-          return '<li><a href="' + url("flashcards/study/", { c: x.id }) + '">' + esc(x.cat.n) + '</a><span class="muted">' + plural(n, "card") +
+          var n = x.cat.c.length;
+          return '<li><a href="' + url("flashcards/study/", { c: x.id, b: ALLB }) + '">' + esc(x.cat.n) + '</a><span class="muted">' + plural(n, "card") +
             ' · <a href="' + url("flashcards/my/", { d: x.id }) + '" aria-label="Edit ' + esc(x.cat.n) + '">Edit</a></span></li>';
         }).join("") + '</ul><p class="muted fc-small">Click a name to study it.</p>'
-          : '<p class="muted">Your own labels for cards: “Region week,” “Hard ones,” anything. Add cards to them from the <b>Add to flashcards</b> button on any term, author, work or prize page, or while you study.</p>') +
+          : '<p class="muted">Your own labels for cards: “Region week,” “Hard ones,” anything. Add cards to them from the <b>Add to flashcards</b> button on any term, author, work or prize page, while you study, or save one from <b>Study something specific</b>. Cards in a category aren’t scheduled until you add them to your flashcards.</p>') +
         "</section>";
     }
 
@@ -1035,6 +1034,18 @@
         addCards(ids, "top", "daily");
         Cats.addMany(Cats.byName(topKind === "t" ? "Most-tested terms" : "Most-tested authors"), ids);
         draw(sm); return;
+      }
+      if (t.closest("[data-savecat]")) {
+        if (!matched.length) return;
+        var def = sel.c.map(function (k) { var g = S.cats()[k]; return g ? g.n : ""; }).concat(sel.s.map(function (s) { return sm.sets[s] ? sm.sets[s][0] : ""; })).filter(Boolean).join(" + ");
+        var nm = askName(def); if (!nm) return;
+        var cid = Cats.create(nm), saved = matched.slice();
+        Cats.addMany(cid, saved);
+        draw(sm);
+        var msg = $(root, "[data-savemsg]");
+        if (msg) msg.innerHTML = "Saved " + plural(saved.length, "card") + " as “" + esc(nm) + "”. They aren’t added to your boxes or waiting line. " +
+          '<a href="' + url("flashcards/my/", { d: cid }) + '">Open it</a> to study it or add the cards to your flashcards.';
+        return;
       }
       if (t.closest("[data-newcat]")) {
         var n = askName(""); if (!n) return;
@@ -1122,21 +1133,27 @@
         var gg = S.cats()[id], c = S.cards(), t = today();
         if (!gg) { location.href = BASE + "flashcards/"; return; }
         var ids = gg.c.filter(function (x) { return data[x]; }).sort(function (x, y) { return data[x][0].localeCompare(data[y][0], undefined, { sensitivity: "base" }); });
-        var due = ids.filter(function (x) { return isDue(c[x], t); }).length;
+        var due = ids.filter(function (x) { return c[x] && isDue(c[x], t); }).length;
+        var out = ids.filter(function (x) { return !c[x]; });
         lede.innerHTML = plural(ids.length, "card") + (due ? " · " + due + " due now" : "") +
           ' · <button type="button" class="fc-link" data-ren>Rename</button> · <button type="button" class="fc-link warn" data-del>Delete category</button>';
-        root.innerHTML = '<p class="fc-row"><a class="btn btn-study" href="' + url("flashcards/study/", { c: id }) + '">Study this category</a>' +
+        root.innerHTML = '<p class="fc-row"><a class="btn btn-study" href="' + url("flashcards/study/", { c: id, b: ALLB }) + '">Study this category</a>' +
           (due ? '<a class="fc-btn" href="' + url("flashcards/study/", { c: id, d: 1 }) + '">Only the ' + due + " due now</a>" : "") + "</p>" +
+          (out.length ? '<div class="fc-addall"><button type="button" class="btn btn-study btn-sm" data-catadd="end">+ Add ' + (out.length === ids.length ? (out.length === 1 ? "it" : "all " + out.length) : "the other " + out.length) +
+            " to my flashcards</button>" + '<button type="button" class="fc-btn" data-catadd="daily">Start ' + (out.length === 1 ? "it" : "them") + " today</button>" +
+            '<span class="fc-addall-note">' + plural(out.length, "card isn’t", "cards aren’t") + " in your flashcards, so " + (out.length === 1 ? "it’s" : "they’re") +
+            " practice only. Adding puts them in the waiting line; “Start today” puts them in Study daily.</span></div>" : "") +
           (ids.length ? '<ul class="fc-list-rows">' + ids.map(function (x) {
             return '<li><span><a href="' + BASE + data[x][2] + '">' + esc(data[x][0]) + '</a> <span class="muted">· ' + KIND[x[0]] + "</span></span>" +
               '<span class="muted">' + (c[x] ? (c[x][0] === 0 ? "Waiting" : BOX[c[x][0]]) : "Not in your flashcards") +
               ' <button type="button" class="fc-link" data-rm="' + esc(x) + '">Remove</button></span></li>';
           }).join("") + "</ul>"
             : '<p class="muted">This category is empty. Use <b>Add to flashcards</b> on any term, author, work or prize page, or “+ Category” while you study.</p>');
+        $$(root, "[data-catadd]").forEach(function (b) { b.addEventListener("click", function () { addCards(out, "cat:" + id, b.getAttribute("data-catadd")); draw(); }); });
         $$(root, "[data-rm]").forEach(function (b) { b.addEventListener("click", function () { Cats.set(id, b.getAttribute("data-rm"), false); draw(); }); });
         $(lede, "[data-ren]").addEventListener("click", function () { var n = askName(gg.n); if (n) { Cats.rename(id, n); h1.textContent = n; draw(); } });
         $(lede, "[data-del]").addEventListener("click", function () {
-          if (window.confirm("Delete “" + gg.n + "”? The cards stay in your flashcards.")) { Cats.remove(id); location.href = BASE + "flashcards/"; }
+          if (window.confirm("Delete “" + gg.n + "”? Only the category goes; cards in your flashcards stay there.")) { Cats.remove(id); location.href = BASE + "flashcards/"; }
         });
       }
       draw();
