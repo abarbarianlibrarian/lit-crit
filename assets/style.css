@@ -814,7 +814,6 @@ button.fc-tag:hover { background: var(--chip-hover); }
 .fc-step { display: flex; flex-direction: column; gap: 10px; }
 .fc-step-inline { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
 .fc-step-h { font-weight: 600; }
-.fc-step-sub { font-weight: 600; font-size: 14px; color: var(--ink-2); margin-top: 6px; }
 .fc-step .muted { color: var(--ink-2); }
 .fc-search { position: relative; flex: 1 1 280px; }
 .fc-step .fc-search { flex: none; }

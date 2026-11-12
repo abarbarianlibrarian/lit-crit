@@ -896,7 +896,7 @@
   function home(root) {
     intro();
     siteMeta().then(function (sm) { draw(sm); });
-    var sel = { c: [], s: [] }, boxes = { 0: false, 1: true, 2: true, 3: true, 4: false, 5: false }, dueOnly = true, kinds = { t: true, a: true, w: true, p: true };
+    var sel = { c: [], s: [] }, boxes = { 0: false, 1: true, 2: true, 3: true, 4: false, 5: false }, dueOnly = false, kinds = { t: true, a: true, w: true, p: true };
     var topKind = "t", topN = 20, matched = [];
 
     function draw(sm) {
@@ -973,10 +973,8 @@
         (chips ? '<div class="fc-chips">' + chips + "</div>" : "") +
         (quick ? '<div class="fc-chips quick"><span class="muted">Your categories:</span>' + quick + "</div>" : "") +
         '<span class="muted fc-small">Pick nothing to use all your flashcards.</span></div>' +
-        '<div class="fc-step"><span class="fc-step-h">2. Which boxes?</span><div class="fc-checks">' + bc(1) + bc(2) + bc(3) + bc(4) + "</div>" +
-        '<label class="fc-row"><input type="checkbox" data-dueonly' + (dueOnly ? " checked" : "") + "> Only cards that are due now</label>" +
-        '<span class="fc-step-sub">Outside your boxes</span><div class="fc-checks">' + bc(0, "Waiting line") + bc(5, "Not in my flashcards") + "</div>" +
-        '<span class="muted fc-small">Practice only: studying these doesn’t move them into a box. “Not in my flashcards” needs a set or category from step 1.</span></div>' +
+        '<div class="fc-step"><span class="fc-step-h">2. Which boxes?</span><div class="fc-checks">' + bc(1) + bc(2) + bc(3) + bc(4) + bc(0, "Waiting line") + bc(5, "Not in my boxes") + "</div>" +
+        '<span class="muted fc-small">Waiting line and Not in my boxes are practice only: studying them doesn’t move them into a box. Not in my boxes needs a set or category from step 1.</span></div>' +
         '<div class="fc-step fc-step-inline"><span class="fc-step-h">3. Card types</span>' + "tawp".split("").map(function (l) {
           return '<label class="fc-row"><input type="checkbox" data-kind="' + l + '"' + (kinds[l] ? " checked" : "") + "> " + KINDS[l] + "</label>";
         }).join("") + "</div>" +
@@ -1062,7 +1060,6 @@
       if (tg.hasAttribute("data-topn")) { topN = clampInt(tg.value, 1, 100, 20); draw(sm); return; }
       if (tg.hasAttribute("data-topkind")) { topKind = tg.value; draw(sm); return; }
       if (tg.hasAttribute("data-box")) { boxes[tg.getAttribute("data-box")] = tg.checked; tg.parentNode.classList.toggle("on", tg.checked); }
-      else if (tg.hasAttribute("data-dueonly")) dueOnly = tg.checked;
       else if (tg.hasAttribute("data-kind")) kinds[tg.getAttribute("data-kind")] = tg.checked;
       else return;
       recount(sm);
