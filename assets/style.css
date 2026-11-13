@@ -517,6 +517,37 @@ h2.letter .count { font: 500 14px/1 var(--sans); color: var(--ink-3); margin-lef
 @media (max-width: 640px) { .my-score { white-space: normal; flex-wrap: wrap; } }
 /* Essay prompts */
 .essay-prompt { margin: 14px 0 6px; padding: 16px 20px; background: var(--paper-2); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 19px; line-height: 1.6; }
+.my-essay { font: 400 13.5px/1.6 var(--sans); color: var(--ink-2); }
+.my-essay a { color: var(--study); font-weight: 500; }
+/* Writing an essay (essay.js) */
+.essay-write { margin: 36px 0 0; padding-top: 22px; border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
+.essay-write h2 { margin: 0 0 8px; }
+.ess-guest { font: 400 14px/1.5 var(--sans); margin: 0 0 10px; }
+.ess-prompt { margin: 0 0 12px; font: 400 14px/1.5 var(--sans); }
+.ess-prompt summary { cursor: pointer; color: var(--study); font-weight: 500; }
+.ess-prompt p { margin: 8px 0 0; padding: 10px 14px; background: var(--paper-2); border-radius: 8px; font: 400 16px/1.55 var(--serif); }
+.ess-box { border: 1px solid var(--rule); border-radius: 10px; background: var(--paper); overflow: hidden; }
+.ess-box:focus-within { border-color: var(--study); box-shadow: 0 0 0 1px var(--study); }
+.ess-bar { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; gap: 4px; padding: 6px 8px; background: var(--paper-2); border-bottom: 1px solid var(--rule); }
+.ess-tool { min-width: 36px; height: 34px; font: 400 16px/1 var(--serif); color: var(--ink); background: none; border: 1px solid transparent; border-radius: 6px; cursor: pointer; }
+.ess-tool:hover { background: var(--chip); }
+.ess-tool[aria-pressed="true"] { background: var(--study-soft); border-color: var(--study); color: var(--study); }
+.ess-tool:focus-visible { outline: 2px solid var(--study); outline-offset: 1px; }
+.ess-words { margin-left: auto; padding-right: 4px; font: 400 13px/1 var(--sans); color: var(--ink-3); }
+.ess-editor { min-height: 360px; padding: 18px 22px; font: 400 18px/1.7 var(--serif); color: var(--ink); outline: none; overflow-wrap: break-word; }
+.ess-editor p { margin: 0 0 14px; }
+.ess-editor:not([contenteditable="true"]) { min-height: 120px; }
+.essay-write:not(.ready) .ess-bar, .essay-write:not(.ready) .ess-foot { display: none; }
+.ess-editor { position: relative; }
+.ess-editor.empty::before { content: attr(data-placeholder); position: absolute; left: 22px; top: 18px; color: var(--ink-3); pointer-events: none; }
+@media (max-width: 640px) { .ess-editor.empty::before { left: 14px; top: 14px; } }
+.ess-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px; font: 400 13.5px/1.4 var(--sans); }
+.ess-status { color: var(--ink-2); }
+.ess-status[data-state="toolong"], .ess-status[data-state="full"], .ess-status[data-state="offline"] { color: var(--accent); }
+.ess-actions { display: inline-flex; align-items: center; gap: 16px; }
+.ess-actions .fc-link.warn { font-size: 13.5px; }
+@media (max-width: 640px) { .ess-editor { padding: 14px 14px; font-size: 17px; min-height: 280px; } }
+@media print { .ess-bar, .ess-foot, .ess-guest, .ess-prompt { display: none; } .ess-box { border: 0; } }
 
 /* Score report */
 .report { margin: 12px 0 18px; padding: 16px 18px 10px; border: 1px solid var(--rule); border-radius: 12px; background: var(--paper-2); }

@@ -48,8 +48,10 @@
     var tests = Object.keys(p.scores).length, answers = Object.keys(p.answers).length;
     var fc = p.fcCards && Object.keys(p.fcCards).length ? p.fcCards : p.cards || {};
     var cards = Object.keys(fc).length, cats = Object.keys((p.fcCats && Object.keys(p.fcCats).length ? p.fcCats : p.decks) || {}).length;
+    var essays = Object.keys(p.essays || {}).length;
     return answers + (answers === 1 ? " answer" : " answers") + ", " + tests + (tests === 1 ? " scored test" : " scored tests") +
-      ", " + cards + (cards === 1 ? " flashcard" : " flashcards") + " and " + cats + (cats === 1 ? " flashcard category" : " flashcard categories");
+      ", " + cards + (cards === 1 ? " flashcard" : " flashcards") + ", " + cats + (cats === 1 ? " flashcard category" : " flashcard categories") +
+      " and " + essays + (essays === 1 ? " essay" : " essays");
   }
   // ---- profile (public.profiles: role, graduation_year, school)
   function syncGrad(form) {

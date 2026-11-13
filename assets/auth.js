@@ -1,6 +1,6 @@
 /*
  * Accounts (Supabase): optional sign-in that saves practice answers, scored pages, test scores,
- * the flashcard schedule and custom flashcard decks
+ * the flashcard schedule, custom flashcard decks and essays
  * to the visitor's account, so they follow them between browsers and devices.
  *
  * Guests: nothing changes; progress stays in this browser (localStorage), and the Supabase library
@@ -16,7 +16,8 @@
   var cfg = window.LITCRIT_AUTH || {};
   var KEYS = { answers: "litcrit-answers-v1", scored: "litcrit-scored-v1", scores: "litcrit-test-scores-v1",
                cards: "litcrit-cards-v1", decks: "litcrit-decks-v1", quiz: "litcrit-quiz-v1", last: "litcrit-last-v1",
-               fcCards: "litcrit-fc-cards-v2", fcCats: "litcrit-fc-cats-v2", fcMeta: "litcrit-fc-meta-v2" };
+               fcCards: "litcrit-fc-cards-v2", fcCats: "litcrit-fc-cats-v2", fcMeta: "litcrit-fc-meta-v2",
+               essays: "litcrit-essays-v1" };
   var META = "litcrit-sync-v1";          // {uid, dirty}: whose progress this browser holds, and unsaved changes
   var SESSION = "litcrit-auth";          // where the Supabase library keeps the session
   var BASE = window.SITE_BASE || "/";
@@ -38,9 +39,14 @@
     Object.keys(KEYS).forEach(function (k) { put(KEYS[k], JSON.stringify((d && d[k]) || {})); });
   }
   function isEmpty(d) { return Object.keys(KEYS).every(function (k) { return !Object.keys(d[k] || {}).length; }); }
-  function merge(remote, local) {     // local wins where both have an entry
+  function merge(remote, local) {     // local wins where both have an entry (essays: the newer draft wins)
     var out = {};
     Object.keys(KEYS).forEach(function (k) { out[k] = Object.assign({}, (remote && remote[k]) || {}, local[k] || {}); });
+    var re = (remote && remote.essays) || {};
+    Object.keys(re).forEach(function (id) {
+      var l = (local.essays || {})[id];
+      if (l && (re[id].updated || 0) > (l.updated || 0)) out.essays[id] = re[id];
+    });
     return out;
   }
 
@@ -128,6 +134,7 @@
   function setStatus(s) {
     var el = document.querySelector("[data-acct-status]");
     if (el) { el.textContent = statusText[s] || ""; el.setAttribute("data-state", s); }
+    try { window.dispatchEvent(new CustomEvent("litcrit-sync", { detail: s })); } catch (e) {}
   }
   function drawHeader(user) {
     var a = document.querySelector("[data-acct]");

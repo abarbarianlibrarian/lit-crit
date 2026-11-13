@@ -2115,8 +2115,30 @@ def essay_page(db, rel, x):
 """
     for pid in poems:
         body += passage_html(db, rel, pid, True)
+    body += essay_editor(x)
     desc = (x["prompt"] or x["title"])[:250]
-    write(f"essays/{x['slug']}/index.html", page(f"{x['title']} essay prompt", body, "essays", desc, f"essays/{x['slug']}/"))
+    write(f"essays/{x['slug']}/index.html", page(f"{x['title']} essay prompt", body, "essays", desc, f"essays/{x['slug']}/",
+                                                 extra_head=f'<script src="{BASE}assets/essay.js?v={BUILD_ID}" defer></script>'))
+
+
+def essay_editor(x):
+    """The student's essay for this prompt (assets/essay.js); saved in the browser and, signed in, to their account."""
+    tools = "".join(f'<button type="button" class="ess-tool" data-cmd="{c}" aria-pressed="false" title="{t} ({k})">{g}</button>'
+                    for c, t, k, g in (("bold", "Bold", "Ctrl+B", "<b>B</b>"), ("italic", "Italic", "Ctrl+I", "<i>I</i>"),
+                                       ("underline", "Underline", "Ctrl+U", "<u>U</u>")))
+    return f"""<section class="essay-write" id="my-essay" data-essay="{x['id']}" data-title="{e(x['title'], quote=True)}">
+<h2>Your essay</h2>
+<p class="ess-guest muted" data-essay-guest hidden><a href="{BASE}account/?next={BASE}essays/{x['slug']}/%23my-essay">Sign in</a> to save your essays to your account and see them on any device. Without signing in, this essay stays in this browser only.</p>
+<details class="ess-prompt"><summary>Show the prompt</summary><p>{multiline(x['prompt'])}</p></details>
+<div class="ess-box">
+<div class="ess-bar" role="toolbar" aria-label="Formatting">{tools}<span class="ess-words" data-essay-words aria-live="off"></span></div>
+<div class="ess-editor" data-essay-editor role="textbox" aria-multiline="true" aria-label="Your essay" spellcheck="true" data-placeholder="Start writing your essay here…"></div>
+</div>
+<div class="ess-foot"><span class="ess-status" data-essay-status aria-live="polite"></span>
+<span class="ess-actions"><button type="button" class="fc-btn small" data-essay-copy>Copy text</button><button type="button" class="fc-link warn" data-essay-clear>Delete essay</button></span></div>
+<noscript><p class="muted">Writing an essay here needs JavaScript turned on.</p></noscript>
+</section>
+"""
 
 
 def essays_index(db, rel):
@@ -2141,7 +2163,8 @@ def essays_index(db, rel):
            "range": {"key": "year", "label": "Year"},
            "sorts": [{"label": "Newest first", "keys": ["-year", "contest"]}, {"label": "Oldest first", "keys": ["year", "contest"]},
                      {"label": "Contest", "keys": ["contest", "-year"]}]}
-    catalog_page("essays", "Essay prompts", f"{len(rows)} essay prompts from the released tests, each with its text.", rows, cfg)
+    catalog_page("essays", "Essay prompts", f"{len(rows)} essay prompts from the released tests, each with its text. Open one to write your essay.", rows, cfg,
+                 extra='<div class="my-progress" data-my-progress hidden></div>', script="essay-drafts.js")
 
 
 def reading_lists_index(db):
