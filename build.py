@@ -975,6 +975,7 @@ def page(title, body, active=None, description="", path="", extra_head=""):
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{BASE}assets/style.css?v={BUILD_ID}">
 <link rel="icon" href="{BASE}assets/icon.svg" type="image/svg+xml">
+<script>try{{var t=localStorage.getItem("litcrit-theme-v1");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}}catch(e){{}}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){{dataLayer.push(arguments);}} gtag('js', new Date()); gtag('config', '{GA_ID}');</script>
 {extra_head}
@@ -988,6 +989,7 @@ def page(title, body, active=None, description="", path="", extra_head=""):
       <div class="results" hidden data-results></div>
     </form>
     <a class="acct-link" href="{BASE}account/" data-acct hidden>Sign in</a>
+    <button type="button" class="theme-btn" data-theme-toggle aria-label="Color theme: match device" title="Color theme: match device"><svg class="ti ti-auto" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" class="fill"/></svg><svg class="ti ti-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg><svg class="ti ti-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
   </div>
   <nav class="wrap nav" aria-label="Main">{nav}</nav>
 </header>
@@ -998,6 +1000,7 @@ def page(title, body, active=None, description="", path="", extra_head=""):
 <script>window.SITE_BASE = "{BASE}"; window.LITCRIT_AUTH = {json.dumps({"url": SUPABASE_URL, "key": SUPABASE_KEY, "lib": SUPABASE_LIB})};</script>
 <script src="{BASE}assets/auth.js?v={BUILD_ID}"></script>
 <script src="{BASE}assets/nav.js?v={BUILD_ID}" defer></script>
+<script src="{BASE}assets/theme.js?v={BUILD_ID}" defer></script>
 <script src="{BASE}assets/search.js?v={BUILD_ID}" defer></script>
 <script src="{BASE}assets/quiz.js?v={BUILD_ID}" defer></script>
 <script src="{BASE}assets/flag.js?v={BUILD_ID}" defer></script>
