@@ -11,9 +11,14 @@
  * clears the answers: the clock keeps running and the attempt goes on (the attempt counts its clears).
  * Running out of time doesn't end the attempt: it stays open, locked, until it is scored or stopped.
  *
+ * Essay (Part 4): when the test has an essay prompt, the start screen offers "Include the essay". As at the
+ * contest, the essay must be finished within the same 90 minutes (ESSAY_EXTRA = 0). The essay section ([data-mock-essay]) appears after the questions with the editor from
+ * essay.js, saved per attempt in litcrit-mock-essays-v1 under the attempt's ID. It locks with the answers when
+ * time runs out, and when the attempt ends.
+ *
  * Storage (synced to the student's account by auth.js):
  *   litcrit-mock-v1           { "/tests/<slug>/": {id, n, start, dur, warnSeen} }   the clock running on each test
- *   litcrit-mock-attempts-v1  { "<path>@<start>": {p, n, start, end, dur, used, how, answered, total, timeUp, clears, score, points} }
+ *   litcrit-mock-attempts-v1  { "<path>@<start>": {id, p, n, start, end, dur, used, how, answered, total, timeUp, clears, score, points, essay, essayWords} }
  *     how: "running" | "scored" | "stopped" ("cleared" on attempts saved before Nov 13, 2026)
  *
  * /study/mock/ (the chooser, [data-mock-pick]): pick a test, or let the site pick one not yet tried.
@@ -26,6 +31,7 @@ function litcritMock(fn) {
 litcritMock(function () {
   var KEY = "litcrit-mock-v1", ATT = "litcrit-mock-attempts-v1", SCORES = "litcrit-test-scores-v1";
   var DUR = 90 * 60 * 1000, WARN = 15 * 60 * 1000;
+  var ESSAY_EXTRA = 0;                // the essay gets no extra time: it is written within the same 90 minutes
   function load(key) { try { return JSON.parse(localStorage.getItem(key)) || {}; } catch (e) { return {}; } }
   function store(key, v) { try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) {} }
   function clock(ms) {
@@ -33,9 +39,9 @@ litcritMock(function () {
     return (h ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (r < 10 ? "0" : "") + r;
   }
   function words(ms) {
-    var m = Math.round(ms / 60000);
-    return m >= 60 ? "1 hour" + (m > 60 ? " " + (m - 60) + " minute" + (m - 60 === 1 ? "" : "s") : "")
-                   : m + " minute" + (m === 1 ? "" : "s");
+    var m = Math.round(ms / 60000), h = Math.floor(m / 60), r = m % 60;
+    var hs = h ? h + " hour" + (h === 1 ? "" : "s") : "", rs = r ? r + " minute" + (r === 1 ? "" : "s") : "";
+    return [hs, rs].filter(Boolean).join(" ") || "0 minutes";
   }
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function attemptsFor(path) {
@@ -80,10 +86,28 @@ litcritMock(function () {
   var params = new URLSearchParams(location.search);
   var s = load(KEY)[path] || null;
   var tick = null, warned = false, clockEl = null, noteEl = null, startBox = null, starting = false;
+  var essayBox = document.querySelector("[data-mock-essay]"), essayEd = null;
+
+  // Show this attempt's essay editor (each attempt has its own essay).
+  function showEssay(id) {
+    if (!essayBox || !window.litcritEssaySetup) return;
+    var root = essayBox.querySelector("[data-essay]");
+    if (essayEd && root.getAttribute("data-essay") === id) { essayBox.hidden = false; return; }
+    if (essayEd) {   // a new attempt: start from a fresh copy of the editor
+      var fresh = root.cloneNode(true);
+      fresh.classList.remove("ready", "locked");
+      fresh.querySelector("[data-essay-editor]").innerHTML = "";
+      root.replaceWith(fresh); root = fresh;
+    }
+    root.setAttribute("data-essay", id);
+    essayEd = window.litcritEssaySetup(root);
+    essayBox.hidden = false;
+  }
+  function lockEssay(on) { if (essayEd) essayEd.lock(on); }
 
   function saveSession() { var all = load(KEY); if (s) all[path] = s; else delete all[path]; store(KEY, all); }
   function attempt() { return s ? load(ATT)[s.id] : null; }
-  function saveAttempt(a) { var all = load(ATT); all[a.p + "@" + a.start] = a; store(ATT, all); }
+  function saveAttempt(a) { var all = load(ATT); all[a.id || a.p + "@" + a.start] = a; store(ATT, all); }
   function left() { return s.start + s.dur - Date.now(); }
   function counts() {
     return { answered: quiz.querySelectorAll(".q:not([data-auto]).answered").length,
@@ -107,6 +131,7 @@ litcritMock(function () {
       a.answered = answered == null ? c.answered : answered;
       a.total = c.total;
       if (left() <= 0) a.timeUp = true;
+      if (a.essay && essayEd) a.essayWords = essayEd.words();
       if (how === "scored") {
         var sc = load(SCORES)[path];
         if (sc) { a.score = sc.score; a.points = sc.total; }
@@ -118,6 +143,7 @@ litcritMock(function () {
     if (clockEl) { clockEl.remove(); clockEl = null; }
     document.body.classList.remove("mock-on");
     quiz.classList.remove("mock-locked");
+    lockEssay(true);            // the essay stays on the page to read, but the attempt is over
     return a;
   }
 
@@ -143,6 +169,7 @@ litcritMock(function () {
     clockEl.className = "mock-clock";
     clockEl.innerHTML = '<span class="mc-label">Attempt ' + s.n + '</span> <strong class="mc-time" data-mc-time>' + clock(left()) +
       '</strong> <span class="mc-sub" data-mc-sub>left</span>' +
+      (s.essay ? '<a class="mc-stop" href="#mock-essay">Essay</a>' : "") +
       '<button type="button" class="mc-stop" data-mc-stop>Stop</button>' +
       '<span class="sr-only" aria-live="assertive" data-mc-live></span>';
     document.body.appendChild(clockEl);
@@ -188,8 +215,10 @@ litcritMock(function () {
     clockEl.querySelector("[data-mc-stop]").textContent = "Close";
     clockEl.querySelector("[data-mc-live]").textContent = "Time’s up. Your answers are locked.";
     quiz.classList.add("mock-locked");
+    lockEssay(true);
     var c = counts();
-    note("<strong>Time’s up.</strong> Pencils down: your answers are locked. You answered " + c.answered + " of " + c.total +
+    note("<strong>Time’s up.</strong> Pencils down: your answers" + (s.essay ? " and essay are" : " are") + " locked. You answered " + c.answered + " of " + c.total +
+         (s.essay && essayEd ? " and wrote " + essayEd.words() + " words" : "") +
          ". Press <b>Score test</b> in the score bar to see how you did.", "over");
   }
 
@@ -199,7 +228,8 @@ litcritMock(function () {
     var a = closeAttempt("scored");
     if (!a) return;
     note("<strong>Attempt " + a.n + " finished</strong> in " + clock(a.used) +
-         (a.used < a.dur ? ", with " + words(a.dur - a.used) + " to spare." : ", using the full 90 minutes.") +
+         (a.used < a.dur ? ", with " + words(a.dur - a.used) + " to spare." : ", using the full " + words(a.dur) + ".") +
+         (a.essay ? " Your essay (" + (a.essayWords || 0) + " words) is saved with this attempt." : "") +
          ' <a href="?mock=1" data-mock-again>Start a new attempt</a>', "done");
   }).observe(quiz, { attributes: true, attributeFilter: ["class"] });
 
@@ -212,6 +242,7 @@ litcritMock(function () {
 
   function run() {
     dropParam();
+    if (s.essay) showEssay(s.id);
     warned = left() <= WARN && !!s.warnSeen;
     render();
     if (left() > 0) tick = setInterval(render, 1000);
@@ -228,6 +259,7 @@ litcritMock(function () {
         : a.how === "cleared" ? "answers cleared after " + after + " (" + (a.answered || 0) + " answered)"
         : a.how === "stopped" ? "stopped after " + after + " (" + (a.answered || 0) + " answered)"
         : "in progress";
+      if (a.essay) what += " · essay" + (a.how === "running" ? "" : ": " + (a.essayWords || 0) + " words");
       if (a.clears) what += " · answers cleared " + (a.clears === 1 ? "once" : a.clears + " times");
       return "<li>Attempt " + a.n + " · " + when + " · " + what + "</li>";
     }).join("");
@@ -245,11 +277,14 @@ litcritMock(function () {
     startBox.innerHTML = '<p class="eyebrow-sm">Timed mock test' + (n > 1 ? " · attempt " + n : "") + "</p>" +
       '<h2 id="mock-start-h">' + esc(title) + "</h2>" +
       '<ul class="mock-rules">' +
-      "<li><b>90 minutes</b> for all " + c.total + " questions, like the real contest’s objective parts. The essay isn’t included.</li>" +
+      "<li><b>90 minutes</b> for all " + c.total + " questions" + (essayBox ? "" : ", like the real contest’s objective parts") + ".</li>" +
       "<li>A warning appears with <b>15 minutes left</b>.</li>" +
       "<li>No answers are shown until you score the test. At 0:00 your answers lock.</li>" +
       "<li>The clock keeps running if you leave or reload the page, so set aside the full time.</li>" +
       "<li>Each time you start the clock is a new attempt. Clearing your answers doesn’t stop the clock.</li></ul>" +
+      (essayBox ? '<label class="mock-opt"><input type="checkbox" data-mock-withessay> <span><b>Include the essay</b> (Part 4). ' +
+        "As at the contest, it gets no extra time: finish the questions and the essay within the 90 minutes. " +
+        "The prompt and text appear after the questions.</span></label>" : "") +
       historyHtml(past) +
       ((c.answered || scored) ? '<p class="mock-clear">You’ve already answered ' + c.answered + " question" + (c.answered === 1 ? "" : "s") +
         " on this test" + (scored ? " and scored it" : "") + ". Starting clears " + (c.answered === 1 ? "that answer" : "those answers") +
@@ -271,9 +306,12 @@ litcritMock(function () {
       starting = false;
       note("");
       var now = Date.now(), num = attemptsFor(path).length + 1;
-      s = { id: path + "@" + now, n: num, start: now, dur: DUR };
+      var cb = startBox.querySelector("[data-mock-withessay]"), withEssay = !!(cb && cb.checked);
+      var dur = DUR + (withEssay ? ESSAY_EXTRA : 0);
+      s = { id: path + "@" + now, n: num, start: now, dur: dur, essay: withEssay ? 1 : 0 };
       saveSession();
-      saveAttempt({ p: path, n: num, start: now, dur: DUR, how: "running", total: counts().total });
+      saveAttempt({ id: s.id, p: path, n: num, start: now, dur: dur, how: "running", total: counts().total, essay: withEssay ? 1 : 0 });
+      if (!withEssay && essayBox) essayBox.hidden = true;
       startBox.remove(); startBox = null;
       document.body.classList.remove("mock-waiting");
       quiz.scrollIntoView({ block: "start" });

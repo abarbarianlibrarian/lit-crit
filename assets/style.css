@@ -1362,3 +1362,13 @@ body.mock-on .foot { padding-bottom: 70px; }
 .tile-streak .fc-flame { width: 44px; height: 44px; }
 .tile-streak .fc-streak-n b { font-size: 32px; }
 .tile-streak .fc-week { grid-column: 1 / -1; justify-content: space-between; }
+
+/* Timed mock test: Part 4 essay */
+body.mock-waiting .mock-essay { display: none; }
+.mock-essay { margin-top: 34px; padding-top: 6px; border-top: 2px solid var(--study-soft); }
+.mock-essay .essay-write h2 { font-size: 20px; }
+.mock-opt { display: flex; gap: 10px; align-items: flex-start; margin: 0 0 12px; padding: 10px 12px; border-radius: 8px; background: var(--paper); border: 1px solid var(--rule); font-size: 14.5px; line-height: 1.45; cursor: pointer; }
+.mock-opt input { width: 18px; height: 18px; margin-top: 1px; accent-color: var(--study-btn); flex: none; }
+.essay-write.locked .ess-editor { opacity: .75; cursor: not-allowed; }
+.essay-write.locked .ess-bar button { pointer-events: none; opacity: .4; }
+a.mc-stop { text-decoration: none; }

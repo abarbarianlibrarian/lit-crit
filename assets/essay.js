@@ -7,12 +7,12 @@
  * so signed-in students get their essays on any device. Guests keep them in this browser.
  *
  * Only simple formatting is kept: paragraphs, line breaks, bold, italic, underline.
+ * window.litcritEssaySetup(root) sets up one editor and returns {lock(on), words(), flush()}.
  */
-(window.litcritReady || Promise.resolve()).then(function () {
-  var KEY = "litcrit-essays-v1";
+function litcritEssaySetup(root) {
+  // data-essay-store: another localStorage key (mock test essays use "litcrit-mock-essays-v1", one per attempt).
+  var KEY = root.getAttribute("data-essay-store") || "litcrit-essays-v1";
   var MAX = 100000;                  // characters of stored HTML per essay (a long essay is ~20,000)
-  var root = document.querySelector("[data-essay]");
-  if (!root) return;
   var id = root.getAttribute("data-essay");
   var ed = root.querySelector("[data-essay-editor]");
   var wordsEl = root.querySelector("[data-essay-words]");
@@ -203,4 +203,11 @@
     ed.innerHTML = d && d.html ? clean(d.html) : "<p><br></p>";
     savedAt = d ? d.updated : null; drawStatus();
   });
+  return { lock: function (on) { save(); ed.contentEditable = on ? "false" : "true"; root.classList.toggle("locked", !!on); },
+           words: countWords, flush: save };
+}
+window.litcritEssaySetup = litcritEssaySetup;
+// Essay prompt pages: set up the editor once saved progress has loaded. Mock test essays ([data-essay-lazy]) are set up by mock.js.
+(window.litcritReady || Promise.resolve()).then(function () {
+  document.querySelectorAll("[data-essay]:not([data-essay-lazy])").forEach(litcritEssaySetup);
 });

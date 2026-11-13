@@ -1416,6 +1416,9 @@ def test_page(db, rel, t):
         heading = f'<h2 class="letter">{e(part)}{note}</h2>' if part else ""
         body += heading + test_part_html(db, rel, parts[part], shown_passages)
     body += "</div>"
+    essay = next((x for x in db["essays"].values() if essay_test(db, x) is t), None)
+    if essay and qids:
+        body += mock_essay_html(db, rel, essay)
     if total != 100 and qids:
         print(f"  note: {t['title']} totals {total} points ({len(qids)} questions)", flush=True)
     write(f"tests/{t['slug']}/index.html", page(t["title"], body, "tests", f"{len(qids)} practice questions from the {t['title']} test", f"tests/{t['slug']}/",
@@ -1423,6 +1426,24 @@ def test_page(db, rel, t):
 
 
 MOCK_SCRIPT = ""   # set in main() once BUILD_ID exists
+
+
+def mock_essay_html(db, rel, x):
+    """Part 4 of a timed mock test: the test's essay prompt and its text, hidden until a mock test includes it."""
+    texts = ""
+    for pid in [p for p in x["poems"] if p in db["poems"]]:
+        p = db["poems"][pid]
+        authors = rel[("poems", pid)].get("authors", [])
+        by = ", ".join(e(db["authors"][a]["title"]) for a in authors)
+        texts += (f'<div class="passage"><p class="passage-label">Text</p><h3 class="passage-title">{e(p["title"])}</h3>'
+                  + (f'<p class="passage-by">by {by}</p>' if by else "")
+                  + (f'<div class="poem">{multiline(p["text"])}</div>' if p["text"] else "") + "</div>")
+    return f"""<section class="mock-essay" id="mock-essay" data-mock-essay hidden>
+<h2 class="letter">Part 4: Essay</h2>
+<blockquote class="essay-prompt">{multiline(x['prompt'])}</blockquote>
+{texts}
+{essay_editor(x, mock=True)}
+</section>"""
 
 
 def mock_page(db, rel):
@@ -2163,15 +2184,19 @@ def essay_page(db, rel, x):
                                                  extra_head=f'<script src="{BASE}assets/essay.js?v={BUILD_ID}" defer></script>'))
 
 
-def essay_editor(x):
-    """The student's essay for this prompt (assets/essay.js); saved in the browser and, signed in, to their account."""
+def essay_editor(x, mock=False):
+    """The student's essay for this prompt (assets/essay.js); saved in the browser and, signed in, to their account.
+    mock=True: the timed mock test's essay on a test page; mock.js gives it each attempt's own ID and storage."""
     tools = "".join(f'<button type="button" class="ess-tool" data-cmd="{c}" aria-pressed="false" title="{t} ({k})">{g}</button>'
                     for c, t, k, g in (("bold", "Bold", "Ctrl+B", "<b>B</b>"), ("italic", "Italic", "Ctrl+I", "<i>I</i>"),
                                        ("underline", "Underline", "Ctrl+U", "<u>U</u>")))
-    return f"""<section class="essay-write" id="my-essay" data-essay="{x['id']}" data-title="{e(x['title'], quote=True)}">
+    attrs = (f'id="mock-essay-editor" data-essay="" data-essay-lazy data-essay-store="litcrit-mock-essays-v1"' if mock
+             else f'id="my-essay" data-essay="{x["id"]}"')
+    back = "%23mock-essay" if mock else f"essays/{x['slug']}/%23my-essay"
+    return f"""<section class="essay-write" {attrs} data-title="{e(x['title'], quote=True)}">
 <h2>Your essay</h2>
-<p class="ess-guest muted" data-essay-guest hidden><a href="{BASE}account/?next={BASE}essays/{x['slug']}/%23my-essay">Sign in</a> to save your essays to your account and see them on any device. Without signing in, this essay stays in this browser only.</p>
-<details class="ess-prompt"><summary>Show the prompt</summary><p>{multiline(x['prompt'])}</p></details>
+<p class="ess-guest muted" data-essay-guest hidden><a href="{BASE}account/?next={'' if mock else BASE}{back}">Sign in</a> to save your essays to your account and see them on any device. Without signing in, this essay stays in this browser only.</p>
+{'' if mock else f'<details class="ess-prompt"><summary>Show the prompt</summary><p>{multiline(x["prompt"])}</p></details>'}
 <div class="ess-box">
 <div class="ess-bar" role="toolbar" aria-label="Formatting">{tools}<span class="ess-words" data-essay-words aria-live="off"></span></div>
 <div class="ess-editor" data-essay-editor role="textbox" aria-multiline="true" aria-label="Your essay" spellcheck="true" data-placeholder="Start writing your essay here…"></div>
@@ -3320,7 +3345,8 @@ BUILD_ID = str(int(time.time()))
 
 def main():
     global MOCK_SCRIPT
-    MOCK_SCRIPT = f'<script src="{BASE}assets/mock.js?v={BUILD_ID}" defer></script>'
+    MOCK_SCRIPT = (f'<script src="{BASE}assets/essay.js?v={BUILD_ID}" defer></script>'
+                   f'<script src="{BASE}assets/mock.js?v={BUILD_ID}" defer></script>')
     ap = argparse.ArgumentParser()
     ap.add_argument("--fixtures")
     ap.add_argument("--save-data")
