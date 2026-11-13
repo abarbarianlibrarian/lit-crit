@@ -5,6 +5,7 @@
  * Filters: part, topic (set, period, reading list, or a term, author, work or poem passed in the
  * address as ?term=, ?author=, ?work=, ?poem=, ?set=, ?period=, ?list=), test years, number of
  * questions, and "only ones I missed before". A topic in the address starts a quiz right away.
+ * Questions repeated across tests appear once (merge_repeats in build.py; q.d, q.o list the copies).
  * A set topic uses only questions whose correct answer is one of the set's terms (q.ta,
  * from answer_terms in build.py), not every question that mentions one.
  *
@@ -89,9 +90,14 @@
         if (kind === "period" && !any(authorsOf(q), authors)) return false;
         if (kind === "list" && !any(q.w, works) && !any(authorsOf(q), authors)) return false;
         if (missed) {
-          if (!missed[q.i]) return false;
-          // Answered on a scored test (and not tried in a quick quiz since): missed only if wrong there.
-          if (missed[q.i] === "t" && q.a.indexOf(answers[q.i]) >= 0) return false;
+          // A repeated question counts as missed if any copy of it was missed ("d" = the other copies' ids).
+          var ids = [q.i].concat(q.d || []), hit = false;
+          for (var k = 0; k < ids.length && !hit; k++) {
+            var m = missed[ids[k]];
+            // Answered on a scored test (and not tried in a quick quiz since): missed only if wrong there.
+            if (m === 1 || (m === "t" && q.a.indexOf(answers[ids[k]]) < 0)) hit = true;
+          }
+          if (!hit) return false;
         }
         return true;
       };
@@ -121,7 +127,12 @@
 
     function sourceHtml(q) {
       var t = bank.tests[q.t];
-      return 'From the <a href="' + esc(t[1]) + "#q-" + q.i + '">' + esc(t[0]) + "</a>" + (q.n ? ", question " + esc(q.n) : "") + ".";
+      var also = (q.o || []).map(function (o) {
+        var u = bank.tests[o[0]];
+        return '<a href="' + esc(u[1]) + '">' + esc(u[0]) + "</a>" + (o[1] ? " #" + esc(o[1]) : "");
+      });
+      return 'From the <a href="' + esc(t[1]) + "#q-" + q.i + '">' + esc(t[0]) + "</a>" + (q.n ? ", question " + esc(q.n) : "") + "." +
+        (also.length ? " Also on " + also.join(", ") + "." : "");
     }
     function linksHtml(q) {
       var parts = [];

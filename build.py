@@ -3001,6 +3001,32 @@ def period_authors(db):
     return out
 
 
+
+def merge_repeats(qs):
+    """The same question often appears on several tests. Keep one copy (the newest test's, since
+    qs is sorted newest test first) and list the others: "d" = their question ids (so answers
+    and misses on any copy count), "o" = [test index, question number] for "Also on ...".
+    Copies match when the prompt, the correct answer's text and the linked poem or passage are
+    the same, ignoring case, punctuation and accents."""
+    def norm(s):
+        return re.sub(r"[^a-z0-9]+", " ", fold(re.sub(r"<[^>]+>", "", s or ""))).strip()
+    keep, by_key = [], {}
+    for x in qs:
+        ch = dict(zip(x["l"], x["c"]))
+        # The poem or passage is part of the match, so a generic prompt ("The poem's basic metrical
+        # pattern is") on two different poems stays two questions.
+        key = (norm(x["q"]), tuple(sorted(norm(ch.get(a, "")) for a in x["a"])), tuple(sorted(x["po"])))
+        first = by_key.get(key)
+        if first is None:
+            by_key[key] = x
+            keep.append(x)
+            continue
+        first.setdefault("d", []).append(x["i"])
+        first.setdefault("o", []).append([x["t"], x["n"]])
+        for k in ("tm", "ta", "au", "w", "po"):
+            first[k] = list(dict.fromkeys(first[k] + x[k]))
+    return keep
+
 SET_QUIZ_MIN = 10  # fewest qualifying questions for a set to be offered as a quiz topic
 ANSWER_LEAD = re.compile(r"^(?:the|an?|a\(n\)|an?\(n\)|both|either)\s+", re.I)
 
@@ -3052,6 +3078,7 @@ def quiz_bank(db, rel):
         used["terms"].update(q["terms"]); used["authors"].update(q["authors"])
         used["works"].update(works); used["poems"].update(q["poems"])
     qs.sort(key=lambda x: (x["t"], int(x["n"] or 0)))
+    qs = merge_repeats(qs)
     poems = {}
     for pid in used["poems"]:
         p = db["poems"].get(pid)
