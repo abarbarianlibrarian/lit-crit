@@ -217,6 +217,7 @@
     forget(ids);
     update(quiz);
     if (load(LAST).p === location.pathname) saveLast(quiz);
+    quiz.dispatchEvent(new CustomEvent("litcrit:cleared", { detail: { answered: ids.length } }));   // mock.js
   }
 
   // ---- start up
@@ -224,6 +225,7 @@
   quizzes.forEach(function (quiz, i) {
     if (quiz.hasAttribute("data-instant")) return;   // instant questions: nothing to restore
     quiz.setAttribute("data-key", quizKey(quiz, i));
+    quiz.litcritClear = function () { clearQuiz(quiz); };   // used by mock.js to start a timed test fresh
     quiz.querySelectorAll(".q:not([data-auto])").forEach(function (q) {
       var letter = saved[q.getAttribute("data-qid")];
       if (letter && q.querySelector('.choice[data-letter="' + letter + '"]')) select(q, letter, true);

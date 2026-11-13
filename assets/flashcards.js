@@ -1413,10 +1413,11 @@
     var big = document.querySelector("[data-fc-big]"); if (!big) return;
     var c = S.cards(), m = S.meta(), p = plan(c, m, today()), n = p.today.length, sub = document.querySelector("[data-fc-sub]"), go = document.querySelector("[data-fc-go]");
     if (!Object.keys(c).length) return;
-    if (m.paused != null) { big.textContent = "Paused"; sub.textContent = "Your flashcards are paused for the off-season."; go.textContent = "Open flashcards"; return; }
+    var slot = document.querySelector("[data-fc-streak]");
+    if (slot) { slot.innerHTML = streakBadge(m); slot.hidden = false; }   // the streak, with the flame and this week's days
+    if (m.paused != null) { big.textContent = "Paused"; sub.textContent = "Your flashcards and streak are paused for the off-season."; go.textContent = "Open flashcards"; return; }
     big.textContent = plural(n, "card");
-    var s = curStreak(m);
-    sub.textContent = (n ? "Your daily cards plus today’s share of weekly and monthly." : "All done for today.") + (s ? " " + s + "-day streak." : "");
+    sub.textContent = n ? "Your daily cards plus today’s share of weekly and monthly." : "All done for today.";
     go.textContent = n ? "Start studying" : "Open flashcards";
     go.href = n ? url("flashcards/review/") : BASE + "flashcards/";
   }

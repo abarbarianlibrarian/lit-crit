@@ -1401,7 +1401,7 @@ def test_page(db, rel, t):
     body = f"""{crumbs('tests', 'Tests')}
 <article class="record">
 <h1 data-record="{t['id']}">{e(t['title'])}</h1>
-<p class="lede">{len(qids)} question{'s' if len(qids) != 1 else ''}. Choose an answer for each one, then press “Score test” in the score bar.</p>
+<p class="lede">{len(qids)} question{'s' if len(qids) != 1 else ''}. Choose an answer for each one, then press “Score test” in the score bar.{f' <a class="mock-link" href="?mock=1">Take it as a timed mock test →</a>' if qids else ''}</p>
 {facts([('Year', e(t['year'])), ('Contest', e(t['type'])), ('Passage', e(t['passage']))])}
 </article>
 {section('Poems and passages on this test', chips(db, 'poems', poems, sort=False))}
@@ -1418,7 +1418,46 @@ def test_page(db, rel, t):
     body += "</div>"
     if total != 100 and qids:
         print(f"  note: {t['title']} totals {total} points ({len(qids)} questions)", flush=True)
-    write(f"tests/{t['slug']}/index.html", page(t["title"], body, "tests", f"{len(qids)} practice questions from the {t['title']} test", f"tests/{t['slug']}/"))
+    write(f"tests/{t['slug']}/index.html", page(t["title"], body, "tests", f"{len(qids)} practice questions from the {t['title']} test", f"tests/{t['slug']}/",
+                                                extra_head=MOCK_SCRIPT))
+
+
+MOCK_SCRIPT = ""   # set in main() once BUILD_ID exists
+
+
+def mock_page(db, rel):
+    """/study/mock/: choose a released test to take as a timed 90-minute mock test (assets/mock.js)."""
+    by_year = defaultdict(list)
+    full = total_tests = 0
+    for t in sorted(db["tests"].values(), key=test_sort):
+        qids = [q for q in rel[("tests", t["id"])].get("questions", []) if q in db["questions"]]
+        if not qids:
+            continue
+        pts = sum(question_points(db["questions"][q]) for q in qids)
+        is_full = pts == 100
+        full += is_full
+        total_tests += 1
+        label = f"{t['title']} · {len(qids)} questions" + ("" if is_full else f" · {pts} points (not a full test)")
+        by_year[years_of(t["year"], t["title"]) or 0].append(
+            f'<option value="{t["url"]}"{" data-full" if is_full else ""}>{e(label)}</option>')
+    opts = "".join(f'<optgroup label="{y or "Other"}">{"".join(v)}</optgroup>'
+                   for y, v in sorted(by_year.items(), key=lambda kv: -kv[0]))
+    body = f"""<p class="eyebrow">Study</p>
+<h1>Timed mock test</h1>
+<p class="lede">Take a released test under contest conditions: 90 minutes, a warning at 15 minutes left, and no answers until you score it.</p>
+<form class="mock-pick" data-mock-pick onsubmit="return false">
+  <label for="mock-test">Choose a test</label>
+  <select id="mock-test"><option value="">Choose a test…</option>{opts}</select>
+  <div class="mock-actions">
+    <a class="btn btn-study disabled" href="#" data-mock-go>Go to the start screen →</a>
+    <button type="button" class="mock-random" data-mock-random>Pick one I haven’t scored</button>
+  </div>
+</form>
+<p class="muted">The clock starts only when you press “Start the clock” on the next screen. Any test page also has a “Take it as a timed mock test” link.{'' if full == total_tests else f' “Pick one” chooses only from the {full} full 100-point tests.'}</p>
+"""
+    write("study/mock/index.html", page("Timed mock test", body, "study",
+                                        "Take a released UIL Literary Criticism test as a timed 90-minute mock test.",
+                                        "study/mock/", extra_head=MOCK_SCRIPT))
 
 
 def poem_page(db, rel, p):
@@ -2781,6 +2820,7 @@ def build_nav_menus(db):
         '<div>' + mi("study/", "Study home", "Countdown, cards due, your scores")
         + mi("tests/", "Practice tests", f"{len(db['tests'])} released tests, scored out of 100")
         + mi("study/quiz/", "Quick quiz", "10 questions by part or topic")
+        + mi("study/mock/", "Timed mock test", "A released test in 90 minutes")
         + mi("essays/", "Essay prompts", "Past prompts with the full poem") + '</div>'
         + '<div>' + mi("flashcards/", "Flashcards", "Terms, authors, works and prizes")
         + mi("flashcards/review/", "Today’s cards", "Your daily cards plus today’s share of the rest")
@@ -2871,6 +2911,7 @@ def study_page(db, rel):
         for href, title, sub in (
             ("tests/", "Practice tests", "Full released tests, scored out of 100"),
             ("study/quiz/", "Quick quiz", "10 questions by part, set, period or reading list"),
+            ("study/mock/", "Timed mock test", "A released test against a 90-minute clock"),
             ("flashcards/", "Flashcards", "Daily, weekly and monthly boxes, with a study streak"),
             ("essays/", "Essay prompts", f"{len(db['essays'])} prompts with the poem’s full text")))
     body = f"""<p class="eyebrow">Study</p>
@@ -2888,6 +2929,7 @@ def study_page(db, rel):
     <h2>Today’s flashcards</h2>
     <b class="tile-big" data-fc-big>0 cards</b>
     <span class="tile-sub" data-fc-sub>Add cards and they sort themselves into daily, weekly and monthly boxes.</span>
+    <div class="tile-streak" data-fc-streak hidden></div>
     <a class="btn btn-study btn-sm" href="{BASE}flashcards/" data-fc-go>Open flashcards</a>
   </section>
   <section class="tile">
@@ -3277,6 +3319,8 @@ BUILD_ID = str(int(time.time()))
 
 
 def main():
+    global MOCK_SCRIPT
+    MOCK_SCRIPT = f'<script src="{BASE}assets/mock.js?v={BUILD_ID}" defer></script>'
     ap = argparse.ArgumentParser()
     ap.add_argument("--fixtures")
     ap.add_argument("--save-data")
@@ -3353,6 +3397,7 @@ def main():
     reference_page(db)
     study_page(db, rel)
     quiz_page(db, rel)
+    mock_page(db, rel)
     search_page()
     account_page()
     search_index(db)
