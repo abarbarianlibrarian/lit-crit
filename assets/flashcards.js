@@ -655,21 +655,38 @@
       .replace(/^(the|a|an) /, "");
   }
   function noParen(s) { return String(s || "").replace(/\s*\([^)]*\)/g, "").trim(); }
-  function variants(title, kind) {
-    var v = [title, noParen(title)], m = String(title).match(/\(([^)]*)\)/g) || [];
-    m.forEach(function (p) {
+  // Names that count for a record. Terms: the names build.py read from the title (term_forms: without dates,
+  // "(or …)"/"(also …)" alternates, "Types of Criticism" for "Criticism, Types of"). Authors: full name, plus the
+  // last name (or last two names) alone, which count only if no other author shares them.
+  function variants(title, kind, forms) {
+    var v = forms && forms.length ? forms.slice() : [title, noParen(title)];
+    if (!forms) (String(title).match(/\(([^)]*)\)/g) || []).forEach(function (p) {
       var inner = p.slice(1, -1).trim(), base = norm(noParen(title));
       if (/^or /i.test(inner)) v.push(inner.slice(3));
       else if (norm(inner).slice(0, 3) === base.slice(0, 3)) v.push(inner);
     });
     var out = [], seen = {};
-    v.forEach(function (x) { x = norm(x); if (x && !seen[x]) { seen[x] = 1; out.push({ s: x, full: true }); } });
-    if (kind === "a") {          // authors: the last name alone also counts (unless another author shares it)
+    v.forEach(function (x) { x = norm(x); if (x && !seen[x]) { seen[x] = 1; out.push({ s: x, full: true, c: kind === "t" ? core(x) : null }); } });
+    if (kind === "a") {
       var w = norm(noParen(title)).replace(/ (jr|sr|ii|iii|iv)$/, "").split(" ");
       if (w.length >= 2 && w[w.length - 1].length > 2 && !seen[w[w.length - 1]]) { out.push({ s: w[w.length - 1], full: false }); seen[w[w.length - 1]] = 1; }
       if (w.length >= 3) { var two = w.slice(-2).join(" "); if (!seen[two]) out.push({ s: two, full: false }); }
     }
     return out;
+  }
+  function termForms(cd, rec) { var e = cd && cd.mc.t && cd.mc.t[rec]; return e && e[4] ? e[4] : null; }
+  function namesOf(kind, rec, cd) {
+    var f = kind === "t" ? termForms(cd, rec) : null;
+    return variants(cd.data[kind][rec][0], kind, f && f[1]);
+  }
+  // A term's "core": the name without words that don't change which term is meant, so "Caroline Age" = "Caroline",
+  // "Early Victorian" = "Early Victorian Age, 1832-1870", "Romantic Period" = "Romantic Period in English Literature".
+  function core(s) {
+    var c = s.replace(/\b(in|of) (english|american|british) literature\b|\bin (england|america)\b/g, " ")
+      .replace(/\b\d+\b/g, " ")
+      .replace(/\b(age|ages|period|periods|era|movement|literature|literary|the|of|in)\b/g, " ")
+      .replace(/\s+/g, " ").trim();
+    return c || s;
   }
   function tolerance(n) { return n <= 3 ? 0 : n <= 7 ? 1 : n <= 12 ? 2 : 3; }
   // Edit distance (adjacent swaps count as one), giving up past `max`.
@@ -690,28 +707,33 @@
     }
     return prev[b.length];
   }
-  var varCache = {};
+  var varCache = {}, cdNow = null;
   function allVariants(kind, data, keys) {
-    if (!varCache[kind]) varCache[kind] = keys.map(function (k) { return { id: kind + ":" + k, v: variants(data[k][0], kind) }; });
+    if (!varCache[kind]) varCache[kind] = keys.map(function (k) { return { id: kind + ":" + k, v: namesOf(kind, k, cdNow) }; });
     return varCache[kind];
   }
   // q.accept: [{id, kind}] entities that count as right. Returns {ok, exact, near: the closest other title, msg}.
   function checkTyped(input, q, cd) {
-    var x = norm(input);
+    var x = norm(input), xc = q.ansKind === "t" ? core(x) : null;
     if (!x) return { ok: false, msg: "" };
+    cdNow = cd;
     var okIds = {}, okNames = {}, best = Infinity, exactFull = false;
     q.accept.forEach(function (a) {
       okIds[a.id] = 1;
-      variants(cd.data[a.kind][a.id.slice(2)][0], a.kind).forEach(function (v) {
+      namesOf(a.kind, a.id.slice(2), cd).forEach(function (v) {
         okNames[v.s] = 1;
         var t = tolerance(v.s.length), d = dist(x, v.s, t);
         if (d <= t && d < best) best = d;
         if (d === 0 && v.full) exactFull = true;
+        if (xc != null && v.c) {                     // an extra or missing "Age", "Period", dates…
+          var tc = tolerance(v.c.length), dc = dist(xc, v.c, tc);
+          if (dc <= tc && dc < best) best = dc;
+        }
       });
     });
     if (best === Infinity) return { ok: false, msg: "" };
     // Is a different term, author or work just as close? Works that share a title with a right answer don't count.
-    var clash = null, clashD = 0;
+    var clash = null, clashD = 0, clashName = false;
     q.otherKinds.forEach(function (k) {
       if (clash) return;
       var list = allVariants(k, cd.data[k], cd.keys[k]);
@@ -722,21 +744,24 @@
           if (okNames[v.s] && v.full) continue;      // another work with the same title as a right answer
           if (exactFull && !v.full) continue;         // typed a full name exactly: someone else's last name doesn't matter
           var dd = dist(x, v.s, best);
-          if (dd <= best) { clash = cd.data[k][list[i].id.slice(2)][0]; clashD = dd; break; }
+          if (dd > best && xc != null && v.c && dist(xc, v.c, best) < best) dd = best - 1;   // its core is strictly closer
+          if (dd <= best) { clash = labelOf(k, list[i].id.slice(2), cd); clashD = dd; clashName = dd === 0 && v.full; break; }
         }
       }
     });
+    if (clash && clashName) return { ok: false, clash: clash, msg: "That’s the name of " + (q.ansKind === "a" ? "another author" : "a different term") + ", " + clash + "." };
     if (clash) return { ok: false, clash: clash, msg: best === 0 ? "More than one " + (q.ansKind === "a" ? "author" : "answer") + " matches that. Type the full name." :
       "That’s " + (clashD < best ? "closer to " : "just as close to ") + clash + "." };
     return { ok: true, exact: best === 0 };
   }
 
+  function labelOf(kind, rec, cd) { var f = kind === "t" ? termForms(cd, rec) : null; return f ? f[0] : cd.data[kind][rec][0]; }
   function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   // Hide the term (and its other spellings) inside its own definition.
-  function maskTerm(def, title) {
+  function maskTerm(def, title, forms) {
     var out = def;
-    [title, noParen(title)].concat((String(title).match(/\(or ([^)]*)\)/i) || []).slice(1)).forEach(function (t) {
-      t = String(t || "").trim(); if (t.length < 3) return;
+    (forms && forms.length ? forms : [title, noParen(title)].concat((String(title).match(/\(or ([^)]*)\)/i) || []).slice(1))).forEach(function (t) {
+      t = noParen(String(t || "")).trim(); if (t.length < 3) return;
       var re = new RegExp("(^|[^A-Za-z])(" + t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")(e?s)?(?![A-Za-z])", "gi");
       out = out.replace(re, function (m0, pre) { return pre + "_____"; });
     });
@@ -751,7 +776,7 @@
     var ans = ids(e[1]), pool = ids(e[2]);
     if (!ans.length) return null;
     var q = { ansKind: k, accept: ans.map(function (r) { return { id: k + ":" + r, kind: k }; }), otherKinds: [k] };
-    if (L === "t") { q.kind = "Definition · Name the term"; q.front = maskTerm(d[3] || "", d[0]); q.def = true; }
+    if (L === "t") { var tf = e[4]; q.kind = "Definition · Name the term"; q.front = maskTerm(d[3] || "", d[0], tf && tf[1]); q.def = true; }
     else if (L === "w") { q.kind = "Work · Who wrote it?"; q.front = d[0]; }
     else if (L === "a") {      // the author's notable works (with the name blanked out) → the author
       var clues = e[4] || [];
@@ -764,16 +789,18 @@
     }
     // Multiple choice: the right answer plus 4 distractors picked at random from the pool.
     var right = ans;
-    var rightText = right.map(function (r) { return data[r][0]; }).join(" and ");
+    // Terms are shown without their dates ("Early Victorian Age", not "Early Victorian Age, 1832-1870").
+    var lab = function (r) { return labelOf(k, r, cd); };
+    var rightText = right.map(lab).join(" and ");
     var taken = {}; taken[norm(rightText)] = 1;
-    ans.forEach(function (r) { taken[norm(data[r][0])] = 1; });
+    ans.forEach(function (r) { taken[norm(lab(r))] = 1; });
     var wrong = [];
     shuffle(pool.slice()).forEach(function (r) {
-      var t = data[r][0], n = norm(t);
+      var t = lab(r), n = norm(t);
       if (wrong.length < 4 && !taken[n]) { taken[n] = 1; wrong.push(t); }
     });
     for (var tries = 0; wrong.length < 4 && tries < 200 && keys.length; tries++) {
-      var r = keys[Math.floor(Math.random() * keys.length)], t = data[r][0], n = norm(t);
+      var r = keys[Math.floor(Math.random() * keys.length)], t = lab(r), n = norm(t);
       if (!taken[n]) { taken[n] = 1; wrong.push(t); }
     }
     q.choices = shuffle([{ t: rightText, ok: true }].concat(wrong.map(function (t) { return { t: t, ok: false }; })));

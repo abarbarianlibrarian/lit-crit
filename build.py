@@ -1688,6 +1688,7 @@ def card_data(db, rel):
 # ---------------------------------------------------------------- multiple-choice distractor pools
 #
 # assets/cards/mc-{t,a,w,p}.json = {record id: [answer letter, [answer indexes], [pool indexes], [], clue]}
+#   (for terms the last item is [name shown in multiple choice, [names that count when typed]]: see term_forms)
 # Indexes point into the key order of assets/cards/{answer letter}.json. In multiple choice the site shows the
 # answer plus 4 distractors picked at random from the pool each time, so the choices aren't fixed.
 #   t: definition → term.     Pool: terms offered beside it as choices on released questions first, then
@@ -1703,6 +1704,64 @@ MC_POOL = 12
 
 def strip_paren(s):
     return re.sub(r"\s*\([^)]*\)", "", s or "").strip()
+
+
+YEARS_RE = re.compile(r",?\s*\(?\b\d{3,4}\s*(?:[-–—]\s*(?:\d{2,4})?)?\)?\s*$")
+ALT_CUE = re.compile(r"^(?:or,?\s+earlier,?|or,?|also,?\s+erroneously,?|also\s+called|also\s+known\s+as|also,?|earlier,?|"
+                     r"often\s+in\s+latin\s+form|plural\s+of|plural|sometimes|i\.e\.,?)\s+", re.I)
+
+
+def term_forms(title):
+    """(name to show in multiple choice, [names that count when typed]) for a term.
+    Drops dates ("Early Victorian Age, 1832-1870" → "Early Victorian Age") and reads alternate names:
+    "Caesura (or Cesura)", "Short Measure (or Meter)" → "Short Meter", "Deus (or Dea) ex Machina" → "Dea ex Machina",
+    "Leitmotif (also Leitmotiv, Leitmotive)", "Paraleipsis, Paralepsis, or Paralipsis", "Criticism, Types of" →
+    "Types of Criticism", "Great Awakening, The"."""
+    title = re.sub(r"\s+", " ", title or "").strip()
+    show = YEARS_RE.sub("", title).strip(" ,") or title
+    out = []
+
+    def add(x):
+        x = re.sub(r"\s+", " ", (x or "")).strip(" ,;")
+        if x and x not in out:
+            out.append(x)
+    add(title); add(show)
+    base = strip_paren(show)
+    add(base)
+    for m in re.finditer(r"\(([^)]*)\)", show):
+        inner = m.group(1).strip()
+        before, after = show[:m.start()].strip(), strip_paren(show[m.end():])
+        bw = strip_paren(before).split()
+        cue = ALT_CUE.match(inner)
+        bare = ALT_CUE.sub("", inner).strip()
+        if re.match(r"(literally|rhymes|noun|adjective)", inner, re.I):
+            continue
+        spelled = bw and bare and len(bare.split()) == 1 and fold(bare)[:3] == fold(bw[-1])[:3]
+        if not cue and not spelled:            # a qualifier: "Anglo-Norman (Language)", "Five Points (of Calvinism)"
+            add(" ".join(bw + [inner] + ([after] if after else [])))
+            continue
+        for alt in re.split(r",\s*(?:or\s+|and\s+)?|\s+or\s+|\s+and\s+", bare):
+            alt = ALT_CUE.sub("", re.sub(r"\s*\[[^\]]*\]", "", alt).strip()).strip()
+            if not alt:
+                continue
+            aw = alt.split()
+            new = aw if len(aw) >= len(bw) else bw[:len(bw) - len(aw)] + aw
+            add(" ".join(new + ([after] if after else [])))
+    if "," in base:
+        parts = [x.strip() for x in base.split(",") if x.strip()]
+        last = parts[-1] if parts else ""
+        if len(parts) == 2 and (re.match(r"(the|a|an)\b", last, re.I) or re.search(r"\bof$", last, re.I)
+                                or last.lower().rstrip(".") in ("mrs", "mr", "dr", "st", "sir")):
+            add(last + " " + parts[0])
+            if re.fullmatch(r"(the|a|an)", last, re.I):       # "Nine Worthies, The" → also "Nine Worthies"
+                add(parts[0])
+        elif all(len(re.sub(r"^or\s+", "", x, flags=re.I).split()) <= 2 for x in parts):
+            for x in parts:
+                add(re.sub(r"^or\s+", "", x, flags=re.I))
+    elif re.search(r"\s+or\s+", base) and all(len(x.split()) <= 2 for x in re.split(r"\s+or\s+", base)):
+        for x in re.split(r"\s+or\s+", base):
+            add(x)
+    return show, out
 
 
 def mc_data(db, rel):
@@ -1780,7 +1839,7 @@ def mc_data(db, rel):
                     break
                 if o not in have and ok(o):
                     pool.append(o); have.add(o)
-        out["t"][t] = ["t", [idx["t"][t]], [idx["t"][o] for o in pool]]
+        out["t"][t] = ["t", [idx["t"][t]], [idx["t"][o] for o in pool], [], list(term_forms(me["title"]))]
 
     # ---- similar authors (shared questions, then same nationality and closest birth year)
     authors = db["authors"]
