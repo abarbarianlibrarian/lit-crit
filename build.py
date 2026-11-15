@@ -1638,6 +1638,9 @@ def card_data(db, rel):
         works = [w for w in rel[("authors", a["id"])].get("works", []) if db["works"][w]["title"].strip().lower() != "no award"]
         if not works or a["title"].strip().lower() == "no award":
             continue
+        # Only notable works, unless the author has none (Katy, Nov 15, 2026).
+        if any(db["works"][w]["notable"] for w in works):
+            works = [w for w in works if db["works"][w]["notable"]]
         works.sort(key=lambda w: (w not in tested_w, not db["works"][w]["notable"],
                                   year_of(db["works"][w]["year_written"], db["works"][w]["published"]) or "9999",
                                   sort_key(db["works"][w]["title"])))
@@ -1684,15 +1687,17 @@ def card_data(db, rel):
 
 # ---------------------------------------------------------------- multiple-choice distractor pools
 #
-# assets/cards/mc-{t,a,w,p}.json = {record id: [answer letter, [answer indexes], [pool indexes], [extra author indexes]]}
+# assets/cards/mc-{t,a,w,p}.json = {record id: [answer letter, [answer indexes], [pool indexes], [], clue]}
 # Indexes point into the key order of assets/cards/{answer letter}.json. In multiple choice the site shows the
 # answer plus 4 distractors picked at random from the pool each time, so the choices aren't fixed.
 #   t: definition → term.     Pool: terms offered beside it as choices on released questions first, then
 #                             related and mentioned terms, then terms in the same sets.
 #   w: work → author.         Pool: authors on the same released questions, then authors of the same
 #                             nationality born closest in time.
-#   a: author → one of their works.  Pool: works by the most similar authors (same questions, nationality, era).
-#   p: prize → winning work (or author).  Pool: winners of the same prize in the nearest years.
+#   a: their notable works (all works if none are notable; up to 8) → author (clue = the titles, with the author's name blanked out).
+#      Pool: the most similar authors (same questions, nationality, era), minus co-authors of those works.
+#   p: prize → author. Clue = [year and prize, the work (Pulitzer) or the nationality (Nobel), "work"|"nationality"].
+#      Pool: winners of the same prize in the nearest years (Nobel: same nationality first).
 MC_POOL = 12
 
 
@@ -1834,31 +1839,45 @@ def mc_data(db, rel):
         pool = similar_authors(mine, extra, 10)
         out["w"][w] = ["a", [idx["a"][a] for a in mine], [idx["a"][a] for a in pool]]
 
-    # ---- authors: which of these did they write?
+    # Hide the answer's name inside a clue ("The Collected Stories of Katherine Anne Porter").
+    def mask_names(text, author_ids):
+        out_t = text
+        for a in author_ids:
+            r = authors[a]
+            parts = {strip_paren(r["title"])} | {x for x in (r.get("last"), r.get("first")) if x}
+            parts |= {w for w in re.split(r"[\s.]+", strip_paren(r["title"])) if len(w) > 3}
+            for n in sorted(parts, key=len, reverse=True):
+                if len(n) > 2:
+                    out_t = re.sub(r"(?<![A-Za-z])" + re.escape(n) + r"(?:'s|’s)?(?![A-Za-z])", "_____", out_t, flags=re.I)
+        return out_t
+
+    # ---- authors: show some of their works → who wrote them?
     for a in CARD_IDS["a"]:
-        mine = works_of(a)      # all of them count when typed; multiple choice uses one of the first 3
-        if not mine:
+        shown = works_of(a)
+        if any(db["works"][w]["notable"] for w in shown):
+            shown = [w for w in shown if db["works"][w]["notable"]]
+        shown = shown[:8]
+        if not shown:
             continue
         extra = defaultdict(float)
         for q in rel[("authors", a)].get("questions", []):
             for o in db["questions"][q]["authors"]:
                 extra[o] += 3
-        my_titles = {sort_key(db["works"][w]["title"]) for w in works_of(a)}
-        pool, seen = [], set(my_titles)
-        for o in similar_authors([a], extra, 10):
-            for ow in works_of(o)[:2]:
-                k = sort_key(db["works"][ow]["title"])
-                if k not in seen:
-                    pool.append(ow); seen.add(k)
-        out["a"][a] = ["w", [idx["w"][w] for w in mine], [idx["w"][w] for w in pool[:MC_POOL]]]
+        coauthors = {o for w in shown for o in rel[("works", w)].get("authors", [])}
+        pool = [o for o in similar_authors([a], extra, MC_POOL + 4) if o not in coauthors][:MC_POOL]
+        clues = []
+        for w in shown:
+            yr = year_of(db["works"][w]["year_written"], db["works"][w]["published"])
+            clues.append(mask_names(db["works"][w]["title"], [a]) + (f" ({yr})" if yr else ""))
+        out["a"][a] = ["a", [idx["a"][a]], [idx["a"][o] for o in pool], [], clues]
 
-    # ---- prizes: who won?
+    # ---- prizes → who won? Pulitzer: year, prize and work. Nobel (and prizes with no work): year, prize, nationality.
     by_type = defaultdict(list)
     for p in CARD_IDS["p"]:
         by_type[(db["prizes"][p]["type"] or "").strip().lower()].append(p)
 
     def winners(p):
-        ws = [w for w in rel[("prizes", p)].get("works", []) if w in CARD_IDS["w"]]
+        ws = [w for w in rel[("prizes", p)].get("works", []) if w in db["works"]]
         au = [a for a in rel[("prizes", p)].get("authors", []) if a in CARD_IDS["a"]]
         for w in ws:
             au += [a for a in rel[("works", w)].get("authors", []) if a in CARD_IDS["a"] and a not in au]
@@ -1867,25 +1886,38 @@ def mc_data(db, rel):
     def pyear(p):
         y = year_of(str(db["prizes"][p]["year"] or ""))
         return int(y) if y else 0
+
+    def nat(a):
+        return (authors[a]["nationality"] or "").strip()
     for p in CARD_IDS["p"]:
         ws, au = winners(p)
-        kind = "w" if ws else "a"
-        ans = ws if ws else au
-        if not ans:
+        if not au:
             continue
-        others = sorted((o for o in by_type[(db["prizes"][p]["type"] or "").strip().lower()] if o != p),
+        pr = db["prizes"][p]
+        ptype = (pr["type"] or "").strip()
+        nobel = "nobel" in ptype.lower()
+        head = " ".join(x for x in (str(pr["year"] or "").strip(), ptype) if x)
+        if ws and not nobel:
+            detail = "; ".join(mask_names(db["works"][w]["title"], au) for w in ws)
+            detail_kind = "work"
+        else:
+            detail = ", ".join(dict.fromkeys(nat(a) for a in au if nat(a)))
+            detail_kind = "nationality"
+        my_nats = {nat(a).lower() for a in au if nat(a)}
+        others = sorted((o for o in by_type[ptype.lower()] if o != p),
                         key=lambda o: (abs(pyear(o) - pyear(p)), pyear(o)))
-        pool, seen = [], {sort_key(db["works" if kind == "w" else "authors"][x]["title"]) for x in ans}
+        if nobel:      # same nationality first: the clue doesn't rule them out
+            others.sort(key=lambda o: not any(nat(x).lower() in my_nats for x in winners(o)[1]))
+        pool, seen = [], {fold(authors[x]["title"]) for x in au}
         for o in others:
-            ows, oau = winners(o)
-            for x in (ows if kind == "w" else oau):
-                k = sort_key(db["works" if kind == "w" else "authors"][x]["title"])
+            for x in winners(o)[1]:
+                k = fold(authors[x]["title"])
                 if k not in seen:
                     pool.append(x); seen.add(k)
-            if len(pool) >= 10:
+            if len(pool) >= MC_POOL:
                 break
-        out["p"][p] = [kind, [idx[kind][x] for x in ans], [idx[kind][x] for x in pool[:10]],
-                       [idx["a"][a] for a in au] if kind == "w" else []]
+        out["p"][p] = ["a", [idx["a"][x] for x in au], [idx["a"][x] for x in pool[:MC_POOL]], [],
+                       [head, detail, detail_kind]]
 
     for k, d in out.items():
         (OUT / "assets" / "cards" / f"mc-{k}.json").write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

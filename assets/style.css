@@ -977,6 +977,11 @@ button.fc-tag:hover { background: var(--chip-hover); }
 .fc-result.wrong { background: var(--fc-miss-bg); color: var(--fc-miss); }
 .fc-result .muted { color: var(--ink-2); font-weight: 400; }
 .fc-card.checked { cursor: default; }
+.fc-q-wrap { text-align: center; padding: 18px 0; }
+.fc-q-wrap .fc-clues { display: inline-block; text-align: left; font: 400 21px/1.45 var(--serif); margin: 0; }
+.fc-q.fc-prize { font-size: 28px; padding: 6px 0; }
+.fc-q-wrap .fc-sub { font: 400 22px/1.35 var(--serif); color: var(--ink); margin: 6px 0 0; }
+.fc-q-wrap .fc-clue-work { font-style: italic; }
 .fc-set-row select { font: inherit; padding: 4px 6px; }
 .fc-honest { margin: 0; text-align: center; font: 400 13px/1.4 var(--sans); color: var(--ink-2); }
 .fc-cats { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; border-top: 1px solid var(--rule); padding-top: 14px; font-family: var(--sans); }

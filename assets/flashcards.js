@@ -26,7 +26,9 @@
  *
  * Study modes (meta.mode for most sessions, meta.modeDaily for today's cards): Standard (flip, then Missed it / Got it),
  * Typed and Multiple choice (5 choices: the answer + 4 distractors drawn at random from the card's pool in
- * assets/cards/mc-<letter>.json). Today's cards offer only Typed and Multiple choice, and terms are always
+ * assets/cards/mc-<letter>.json). Today's cards offer only Typed and Multiple choice. There every card asks for
+ * a term (from its definition) or an author (from a work, their notable works, a Pulitzer's year, prize and work,
+ * or a Nobel's year, prize and nationality); terms are always
  * definition → term in those modes. In Standard, a due Study daily card is practice only.
  */
 (function () {
@@ -631,7 +633,7 @@
     }
     return mcCache[letter];
   }
-  var ANS_KINDS = { t: ["t"], w: ["a"], a: ["w"], p: ["w", "a"] };
+  var ANS_KINDS = { t: ["t"], w: ["a"], a: ["a"], p: ["a"] };
   // Everything typed and multiple choice need for these card letters: {mc: {letter: file}, data: {letter: {id: card}}, keys}.
   function checkedData(letters) {
     var need = {};
@@ -751,13 +753,18 @@
     var q = { ansKind: k, accept: ans.map(function (r) { return { id: k + ":" + r, kind: k }; }), otherKinds: [k] };
     if (L === "t") { q.kind = "Definition · Name the term"; q.front = maskTerm(d[3] || "", d[0]); q.def = true; }
     else if (L === "w") { q.kind = "Work · Who wrote it?"; q.front = d[0]; }
-    else if (L === "a") { q.kind = "Author · Which did they write?"; q.kindTyped = "Author · Name one of their works"; q.front = d[0]; }
-    else { q.kind = "Prize · Who won?"; q.front = d[3] || d[0];
-      (e[3] || []).forEach(function (i) { var r = cd.keys.a[i]; if (r && cd.data.a[r]) q.accept.push({ id: "a:" + r, kind: "a" }); });
-      if (k === "w") q.otherKinds = ["w", "a"]; }
-    // Multiple choice: the right answer (for an author, one of their works at random) plus 4 distractors at random.
-    var right = L === "a" ? [ans[Math.floor(Math.random() * Math.min(ans.length, 3))]] : ans;   // one of their 3 best-known works
-    var rightText = right.map(function (r) { return data[r][0]; }).join(L === "w" ? " and " : "; ");
+    else if (L === "a") {      // the author's notable works (with the name blanked out) → the author
+      var clues = e[4] || [];
+      q.kind = clues.length === 1 ? "Work · Who wrote it?" : "Works · Who wrote them?";
+      q.frontHtml = '<ul class="fc-list fc-clues">' + clues.map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") + "</ul>";
+    } else {                   // Pulitzer: year, prize and work; Nobel: year, prize and nationality → the author
+      var cl = e[4] || [d[3] || d[0], "", ""];
+      q.kind = "Prize · Who won?";
+      q.frontHtml = '<p class="fc-q fc-prize">' + esc(cl[0]) + "</p>" + (cl[1] ? '<p class="fc-sub fc-clue-' + esc(cl[2]) + '">' + esc(cl[1]) + "</p>" : "");
+    }
+    // Multiple choice: the right answer plus 4 distractors picked at random from the pool.
+    var right = ans;
+    var rightText = right.map(function (r) { return data[r][0]; }).join(" and ");
     var taken = {}; taken[norm(rightText)] = 1;
     ans.forEach(function (r) { taken[norm(data[r][0])] = 1; });
     var wrong = [];
@@ -770,7 +777,7 @@
       if (!taken[n]) { taken[n] = 1; wrong.push(t); }
     }
     q.choices = shuffle([{ t: rightText, ok: true }].concat(wrong.map(function (t) { return { t: t, ok: false }; })));
-    q.answerText = L === "a" ? right.concat(ans.filter(function (r) { return r !== right[0]; })).slice(0, 3).map(function (r) { return data[r][0]; }).join("; ") : rightText;
+    q.answerText = rightText;
     return q;
   }
 
@@ -923,8 +930,8 @@
         R("chip").innerHTML = o.cram ? '<span class="fc-boxchip out">Practice</span>' :
           stdPractice(st) ? boxChip(st) + ' <span class="fc-boxchip out" title="Daily cards count toward your boxes and streak only in Typed or Multiple choice">Practice in Standard</span>' : boxChip(st);
         var front = qn ? qn.front : rev ? d[3] : L === "p" && d[3] ? d[3] : d[0];
-        R("front").innerHTML = '<p class="fc-q' + (rev ? " def" : "") + '">' + esc(front) + "</p>";
-        R("back").innerHTML = rev ? '<p class="fc-q fc-ans">' + esc(d[0]) + "</p>" : d[1];
+        R("front").innerHTML = qn && qn.frontHtml ? '<div class="fc-q-wrap">' + qn.frontHtml + "</div>" : '<p class="fc-q' + (rev ? " def" : "") + '">' + esc(front) + "</p>";
+        R("back").innerHTML = rev || (qn && L === "a") ? '<p class="fc-q fc-ans">' + esc(d[0]) + "</p>" : d[1];
         R("back").hidden = true;
         card.classList.remove("revealed");
         card.classList.toggle("checked", !!qn);
@@ -942,7 +949,7 @@
           $(R("actions"), "[data-idk]").addEventListener("click", function () { choose(-1); });
         } else {
           R("actions").innerHTML = '<form class="fc-typed" autocomplete="off"><input type="text" spellcheck="false" autocapitalize="off" autocorrect="off" aria-label="Your answer" placeholder="' +
-            (L === "t" ? "Type the term" : L === "w" ? "Type the author" : L === "a" ? "Type one of their works" : "Type the winning work or author") + '">' +
+            (L === "t" ? "Type the term" : "Type the author") + '">' +
             '<button type="submit" class="fc-btn primary">Check <span class="fc-key">Enter</span></button></form>' +
             '<p class="fc-checkrow"><button type="button" class="fc-link" data-idk>I don’t know</button></p>';
           var f = $(R("actions"), "form"), inp = $(f, "input");
