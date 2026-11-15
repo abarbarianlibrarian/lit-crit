@@ -17,6 +17,7 @@ Environment (all optional except the token):
 import argparse
 import concurrent.futures
 import datetime
+import hashlib
 import html
 import io
 import json
@@ -1583,7 +1584,8 @@ def tag_addall(g, terms):
 
 # ---------------------------------------------------------------- flashcards
 #
-# Card data: assets/cards/{t,a,w,p}.json = {record id: [front, back html, page path, reverse front?]}
+# Card data: assets/cards/{t,a,w,p}.json = {record id: [front, back html, page path, question front?]}
+#   ([3] = the definition for terms, the prize without its winner for prizes)
 #   t = terms (term -> short definition), a = authors (author -> works),
 #   w = works (title -> author), p = prizes (prize -> winner).
 # A card's id is "<letter>:<record id>", so a term studied in two decks shares one schedule.
@@ -1591,6 +1593,7 @@ def tag_addall(g, terms):
 # the spaced-repetition schedule and custom decks.
 
 CARD_IDS = {"t": set(), "a": set(), "w": set(), "p": set()}
+CARD_ORDER = {"t": [], "a": [], "w": [], "p": []}     # key order of assets/cards/{letter}.json
 FC_SCRIPT = ""          # set once BASE/BUILD_ID are known (see card_data)
 CARD_KINDS = {"t": "terms", "a": "authors", "w": "works", "p": "prizes"}
 
@@ -1667,13 +1670,228 @@ def card_data(db, rel):
             lines.append(f"{work_title_html(db['works'][w])}" + (f" <span class=\"muted\">by {e(by_line(wa))}</span>" if wa else ""))
         listed_authors = {a for w in works for a in rel[("works", w)].get("authors", [])}
         lines += [e(db["authors"][a]["title"]) for a in authors if a not in listed_authors]
-        out["p"][p["id"]] = [p["title"], '<ul class="fc-list">' + "".join(f"<li>{x}</li>" for x in lines) + "</ul>", path(p)]
+        # [3] = the prize without its winner ("1961 Pulitzer Prize for Fiction"): the card's question.
+        ask = " ".join(x for x in (str(p["year"] or "").strip(), (p["type"] or "").strip()) if x) or re.sub(r"\s+-\s+.*$", "", p["title"])
+        out["p"][p["id"]] = [p["title"], '<ul class="fc-list">' + "".join(f"<li>{x}</li>" for x in lines) + "</ul>", path(p), ask]
 
     (OUT / "assets" / "cards").mkdir(parents=True, exist_ok=True)
     for k, cards in out.items():
         CARD_IDS[k] = set(cards)
+        CARD_ORDER[k] = list(cards)
         (OUT / "assets" / "cards" / f"{k}.json").write_text(json.dumps(cards, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print("Flashcards: " + ", ".join(f"{len(v)} {CARD_KINDS[k]}" for k, v in out.items()), flush=True)
+
+
+# ---------------------------------------------------------------- multiple-choice distractor pools
+#
+# assets/cards/mc-{t,a,w,p}.json = {record id: [answer letter, [answer indexes], [pool indexes], [extra author indexes]]}
+# Indexes point into the key order of assets/cards/{answer letter}.json. In multiple choice the site shows the
+# answer plus 4 distractors picked at random from the pool each time, so the choices aren't fixed.
+#   t: definition → term.     Pool: terms offered beside it as choices on released questions first, then
+#                             related and mentioned terms, then terms in the same sets.
+#   w: work → author.         Pool: authors on the same released questions, then authors of the same
+#                             nationality born closest in time.
+#   a: author → one of their works.  Pool: works by the most similar authors (same questions, nationality, era).
+#   p: prize → winning work (or author).  Pool: winners of the same prize in the nearest years.
+MC_POOL = 12
+
+
+def strip_paren(s):
+    return re.sub(r"\s*\([^)]*\)", "", s or "").strip()
+
+
+def mc_data(db, rel):
+    idx = {k: {rid: i for i, rid in enumerate(CARD_ORDER[k])} for k in CARD_ORDER}
+    out = {k: {} for k in CARD_IDS}
+
+    def apps(table, rid):
+        try:
+            return int(float(db[table][rid]["appearances"] or 0))
+        except (TypeError, ValueError):
+            return 0
+
+    def words_in(needle, hay):
+        needle = fold(needle).strip()
+        return bool(needle) and re.search(r"(?<![a-z])" + re.escape(needle) + r"(?![a-z])", fold(hay or "")) is not None
+
+    # ---- terms
+    terms = db["terms"]
+    tested_terms = sorted(CARD_IDS["t"], key=lambda t: (-apps("terms", t), sort_key(terms[t]["title"])))
+    by_tag = {g: [t for t in rel[("tags", g)].get("terms", []) if t in CARD_IDS["t"]] for g in db["tags"]}
+    def synonym_of(title, text):
+        """True if text names title as another name for the same thing ("the English sonnet, …",
+        "also called rime riche", "See IDENTICAL RHYME")."""
+        t = re.escape(fold(strip_paren(title)))
+        if not t:
+            return False
+        x = fold(re.sub(r"\s+", " ", text or "")).strip()
+        if re.match(r"(the |an? )?" + t + r"(?![a-z])", x):
+            return True
+        cue = r"(called|known as|same as|synonym(ous)? (for|of|with)|another (name|term) for|\bsee|\balso|\bor|\bi\.e\.)"
+        return re.search(cue + r"\W+(?:[a-z’'-]+\W+){0,3}?(the |an? )?" + t + r"(?![a-z])", x) is not None
+    for t in CARD_IDS["t"]:
+        me = terms[t]
+        my_def = (me["short"] or "") + " " + (me["definition"] or "")
+        score = defaultdict(float)
+        for q in rel[("terms", t)].get("questions", []):
+            for o in db["questions"][q]["terms"]:
+                score[o] += 3
+        for o in me["related"] + rel[("terms", t)].get("rev:terms:related", []):
+            score[o] += 2
+        for o in me["mentioned"] + rel[("terms", t)].get("rev:terms:mentioned", []):
+            score[o] += 1
+
+        def ok(o):
+            if o == t or o not in CARD_IDS["t"]:
+                return False
+            other = terms[o]
+            if fold(other["title"]).strip() == fold(me["title"]).strip():
+                return False
+            if (other["short"] or "").strip().lower() == (me["short"] or "").strip().lower() and me["short"]:
+                return False
+            if words_in(other["title"], me["short"]):          # the definition names it: likely a synonym
+                return False
+            if words_in(strip_paren(other["title"]), strip_paren(me["title"])) or words_in(strip_paren(me["title"]), strip_paren(other["title"])):
+                return False                                   # "Sonnet" / "Spenserian Sonnet": both would fit
+            od = (other["short"] or "") + " " + (other["definition"] or "")
+            if synonym_of(me["title"], od) or synonym_of(other["title"], my_def):
+                return False
+            return True
+
+        pool = sorted((o for o in score if ok(o)), key=lambda o: (-score[o], -apps("terms", o), sort_key(terms[o]["title"])))[:MC_POOL]
+        if len(pool) < MC_POOL:
+            have = set(pool)
+            for g in sorted(me["tags"], key=lambda g: len(by_tag.get(g, []))):
+                for o in sorted(by_tag.get(g, []), key=lambda o: -apps("terms", o)):
+                    if len(pool) >= MC_POOL:
+                        break
+                    if o not in have and ok(o):
+                        pool.append(o); have.add(o)
+        if len(pool) < 6:
+            have = set(pool)
+            start = int(hashlib.md5(t.encode()).hexdigest(), 16) % max(1, len(tested_terms))
+            for o in tested_terms[start:] + tested_terms[:start]:
+                if len(pool) >= 8:
+                    break
+                if o not in have and ok(o):
+                    pool.append(o); have.add(o)
+        out["t"][t] = ["t", [idx["t"][t]], [idx["t"][o] for o in pool]]
+
+    # ---- similar authors (shared questions, then same nationality and closest birth year)
+    authors = db["authors"]
+
+    def birth(a):
+        y = year_of(authors[a]["birth"])
+        return int(y) if y else None
+    by_nat = defaultdict(list)
+    for a in CARD_IDS["a"]:
+        by_nat[(authors[a]["nationality"] or "").strip().lower()].append(a)
+
+    def similar_authors(seed_ids, extra_scores, n):
+        score = defaultdict(float, extra_scores)
+        seeds = set(seed_ids)
+        for s in seed_ids:
+            nat, b = (authors[s]["nationality"] or "").strip().lower(), birth(s)
+            if not nat or b is None:
+                continue
+            per = set(authors[s]["periods"])
+            for o in by_nat.get(nat, []):
+                ob = birth(o)
+                if ob is None or abs(ob - b) > 60:
+                    continue
+                score[o] += 1.5 - abs(ob - b) / 60 + (0.5 if per & set(authors[o]["periods"]) else 0)
+        names = {fold(authors[s]["title"]) for s in seeds}
+        cand = [o for o in score if o not in seeds and o in CARD_IDS["a"] and fold(authors[o]["title"]) not in names]
+        cand.sort(key=lambda o: (-score[o], -apps("authors", o), author_sort(authors[o])))
+        cand = cand[:n]
+        if len(cand) < 6:          # nothing to go on: fall back to the most-tested authors
+            for o in sorted(CARD_IDS["a"], key=lambda o: -apps("authors", o)):
+                if len(cand) >= 8:
+                    break
+                if o not in seeds and o not in cand:
+                    cand.append(o)
+        return cand
+
+    def works_of(a):
+        ws = [w for w in rel[("authors", a)].get("works", []) if w in CARD_IDS["w"]]
+        tested = {w for w in ws if rel[("works", w)].get("questions")}
+        ws.sort(key=lambda w: (w not in tested, not db["works"][w]["notable"], sort_key(db["works"][w]["title"])))
+        return ws
+
+    # ---- works: who wrote it?
+    for w in CARD_IDS["w"]:
+        mine = [a for a in rel[("works", w)].get("authors", []) if a in CARD_IDS["a"]]
+        if not mine:
+            continue
+        extra = defaultdict(float)
+        for q in rel[("works", w)].get("questions", []):
+            qq = db["questions"][q]
+            for a in qq["authors"]:
+                extra[a] += 3
+            for ow in qq["works"]:
+                for a in rel[("works", ow)].get("authors", []):
+                    extra[a] += 3
+        pool = similar_authors(mine, extra, 10)
+        out["w"][w] = ["a", [idx["a"][a] for a in mine], [idx["a"][a] for a in pool]]
+
+    # ---- authors: which of these did they write?
+    for a in CARD_IDS["a"]:
+        mine = works_of(a)      # all of them count when typed; multiple choice uses one of the first 3
+        if not mine:
+            continue
+        extra = defaultdict(float)
+        for q in rel[("authors", a)].get("questions", []):
+            for o in db["questions"][q]["authors"]:
+                extra[o] += 3
+        my_titles = {sort_key(db["works"][w]["title"]) for w in works_of(a)}
+        pool, seen = [], set(my_titles)
+        for o in similar_authors([a], extra, 10):
+            for ow in works_of(o)[:2]:
+                k = sort_key(db["works"][ow]["title"])
+                if k not in seen:
+                    pool.append(ow); seen.add(k)
+        out["a"][a] = ["w", [idx["w"][w] for w in mine], [idx["w"][w] for w in pool[:MC_POOL]]]
+
+    # ---- prizes: who won?
+    by_type = defaultdict(list)
+    for p in CARD_IDS["p"]:
+        by_type[(db["prizes"][p]["type"] or "").strip().lower()].append(p)
+
+    def winners(p):
+        ws = [w for w in rel[("prizes", p)].get("works", []) if w in CARD_IDS["w"]]
+        au = [a for a in rel[("prizes", p)].get("authors", []) if a in CARD_IDS["a"]]
+        for w in ws:
+            au += [a for a in rel[("works", w)].get("authors", []) if a in CARD_IDS["a"] and a not in au]
+        return ws, au
+
+    def pyear(p):
+        y = year_of(str(db["prizes"][p]["year"] or ""))
+        return int(y) if y else 0
+    for p in CARD_IDS["p"]:
+        ws, au = winners(p)
+        kind = "w" if ws else "a"
+        ans = ws if ws else au
+        if not ans:
+            continue
+        others = sorted((o for o in by_type[(db["prizes"][p]["type"] or "").strip().lower()] if o != p),
+                        key=lambda o: (abs(pyear(o) - pyear(p)), pyear(o)))
+        pool, seen = [], {sort_key(db["works" if kind == "w" else "authors"][x]["title"]) for x in ans}
+        for o in others:
+            ows, oau = winners(o)
+            for x in (ows if kind == "w" else oau):
+                k = sort_key(db["works" if kind == "w" else "authors"][x]["title"])
+                if k not in seen:
+                    pool.append(x); seen.add(k)
+            if len(pool) >= 10:
+                break
+        out["p"][p] = [kind, [idx[kind][x] for x in ans], [idx[kind][x] for x in pool[:10]],
+                       [idx["a"][a] for a in au] if kind == "w" else []]
+
+    for k, d in out.items():
+        (OUT / "assets" / "cards" / f"mc-{k}.json").write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    small = sum(1 for d in out.values() for v in d.values() if len(v[2]) < 4)
+    print("Multiple-choice pools: " + ", ".join(f"{len(d)} {CARD_KINDS[k]}" for k, d in out.items())
+          + f" ({small} with fewer than 4 distractors; the site fills those at random)", flush=True)
 
 
 def fc_page(slug, title, lede, inner, desc=None):
@@ -3410,6 +3628,7 @@ def main():
             periods_by_term[tid].append(p["id"])
 
     card_data(db, rel)
+    mc_data(db, rel)
     global RESOLVER
     RESOLVER = resolver
     build_nav_menus(db)

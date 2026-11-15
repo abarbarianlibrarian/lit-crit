@@ -945,6 +945,39 @@ button.fc-tag:hover { background: var(--chip-hover); }
 .fc-grade.got { border-color: var(--study-btn); background: var(--study-btn); color: #fff; }
 .fc-grade.got small { color: #d5ece8; }
 .fc-grade:hover { filter: brightness(1.05); }
+/* Study modes: Standard, Typed, Multiple choice */
+.fc-modes { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; gap: 2px; background: var(--paper-2); }
+.fc-mode { font: 500 13.5px/1 var(--sans); color: var(--ink-2); background: none; border: 0; border-radius: 999px; padding: 8px 13px; cursor: pointer; }
+.fc-mode[aria-checked="true"] { background: var(--study-btn); color: #fff; }
+.fc-mode:focus-visible { outline: 2px solid var(--study); outline-offset: 2px; }
+.fc-mode-note { margin: -8px 0 16px; font: 400 13.5px/1.4 var(--sans); color: var(--ink-2); }
+.fc-actions > :not(.fc-grade):not(.fc-show) { flex: 1 1 100%; }
+.fc-choices { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.fc-choice { width: 100%; display: flex; align-items: center; gap: 14px; text-align: left; padding: 13px 16px; border: 1.5px solid var(--rule); border-radius: 12px;
+  background: var(--paper); color: var(--ink); font: 400 18px/1.35 var(--serif); cursor: pointer; }
+.fc-choice:hover:not(:disabled) { border-color: var(--study); background: var(--study-tint); }
+.fc-choice:focus-visible { outline: 2px solid var(--study); outline-offset: 2px; }
+.fc-choice:disabled { cursor: default; opacity: .75; }
+.fc-cl { flex: none; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  font: 600 13px/1 var(--sans); background: var(--chip); color: var(--ink-2); }
+.fc-choice.right { opacity: 1; border-color: var(--study-btn); background: var(--study-soft); }
+.fc-choice.right .fc-cl { background: var(--study-btn); color: #fff; }
+.fc-choice.wrong { opacity: 1; border-color: var(--fc-miss-rule); background: var(--fc-miss-bg); }
+.fc-choice.wrong .fc-cl { background: var(--fc-miss-rule); color: #fff; }
+.fc-typed { display: flex; gap: 10px; flex-wrap: wrap; }
+.fc-typed input { flex: 1 1 260px; min-height: 52px; box-sizing: border-box; padding: 10px 14px; border: 1.5px solid var(--rule); border-radius: 12px;
+  background: var(--paper); color: var(--ink); font: 400 20px/1.3 var(--serif); }
+.fc-typed input:focus { outline: 2px solid var(--study); outline-offset: 1px; border-color: var(--study); }
+.fc-typed input.right { border-color: var(--study-btn); background: var(--study-soft); }
+.fc-typed input.wrong { border-color: var(--fc-miss-rule); background: var(--fc-miss-bg); }
+.fc-checkrow { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 0; font: 400 13.5px/1.3 var(--sans); color: var(--ink-2); }
+.fc-result { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; padding: 12px 16px; border-radius: 12px; font-family: var(--sans); }
+.fc-result p { margin: 0; flex: 1 1 240px; }
+.fc-result.right { background: var(--study-soft); color: var(--study); }
+.fc-result.wrong { background: var(--fc-miss-bg); color: var(--fc-miss); }
+.fc-result .muted { color: var(--ink-2); font-weight: 400; }
+.fc-card.checked { cursor: default; }
+.fc-set-row select { font: inherit; padding: 4px 6px; }
 .fc-honest { margin: 0; text-align: center; font: 400 13px/1.4 var(--sans); color: var(--ink-2); }
 .fc-cats { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; border-top: 1px solid var(--rule); padding-top: 14px; font-family: var(--sans); }
 .fc-cats-h { font: 600 11px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin-right: 4px; }
@@ -977,6 +1010,9 @@ button.fc-tag:hover { background: var(--chip-hover); }
   .fc-streak { width: 100%; box-sizing: border-box; display: grid; grid-template-columns: auto 1fr; }
   .fc-week { grid-column: 1 / -1; justify-content: space-between; }
   .fc-grade { flex: 1 1 40%; }
+  .fc-choice { font-size: 16.5px; padding: 11px 12px; }
+  .fc-modes { width: 100%; }
+  .fc-mode { flex: 1; padding: 8px 6px; }
 }
 
 /* "Add to flashcards" on record pages, and popovers */

@@ -23,6 +23,11 @@
  * Study streak: a day counts when the student finishes the Daily cards due that day. Weekends never break it,
  * and neither does a day with no cards in Study daily at all (that day doesn't add to it either).
  * Day numbers are days since 1970-01-01 in the visitor's own time zone.
+ *
+ * Study modes (meta.mode for most sessions, meta.modeDaily for today's cards): Standard (flip, then Missed it / Got it),
+ * Typed and Multiple choice (5 choices: the answer + 4 distractors drawn at random from the card's pool in
+ * assets/cards/mc-<letter>.json). Today's cards offer only Typed and Multiple choice, and terms are always
+ * definition → term in those modes. In Standard, a due Study daily card is practice only.
  */
 (function () {
   "use strict";
@@ -609,6 +614,166 @@
   }
   function joinNames(a) { return a.length <= 1 ? a.join("") : a.slice(0, -1).join(", ") + " and " + a[a.length - 1]; }
 
+  // ---------------------------------------------------------------- study modes: standard, typed, multiple choice
+  // Standard: flip the card, then Missed it / Got it. Typed and multiple choice check the answer themselves.
+  // Terms are always definition → term in typed and multiple choice. Today's cards (the streak) use only typed
+  // or multiple choice, and in standard mode a due Study daily card is practice only, so the streak always
+  // comes from checked answers.
+  // Distractors come from assets/cards/mc-<letter>.json (build.py, mc_data): {record id: [answer letter,
+  // [answer indexes], [pool indexes], [extra author indexes, prizes only]]}, indexes into that letter's card file.
+  var MODES = { std: "Standard", type: "Typed", mc: "Multiple choice" };
+  var mcCache = {};
+  function mcFile(letter) {
+    if (!mcCache[letter]) {
+      mcCache[letter] = fetch(BASE + "assets/cards/mc-" + letter + ".json?v=" + (window.FC_V || ""))
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .catch(function () { delete mcCache[letter]; return {}; });
+    }
+    return mcCache[letter];
+  }
+  var ANS_KINDS = { t: ["t"], w: ["a"], a: ["w"], p: ["w", "a"] };
+  // Everything typed and multiple choice need for these card letters: {mc: {letter: file}, data: {letter: {id: card}}, keys}.
+  function checkedData(letters) {
+    var need = {};
+    letters.forEach(function (l) { need[l] = 1; (ANS_KINDS[l] || []).forEach(function (k) { need[k] = 1; }); });
+    var ks = Object.keys(need);
+    return Promise.all([Promise.all(letters.map(mcFile)), Promise.all(ks.map(cards))]).then(function (r) {
+      var out = { mc: {}, data: {}, keys: {} };
+      letters.forEach(function (l, i) { out.mc[l] = r[0][i]; });
+      ks.forEach(function (k, i) { out.data[k] = r[1][i]; out.keys[k] = Object.keys(r[1][i]); });
+      return out;
+    });
+  }
+
+  // Typed answers: forgiving about case, accents, punctuation, a leading "the/a/an" and small spelling slips,
+  // but never when the slip is as close (or closer) to a different term, author or work.
+  function norm(s) {
+    s = String(s || "").normalize ? String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "") : String(s || "");
+    return s.toLowerCase().replace(/&/g, " and ").replace(/[’'`]/g, "").replace(/[^a-z0-9]+/g, " ").trim()
+      .replace(/^(the|a|an) /, "");
+  }
+  function noParen(s) { return String(s || "").replace(/\s*\([^)]*\)/g, "").trim(); }
+  function variants(title, kind) {
+    var v = [title, noParen(title)], m = String(title).match(/\(([^)]*)\)/g) || [];
+    m.forEach(function (p) {
+      var inner = p.slice(1, -1).trim(), base = norm(noParen(title));
+      if (/^or /i.test(inner)) v.push(inner.slice(3));
+      else if (norm(inner).slice(0, 3) === base.slice(0, 3)) v.push(inner);
+    });
+    var out = [], seen = {};
+    v.forEach(function (x) { x = norm(x); if (x && !seen[x]) { seen[x] = 1; out.push({ s: x, full: true }); } });
+    if (kind === "a") {          // authors: the last name alone also counts (unless another author shares it)
+      var w = norm(noParen(title)).replace(/ (jr|sr|ii|iii|iv)$/, "").split(" ");
+      if (w.length >= 2 && w[w.length - 1].length > 2 && !seen[w[w.length - 1]]) { out.push({ s: w[w.length - 1], full: false }); seen[w[w.length - 1]] = 1; }
+      if (w.length >= 3) { var two = w.slice(-2).join(" "); if (!seen[two]) out.push({ s: two, full: false }); }
+    }
+    return out;
+  }
+  function tolerance(n) { return n <= 3 ? 0 : n <= 7 ? 1 : n <= 12 ? 2 : 3; }
+  // Edit distance (adjacent swaps count as one), giving up past `max`.
+  function dist(a, b, max) {
+    if (Math.abs(a.length - b.length) > max) return max + 1;
+    var prev2 = null, prev = [], i, j;
+    for (j = 0; j <= b.length; j++) prev[j] = j;
+    for (i = 1; i <= a.length; i++) {
+      var cur = [i], low = i;
+      for (j = 1; j <= b.length; j++) {
+        var c = a[i - 1] === b[j - 1] ? 0 : 1;
+        var v = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + c);
+        if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) v = Math.min(v, prev2[j - 2] + 1);
+        cur[j] = v; if (v < low) low = v;
+      }
+      if (low > max) return max + 1;
+      prev2 = prev; prev = cur;
+    }
+    return prev[b.length];
+  }
+  var varCache = {};
+  function allVariants(kind, data, keys) {
+    if (!varCache[kind]) varCache[kind] = keys.map(function (k) { return { id: kind + ":" + k, v: variants(data[k][0], kind) }; });
+    return varCache[kind];
+  }
+  // q.accept: [{id, kind}] entities that count as right. Returns {ok, exact, near: the closest other title, msg}.
+  function checkTyped(input, q, cd) {
+    var x = norm(input);
+    if (!x) return { ok: false, msg: "" };
+    var okIds = {}, okNames = {}, best = Infinity, exactFull = false;
+    q.accept.forEach(function (a) {
+      okIds[a.id] = 1;
+      variants(cd.data[a.kind][a.id.slice(2)][0], a.kind).forEach(function (v) {
+        okNames[v.s] = 1;
+        var t = tolerance(v.s.length), d = dist(x, v.s, t);
+        if (d <= t && d < best) best = d;
+        if (d === 0 && v.full) exactFull = true;
+      });
+    });
+    if (best === Infinity) return { ok: false, msg: "" };
+    // Is a different term, author or work just as close? Works that share a title with a right answer don't count.
+    var clash = null, clashD = 0;
+    q.otherKinds.forEach(function (k) {
+      if (clash) return;
+      var list = allVariants(k, cd.data[k], cd.keys[k]);
+      for (var i = 0; i < list.length && !clash; i++) {
+        if (okIds[list[i].id]) continue;
+        for (var j = 0; j < list[i].v.length; j++) {
+          var v = list[i].v[j];
+          if (okNames[v.s] && v.full) continue;      // another work with the same title as a right answer
+          if (exactFull && !v.full) continue;         // typed a full name exactly: someone else's last name doesn't matter
+          var dd = dist(x, v.s, best);
+          if (dd <= best) { clash = cd.data[k][list[i].id.slice(2)][0]; clashD = dd; break; }
+        }
+      }
+    });
+    if (clash) return { ok: false, clash: clash, msg: best === 0 ? "More than one " + (q.ansKind === "a" ? "author" : "answer") + " matches that. Type the full name." :
+      "That’s " + (clashD < best ? "closer to " : "just as close to ") + clash + "." };
+    return { ok: true, exact: best === 0 };
+  }
+
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  // Hide the term (and its other spellings) inside its own definition.
+  function maskTerm(def, title) {
+    var out = def;
+    [title, noParen(title)].concat((String(title).match(/\(or ([^)]*)\)/i) || []).slice(1)).forEach(function (t) {
+      t = String(t || "").trim(); if (t.length < 3) return;
+      var re = new RegExp("(^|[^A-Za-z])(" + t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")(e?s)?(?![A-Za-z])", "gi");
+      out = out.replace(re, function (m0, pre) { return pre + "_____"; });
+    });
+    return out;
+  }
+  // The question for one card in typed or multiple choice, or null when the card can't be checked (then it's standard).
+  function makeQuestion(id, d, cd) {
+    var L = id[0], e = (cd.mc[L] || {})[id.slice(2)];
+    if (!e || !e[1].length) return null;
+    var k = e[0], keys = cd.keys[k] || [], data = cd.data[k] || {};
+    var ids = function (list) { return list.map(function (i) { return keys[i]; }).filter(function (r) { return r && data[r]; }); };
+    var ans = ids(e[1]), pool = ids(e[2]);
+    if (!ans.length) return null;
+    var q = { ansKind: k, accept: ans.map(function (r) { return { id: k + ":" + r, kind: k }; }), otherKinds: [k] };
+    if (L === "t") { q.kind = "Definition · Name the term"; q.front = maskTerm(d[3] || "", d[0]); q.def = true; }
+    else if (L === "w") { q.kind = "Work · Who wrote it?"; q.front = d[0]; }
+    else if (L === "a") { q.kind = "Author · Which did they write?"; q.kindTyped = "Author · Name one of their works"; q.front = d[0]; }
+    else { q.kind = "Prize · Who won?"; q.front = d[3] || d[0];
+      (e[3] || []).forEach(function (i) { var r = cd.keys.a[i]; if (r && cd.data.a[r]) q.accept.push({ id: "a:" + r, kind: "a" }); });
+      if (k === "w") q.otherKinds = ["w", "a"]; }
+    // Multiple choice: the right answer (for an author, one of their works at random) plus 4 distractors at random.
+    var right = L === "a" ? [ans[Math.floor(Math.random() * Math.min(ans.length, 3))]] : ans;   // one of their 3 best-known works
+    var rightText = right.map(function (r) { return data[r][0]; }).join(L === "w" ? " and " : "; ");
+    var taken = {}; taken[norm(rightText)] = 1;
+    ans.forEach(function (r) { taken[norm(data[r][0])] = 1; });
+    var wrong = [];
+    shuffle(pool.slice()).forEach(function (r) {
+      var t = data[r][0], n = norm(t);
+      if (wrong.length < 4 && !taken[n]) { taken[n] = 1; wrong.push(t); }
+    });
+    for (var tries = 0; wrong.length < 4 && tries < 200 && keys.length; tries++) {
+      var r = keys[Math.floor(Math.random() * keys.length)], t = data[r][0], n = norm(t);
+      if (!taken[n]) { taken[n] = 1; wrong.push(t); }
+    }
+    q.choices = shuffle([{ t: rightText, ok: true }].concat(wrong.map(function (t) { return { t: t, ok: false }; })));
+    q.answerText = L === "a" ? right.concat(ans.filter(function (r) { return r !== right[0]; })).slice(0, 3).map(function (r) { return data[r][0]; }).join("; ") : rightText;
+    return q;
+  }
+
   function player(root) {
     var spec = JSON.parse(root.getAttribute("data-deck"));
     var q = new URLSearchParams(location.search);
@@ -664,10 +829,12 @@
       var host = o.into || root;
       if (!ids.length) return empty(o);
       host.innerHTML = '<p class="muted">Loading cards…</p>';
-      cardsFor(lettersOf(ids)).then(function (data) {
+      var letters = lettersOf(ids);
+      Promise.all([cardsFor(letters), modeOf(o) === "std" ? null : checkedData(letters)]).then(function (r) {
+        var data = r[0];
         ids = ids.filter(function (id) { return data[id]; });
         if (!ids.length) return empty(o);
-        run(ids, data, o, host);
+        run(ids, data, o, host, r[1]);
       });
     }
 
@@ -683,17 +850,29 @@
         '<p><a href="' + BASE + 'flashcards/">← Flashcards</a></p></div>';
     }
 
-    function run(ids, data, o, host) {
-      var m = S.meta(), defFirst = m.defFirst;
+    // Today's cards (the streak) are typed or multiple choice only; other sessions can also be standard.
+    function modeOf(o) {
+      var mm = S.meta();
+      if (o.today) return mm.modeDaily === "type" ? "type" : "mc";
+      return MODES[mm.mode] ? mm.mode : "std";
+    }
+
+    function run(ids, data, o, host, cd) {
+      var m = S.meta(), defFirst = m.defFirst, mode = modeOf(o), qn = null, result = null;
+      var modeList = o.today ? ["mc", "type"] : ["std", "type", "mc"];
       var queue = ids.map(function (id) { return { id: id, again: false }; });
       var total = queue.length, done = 0, cur = null, shown = false;
-      var tally = { got: 0, missed: 0, moves: {}, stay: 0, practice: 0, outside: 0, missedIds: [], marked: false };
+      var tally = { got: 0, missed: 0, moves: {}, stay: 0, practice: 0, outside: 0, missedIds: [], marked: false, stdDaily: 0 };
       var hasTerms = ids.some(function (id) { return id[0] === "t"; });
 
       host.innerHTML =
         '<div class="fc-top"><div class="fc-prog"><div class="fc-prog-t"><span>' + esc(o.label) + '</span><span data-count></span></div>' +
         '<div class="fc-meter"><div data-meter></div></div></div>' +
-        (hasTerms ? '<label class="fc-opt"><input type="checkbox" data-deffirst' + (defFirst ? " checked" : "") + "> Definition first</label>" : "") + "</div>" +
+        '<div class="fc-modes" role="radiogroup" aria-label="How to answer" data-modes>' + modeList.map(function (k) {
+          return '<button type="button" role="radio" class="fc-mode" data-mode="' + k + '">' + MODES[k] + "</button>";
+        }).join("") + "</div>" +
+        (hasTerms ? '<label class="fc-opt" data-dfwrap><input type="checkbox" data-deffirst' + (defFirst ? " checked" : "") + "> Definition first</label>" : "") + "</div>" +
+        (o.today ? '<p class="fc-mode-note muted">Today’s cards count toward your streak, so you type or choose each answer. Term cards show the definition; you give the term.</p>' : "") +
         '<div class="fc-col" data-stage>' +
         '<p class="fc-toast" aria-live="polite" data-toast></p>' +
         '<article class="fc-card" tabindex="0"><div class="fc-card-head"><span class="fc-kind" data-kind></span><span data-chip></span></div>' +
@@ -707,36 +886,115 @@
       var card = $(host, ".fc-card");
       var dfb = R("deffirst");
       if (dfb) dfb.addEventListener("change", function () {
-        defFirst = dfb.checked; var mm = S.meta(); mm.defFirst = defFirst; S.saveMeta(mm); if (cur) show();
+        defFirst = dfb.checked; var mm = S.meta(); mm.defFirst = defFirst; S.saveMeta(mm); if (cur && !shown) show();
       });
+      function drawModes() {
+        $$(R("modes"), "[data-mode]").forEach(function (b) { b.setAttribute("aria-checked", b.getAttribute("data-mode") === mode ? "true" : "false"); });
+        var w = R("dfwrap"); if (w) w.hidden = mode !== "std";
+      }
+      R("modes").addEventListener("click", function (ev) {
+        var b = ev.target.closest("[data-mode]"); if (!b) return;
+        var k = b.getAttribute("data-mode"); if (k === mode) return;
+        var mm = S.meta(); if (o.today) mm.modeDaily = k; else mm.mode = k; S.saveMeta(mm);
+        mode = k; drawModes();
+        var go = function () { if (cur && !shown) show(); };
+        if (k !== "std" && !cd) checkedData(lettersOf(ids)).then(function (x) { cd = x; go(); }); else go();
+      });
+      drawModes();
 
       function advance() {
         cur = queue.shift() || null;
         if (!cur) return finish();
         show();
       }
+      // In standard mode a due Study daily card is practice only: daily cards count when typed or chosen.
+      // (A card that can't be checked automatically is shown as a standard card and still counts.)
+      var qnFallback = false;
+      function stdPractice(st) { return !qn && !qnFallback && !o.cram && !cur.again && st && st[0] === 1 && isDue(st, today()); }
       function show() {
-        var d = data[cur.id], L = cur.id[0], rev = defFirst && L === "t" && d[3], st = S.cards()[cur.id];
-        shown = false;
+        var d = data[cur.id], L = cur.id[0], st = S.cards()[cur.id];
+        qn = mode !== "std" && cd ? makeQuestion(cur.id, d, cd) : null;
+        qnFallback = mode !== "std" && !qn;
+        var rev = qn ? L === "t" : defFirst && L === "t" && d[3];
+        shown = false; result = null;
         R("count").textContent = Math.min(done + 1, total) + " of " + total + (cur.again ? " · again" : "");
         R("meter").style.width = Math.round(100 * done / total) + "%";
-        R("kind").textContent = rev ? "Definition · Name the term" : KIND[L] + " · " + ASK[L];
-        R("chip").innerHTML = o.cram ? '<span class="fc-boxchip out">Practice</span>' : boxChip(st);
-        R("front").innerHTML = rev ? '<p class="fc-q def">' + esc(d[3]) + "</p>" : '<p class="fc-q">' + esc(d[0]) + "</p>";
+        R("kind").textContent = qn ? (mode === "type" && qn.kindTyped ? qn.kindTyped : qn.kind) : rev ? "Definition · Name the term" : KIND[L] + " · " + ASK[L];
+        R("chip").innerHTML = o.cram ? '<span class="fc-boxchip out">Practice</span>' :
+          stdPractice(st) ? boxChip(st) + ' <span class="fc-boxchip out" title="Daily cards count toward your boxes and streak only in Typed or Multiple choice">Practice in Standard</span>' : boxChip(st);
+        var front = qn ? qn.front : rev ? d[3] : L === "p" && d[3] ? d[3] : d[0];
+        R("front").innerHTML = '<p class="fc-q' + (rev ? " def" : "") + '">' + esc(front) + "</p>";
         R("back").innerHTML = rev ? '<p class="fc-q fc-ans">' + esc(d[0]) + "</p>" : d[1];
         R("back").hidden = true;
         card.classList.remove("revealed");
+        card.classList.toggle("checked", !!qn);
         var a = R("open"); a.href = BASE + d[2]; a.textContent = "Open " + KIND[L].toLowerCase() + " page ↗";
-        R("actions").innerHTML = '<button type="button" class="fc-btn primary fc-show">Show answer <span class="fc-key">Space</span></button>';
-        $(R("actions"), "button").addEventListener("click", reveal);
+        a.parentNode.hidden = !!qn;      // the record page would give the answer away; it shows again after answering
         R("honest").hidden = true;
+        if (!qn) {
+          R("actions").innerHTML = '<button type="button" class="fc-btn primary fc-show">Show answer <span class="fc-key">Space</span></button>';
+          $(R("actions"), "button").addEventListener("click", reveal);
+        } else if (mode === "mc") {
+          R("actions").innerHTML = '<ol class="fc-choices">' + qn.choices.map(function (c, i) {
+            return '<li><button type="button" class="fc-choice" data-c="' + i + '"><span class="fc-cl">' + "ABCDE"[i] + '</span><span class="fc-ct">' + esc(c.t) + '</span></button></li>';
+          }).join("") + '</ol><p class="fc-checkrow"><button type="button" class="fc-link" data-idk>I don’t know</button><span class="fc-key">keys 1–5 or A–E</span></p>';
+          $$(R("actions"), "[data-c]").forEach(function (b) { b.addEventListener("click", function () { choose(+b.getAttribute("data-c")); }); });
+          $(R("actions"), "[data-idk]").addEventListener("click", function () { choose(-1); });
+        } else {
+          R("actions").innerHTML = '<form class="fc-typed" autocomplete="off"><input type="text" spellcheck="false" autocapitalize="off" autocorrect="off" aria-label="Your answer" placeholder="' +
+            (L === "t" ? "Type the term" : L === "w" ? "Type the author" : L === "a" ? "Type one of their works" : "Type the winning work or author") + '">' +
+            '<button type="submit" class="fc-btn primary">Check <span class="fc-key">Enter</span></button></form>' +
+            '<p class="fc-checkrow"><button type="button" class="fc-link" data-idk>I don’t know</button></p>';
+          var f = $(R("actions"), "form"), inp = $(f, "input");
+          f.addEventListener("submit", function (ev) { ev.preventDefault(); if (!inp.value.trim()) { inp.focus(); return; } submitTyped(inp.value); });
+          $(R("actions"), "[data-idk]").addEventListener("click", function () { submitTyped(""); });
+          setTimeout(function () { inp.focus({ preventScroll: true }); }, 0);
+        }
         drawCats();
+      }
+      function choose(i) {
+        if (shown || !qn) return;
+        var ok = i >= 0 && qn.choices[i].ok;
+        $$(R("actions"), "[data-c]").forEach(function (b, j) {
+          b.disabled = true;
+          if (qn.choices[j].ok) b.classList.add("right");
+          else if (j === i) b.classList.add("wrong");
+        });
+        var row = $(R("actions"), ".fc-checkrow"); if (row) row.remove();
+        checked(ok, ok ? "Right!" : (i < 0 ? "" : "Not quite. ") + "The answer: " + qn.answerText);
+      }
+      function submitTyped(val) {
+        if (shown || !qn) return;
+        var r = val ? checkTyped(val, qn, cd) : { ok: false };
+        var f = $(R("actions"), "form"), inp = f && $(f, "input");
+        if (inp) { inp.readOnly = true; inp.classList.add(r.ok ? "right" : "wrong"); }
+        if (f) { var sb = $(f, "button"); if (sb) sb.remove(); }
+        var row = $(R("actions"), ".fc-checkrow"); if (row) row.remove();
+        var d = data[cur.id], want = cur.id[0] === "t" ? d[0] : qn.answerText;
+        checked(r.ok, r.ok ? (r.exact ? "Right!" : "Right! Check the spelling: " + want) :
+          (val ? (r.msg ? r.msg + " " : "Not quite. ") : "") + "The answer: " + want);
+      }
+      // A typed or chosen answer is in: show the card's back and how it went, then Next.
+      function checked(ok, msg) {
+        shown = true; result = ok;
+        R("back").hidden = false; card.classList.add("revealed");
+        R("open").parentNode.hidden = false;
+        var st = S.cards()[cur.id], sched = !o.cram && !cur.again && st && st[0] > 0;
+        var fb = document.createElement("div");
+        fb.className = "fc-result " + (ok ? "right" : "wrong");
+        fb.setAttribute("role", "status");
+        fb.innerHTML = "<p><b>" + esc(msg) + "</b>" + (sched ? ' <span class="muted">· ' + esc(outcome(st, ok, today())) + "</span>" : "") + "</p>" +
+          '<button type="button" class="fc-btn primary" data-next>Next <span class="fc-key">Enter</span></button>';
+        R("actions").appendChild(fb);
+        var nb = $(fb, "[data-next]");
+        nb.addEventListener("click", function () { answer(result); });
+        nb.focus({ preventScroll: true });
       }
       function reveal() {
         if (shown || !cur) return;
         shown = true;
         R("back").hidden = false; card.classList.add("revealed");
-        var st = S.cards()[cur.id], t = today(), sched = !o.cram && !cur.again && st && st[0] > 0;
+        var st = S.cards()[cur.id], t = today(), sched = !o.cram && !cur.again && st && st[0] > 0 && !stdPractice(st);
         R("actions").innerHTML =
           '<button type="button" class="fc-grade miss" data-g="0">Missed it<small>' + (sched ? esc(outcome(st, false, t)) + " · " : "") + 'key 1</small></button>' +
           '<button type="button" class="fc-grade got" data-g="1">Got it<small>' + (sched ? esc(outcome(st, true, t)) + " · " : "") + 'key 2</small></button>';
@@ -749,7 +1007,8 @@
         var id = cur.id, msg = "";
         if (!cur.again) { done += 1; got ? tally.got++ : tally.missed++; }
         if (!got && !cur.again) tally.missedIds.push(id);
-        if (!o.cram && !cur.again) {
+        if (!o.cram && !cur.again && stdPractice(S.cards()[id])) { tally.stdDaily++; }
+        else if (!o.cram && !cur.again) {
           var res = grade(id, got);
           if (res) {
             if (res.marked) tally.marked = true;
@@ -811,6 +1070,7 @@
             return '<p><span>' + r[0] + '</span><span class="' + r[2] + '">' + plural(r[1], "card") + (r[2] === "up" ? " ↑" : r[2] === "down" ? " ↓" : "") + "</span></p>";
           }).join("") + "</div>";
           if (tally.outside) html += '<p class="muted">' + plural(tally.outside, "card was", "cards were") + " outside your boxes, so " + (tally.outside === 1 ? "it was" : "they were") + " practice only.</p>";
+          if (tally.stdDaily) html += '<p class="muted">' + plural(tally.stdDaily, "daily card was", "daily cards were") + " studied in Standard, so " + (tally.stdDaily === 1 ? "it was" : "they were") + " practice only. Daily cards count toward your boxes and streak in Typed or Multiple choice.</p>";
           if (tally.marked) html += '<p class="fc-streak-won">' + FLAME + " <span><b>" + curStreak(mm) + "-day streak!</b> Daily cards finished for today.</span></p>";
           var bs = boxStats(c, t);
           var bits = [];
@@ -840,11 +1100,19 @@
         if (R("stage").hidden || !cur || ev.metaKey || ev.ctrlKey || ev.altKey) return;
         var tag = (ev.target && ev.target.tagName) || "";
         if (/^(INPUT|SELECT|TEXTAREA)$/.test(tag)) return;
+        if (qn) {
+          if (!shown && mode === "mc") {
+            var i = ev.key.length === 1 ? "12345".indexOf(ev.key) : -1;
+            if (i < 0 && ev.key.length === 1) i = "abcde".indexOf(ev.key.toLowerCase());
+            if (i >= 0) { ev.preventDefault(); choose(i); }
+          } else if (shown && (ev.key === "Enter" || ev.key === " " || ev.key === "ArrowRight") && tag !== "BUTTON") { ev.preventDefault(); answer(result); }
+          return;
+        }
         if (!shown && (ev.key === " " || ev.key === "Enter")) { ev.preventDefault(); reveal(); return; }
         if (shown && (ev.key === "1" || ev.key === "2")) { ev.preventDefault(); answer(ev.key === "2"); }
       }
       document.addEventListener("keydown", onKey);
-      card.addEventListener("click", function (ev) { if (!shown && !(ev.target.closest && ev.target.closest("a"))) reveal(); });
+      card.addEventListener("click", function (ev) { if (!qn && !shown && !(ev.target.closest && ev.target.closest("a"))) reveal(); });
       advance();
     }
   }
@@ -862,7 +1130,11 @@
       '<label class="fc-row" for="fc-perday">Add <input id="fc-perday" class="fc-num" type="number" min="0" max="100" value="' + m.perDay + '"> new cards each day automatically</label>' +
       '<label class="fc-row"><input type="checkbox" data-capon' + (m.capOn ? " checked" : "") + '> Pause new cards while Study daily has more than <input class="fc-num" type="number" min="1" max="999" value="' + m.cap + '" aria-label="Daily card limit" data-cap> cards</label>' +
       '<p><a href="' + BASE + 'flashcards/waiting/">View and edit the waiting cards →</a></p></section>' +
-      '<section><h3>Studying</h3><label class="fc-row"><input type="checkbox" data-df' + (m.defFirst ? " checked" : "") + "> Show the definition first on term cards</label></section>" +
+      '<section><h3>Studying</h3>' +
+      '<label class="fc-row fc-set-row">Today’s cards: <select data-mdaily><option value="mc"' + (m.modeDaily !== "type" ? " selected" : "") + '>Multiple choice</option><option value="type"' + (m.modeDaily === "type" ? " selected" : "") + ">Typed</option></select></label>" +
+      '<label class="fc-row fc-set-row">Other studying: <select data-mother>' + ["std", "type", "mc"].map(function (k) { return '<option value="' + k + '"' + ((MODES[m.mode] ? m.mode : "std") === k ? " selected" : "") + ">" + MODES[k] + "</option>"; }).join("") + "</select></label>" +
+      '<p class="muted">Your streak comes from today’s cards, which you answer by typing or choosing (terms show the definition; you give the term). In Standard you flip the card and say whether you got it; daily cards studied that way are practice only.</p>' +
+      '<label class="fc-row"><input type="checkbox" data-df' + (m.defFirst ? " checked" : "") + "> Standard: show the definition first on term cards</label></section>" +
       '<section><h3>Streak</h3><p><b>' + plural(curStreak(m), "day") + "</b> now" + (m.streak.best ? " · best " + plural(m.streak.best, "day") : "") + "</p>" +
       '<p class="muted">A day counts when you finish your daily cards. Weekends are optional: studying adds a day, skipping doesn’t break your streak. Days with no cards in Study daily don’t count either way.</p></section>' +
       '<section data-season><h3>Off-season</h3>' + (m.paused != null
@@ -886,6 +1158,8 @@
     $(ov, "[data-cap]").addEventListener("change", function () { var v = clampInt(this.value, 1, 999, 40); this.value = v; save(function (mm) { mm.cap = v; }); intro(); });
     $(ov, "[data-capon]").addEventListener("change", function () { var on = this.checked; save(function (mm) { mm.capOn = on; }); intro(); });
     $(ov, "[data-df]").addEventListener("change", function () { var on = this.checked; save(function (mm) { mm.defFirst = on; }); });
+    $(ov, "[data-mdaily]").addEventListener("change", function () { var v = this.value; save(function (mm) { mm.modeDaily = v; }); });
+    $(ov, "[data-mother]").addEventListener("change", function () { var v = this.value; save(function (mm) { mm.mode = v; }); });
     var an = $(ov, "[data-addnow]");
     if (an) an.addEventListener("submit", function (ev) {
       ev.preventDefault();
