@@ -92,11 +92,11 @@ TABLES = {
         "d": "fldH8tlQAXyYmJ2tr", "e": "fldygihYAICaoblm9", "correct": "fldkWHxQ1rCEW06g7",
         "number": "fldwadHhF7fbzuedS", "part": "fldJrtGYQyU2sq55x", "poems": "fldxo5vOdLp63ohVZ",
         "rl_works": "fld8BtUvVz4VEyl6w", "terms": "fldHfOfZ0ImhwX5V7", "authors": "fldXuzM3SSDbXZoPi",
-        "works": "fldWpu4MAkgQe8Mvv",
+        "works": "fldWpu4MAkgQe8Mvv", "source": "fldFtTKHbwhQJ7SuJ", "status": "fldBEhpYKTv5x9LWJ",
     }),
     "tests": ("tblDASF9lXxJby0kz", {
         "name": "fldkWtaAfrRmC1lpK", "year": "fld1PomM202MScaic", "type": "fldYZkncJfj653B49",
-        "questions": "fldZknvWA4ThMzBT9", "passage": "fldCF9oIUfqnGLmDe",
+        "questions": "fldZknvWA4ThMzBT9", "passage": "fldCF9oIUfqnGLmDe", "source": "fldAf4I7cthsEGnLb",
     }),
     "essays": ("tbloXypOYQ086Pf5o", {
         "name": "fld98QHXSPFVXQVao", "prompt": "fldWhCvgV8NURzqKA", "poems": "fld51bwq2H8BR2STU",
@@ -344,6 +344,10 @@ def normalize(raw):
                 else:
                     r[name] = as_text(v)
             db[key][rec["id"]] = r
+    # Questions and Tests hold both released (Source = Official) and AI-drafted (Source = Generated)
+    # records. Only released ones are on the site for now; a blank Source counts as Official.
+    for key in ("questions", "tests"):
+        db[key] = {i: r for i, r in db[key].items() if r.get("source") != "Generated"}
     # Drop links that point at records that aren't on the site.
     for key, links in LINK_FIELDS.items():
         for r in db[key].values():

@@ -31,7 +31,7 @@ reading list, Resources). The home page shows the term and author of the day, th
 | Historical Periods | By region in order, with previous/next period links. |
 | Tags | Term lists with Quizlet, Gimkit, Blooket and Sporcle links. |
 | Reading Resources | Grouped by work, linking to each resource's **Link**. Attached files are not copied to the site. |
-| Tests and Questions | A page per test with its questions grouped by part. Answers stay hidden until "Show answer" is clicked. Term, author, work and poem pages list the questions that mention them. |
+| Tests and Questions | A page per test with its questions grouped by part. Answers stay hidden until "Show answer" is clicked. Term, author, work and poem pages list the questions that mention them. Only released questions and tests (Source = Official, or blank) are shown; AI-drafted ones (Source = Generated) are left out for now. |
 | Poems and Passages | Full text, author, the tests it appeared on, its essay prompts and its questions. |
 | Essay Prompts | A page per prompt with its text, and a box where students write their essay (bold, italic, underline, word count). Essays save as they type: in the browser, and in the student's account when signed in. The Essay prompts list marks the ones a student has written. |
 | Reading Lists | One table of each school year's novel, play and poet. |
