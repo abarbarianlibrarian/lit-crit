@@ -4,7 +4,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_16_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_16_hawthorne_64kb.mp3",
@@ -32,24 +32,24 @@
      "thumbnails": {
       "large": {
        "height": 652,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/TFQfIAYC9dl-U7PTmY70Xw/SK5pc3WskdWa8Abv55j-xlRpNEgWyZ16IoSOOZUB2IlU0jaUzCavQFvMAvMS9kifoZBiX7la2fwrKxfQTHS8no6r9fztf3yArSaQZjdc94gn3Lxcqwdff1ifujL9E8YN1cX5w7Wutw1LrfaHRvXg-Q/45gv1XzfbKAjsWLeeWGPGUSoCB8uP8PiaykS2fbn8XI",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ybnrhuSFXTrCA1HErZHV-A/x7u_WgasYsxAJQwIPN198dPMjVZ3QmZxhQONsQAhKQKtx9qK7Yo6AsbX-lwfKTyY3Go_RdISfE8sj0LoD4afJ4YBlr7jW7j81IEWUAztVXFb3-SI0hmTORwdkpxALtBJ_8DZdItmsUeEZI1vUmlO_Q/EenKi44WMdMQZ_XIHCPIsAZywJ0v2avdHR3mc5LLMUE",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/VYpc789dg2qzikw4WTvP6A/NrVZr2tNrkxHMT6NcKbTDa1yTeb9Ia3y_J57wZW_SNOwVljeujqTHIoF7ZeO5zfo_i0VlEEkr5r_IPtRrLz7uo4Xte2TsD1rztvvrfAqr-3N9pW-Hd8SWmkDJ9P_75FRQ2xMpYPxO5pD8DcrQ1T_MQ/6K9RKII7i1dpPMglDA0CH-jKEmf2fCw2XVT0nJ0Gwgs",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/4VZDmqvHHIixSaFbFB_xKg/c7l03GY1cKE5Hj61BBr_uW7a0bObAJxzUEcfx3uVakAn3C0BuYNEkhA-aTQvMkk6s5xz2fS0K4wp-V4u5UVLcycdspEJJgMB734w_Oo7-4LRtO0bOOcHIQoHGiYeE4GagvG99K86IdqgJZ3Nt7yJjQ/K_2fvFB6XvPhYc3dKhL5eLBpAJO93PHBVLFeYL9usF4",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/dANp9PU10R4UgmCxF_UZbg/dxq9r-Jf2_Cc8Mv0br3lmhlmdIQ7jXBh4z-AgRBTsmeUk7Tl7SzAle_wVA9Mak745adGrnJ3kwnqn3eC6BwhU_k6CGm9VHrAt09Ydx7VDJ9uD3aJuU-j5bU2Y3BP-KIyUNa9J1LijlZKiMuK2xSZEu5L-lBviQyrm-XyijUIKhBNdPQ5cVCZrG5SoboBHz7Y/6m2tzZ9FFPdi2HcKhKYpQjHbYN84GTHsQbdQExckTD8"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/9-eFIyPjTyfws7HYl3I5Iw/Av-aGya5jsYrsmQpHfmoflYu3Vp45gjBBtPxEbcMPaQY935mhOgktlAdQL9I1pDZWiyuVs0QCZa4dG2XX4YoF5ivlNMwytGYA_J_NptWvDwzXgoKgMG1Yi6mYvW512CyM6hbFEyvCjiXWY-dUsFJ0q9Z-bTsYe9mTIWK6B4BVaHu_GErmFzv0uISHTxHHdVY/ZfGN7TO_zKWSc5Rrfxe8dfX_N68ntsvfHtDzjh3LWvs"
     }
    ],
    "From field: Self-Link": [
     "rec0pgTTXlmhsu6ix"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/14Jrlh4BiNt1Cci3trSH3xtcDXS23VXOF/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/14Jrlh4BiNt1Cci3trSH3xtcDXS23VXOF/view?usp=drive_link",
@@ -73,7 +73,7 @@
   "fields": {
    "Access": "Paid",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.audible.ca/pd/Lost-in-Yonkers-Audiobook/B002V8HIFY"
    },
    "Link": "https://www.audible.ca/pd/Lost-in-Yonkers-Audiobook/B002V8HIFY",
@@ -97,7 +97,7 @@
     "rec1EI8k32lDdFd89"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/12893/a-coat"
    },
    "Link": "https://www.poetryfoundation.org/poems/12893/a-coat",
@@ -121,7 +121,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://rpo.library.utoronto.ca/content/prologue"
    },
    "Link": "https://rpo.library.utoronto.ca/content/prologue",
@@ -142,7 +142,7 @@
   "fields": {
    "Access": "Free preview",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.coursehero.com/lit/Wakefield/"
    },
    "Link": "https://www.coursehero.com/lit/Wakefield/",
@@ -163,7 +163,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://rpo.library.utoronto.ca/content/night-when-others-soundly-slept"
    },
    "Link": "https://rpo.library.utoronto.ca/content/night-when-others-soundly-slept",
@@ -184,7 +184,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.gutenberg.org/ebooks/9231"
    },
    "Link": "https://www.gutenberg.org/ebooks/9231",
@@ -205,7 +205,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://librivox.org/the-poems-of-mrs-anne-bradstreet-together-with-her-prose-remains/"
    },
    "Link": "https://librivox.org/the-poems-of-mrs-anne-bradstreet-together-with-her-prose-remains/",
@@ -226,7 +226,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_05_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_05_hawthorne_64kb.mp3",
@@ -250,7 +250,7 @@
     "rec3BZc3qj9s8Yz2d"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1e3HvjDWd_KAKR7uohX7zCODgC9tHpDWe/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1e3HvjDWd_KAKR7uohX7zCODgC9tHpDWe/view?usp=drive_link",
@@ -274,7 +274,7 @@
   "fields": {
    "Access": "Paid",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.primevideo.com/detail/0NYGDP77YPKFS5TPZ2UT02DIKM"
    },
    "Link": "https://www.primevideo.com/detail/0NYGDP77YPKFS5TPZ2UT02DIKM",
@@ -294,8 +294,29 @@
   "createdTime": "2026-11-03T14:48:53.000Z",
   "fields": {
    "Access": "Free",
+   "File": [
+    {
+     "filename": "Lost-in-Yonkers-GradeSaver-ClassicNote.pdf",
+     "id": "attOg1iouTeJv3JMw",
+     "size": 345328,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/75vPNVVxH7Fu1hjJ2PWxtQ/PqPm9vjbLEhQwBTjfRmtPxu_sfMV-T8ZzU-dMefkJBl27XWGP93ZRTbMUwpih__scKrb-3SKFaB25STD-k-_U40H4tVP3ANMBE1bDUPsAn1QQ-5GkXko1q5i-vFW7BY7TI28GCTGc8DltzmSmgaTuA/-eZY_UctyWBpwEzuFJ1rKC68f2ySaV5FTQneLiw7COw",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/K0VZkHKCKT83tyD1lkNbbg/zW-Vc4OinblAN_iVwUmHNjyVNAzliQ5cwNSkEQjgOtDAG5cFX1-rpLR0NoXoXTDUalk9rvh5XuVZnUoUaFzxvciFNOhSSj_ABrtjY8LtgYkS5-5b6PLd5cDUnHjH4-jEncMHEf7kUh6c_gH8WyKwFw/9TMypIbdQsmV-QiQzvnSvWSZByd7TzQJNK1bQf6ebkw",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/6tVhnyGaE76durTPoePffw/vD8Cv4BiNm63PFL5I9fGoTOKmaIdHyAAGZtNmCNhDxzD2WC41wuDqYJKy7WtdmK10UTYiEkAFUni8zqqdBgAwJC-XXSY0zvBnunobXkKDbA412CpWZxCgzksw7VHYi3VM1ACY-bhUGKdyr_JfQ_XRRmA3Z1-xo9uBvQVsG2fMbk8dO5wF3Q4bzA7iFm0qNv0MGXsH5DQ5R97u3PUiACD1A/wSPB0Tl5l17QLVAMz8AQdCgoWaaBZQbRJTqXTy0GRpU"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.gradesaver.com/lost-in-yonkers"
    },
    "Link": "https://www.gradesaver.com/lost-in-yonkers",
@@ -316,7 +337,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_28_bradstreet_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_28_bradstreet_64kb.mp3",
@@ -337,7 +358,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://librivox.org/mosses-from-an-old-manse-by-nathaniel-hawthorne/"
    },
    "Link": "https://librivox.org/mosses-from-an-old-manse-by-nathaniel-hawthorne/",
@@ -358,7 +379,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://eada.lib.umd.edu/text-entries/before-the-birth-of-one-of-her-children/"
    },
    "Link": "https://eada.lib.umd.edu/text-entries/before-the-birth-of-one-of-her-children/",
@@ -379,7 +400,7 @@
   "fields": {
    "Access": "Paid",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.concordtheatricals.com/s/2758/lost-in-yonkers"
    },
    "Link": "https://www.concordtheatricals.com/s/2758/lost-in-yonkers",
@@ -400,7 +421,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_20_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_20_hawthorne_64kb.mp3",
@@ -424,7 +445,7 @@
     "rec5pZfw9v2qj8vCa"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/43288/the-wild-swans-at-coole"
    },
    "Link": "https://www.poetryfoundation.org/poems/43288/the-wild-swans-at-coole",
@@ -444,11 +465,52 @@
   "id": "rec5pZfw9v2qj8vCa"
  },
  {
+  "createdTime": "2026-11-13T16:59:32.000Z",
+  "fields": {
+   "Access": "Paid",
+   "File": [
+    {
+     "filename": "To My Dear and Loving Husband by Anne Bradstreet - Poem Analysis - Poetry+.pdf",
+     "id": "attCDRoRPVj1LTzO1",
+     "size": 748450,
+     "thumbnails": {
+      "large": {
+       "height": 724,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/cJLhh6iMnMrr9g8S3druaQ/egK31FyI_VmhiN0nyLYMYZmj-5unpc7dIb1ZaYT3R2V81P5PEw4jK_Iz-FLohYOSqjHcJ13xVn3kt0Q8LDug0gW0HOEDOz8ObmBSsvlwg-XGSvC4ktxK_1RzfAM5rRh1qoKzV8S5EX1ZztqrSQaW7Q/dH-03N1BgtxVSaKFDhQt_-NTYhiN8PZl8Z6qc1GZfAU",
+       "width": 512
+      },
+      "small": {
+       "height": 35,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/LiYLOgi4fbFwIXqY8G6rLA/UjT460uMYJV_9fmy6m9Kdcqx8glD_UlSwbONyd8VvpZONvOruy7MqhFUkOeSTTfyBh3eN65Nb3BE0IyVB61zat7j6r7IKL6xq-V-Pu2H2JyVnbO3PkztVJIE7ZoZtzYVypKsezXg1wQBJgjxTIk9yQ/tO92BzST-4JCUCFp6czJN1gCroRdpHNsphs5hDw6B3k",
+       "width": 25
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/gUeEGVAX-I5opvBV0vbVEA/fegPJlLLhW1Kt-2QSWZPWDkg6sfFcHNq-H45PU2zyh1FfFpICkbZ9hPzD0XZ5rid2YB-0uEnc3dhIktsF7_zQgzeRwWdTr8cqB33fwazKmrOZw3GKUz6nkXQuOJ1g9PjDk3epq7mTHBnsewtSWFzTKCkRjPPf75rwa6RgMFoibsdTPKpU_Sli9FrxoP8ca3ddwQ8KT4jqB4hQdHCYi_13_NFY3PpK2hIhVdOggxFae8/t_uDMuTtBa5sH-K8urb-E-D5Ycgrh70k7GerFNRH5DY"
+    }
+   ],
+   "Go to Resource": {
+    "label": "Open Resouce",
+    "url": ""
+   },
+   "Name": "To My Dear and Loving Husband - Poem Analysis",
+   "Record ID": "rec5ruLdc4xHA84Mw",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "rec5ruLdc4xHA84Mw"
+ },
+ {
   "createdTime": "2026-11-03T14:49:54.000Z",
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://rpo.library.utoronto.ca/content/reference-her-children-23-june-1659"
    },
    "Link": "https://rpo.library.utoronto.ca/content/reference-her-children-23-june-1659",
@@ -468,8 +530,29 @@
   "createdTime": "2026-11-03T14:48:53.000Z",
   "fields": {
    "Access": "Free",
+   "File": [
+    {
+     "filename": "Young-Goodman-Brown-LitChart.pdf",
+     "id": "attgvKdThBaZ4QhLp",
+     "size": 276865,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/C3olnqOknVjixxowGG35PQ/VsJxjf_S-UMByrgd0aHtdlt3k_SBwTxUO5_D6ns8ecCWGEY_ys4FvGeHg7Q66KO7sAxOVYZeKnuEp1SCSUKkxzlE2Zmc84cNyA9r1UEk8btLQJaGcBznBF5eIcVLpdR11sN-hLDOsPl48RJd0FkKow/JcntmgGNrWo0e2tAxbVwRj-WlI4YtcsFtsc-P3ljynY",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/xyixyQZU3g6AC0moP27Nrw/CiPu0nrgEhT5JiPTJNrDmksfUUqheRwxbj-H7bpn7dl5-8Nhei_yplW0CGqXUwl3muzrTqoLoKlgZP6hgduDJZ1sXemUyayGlVKoyXbstu6aa-IZRQIujB-3PR-4o5jbdja1IJP_CC23z-OIBXOAxQ/6cL08OIgek-3n94M5OJFRI5SMmzIVBiPhv85vn71NWM",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/YlHEV7B24O41GcyFZYqOhA/0v8Zvptjh1aJW8kidMQh9oqAPR_1rVvjRBKvnyDUb5AbmrjopiZ2qvcutClpoeS6SZFKBlszYbVnHD3dNk4OjSZ8ikd9MpJNVHiOu7KVY7df49ObpaflWvkEuT34J8O95geputFeUelGpr8y_J4qXHtMEuMsMMdzRlh5lr5yINFbALOtbjXgR8XutnS13toA/nNjjHnkUjcox_Qp3LXbyDZjPbwxdPytVNISONQfV8ns"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.litcharts.com/lit/young-goodman-brown"
    },
    "Link": "https://www.litcharts.com/lit/young-goodman-brown",
@@ -489,8 +572,29 @@
   "createdTime": "2026-11-03T14:48:53.000Z",
   "fields": {
    "Access": "Free preview",
+   "File": [
+    {
+     "filename": "The Ambitious Guest - SuperSummary Study Guide.pdf",
+     "id": "attQm23T26tDb1rJ6",
+     "size": 270168,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/jENwzgFU9-zCJSfOohhNfw/ml7WxJevUpGh7k6ao8JKF_e2YegCw1f5i4CSDjclgnsbmrA47zSyMId4aASfpZ7T3HjFzp71spotZbgw9kAopks6pqCMeCnu63wdCu6BakkoE3ZB967YWi5AbJZMKsrK8GewQrHcXs-adWKxKCQnpA/cF3ivU6GYVOApgRi7mk_oaoohtgwHN5hskHn_yLa4GM",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/HlfBXNZ6XbVsV5qrIupl4A/mnMvPIkKdJKSucFh3MMY0hC56Okfk3eVrbyE_BGCVYA0VJ0ZAaKF6PCgsej2F3Q6U04XR9GSxVWCoisntjR2V4unKyU9ZeGsjMtZ8m72VeVos_ClHXERIWMeEn3wvqPoI_Q9n5rrfBsxzyqrCaWrxA/istR53vi18RoF-Kr13cPGIdoOhphiCX8mS11ncV2uSQ",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/RqarejPMfAVDsBYcQ7RJig/ril6DZyXwxBuIQIO0BYidtZk7nA0VKMtFhdwTx91MvdcO3MECy5qnrHuK3RlljPr5VgrEXs6dPrxkUJ5DJ7800Ptu_aBpyW5xPVxFTfWAz8__8-WUSEaxuAuKtQ6KR_YB1CVCatbaG1tcdBnJctcr4sBFVIBbpALxvw6ZY2JC8jlvlD0ITaDkBTZstiEKAMW8CbDFkbrUQicBW7ZQWe-6g/mFk5YhNyZWv4I9F9fvMHfocOos7ah2r6J4LNImQVDY4"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.supersummary.com/the-ambitious-guest/summary"
    },
    "Link": "https://www.supersummary.com/the-ambitious-guest/summary",
@@ -514,7 +618,7 @@
     "rec6Z7OI2i1HhCVrF"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/43291/sailing-to-byzantium"
    },
    "Link": "https://www.poetryfoundation.org/poems/43291/sailing-to-byzantium",
@@ -538,7 +642,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://librivox.org/twice-told-tales-by-nathaniel-hawthorne/"
    },
    "Link": "https://librivox.org/twice-told-tales-by-nathaniel-hawthorne/",
@@ -559,7 +663,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_06_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_06_hawthorne_64kb.mp3",
@@ -576,11 +680,52 @@
   "id": "rec8nmH6LAW3MSlAV"
  },
  {
+  "createdTime": "2026-11-13T16:58:52.000Z",
+  "fields": {
+   "Access": "Paid",
+   "File": [
+    {
+     "filename": "anne-bradstreet-poetry-plus-guide.pdf",
+     "id": "attj15m28YrtS7xif",
+     "size": 395563,
+     "thumbnails": {
+      "large": {
+       "height": 721,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/CKYeQn33POU8PjNa-ZWp-A/VT25tP5mU1foVTP7B7n7C2ryL_F0EFxQoc4TXcjJrbn9oWPuAN7FNXjjwFDeTCGhWKyR8id41LmQc_ZrhoX8J43yPSj8lpYdGOpJi2uCl5boxuFRGb5K0hKE4OwnDcio0NLZlr2wnD0Lq6cxdI0a-A/uGKhygmzrUNhMlCAs8mL1uiVYW84K6fdyG7w3sCOt7A",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/-xOMnN6xI7uJOWqzc37Bng/eQLJrvPAUTGU0nwZmDCXNJ69vPu3VLgSLh9RgKZy5kCYF9MP310zgdH2aCSq3rb0_a72KiUIr4EGcx7MbWkdAwvFh7Ft3aMwpKWakkOl-mR87hmJGoyrFDQ2F89k6nqmERS0PnBLXaDPt_X1LkX8Cg/BacRL7Q8lnqwc3FN6PDGTmajl3CA2EeWNOEswyKHEqQ",
+       "width": 26
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/SfOfQ74VnMlzVKiSC8NyOg/oquMF_-j_2FJkpSg6g9Gt8XcPPe35r0eYUajdcyHhgGwMjQxNPn1_ZNrbIFssyIn9-Imdt1Py4vbKUiK_U53Nw_SwCGTU6-bdokUMuMbyrxNIxUTR5jXs8zqMeMfG9gRSPoMXnFG2AqPG1nU2K9DmiR4e12hhpr_gK831vT9_9nE0b4buwNOKnb2FdDLIG-8/DffvO7MttVAoWeIKyESDyG2FxicMqLkOrKmjQW4ZpLg"
+    }
+   ],
+   "Go to Resource": {
+    "label": "Open Resouce",
+    "url": ""
+   },
+   "Name": "anne-bradstreet-poetry-plus-guide.pdf",
+   "Record ID": "rec9C9MojNvTPpq0r",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "rec9C9MojNvTPpq0r"
+ },
+ {
   "createdTime": "2026-11-03T14:49:54.000Z",
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://interestingliterature.com/2019/01/17/a-short-analysis-of-anne-bradstreet-to-her-father-with-some-verses/"
    },
    "Link": "https://interestingliterature.com/2019/01/17/a-short-analysis-of-anne-bradstreet-to-her-father-with-some-verses/",
@@ -601,7 +746,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.ebsco.com/research-starters/literature-and-writing/lost-yonkers-neil-simon"
    },
    "Link": "https://www.ebsco.com/research-starters/literature-and-writing/lost-yonkers-neil-simon",
@@ -622,7 +767,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_29_bradstreet_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_29_bradstreet_64kb.mp3",
@@ -642,8 +787,29 @@
   "createdTime": "2026-11-03T14:49:54.000Z",
   "fields": {
    "Access": "Free",
+   "File": [
+    {
+     "filename": "LitCharts-the-author-to-her-book.pdf",
+     "id": "attLBWo9l7ryEsgUt",
+     "size": 170224,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/AFEHoXmBH--r8hspw1tnlg/scSzoiKrfvlIn8KX_oGEF1DibMdQQUTlXT1kZDnmEUJuUmWnqyfsvyd0QsuHyk1_qoIsSS7QtAeP5Lc9CUEn3sI6WDLSZYL0tjw1Co4gHbrjWDb1jqnHv40CVXuzLkeBUgiaYNvsm0p4sgtn3wF8Aw/OU5BjUVsm5uxelt1-zUrf3ypkjzQxTfSWVtOVsoJj34",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/qnw8h4UQjzEPL2LygYdWrA/R-u9kXhk3562-dasgbycEIoUuJxpU0jQvS8CMExDJ_y6rkkBqXAKsM9-Tyi_JsR6Ifc8zB5KgLRjgMAWBY2Ozq64QQCrIRK2x9h9W0UqGzhaSbvic4hBM2SBbLvaZMvmNh27zDv8be_myq5G2YstQg/oymPI4_p8Iye_-bvMHzG_ukiCASixfdp3CR80PXKtuQ",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/AwEW5yFGSBJ9u09LKAjBCg/jm52_5n1HUEE7dV2xU5tl9XBP-KLOrb-pT8s9fy_Kmg-t2E6oNjKVIE-vkMmsBnpCqNT-SjiP68ZZK5wS6zvo8WtzBK5Vaxsv-0ctv2tSPQLcLCw_iHV-hKfnHGklZwSViqx1WRchYSXtTdHWLiOwfzSYK-4owRtx1lAMcwu8saq7jV3Ege1x_YXBt4sdO_W/MxbmJIHGzdYzzEnw0STFSBrnDItxFqe68SOeluheai8"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.litcharts.com/poetry/anne-bradstreet/the-author-to-her-book"
    },
    "Link": "https://www.litcharts.com/poetry/anne-bradstreet/the-author-to-her-book",
@@ -664,7 +830,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.vcu.edu/engweb/webtexts/Bradstreet/index.html"
    },
    "Link": "https://www.vcu.edu/engweb/webtexts/Bradstreet/index.html",
@@ -685,7 +851,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_42_bradstreet_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_42_bradstreet_64kb.mp3",
@@ -709,7 +875,7 @@
     "recBIj8dOcSY9QDAP"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1lWKKJRyrdwQVEhr5RffRquPkIPbgVf1e/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1lWKKJRyrdwQVEhr5RffRquPkIPbgVf1e/view?usp=drive_link",
@@ -733,7 +899,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_08_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_08_hawthorne_64kb.mp3",
@@ -754,7 +920,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_39_bradstreet_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_39_bradstreet_64kb.mp3",
@@ -774,8 +940,29 @@
   "createdTime": "2026-11-03T14:48:53.000Z",
   "fields": {
    "Access": "Free",
+   "File": [
+    {
+     "filename": "Dr-Heideggers-Experiment-LitChart.pdf",
+     "id": "attkvXyynt3oIiYbR",
+     "size": 233208,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/boGKgHKUBL0xSw8XJ6U_Ew/883exr_ViecpaAtGzrBpCm8YFKNCbOqamYsq-jJhrmzV-Ps4mYTzaovSKlYEZb69RL9Pz0P3nA4JhFErxC_bKxjvC4pXPbRN3dKm8cnYyjNgXLJ_3zHfxdub21ipHPtYZsvkNE4YJqdeUJJpU7lJUQ/qoECof4ZgaW5ij8sokC8MZ2FdCE_JFMrBPlk-oZ1Ffg",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/bP6tFL4vDNTc94yeEB1w6g/xjOYo-ZV0RR6KgsfKh5JI276THEg8AcNyZte5BwexWWV4I3WON8nT0keee49R9vbuqAVBORT8DDuM7rlg2xrPBMYuzZlQLcd7hJyVQJUuohcpZos7kCfNakGmF_jMKo3thRdhkbXBYRm5Cmw78bTjw/SoFnG01WqfwDHLdJ0HnqCStDi866_Ue_Z0wdXVmz5VE",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ah9C5ga5CH1Mhd7Hdc5pRg/rZAtxsul1WN2gaYVOBq8cf4hGBfSP3X31R2uJZ_s9vKT5nu9biwKrJeiiuZTYPtsDHfUjswU-3a5iX2caLLw6jKeBtvj5t0VBIVMs6BGsy-5mnqYqsQEP1lgEbhJxNq2nKZkWaSlLpqcHlVESLciZaV9HJAxcB2pyjxZQN1qFF3sBgd2tvFqPDP09sbFAe5X/edswVU-O0SKLx-O_0EzPKiz_g1CdNipLFAXSibNxHt8"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.litcharts.com/lit/dr-heidegger-s-experiment"
    },
    "Link": "https://www.litcharts.com/lit/dr-heidegger-s-experiment",
@@ -796,7 +983,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://andrucki.catapult.bates.edu/lost-in-yonkers.html"
    },
    "Link": "https://andrucki.catapult.bates.edu/lost-in-yonkers.html",
@@ -817,7 +1004,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/articles/69434/anne-bradstreet-to-my-dear-and-loving-husband"
    },
    "Link": "https://www.poetryfoundation.org/articles/69434/anne-bradstreet-to-my-dear-and-loving-husband",
@@ -841,7 +1028,7 @@
     "recDYq9H20o85XQdh"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/43290/the-second-coming"
    },
    "Link": "https://www.poetryfoundation.org/poems/43290/the-second-coming",
@@ -865,7 +1052,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://rpo.library.utoronto.ca/content/my-dear-and-loving-husband"
    },
    "Link": "https://rpo.library.utoronto.ca/content/my-dear-and-loving-husband",
@@ -889,7 +1076,7 @@
     "recEYn4t914hJsjJk"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/57294/the-sad-shepherd"
    },
    "Link": "https://www.poetryfoundation.org/poems/57294/the-sad-shepherd",
@@ -913,7 +1100,7 @@
   "fields": {
    "Access": "Paid",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.amazon.com/s?k=9780674050273"
    },
    "Link": "https://www.amazon.com/s?k=9780674050273",
@@ -934,7 +1121,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.vcu.edu/engweb/webtexts/Bradstreet/bradlet.htm"
    },
    "Link": "https://www.vcu.edu/engweb/webtexts/Bradstreet/bradlet.htm",
@@ -951,6 +1138,47 @@
   "id": "recF8ff1qIMU523cO"
  },
  {
+  "createdTime": "2026-11-13T16:59:20.000Z",
+  "fields": {
+   "Access": "Paid",
+   "File": [
+    {
+     "filename": "The Author to Her Book by Anne Bradstreet - Poem Analysis - Poetry+.pdf",
+     "id": "attMmXQYmrXeY6a8M",
+     "size": 1143335,
+     "thumbnails": {
+      "large": {
+       "height": 724,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/UqxM9iT0hMPF0m52FAnxOg/dqJjA-QCKj88BjkTpt-Zg72_kw1Lo9RkbKQ8uiSRZEmJ_SFfxHs-q6QUni_GLrizoc5AsL7f2vZSM9XPs4l-w2SpNp-ReIZX7m5TY2RgiCDSoiAkFAUULOFE0CCh5g4XzvUPgMKpVVdZN_IOixHTNA/pFjAMREWWs7-4ps1YUMCmVJ-N8GShD5KVeKlKmTl2io",
+       "width": 512
+      },
+      "small": {
+       "height": 35,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/B-e6cx6hrobxjnLkYIqt1g/ZHhwbfD1RpcSOlZKur0lXBU0YSaVReghs2BGmhVb8h8ZsAzXRVllXyVnkssBGU3sfMBnVACqg3PPRWGoT_392MhxjN2k1AJs8hAdPUuPDGF_M_H5GKbF0NPEDvOShDPqB_dWtmqgESP8vSsKbyZsIg/GGojN1JheMw2_z-5_BKGbfnqep0WPqz9uRPQ7-xG4x8",
+       "width": 25
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/y6bk9zEArwNpPM_-eX0wGQ/PkW0FdBIoYM0NeXLW6MXeca25UoZDjgpguJToonBbR0q1wiH6BYEwt61wxVhljtl2yj1VXN1M1xYtLX6ZEQcqdKgU2d3D6x3XO8sx_mpUvfnshJskyWHw7PxWYefVbxQLfoM2gni8CfiMxALG1e6ZjEQubYYi-yBNI94QW_2szgjQv6wqUKKSIL_IakMCJ9WLRYrPnbSIgxd_ihVFPGzFrunCPPKkyVdJc-1weZFPkw/KrGpzCLkJGDuvpUiof2wPEt9kUgHdOjnaMnVsDt5asc"
+    }
+   ],
+   "Go to Resource": {
+    "label": "Open Resouce",
+    "url": ""
+   },
+   "Name": "The Author to Her Book - Poem Analysis",
+   "Record ID": "recFmQ4DpLTlS5bV5",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recFmQ4DpLTlS5bV5"
+ },
+ {
   "createdTime": "2024-04-29T16:30:26.000Z",
   "fields": {
    "Access": "Free",
@@ -958,7 +1186,7 @@
     "recGj886FmjdlxuS1"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.youtube.com/playlist?list=PL8bWpleAJh_jJbfmv93edYjDiZALRo5FY&authuser=0"
    },
    "Link": "https://www.youtube.com/playlist?list=PL8bWpleAJh_jJbfmv93edYjDiZALRo5FY&authuser=0",
@@ -981,8 +1209,29 @@
   "createdTime": "2026-11-03T14:49:54.000Z",
   "fields": {
    "Access": "Free",
+   "File": [
+    {
+     "filename": "To Her Father with Some Verses by Anne Bradstreet - Poem Analysis - Poetry+.pdf",
+     "id": "attcL3qvYfIJVzVvR",
+     "size": 569112,
+     "thumbnails": {
+      "large": {
+       "height": 724,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/9V7xzKzLfo-bG7y6jg7pQw/c5xhdqoRCsirxtT0Q_cjw4O9DKVZHVNj_lzkI_uASf72ZQdXVTZd4RcNBsd8-fIniykRtinKujPU6V2RKsNwlR3n7wYtGmwgNy0t6ThyXQs7MBC_Qsu7lv5ubeTCfezZA8llzJ4ViPUb3vyXonydBg/mDJRzDxVmdaR9re7Dg6G81RAFFBVh2rNdXp_fR0sHh4",
+       "width": 512
+      },
+      "small": {
+       "height": 35,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/qkSLOX5YSRsZr3yBNYiF3Q/wEmS7rhtXbqO3HpcA9TVcNeQu4yhew1cjXsKhomNbx5bjzCgDPP0FzbUWO8cYX9jSMBkupzCk5opQGlRxpe-ydsFjQjJnOly8mf6U-Rsk-FOSzjKNqhX-kV60XWfwxuCWeyK605OyL8p0YwDEgVuPA/RJZprQTFpLUAwmIQ7NFcsRD_uHJLyc2yXBkGJOWEz-Y",
+       "width": 25
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/buIGtNwl2UsC9AO8Vrcf8g/fSzOcnc2xfCdlisMEivXhHhX1YFqoeTouzhpTUgNdb3wUjbFVrRoa-Xyc2j6QV0XatFnCAVrht102-FSv7UIpOfTPSSa80t9V63M9b_rSvwJhNJPv36_FOAuWWXVzAqQ_iuJjoqGw8QQXvz0bjUBkvgiWjtKDt_vUi4F-h52WXBZKX7aV5ul4Wz1eSAJDHI6yfWVjdlW9vOwFsrbz1qXJYygaBk-BNW5J0PHMjgnaZc/9uCTE9fMAKChaCc0cheEYAJTWjJpGSLRJNSxufKU1qg"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://poemanalysis.com/anne-bradstreet/to-her-father-with-some-verses"
    },
    "Link": "https://poemanalysis.com/anne-bradstreet/to-her-father-with-some-verses",
@@ -1006,7 +1255,7 @@
     "recH8TFNZoE92sIoD"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/43281/the-lake-isle-of-innisfree"
    },
    "Link": "https://www.poetryfoundation.org/poems/43281/the-lake-isle-of-innisfree",
@@ -1030,7 +1279,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_07_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_07_hawthorne_64kb.mp3",
@@ -1054,7 +1303,7 @@
     "recHkoVqV5PckD4Qz"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.amazon.com/Glass-Menagerie-Tennessee-Williams/dp/0811214044/ref=sr_1_1?crid=3RTZ1JDY6M2Q0&dib=eyJ2IjoiMSJ9.EnjM3cEmJLlSFmI1-iiSlxqpQRHdgJfbnDfz4My-92xy1b4Df39fUYPMKBIVv9Bl83Hkn2euiF_4VgLAgCDnk0BQ3Ry9CUovOFvt77neYrjFdzn8OcakdER3Xq89yHbnVDpvJKGi9Nkj98qabJPMlh-y9ZGN5D8pXNnwhAQLxR-Q4JIQq3YLCzfMdez-3RLLd7svmCji7oH-gRRkbpF6mRhNuj4hXnJ_lLRUDF5BzU4.PieuFc6h9YyRpfWamh-XjUQUZzr2W-GjtzEAzNRyyPA&dib_tag=se&keywords=the+glass+menagerie&qid=1714404739&sprefix=the+glass+menageri%2Caps%2C99&sr=8-1"
    },
    "Link": "https://www.amazon.com/Glass-Menagerie-Tennessee-Williams/dp/0811214044/ref=sr_1_1?crid=3RTZ1JDY6M2Q0&dib=eyJ2IjoiMSJ9.EnjM3cEmJLlSFmI1-iiSlxqpQRHdgJfbnDfz4My-92xy1b4Df39fUYPMKBIVv9Bl83Hkn2euiF_4VgLAgCDnk0BQ3Ry9CUovOFvt77neYrjFdzn8OcakdER3Xq89yHbnVDpvJKGi9Nkj98qabJPMlh-y9ZGN5D8pXNnwhAQLxR-Q4JIQq3YLCzfMdez-3RLLd7svmCji7oH-gRRkbpF6mRhNuj4hXnJ_lLRUDF5BzU4.PieuFc6h9YyRpfWamh-XjUQUZzr2W-GjtzEAzNRyyPA&dib_tag=se&keywords=the+glass+menagerie&qid=1714404739&sprefix=the+glass+menageri%2Caps%2C99&sr=8-1",
@@ -1078,7 +1327,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_04_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_04_hawthorne_64kb.mp3",
@@ -1098,8 +1347,29 @@
   "createdTime": "2026-11-03T14:48:53.000Z",
   "fields": {
    "Access": "Free",
+   "File": [
+    {
+     "filename": "The-Ministers-Black-Veil-LitChart.pdf",
+     "id": "att8Q5CbIRGME70NS",
+     "size": 221037,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/zIZ72HxWPgFlJAWvWOBGfQ/voJPUYqIsOY5_ZTgAxH8un47Lmna7D3sCwoI4i9GGVJfGW6ql8eTqWGXAv-YQRGh0FFFCJoIWjQ7UxHnWJKKE6KSbZzJgJNXltAKpMXSvYB67UOd7v50QrNiQzjcRGXssn4MUHd7EGrg-vJuWNeMQg/T56vetRDTgEDgZZtqy5ulyYC1gb3jMRJTHgOijnUW78",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ro6-YTuToyrWTnmhNFibhQ/KE3DdAEC_JWJIiyxXgMH-rMbE5H_w1eY3XDIFKxOUSpop79TmaldaGlrg3u8bpboP0myaCKs5ou1NjlEqWZXo-y3nQNRY1etStuFTAtMonXBZaO3nDwVHVeXLJqt8IjIrzHEuMWwqLSv7LuWT6FzMg/ChDaj01h7jVIgrOUSHT276Gf3c-6w9zKgl9XsE4nz5Q",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/mT1nboRJVIzpXHExXpbQWQ/FG6s3OXyCqvuBxC9A6J-cIiVEq8SrssD-kbsfJp_FY3pf3kxawDYCUYE-tlKNCsRg0rKA8TQsqTmdQB-FGMp8kh3v5wphr62R5W4-CK7eDMIiimW8NQmS3DjdKFyeonNWHlOekBd6he0WPdkoA2tcfKJS9-PRy3QV_HLrD96-VqUJNvaxMYNpVemjWkQU-Nj/pZFV2gCQ8_LJiTj5VUA6GEtke5d6o-tkD362WUOHSko"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.litcharts.com/lit/the-minister-s-black-veil"
    },
    "Link": "https://www.litcharts.com/lit/the-minister-s-black-veil",
@@ -1120,7 +1390,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://interestingliterature.com/2021/06/nathaniel-hawthorne-artist-of-the-beautiful-summary-analysis"
    },
    "Link": "https://interestingliterature.com/2021/06/nathaniel-hawthorne-artist-of-the-beautiful-summary-analysis",
@@ -1141,7 +1411,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_10_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_10_hawthorne_64kb.mp3",
@@ -1162,7 +1432,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_04_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_04_hawthorne_64kb.mp3",
@@ -1179,27 +1449,6 @@
   "id": "recJYIn7s1g4MbFlm"
  },
  {
-  "createdTime": "2026-11-03T14:48:53.000Z",
-  "fields": {
-   "Access": "Free",
-   "Go to Resource": {
-    "label": "Resource",
-    "url": "https://www.whatsoproudlywehail.org/wp-content/uploads/2013/08/May-Pole-of-Merry-Mount-Study-Guide.pdf"
-   },
-   "Link": "https://www.whatsoproudlywehail.org/wp-content/uploads/2013/08/May-Pole-of-Merry-Mount-Study-Guide.pdf",
-   "Name": "The May-Pole of Merry Mount - Study Guide",
-   "Record ID": "recJnliHswGQXKSDQ",
-   "Type": "Summary",
-   "Type Text": "Summary",
-   "Work": [
-    "Hawthorne"
-   ],
-   "Work Text": "Hawthorne",
-   "Year": "2026-2027"
-  },
-  "id": "recJnliHswGQXKSDQ"
- },
- {
   "createdTime": "2024-04-29T16:24:30.000Z",
   "fields": {
    "Access": "Free",
@@ -1207,7 +1456,7 @@
     "recKS8v8XA8GETjir"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1ywyk4lZHHZ-InFBnN_2DPFjj_xCUkl5M/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1ywyk4lZHHZ-InFBnN_2DPFjj_xCUkl5M/view?usp=drive_link",
@@ -1231,7 +1480,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_24_bradstreet_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_24_bradstreet_64kb.mp3",
@@ -1259,24 +1508,24 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/21HGyBuuCbgZTCRlimoDMg/Gn94oxG1-Zxmf8V9ufo0gNLB8RDK-teX7_GHHW-w4xGwWjuZp0bngaLQ6W6rY5sByjEUBPQAfodSygTEOIPDx8duLInXvyfSqOFr8Kvy1-_FYuJziLC77y8lYnnwj1NIdxqWYlME3KUS23SekVI0TA/uq1ZDNa6K94KwvqkLxYZwqzQAeREKKD5tEhcm3AY-Ag",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ZvG4MlhYQ63Egq_nA6EAyQ/M78rZSHN01urrozVtjAEXBPoo73vrecFjHIAWp_aGpCx54exDrOZLEqC8xtMxz0xJdOaD5aazrET9FTPSsDi0xGQAIMt60oNEqzfMpRF2u_dmbOcAJAUPikOxuQKOitPnwWBoLnuL7vYNiLy-b9z2Q/9qoyX8b7bJyXK5tkmfzN5x0keSC0Ugdgh_Sr_ZONnbY",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/vB0HAvZF4BvnkZ4ogVn-_Q/4G4XiNoovYYwk33E4vu_WLdx0b44khskLk8qW1eCyNdMZ1C03pkLAEzgpEnTwojpeXVJ6_vDSVGp-ZsqFsvw8-enb5NolMPScNdo8VviM4jm7a__5RjataoUgSlj47mZI4MFbn5AZid7hABFFrhKig/Q2GGP5zjE-ZmV-AEd_vS_C3JP4G-UsKwi32pDQOdXKk",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ViZNUm7mhOuBvfjqMhW-kg/_x3wt9VrzQ7iPBNbsRIgvQ70u5umrjSRoHTZ_9YzQneIQKjVNncRCJsgNx8OrOXUR2KBH8MyWIS2oFRzJ9uW3l5sqq866CSsaeT6942LXvNMewx76rzPjXtxXZ_gY-xkbXahqj5Od9KsmwGMx37cmA/Qrx9P-60Q-oIkh1e2o9aznY2YYXUN8OBc4CJZZ6UWG0",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/8Kls-vL4OIKctGNBkk_Bgw/InBAgU2DgjxL7s5g9d2pFs8zS0UgpfKtJvOdjKiZOOYuqlfuJ0QSm4gdOiC7FzAJyUuExZ0B0fJaN1HxlG-GrsDaUkj4Wxh9xk3r6gMpxhLsBo38ZTPsTfrlaJNU2n9QI2W3WOmdIDCwPrNRfuFq5qcjuTZ0S5DM4RX-N7ysApsXh-VJGVcn4HYMTVuxNOjB/g0qHZbubaO8HeNOu2DlMaSzJLcNBnrSPtvXuKNuJe60"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/HhcAWDP4HDV-j2k-we1qig/w-P3i4RgUsSDOmNzLPGbrc6two2QC7qSd4lWA3-zXC4YK97BtQZsSrY5ZXfohhnYUUeRmi-NQoV9haT9CEe0iSvdN-gIomRWtRxfn1yQdrVmwQp1V85AAWFsy2VnAkrP9ZDSJ47aE7ogFW9ZkRZ9vAb3oQN4TV4kWM_kK02m765llOSDgSTcZN-v3cCtcNd9/eJ4sxGVnzyDrKMWpSzxLBnTwmb2D2Sly0n0LtN63ENQ"
     }
    ],
    "From field: Self-Link": [
     "recLGP4Tih6kCANRR"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1hf5DTp1oVsjDaZS6gR-xgKK_P1hbv9h6/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1hf5DTp1oVsjDaZS6gR-xgKK_P1hbv9h6/view?usp=drive_link",
@@ -1303,7 +1552,7 @@
     "recLryoM9sHujwNXy"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.amazon.com/s?k=silas+marner&crid=33CM8MUQXH0T0&sprefix=silas+marner%2Caps%2C97&ref=nb_sb_noss_1"
    },
    "Link": "https://www.amazon.com/s?k=silas+marner&crid=33CM8MUQXH0T0&sprefix=silas+marner%2Caps%2C97&ref=nb_sb_noss_1",
@@ -1327,7 +1576,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_07_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_07_hawthorne_64kb.mp3",
@@ -1355,24 +1604,24 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/f_nIPlFdgLgLLehJ0Ry1dQ/gD9tNs_3lbXZijjOjBJ_KSClHqHQpMXhPIHGmKyqk0a4lJVeoslhdhYRk2LytADqNGtubUuVy3EPWj0y7-vjiUilG_RbOObXeYOy13su9exXiSca_GtJyqj7CwSSnL2Bz2KKPEFMYgyjM67qdm2GbQ/X7lqSogctlNG8cVCoPvNs5_T7wI-ddicbX6Yg3rmr-I",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/tCsIT-YmarFNyplrSSMlnw/0AC0msj4eFB611I6Q6ok1fWzPpE7qGghhzlM1yXbRLGTYeBUnai8gievxljbKW73-cQlB6LRrxqwW29enrBMr6YekGc8noMLbyhR9E8KdcbYLcQjJ-ODfWcdpUQXlnxGemZDTtM9d46Rqdmkf1f2xw/iPEtgxaH5Ne0ROqkjeq8FbIwEX1iNaeFfwRjaAlldEw",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/b3U77jERIG__IKT9ycReTQ/XYdHh16pvsvUwA3GS3WdGywh9LRGUHcmH16yX-dg0T98wjr1zghSYWJTTH8thGQmY5Q2c0bSPIzjvp4r4AupOO-gKHDAVhIUqKtdFbqYNInA9RSiYabmCmSgnqcEfKJr41n6-_btWLKv_wI7Ch84TA/MCY_RxkBtCHv-KjrX5gRVPeKAc8pex8XH-sfROk7C4k",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/gQqkI_we9CaxqgEXjA9XXg/ooSGw-oAv0IO1AkaE0a9kVINXCTpY7fentKDCTMsC2HLZI9SdteIVNraoiOwPB6u7qYt8GT03avz92KMUI3tDv3xlFeilx3oJ6OcDB34TgwCA_AZLPwGiSFKrEsb8ocAHnvpA1lp1cFZyYlL2H7QmA/CVpkQ2KKerlfpg49PRxYj3BEAU6hb688qlJtrzI7p14",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/i2-XI8OR7O0qC--zM5_H3A/Ji7aefsX75QJWa_q3y9OOFhjfcCX7fP48F6RwXBvxUKGkZyEHTf_hc_A1hQAyqSnPWVAD_WAH6m_u8T9qSxrKXKj7Oj1T72oYDH5iFiUwrC8ZXCdx0EYLPXYnxSyeQyMDgjFmkBHLxYC07SMn7DoqWClmec-rnkl4TBRkJnYx0Q1yxeUiUAfBToiurTHtg8W/6OgSyHwppxbqmqWTE5SVQucUJDR5D55nRQSZSgtPWFQ"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/Be9oASCS4Ws6cCZ4f33sqQ/h_M75yJ_2xwIKOC7Y0G5nzDTbXRMibGuWv-qYzvYQeFS6OnRbo74BjgLvbXuM_vB5jkJlNm2Z_buxQfCgkxZcK65R9yCKHGXnaUHkLclw2B4rU4bBpBS3HBrHc2PGPq0ywxmUU8hdekqWIOM1B3y2PeTuLezlAZv54dFXyPP44XbLEVON3CTuJTM11enAGuY/btlrygboq8-tv5cUa61wKQ0gDU_ECsAeTgSN_YdqZ-o"
     }
    ],
    "From field: Self-Link": [
     "recMCAu4Ck3SFO31d"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/19whfH6TfyOdahE3bvs7YK-W6AUIttlWi/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/19whfH6TfyOdahE3bvs7YK-W6AUIttlWi/view?usp=drive_link",
@@ -1399,7 +1648,7 @@
     "recN1kv2WE3QB0f85"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1UBN14nKSYl3n2jKOI3N6yx55eYOA1Md1/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1UBN14nKSYl3n2jKOI3N6yx55eYOA1Md1/view?usp=drive_link",
@@ -1426,7 +1675,7 @@
     "recN5Jq6R5SmntRqQ"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/43289/easter-1916"
    },
    "Link": "https://www.poetryfoundation.org/poems/43289/easter-1916",
@@ -1450,7 +1699,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.gutenberg.org/ebooks/512"
    },
    "Link": "https://www.gutenberg.org/ebooks/512",
@@ -1474,7 +1723,7 @@
     "recO4l7ANBfr0yNG0"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/43293/among-school-children"
    },
    "Link": "https://www.poetryfoundation.org/poems/43293/among-school-children",
@@ -1498,7 +1747,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_32_bradstreet_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_32_bradstreet_64kb.mp3",
@@ -1518,8 +1767,29 @@
   "createdTime": "2026-11-03T14:49:54.000Z",
   "fields": {
    "Access": "Free",
+   "File": [
+    {
+     "filename": "LitCharts-to-my-dear-and-loving-husband.pdf",
+     "id": "attaSvS4ZkIFyzZx5",
+     "size": 180830,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/r6rCoP4Kip73ZNrid1jhWg/3zOhf5IV_rRPD4EqVz0Fufd1fYcUToetI3qjSUPJVUryY90cVg99Vy5-YwW6NkEBz6oMbuQ-GJ6PQNbS3igz8UDoir8kcxqZxAP2V615dv8Y1in9WOM0FzgbU6sh5-M8aB2YZms91jgpvuy-bQKPtw/2O01FMXB3DGXhrn8dZ0KuDiFEzLLtU9Pc9VkxXg43jA",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/0mB-dfO1zNaXa2Z6IS4pbg/IRMUW8TsxSOvxf5SMEq5r9Gy36BZ6ElSibtIhgruWm2C097mD55sV4QhFDQ1GXL6vSKeEUpPv7YN9oFNA6q9LYCVV7g3Qa7M-51AlIvguUj7Vei2IypR5APItIqI_7W-xqRtPJnYva5UhCEPt-yxmQ/c5M1vLzn1_iC6WVcNRCNO37Zg1rlayEIns-o-rC2gNM",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/E76zfhMoCKPzu9HbV52LUg/nD01rVBgO8PeM-kyoePCHciNkZY8J_kzzUX5aGmUv3sXoAuqCeu24S_VvUTv9U5T2sD3VMHoDNSk3Fus4MdG1MYtvJn5FIu7GejXb54SEBHr4GSTK78ONlsrVAFW9dt2W787HltPnV7FqmYv_PVMCpn1mWhy17Lph0dY9A9ng7yOYBfLaiAl3sGlZr-ukSijSIXZo8MSZJjQ5FzhJWGQOg/xXWPUAB0b5f6HTUPd38xWDlhuH7TrsWScc1HWKTI9W4"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.litcharts.com/poetry/anne-bradstreet/to-my-dear-and-loving-husband"
    },
    "Link": "https://www.litcharts.com/poetry/anne-bradstreet/to-my-dear-and-loving-husband",
@@ -1543,7 +1813,7 @@
     "recOiRu0O6TDNqID6"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1HmYfh9hrpDpZB4RV1RcCEmoWgRP-ZAmH/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1HmYfh9hrpDpZB4RV1RcCEmoWgRP-ZAmH/view?usp=drive_link",
@@ -1567,7 +1837,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_41_bradstreet_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_41_bradstreet_64kb.mp3",
@@ -1587,8 +1857,29 @@
   "createdTime": "2026-11-03T14:49:54.000Z",
   "fields": {
    "Access": "Free",
+   "File": [
+    {
+     "filename": "LitCharts-before-the-birth-of-one-of-her-children.pdf",
+     "id": "attWDDNiwMMnF4BFy",
+     "size": 214780,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/6Sjvq8uEWuKsvq0NjncDNA/p_UitSuNsHSytVMO4VHCoRDBJQv1KKxQGaKByoQXEKDjH-7nkguVlgQrIMRe-2JNlE4VW4CJvFdwkoYLdr0R1HOW534zMKl7iAIF8Wy_S2GRP5sTEZXU0innBGFjHvz3-BrV3kQGIH7c-m3DweFu5w/Fg2Do59vz0ZK-WAsUPCVNJ76wJCLFIHyaGM4t1uWH5g",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ZVJWpdCCjnK_cjpB7xijXA/YZfq50aKGfU4EvfpZVnpn9C1FhaxMblgL65ssStRXIDuEKaVEqYWh9caqgNrA2AkXdTmLK-d0mRUE1EXzvhDX4VUSp2AWRVvvs6qQ9Tf__O4De8za1PnHlF-GZ02ZHBjNyqPLJAUR_pj2b7dCD870A/6tdkb_KAi03UIGKmFBLR6wxp7WVytAn7t2pMF_2XbG8",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/1Gwb7kDs0H56YoccxVTRow/X1SIiXVbAxgIsv2OeTgNci33sk5yA-sijIq1BYR95ry0Xa_09BEfCrHk4K2Rt3S-1FdnU0gEW5lF0-HFXWUgkcQ910jm7gf0HVJeg6RvGGXcFOxv8Spnayolrh00c4LucevFRitnUnRjJxyaVsWEuJU3se5QqXmIITQJ1qeomD4B9auaC5sy9XkUelE6gc8iUxcCaJGJmSYvytVnxFFYIw/l9N_WA8IF2_zNJ0neZAZvDywF9Y27CXyB20IsopE4fk"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.litcharts.com/poetry/anne-bradstreet/before-the-birth-of-one-of-her-children"
    },
    "Link": "https://www.litcharts.com/poetry/anne-bradstreet/before-the-birth-of-one-of-her-children",
@@ -1609,7 +1900,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_27_bradstreet_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_27_bradstreet_64kb.mp3",
@@ -1630,7 +1921,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://lecturia.org/en/summaries/nathaniel-hawthorne-earths-holocaust-summary-and-analysis/22301/"
    },
    "Link": "https://lecturia.org/en/summaries/nathaniel-hawthorne-earths-holocaust-summary-and-analysis/22301/",
@@ -1647,11 +1938,52 @@
   "id": "recRjadJcA0DC6xst"
  },
  {
+  "createdTime": "2026-11-13T16:58:55.000Z",
+  "fields": {
+   "Access": "Paid",
+   "File": [
+    {
+     "filename": "In Honour of that High and Mighty Princess, Queen Elizabeth by Anne Bradstreet - Poem Analysis - Poetry+.pdf",
+     "id": "attdUdjXRFGO0AHpa",
+     "size": 1860164,
+     "thumbnails": {
+      "large": {
+       "height": 724,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/pT_5Gi8BmVP0nFGa_8KI2w/lRGoMjsr6CpEHjOhDUY4640QDQUw1OGeSXtflaBqcAUlhFwsm8XNM5b3aF4Lf6aPuLiFl5m6tFuqlVIL-zHnhSe1RidQ7ZCflM_rpVLPNriJhxCgkwDqDMLwk2DIJQDZeVDmkQwAB2tZ95mXaRfd_w/hXzOPPfD7AFexofhFTZGSvvwgd23cJIhrv5Tv3ebJAQ",
+       "width": 512
+      },
+      "small": {
+       "height": 35,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/cIl9pJo1JqtDNwHYK5EDPA/hRp-kJnQpIFjEyy0_CV4w-N03SQ-dYIkhdY0JZ2E1Rhb5gb-WxpjFkS1OpawqjTRz4QXnPtaI6ZSC0YMyNT6O4wS2RXSwPtRd0WRvQJwqzInWu_IY-II9L5inPCtbuM5dn5JZ2Ea2IByL0zgWX4HhA/hktLE9pqOaTQuP_as_u7D29Ld0IyApjHJ3a02BAd7JQ",
+       "width": 25
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/NuAQCBrUOcCk7XK3fy8Blg/4BrFraFc1u6p-o_VqAMZ0E_DmyV5WnHtdN-6BNHBGA880y4gc6qE65u-bt_wEGkBkD85qZ-P8e2tXCEqO6_lDautgQDCL0eP4CXy8s1AnubXV7lrJT7FFmHOAKoNt1ahIdOeJ40gnWfF6Ce9CbJT65keNpHs1_7-VwICtNL9hVm18EVXUCijbehO0AjnbDg3rzUYCJY-hr9GEL2SPSCI26RvPaBHE0Pnt7IT9C0ZzNfwAwLseyGdCZLUqXOs13Qb/mi5EpedWgGoVpPdba9e2PAGI39fCEOlyZQM7Qph5EWU"
+    }
+   ],
+   "Go to Resource": {
+    "label": "Open Resouce",
+    "url": ""
+   },
+   "Name": "In Honour of that High and Mighty Princess, Queen Elizabeth - Poem Analysis",
+   "Record ID": "recRpAoWFml8COvQn",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recRpAoWFml8COvQn"
+ },
+ {
   "createdTime": "2026-11-03T15:29:50.000Z",
   "fields": {
    "Access": "Paid",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.amazon.com/s?k=9780679408901"
    },
    "Link": "https://www.amazon.com/s?k=9780679408901",
@@ -1675,7 +2007,7 @@
     "recUaEgrbkQkQAgnq"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/49772/no-second-troy"
    },
    "Link": "https://www.poetryfoundation.org/poems/49772/no-second-troy",
@@ -1699,7 +2031,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_23_bradstreet_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_23_bradstreet_64kb.mp3",
@@ -1727,24 +2059,24 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/Vro2KkJcA2sk85wKygELxQ/fLszFxY4qpdtoVQb8hsETM0YkD5_KRHLd2WMs__NCW53uMhUc5S0jhZiZhIGdE5DqtW0SgqYtMNHoSTMVPzkNVJIReX3Y1bQubkONXTVi5G-pHzxUxjrH7HDI3VxPEjhjK0UXuHFUJfrMlNFXrusfw/WbZ6SH-6EwnSqc8IyjMoI-NRczaDLq3j-C7NiLKRJ_8",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/1Wr7GSVOZDsSL6f9yXUZCg/I59SrtQ_cKSGcUZ8hba6fAWrFI_ipRU7l1eNxCzKUluHCe5oB1SNn4T3XoDM61Td5wRUo5PevaJqer4R19xrzN9_1y5DOemC_D7kuFnLT9VMdv7AYc3giqaYK0h1euwPhIeZ-xPTag9kX20pUGk6hQ/DL7oO8QqnKgnt5Ru_us-jd4jRfxrKk-4JL8P3cIk0ZI",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/_VkF8N2R7uxdV5o4XMLgjA/FFyj0DxwXyoZ7XWRP2Y1ZSgpHtfDBpn9xhq_gwlNQZPydLQ-aCqS0rJ5_dLeCEA4nMjYiAjnqkQ-71OpLhJpdB6m-23_pViRfWLItrXTQtgq8KWl5E8XZ64U1xuV2j5PN521YGtEH2scJBvkzTg6Pg/LL-PKcycSR05pHPioVgLDKfPfhMAudBwQDpTVA3EF04",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/VmsMQiKr8AnGNDLqid_rww/1gmpEjtYRuAVs7yava-_eSilrqhVWPL3XwwYs8YKIMRMiKRG04Hku4qIUnvdziMGsbmGVO_wrqpyBhTuBIcDNmUxtTwQEexDRWUS_tg-nldLR8kzQCTHXZ7IFKIle8ZWDk-8YqWOQNwi85h0hLpneA/RrZfrYeSaQHMXNpoBnNabeSQvy79vpDv9jurvJvSxR0",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/WWWlLWm60lV1xmwb_1DKVA/E0fKgpQApzBSLDNg3fpUwEbTRTjmK7OLCV2KsBtk7jk1B3DgutfxpSmL2mWKAjGBX_M29qfZqp2GFkHKzYjZJqBjFyD5psi5POMZtm8nZNo1xLbvLvdRYIqRpEG6LA9mElw595v0aCDSjrc6sVuAZrpkiq_XJ38vlUQMRHCNVpOGKbUChWdSk39xel3vYe_x/JmLr0wnw-LQaPe4QDtJM-_p3nwQpIi_PoboXNDaZkLE"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/paxTVOsYkcnyjAphQAIpSg/D6JoSeXvqgseRVOiyCD2ruuLAzsxkvgjwsgOP7ec0OYKKsv9CQI5NDu3I8r-p-YRVfIBz2dyyUrNw4f-w9-fQzqsvdEPmQKvDhufoC4TRBgR9mfJVcpb0nKNMxdDJXLXcCEt_5MZHxF2twR0yNaLypBV-hEjNA9OKeGpShh-Il6b0_5RPr0EpOEHF5LJBjKd/HD9tUbVfQENqOCm_qbTdeA4NzEu3dt1ohQsiBsibHpg"
     }
    ],
    "From field: Self-Link": [
     "recUeG1dlFEgeQUvw"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/11mB5vy32-0UXgCEbHQkoSr_D3fFWE9_G/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/11mB5vy32-0UXgCEbHQkoSr_D3fFWE9_G/view?usp=drive_link",
@@ -1771,7 +2103,7 @@
     "recVLJvoNlhRgNASv"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/19RSrDrSle65_QVnziMNePhSC3SwKsXs4/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/19RSrDrSle65_QVnziMNePhSC3SwKsXs4/view?usp=drive_link",
@@ -1798,7 +2130,7 @@
     "recVSIBupJum0Iqi5"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1Ql8Pd23YO8VC_XM0_NAqyAS9YJOkPlB0/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1Ql8Pd23YO8VC_XM0_NAqyAS9YJOkPlB0/view?usp=drive_link",
@@ -1825,7 +2157,7 @@
     "recVWYoEHRYadCqHL"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.youtube.com/watch?v=fLrLbTugWEQ&pp=ygUddGhlIGdsYXNzIG1lbmFnZXJpZSBhdWRpb2Jvb2s%3D"
    },
    "Link": "https://www.youtube.com/watch?v=fLrLbTugWEQ&pp=ygUddGhlIGdsYXNzIG1lbmFnZXJpZSBhdWRpb2Jvb2s%3D",
@@ -1845,11 +2177,52 @@
   "id": "recVWYoEHRYadCqHL"
  },
  {
+  "createdTime": "2026-11-13T16:59:14.000Z",
+  "fields": {
+   "Access": "Paid",
+   "File": [
+    {
+     "filename": "A Letter to her Husband, absent upon Publick employment by Anne Bradstreet - Poem Analysis - Poetry+.pdf",
+     "id": "attizZhGVTYW3dFYn",
+     "size": 1013248,
+     "thumbnails": {
+      "large": {
+       "height": 724,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/OvTvxokaPOoN5ZlG2xlFew/kA1NPusbvT2rmMhC_9EQuqBJkDfGAqX5-W7Wwu8zSeTNELroDXsuk-wM7jBZLoOdOzkpdGw2aR3o5iKZuI4NpwJq4TQQris_xh54KIcnZmC5ZkTo1P9-1u7AoZfFNyrQ1IjIGT8qzOONEdcLzcaY9A/wHjK50w18OWZ7gBnKPBezIK_45Rmq5GMoz6S3dYjZWY",
+       "width": 512
+      },
+      "small": {
+       "height": 35,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ldtsFD1HOTxiAsnprZKZDg/Prp879KbfSSBES_qUEOsk_fsfv6IoFUHas8aV90kqt3gL-fp7aIa6l7KGX1Ok2_15Tx_Rzfs1ZoWwnCI0wUk2wmY0uEFUKFnmHajm75dLD-XKlLLSpUUsAquYrE_xuxue-zRm64sLhVRZdEYe8hXJA/l099ahTFAPu0fjJxw9XsfTG7Tv8CHuX7IgCWVTrmtCM",
+       "width": 25
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/I8L5pjSfcfopVuFJoNy-Ew/84rQvSilu2jk_3i1YAVE3lsHltsRWgtRjn5ATQIfXcFVoRc-fFOhO7BFy6frI1vKDN3LOsjMZe_-HPUTHhxkWICqmXgJ3WcVLzkrcAm_8Sc69yUBO22HRHkkM7Ho5Rt-Ir4yrPq6QDO5RtMA7Yek_yBjj4MPm2481lA0rWkqdwMRTfGx_R3RykVYQiE6dLs0F1hmE9GfEbKho-sGuADIHAQTRo22RsQ8lJY7ZidGDffXiNLQMTnLLF2bzjmuxt8m/AKt68Oro1XeGplpb_eeiwSFLm8FuOJUvyyHP_P17Y2I"
+    }
+   ],
+   "Go to Resource": {
+    "label": "Open Resouce",
+    "url": ""
+   },
+   "Name": "A Letter to her Husband, absent upon Publick employment - Poem Analysis",
+   "Record ID": "recViRwItgiHFJMkc",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recViRwItgiHFJMkc"
+ },
+ {
   "createdTime": "2026-11-03T14:48:53.000Z",
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.encyclopedia.com/arts/educational-magazines/lost-yonkers"
    },
    "Link": "https://www.encyclopedia.com/arts/educational-magazines/lost-yonkers",
@@ -1870,7 +2243,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_27_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_27_hawthorne_64kb.mp3",
@@ -1894,7 +2267,7 @@
     "recVp3C9go9RXf8EM"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1IPOPUTxa-lkUO_vz2UyopWtTN-ItSPhp/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1IPOPUTxa-lkUO_vz2UyopWtTN-ItSPhp/view?usp=drive_link",
@@ -1921,7 +2294,7 @@
     "recVpKKFDZDDmUVnd"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://allpoetry.com/In-The-Seven-Woods"
    },
    "Link": "https://allpoetry.com/In-The-Seven-Woods",
@@ -1944,8 +2317,29 @@
   "createdTime": "2026-11-03T14:48:53.000Z",
   "fields": {
    "Access": "Free preview",
+   "File": [
+    {
+     "filename": "Lost In Yonkers - SuperSummary Study Guide.pdf",
+     "id": "att372zJABWMzH8l1",
+     "size": 393540,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/86FAK1uYQvRtkcmQEhL1cQ/jmTwM5pCG53efoDil3ymS_WtRaLzl9e6pI38X9eepk5XKYTKBhIuSen0Y1flLmfM6kh2xuDqkwBlJ5kuSNprkR00j9MFK1nOsP6NIZe_d1yVWEUlypDGS-DMgwlZXo44t0ZDnNuAP9NAdQ2A7jW-Fw/xs5UGBKMxN-y9qz2EBoAVBkuqWRBoxa3K2iTV5ISJeY",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/d7tH4e23ICCWjMvCfxARjQ/rdqbPT5UEN0E5x0j4IHDXe0OIy7SkcdATliRRfcWqG0UMfzFickBJ9pqJaRkL81_dmu_YmnGSrLK3vi6c-Vurlz-CueAVt0HgqBga32SqTEShMa-4Pxv7Cuz28MYU7NbIygL8NRK0qB5w5dZlZuDrg/E2OdYSLEa7AtZ0Lp6CfLQ18iZf2MEQlraDqUe0pGuu0",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/hONo4u5UhKHYzn6ir4e2ug/RR2KEHTGUbPvCpWH2I9alUqQUA5_i_nx4GZA3BOKCLK14Vp0cuAk77gxQnXSFzBStZjEIiMBtTboMo87v4jAwxj5V3niIgbAv4XEn0BmfcDk82gw5piFELjXP2o8cdqVRejrAxO_ENyv8pBKbJDQtZvnKojWRxdTxoMxAw2GfHiuZVRMSjki1zFjMHvccmaP/C-pEDUKjVqEOSPZK9px8xv2wJClVz5nXjEkaXsGvF0U"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.supersummary.com/lost-in-yonkers/summary/"
    },
    "Link": "https://www.supersummary.com/lost-in-yonkers/summary/",
@@ -1969,7 +2363,7 @@
     "recWZc27yELcCRYKx"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1iJmFRCfuOvD0csaADxu2AF74P4W1K_dj/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1iJmFRCfuOvD0csaADxu2AF74P4W1K_dj/view?usp=drive_link",
@@ -1996,7 +2390,7 @@
     "recWiAxVUiD4Hbebc"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/11ozE1yCevcWkhBJSYkArDjLQEgDqKgL8/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/11ozE1yCevcWkhBJSYkArDjLQEgDqKgL8/view?usp=drive_link",
@@ -2020,7 +2414,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_17_bradstreet_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_17_bradstreet_64kb.mp3",
@@ -2044,7 +2438,7 @@
     "recY9DttqkKjlytDt"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/55687/the-song-of-wandering-aengus"
    },
    "Link": "https://www.poetryfoundation.org/poems/55687/the-song-of-wandering-aengus",
@@ -2068,7 +2462,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://rpo.library.utoronto.ca/content/flesh-and-spirit"
    },
    "Link": "https://rpo.library.utoronto.ca/content/flesh-and-spirit",
@@ -2089,7 +2483,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_06_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_06_hawthorne_64kb.mp3",
@@ -2117,24 +2511,24 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/_XrvZ-BPLODB_dB0QKjboA/h5UZO45Omc1MKjwtT_K3DwXrOtcZLYas019Z8HCtwuoYz2AGrz9k-cA9z00jiIHR5A6uNWqh0muFQIAsmqmUFyZ8elCV9wbqWatduCyR7Hd__TX-gdt5aCSu03CKw7CJgUycUWdwkLq5-IhQ3ri_DQ/afXPzx9AVLe89R702G3NVzHFWXGUs0tzMs4GGHSRhJE",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/gP8hKPfZfBQJ5-dAbGXWNQ/DgsdPAax3Tjl1leGA8kpX7dwagNJ8HKtPYIAobu91pvfm5Efs6gsMQWfjSdT-qi9UMamNdoQVBWpghPZ7JLeR-LgXtsKeR4z2baIYyh28LsRIUP0HpwFGZzzEeDCjCi1HKmp275hocMgkysNun0m-g/gQ0TLnez7BwAkm9OmCQrXAS54bLocUa0CdmKMhNvurg",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/Nc6xreeJpxcV4OLqzzEtvQ/Cl2KyCGqvjz6MaAlQDxXV27wGFgAMMZiSYIRu7TP81Zl65KiHZtHmXTcm0s1ATkfm2V6DpKA0TzKrPFQze7aMfCgvHwSqQNg2sw_ZSYN2mMVHRY06g88u1BHxd0y1t20Sl7FU8KwQWaH7DleTxFmRw/ZFuQxyAUXDb-HBb_0VFbcqO60pocD7b1ay1nCynMuLY",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/bmW3KuEZZIzG5Tfzrnc22A/MINeQN_OCmfW5rA4gpi8RB_N74HTLf2Ue0fbM7qaz2XrZJoKzbvoVEqpyjpV4HLkB_3Tjh3zMtr3dN7v4tOhnafZY1W3BjMctPCCAHuUYcWjhO5irGOGEen-SB8V335TfhEx9D6bHlBtgQgaP-XU8g/adbXjrxRG52EFVjFzFrAiTOkm5KOeiOmBTOIvFLujb8",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/HEFQPf_0C_y9ft9bKtv14g/sxyNdo0offdoB5HhyUYGrS8VIjfRi69XT7-49IGS5wjiWghjpchFG8rqoFD3vuCvb24VQ-PgApVWy5T5PTsc-LLKU0-utbbo29cUtaCIoBZNjysZ16-29CGzRhCp0713006TAdke2Ait8KX8HOa7Kf1mzmq4cDxwvUU62F7nmwk/8lHib9uIXvl2LXxkmrpF9wMc6H7SPwfNsjhUDqL3FRI"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/jEdvgslIihCLuTxPwRlwnA/tEUfL7MzNNPZ33_q7WdmEAVYw6y5ohk_MuUGwM7lpi-Cs5Ra2mE9bkq8v7jAyCpkwULKzWE3eh_0Tr8lol68qCPK3F9gJ0V5EN3jyE5fTgFyEDn0zhxEyWmiIiYP1TWyM7mxShECus_-EIjtNB6fXV2qKRn90AqQzGrWTDc4Tk0/o1uNEvRO36CwUAw_fKyx57hsaNg4nkJeLap0KR1FzCo"
     }
    ],
    "From field: Self-Link": [
     "recaQzaeYTryfJMej"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://docs.google.com/document/d/13Tecxg-ri6lIE3VUdelPePOHIW-z5FqnMrjruBDC3-s/edit?usp=sharing"
    },
    "Link": "https://docs.google.com/document/d/13Tecxg-ri6lIE3VUdelPePOHIW-z5FqnMrjruBDC3-s/edit?usp=sharing",
@@ -2161,7 +2555,7 @@
     "recbv9mZrGCN2ObSE"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/169AFL4FFbB7GvFH9Bgz1-2CPyOM7URdW/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/169AFL4FFbB7GvFH9Bgz1-2CPyOM7URdW/view?usp=drive_link",
@@ -2181,11 +2575,72 @@
   "id": "recbv9mZrGCN2ObSE"
  },
  {
+  "createdTime": "2026-11-13T17:06:30.000Z",
+  "fields": {
+   "File": [
+    {
+     "filename": "644318022-Lost-in-Yonkers.pdf",
+     "id": "attdLAD4WiAwgRGnQ",
+     "size": 4353433,
+     "thumbnails": {
+      "large": {
+       "height": 512,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/nfu1I4QIq3Dt8YtatlMUjg/iHwIqmXa2jvP5lR4F9qP6F5BoI8Fm3za8f9A27ezvr6uwAKP-9fqk1nVwF-arvEyjeMuYywl_KBqqRuzP2NOJ2_JHbg-e44jI1WgEkviVEhd4bqz5jSYmoPBqSiihv3Kq2zrEs5v26xAaNagkoBI_w/3s7nNFn8AM5zpwsZ3s5frmTBZdpYC7j22pSMn2I-YT8",
+       "width": 663
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/AwfW_GWdKUNKq4jxTfk_ag/pJG9lpw8-rm_xd8Ah_oQ5lrJBYLEkL3jNtaiGJDBOW3LjjdVfComBcCeQ8-bmTARJjuQ9YN5xmFCgapOAhGTnAP8Mxuh1Gz0YGma2mxA8tRw_P1eWRPzPWUIa_VebbZFY7rhXHyLOh6Kv16k2Me3-w/7JyKvVmNuD1elS3bUE4M1zIE-6t3KDTEyHpdL-egczs",
+       "width": 47
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/Jr-xP8Ygme3q5g4Cbga7PQ/KvNsUV_XgLhJeLFjbzTKGiZMErw_QBt8RHfY-Ns-AbaoCo9yIzMWEBjj76DIJAoF13ZTJgsQ4XsA8prRJ4FjsQdm0kflCMlI4HX-kFz5AGNV--fEGrTaInpjd5U-Q_gT8eBwWM3SWxQ8sVi85LGgV1z0t22tMcyDlySkh9zqBL6xoSINw3-BuOTXyVISQ7fP/6X4g2EfAhBMNnaGlUFpYdcYRdvjNEL6sKA3SIoo0rDU"
+    }
+   ],
+   "Go to Resource": {
+    "label": "Open Resouce",
+    "url": ""
+   },
+   "Name": "Lost in Yonkers - Full Text",
+   "Record ID": "reccHGtZjbohnOygN",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Lost in Yonkers"
+   ],
+   "Work Text": "Lost in Yonkers",
+   "Year": "2026-2027"
+  },
+  "id": "reccHGtZjbohnOygN"
+ },
+ {
   "createdTime": "2026-11-03T14:48:53.000Z",
   "fields": {
    "Access": "Free",
+   "File": [
+    {
+     "filename": "The-Birthmark-LitChart.pdf",
+     "id": "attUd3cpomB3a9AVy",
+     "size": 240523,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/Hl_FAT5QdMCt9JILiI6LRg/BbPXJqcqkLBylnjr4s_qUHldzjgTenqiZ4Yz7WF7RArKi60MrTgiPruGYIDz5qOfR4beIjNI4YHsxfbG0bmM0nsO86J6gZjIIQanaS8A7uF-9HJTmUqRm29ex5xQZ6a6i5pC3and5_y38kzGpjewFQ/cDWkzMTxxPnoutzh4gXte59ZyW-B3M0CK9JUzJ1IMQ0",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/JmGiCqMcRLD2Hmz7iWJqNA/HjSUDyqxVBUqGsNGXvmY-eZyA60hzWzpumvC2xDX2rrvIJ72hrHHXFC3KmJxbEiYMwyRlUOZ_6eFV3jFXAIeXjRMyrA5LXweo_pzKtQ0BSSeOyDHsONx5eCd-0yPphgZaB4-RGc_id1N6fo0_E7pYg/m8IL1_oRMVLmsnyss9HEYbHBH2D3eJYrlaQGClCgkwM",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/DJ6DOVQ87vRtEd1HclFfRw/jKfHk7o--GjTmnlIUHMGHV8amvV5oXaGpwjoUrjTf5Pz8VMJ4tk8K5u_A2B9OyFiy2kbUaCor1TEMO1BwzFxcFK_bgnyx_-zyWERerjfCh9fJAcEOnkQrDwRnOIKjMgfhvDJuZERCprus7Dg48fMvko0q0Q5phN_2pVAM2TPDdO1X_dmi5lOn6kp0k7XF1F7/-uh0CRiUbYSF62VTN4tNoaNqdCrhoJ3O-H3ibLFpMVk"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.litcharts.com/lit/the-birthmark"
    },
    "Link": "https://www.litcharts.com/lit/the-birthmark",
@@ -2205,8 +2660,29 @@
   "createdTime": "2026-11-03T14:48:53.000Z",
   "fields": {
    "Access": "Free",
+   "File": [
+    {
+     "filename": "Rappaccinis-Daughter-LitChart.pdf",
+     "id": "attc8OsJSulV3Y3na",
+     "size": 287510,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/np4HIXDubJvQYXcDQAUk8w/iOje00YAx_jBZBb-iwFB7eQyqyQ0dD1cj58FpCO9bg6GrOdrNzvZ_YzKRPO_pRfiNkhiHALaLKICO3-cXtYd8RTbi8t4tqjvWLD4ngizbSaRc15oGhDpuwvx5jc_UdEtENtYldQxhyrf19PCvBGP5A/qqUNO0oKec7YwMgxsvjvUo7kXNE36hEzS5uIXlkj8hQ",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/gXjUXJuAeNwUxiiQiDDicw/bXxoBBdbDmSvXgRoehljT6HABK0W0Vm20IKtw_2auW8fSUADdDOgLq-Hm51ib50CLgilROL9BvAGNYeK9567NQUpbHvyC8uSPqtsU5w2H-C6SSGqMJ7LxzqdMB1XNN01TCAwaToBwu2MK_nIrfu7oA/d88jbC91Hrkx7AiDUHuScWnYSowjd2Pb_-WB49DwPwU",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/xrRcUw2aEL0L7HT_PqB26w/21_DboeeiRzGWTvll_YyYYqqF6tAdYOqa-k2MNtqr5m-Giz2AqlGAeaiTmVumE5mTtT6NEeSdjOC0utdeCuVHxKQxcVL1UADlO2mISRZnHqF-LvRfEk8x_o1YIM9zU3oWh2-128K6WiXCEPRIWVMoCDoxs7RJhKoipgXSiGXFcU-8rFTCfm3WcvwzeIej3GL/Jd7_3YRKVb1IN14Vh_TsK04x5zZzAlEflH8okRZ8YLc"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.litcharts.com/lit/rappaccini-s-daughter"
    },
    "Link": "https://www.litcharts.com/lit/rappaccini-s-daughter",
@@ -2230,7 +2706,7 @@
     "recciEEA9WVQUv51q"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1XQdEvpjcIkIsTtHIEMdx0XBvbTeBZKS9/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1XQdEvpjcIkIsTtHIEMdx0XBvbTeBZKS9/view?usp=drive_link",
@@ -2257,7 +2733,7 @@
     "reccnRlF8qNsbZxYT"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1P2KasJwdOisBjQ0MitaGpYLGzO3hFMhp/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1P2KasJwdOisBjQ0MitaGpYLGzO3hFMhp/view?usp=drive_link",
@@ -2284,7 +2760,7 @@
     "recd4BvN2eqJCc5YS"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/57311/an-irish-airman-foresees-his-death"
    },
    "Link": "https://www.poetryfoundation.org/poems/57311/an-irish-airman-foresees-his-death",
@@ -2311,7 +2787,7 @@
     "recd9yXjbXtOdZvu1"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/14ywuUTrV5sVoLi7NhkD8-SOAqxmt5M4d/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/14ywuUTrV5sVoLi7NhkD8-SOAqxmt5M4d/view?usp=drive_link",
@@ -2335,7 +2811,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://interestingliterature.com/2017/11/29/the-best-anne-bradstreet-poems-everyone-should-read/"
    },
    "Link": "https://interestingliterature.com/2017/11/29/the-best-anne-bradstreet-poems-everyone-should-read/",
@@ -2359,7 +2835,7 @@
     "receh0mgYZ6rfg3uS"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/57309/september-1913"
    },
    "Link": "https://www.poetryfoundation.org/poems/57309/september-1913",
@@ -2386,7 +2862,7 @@
     "recevu3UEnN3unfpK"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1LfxB66toAbi4VeTC56c-oiT1GtBYdssx/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1LfxB66toAbi4VeTC56c-oiT1GtBYdssx/view?usp=drive_link",
@@ -2410,7 +2886,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_03_bradstreet_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_03_bradstreet_64kb.mp3",
@@ -2431,7 +2907,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_26_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_26_hawthorne_64kb.mp3",
@@ -2455,7 +2931,7 @@
     "recgAnDZSBQ1AtkLq"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1qMgN5SwKUofF_u0JooQFpwlvdOh_Qw-d/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1qMgN5SwKUofF_u0JooQFpwlvdOh_Qw-d/view?usp=drive_link",
@@ -2479,7 +2955,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://rpo.library.utoronto.ca/content/author-her-book"
    },
    "Link": "https://rpo.library.utoronto.ca/content/author-her-book",
@@ -2503,7 +2979,7 @@
     "recgqKvfyFwKVW4kJ"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://allpoetry.com/Long-Legged-Fly"
    },
    "Link": "https://allpoetry.com/Long-Legged-Fly",
@@ -2530,7 +3006,7 @@
     "recgyJKwV24dwQZtM"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1GAXadF6LjxF3cFtNhtXAUiWMRdBfQzQB/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1GAXadF6LjxF3cFtNhtXAUiWMRdBfQzQB/view?usp=drive_link",
@@ -2554,7 +3030,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_10_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_10_hawthorne_64kb.mp3",
@@ -2575,7 +3051,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_22_bradstreet_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_22_bradstreet_64kb.mp3",
@@ -2599,7 +3075,7 @@
     "reckqXq4Ka71RnAx9"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/43286/the-fascination-of-whats-difficult"
    },
    "Link": "https://www.poetryfoundation.org/poems/43286/the-fascination-of-whats-difficult",
@@ -2626,7 +3102,7 @@
     "reclQIw8bmlgXEmHL"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.youtube.com/watch?v=dh_vmhtibmo&authuser=0"
    },
    "Link": "https://www.youtube.com/watch?v=dh_vmhtibmo&authuser=0",
@@ -2657,24 +3133,24 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/A8cTz9CusYzDjqPp8rcR_w/EEAUxfpQ4dYN3QySOmdozvr8cQunopc22jDVSaxgbNZsjDZma4tIUPHqfMKnfg8ekxM1UmmEkq_oX0-vdaZsl3t-7ND98f7J9Gltkp-ccU9N2hSYu1Xwtsyx1MqbKlBe1u7_NpbhCcfVVeKO_dg2qQ/NkyOl19hK-XL-4rQWJOkDiVhX15Zg-A7hC9Ja7iSnxo",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/DKW1NOTjqSZExJMH0ZqBXg/4uAQjPRChorSa9CFMo4-5H5Fq7lESwFOQ1OQwXBCDRR3NfHkTzPmdAVIaXZc1eAALC9QzVwkOL0hEhUuSI6OvZ1bCUQOvAHLdaITWYH4KeDzQkpZC5R8suzkqMRMYaYll9R_KCEQHsbMOkycBhFXdA/F96BFguk58po2zRRaKd2zcRh4MunokGr_91jAcg7rhw",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/kg4AjZp2ah8N-6vaMle9iw/CrqKNxViLmRXBZjQk2qDBdDQprikGiAejgf-a25LlHuengVhteWnxhpSL86o-hGDV3mC4HwTLYHqq1dNNa7YSScBTvUb5ciPNtnJaniKE46TxuNKZq7bh2zIDaYsvZJwrFYRmEvF7LcPG5tp9n27GQ/NEXz0vjuxCN4duU7cnmaveti2n3Xtfq1SfPqXPW0JGg",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/8myzTUrSFV7RuO8tnlKXcg/IYQLIZ2hHhuTUZ_V0osO-BRa3vf8-vJyKwRSeFy4lrwjIsaIfdROoczPWvUQPEMMaLCPANPTC9om1yt63OlzX9lDZ0hlwiQ5MdSRfVk80Trxv7HQ1yhWim54stg8yKf7shUu_Buo-CgWJL9V1a3V2g/hfbMD5QzBje7WOG0eOQ5ZqdNl8Uc4SenDoIccc6yWBA",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/8dw05FpkcNLzJYAxaPEb8A/ERZL3VsDXeag53xI6lJX_X1kR6tAYVXwu6fZKBwUWMKoHHXf8qjC6OmEPClLVsrLgWpGN44nnqrOh9BRZGXA79VHwmNbAK6hfREw3jfXFziZZfYf7_JVh5bLHABkbdMEAt6vNwizdBdMfutg6Xbv0oAmBXvgeAqnMXFEc4aXaxY/5_DXAQOfcUXE_oMW6tCM7WFYA-vQUj3-shLB2nFf4cc"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/LbpE0qfOc2cB2YlYvCCxjw/_2R_ihiTpOlNj2VXADSdBbLwuwfeCrx565j2G-XZF0PiN6s123ncTUvbW6Vo55ampAUXWhfj0ouBv0FR6j4EwmM6iYjj7bjz5_VuhpIyCWJwkJvwfLctI500NZBga6yHRTynfN-QauuneTFvZyDnNYZA-lMLmspfrNUCRKX9M1M/Bs0qYVfkw5biwVKs_4ljJOoQi2IMqG7gcc7P3WsINfE"
     }
    ],
    "From field: Self-Link": [
     "reclrBmxyptMLLyqL"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1_uuNzf0b6NvGqpjZ4Nd05gSGncALr7P_/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1_uuNzf0b6NvGqpjZ4Nd05gSGncALr7P_/view?usp=drive_link",
@@ -2694,6 +3170,46 @@
   "id": "reclrBmxyptMLLyqL"
  },
  {
+  "createdTime": "2026-11-14T18:12:39.000Z",
+  "fields": {
+   "File": [
+    {
+     "filename": "Bradstreet Poems.pdf",
+     "id": "attHSXIqIyjAFM4zw",
+     "size": 409121,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/SMjCC6XD9t9f5yBHeeyyFw/8Kgvf4PS926a7Td4cECE8h0mnndxf4AU2HeHAgrfwLAV1VO-EDHcneDCTj4RP2qPLgEFLmF5rjHoy3r1Uueo2TgkeXsQs4zKhaYhEQJQ2k_E1F1vDxcKoHb04FMVryPHDGzm9jZfAUBNAOlWq8s34A/WiCvDK-ccveJtY0eiJc780lZ71vYk0e3wnApub4VADU",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/9zNvAXhp7bNRko6KrHgU1Q/RcZEb4-vfb-eeUSffOC0q-6zK5-9EfjR62EtW4AystmXnnyoAHXrSbKpLO4EQScWRJZT0czSfknbAw4ynTB9HyijuoTznBnzUYvQT9N6ibv359cR0kUccHQE8AdVixTx0ZvWKQ4f1ROKiqPfQiou7Q/VY3FwUcvosa9OpDCzNHlbZbYj5xKN4W1Sn8wlgTmbVU",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/L8Qn0z1HhqtxUfvT2TxNtA/jLge800EkcrrDfx7VrMQpe3qST9lU1RSKblSTOXQ93oil7TWl3yQdo8xy_XYpCGsyI6mLi5s25Q7V5WEGDD7U6MaNQXuM2d_UeDKttqJiRRcmvAJMapK59u7_pD1jRJmxXu35q5AEJRUc5-Y2lkUz0GiuAGDMDEVEi0Xr6-y8Yc/Xioqo28xSP6qxVxbOv5KNwi8xxuqMK4emp6UYeHva5s"
+    }
+   ],
+   "Go to Resource": {
+    "label": "Open Resouce",
+    "url": ""
+   },
+   "Name": "Bradstreet Poems - Full Text",
+   "Record ID": "recnEJFlmq1IHvMZQ",
+   "Type": "Text",
+   "Type Text": "Text",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "recnEJFlmq1IHvMZQ"
+ },
+ {
   "createdTime": "2024-04-29T16:22:32.000Z",
   "fields": {
    "Access": "Free",
@@ -2701,7 +3217,7 @@
     "recq2ajETWNdtH0Xb"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1Cqx0YkkOcTBmsDPLJuYJcQZWb9BtGn-K/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1Cqx0YkkOcTBmsDPLJuYJcQZWb9BtGn-K/view?usp=drive_link",
@@ -2725,7 +3241,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://eada.lib.umd.edu/text-entries/here-follow-several-occasional-meditations/"
    },
    "Link": "https://eada.lib.umd.edu/text-entries/here-follow-several-occasional-meditations/",
@@ -2749,7 +3265,7 @@
     "recqjvfmvKixvmjM9"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://allpoetry.com/To-Some-I-Have-Talked-With-By-The-Fire"
    },
    "Link": "https://allpoetry.com/To-Some-I-Have-Talked-With-By-The-Fire",
@@ -2776,7 +3292,7 @@
     "recrHDdstPMVwqlKc"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/43283/when-you-are-old"
    },
    "Link": "https://www.poetryfoundation.org/poems/43283/when-you-are-old",
@@ -2800,7 +3316,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.flyingcarsandfoodpills.com/the-celestial-rail-road"
    },
    "Link": "https://www.flyingcarsandfoodpills.com/the-celestial-rail-road",
@@ -2821,7 +3337,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_17_hawthorne_64kb.mp3"
    },
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_17_hawthorne_64kb.mp3",
@@ -2845,7 +3361,7 @@
     "recsNpyQhygUp7mrr"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/16Hy_WWhoRUFTwkFIo2CXVHtNyEFPrSYg/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/16Hy_WWhoRUFTwkFIo2CXVHtNyEFPrSYg/view?usp=drive_link",
@@ -2872,7 +3388,7 @@
     "recsRkVCE6tNRu0pN"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.youtube.com/watch?v=g5-sRjbkqjw&t=27s&pp=ygUWc2lsYXMgbWFybmVyIGF1ZGlvYm9vaw%3D%3D"
    },
    "Link": "https://www.youtube.com/watch?v=g5-sRjbkqjw&t=27s&pp=ygUWc2lsYXMgbWFybmVyIGF1ZGlvYm9vaw%3D%3D",
@@ -2903,24 +3419,24 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/239JZnZFOzf4nC7uKwMIJg/8zwSWQsJWpGgVCGqe7bFWHymHuQeJZ50oaAkL02Mri4WrRZkvuCd-iDgeyngQywZR80d97DJLYAZ0Q4NDzbarJpvvEEVUsv2t1z1veIch8U2MvJogESowbu4i5AZ-1apLl6l8x0vPfTbq2Om4TjA0g/w2fb8Pv4VW0kMiwlu5f-ywTJRveDZg68XOxaTw5gCeY",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/lZgQf1sO4YsEISVfWg8Wwg/JRDFR2CzMSwPKMYnstrd7EKknU1vYy0tj3YosyfajgqWl02porua3Er-cTcBcmN5eyiWS4GqtxTqko9bV_w7ZxC7iV56wwjncsOx2A2NQ1ZDB9Qk9YKp45kwByinzCMqYji-ffzv8N6c-96Z9vjZdA/YcO0C75N9wv4tmBz028hqoxLG7htQQ787ZS7ctH8YG0",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/NGBldiuCG3EIQvbvcCGkIg/j7RvKBSUTrlX9T7sN4-eGep1dqrfvJZnhDBKtueyw5Z-xJlllo-Ugip4_9vjNibtygvA5SHvu96kQHzTL4SqVOBcf2WDLVNWtadVWAJK9GI69MLEOgee2iIAT6i7f96ZdRJEILiQuN-ZgM8NyysZvw/vK0RHemPTZm_vmvhZ57LVo6h3jHkbLfGSUZH95UQjIc",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ZkknTD28KDdcEvt5-qED8w/PaKPfLgRXYf7WQ2dNI5wZXNRDN1dc1hyeLek6AHayphvtvtHaV68MNaUqRM4Toh8qIZr8KQlT27f-HLSmRQZPZTeInHsd0y_nh3WjiZbAOceRY1KJsKHG7luUp1NwjsACVqbw0Jo9NowOSKrOl_GDQ/2Po33ap3LubYJvt4ZgYcG9Uo6hZ2dEZURJXltXXTWJY",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794160800000/dY54K6KyCa2sr6li46jz9Q/Xb3TpUSyyAt9YRQa7Y-pLfRewEuXWhP6b4N1laOenB_bpfNxYNnh5i9AwNg9vEuXkmMxuiDj9t_m_bwyCpa2k1QzfCRtWdhzx-qlsGJ68iqew2X38R6likVLHe1gpA1Fd0DO-eroGZQ9ROXz-liLQS_N5qfQrIMWyJxpV37mQPY/JmhHQo5CcVuzzNI0-oXoKQFyRigji1lR7vv24Pdnx2Q"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/kSV6rn3OaPKy6Zft3pFOaQ/ahQF594QhOZd5BF1IwqC_1ZaaUpTLrc_6mjAshCIuoBEaYb0H0XQbU3at4MoQXKT595UeILGr-J1PrJgW6TPvK50h4zw0kVcygQ121m1yks5gFw8BhiK_psBKUoqiFFWF8NFWeFM1t1fQ9A8vwLyWrv6x3bH1I3IO9Mfgroqt-k/xiYkKI_F6PEBh2pPCNYnHVomHrXS2Nn2BeAN7XCUsI8"
     }
    ],
    "From field: Self-Link": [
     "recsfmg0LIoVoXnbw"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1sacEW_FK6tiHcGzNC9hDqUV8yh_kkM8t/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1sacEW_FK6tiHcGzNC9hDqUV8yh_kkM8t/view?usp=drive_link",
@@ -2947,7 +3463,7 @@
     "recsginZ0T8GQ3UvN"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1F5pPj1RKhgUzauNAg4lbSoUGlLPyLWSn/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1F5pPj1RKhgUzauNAg4lbSoUGlLPyLWSn/view?usp=drive_link",
@@ -2974,7 +3490,7 @@
     "recsty4n8E90ntBnz"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1C886ntRxl8xacw_7D3tueL-egElPjWXh/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1C886ntRxl8xacw_7D3tueL-egElPjWXh/view?usp=drive_link",
@@ -2994,16 +3510,36 @@
   "id": "recsty4n8E90ntBnz"
  },
  {
-  "createdTime": "2026-11-03T14:49:54.000Z",
+  "createdTime": "2026-11-13T16:59:09.000Z",
   "fields": {
-   "Access": "Free preview",
+   "Access": "Paid",
+   "File": [
+    {
+     "filename": "The Prologue by Anne Bradstreet - Poem Analysis - Poetry+.pdf",
+     "id": "attPwYjzZPF5V2GkJ",
+     "size": 940370,
+     "thumbnails": {
+      "large": {
+       "height": 724,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/wXenJeAPXXp3wYsufcD--g/Qx1YSnv2oQWpXhJFDQ94XV6drFL4DutqIaGzt7R0tUQD0tYkXi_XMVMbclCvqVjPTKQoctkL9oftqj5Iv2QAdh3A20HhcwNKTfdy81MmgEAi2YDO8nz90ICpsDdM5_WmVChSMLB2vGhW3QGsl60XBg/Q7SoFv8662IJA4zKrmVYy3njd3rg59XZ308MPPKhPNo",
+       "width": 512
+      },
+      "small": {
+       "height": 35,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/w-_sXgiyCEBc48ohFE48Cw/KuZa_eIoEj0QKKxzvGsft2M1myBrlW4CVH3qwVDuasQA3Hgh6xH9ppETauoKJGj8JDl56g1oSpnnwEQrdqAh_D5sUolempb9JDlvfS-24TA4HsgzQWOIbhYXaGTTzxYxIAvoY8LuHxYh-pF77YcgZw/V1zvesOJ2py7Jk4wMD54arMyx_a6f6RBGTPmfZhIvL4",
+       "width": 25
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/240zQyaZrStMZOFC5o1rwA/3CuB6p7Hga9DM10gT2LReK6UOu6FstphLExnPrq_AE9iHxnkzdrvsTZsFls1Uuhxba2NFKvL7D5CU5WmeXFNUPtbbdFG8JV6BIA5DiaME7B_9Mil7xuNvdJaa62jaWnHdlb8aDXIktqbWIj1KNCt4hX4KHam4SDQBPt3y0TB9d8cBsSaPs5yMa7Q7Nmq9cyJ5DwveXfFaUeFYcRwsNOC5Q/e4Wskh6sLWUoRc7R4Lc1yP_TxwCa-GB2k7zoDx0MQtQ"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
-    "url": "https://www.enotes.com/topics/reference-her-children-23-june-1659"
+    "label": "Open Resouce",
+    "url": ""
    },
-   "Link": "https://www.enotes.com/topics/reference-her-children-23-june-1659",
-   "Name": "In Reference to her Children - eNotes",
-   "Record ID": "rectsfjFvtVmmmfc9",
+   "Name": "The Prologue - Poem Analysis",
+   "Record ID": "rectGAIypIzTXlTtb",
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -3012,14 +3548,55 @@
    "Work Text": "Bradstreet",
    "Year": "2026-2027"
   },
-  "id": "rectsfjFvtVmmmfc9"
+  "id": "rectGAIypIzTXlTtb"
+ },
+ {
+  "createdTime": "2026-11-13T16:59:04.000Z",
+  "fields": {
+   "Access": "Paid",
+   "File": [
+    {
+     "filename": "Before the Birth of One of Her Children by Anne Bradstreet - Poem Analysis - Poetry+.pdf",
+     "id": "attHbyj9iIkX8qQCP",
+     "size": 783235,
+     "thumbnails": {
+      "large": {
+       "height": 724,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/4lrK-8bojsy8WfvtXou21w/zxlBiFshzgmltmDT__FzGSwcxaChJSJBlXj1VdSmZMZQ9VzPGNO2yq0oTGtif0ZYveQO6nu2vom7VS3nn5WUppym57uC_qg-bb4_Cs5d6mv5YZ9L9OoisIgPvf2DkoxyrEOLHvLuIPDOsFNjik2obw/gc3xFQUp1pYVoBjt9vM5FmVVsP4ks3_WG_bcKt3XXEI",
+       "width": 512
+      },
+      "small": {
+       "height": 35,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/Dt3Mp3oMADY_Hju2y-GEiQ/78G15B9dXsbEMtwNCE6DZwq62pistw288HXXftpQ3dlkzMi-yod56jdYsJSSARfnbOOMpwZLQtUkaEeum9mQSeHLTg27kaZEpOXs3gU_X0JiPs7kMx928vXKb2uQEnF0r0icdN8sxicXuRfW1tT6RA/fZTD6AKMPvC9zJDr_IKLTiKnZ-gQOI1sMs73V0vgnWA",
+       "width": 25
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/N-PzApKvfs32e_-y4xBJmg/jixJLgzdhabe20zMvozQbSgMfW6ib2vrVzDIbPucaO4b9bwg1rEy_jSMPI5To_wV22ZGdw4Ex6u7t6_wrIj_GVeVXL8KNccqTLJ7a2g7DWYArzxMeTrRzW70Vj2lbZgx4uC_sogRgProqZjQcLorUOBCWP6NQHr6hZSJJMvoISDdlla2D0xi29j7PZ7j97WTTN-_A-15wz5QW_N_hIq8jCo42cybXdJ2mxzIHA5Gctg/fVOKNav4-Iuc5hP15dGq4VuT52DiKJqb8DD-s1L95Fc"
+    }
+   ],
+   "Go to Resource": {
+    "label": "Open Resouce",
+    "url": ""
+   },
+   "Name": "Before the Birth of One of Her Children - Poem Analysis",
+   "Record ID": "rectLZWSNetx6XniB",
+   "Type": "Poetry Guide",
+   "Type Text": "Poetry Guide",
+   "Work": [
+    "Bradstreet"
+   ],
+   "Work Text": "Bradstreet",
+   "Year": "2026-2027"
+  },
+  "id": "rectLZWSNetx6XniB"
  },
  {
   "createdTime": "2026-11-03T14:49:54.000Z",
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.poetryfoundation.org/poems/43703/in-honour-of-that-high-and-mighty-princess-queen-elizabeth"
    },
    "Link": "https://www.poetryfoundation.org/poems/43703/in-honour-of-that-high-and-mighty-princess-queen-elizabeth",
@@ -3039,8 +3616,29 @@
   "createdTime": "2026-11-03T14:49:54.000Z",
   "fields": {
    "Access": "Free",
+   "File": [
+    {
+     "filename": "Anne-Bradstreet-Poems-GradeSaver-ClassicNote.pdf",
+     "id": "att173tQjvqkyVvh1",
+     "size": 662724,
+     "thumbnails": {
+      "large": {
+       "height": 663,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/d4DT4oAnzJWR5Is0obHPow/aM3xesqBFyFojKOQf7zj4FUFkzIEH6usrEQVEx415mpWh9q3yN1zgX63LfLp52JgCX63nGNuRopXhBW0c-2OaHxe4GXCsYH8D-mzDNJBWRjS6MmoJrEK3uWXmwq2b6MHGUc_LFYZcSE95iLnuE521A/BWE2d325h6Q0St3fX7ruok6SHq_5PLJ02gMYSauvUe0",
+       "width": 512
+      },
+      "small": {
+       "height": 36,
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/iUMethfC_3qHsNvXKSSvMA/77vmSK-UJ7a-QFuUoyOGqa1R0HefYtAqhLsgktMGYNacMutl8ScbWYnCAbMoSef9GoN88tPTR4Krxbl91lPjyo117mUcMMK1gUxTvl_ZLhefi29saz10ypL_EiRSUcjWPoiTJwElrwL_t9fH83qGTw/BO5GtOuEPIcc6MDWkl4pYwfv7QJTMCYpvYw5_a800Cc",
+       "width": 28
+      }
+     },
+     "type": "application/pdf",
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/H0kfjgTuHmjVMOaZx52kBA/J_-dFXZ6DtyveSjGKqqqHv1kxLfbQuJpwjPNsQcAD2H0TkPFGT4UV7am2URKxtKizhsOtoazGRvlZp_sxQ1_jLgAk5b5hLfVsIxlFussbeZodI8Feb4qKqWO29M6Rj3hcfRBCltmBvBRYCWPtEU5sXXRvJdyFGa-ruEz5dkhtxJNF_oAVBjj49d9d1TLXcRaMgIgMdgJA3RZqy_sWUN8Ig/c86VeIrdYaPEzxBLHY9zDcIJ0a9eMIBxNAKRK_d9fdo"
+    }
+   ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.gradesaver.com/anne-bradstreet-poems"
    },
    "Link": "https://www.gradesaver.com/anne-bradstreet-poems",
@@ -3061,7 +3659,7 @@
   "fields": {
    "Access": "Paid",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.amazon.com/s?k=9780307741219"
    },
    "Link": "https://www.amazon.com/s?k=9780307741219",
@@ -3085,7 +3683,7 @@
     "recx987FvofwkwB8j"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1NzyB0kj4R8xeTUUxE_Bcvud4p89_AIpy/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1NzyB0kj4R8xeTUUxE_Bcvud4p89_AIpy/view?usp=drive_link",
@@ -3112,7 +3710,7 @@
     "recxDVrLYoiDvOWWe"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://poets.org/poem/falling-leaves"
    },
    "Link": "https://poets.org/poem/falling-leaves",
@@ -3139,7 +3737,7 @@
     "recxcHwlQbQyO7bCf"
    ],
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://drive.google.com/file/d/1SlCH3t4_UcU6zMRHMA7cT9wl356FnSsb/view?usp=drive_link"
    },
    "Link": "https://drive.google.com/file/d/1SlCH3t4_UcU6zMRHMA7cT9wl356FnSsb/view?usp=drive_link",
@@ -3163,7 +3761,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://openlibrary.org/works/OL35420W"
    },
    "Link": "https://openlibrary.org/works/OL35420W",
@@ -3184,7 +3782,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://www.gutenberg.org/ebooks/13707"
    },
    "Link": "https://www.gutenberg.org/ebooks/13707",
@@ -3205,7 +3803,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://archive.org/details/worksofannebrads00brad"
    },
    "Link": "https://archive.org/details/worksofannebrads00brad",
@@ -3226,7 +3824,7 @@
   "fields": {
    "Access": "Free",
    "Go to Resource": {
-    "label": "Resource",
+    "label": "Open Resouce",
     "url": "https://archive.org/details/cu31924020766345/"
    },
    "Link": "https://archive.org/details/cu31924020766345/",

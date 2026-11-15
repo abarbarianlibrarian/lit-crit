@@ -366,6 +366,501 @@
      },
      "id": "fldw0xzTqOzpv6S1P",
      "name": "Examples"
+    },
+    {
+     "type": "checkbox",
+     "options": {
+      "icon": "check",
+      "color": "greenBright"
+     },
+     "id": "fld1jOfLDnAAfpb87",
+     "name": "Manually Checked"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldW8npZaajyvdOpH",
+      "fieldIdInLinkedTable": "fldXGvacLVeot4ago",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldJrtGYQyU2sq55x",
+          "selNrR1WzPjJplasf"
+         ]
+        }
+       ]
+      },
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "flddqGDARbJtXb6Gr",
+     "name": "Average # of Tests Between Occurrences (Part 1)"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldW8npZaajyvdOpH",
+      "fieldIdInLinkedTable": "fldilaCNMHb6EYsJn",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldJrtGYQyU2sq55x",
+          "selNrR1WzPjJplasf"
+         ]
+        }
+       ]
+      },
+      "sorts": [
+       {
+        "fieldId": "fldXGvacLVeot4ago",
+        "direction": "desc"
+       }
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldF04PYQzi6izKaG",
+     "name": "Most Recent Test (Part 1)"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldW8npZaajyvdOpH",
+      "fieldIdInLinkedTable": "fldXGvacLVeot4ago",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldJrtGYQyU2sq55x",
+          "selNrR1WzPjJplasf"
+         ]
+        }
+       ]
+      },
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldq3DUAjtHSNFpD0",
+     "name": "Most Recent Test (Part 1) Index"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldW8npZaajyvdOpH",
+      "fieldIdInLinkedTable": "fldXGvacLVeot4ago",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldJrtGYQyU2sq55x",
+          "selkWUhCIKzkS50g5"
+         ]
+        }
+       ]
+      },
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldUmWKiA5HhFitrN",
+     "name": "Average # of Tests Between Occurrences (Part 3)"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblOCo90Gz36SYv10",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldFuGq7zZE15S6NI"
+     },
+     "id": "fldcRvXwFMd8j9NQ7",
+     "name": "Correct Answer Questions"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldW8npZaajyvdOpH",
+      "fieldIdInLinkedTable": "fldilaCNMHb6EYsJn",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldJrtGYQyU2sq55x",
+          "selkWUhCIKzkS50g5"
+         ]
+        }
+       ]
+      },
+      "sorts": [
+       {
+        "fieldId": "fldXGvacLVeot4ago",
+        "direction": "desc"
+       }
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fld5nBVBvFX2W9Iix",
+     "name": "Most Recent Test (Part 3)"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldW8npZaajyvdOpH",
+      "fieldIdInLinkedTable": "fldXGvacLVeot4ago",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldJrtGYQyU2sq55x",
+          "selkWUhCIKzkS50g5"
+         ]
+        }
+       ]
+      },
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldx9G309lZmleXGJ",
+     "name": "Most Recent Test (Part 3) Index"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldcRvXwFMd8j9NQ7",
+      "fieldIdInLinkedTable": "fldXGvacLVeot4ago",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldJrtGYQyU2sq55x",
+          "selNrR1WzPjJplasf"
+         ]
+        }
+       ]
+      },
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fld8KfE54Q3C55LoG",
+     "name": "Average # of Tests Between Correct Occurrences (Part 1)"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldcRvXwFMd8j9NQ7",
+      "fieldIdInLinkedTable": "fldXGvacLVeot4ago",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldJrtGYQyU2sq55x",
+          "selkWUhCIKzkS50g5"
+         ]
+        }
+       ]
+      },
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fld0Y5cSOzn37Q3KL",
+     "name": "Average # of Tests Between Correct Occurrences (Part 3)"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldcRvXwFMd8j9NQ7",
+      "fieldIdInLinkedTable": "fldilaCNMHb6EYsJn",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldJrtGYQyU2sq55x",
+          "selNrR1WzPjJplasf"
+         ]
+        }
+       ]
+      },
+      "sorts": [
+       {
+        "fieldId": "fldXGvacLVeot4ago",
+        "direction": "desc"
+       }
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldofkPjTxhJw2HA4",
+     "name": "Most Recent Correct Test (Part 1)"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldW8npZaajyvdOpH",
+      "fieldIdInLinkedTable": "fldilaCNMHb6EYsJn",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldJrtGYQyU2sq55x",
+          "selkWUhCIKzkS50g5"
+         ]
+        }
+       ]
+      },
+      "sorts": [
+       {
+        "fieldId": "fldXGvacLVeot4ago",
+        "direction": "desc"
+       }
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldCGmZeC22McGxRE",
+     "name": "Most Recent Correct Test (Part 3)"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldcRvXwFMd8j9NQ7",
+      "fieldIdInLinkedTable": "fldXGvacLVeot4ago",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldJrtGYQyU2sq55x",
+          "selNrR1WzPjJplasf"
+         ]
+        }
+       ]
+      },
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldUTB4Ced8dwcXww",
+     "name": "Most Recent Correct Test (Part 1) Index"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldcRvXwFMd8j9NQ7",
+      "fieldIdInLinkedTable": "fldXGvacLVeot4ago",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "=",
+         "operands": [
+          "fldJrtGYQyU2sq55x",
+          "selkWUhCIKzkS50g5"
+         ]
+        }
+       ]
+      },
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fld1pXtvs9u7ktnzO",
+     "name": "Most Recent Correct Test (Part 3) Index"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldnNuhS8PPF7ReNJ",
+     "name": "Median Number of Tests Between Occurrences"
+    },
+    {
+     "type": "percent",
+     "options": {
+      "precision": 1
+     },
+     "id": "fldup9VBP1UA1u1OX",
+     "name": "Likelihood – Invitational"
+    },
+    {
+     "type": "percent",
+     "options": {
+      "precision": 1
+     },
+     "id": "fld3KqtSTPcK8odJV",
+     "name": "Likelihood – District"
+    },
+    {
+     "type": "percent",
+     "options": {
+      "precision": 1
+     },
+     "id": "fldGXQQGVOCG4O5Mu",
+     "name": "Likelihood – Region"
+    },
+    {
+     "type": "percent",
+     "options": {
+      "precision": 1
+     },
+     "id": "fldh6mGbj1QULBAK8",
+     "name": "Likelihood – State"
+    },
+    {
+     "type": "multipleSelects",
+     "options": {
+      "choices": [
+       {
+        "id": "selrF71gPKIm69WWm",
+        "name": "Invitational",
+        "color": "grayLight2"
+       },
+       {
+        "id": "seliEirjZppakUIR2",
+        "name": "District",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selwrOmr51xZUV6ga",
+        "name": "Region",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel4ohKvWxivhy3xF",
+        "name": "State",
+        "color": "grayLight2"
+       }
+      ]
+     },
+     "id": "fldsdwOFEtonMtYYM",
+     "name": "Study For"
+    },
+    {
+     "type": "multipleSelects",
+     "options": {
+      "choices": [
+       {
+        "id": "seld9DsLB28jE1aBZ",
+        "name": "Invitational",
+        "color": "grayLight2"
+       },
+       {
+        "id": "seluiao3vfS8mui0K",
+        "name": "District",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selC1xWOEyIX4fWO2",
+        "name": "Region",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selQru7v2mhjwDpvI",
+        "name": "State",
+        "color": "grayLight2"
+       }
+      ]
+     },
+     "id": "fldGQZBUhDtgzG4c3",
+     "name": "Core For"
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldW8npZaajyvdOpH",
+      "fieldIdInLinkedTable": "fldHfOfZ0ImhwX5V7",
+      "result": {
+       "type": "multipleRecordLinks",
+       "options": {
+        "isReversed": false,
+        "prefersSingleRecordLink": false
+       }
+      }
+     },
+     "id": "fldcVlPDr4UnkZ9CC",
+     "name": "Commonly in Choices With"
     }
    ],
    "views": [
@@ -391,7 +886,12 @@
     },
     {
      "id": "viwYNT6n8186aAMik",
-     "name": "Grid 4",
+     "name": "Manual Checks",
+     "type": "grid"
+    },
+    {
+     "id": "viwSc5KhrZcrSstGL",
+     "name": "Terms CSV",
      "type": "grid"
     }
    ]
@@ -1594,6 +2094,223 @@
      },
      "id": "fldu1aWyQhlW1HGMW",
      "name": "Examples"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldu18Op6DyZWS264",
+      "fieldIdInLinkedTable": "fldXGvacLVeot4ago",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fld8yAh4ld7j2KxeP",
+     "name": "Average # of Tests Between Occurrences"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldu18Op6DyZWS264",
+      "fieldIdInLinkedTable": "fldilaCNMHb6EYsJn",
+      "referencedFieldIds": [],
+      "sorts": [
+       {
+        "fieldId": "fldXGvacLVeot4ago",
+        "direction": "asc"
+       }
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldVYsfgzuR1MpuwR",
+     "name": "Most Recent Test"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblOCo90Gz36SYv10",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "flddGGjJJRt2igukK"
+     },
+     "id": "fldZIfNoeKzfwbmIS",
+     "name": "Correct Answer Questions"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldZIfNoeKzfwbmIS",
+      "fieldIdInLinkedTable": "fldXGvacLVeot4ago",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldLgyDiOh8b5G113",
+     "name": "Average # of Tests Between Correct Occurrences"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldZIfNoeKzfwbmIS",
+      "fieldIdInLinkedTable": "fldilaCNMHb6EYsJn",
+      "referencedFieldIds": [],
+      "sorts": [
+       {
+        "fieldId": "fldXGvacLVeot4ago",
+        "direction": "asc"
+       }
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldoPNZYiX1aBjMyj",
+     "name": "Most Recent Correct Test"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldu18Op6DyZWS264",
+      "fieldIdInLinkedTable": "fldXGvacLVeot4ago",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldSoYRIx9sZvHv8L",
+     "name": "Most Recent Test Index"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldZIfNoeKzfwbmIS",
+      "fieldIdInLinkedTable": "fldXGvacLVeot4ago",
+      "referencedFieldIds": [],
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldQXcMhk7bFCtSyJ",
+     "name": "Most Recent Correct Test Index"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldiTSVrUGFXSBCst",
+     "name": "Median Number of Tests Between Occurrences"
+    },
+    {
+     "type": "percent",
+     "options": {
+      "precision": 1
+     },
+     "id": "fldjTa4QTq6dnMezh",
+     "name": "Likelihood – Invitational"
+    },
+    {
+     "type": "percent",
+     "options": {
+      "precision": 1
+     },
+     "id": "fld1Nq7QhFfm23XsC",
+     "name": "Likelihood – District"
+    },
+    {
+     "type": "percent",
+     "options": {
+      "precision": 1
+     },
+     "id": "fldPhQllh90lWLwgP",
+     "name": "Likelihood – Region"
+    },
+    {
+     "type": "percent",
+     "options": {
+      "precision": 1
+     },
+     "id": "fld99R5d5Avh7srFi",
+     "name": "Likelihood – State"
+    },
+    {
+     "type": "multipleSelects",
+     "options": {
+      "choices": [
+       {
+        "id": "selgstVDb0Xhf9nEm",
+        "name": "Invitational",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selYfjYe6wpk1jhpy",
+        "name": "District",
+        "color": "grayLight2"
+       },
+       {
+        "id": "seluM2JGTgzHIpmJJ",
+        "name": "Region",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel1Mh844M3fLzSw1",
+        "name": "State",
+        "color": "grayLight2"
+       }
+      ]
+     },
+     "id": "fldbeKEerwcMYPBKg",
+     "name": "Study For"
+    },
+    {
+     "type": "multipleSelects",
+     "options": {
+      "choices": [
+       {
+        "id": "sel3qLt1bLTn7HIW2",
+        "name": "Invitational",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selJVQXUMbl7FfYXS",
+        "name": "District",
+        "color": "grayLight2"
+       },
+       {
+        "id": "seldCxZHrNVhBwyp1",
+        "name": "Region",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selYcHix2D6AbVPBu",
+        "name": "State",
+        "color": "grayLight2"
+       }
+      ]
+     },
+     "id": "fldgfrEzHqwdXJJIq",
+     "name": "Core For"
     }
    ],
    "views": [
@@ -1650,6 +2367,11 @@
     {
      "id": "viwYZjYoCJ4PtRDkO",
      "name": "Manual Images",
+     "type": "grid"
+    },
+    {
+     "id": "viwa9FTOm5sUOwz3f",
+     "name": "Authors CSV",
      "type": "grid"
     }
    ]
@@ -3647,26 +4369,6 @@
      "name": "Work"
     },
     {
-     "type": "formula",
-     "options": {
-      "isValid": true,
-      "formula": "CONCATENATE({fldpIadf3Zq41nZKo})",
-      "referencedFieldIds": [
-       "fldpIadf3Zq41nZKo"
-      ],
-      "result": {
-       "type": "singleLineText"
-      }
-     },
-     "id": "fld5GSO8peEsKKxuO",
-     "name": "Work Text"
-    },
-    {
-     "type": "url",
-     "id": "fld94UO33vHDZzs7N",
-     "name": "Link"
-    },
-    {
      "type": "button",
      "id": "fldQMaqfkIbfHpLkQ",
      "name": "Go to Resource"
@@ -3738,6 +4440,26 @@
      "id": "fldM8Y98hILZsxrqI",
      "name": "Access",
      "description": "Free, Free preview (part of it is behind a paywall or needs a subscription), or Paid. Shown on the website's Resources page."
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "CONCATENATE({fldpIadf3Zq41nZKo})",
+      "referencedFieldIds": [
+       "fldpIadf3Zq41nZKo"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fld5GSO8peEsKKxuO",
+     "name": "Work Text"
+    },
+    {
+     "type": "url",
+     "id": "fld94UO33vHDZzs7N",
+     "name": "Link"
     }
    ],
    "views": [
@@ -4170,15 +4892,46 @@
      "name": "Terms Link"
     },
     {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "SWITCH(UPPER({fldkWHxQ1rCEW06g7}), \"A\", {fldvEEBT7MUTJKMaj}, \"B\", {fldQRHXDdoaqBo36c}, \"C\",{fldacm4HCaA4qtINy}, \"D\", {fldH8tlQAXyYmJ2tr}, \"E\", {fldygihYAICaoblm9})",
+      "referencedFieldIds": [
+       "fldkWHxQ1rCEW06g7",
+       "fldvEEBT7MUTJKMaj",
+       "fldQRHXDdoaqBo36c",
+       "fldacm4HCaA4qtINy",
+       "fldH8tlQAXyYmJ2tr",
+       "fldygihYAICaoblm9"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldrxnChat4RhrO9F",
+     "name": "Correct Answer"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblcPkKHdlXKFszGP",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldcRvXwFMd8j9NQ7"
+     },
+     "id": "fldFuGq7zZE15S6NI",
+     "name": "Correct Term"
+    },
+    {
      "type": "multipleRecordLinks",
      "options": {
       "linkedTableId": "tblv2LTIvL1vj36zt",
       "isReversed": false,
       "prefersSingleRecordLink": false,
-      "inverseLinkFieldId": "fldu18Op6DyZWS264"
+      "inverseLinkFieldId": "fldZIfNoeKzfwbmIS"
      },
-     "id": "fldXuzM3SSDbXZoPi",
-     "name": "Authors Link"
+     "id": "flddGGjJJRt2igukK",
+     "name": "Correct Author"
     },
     {
      "type": "multipleRecordLinks",
@@ -4210,12 +4963,475 @@
      },
      "id": "fld19O1Md6gnBkh70",
      "name": "Full Text"
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selwO1VlT4Z5QM0wK",
+        "name": "Literary Terms",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selC3wAyIEjjidv1s",
+        "name": "Literary History",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel6TRjHLRWpj9o01",
+        "name": "Prizes & Awards",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selVtH9B4MhX2qUn9",
+        "name": "Authors & Works",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selVkoVY5Z59ttQbP",
+        "name": "Mythology, Bible & Legend",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selFZmYt1U2Y3PsH4",
+        "name": "Part 2 – Play",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel9MI9llBGXwlf7b",
+        "name": "Part 2 – Novel",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selWSLfNvEeQonGjY",
+        "name": "Part 2 – Poetry",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selzcjvvV7RMTIlhE",
+        "name": "Part 2 – Epic",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selF1fCsPzJLP870Z",
+        "name": "Poem Analysis",
+        "color": "grayLight2"
+       }
+      ]
+     },
+     "id": "fldhYHZszfolVmuGK",
+     "name": "Category",
+     "description": "Question category from the released-test analysis (same as the project file question-categories-2011-2026.csv)."
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selzQG6V3ObAij4a6",
+        "name": "Characters in famous works",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selspjmcT9wLKhRQR",
+        "name": "Identify author from works/bio",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selLH9skzEDAx2klh",
+        "name": "Pen names & identities",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selnQckWbIXKMv7Lf",
+        "name": "Which author does NOT belong (group/era/genre)",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel5IVcYWBgNpmHWs",
+        "name": "Which work is NOT by an author",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selJsz1pYS0pewZCQ",
+        "name": "Groups, schools & circles",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selWFwrQXdx8hE0aO",
+        "name": "Movements & -isms",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selVIrz2oxZXMz6Py",
+        "name": "Periods & ages",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selbtp2ThPeYHd7vT",
+        "name": "Books, printing & publishing",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selZijsxQ94f6qHVo",
+        "name": "Criticism & theory",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selfRPHtl7ih7Jqnt",
+        "name": "Drama & theater",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selMHGbL8EO11bRc6",
+        "name": "Fiction & narrative",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel2ZP1hTTKEoyyEj",
+        "name": "Other terms",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel7C51rPH0Kct6Sk",
+        "name": "Philosophy & ideas",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selWe9Bog2MExMERY",
+        "name": "Poem types & occasions",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sell4jIwp6lifozLq",
+        "name": "Poetic feet & meter",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selRhyZbR1YWA6xWJ",
+        "name": "Rhetorical devices & figures of speech",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selrvQwfU7643PzPk",
+        "name": "Rhyme types",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selvbtORE4rLzrjsi",
+        "name": "Satire, humor & wit",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selLGzPZcVXDNR1SX",
+        "name": "Sonnets",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selW6hTkSN9GrX7rb",
+        "name": "Sound devices",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selpcwie1uGT5stuN",
+        "name": "Stanza & verse forms",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selksuWaHJQrCvNte",
+        "name": "Words, language & usage",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selkqGZvj8NdYbrCW",
+        "name": "Arthurian & legend",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selHc31CQsVaZ9fzV",
+        "name": "Bible & religion",
+        "color": "grayLight2"
+       },
+       {
+        "id": "seldaJLG5Cig81AR3",
+        "name": "Greek/Roman/Norse mythology",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selag8vXgNRnw0Rbd",
+        "name": "Line/passage meaning & reference",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel6xFPsUEFwOTKcQ",
+        "name": "Overall comprehension",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selhQDu0Gc1cYd4le",
+        "name": "Rhetorical & figurative devices",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selPmnPmgo4g3uRyD",
+        "name": "Rhyme types & sound devices",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel4GTDReJfbVjEFK",
+        "name": "Allusion",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selwQ2HqHUBmdUtnS",
+        "name": "Character identification",
+        "color": "grayLight2"
+       },
+       {
+        "id": "seljXSUx0x9myHY2U",
+        "name": "Literary device in the work",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selG5Q6upCwLAo3DI",
+        "name": "Plot & detail recall",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selUjJA3vjBdKfbQR",
+        "name": "Quotation: speaker / addressee / context",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selnuuRAuKaTOMFy5",
+        "name": "Theme, meaning & interpretation",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selMtcW4n4SdWtcDj",
+        "name": "Form & stanza classification",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selTXw1zX8Xma2L57",
+        "name": "Imagery type",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selR4GziqhtY5PZx1",
+        "name": "Locate the line/stanza",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel6hjY126MMGI3b6",
+        "name": "Meter & scansion",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selHCSpfgSvBbvgHJ",
+        "name": "Rhyme scheme (letter pattern)",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selXEUACSKnG7Ak5B",
+        "name": "Speaker, addressee & situation",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selhgZPU6mTq0htTA",
+        "name": "Structure, turn & shifts",
+        "color": "grayLight2"
+       },
+       {
+        "id": "seliy9u89smiaecRN",
+        "name": "Theme & central idea",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selP5VYf9EFqqMYFP",
+        "name": "Tone, mood & attitude",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selG9xh7mbr9d5ojO",
+        "name": "Nobel Prize in Literature",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selXiyYumLMPJrpad",
+        "name": "Other prizes (Booker, National Book Award, etc.)",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selQEGdCjXLXejHSO",
+        "name": "Poet Laureate",
+        "color": "grayLight2"
+       },
+       {
+        "id": "seltMWFqTZY5kF5sd",
+        "name": "Pulitzer – Drama",
+        "color": "grayLight2"
+       },
+       {
+        "id": "seluV7QdCpPxe56aj",
+        "name": "Pulitzer – Fiction/Novel",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selF8fJQoki8XjCW4",
+        "name": "Pulitzer – Poetry",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel4hlrILsxctPH8x",
+        "name": "Pulitzer – other",
+        "color": "grayLight2"
+       }
+      ]
+     },
+     "id": "fldhkLJA7hu0aH16i",
+     "name": "Subcategory",
+     "description": "Question subcategory within Category, from the released-test analysis."
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldilaCNMHb6EYsJn",
+      "fieldIdInLinkedTable": "fldCYzrkYdk4V9a7W",
+      "result": {
+       "type": "number",
+       "options": {
+        "precision": 0
+       }
+      }
+     },
+     "id": "fldXGvacLVeot4ago",
+     "name": "Test Index"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "IF(FIND(LOWER({fldrxnChat4RhrO9F}), LOWER(ARRAYJOIN({fldHfOfZ0ImhwX5V7}))), {fldrxnChat4RhrO9F}, BLANK())",
+      "referencedFieldIds": [
+       "fldrxnChat4RhrO9F",
+       "fldHfOfZ0ImhwX5V7"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fld6ApstqAiFmlNbU",
+     "name": "Correct Answer (Term)"
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "IF(FIND(LOWER({fldrxnChat4RhrO9F}), LOWER(ARRAYJOIN({fldXuzM3SSDbXZoPi}))), {fldrxnChat4RhrO9F}, BLANK())",
+      "referencedFieldIds": [
+       "fldrxnChat4RhrO9F",
+       "fldXuzM3SSDbXZoPi"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldp5lR2RTNtsaBNX",
+     "name": "Correct Answer (Author)"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblv2LTIvL1vj36zt",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldu18Op6DyZWS264"
+     },
+     "id": "fldXuzM3SSDbXZoPi",
+     "name": "Authors Link"
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selOxe2zonTfEYE6T",
+        "name": "Official",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selBhumGO07o2yLJZ",
+        "name": "Generated",
+        "color": "purpleLight2"
+       }
+      ]
+     },
+     "id": "fldFtTKHbwhQJ7SuJ",
+     "name": "Source",
+     "description": "Official = released UIL test question. Generated = AI-drafted practice question (replaces the separate Practice Questions table). Stats and released-test pages should count Official only."
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "sel65rDrwVrvF4Pr0",
+        "name": "Draft",
+        "color": "yellowLight2"
+       },
+       {
+        "id": "selTzBy3xv7hIesLr",
+        "name": "Approved",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selGoyGZ1UJhhziFh",
+        "name": "Rejected",
+        "color": "redLight2"
+       }
+      ]
+     },
+     "id": "fldBEhpYKTv5x9LWJ",
+     "name": "Status",
+     "description": "For Generated questions: Draft until reviewed; only Approved ones are published. Leave blank for Official questions."
+    },
+    {
+     "type": "singleLineText",
+     "id": "fldiSDnwZg5EUjEG9",
+     "name": "Story or Poem",
+     "description": "Generated Part 2 questions: which story, poem or act the question is about."
+    },
+    {
+     "type": "multilineText",
+     "id": "fldsikOW4iydriFZv",
+     "name": "Notes",
+     "description": "Reviewer notes, or the drafter's note on where in the text the answer is found."
+    },
+    {
+     "type": "date",
+     "options": {
+      "dateFormat": {
+       "name": "iso",
+       "format": "YYYY-MM-DD"
+      }
+     },
+     "id": "fldc3OT7lu9ulnNLQ",
+     "name": "Week",
+     "description": "Generated questions: Monday of the week the question was drafted for."
     }
    ],
    "views": [
     {
      "id": "viwuO6Ipmdnam4WXF",
      "name": "Grid view",
+     "type": "grid"
+    },
+    {
+     "id": "viwvjR0KSJRo10X2J",
+     "name": "Questions CSV",
      "type": "grid"
     }
    ]
@@ -4321,6 +5537,11 @@
         "id": "selPKoTPQYIuZiLuN",
         "name": "2026",
         "color": "cyanLight2"
+       },
+       {
+        "id": "selog6VTGwCRUY3gf",
+        "name": "2027",
+        "color": "purpleLight1"
        }
       ]
      },
@@ -4403,12 +5624,40 @@
      },
      "id": "fldgTL0U2maZT7MwJ",
      "name": "Number of Questions"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldCYzrkYdk4V9a7W",
+     "name": "Index"
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selneA8MUxLRHE0Tu",
+        "name": "Official",
+        "color": "blueLight2"
+       },
+       {
+        "id": "selts1w8chk1ReSkt",
+        "name": "Generated",
+        "color": "purpleLight2"
+       }
+      ]
+     },
+     "id": "fldAf4I7cthsEGnLb",
+     "name": "Source",
+     "description": "Official = released UIL test. Generated = practice test built from Generated questions."
     }
    ],
    "views": [
     {
      "id": "viwUDR8ozaz469jid",
-     "name": "Grid view",
+     "name": "Tests CSV",
      "type": "grid"
     }
    ]
