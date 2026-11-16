@@ -1270,15 +1270,16 @@
         html += '<section class="fc-today"><button type="button" class="fc-gear" data-settings aria-label="Flashcard settings">' + GEAR + "</button>" +
           '<div class="fc-today-head"><p class="fc-today-n">' + (n ? plural(n, "card") + " today" : Object.keys(c).length ? "All done for today" : "Start your flashcards") + "</p>" + streakBadge(m) + "</div>";
         if (Object.keys(c).length) {
+          // Each box: how many cards are in it, then today's progress (Mastered: a link to review them).
           html += '<div class="fc-boxes">' +
-            boxLine("Daily", bs[1][0] ? (bs[1][1] ? bs[1][1] + " due" : "all done") : "empty", bs[1][0] ? 1 - bs[1][1] / bs[1][0] : 0) +
-            boxLine("Weekly", bs[2][0] ? (bs[2][0] - bs[2][1]) + " of " + bs[2][0] + " this week" : "empty", bs[2][0] ? 1 - bs[2][1] / bs[2][0] : 0) +
-            boxLine("Monthly", bs[3][0] ? (bs[3][0] - bs[3][1]) + " of " + bs[3][0] + " this month" : "empty", bs[3][0] ? 1 - bs[3][1] / bs[3][0] : 0) + "</div>";
+            boxLine("Daily", bs[1][0], bs[1][0] ? (bs[1][1] ? bs[1][1] + " due today" : "all done today") : "empty", bs[1][0] ? 1 - bs[1][1] / bs[1][0] : 0, url("flashcards/study/", { b: 1 })) +
+            boxLine("Weekly", bs[2][0], bs[2][0] ? (bs[2][0] - bs[2][1]) + " done this week" : "empty", bs[2][0] ? 1 - bs[2][1] / bs[2][0] : 0, url("flashcards/study/", { b: 2 })) +
+            boxLine("Monthly", bs[3][0], bs[3][0] ? (bs[3][0] - bs[3][1]) + " done this month" : "empty", bs[3][0] ? 1 - bs[3][1] / bs[3][0] : 0, url("flashcards/study/", { b: 3 })) +
+            boxLine("Mastered", bs[4], bs[4] ? "review any time" : "none yet", null, url("flashcards/study/", { b: 4 })) + "</div>";
         }
         if (!bs[1][0]) html += topOffer(sm, c, Object.keys(c).length > 0);
         var extras = [];
         if (wait) extras.push(plural(wait, "new card") + ' waiting · <button type="button" class="fc-link" data-settings>add some now</button>');
-        if (bs[4]) extras.push(bs[4] + ' mastered · <a href="' + url("flashcards/study/", { b: 4 }) + '">review</a>');
         html += '<div class="fc-today-go">' +
           (n ? '<a class="btn btn-study" href="' + url("flashcards/review/") + '">Start studying</a>' :
             p.more.length ? '<a class="btn btn-study" href="' + url("flashcards/review/", { more: 1 }) + '">Get ahead: ' + plural(p.more.length, "more card") + "</a>" : "") +
@@ -1289,9 +1290,12 @@
       root.innerHTML = html;
       wire(sm);
     }
-    function boxLine(name, stat, frac) {
-      return '<div class="fc-boxline"><span><b>' + name + '</b> <span class="muted">· ' + stat + '</span></span><div class="fc-meter"><div style="width:' +
-        Math.round(100 * Math.max(0, Math.min(1, frac))) + '%"></div></div></div>';
+    // One box in the Today panel: name and card count (a link to study that box), today's progress, a meter.
+    function boxLine(name, count, stat, frac, href) {
+      var label = '<b>' + name + '</b><span class="fc-boxn">' + plural(count, "card") + "</span>";
+      return '<div class="fc-boxline">' + (count ? '<a class="fc-boxhead" href="' + href + '" title="Study the cards in ' + name + '">' + label + "</a>" : '<span class="fc-boxhead">' + label + "</span>") +
+        '<span class="muted">' + stat + "</span>" +
+        (frac == null ? "" : '<div class="fc-meter"><div style="width:' + Math.round(100 * Math.max(0, Math.min(1, frac))) + '%"></div></div>') + "</div>";
     }
     function topPick(sm, c) {
       return (sm.top[topKind] || []).filter(function (x) { return !c[x[0]]; }).slice(0, topN);
