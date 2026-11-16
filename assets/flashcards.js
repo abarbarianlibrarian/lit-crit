@@ -1272,10 +1272,10 @@
         if (Object.keys(c).length) {
           // Each box: how many cards are in it, then today's progress (Mastered: a link to review them).
           html += '<div class="fc-boxes">' +
-            boxLine("Daily", bs[1][0], bs[1][0] ? (bs[1][1] ? bs[1][1] + " due today" : "all done today") : "empty", bs[1][0] ? 1 - bs[1][1] / bs[1][0] : 0, url("flashcards/study/", { b: 1 })) +
-            boxLine("Weekly", bs[2][0], bs[2][0] ? (bs[2][0] - bs[2][1]) + " done this week" : "empty", bs[2][0] ? 1 - bs[2][1] / bs[2][0] : 0, url("flashcards/study/", { b: 2 })) +
-            boxLine("Monthly", bs[3][0], bs[3][0] ? (bs[3][0] - bs[3][1]) + " done this month" : "empty", bs[3][0] ? 1 - bs[3][1] / bs[3][0] : 0, url("flashcards/study/", { b: 3 })) +
-            boxLine("Mastered", bs[4], bs[4] ? "review any time" : "none yet", null, url("flashcards/study/", { b: 4 })) + "</div>";
+            boxLine("Daily", bs[1], "today", url("flashcards/study/", { b: 1 })) +
+            boxLine("Weekly", bs[2], "this week", url("flashcards/study/", { b: 2 })) +
+            boxLine("Monthly", bs[3], "this month", url("flashcards/study/", { b: 3 })) +
+            boxLine("Mastered", bs[4], null, url("flashcards/study/", { b: 4 })) + "</div>";
         }
         if (!bs[1][0]) html += topOffer(sm, c, Object.keys(c).length > 0);
         var extras = [];
@@ -1290,12 +1290,15 @@
       root.innerHTML = html;
       wire(sm);
     }
-    // One box in the Today panel: name and card count (a link to study that box), today's progress, a meter.
-    function boxLine(name, count, stat, frac, href) {
-      var label = '<b>' + name + '</b><span class="fc-boxn">' + plural(count, "card") + "</span>";
-      return '<div class="fc-boxline">' + (count ? '<a class="fc-boxhead" href="' + href + '" title="Study the cards in ' + name + '">' + label + "</a>" : '<span class="fc-boxhead">' + label + "</span>") +
-        '<span class="muted">' + stat + "</span>" +
-        (frac == null ? "" : '<div class="fc-meter"><div style="width:' + Math.round(100 * Math.max(0, Math.min(1, frac))) + '%"></div></div>') + "</div>";
+    // One box in the Today panel: its name (a link to study that box), then "8 of 12 done this week" and a meter.
+    // st is [total, due] for Daily, Weekly and Monthly, or the count for Mastered (no period, no meter).
+    function boxLine(name, st, period, href) {
+      var total = period ? st[0] : st, done = period ? st[0] - st[1] : st;
+      var line = !total ? (period ? "empty" : "none yet") : period ? done + " of " + total + " done " + period : plural(total, "card");
+      return '<div class="fc-boxline">' +
+        (total ? '<a class="fc-boxhead" href="' + href + '" title="Study the cards in ' + name + '"><b>' + name + "</b></a>" : '<span class="fc-boxhead"><b>' + name + "</b></span>") +
+        '<span class="fc-boxn">' + line + "</span>" +
+        (period ? '<div class="fc-meter"><div style="width:' + (total ? Math.round(100 * done / total) : 0) + '%"></div></div>' : "") + "</div>";
     }
     function topPick(sm, c) {
       return (sm.top[topKind] || []).filter(function (x) { return !c[x[0]]; }).slice(0, topN);
