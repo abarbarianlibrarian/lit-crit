@@ -2362,7 +2362,7 @@ def flashcard_pages(db, rel):
                 apps[f"{letter}:{rid}"] = k
                 top[letter].append([f"{letter}:{rid}", db[table][rid]["title"], k])
         top[letter].sort(key=lambda x: (-x[2], sort_key(x[1])))
-        top[letter] = top[letter][:300]
+        # every tested term and author, so "add the next N most-tested" never runs out early
     # Works have no appearances field: count the released questions linked to each work.
     for rid in CARD_IDS["w"]:
         k = len(set(rel[("works", rid)].get("questions", [])))

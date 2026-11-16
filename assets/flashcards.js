@@ -1164,6 +1164,12 @@
       '<label class="fc-row" for="fc-perday">Add <input id="fc-perday" class="fc-num" type="number" min="0" max="100" value="' + m.perDay + '"> new cards each day automatically</label>' +
       '<label class="fc-row"><input type="checkbox" data-capon' + (m.capOn ? " checked" : "") + '> Pause new cards while Study daily has more than <input class="fc-num" type="number" min="1" max="999" value="' + m.cap + '" aria-label="Daily card limit" data-cap> cards</label>' +
       '<p><a href="' + BASE + 'flashcards/waiting/">View and edit the waiting cards →</a></p></section>' +
+      '<section data-topsec><h3>Most-tested cards</h3>' +
+      '<div class="fc-row"><label for="fc-setn">Add the next</label><input id="fc-setn" class="fc-num" type="number" min="1" max="100" value="10" data-stn>' +
+      '<span>most-tested</span><select aria-label="Kind of card" data-stk><option value="a" selected>authors</option><option value="t">terms</option></select></div>' +
+      '<p class="muted fc-small">Ranked by how often each has appeared on UIL tests. Cards already in your flashcards (in any box or the waiting line) are skipped.</p>' +
+      '<div data-stlist><p class="muted">Loading…</p></div>' +
+      '<p class="fc-ok" data-stmsg aria-live="polite"></p></section>' +
       '<section><h3>Studying</h3>' +
       '<label class="fc-row fc-set-row">Today’s cards: <select data-mdaily><option value="mc"' + (m.modeDaily !== "type" ? " selected" : "") + '>Multiple choice</option><option value="type"' + (m.modeDaily === "type" ? " selected" : "") + ">Typed</option></select></label>" +
       '<label class="fc-row fc-set-row">Other studying: <select data-mother>' + ["std", "type", "mc"].map(function (k) { return '<option value="' + k + '"' + ((MODES[m.mode] ? m.mode : "std") === k ? " selected" : "") + ">" + MODES[k] + "</option>"; }).join("") + "</select></label>" +
@@ -1188,6 +1194,33 @@
     document.addEventListener("keydown", esc_);
     ov.addEventListener("click", function (ev) { if (ev.target === ov || ev.target.closest("[data-close]")) close(); });
     function save(fn) { var mm = S.meta(); fn(mm); S.saveMeta(mm); }
+    // Most-tested cards: the next N authors (or terms) by test appearances that aren't in the flashcards yet.
+    var stSec = $(ov, "[data-topsec]"), stSm = null;
+    function stPick() {
+      var k = $(stSec, "[data-stk]").value, n = clampInt($(stSec, "[data-stn]").value, 1, 100, 10), have = S.cards();
+      return ((stSm && stSm.top[k]) || []).filter(function (x) { return !have[x[0]]; }).slice(0, n);
+    }
+    function stDraw() {
+      var pick = stPick(), noun = $(stSec, "[data-stk]").value === "t" ? "term" : "author";
+      $(stSec, "[data-stlist]").innerHTML = pick.length
+        ? '<div class="fc-chips">' + pick.map(function (x) { return '<span class="fc-tag set" title="' + plural(x[2], "test appearance") + '">' + esc(x[1]) + "</span>"; }).join("") + "</div>" +
+          '<p class="fc-row"><button type="button" class="btn btn-study btn-sm" data-stgo="daily">Start ' + (pick.length === 1 ? "it" : "them") + ' today</button>' +
+          '<button type="button" class="fc-btn small" data-stgo="end">Add to the waiting line</button></p>' +
+          '<p class="muted fc-small">They also go in your custom set “Most-tested ' + noun + "s.”</p>"
+        : '<p class="muted">You already have every tested ' + noun + ".</p>";
+    }
+    siteMeta().then(function (sm) { stSm = sm; if (ov.isConnected) stDraw(); });
+    stSec.addEventListener("input", function (ev) { if (ev.target.closest("[data-stn]")) stDraw(); });
+    stSec.addEventListener("change", function (ev) { if (ev.target.closest("[data-stk]")) { $(stSec, "[data-stmsg]").textContent = ""; stDraw(); } });
+    stSec.addEventListener("click", function (ev) {
+      var b = ev.target.closest("[data-stgo]"); if (!b) return;
+      var k = $(stSec, "[data-stk]").value, ids = stPick().map(function (x) { return x[0]; });
+      if (!ids.length) return;
+      var where = b.getAttribute("data-stgo"), n = addCards(ids, "top", where);
+      Cats.addMany(Cats.byName(k === "t" ? "Most-tested terms" : "Most-tested authors"), ids);
+      $(stSec, "[data-stmsg]").textContent = "Added " + plural(n, k === "t" ? "term" : "author") + (where === "daily" ? " to Study daily." : " to the end of the waiting line.");
+      stDraw();
+    });
     $(ov, "#fc-perday").addEventListener("change", function () { var v = clampInt(this.value, 0, 100, 10); this.value = v; save(function (mm) { mm.perDay = v; }); intro(); });
     $(ov, "[data-cap]").addEventListener("change", function () { var v = clampInt(this.value, 1, 999, 40); this.value = v; save(function (mm) { mm.cap = v; }); intro(); });
     $(ov, "[data-capon]").addEventListener("change", function () { var on = this.checked; save(function (mm) { mm.capOn = on; }); intro(); });
