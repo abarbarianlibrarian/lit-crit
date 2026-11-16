@@ -3676,7 +3676,7 @@ def merge_repeats(qs):
             first[k] = list(dict.fromkeys(first[k] + x[k]))
     return keep
 
-SET_QUIZ_MIN = 10  # fewest qualifying questions for a set to be offered as a quiz topic
+SET_QUIZ_MIN = 10  # fewest different correct answers for a set to be offered as a quiz topic
 ANSWER_LEAD = re.compile(r"^(?:the|an?|a\(n\)|an?\(n\)|both|either)\s+", re.I)
 
 
@@ -3729,6 +3729,43 @@ def answer_records(x):
     return out
 
 
+def quiz_answer_keys(x):
+    """The keys the quick quiz uses to tell answers apart (answerKeys in assets/quickquiz.js):
+    the correct choice's text (case, accents, punctuation and a leading the/a/an ignored),
+    its terms ("ta") and its authors and works ("ak")."""
+    keys, ch = [], dict(zip(x["l"], x["c"]))
+    for letter in x["a"]:
+        t = ch.get(letter)
+        if t is None:
+            continue
+        t = re.sub(r"[^a-z0-9]+", " ", fold(re.sub(r"<[^>]+>", "", t))).strip()
+        t = re.sub(r"^(the|an?) ", "", t)
+        if t:
+            keys.append("x:" + t)
+    return keys + ["t:" + i for i in x.get("ta", [])] + x.get("ak", [])
+
+
+def distinct_answers(qs, want):
+    """How many of qs a quiz can hold with no answer repeated (up to want), as the quick quiz
+    picks them: in a shuffled order, skipping clashes; the best of a few fixed shuffles."""
+    import random
+    rng, best = random.Random(0), 0
+    order = list(qs)
+    for _ in range(50):
+        used, n = set(), 0
+        for x in order:
+            keys = quiz_answer_keys(x)
+            if used.intersection(keys):
+                continue
+            used.update(keys)
+            n += 1
+            if n >= want:
+                return n
+        best = max(best, n)
+        rng.shuffle(order)
+    return best
+
+
 def quiz_bank(db, rel):
     """Every answerable released question, for the Quick quiz page (assets/data/qbank.json)."""
     tests, test_ix = [], {}
@@ -3761,12 +3798,13 @@ def quiz_bank(db, rel):
             used["authors"].update(poems[pid][3])
     # Topics: sets (terms), reading lists (works and authors), periods (authors).
     # A set quiz uses only questions whose correct answer is one of the set's terms ("ta"),
-    # and a set is offered only when at least SET_QUIZ_MIN questions qualify.
+    # and a set is offered only when a quiz on it can have at least SET_QUIZ_MIN questions with
+    # different answers (the quick quiz never repeats an answer; see distinct_answers).
     sets = {}
     for g in db["tags"].values():
         terms = rel[("tags", g["id"])].get("terms", [])
         ts = set(terms)
-        if sum(1 for x in qs if ts.intersection(x["ta"])) >= SET_QUIZ_MIN:
+        if distinct_answers([x for x in qs if ts.intersection(x["ta"])], SET_QUIZ_MIN) >= SET_QUIZ_MIN:
             sets[g["id"]] = [g["title"], terms]
     lists = {}
     for r in sorted(db["reading-lists"].values(), key=lambda r: r["year"], reverse=True):
