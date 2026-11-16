@@ -1701,6 +1701,22 @@ def card_data(db, rel):
 #      Pool: winners of the same prize in the nearest years (Nobel: same nationality first).
 MC_POOL = 12
 
+# Terms the Handbook treats as (nearly) the same thing without saying so in a way the build can read.
+# Any two names in a group are never offered together in a multiple-choice question. Names are term names,
+# lowercase, without parentheses. Add a group here when two choices could both fit one definition.
+MC_SYNONYMS = [
+    {"near rhyme", "half rhyme", "slant rhyme", "pararhyme", "off-rhyme", "oblique rhyme", "imperfect rhyme",
+     "approximate rhyme", "consonance rhyme"},
+    {"near rhyme", "consonance"}, {"half rhyme", "consonance"}, {"slant rhyme", "consonance"},
+    {"personification", "prosopopoeia", "anthropomorphism"},
+    {"hamartia", "tragic flaw"},
+    {"hubris", "hybris"},
+    {"peripety", "peripeteia", "reversal"},
+    {"anagnorisis", "discovery", "recognition"},
+    {"bildungsroman", "erziehungsroman", "entwicklungsroman", "apprenticeship novel"},
+    {"dramatic irony", "tragic irony", "sophoclean irony"},
+]
+
 
 def strip_paren(s):
     return re.sub(r"\s*\([^)]*\)", "", s or "").strip()
@@ -1764,7 +1780,7 @@ def term_forms(title):
     return show, out
 
 
-def mc_data(db, rel):
+def mc_data(db, rel, resolver=None):
     idx = {k: {rid: i for i, rid in enumerate(CARD_ORDER[k])} for k in CARD_ORDER}
     out = {k: {} for k in CARD_IDS}
 
@@ -1793,17 +1809,191 @@ def mc_data(db, rel):
             return True
         cue = r"(called|known as|same as|synonym(ous)? (for|of|with)|another (name|term) for|\bsee|\balso|\bor|\bi\.e\.)"
         return re.search(cue + r"\W+(?:[a-z’'-]+\W+){0,3}?(the |an? )?" + t + r"(?![a-z])", x) is not None
+    # Harder distractors (Nov 15, 2026). Each candidate is scored on:
+    #   UIL's own distractors: other terms on released questions whose correct answer is this term (strongest),
+    #   then terms that merely share a question; definitions that read alike (word overlap, weighted so rare
+    #   words count most); look-alike names (Anaphora / Epiphora, Assonance / Consonance) and the same kind of
+    #   name (… Rhyme, … Age, … Sonnet); Related and Mentioned Terms; small sets they share.
+    # Likely synonyms are left out in ok() below, including near-identical definitions.
+    STOP = set("""a an the and or of to in on for by with as at from into its it is are was were be been being that this
+        which who whom whose what when where how than then such any each other another some one two three more most
+        not no but if also used use uses usually often especially term word words kind form type sort way
+        thing things something certain particular usual very much many may can could would should one's has have had
+        his her their them they he she we our you your there these those""".split())
+
+    def toks(text):
+        out_t = []
+        for w in re.findall(r"[a-z]+", fold(re.sub(r"<[^>]+>", " ", text or ""))):
+            if len(w) < 3 or w in STOP:
+                continue
+            for suf in ("ies", "es", "s"):
+                if w.endswith(suf) and len(w) - len(suf) >= 4:
+                    w = w[: -len(suf)] + ("y" if suf == "ies" else "")
+                    break
+            out_t.append(w)
+        return out_t
+    docs = {}
+    for t in CARD_IDS["t"]:
+        r = terms[t]
+        own = set(toks(strip_paren(r["title"])))
+        words = [w for w in toks((r["short"] or "") + " " + (r["definition"] or "")[:600]) if w not in own]
+        docs[t] = defaultdict(float)
+        for w in words:
+            docs[t][w] += 1
+    df = defaultdict(int)
+    for d in docs.values():
+        for w in d:
+            df[w] += 1
+    n_docs = max(1, len(docs))
+    import math
+    vec = {}
+    for t, d in docs.items():
+        v = {w: (1 + math.log(c)) * math.log(n_docs / df[w]) for w, c in d.items() if df[w] <= n_docs * 0.08}
+        norm_ = math.sqrt(sum(x * x for x in v.values())) or 1
+        vec[t] = {w: x / norm_ for w, x in v.items()}
+    postings = defaultdict(list)
+    for t, v in vec.items():
+        for w, x in v.items():
+            postings[w].append((t, x))
+
+    def def_sim(t):
+        acc = defaultdict(float)
+        for w, x in vec[t].items():
+            for o, y in postings[w]:
+                if o != t:
+                    acc[o] += x * y
+        return acc
+
+    def grams(name):
+        n = " " + re.sub(r"[^a-z]+", " ", fold(strip_paren(name))).strip() + " "
+        return {n[i:i + 3] for i in range(len(n) - 2)}
+    tgrams = {t: grams(terms[t]["title"]) for t in CARD_IDS["t"]}
+    gpost = defaultdict(list)
+    for t, g in tgrams.items():
+        for x in g:
+            gpost[x].append(t)
+
+    def name_sim(t):
+        shared = defaultdict(int)
+        for x in tgrams[t]:
+            if len(gpost[x]) > 300:
+                continue
+            for o in gpost[x]:
+                if o != t:
+                    shared[o] += 1
+        return {o: k / (len(tgrams[t]) + len(tgrams[o]) - k) for o, k in shared.items() if k >= 3}
+
+    def last_word(name):
+        w = re.findall(r"[a-z]+", fold(strip_paren(YEARS_RE.sub("", name))))
+        return w[-1] if len(w) >= 2 else None
+    lw = {t: last_word(terms[t]["title"]) for t in CARD_IDS["t"]}
+    by_lw = defaultdict(list)
+    for t, w in lw.items():
+        if w:
+            by_lw[w].append(t)
+    correct_of = defaultdict(set)
+    if resolver:
+        for q in db["questions"].values():
+            for hit in answer_terms(q, resolver):
+                correct_of[q["id"]].add(hit)
+    # Likely synonyms or one term a type of the other: either would fit the definition, so never offer both.
+    def first_sentence(r):
+        text = fold(re.sub(r"\s+", " ", (r["short"] or "") + ". " + (r["definition"] or "")))
+        short = re.split(r"(?<=[.;:])\s", fold(r["short"] or ""), maxsplit=1)[0] if r["short"] else ""
+        full = re.split(r"(?<=[.;:])\s", fold(re.sub(r"\s+", " ", r["definition"] or "")).strip(), maxsplit=1)[0]
+        return short + " | " + full[:300], text
+    tinfo = {}
+    for t in CARD_IDS["t"]:
+        r = terms[t]
+        names = {fold(x).strip() for x in term_forms(r["title"])[1]}
+        names = {re.sub(r"^(the|a|an) ", "", strip_paren(x)) for x in names if len(strip_paren(x)) >= 4}
+        fs, full = first_sentence(r)
+        one = re.findall(r"[a-z]+", fold(strip_paren(YEARS_RE.sub("", r["title"]))))
+        tinfo[t] = (names, fs, full, one[0] if len(one) == 1 else None)
+
+    def mentions(text, names):
+        return any(re.search(r"(?<![a-z])" + re.escape(n) + r"(?![a-z])", text) for n in names)
+
+    DEF_CUE = (r"(?:(?:type|form|kind|variety|species|version|variant|subtype|subspecies|branch) of|another (?:name|term|word) for|"
+               r"(?:also |sometimes )?(?:called|known as|termed)|same as|synonym(?:ous)? (?:for|of|with)|\bsee|\bi\.e\.)")
+
+    def defines_by(first, names):
+        """The opening of a definition defines the term by another: it starts with it, or says it's a type of it."""
+        for part in first.split(" | "):
+            part = part.strip()
+            for n in names:
+                e_n = re.escape(n)
+                if re.match(r"(?:see |the |an? )?" + e_n + r"(?![a-z])", part):
+                    return True
+                if re.search(DEF_CUE + r"\W+(?:[a-z’'-]+\W+){0,3}?(?:the |an? )?" + e_n + r"(?![a-z])", part):
+                    return True
+        return False
+
+    STRONG_CUE = r"(?:another (?:name|term|word) for|(?:also |sometimes |often )?(?:called|known as)|same as|\bsee(?: also)?|synonym(?:ous)? (?:for|of|with))"
+
+    def strong_ref(text, names):
+        return any(re.search(STRONG_CUE + r"\W+(?:[a-z’'-]+\W+){0,2}?(?:the |an? )?" + re.escape(n) + r"(?![a-z])", text) for n in names)
+
+    def same_family(a_, b_):           # Elegy / Elegiac, Lyric / Lyrical, Satire / Satiric
+        if not a_ or not b_:
+            return False
+        a_, b_ = sorted((a_, b_), key=len)
+        stem = a_[:-1] if a_[-1] in "aeiouy" else a_
+        return len(stem) >= 4 and b_.startswith(stem) and len(b_) - len(a_) <= 4
+
+    def synonym_pair(a_, b_):
+        na, fa, xa, wa = tinfo[a_]
+        nb, fb, xb, wb = tinfo[b_]
+        if na & nb or same_family(wa, wb):
+            return True
+        if any(na & g and nb & g for g in MC_SYNONYMS):
+            return True
+        if strong_ref(xa, nb) or strong_ref(xb, na):             # anywhere: "also called X", "see X", "another name for X"
+            return True
+        if defines_by(fa, nb) or defines_by(fb, na):             # "a type of Bildungsroman", "near rhyme; …", "see Dramady"
+            return True
+        for x, n in ((xa, nb), (xb, na)):                         # "X and BILDUNGSROMAN are synonymous"
+            for sent in re.split(r"(?<=[.;])\s", x):
+                if "synonym" in sent and mentions(sent, n):
+                    return True
+        return False
+
     for t in CARD_IDS["t"]:
         me = terms[t]
         my_def = (me["short"] or "") + " " + (me["definition"] or "")
-        score = defaultdict(float)
+        # S: how alike the two terms are; Q: how often they share released questions.
+        S, Q = defaultdict(float), defaultdict(float)
         for q in rel[("terms", t)].get("questions", []):
+            mine = t in correct_of.get(q, ())
             for o in db["questions"][q]["terms"]:
-                score[o] += 3
+                Q[o] += 3 if mine else 0.75
+        sims = def_sim(t)
+        for o, c in sims.items():
+            if c >= 0.06:
+                S[o] += 12 * c
+        for o, c in name_sim(t).items():
+            if c >= 0.3:
+                S[o] += 4 * c
+        if lw[t] and len(by_lw[lw[t]]) <= 60:
+            for o in by_lw[lw[t]]:
+                S[o] += 1.5
         for o in me["related"] + rel[("terms", t)].get("rev:terms:related", []):
-            score[o] += 2
+            S[o] += 1.5
         for o in me["mentioned"] + rel[("terms", t)].get("rev:terms:mentioned", []):
-            score[o] += 1
+            S[o] += 0.75
+        for g in me["tags"]:
+            mates = by_tag.get(g, [])
+            if 2 <= len(mates) <= 60:
+                for o in mates:
+                    S[o] += 1.5 * (1 - len(mates) / 75)
+        # Shared questions count fully only for terms that are also alike: UIL sometimes pads with easy
+        # choices ("kitsch" beside "haiku"), and Part 3 questions mix unrelated terms.
+        score = defaultdict(float)
+        for o in set(S) | set(Q):
+            score[o] = S[o] + min(Q[o], 9) * min(1.0, 0.25 + S[o] / 3)
+        for o in list(score):
+            if apps("terms", o):
+                score[o] += 0.3         # a term students have met on tests is a more tempting choice
 
         def ok(o):
             if o == t or o not in CARD_IDS["t"]:
@@ -1820,16 +2010,23 @@ def mc_data(db, rel):
             od = (other["short"] or "") + " " + (other["definition"] or "")
             if synonym_of(me["title"], od) or synonym_of(other["title"], my_def):
                 return False
+            if synonym_pair(t, o):
+                return False
             return True
 
-        pool = sorted((o for o in score if ok(o)), key=lambda o: (-score[o], -apps("terms", o), sort_key(terms[o]["title"])))[:MC_POOL]
+        pool = []
+        for o in sorted(score, key=lambda o: (-score[o], -apps("terms", o), terms[o]["title"])):
+            if score[o] < 1.2 or len(pool) >= MC_POOL:      # weak links don't make hard distractors
+                break
+            if ok(o) and not any(synonym_pair(o, x) for x in pool):   # two synonyms would rule each other out
+                pool.append(o)
         if len(pool) < MC_POOL:
             have = set(pool)
             for g in sorted(me["tags"], key=lambda g: len(by_tag.get(g, []))):
                 for o in sorted(by_tag.get(g, []), key=lambda o: -apps("terms", o)):
                     if len(pool) >= MC_POOL:
                         break
-                    if o not in have and ok(o):
+                    if o not in have and ok(o) and not any(synonym_pair(o, x) for x in pool):
                         pool.append(o); have.add(o)
         if len(pool) < 6:
             have = set(pool)
@@ -1847,6 +2044,11 @@ def mc_data(db, rel):
     def birth(a):
         y = year_of(authors[a]["birth"])
         return int(y) if y else None
+    group_mates = defaultdict(list)
+    for a in CARD_IDS["a"]:
+        for g in authors[a]["groups"]:
+            group_mates[g].append(a)
+    group_mates = {g: v for g, v in group_mates.items() if len(v) <= 40}
     by_nat = defaultdict(list)
     for a in CARD_IDS["a"]:
         by_nat[(authors[a]["nationality"] or "").strip().lower()].append(a)
@@ -1858,12 +2060,18 @@ def mc_data(db, rel):
             nat, b = (authors[s]["nationality"] or "").strip().lower(), birth(s)
             if not nat or b is None:
                 continue
-            per = set(authors[s]["periods"])
+            per, grp, med = set(authors[s]["periods"]), set(authors[s]["groups"]), set(authors[s]["medium"])
             for o in by_nat.get(nat, []):
                 ob = birth(o)
                 if ob is None or abs(ob - b) > 60:
                     continue
-                score[o] += 1.5 - abs(ob - b) / 60 + (0.5 if per & set(authors[o]["periods"]) else 0)
+                score[o] += (1.5 - abs(ob - b) / 60 + (0.5 if per & set(authors[o]["periods"]) else 0)
+                             + (2 if grp & set(authors[o]["groups"]) else 0)          # same group: Lost Generation, Fugitives…
+                             + (0.75 if med & set(authors[o]["medium"]) else 0)      # both poets, both novelists…
+                             + (0.3 if apps("authors", o) else 0))
+            for g in grp:                     # group-mates of any nationality or era
+                for o in group_mates.get(g, []):
+                    score[o] += 1.5
         names = {fold(authors[s]["title"]) for s in seeds}
         cand = [o for o in score if o not in seeds and o in CARD_IDS["a"] and fold(authors[o]["title"]) not in names]
         cand.sort(key=lambda o: (-score[o], -apps("authors", o), author_sort(authors[o])))
@@ -3719,7 +3927,7 @@ def main():
             periods_by_term[tid].append(p["id"])
 
     card_data(db, rel)
-    mc_data(db, rel)
+    mc_data(db, rel, resolver)
     global RESOLVER
     RESOLVER = resolver
     build_nav_menus(db)
