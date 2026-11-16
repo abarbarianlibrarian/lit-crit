@@ -1704,6 +1704,37 @@ MC_POOL = 12
 # Terms the Handbook treats as (nearly) the same thing without saying so in a way the build can read.
 # Any two names in a group are never offered together in a multiple-choice question. Names are term names,
 # lowercase, without parentheses. Add a group here when two choices could both fit one definition.
+# What kind of thing a term is, so multiple choice offers the same kind (a sonnet's choices are other poem
+# types, a foot's are other feet). Sets (Tags) that name a kind come first; otherwise the first kind-word in
+# the definition's opening ("a poem almost invariably…", "a stanza of four lines", "a line of verse…").
+MC_KIND_SETS = {
+    "poem": {"Fixed Forms", "Misc. Poem Types", "Poems for Specific Occasions", "Odes", "Ballads",
+             "Shaped Poems"},
+    "stanza": {"Types of Stanzas", "Couplets"},
+    "rhyme": {"Rhyme Types"},
+    "novel": {"Types of Novels", "Romances"},
+    "play": {"Types of Plays and Shows", "Tragedy"},
+    "period": {"Time Periods (By Definition)", "Time Periods (By Order)"},
+    "movement": {"Movements", "Schools of Criticism"},
+    "figure": {"Figurative Language", "Tropes", "Frequently Used Figures of Speech"},
+    "character": {"Characters"},
+}
+MC_KIND_WORDS = {
+    "poem": "poem poems poetry lyric ode song ballad hymn sonnet",
+    "verse": "verse",                       # blank verse, free verse… ("verse form" counts as a poem, below)
+    "stanza": "stanza stanzas couplet tercet quatrain",
+    "line": "line lines",
+    "foot": "foot feet",
+    "meter": "meter metre measure",
+    "rhyme": "rhyme rhymes",
+    "figure": "figure trope device analogy metaphor comparison",
+    "novel": "novel novels romance story stories tale tales fiction",
+    "play": "play plays drama comedy tragedy farce performance entertainment",
+    "period": "period age era",
+    "movement": "movement school group circle",
+    "character": "character hero heroine villain",
+}
+
 MC_SYNONYMS = [
     {"near rhyme", "half rhyme", "slant rhyme", "pararhyme", "off-rhyme", "oblique rhyme", "imperfect rhyme",
      "approximate rhyme", "consonance rhyme"},
@@ -1911,6 +1942,38 @@ def mc_data(db, rel, resolver=None):
         one = re.findall(r"[a-z]+", fold(strip_paren(YEARS_RE.sub("", r["title"]))))
         tinfo[t] = (names, fs, full, one[0] if len(one) == 1 else None)
 
+    kind_word = {w: k for k, ws in MC_KIND_WORDS.items() for w in ws.split()}
+    tag_kind = {g: k for k, names_ in MC_KIND_SETS.items() for g in db["tags"]
+                if db["tags"][g]["title"] in names_}
+
+    def kind_of(t):
+        r = terms[t]
+        mine_k = {tag_kind[g] for g in r["tags"] if g in tag_kind}
+        for k in MC_KIND_SETS:                            # in order: a Fixed Form that's also a stanza is a poem
+            if k in mine_k:
+                return k
+        head = fold(r["short"] or re.sub(r"\s+", " ", r["definition"] or "")[:200]).strip()
+        head = re.split(r"[,;:—(]", head, maxsplit=1)[0]
+        head = re.sub(r"\bverse (form|pattern)s?\b|\bform of (?:[a-z]+ ){0,2}verse\b", "poem", head)
+        words = re.findall(r"[a-z]+(?:-[a-z]+)*", head)[:9]
+        if words and fold(strip_paren(r["title"])).startswith(words[0]) and len(words[0]) > 3:
+            return None                                   # "the pantoum may consist of…": no kind named
+        for i, w in enumerate(words):
+            if w not in kind_word:
+                continue
+            # "…a rhythmic pattern in poetry" names a context, not the kind; "a form of Japanese poetry" does name it
+            prev = [x for x in words[max(0, i - 3):i]]
+            prep = next((j for j in range(len(prev) - 1, -1, -1) if prev[j] in ("in", "of", "to", "for", "from", "with", "by", "on", "into")), None)
+            if prep is not None and not (prev[prep] == "of" and prep > 0 and prev[prep - 1] in ("form", "forms", "type", "kind", "variety", "species", "sort")):
+                continue
+            return kind_word[w]
+        return None
+    kinds = {t: kind_of(t) for t in CARD_IDS["t"]}
+    by_kind = defaultdict(list)
+    for t, k in kinds.items():
+        if k:
+            by_kind[k].append(t)
+
     def mentions(text, names):
         return any(re.search(r"(?<![a-z])" + re.escape(n) + r"(?![a-z])", text) for n in names)
 
@@ -1988,9 +2051,15 @@ def mc_data(db, rel, resolver=None):
                     S[o] += 1.5 * (1 - len(mates) / 75)
         # Shared questions count fully only for terms that are also alike: UIL sometimes pads with easy
         # choices ("kitsch" beside "haiku"), and Part 3 questions mix unrelated terms.
+        my_kind = kinds[t]
+        if my_kind:                     # every term of the same kind is a candidate
+            for o in by_kind[my_kind]:
+                S[o] += 2.5
         score = defaultdict(float)
         for o in set(S) | set(Q):
             score[o] = S[o] + min(Q[o], 9) * min(1.0, 0.25 + S[o] / 3)
+            if my_kind and kinds.get(o) != my_kind:
+                score[o] *= 0.3         # a different kind of thing (Volta or Quatrain for Sonnet) is an easy rule-out
         for o in list(score):
             if apps("terms", o):
                 score[o] += 0.3         # a term students have met on tests is a more tempting choice
@@ -2015,9 +2084,12 @@ def mc_data(db, rel, resolver=None):
             return True
 
         pool = []
-        for o in sorted(score, key=lambda o: (-score[o], -apps("terms", o), terms[o]["title"])):
-            if score[o] < 1.2 or len(pool) >= MC_POOL:      # weak links don't make hard distractors
+        # Same kind first (other poem types for Sonnet), then other close terms only if there aren't enough.
+        for o in sorted(score, key=lambda o: (bool(my_kind) and kinds.get(o) != my_kind, -score[o], -apps("terms", o), terms[o]["title"])):
+            if len(pool) >= MC_POOL:
                 break
+            if score[o] < 1.2:
+                continue
             if ok(o) and not any(synonym_pair(o, x) for x in pool):   # two synonyms would rule each other out
                 pool.append(o)
         if len(pool) < MC_POOL:
