@@ -90,13 +90,21 @@ img { max-width: 100%; }
 .dd.open .ddbtn .chev { transform: rotate(180deg); }
 .dd { position: relative; }
 .menu {
-  display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 30; width: 560px;
+  display: grid; visibility: hidden; opacity: 0; position: absolute; left: 0; top: calc(100% + 4px); z-index: 30; width: 560px;
   grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 12px; padding: 10px;
   background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 14px 36px rgba(0,0,0,.14);
+  /* Closing waits a moment, so a mouse that strays off the menu on its way down doesn't lose it. */
+  transition: opacity .1s ease .15s, visibility 0s linear .25s;
 }
-.dd.open .menu { display: grid; }
-@media (hover: hover) and (pointer: fine) { .dd:hover .menu { display: grid; } }
-html:not(.nav-js) .dd:focus-within .menu { display: grid; }
+/* Invisible bridge over the 4px gap between the button and the menu, so hover isn't lost crossing it. */
+.menu::before { content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px; }
+.dd.open .menu { visibility: visible; opacity: 1; transition: none; }
+@media (hover: hover) and (pointer: fine) {
+  .dd:hover .menu { visibility: visible; opacity: 1; transition: none; }
+  /* Pointing at the other menu's button closes this one right away. */
+  .nav:has(.dd:hover) .dd:not(:hover):not(.open) .menu { visibility: hidden; opacity: 0; transition: none; }
+}
+html:not(.nav-js) .dd:focus-within .menu { visibility: visible; opacity: 1; transition: none; }
 .menu .mi { display: block; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: var(--ink); }
 .menu .mi:hover, .menu .mi:focus-visible { background: var(--chip); }
 .menu .mi b { display: block; font: 500 15px/1.3 var(--sans); }
