@@ -3708,6 +3708,27 @@ def answer_terms(q, resolver):
     return out
 
 
+def answer_records(x):
+    """Authors and works named by a quiz question's correct answer, as "a:<id>" and "w:<id>".
+    With the answer's text and its terms ("ta"), these let the quick quiz keep two questions
+    with the same answer off one quiz ("Robert Frost" and "Frost, Robert" are the same author)."""
+    if not RESOLVER:
+        return []
+    out, ch = [], dict(zip(x["l"], x["c"]))
+    for letter in x["a"]:
+        text = re.sub(r"<[^>]+>", "", ch.get(letter) or "").strip().rstrip(".;:,!?").strip().strip(QUOTES).strip()
+        if len(text) < 3:
+            continue
+        for kind, tag in (("authors", "a"), ("works", "w")):
+            hit = RESOLVER.find(kind, text)
+            if not hit and kind == "works":
+                bare = ANSWER_LEAD.sub("", text)
+                hit = RESOLVER.find(kind, bare) if bare != text else None
+            if hit and f"{tag}:{hit}" not in out:
+                out.append(f"{tag}:{hit}")
+    return out
+
+
 def quiz_bank(db, rel):
     """Every answerable released question, for the Quick quiz page (assets/data/qbank.json)."""
     tests, test_ix = [], {}
@@ -3728,6 +3749,10 @@ def quiz_bank(db, rel):
         used["works"].update(works); used["poems"].update(q["poems"])
     qs.sort(key=lambda x: (x["t"], int(x["n"] or 0)))
     qs = merge_repeats(qs)
+    for x in qs:
+        ak = answer_records(x)
+        if ak:
+            x["ak"] = ak
     poems = {}
     for pid in used["poems"]:
         p = db["poems"].get(pid)

@@ -8,6 +8,9 @@
  * Questions repeated across tests appear once (merge_repeats in build.py; q.d, q.o list the copies).
  * A set topic uses only questions whose correct answer is one of the set's terms (q.ta,
  * from answer_terms in build.py), not every question that mentions one.
+ * No two questions on one quiz share a correct answer (pick below): answers match by their text
+ * (ignoring case, accents, punctuation and a leading "the", "a" or "an"), by the terms they name
+ * (q.ta) and by the authors and works they name (q.ak, from answer_records in build.py).
  *
  * Each answer is marked at once. Results are kept in localStorage "litcrit-quiz-v1"
  * ({question id: 1 right, 0 wrong}, the latest try) and synced to the account by auth.js.
@@ -103,11 +106,52 @@
       };
     }
     function pool() { var m = matcher(); return bank.q.filter(m); }
+
+    // Everything a question's correct answer is, so two questions with the same answer can be kept apart.
+    function answerKeys(q) {
+      if (q._k) return q._k;
+      var keys = [];
+      q.a.split("").forEach(function (L) {
+        var t = q.c[q.l.indexOf(L)];
+        if (t == null) return;
+        t = String(t).replace(/<[^>]+>/g, "").normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase()
+          .replace(/[^a-z0-9]+/g, " ").trim().replace(/^(the|an?) /, "");
+        if (t) keys.push("x:" + t);
+      });
+      (q.ta || []).forEach(function (id) { keys.push("t:" + id); });
+      return (q._k = keys.concat(q.ak || []));
+    }
+    // Up to n questions from list, in order, skipping any whose answer is already on the quiz.
+    function pick(list, n) {
+      var used = {}, out = [];
+      for (var i = 0; i < list.length && out.length < n; i++) {
+        var keys = answerKeys(list[i]), clash = false;
+        for (var k = 0; k < keys.length && !clash; k++) if (used[keys[k]]) clash = true;
+        if (clash) continue;
+        keys.forEach(function (k) { used[k] = 1; });
+        out.push(list[i]);
+      }
+      return out;
+    }
+    // A narrow topic can run out of different answers, and the order matters, so try a few shuffles
+    // and keep the longest quiz.
+    function bestPick(all, n) {
+      var best = [];
+      for (var t = 0; t < 20 && best.length < n && best.length < all.length; t++) {
+        var l = pick(shuffle(all.slice()), n);
+        if (l.length > best.length) best = l;
+      }
+      return best;
+    }
+    function newQuiz() { return bestPick(pool(), +form.elements.n.value); }
     function refreshCount() {
-      var n = pool().length, want = +form.elements.n.value;
-      countEl.textContent = n ? n.toLocaleString() + " question" + (n === 1 ? "" : "s") + " match." : "No questions match. Try a different part or topic.";
+      var all = pool(), n = all.length, want = +form.elements.n.value;
+      var most = n ? bestPick(all, want).length : 0; // how many different answers there are, up to the quiz length
+      countEl.textContent = !n ? "No questions match. Try a different part or topic."
+        : n.toLocaleString() + " question" + (n === 1 ? "" : "s") + " match." +
+          (most < Math.min(n, want) ? " Only " + most + " have different answers, so a quiz has " + most + "." : "");
       goBtn.disabled = !n;
-      goBtn.textContent = n ? "New quiz · " + Math.min(n, want) + " question" + (Math.min(n, want) === 1 ? "" : "s") : "New quiz";
+      goBtn.textContent = n ? "New quiz · " + most + " question" + (most === 1 ? "" : "s") : "New quiz";
     }
     form.addEventListener("change", refreshCount);
     refreshCount();
@@ -121,7 +165,7 @@
     }
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();
-      var list = shuffle(pool()).slice(0, +form.elements.n.value);
+      var list = newQuiz();
       if (list.length) begin(list);
     });
 
@@ -172,7 +216,7 @@
       var b = ev.target.closest(".choice");
       if (b && quiz && !b.disabled) return answer(b.getAttribute("data-letter"));
       if (ev.target.closest("[data-next]")) { quiz.i++; return quiz.i < quiz.items.length ? show() : results(); }
-      if (ev.target.closest("[data-again]")) { refreshCount(); var l = shuffle(pool()).slice(0, +form.elements.n.value); if (l.length) begin(l); return; }
+      if (ev.target.closest("[data-again]")) { refreshCount(); var l = newQuiz(); if (l.length) begin(l); return; }
       if (ev.target.closest("[data-retry]")) { begin(shuffle(quiz.results.filter(function (r) { return !r.right; }).map(function (r) { return r.q; }))); }
     });
 
@@ -216,7 +260,7 @@
     }
 
     if (autostart) {
-      var list = shuffle(pool()).slice(0, +form.elements.n.value);
+      var list = newQuiz();
       if (list.length) begin(list);
     }
   }
