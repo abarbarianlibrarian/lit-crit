@@ -78,6 +78,10 @@ TABLES = {
     "resources": ("tblfrvM5B3HwYgqh3", {
         "name": "fldL0NeGFsHTtCuTY", "year": "fldYjH6DrMMW8cyst", "type": "fldZFmUiDfw7dt2UV",
         "work": "fldpIadf3Zq41nZKo", "link": "fld94UO33vHDZzs7N", "access": "fldM8Y98hILZsxrqI",
+        # Members-only files: "Share File" (checkbox) and the File attachments. Only each file's ID, name,
+        # size and type reach the site (see as_file_meta); the file itself is served to signed-in visitors
+        # by the Supabase Edge Function resource-file.
+        "share": "fld72zxz5ayHFJ63h", "files": "fldBxMbT6tJ7TlwFk",
     }),
     "reading-lists": ("tblS8WrrRcpF6hhMq", {
         "name": "fldWDcj2iJT5Q0gXp", "year": "flduoiWbyolCViqal", "novel": "fldEmmFZ4je9LxAH8",
@@ -300,6 +304,13 @@ def as_attachments(v):
     return [a for a in (v or []) if isinstance(a, dict) and a.get("url")]
 
 
+def as_file_meta(v):
+    """Attachments whose files stay private: keep the ID, name, size and type, never the address."""
+    return [{"id": a["id"], "filename": a.get("filename") or "file", "size": a.get("size") or 0,
+             "type": a.get("type") or ""}
+            for a in (v or []) if isinstance(a, dict) and str(a.get("id", "")).startswith("att")]
+
+
 LINK_FIELDS = {
     "terms": {"mentioned": "terms", "related": "terms", "tags": "tags", "authors": "authors"},
     "authors": {"prizes": "prizes", "terms": "terms", "works": "works"},
@@ -325,6 +336,8 @@ LIST_FIELDS = {
     "prizes": {"tested"},
 }
 ATTACH_FIELDS = {"picture", "cover", "alt_cover"}
+PRIVATE_FILE_FIELDS = {"files"}   # served only through the resource-file function, to signed-in visitors
+CHECKBOX_FIELDS = {"share"}
 
 
 def normalize(raw):
@@ -340,6 +353,10 @@ def normalize(raw):
                     r[name] = as_links(v)
                 elif name in ATTACH_FIELDS:
                     r[name] = as_attachments(v)
+                elif name in PRIVATE_FILE_FIELDS:
+                    r[name] = as_file_meta(v)
+                elif name in CHECKBOX_FIELDS:
+                    r[name] = v is True
                 elif name in LIST_FIELDS.get(key, ()):
                     r[name] = as_list(v)
                 else:
@@ -1431,6 +1448,7 @@ def test_page(db, rel, t):
 
 
 MOCK_SCRIPT = ""   # set in main() once BUILD_ID exists
+FILES_SCRIPT = ""  # members-only files on the Resources page; set in main()
 
 
 def mock_essay_html(db, rel, x):
@@ -3028,6 +3046,38 @@ def tags_index(db, rel):
     catalog_page("tags", "Sets", "Terms grouped by topic, with links to Quizlet and other study sets.", rows, cfg)
 
 
+def shared_files(r):
+    """The record's files that may be offered to signed-in visitors (Share File ticked)."""
+    return r.get("files") or [] if r.get("share") else []
+
+
+def file_size(n):
+    n = int(n or 0)
+    return f"{n / 1048576:.1f} MB" if n >= 1048576 else f"{max(1, round(n / 1024))} KB" if n else ""
+
+
+def file_buttons(r):
+    """Open and Download buttons for a resource's members-only files (assets/files.js does the rest).
+    Guests see the same buttons with a lock; clicking sends them to sign in and back."""
+    files = shared_files(r)
+    if not files:
+        return ""
+    rows = []
+    for f in files:
+        kind = "PDF" if f["type"] == "application/pdf" or f["filename"].lower().endswith(".pdf") else "File"
+        label = f'{kind}{" · " + e(f["filename"]) if len(files) > 1 else ""}'
+        size = file_size(f["size"])
+        data = f'data-file-rec="{r["id"]}" data-file-att="{f["id"]}"'
+        rows.append(
+            f'<span class="res-file" {data}><span class="res-file-kind">{label}'
+            f'{f" <span class=muted>({size})</span>" if size else ""}</span>'
+            f'<button type="button" class="res-file-btn" data-file-mode="open">Open</button>'
+            f'<button type="button" class="res-file-btn" data-file-mode="download">Download</button>'
+            f'<span class="res-file-lock" hidden>Sign in to open</span>'
+            f'<span class="res-file-msg" role="status" aria-live="polite"></span></span>')
+    return f'<span class="res-files">{"".join(rows)}</span>'
+
+
 def resources_index(db, resolver):
     """Resources page: pick a reading list, then see its resources grouped by novel (or short stories),
     play and poetry. A resource belongs to a list by its School Year, and to a group by its Work
@@ -3061,7 +3111,7 @@ def resources_index(db, resolver):
         acc = (r.get("access") or "").strip()
         badge = (f'<span class="res-access res-{ACCESS_CLASS.get(fold(acc), "free")}">{e(acc)}</span>' if acc else "")
         return (f'<li class="res-item" data-access="{ACCESS_CLASS.get(fold(acc), "free") if acc else "free"}">'
-                f'<span class="res-name">{name}</span><span class="res-tags">{badge}{kind}</span></li>')
+                f'<span class="res-name">{name}{file_buttons(r)}</span><span class="res-tags">{badge}{kind}</span></li>')
 
     PART = re.compile(r"\s*\((part \d+)\)\s*$", re.I)
 
@@ -3148,12 +3198,17 @@ def resources_index(db, resolver):
         options.append(f'<option value="{rl["slug"]}">{e(rl["title"])} · '
                        f'{n} resource{"" if n == 1 else "s"}</option>')
     default = default or (lists[0]["slug"] if lists else "")
+    n_files = sum(len(shared_files(r)) for r in db["resources"].values())
+    files_note = (f'<p class="res-files-note" data-files-note>Files marked <b>Open</b> and <b>Download</b> are for '
+                  f'signed-in students. <a href="{BASE}account/?next={BASE}resources/" data-files-signin>Sign in or create a '
+                  f'free account</a> to use them.</p>' if n_files else "")
     body = f"""<h1>Reading resources</h1>
 <p class="lede">Texts, audio and study materials for each year's reading list.</p>
 <p class="res-key"><span class="res-access res-free">Free</span> free to use · <span class="res-access res-preview">Free preview</span> part of it is free; the rest needs a subscription · <span class="res-access res-paid">Paid</span> costs money</p>
 <div class="res-controls"><label class="res-pick"><span>Reading list</span>
 <select data-rl-pick>{"".join(options)}</select></label>
 <label class="res-free-toggle"><input type="checkbox" data-free-only> Free resources only</label></div>
+{files_note}
 {"".join(sections)}
 <script>
 (function () {{
@@ -3222,7 +3277,8 @@ def resources_index(db, resolver):
 </script>
 <noscript><style>.res-list-panel[hidden] {{ display: block; }}</style></noscript>"""
     write("resources/index.html", page("Reading resources", body, "resources",
-                                       "Texts, audio and study materials for each year's reading list.", "resources/"))
+                                       "Texts, audio and study materials for each year's reading list.", "resources/",
+                                       extra_head=FILES_SCRIPT if n_files else ""))
 
 
 EXAMPLE_ORDER = {"Title": 0, "Line": 1, "Phrase": 2, "Word": 3, "Poem": 4, "Excerpt": 5}
@@ -3964,7 +4020,9 @@ BUILD_ID = str(int(time.time()))
 
 
 def main():
-    global MOCK_SCRIPT
+    global MOCK_SCRIPT, FILES_SCRIPT
+    FILES_SCRIPT = (f'<script>window.LITCRIT_FILES = {json.dumps(SUPABASE_URL.rstrip("/") + "/functions/v1/resource-file" if SUPABASE_URL else "")};</script>'
+                    f'<script src="{BASE}assets/files.js?v={BUILD_ID}" defer></script>')
     MOCK_SCRIPT = (f'<script src="{BASE}assets/essay.js?v={BUILD_ID}" defer></script>'
                    f'<script src="{BASE}assets/mock.js?v={BUILD_ID}" defer></script>')
     ap = argparse.ArgumentParser()

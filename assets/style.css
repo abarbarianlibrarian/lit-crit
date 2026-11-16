@@ -1416,3 +1416,15 @@ body.mock-waiting .mock-essay { display: none; }
 .essay-write.locked .ess-editor { opacity: .75; cursor: not-allowed; }
 .essay-write.locked .ess-bar button { pointer-events: none; opacity: .4; }
 a.mc-stop { text-decoration: none; }
+
+/* Members-only files on the Resources page (assets/files.js) */
+.res-files { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+.res-file { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; font: 400 13.5px/1.4 var(--sans); color: var(--ink-2); }
+.res-file-kind { font-weight: 600; color: var(--ink); }
+.res-file-btn { font: 500 13px/1 var(--sans); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--study, var(--rule)); background: transparent; color: var(--study, var(--ink)); cursor: pointer; }
+.res-file-btn:hover:not(:disabled) { background: var(--study, var(--ink)); color: #fff; }
+.res-file-btn:disabled { opacity: .55; cursor: progress; }
+.res-file-lock { font: 500 13px/1.4 var(--sans); }
+.res-file-msg { font-size: 13px; color: var(--ink-3); }
+.res-file-msg.bad { color: #b3261e; }
+.res-files-note { font: 400 14px/1.5 var(--sans); padding: 10px 14px; border: 1px solid var(--rule); border-radius: 10px; margin: 0 0 14px; }

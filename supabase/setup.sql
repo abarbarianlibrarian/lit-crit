@@ -66,3 +66,18 @@ create policy "update own profile" on public.profiles for update to authenticate
   using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
 grant select, insert, update on public.profiles to authenticated;
 revoke all on public.profiles from anon;
+
+-- ---------------------------------------------------------------- members-only files (Nov 15, 2026)
+-- One row per file opened or downloaded from the Resources page, written by the Edge Function
+-- resource-file (supabase/functions/resource-file). Used for per-user limits (30 an hour, 100 a day)
+-- and usage counts. No policies: only the function (service role) reads or writes it.
+create table if not exists public.file_downloads (
+  id bigint generated always as identity primary key,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  record_id text not null,
+  attachment_id text,
+  filename text,
+  created_at timestamptz not null default now()
+);
+create index if not exists file_downloads_user_time on public.file_downloads (user_id, created_at desc);
+alter table public.file_downloads enable row level security;
