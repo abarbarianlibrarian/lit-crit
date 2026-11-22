@@ -10,6 +10,7 @@
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_16_hawthorne_64kb.mp3",
    "Name": "The Artist of the Beautiful (Part 1) - Audio",
    "Record ID": "rec0hhoqSDhMXqr5B",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -32,17 +33,17 @@
      "thumbnails": {
       "large": {
        "height": 652,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ybnrhuSFXTrCA1HErZHV-A/x7u_WgasYsxAJQwIPN198dPMjVZ3QmZxhQONsQAhKQKtx9qK7Yo6AsbX-lwfKTyY3Go_RdISfE8sj0LoD4afJ4YBlr7jW7j81IEWUAztVXFb3-SI0hmTORwdkpxALtBJ_8DZdItmsUeEZI1vUmlO_Q/EenKi44WMdMQZ_XIHCPIsAZywJ0v2avdHR3mc5LLMUE",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/eCoBjL_cMauPhhLihzxTkw/ZPiBPz3g6Z1fw05sneXA1ty1MBo17YjRVvlSFc1cmoe-MLKbuv3jj1akRJW9NOTIXWwt1Htmf2S7H6PhYdGFpQ21lyL2Z6HkRvhkbCkxxsM8dBTj5wBOTm71SepDY4yhGXi6I_rhGvSNJ87aYHGs7Q/W-DJtga9gsDvBGZEUkLJV9LBn80OKsYAFTIaZ3vn-iU",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/4VZDmqvHHIixSaFbFB_xKg/c7l03GY1cKE5Hj61BBr_uW7a0bObAJxzUEcfx3uVakAn3C0BuYNEkhA-aTQvMkk6s5xz2fS0K4wp-V4u5UVLcycdspEJJgMB734w_Oo7-4LRtO0bOOcHIQoHGiYeE4GagvG99K86IdqgJZ3Nt7yJjQ/K_2fvFB6XvPhYc3dKhL5eLBpAJO93PHBVLFeYL9usF4",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/FROj_TcxiYve3nbQ0cSsVA/4X451a-NU6Yj9HlQ5NfCyATAij86328yQGIFgw0lbuh40BmmZ6IptPl78nSSF-Cj5VEJSgurGj_qAIdPy70V1blAB4FKNC74MyTHTGuHLsm1I2Eqjw5bVs6hM8MB3LPJ_SWJc_NOZtCQgQCmXmP_9A/gAVrQBhIKaYDPImpzpplbMy8moAMlxNuQcj3BxsZ8Lo",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/9-eFIyPjTyfws7HYl3I5Iw/Av-aGya5jsYrsmQpHfmoflYu3Vp45gjBBtPxEbcMPaQY935mhOgktlAdQL9I1pDZWiyuVs0QCZa4dG2XX4YoF5ivlNMwytGYA_J_NptWvDwzXgoKgMG1Yi6mYvW512CyM6hbFEyvCjiXWY-dUsFJ0q9Z-bTsYe9mTIWK6B4BVaHu_GErmFzv0uISHTxHHdVY/ZfGN7TO_zKWSc5Rrfxe8dfX_N68ntsvfHtDzjh3LWvs"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/EzuaImi_1T1Gfw8k56qPZA/YI1IfbO6Qqleq8_WDsLpFUL2J0aV_8X9g1HkoC3Qox8BDzaspu49XeyCpsqN9Yvg0QSndcTN_9xWFEZlpQC1V3ZBVCp28sW4kaXAeJJgo9PpSkmWXGCW8_mzUhYBT11RLmghipr6WhbC_kGEYVfO3B6YSVWHl-0j6c2d_8KOPLgKdmReVXm6Krbz0SIFRAeV/xQiQWeAgSzeIOf7qKI7-LCUu7mh7UjQHDCLkEaq9M1w"
     }
    ],
    "From field: Self-Link": [
@@ -79,6 +80,7 @@
    "Link": "https://www.audible.ca/pd/Lost-in-Yonkers-Audiobook/B002V8HIFY",
    "Name": "L.A. Theatre Works Full-Cast Recording",
    "Record ID": "rec0wiN4WT4ldPv3K",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -127,6 +129,7 @@
    "Link": "https://rpo.library.utoronto.ca/content/prologue",
    "Name": "The Prologue - Text",
    "Record ID": "rec1NyUjnJ0ceTcs3",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -148,6 +151,7 @@
    "Link": "https://www.coursehero.com/lit/Wakefield/",
    "Name": "Wakefield - Course Hero",
    "Record ID": "rec1SazoXI2usYpqS",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -169,6 +173,7 @@
    "Link": "https://rpo.library.utoronto.ca/content/night-when-others-soundly-slept",
    "Name": "By Night when Others Soundly Slept - Text",
    "Record ID": "rec1UvVwUaqE1T9w0",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -190,6 +195,7 @@
    "Link": "https://www.gutenberg.org/ebooks/9231",
    "Name": "Earth's Holocaust - Text",
    "Record ID": "rec2GVU98iRumV7ii",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -211,6 +217,7 @@
    "Link": "https://librivox.org/the-poems-of-mrs-anne-bradstreet-together-with-her-prose-remains/",
    "Name": "Poems of Mrs. Anne Bradstreet - Audiobook",
    "Record ID": "rec2J9G6V5uwjDEXW",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -232,6 +239,7 @@
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_05_hawthorne_64kb.mp3",
    "Name": "The May-Pole of Merry Mount - Audio",
    "Record ID": "rec2imlEvPuiVnOBs",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -280,6 +288,7 @@
    "Link": "https://www.primevideo.com/detail/0NYGDP77YPKFS5TPZ2UT02DIKM",
    "Name": "1993 Film",
    "Record ID": "rec3CCNptPj2DbeCu",
+   "Share File": true,
    "Type": "Video",
    "Type Text": "Video",
    "Work": [
@@ -302,17 +311,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/75vPNVVxH7Fu1hjJ2PWxtQ/PqPm9vjbLEhQwBTjfRmtPxu_sfMV-T8ZzU-dMefkJBl27XWGP93ZRTbMUwpih__scKrb-3SKFaB25STD-k-_U40H4tVP3ANMBE1bDUPsAn1QQ-5GkXko1q5i-vFW7BY7TI28GCTGc8DltzmSmgaTuA/-eZY_UctyWBpwEzuFJ1rKC68f2ySaV5FTQneLiw7COw",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/zdtn8VX9IQL9qZbAdXm43A/8mM278QR5rirpR_qzn_gO9S52s7o9-dEzsCwizNOVBUUQRlp8Ej8CE50_M026LMvWhNLeJQEABRhMSXQJGCoVcUfxyjxHwIzu4c81xVKznqhjp-UNBXjMrZg5TNgrxkZPDACn8nojl8eAs0AH2ixfA/MtcKpkBfrFflOPNh4lVG0ojw9Rg_7FF4liSoZIG4nLs",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/K0VZkHKCKT83tyD1lkNbbg/zW-Vc4OinblAN_iVwUmHNjyVNAzliQ5cwNSkEQjgOtDAG5cFX1-rpLR0NoXoXTDUalk9rvh5XuVZnUoUaFzxvciFNOhSSj_ABrtjY8LtgYkS5-5b6PLd5cDUnHjH4-jEncMHEf7kUh6c_gH8WyKwFw/9TMypIbdQsmV-QiQzvnSvWSZByd7TzQJNK1bQf6ebkw",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/1W0f07CPJhjc3RFErv6egA/wd23pxAWVaT65Yu_30coKeJP0l2AQO8TMoOOxHbb8RSvJFU3WzKV8Bo_MdPtZ9vHDRxTTmwiTF8KUCxyGwmIiEjxuepDNKMbY1LdFZe3k-gQHHyC3LkjVIqyES0VPkjg6kFyz_i3mrpYBoJYhwG_yg/lc-suqQk-4LDRzeVzyquinxmrM6j0hdzMfb4Dv02y78",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/6tVhnyGaE76durTPoePffw/vD8Cv4BiNm63PFL5I9fGoTOKmaIdHyAAGZtNmCNhDxzD2WC41wuDqYJKy7WtdmK10UTYiEkAFUni8zqqdBgAwJC-XXSY0zvBnunobXkKDbA412CpWZxCgzksw7VHYi3VM1ACY-bhUGKdyr_JfQ_XRRmA3Z1-xo9uBvQVsG2fMbk8dO5wF3Q4bzA7iFm0qNv0MGXsH5DQ5R97u3PUiACD1A/wSPB0Tl5l17QLVAMz8AQdCgoWaaBZQbRJTqXTy0GRpU"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/4xwp9ix2Pfe7wC9cJfD66Q/48umB3toTsUfPyM3WblYHsp7twS3x0TYHWdzeoqWkTRB54KOvIxqh3boy3q1up2w0Ntl2FtMpXAkUxdtpuf2rFKkns2Hu_oiW1YUgK-AIrNbZZzgVJIRjNgUbfyUTrvwT0itKK7uEj2Ur-DqBPGbyE_pk4NiVHbPl1N6CVOCHFwddAyEuNUEPqBsLIHr2Ep151X9hGA2ZtjEw6UqzLi-aA/cmaTG2v37LDbgbZdEazaF7L_kFPGH4gatmu2CkPcN5c"
     }
    ],
    "Go to Resource": {
@@ -322,6 +331,7 @@
    "Link": "https://www.gradesaver.com/lost-in-yonkers",
    "Name": "GradeSaver",
    "Record ID": "rec3Fv4R2BvRdpKBH",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -343,6 +353,7 @@
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_28_bradstreet_64kb.mp3",
    "Name": "To My Dear and Loving Husband - Audio",
    "Record ID": "rec46LSxxSiICFPAB",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -364,6 +375,7 @@
    "Link": "https://librivox.org/mosses-from-an-old-manse-by-nathaniel-hawthorne/",
    "Name": "Mosses from an Old Manse - Audiobook",
    "Record ID": "rec4OChG68LgB8QdV",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -385,6 +397,7 @@
    "Link": "https://eada.lib.umd.edu/text-entries/before-the-birth-of-one-of-her-children/",
    "Name": "Before the Birth of One of Her Children - Text",
    "Record ID": "rec4ZwqQDsXYJ8Kdv",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -406,6 +419,7 @@
    "Link": "https://www.concordtheatricals.com/s/2758/lost-in-yonkers",
    "Name": "Purchase",
    "Record ID": "rec5JE2Ibxs6TcDjx",
+   "Share File": true,
    "Type": "Purchase",
    "Type Text": "Purchase",
    "Work": [
@@ -427,6 +441,7 @@
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_20_hawthorne_64kb.mp3",
    "Name": "Dr. Heidegger's Experiment - Audio",
    "Record ID": "rec5ekWW68Wqv0nS1",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -476,17 +491,17 @@
      "thumbnails": {
       "large": {
        "height": 724,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/cJLhh6iMnMrr9g8S3druaQ/egK31FyI_VmhiN0nyLYMYZmj-5unpc7dIb1ZaYT3R2V81P5PEw4jK_Iz-FLohYOSqjHcJ13xVn3kt0Q8LDug0gW0HOEDOz8ObmBSsvlwg-XGSvC4ktxK_1RzfAM5rRh1qoKzV8S5EX1ZztqrSQaW7Q/dH-03N1BgtxVSaKFDhQt_-NTYhiN8PZl8Z6qc1GZfAU",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/E-HL43LWMUOEmtNXdenFQQ/ydT9VQaB8faV31U5W4ZBq7eGKjiPkH96tjWsq_ouxUjaab1z0lYYGEGagaHwsBqHWZ6zkyd8ZcPQVHoLuBnM-BlAJ-n7JPWUCj2jlVAu_pdRHx4ZEN6XMB8Fn9_EEIepobkx4omNNV7vLaxtWYZAfw/zlAqA0T3J6AYuxXMqaoJDhfaZsrriUlJOcF89nIKXG8",
        "width": 512
       },
       "small": {
        "height": 35,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/LiYLOgi4fbFwIXqY8G6rLA/UjT460uMYJV_9fmy6m9Kdcqx8glD_UlSwbONyd8VvpZONvOruy7MqhFUkOeSTTfyBh3eN65Nb3BE0IyVB61zat7j6r7IKL6xq-V-Pu2H2JyVnbO3PkztVJIE7ZoZtzYVypKsezXg1wQBJgjxTIk9yQ/tO92BzST-4JCUCFp6czJN1gCroRdpHNsphs5hDw6B3k",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/irZGmrAs2MZuhgjqCArZug/KASudb70wK2-XYOP4KhMu7jgz6jv1kyMDVHyThONBmrU93weBYjZKfATvj3dFyaeJjoFW2zB4ivszQ6hTOWmsrlBt1cm_Rw7tu7e7HmdjjVvYAqSPkxmCcFPxaFaCnpwmdxzzyaAqNYvEmOSUhy6Qg/11LTWFlvvT0JyGdMKVUwthzOGqnWDg4kgWf9erQ4fvo",
        "width": 25
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/gUeEGVAX-I5opvBV0vbVEA/fegPJlLLhW1Kt-2QSWZPWDkg6sfFcHNq-H45PU2zyh1FfFpICkbZ9hPzD0XZ5rid2YB-0uEnc3dhIktsF7_zQgzeRwWdTr8cqB33fwazKmrOZw3GKUz6nkXQuOJ1g9PjDk3epq7mTHBnsewtSWFzTKCkRjPPf75rwa6RgMFoibsdTPKpU_Sli9FrxoP8ca3ddwQ8KT4jqB4hQdHCYi_13_NFY3PpK2hIhVdOggxFae8/t_uDMuTtBa5sH-K8urb-E-D5Ycgrh70k7GerFNRH5DY"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/tZxb75_RVZIvz3EldRDPkw/DV0-pjqcoOZ4HVRns30grjNDdpLXqrJYCIlNVlVn17ivZq66ahO7CJT40H0v9OjypxsZ8EtDuLbxEi1n8dTOID-STCWEmtd2JKtJD79eGEX2rLCZdyxyXs3X-OnoJe2FFW7XOBpgpmHEgsPYrSy50wVVf1gQOT4xbWGF3hCOS5Z8R31jy5W3RSxqMXQPtQ1TiHwoqWiy10caMABU3lmsS2ApHMJeaM6CO2GRCR5cdnA/minnU0WfKzM2yPMfUfXMtaSnWtr9YMFw5RDe-fkkg4I"
     }
    ],
    "Go to Resource": {
@@ -495,6 +510,7 @@
    },
    "Name": "To My Dear and Loving Husband - Poem Analysis",
    "Record ID": "rec5ruLdc4xHA84Mw",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -516,6 +532,7 @@
    "Link": "https://rpo.library.utoronto.ca/content/reference-her-children-23-june-1659",
    "Name": "In Reference to her Children, 23 June 1659 - Text",
    "Record ID": "rec6AigKmuxMpetgJ",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -538,17 +555,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/C3olnqOknVjixxowGG35PQ/VsJxjf_S-UMByrgd0aHtdlt3k_SBwTxUO5_D6ns8ecCWGEY_ys4FvGeHg7Q66KO7sAxOVYZeKnuEp1SCSUKkxzlE2Zmc84cNyA9r1UEk8btLQJaGcBznBF5eIcVLpdR11sN-hLDOsPl48RJd0FkKow/JcntmgGNrWo0e2tAxbVwRj-WlI4YtcsFtsc-P3ljynY",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/od1efbKF9vzsg0etTYTuHw/CM9cGoX-c3SjkLZ5N-_m8y48RSOWCdxfMCraAgulk4t66z9Jqdc8r4pgQ2KDMiZwc0s3swjJUUssuVc7nXVh7uoF3S_6cdH8yb_6ETJ_3OJk683NUhHMPosV9zAO_GrhMeB6MWIjUIxWgTRu78ZY4A/l2SCnzRx0WHWgWPZV4d0HnykFAyrg_4ylfRWfnRYpVg",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/xyixyQZU3g6AC0moP27Nrw/CiPu0nrgEhT5JiPTJNrDmksfUUqheRwxbj-H7bpn7dl5-8Nhei_yplW0CGqXUwl3muzrTqoLoKlgZP6hgduDJZ1sXemUyayGlVKoyXbstu6aa-IZRQIujB-3PR-4o5jbdja1IJP_CC23z-OIBXOAxQ/6cL08OIgek-3n94M5OJFRI5SMmzIVBiPhv85vn71NWM",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/M4YlzmGUFLSXcIUzGVHtSg/IyaI8mbILj2S4XWEzIsA7cTiX3S9VWXo2VumnGkzc4L9fY7GzWUL6Xl0c6V-mlLtxrNl3dfkGwuYtg8R3YKRyE5_9Gs1v27-YducE6ywigK-OrL-og8XrcNmCLWaOlJ0OlRkkImYOtc84wU1jC7O8A/ASVCBdotEF1NFpca0U3XKg8BL9BMc3p8YXNnxXDZG0o",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/YlHEV7B24O41GcyFZYqOhA/0v8Zvptjh1aJW8kidMQh9oqAPR_1rVvjRBKvnyDUb5AbmrjopiZ2qvcutClpoeS6SZFKBlszYbVnHD3dNk4OjSZ8ikd9MpJNVHiOu7KVY7df49ObpaflWvkEuT34J8O95geputFeUelGpr8y_J4qXHtMEuMsMMdzRlh5lr5yINFbALOtbjXgR8XutnS13toA/nNjjHnkUjcox_Qp3LXbyDZjPbwxdPytVNISONQfV8ns"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/eQAfn0PITtCEhIo7d8WJ-g/EazATHtuRzjDLMociwIuQrO5E7FOFE8uZG9ZU3fpbDTlPksEWYRQviz9Syqu75KmzC4WEC8x2gH7C03qz5hQTkQfdALdzvFT_WvVQq89xcvlUoOznudbb53rXZPawz01GgdKO7wyzwD1tvdfZXQ118E27eiplMD0HMeFEB-NNN6BudRj06THSMxnVs66Q2Ry/AjaRFD6pl0k6AGvAzlNbXQQRyVuhNfXuYSjPPU-5Po4"
     }
    ],
    "Go to Resource": {
@@ -558,6 +575,7 @@
    "Link": "https://www.litcharts.com/lit/young-goodman-brown",
    "Name": "Young Goodman Brown - Lit Charts",
    "Record ID": "rec6GXW8FSsVrxl5s",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -580,17 +598,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/jENwzgFU9-zCJSfOohhNfw/ml7WxJevUpGh7k6ao8JKF_e2YegCw1f5i4CSDjclgnsbmrA47zSyMId4aASfpZ7T3HjFzp71spotZbgw9kAopks6pqCMeCnu63wdCu6BakkoE3ZB967YWi5AbJZMKsrK8GewQrHcXs-adWKxKCQnpA/cF3ivU6GYVOApgRi7mk_oaoohtgwHN5hskHn_yLa4GM",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/E7Kmuocpn0oB1_JgZP3hpA/YNvdVzDTWOTCmfCkxToMtJCOt9dZzR5rbQSaxyrVruZaaicgNX3KGB94oSg9-LsLecsmuVK0Odx1aWJDnGtseB91dMsPkO2TeR4Jd5HA2_m20BhPauJPkXWSNqkwMqE2pjfE3gLPWkaW5cNvJvrRhg/anKJZ_85HnkRVERnZjlMJ4XaQ5wydpzAHU_n5a07KE4",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/HlfBXNZ6XbVsV5qrIupl4A/mnMvPIkKdJKSucFh3MMY0hC56Okfk3eVrbyE_BGCVYA0VJ0ZAaKF6PCgsej2F3Q6U04XR9GSxVWCoisntjR2V4unKyU9ZeGsjMtZ8m72VeVos_ClHXERIWMeEn3wvqPoI_Q9n5rrfBsxzyqrCaWrxA/istR53vi18RoF-Kr13cPGIdoOhphiCX8mS11ncV2uSQ",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/kt1oVwvhiL1LVR-cgsHnpg/HCVVoF_u_bsRbK862Ne8fVub5XNQxgbT9AkFA6kA85Jp3Expe8tQDe0kfpmadTgNS_-4LWlGKMi_fvVbFpqp7PSn0RRRe2v_Hshh-5KAWpvJyFgcpLuXfa3Qg5SsQTMc4GNc3M20v_IRSrWFFnfe4g/BrTN40T6cFoKr9f1Pyul81aV4uzgsBzx9EFIcK4R-Go",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/RqarejPMfAVDsBYcQ7RJig/ril6DZyXwxBuIQIO0BYidtZk7nA0VKMtFhdwTx91MvdcO3MECy5qnrHuK3RlljPr5VgrEXs6dPrxkUJ5DJ7800Ptu_aBpyW5xPVxFTfWAz8__8-WUSEaxuAuKtQ6KR_YB1CVCatbaG1tcdBnJctcr4sBFVIBbpALxvw6ZY2JC8jlvlD0ITaDkBTZstiEKAMW8CbDFkbrUQicBW7ZQWe-6g/mFk5YhNyZWv4I9F9fvMHfocOos7ah2r6J4LNImQVDY4"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/sy1oKXM-9Qwl0oCTCaMc0Q/zp3QhtOryLvj5ZsUPIkfZiKHMvSdnVt9jc8rN5gHl5XcfahX5dR3RSOURAj2AQhXmnxfTZ7jf2LpjlvomMlN0LL98cTtCz6o1kQYfMvoVV9mrtyvaVH0D3gGNQApaDpGg0JrxJyXUD-O19nHZMLrH-Wg_6gJZKZcWWgEcTeoYaszzCDWQT-N6d7Q97biryBnuEBlAzvXBJoCbFAobQ1exw/BbipBWdEaVdFT5XQpOtNJvIEagXubP__6BU0YBvRrIQ"
     }
    ],
    "Go to Resource": {
@@ -600,6 +618,7 @@
    "Link": "https://www.supersummary.com/the-ambitious-guest/summary",
    "Name": "The Ambitious Guest - SuperSummary",
    "Record ID": "rec6NsTqjSLQZBpj4",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -648,6 +667,7 @@
    "Link": "https://librivox.org/twice-told-tales-by-nathaniel-hawthorne/",
    "Name": "Twice-Told Tales - Audiobook",
    "Record ID": "rec6d04OO1N8t5UCo",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -669,6 +689,7 @@
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_06_hawthorne_64kb.mp3",
    "Name": "The Gentle Boy (Part 1) - Audio",
    "Record ID": "rec8nmH6LAW3MSlAV",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -691,17 +712,17 @@
      "thumbnails": {
       "large": {
        "height": 721,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/CKYeQn33POU8PjNa-ZWp-A/VT25tP5mU1foVTP7B7n7C2ryL_F0EFxQoc4TXcjJrbn9oWPuAN7FNXjjwFDeTCGhWKyR8id41LmQc_ZrhoX8J43yPSj8lpYdGOpJi2uCl5boxuFRGb5K0hKE4OwnDcio0NLZlr2wnD0Lq6cxdI0a-A/uGKhygmzrUNhMlCAs8mL1uiVYW84K6fdyG7w3sCOt7A",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/bsjBItQOz16IPOAvS1og0w/FGkEAnqD4yJRgYlrOkvboQJ2PYnEITsHrftiYEhJGTV5OkyqjmFcK3XFQLV5GRc25k8ej_DdeyZkanK6U5xUyBsAdLJWDvToAfzVpGleZzPz-DVLuXISizPBpmsU_O402ysEGC5Q7rMAPmsE4QR4Vg/_8G45z-XTGRzB2rfduovUNmZLE86u_KxzMM3CDoBAyg",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/-xOMnN6xI7uJOWqzc37Bng/eQLJrvPAUTGU0nwZmDCXNJ69vPu3VLgSLh9RgKZy5kCYF9MP310zgdH2aCSq3rb0_a72KiUIr4EGcx7MbWkdAwvFh7Ft3aMwpKWakkOl-mR87hmJGoyrFDQ2F89k6nqmERS0PnBLXaDPt_X1LkX8Cg/BacRL7Q8lnqwc3FN6PDGTmajl3CA2EeWNOEswyKHEqQ",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/wyR0frKEEzQCIO9Cj51Qvg/MlOj6cfSjdmRe6o94kkFMmgM2d_AXSfAUUzTgQPWIYuUii9bL03F13RPNcIsj8utx6tb59XH-7DPnzwS5hJHkLCUNmE27c6VMw9kR_ZHNKosmgtwx1sky701TpunU1bf6g45Z-MaHTY6kROZVvs3Nw/avXeaygca5w0c4TyV6HeoQ9FB3iaa9c3LVxvbAXyXvw",
        "width": 26
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/SfOfQ74VnMlzVKiSC8NyOg/oquMF_-j_2FJkpSg6g9Gt8XcPPe35r0eYUajdcyHhgGwMjQxNPn1_ZNrbIFssyIn9-Imdt1Py4vbKUiK_U53Nw_SwCGTU6-bdokUMuMbyrxNIxUTR5jXs8zqMeMfG9gRSPoMXnFG2AqPG1nU2K9DmiR4e12hhpr_gK831vT9_9nE0b4buwNOKnb2FdDLIG-8/DffvO7MttVAoWeIKyESDyG2FxicMqLkOrKmjQW4ZpLg"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/kNm4CZnBT9lY2HV54xzUww/gQlcGmWvBkXh63ofwXNZS0JmehPkYPr7b3zX1x4cfACA6dreUz4sF3rogqxPMk0ByMdFGe6lkBo8Gzwb7dIQ88RIm3jUfndJbq23zGlNPi1M65E045gYqKyz8N9UgTp-pYvXPmGtu3lhMVMZn-3EZv3sRLrh0JpmCCJFMVmDnv5Orxa2S0KwYhrJO1reXuj9/5jNu267qyjWaF6wE-u2WGMaMEJTXixQsn5IHP0FPbYM"
     }
    ],
    "Go to Resource": {
@@ -710,6 +731,7 @@
    },
    "Name": "anne-bradstreet-poetry-plus-guide.pdf",
    "Record ID": "rec9C9MojNvTPpq0r",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -731,6 +753,7 @@
    "Link": "https://interestingliterature.com/2019/01/17/a-short-analysis-of-anne-bradstreet-to-her-father-with-some-verses/",
    "Name": "To Her Father with Some Verses - Interesting Literature",
    "Record ID": "rec9NOWLN7meI59co",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -752,6 +775,7 @@
    "Link": "https://www.ebsco.com/research-starters/literature-and-writing/lost-yonkers-neil-simon",
    "Name": "EBSCO Research Starter",
    "Record ID": "rec9NVq1FSkkM0WIz",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -773,6 +797,7 @@
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_29_bradstreet_64kb.mp3",
    "Name": "A Letter to Her Husband - Audio",
    "Record ID": "rec9qTkxNdQWIMVYy",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -795,17 +820,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/AFEHoXmBH--r8hspw1tnlg/scSzoiKrfvlIn8KX_oGEF1DibMdQQUTlXT1kZDnmEUJuUmWnqyfsvyd0QsuHyk1_qoIsSS7QtAeP5Lc9CUEn3sI6WDLSZYL0tjw1Co4gHbrjWDb1jqnHv40CVXuzLkeBUgiaYNvsm0p4sgtn3wF8Aw/OU5BjUVsm5uxelt1-zUrf3ypkjzQxTfSWVtOVsoJj34",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/lPh3hYyzV0AaisT-8MOcNg/PHfWOuVVRMQYvsg8jZwdMP7odPBNt4b4WMHYMSLWxdLoNtwss6H_sArfPw4uxMPmb0WA03DnUAdW0vhgnDYkN7CWkVA8CquOy8-JbP2NSCN8KC8BP-38JQoZTHJ3gvLG6a_5c-oDPFzseuNfivDdsg/SN0_1vQKy_i40PxzXlNjUhm8pqVNEturfJs4-tBNpH0",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/qnw8h4UQjzEPL2LygYdWrA/R-u9kXhk3562-dasgbycEIoUuJxpU0jQvS8CMExDJ_y6rkkBqXAKsM9-Tyi_JsR6Ifc8zB5KgLRjgMAWBY2Ozq64QQCrIRK2x9h9W0UqGzhaSbvic4hBM2SBbLvaZMvmNh27zDv8be_myq5G2YstQg/oymPI4_p8Iye_-bvMHzG_ukiCASixfdp3CR80PXKtuQ",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/eUWNf0ecsULBKCY1mY8MvQ/ne07ZuVNGDEvcVnW-g3wPXWkD2s2sSOr6CFJlcEjmF6qMlAb--vIZNFCndRBj8kD9tgd-RFJpB9U7rjj858afW3VuXXJOfNPMzfgsIUBGasu8EedHoOSm34xfYCq1p_ZV3t38VMx31bI-js-uqzU4w/BrgjiSE7Ryie5lHpnkQuwTy0X2iN60dOSlHxRG3mXz4",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/AwEW5yFGSBJ9u09LKAjBCg/jm52_5n1HUEE7dV2xU5tl9XBP-KLOrb-pT8s9fy_Kmg-t2E6oNjKVIE-vkMmsBnpCqNT-SjiP68ZZK5wS6zvo8WtzBK5Vaxsv-0ctv2tSPQLcLCw_iHV-hKfnHGklZwSViqx1WRchYSXtTdHWLiOwfzSYK-4owRtx1lAMcwu8saq7jV3Ege1x_YXBt4sdO_W/MxbmJIHGzdYzzEnw0STFSBrnDItxFqe68SOeluheai8"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/bhDuZ_qZ9e6ImoMTvUs_hQ/Jj3bEHV62hZKncbEH7CNQzVfGlb_-Pi8Ol3AcAhKz-1jHmkSIsii-4iPg0hiGttYhvMxMnWB6ePuG7RfxnjGn9s288EqU1oAG_xP4J28KX7KJkb3RSW8tOqSF7AW94Dx1ruwGvg576oElLvn1oRVnHBBUPxk0HN_cpgttEUarPVxTIR0yVu6e11Om1uL1ytz/Xiqaga7EfwzURizOYbkS31lDMDqvRUQRFSuBgd3lUfI"
     }
    ],
    "Go to Resource": {
@@ -815,6 +840,7 @@
    "Link": "https://www.litcharts.com/poetry/anne-bradstreet/the-author-to-her-book",
    "Name": "The Author to Her Book - Lit Charts",
    "Record ID": "recAYRp6oz1G0A4zR",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -836,6 +862,7 @@
    "Link": "https://www.vcu.edu/engweb/webtexts/Bradstreet/index.html",
    "Name": "Bradstreet Study Texts - VCU",
    "Record ID": "recB6wyhobstoSa0i",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -857,6 +884,7 @@
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_42_bradstreet_64kb.mp3",
    "Name": "For Deliverance from a Fever - Audio",
    "Record ID": "recBAmmV8xLx8Tznt",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -905,6 +933,7 @@
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_08_hawthorne_64kb.mp3",
    "Name": "Rappaccini's Daughter (Part 2) - Audio",
    "Record ID": "recCBxpcK1m0UgWgM",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -926,6 +955,7 @@
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_39_bradstreet_64kb.mp3",
    "Name": "Meditations Divine and Moral - Audio",
    "Record ID": "recCLIo9TLr5Y7aLR",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -948,17 +978,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/boGKgHKUBL0xSw8XJ6U_Ew/883exr_ViecpaAtGzrBpCm8YFKNCbOqamYsq-jJhrmzV-Ps4mYTzaovSKlYEZb69RL9Pz0P3nA4JhFErxC_bKxjvC4pXPbRN3dKm8cnYyjNgXLJ_3zHfxdub21ipHPtYZsvkNE4YJqdeUJJpU7lJUQ/qoECof4ZgaW5ij8sokC8MZ2FdCE_JFMrBPlk-oZ1Ffg",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/zzg4p_7iTkH2ll1KYkcrNg/w6NcgoxiPKwsH1jmPF0KLp9aGq0FWiksVS-H4uoFxjCBfpdIJQXSf0FtuGPIJPQEw65yYnCHSDQsdh_lWzo24nQ0MwzIkZZvIFGsZJ-w8ubNvBVToQypBq3VxA8Bz13ugOOwm95p_N9Q2UP464Dbig/kT138jGkUGfs9di29QI-kQqwMTUTdMp8zGEBoxs95T4",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/bP6tFL4vDNTc94yeEB1w6g/xjOYo-ZV0RR6KgsfKh5JI276THEg8AcNyZte5BwexWWV4I3WON8nT0keee49R9vbuqAVBORT8DDuM7rlg2xrPBMYuzZlQLcd7hJyVQJUuohcpZos7kCfNakGmF_jMKo3thRdhkbXBYRm5Cmw78bTjw/SoFnG01WqfwDHLdJ0HnqCStDi866_Ue_Z0wdXVmz5VE",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/cY9vqqlHe1aUjD_9igTIaw/IwthLrmLfNETk9SMFTvAdZl0E5FGT-UphuIuQgPFu8rU7OIgia570LjWK2krJAXRSnIgmVz3MVA0FTffu6AyEgSEYekIEgDdWqTpNIcad1lYssnb-T_Ovl3YVGqhW6ARRvmCfKJor0WCEfHTQDkkIw/Zf4Srw0x-BzrEtNmlGH_L7qlKKdM--BDBgaB3SCffZE",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ah9C5ga5CH1Mhd7Hdc5pRg/rZAtxsul1WN2gaYVOBq8cf4hGBfSP3X31R2uJZ_s9vKT5nu9biwKrJeiiuZTYPtsDHfUjswU-3a5iX2caLLw6jKeBtvj5t0VBIVMs6BGsy-5mnqYqsQEP1lgEbhJxNq2nKZkWaSlLpqcHlVESLciZaV9HJAxcB2pyjxZQN1qFF3sBgd2tvFqPDP09sbFAe5X/edswVU-O0SKLx-O_0EzPKiz_g1CdNipLFAXSibNxHt8"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/nmRYu27T4iibIyFq8c88lw/RWqC08N9ojMPbji3SByIgyIh4MvIoZdvn6iXgKC8bLgDEJR_Dh-B2NpD7kD_WwwKjTP70ZHyaPCrNduHAvq5pOXYWqyODp-PiXY8wesqCm5RE5p0uZqiLB2sq51_J9pCzoF7IH8Dnhswa6AEg08dSTVzIqQ2H7gvKZ83cdLj0o7TznQf5ddpxLr0MH-Wfc9N/zUJ6PaR46sScpGdvMoSJuNIqV6__DRc13H3AJRKJMzs"
     }
    ],
    "Go to Resource": {
@@ -968,6 +998,7 @@
    "Link": "https://www.litcharts.com/lit/dr-heidegger-s-experiment",
    "Name": "Dr. Heidegger's Experiment - Lit Charts",
    "Record ID": "recD5YlGWvHuIEeVW",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -989,6 +1020,7 @@
    "Link": "https://andrucki.catapult.bates.edu/lost-in-yonkers.html",
    "Name": "Bates College Audience Guide",
    "Record ID": "recDLtpdTmjSbTyI3",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -1010,6 +1042,7 @@
    "Link": "https://www.poetryfoundation.org/articles/69434/anne-bradstreet-to-my-dear-and-loving-husband",
    "Name": "To My Dear and Loving Husband - Poetry Foundation Guide",
    "Record ID": "recDThxAXORea4kjU",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -1058,6 +1091,7 @@
    "Link": "https://rpo.library.utoronto.ca/content/my-dear-and-loving-husband",
    "Name": "To My Dear and Loving Husband - Text",
    "Record ID": "recEBgFUmXX4XW0RZ",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -1106,6 +1140,7 @@
    "Link": "https://www.amazon.com/s?k=9780674050273",
    "Name": "Purchase",
    "Record ID": "recEkCXnBHou49bYC",
+   "Share File": true,
    "Type": "Purchase",
    "Type Text": "Purchase",
    "Work": [
@@ -1127,6 +1162,7 @@
    "Link": "https://www.vcu.edu/engweb/webtexts/Bradstreet/bradlet.htm",
    "Name": "A Letter to Her Husband, Absent upon Public Employment - Text",
    "Record ID": "recF8ff1qIMU523cO",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -1149,17 +1185,17 @@
      "thumbnails": {
       "large": {
        "height": 724,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/UqxM9iT0hMPF0m52FAnxOg/dqJjA-QCKj88BjkTpt-Zg72_kw1Lo9RkbKQ8uiSRZEmJ_SFfxHs-q6QUni_GLrizoc5AsL7f2vZSM9XPs4l-w2SpNp-ReIZX7m5TY2RgiCDSoiAkFAUULOFE0CCh5g4XzvUPgMKpVVdZN_IOixHTNA/pFjAMREWWs7-4ps1YUMCmVJ-N8GShD5KVeKlKmTl2io",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/-iEFiVQ4_PmDiUZPHzTrIQ/8PKoCcPA6EUegmrg72SlU7tA8ez98_yC48L9Aw3zKMDz-9QHeihuPh3fIrbflcZNdxfo6t6Sku4PHj5QHMF1q2raGljFGHqI1IDp-I-nOkUVzDvapDj95gED7UNTE3FZFqXDIf6YFaows6cmrCKFXQ/nHARYn-maqiVzzZ6nCHG97YoCU4BamePO9Y5cE_y4kM",
        "width": 512
       },
       "small": {
        "height": 35,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/B-e6cx6hrobxjnLkYIqt1g/ZHhwbfD1RpcSOlZKur0lXBU0YSaVReghs2BGmhVb8h8ZsAzXRVllXyVnkssBGU3sfMBnVACqg3PPRWGoT_392MhxjN2k1AJs8hAdPUuPDGF_M_H5GKbF0NPEDvOShDPqB_dWtmqgESP8vSsKbyZsIg/GGojN1JheMw2_z-5_BKGbfnqep0WPqz9uRPQ7-xG4x8",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/GBOQj2E4Qg92MPvUnwT1bA/gj6jBa6df2F-sEIO9Njgglgo6d8KFt_teuQotmroBQkm86JP4lmG1MiVPogQtSMdHU0reHQ2-TsFxqfWe6ATKFTXrSBy9O0e6E1miTEgwNAz7WllRtYomltIN1CcgmJcDlqJr0Tvbh0dKEYMQ5walg/GVYVW77Sbbeer5uDUx4O5rN_b-D2fZuI1zBibeFFJJ4",
        "width": 25
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/y6bk9zEArwNpPM_-eX0wGQ/PkW0FdBIoYM0NeXLW6MXeca25UoZDjgpguJToonBbR0q1wiH6BYEwt61wxVhljtl2yj1VXN1M1xYtLX6ZEQcqdKgU2d3D6x3XO8sx_mpUvfnshJskyWHw7PxWYefVbxQLfoM2gni8CfiMxALG1e6ZjEQubYYi-yBNI94QW_2szgjQv6wqUKKSIL_IakMCJ9WLRYrPnbSIgxd_ihVFPGzFrunCPPKkyVdJc-1weZFPkw/KrGpzCLkJGDuvpUiof2wPEt9kUgHdOjnaMnVsDt5asc"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/7ts5ENPW1yh0Tf00HvqWTA/-2HkhsmtcwDtage_dJgIBi9zoUZQiniO0Hjmvk-zIHuRiPqlSmlVcUISCg0Ua_wT2eCLhFCuKcxXoV4vXXyStnuIqGmbK0kWJoODOTLFXAc7VJog_JRGeelInQVLMJ1cqmejyPSKx1lbJXEhqnpmXIbL_fxfhsCTR9UnDBcSsnUk3RvrIKyi4KGTC79Ee3ewqEWJguqvh-o9BWv-R9T4ufyD-EvMiwso01Lb7sGS-dw/BdiASn7uoY5DGU7iIbw9BoAyzYnE29m8g3FpYHUuBQY"
     }
    ],
    "Go to Resource": {
@@ -1168,6 +1204,7 @@
    },
    "Name": "The Author to Her Book - Poem Analysis",
    "Record ID": "recFmQ4DpLTlS5bV5",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -1217,17 +1254,17 @@
      "thumbnails": {
       "large": {
        "height": 724,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/9V7xzKzLfo-bG7y6jg7pQw/c5xhdqoRCsirxtT0Q_cjw4O9DKVZHVNj_lzkI_uASf72ZQdXVTZd4RcNBsd8-fIniykRtinKujPU6V2RKsNwlR3n7wYtGmwgNy0t6ThyXQs7MBC_Qsu7lv5ubeTCfezZA8llzJ4ViPUb3vyXonydBg/mDJRzDxVmdaR9re7Dg6G81RAFFBVh2rNdXp_fR0sHh4",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/xh3VwErNVgEn_0IG9hiMtQ/4374_JaB1NgC0SlYvdMEtwo0GY-31EMJML52e7TTNS8VVMeJx7K8kt-vwKi9ZbGHG9iT_b86NhbQZZVkg03wBJMpfzil7qnmdjyBorqAzBSy3BCLIPfvt1hL0Hxjg4BxxWfE3j3Vzx8s96Qoz7vBxg/gkbO9hqzX6UPbRyhEXdd67O7J2Ytk-5TaoPRqt3Ss9c",
        "width": 512
       },
       "small": {
        "height": 35,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/qkSLOX5YSRsZr3yBNYiF3Q/wEmS7rhtXbqO3HpcA9TVcNeQu4yhew1cjXsKhomNbx5bjzCgDPP0FzbUWO8cYX9jSMBkupzCk5opQGlRxpe-ydsFjQjJnOly8mf6U-Rsk-FOSzjKNqhX-kV60XWfwxuCWeyK605OyL8p0YwDEgVuPA/RJZprQTFpLUAwmIQ7NFcsRD_uHJLyc2yXBkGJOWEz-Y",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/5XJgoNBHb3l9RaE29_DmZA/LHNuUVubJInhb-AkVBaIYCO78BV_UWlTCCcvgi1zfuq_ZKTGf06SwtUbZpeLDkVa69YeN93OUiyXoag1X42Cz3RyV_bTxOeWb28nVPTe0KpU6ltzXSZlipsdiEH2HcvhC0r0sy4-TSJ3Drvoj9wSXQ/gOalwI2R-PzSHbnInizmanoaH5feGdb7BopqlXRjcAw",
        "width": 25
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/buIGtNwl2UsC9AO8Vrcf8g/fSzOcnc2xfCdlisMEivXhHhX1YFqoeTouzhpTUgNdb3wUjbFVrRoa-Xyc2j6QV0XatFnCAVrht102-FSv7UIpOfTPSSa80t9V63M9b_rSvwJhNJPv36_FOAuWWXVzAqQ_iuJjoqGw8QQXvz0bjUBkvgiWjtKDt_vUi4F-h52WXBZKX7aV5ul4Wz1eSAJDHI6yfWVjdlW9vOwFsrbz1qXJYygaBk-BNW5J0PHMjgnaZc/9uCTE9fMAKChaCc0cheEYAJTWjJpGSLRJNSxufKU1qg"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/m9_zdgykQ234vF7C9yW-Kw/qEsqYTX81R7JIN8I00ErgrTFg2fAVd2IRotHpOHiBkMI8Gx7vXSPt1c51gyHxl27Tm0iVV3l0jYEykSbCeUfZMCSqzveH9ajOzO_j6ShbaLO77n-nTAzhxvHk2d1KoJ64pBuQND35adTHqcNjFLOu2ruBPBiX_-VjiA5yTkEDQ1uOSLz_s7yC4nsH2bRIO7dqYmPnYFi8xWGitUPZ7MSp7uO8BoFyBMFOOOIBqA8F18/D9wJtKnR1wEDlk3PEiE2LfRDdNwGU3YQamxGddS7g2g"
     }
    ],
    "Go to Resource": {
@@ -1237,6 +1274,7 @@
    "Link": "https://poemanalysis.com/anne-bradstreet/to-her-father-with-some-verses",
    "Name": "To Her Father with Some Verses - Poem Analysis",
    "Record ID": "recGwwpHAoK0hFirP",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -1285,6 +1323,7 @@
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_07_hawthorne_64kb.mp3",
    "Name": "The Gentle Boy (Part 2) - Audio",
    "Record ID": "recHPxpagtLVFzL6A",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -1333,6 +1372,7 @@
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_04_hawthorne_64kb.mp3",
    "Name": "The Minister's Black Veil - Audio",
    "Record ID": "recHqyV7tebYdPzCq",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -1355,17 +1395,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/zIZ72HxWPgFlJAWvWOBGfQ/voJPUYqIsOY5_ZTgAxH8un47Lmna7D3sCwoI4i9GGVJfGW6ql8eTqWGXAv-YQRGh0FFFCJoIWjQ7UxHnWJKKE6KSbZzJgJNXltAKpMXSvYB67UOd7v50QrNiQzjcRGXssn4MUHd7EGrg-vJuWNeMQg/T56vetRDTgEDgZZtqy5ulyYC1gb3jMRJTHgOijnUW78",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/Fuk6DA72F14H0cDUTUxUzQ/FpWF-DGZMgTT0XuvCdfJ0JzBWtT7XerCWKjeVRWRcrxHgM238-NPWnJ-relojLUazY61HW6AFq-1ED0nHWRxMwMn7ggCoM1tOJ0dyD8FeI9VBzZpHVqYLq8OXwv1CNeIsY_qkP-tuRsgS4frkmsuxA/V2L4Cbc1LB8d_e2L-plhBObRh9mdSWLBAGHkFa_a4WI",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ro6-YTuToyrWTnmhNFibhQ/KE3DdAEC_JWJIiyxXgMH-rMbE5H_w1eY3XDIFKxOUSpop79TmaldaGlrg3u8bpboP0myaCKs5ou1NjlEqWZXo-y3nQNRY1etStuFTAtMonXBZaO3nDwVHVeXLJqt8IjIrzHEuMWwqLSv7LuWT6FzMg/ChDaj01h7jVIgrOUSHT276Gf3c-6w9zKgl9XsE4nz5Q",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/oi6oRsF6p2e6avTVckUnBQ/CWDqCdio6e2xFBNT73lq30n9MVyCeg_aZiKqTdpRPEjb33-WKrD2XPK9TUQn1aLl-kWJOMDBbmZNANBAnJ4vwG-VPdYbfGFNl48cdopOCFwjVyDZ9kQxOcwyJsltAER_6KS7C0kiXe-mkJrQyq0egA/lGL8vZL1kD3eBLwSQ6eudGou_h_uO3HalZ8Zhx77bac",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/mT1nboRJVIzpXHExXpbQWQ/FG6s3OXyCqvuBxC9A6J-cIiVEq8SrssD-kbsfJp_FY3pf3kxawDYCUYE-tlKNCsRg0rKA8TQsqTmdQB-FGMp8kh3v5wphr62R5W4-CK7eDMIiimW8NQmS3DjdKFyeonNWHlOekBd6he0WPdkoA2tcfKJS9-PRy3QV_HLrD96-VqUJNvaxMYNpVemjWkQU-Nj/pZFV2gCQ8_LJiTj5VUA6GEtke5d6o-tkD362WUOHSko"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/2xUlMXESXEOjcbsU9oKQJQ/6v6HmC0oy0rYscKFgR5Q9GqDM5nQQfxgSRKtmp_2tOeEod8plOpubfrwfPjhibt5b0Mu_JwFOfakx7cludqvcyA8Js3GhCL4gpHjlzHzjh2kbktVOP2NIx_OeC_6TI2_MetG3qpRoHZtfkcHWbGs9J5u2ZY_-s4WHEv7p3q8ozq_0hp6_Zx994lp9soQ1tWB/W9NOG614Js0og4kR4_N-k5m2JU-0IF_-vBUqYC0XCiE"
     }
    ],
    "Go to Resource": {
@@ -1375,6 +1415,7 @@
    "Link": "https://www.litcharts.com/lit/the-minister-s-black-veil",
    "Name": "The Minister's Black Veil - Lit Charts",
    "Record ID": "recI8wCZBe0eyFAmq",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -1396,6 +1437,7 @@
    "Link": "https://interestingliterature.com/2021/06/nathaniel-hawthorne-artist-of-the-beautiful-summary-analysis",
    "Name": "The Artist of the Beautiful - Interesting Literature",
    "Record ID": "recISGnzL6107MnV9",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -1417,6 +1459,7 @@
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_10_hawthorne_64kb.mp3",
    "Name": "Wakefield - Audio",
    "Record ID": "recIvOI9p0bCg32QK",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -1438,6 +1481,7 @@
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_04_hawthorne_64kb.mp3",
    "Name": "The Birthmark - Audio",
    "Record ID": "recJYIn7s1g4MbFlm",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -1486,6 +1530,7 @@
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_24_bradstreet_64kb.mp3",
    "Name": "The Author to Her Book - Audio",
    "Record ID": "recKnYUAcfd01m91p",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -1508,17 +1553,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ZvG4MlhYQ63Egq_nA6EAyQ/M78rZSHN01urrozVtjAEXBPoo73vrecFjHIAWp_aGpCx54exDrOZLEqC8xtMxz0xJdOaD5aazrET9FTPSsDi0xGQAIMt60oNEqzfMpRF2u_dmbOcAJAUPikOxuQKOitPnwWBoLnuL7vYNiLy-b9z2Q/9qoyX8b7bJyXK5tkmfzN5x0keSC0Ugdgh_Sr_ZONnbY",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/AhbQDMG9KIjoV75Ux15FkQ/RoZcAtgCzxAxUuRCQj8hjDcoCr-UTz_aIeqy22zqJPgUqWubCX-IaFOMjfio7WP73K_oqRlZIwS72He3-ZBbRGT9UubK5c3ifsx_Kn021Au6xopAO8egKUFCZLuZMKzXyEp5ZRbcTC1KJ3gEVycJIA/TJmUADiCBvE6vtLFJ1nPbGtoTJfxxLvOb3-29yhM1U8",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ViZNUm7mhOuBvfjqMhW-kg/_x3wt9VrzQ7iPBNbsRIgvQ70u5umrjSRoHTZ_9YzQneIQKjVNncRCJsgNx8OrOXUR2KBH8MyWIS2oFRzJ9uW3l5sqq866CSsaeT6942LXvNMewx76rzPjXtxXZ_gY-xkbXahqj5Od9KsmwGMx37cmA/Qrx9P-60Q-oIkh1e2o9aznY2YYXUN8OBc4CJZZ6UWG0",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/tTSeRKMA9xISsCSFmx5NTQ/IrFuxFdQ5p2cp9tmcqSgxkuNeuUvFnEdZlBk7ZLHFrE6d_64_otf_J7dzqS8CbULzLLFpi7vTlLPKcRdpazPGFNS0D_dS-Mi45ll9kdc3scNQWwpWH68BqszwRX4dEnUyPaco5UcnbFE1U2MU2lzkw/JsLFTbhOOSVw9KOSiYehy93XvWn4WrTY56DBbHp2jvA",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/HhcAWDP4HDV-j2k-we1qig/w-P3i4RgUsSDOmNzLPGbrc6two2QC7qSd4lWA3-zXC4YK97BtQZsSrY5ZXfohhnYUUeRmi-NQoV9haT9CEe0iSvdN-gIomRWtRxfn1yQdrVmwQp1V85AAWFsy2VnAkrP9ZDSJ47aE7ogFW9ZkRZ9vAb3oQN4TV4kWM_kK02m765llOSDgSTcZN-v3cCtcNd9/eJ4sxGVnzyDrKMWpSzxLBnTwmb2D2Sly0n0LtN63ENQ"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/09ZXiNTkrvzTUrP1TJDWPA/LcaI5oijAKmhvjadzXdTpsI0Pfk3zatVztrpX2HoX0e9SbD1MJYG4A3Q_0l_wk0u57_stv7Sj6pn1gPhXZY5f1bCQWQ9o3pMm0w8CufqAXi_H1DpAfF1THosjvhIiKwSAu1AxZaRCh_cq5qF5aHpyDAhRMvYLuIp5GQ5fs4If0BiiFypBlzVbwFWeO7F_llT/UBvB6WVP7r9G7fOs9dEjF5yWbYwrJ9RnJ-L0M5T-3x8"
     }
    ],
    "From field: Self-Link": [
@@ -1582,6 +1627,7 @@
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_07_hawthorne_64kb.mp3",
    "Name": "Rappaccini's Daughter (Part 1) - Audio",
    "Record ID": "recMA4gF03yz3KXPY",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -1604,17 +1650,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/tCsIT-YmarFNyplrSSMlnw/0AC0msj4eFB611I6Q6ok1fWzPpE7qGghhzlM1yXbRLGTYeBUnai8gievxljbKW73-cQlB6LRrxqwW29enrBMr6YekGc8noMLbyhR9E8KdcbYLcQjJ-ODfWcdpUQXlnxGemZDTtM9d46Rqdmkf1f2xw/iPEtgxaH5Ne0ROqkjeq8FbIwEX1iNaeFfwRjaAlldEw",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/vafUPgX5aBDa16xK50Js_A/-OLTK7BIUG-UHEfwTzeBPBKiat3BQwpUuJ8UPWdJijs4ol8gSiwCu1NwrDbO_ub_ObCjBVQFQgjKj-x2aUWw0cCTF0KgXTg_GlXQkP6lq5jCMS-ym3lwpielnDcD6N6yeG_-c3iPmsotZwZy-QoL5g/iTDtzE7BGv1ED5_7X2AT9_pHP7xuWoJNMl9EE3qwKpM",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/gQqkI_we9CaxqgEXjA9XXg/ooSGw-oAv0IO1AkaE0a9kVINXCTpY7fentKDCTMsC2HLZI9SdteIVNraoiOwPB6u7qYt8GT03avz92KMUI3tDv3xlFeilx3oJ6OcDB34TgwCA_AZLPwGiSFKrEsb8ocAHnvpA1lp1cFZyYlL2H7QmA/CVpkQ2KKerlfpg49PRxYj3BEAU6hb688qlJtrzI7p14",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/ti3-d8spMEtLf9DW4L4oIA/PZ-2d1nFsxzcC7dLOP-H0_y4qqkx5bnR06Nk1Vpq63LrJeK8Nw_s3oyzmdVBkHl_LSoRGyUi5Zxt9eNloVjaz0oYDAJjU5cGBTkKOHjpt_hScbgvLOw4UoIG9ayN9DuYJqN4JZW_Sw-X8AImxaoutw/IX8hU5WejoqhOPyCDgLfZY3K-qYN-x3zjjO09vfhqnY",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/Be9oASCS4Ws6cCZ4f33sqQ/h_M75yJ_2xwIKOC7Y0G5nzDTbXRMibGuWv-qYzvYQeFS6OnRbo74BjgLvbXuM_vB5jkJlNm2Z_buxQfCgkxZcK65R9yCKHGXnaUHkLclw2B4rU4bBpBS3HBrHc2PGPq0ywxmUU8hdekqWIOM1B3y2PeTuLezlAZv54dFXyPP44XbLEVON3CTuJTM11enAGuY/btlrygboq8-tv5cUa61wKQ0gDU_ECsAeTgSN_YdqZ-o"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/NECvTiqapxbRMl-Vss_Fmg/2DvvwpaUdANhrhOeqTMPFFhPYdHz6iRlm4Z6ZnoxLtYp_HSovUfaPR6SSO36rJzJbwMYc0NfWNvAuDVTaj9C4kBugFPeVlMmNwiE6OX3_T_78LvVifIqIJs3KwNbKcPMlODMYX454nAZznI4_M2Shoaa0Fv31km94OUnCfFRj1cHJgsRuYv5kgfk6HKsOSj1/wNCD25vJduUKFIMbPVmwZZfTgxa7kJvnN22UOmNQhHY"
     }
    ],
    "From field: Self-Link": [
@@ -1705,6 +1751,7 @@
    "Link": "https://www.gutenberg.org/ebooks/512",
    "Name": "Mosses from an Old Manse - Full Text",
    "Record ID": "recO20JlqdqEuZEFr",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -1753,6 +1800,7 @@
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_32_bradstreet_64kb.mp3",
    "Name": "In Reference to her Children - Audio",
    "Record ID": "recOFewuQGHZKSkuc",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -1775,17 +1823,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/r6rCoP4Kip73ZNrid1jhWg/3zOhf5IV_rRPD4EqVz0Fufd1fYcUToetI3qjSUPJVUryY90cVg99Vy5-YwW6NkEBz6oMbuQ-GJ6PQNbS3igz8UDoir8kcxqZxAP2V615dv8Y1in9WOM0FzgbU6sh5-M8aB2YZms91jgpvuy-bQKPtw/2O01FMXB3DGXhrn8dZ0KuDiFEzLLtU9Pc9VkxXg43jA",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/C03EnyPMKMr1DMK_870zEg/chVty--zUUrF7IPziPLKGQ2PKwrrz2HfKN6oWG_BuNSKAw4rSxK9eCFMxcerYKo75McQcLBl_kp59bFy5gQqUcoS9UXHtm64hNe81b4AYReFrVTaQlC46y7l0hruhhf7wiL_HyHbL0REbR9hHQ6mGQ/PZ3u1wFgA54FbAFMkxJLC9mbcepDsghK9VyC-M7rWE0",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/0mB-dfO1zNaXa2Z6IS4pbg/IRMUW8TsxSOvxf5SMEq5r9Gy36BZ6ElSibtIhgruWm2C097mD55sV4QhFDQ1GXL6vSKeEUpPv7YN9oFNA6q9LYCVV7g3Qa7M-51AlIvguUj7Vei2IypR5APItIqI_7W-xqRtPJnYva5UhCEPt-yxmQ/c5M1vLzn1_iC6WVcNRCNO37Zg1rlayEIns-o-rC2gNM",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/OUXZoiL3GE1KfoDqSYsGgQ/hP6sBSCPDdZE3Q8FeGPFJXbHZMcVm3ESjlH_-jKdKIvbcS8xTKESTTuVl2L44rDcRKzCn56mRX6wWvVIUIBF8-g6qTaLOvIPnC3ISDTk-jerxa4YT06e8vbNI8S3DjvjJQZqlG2oVqMyJF0XnA52Ag/Lw-tnzeEtoh3ETQQ-wJvC5XJBMTDnAgo-JcpL7N38Fc",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/E76zfhMoCKPzu9HbV52LUg/nD01rVBgO8PeM-kyoePCHciNkZY8J_kzzUX5aGmUv3sXoAuqCeu24S_VvUTv9U5T2sD3VMHoDNSk3Fus4MdG1MYtvJn5FIu7GejXb54SEBHr4GSTK78ONlsrVAFW9dt2W787HltPnV7FqmYv_PVMCpn1mWhy17Lph0dY9A9ng7yOYBfLaiAl3sGlZr-ukSijSIXZo8MSZJjQ5FzhJWGQOg/xXWPUAB0b5f6HTUPd38xWDlhuH7TrsWScc1HWKTI9W4"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/_qhps-nXdDO1NKZp1Vw2AA/AJqNaxHHTLTrcXi4rxC8OEfw610EklrcLYuOqVnJ2ziPVgFOQQHWUcKtKwyKpLf__yOmOAyQ6vPXUSG1lVYdHz4ps42TsjhJ3H_ykaEYrxzUNZpK5UZ1fV_Bn--kU7ennueN7aRSieRcDi9MWM7eIrBE2WXzfn5h7ZrUD2XZ_p2vPO3CJzS-72lCK9BTC92tquanSJtH1mtYdyzgqfDpWg/YIanSiSb6OegSY_FgvW8pMClw4cO9EHhMTvC-PlYH44"
     }
    ],
    "Go to Resource": {
@@ -1795,6 +1843,7 @@
    "Link": "https://www.litcharts.com/poetry/anne-bradstreet/to-my-dear-and-loving-husband",
    "Name": "To My Dear and Loving Husband - Lit Charts",
    "Record ID": "recOJZXdVGGzampny",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -1843,6 +1892,7 @@
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_41_bradstreet_64kb.mp3",
    "Name": "By Night when Others Soundly Slept - Audio",
    "Record ID": "recP6z1Vn8XjU2Itj",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -1865,17 +1915,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/6Sjvq8uEWuKsvq0NjncDNA/p_UitSuNsHSytVMO4VHCoRDBJQv1KKxQGaKByoQXEKDjH-7nkguVlgQrIMRe-2JNlE4VW4CJvFdwkoYLdr0R1HOW534zMKl7iAIF8Wy_S2GRP5sTEZXU0innBGFjHvz3-BrV3kQGIH7c-m3DweFu5w/Fg2Do59vz0ZK-WAsUPCVNJ76wJCLFIHyaGM4t1uWH5g",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/2IAjOL5eP3fD1cd5vNlKlA/PDvIlHLwVxmgYV1AFD2-JuqPy8H1e0Zn6eVWrR_nfTJa0zaliS_SBSU0tPo9KGdBVoz1XciEO7Mlg6V6eYGIPvQiyGcd4uj82LA71Ea89SPQhoZcWn9LcSFfZVO916-aHcCteDoC6kakgyREdC7nQw/_iQQPzY1G9p2ttsgXVZp9QCj8ewTCBIs23Ns5c2vwMs",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ZVJWpdCCjnK_cjpB7xijXA/YZfq50aKGfU4EvfpZVnpn9C1FhaxMblgL65ssStRXIDuEKaVEqYWh9caqgNrA2AkXdTmLK-d0mRUE1EXzvhDX4VUSp2AWRVvvs6qQ9Tf__O4De8za1PnHlF-GZ02ZHBjNyqPLJAUR_pj2b7dCD870A/6tdkb_KAi03UIGKmFBLR6wxp7WVytAn7t2pMF_2XbG8",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/kqu806sj9YAEZD3RqXiohw/3RRf4J94O2Tlr80R-lGRxEAv7nU-Drk_Sg9HVOFrowJcnQKkeHWEWYYwmfxoqSXoyfvGtABT3pvFZhvp-J5vfMBCo93tuHrAUIq_w6rMx_YOr5QJtj-Yltu85xlqQDE6VaDg76SoTEqC3ovA9vIS-g/2ZXcJWAjhtVyUqSL-62nkcP1jj-xzx-hupp415xd0bk",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/1Gwb7kDs0H56YoccxVTRow/X1SIiXVbAxgIsv2OeTgNci33sk5yA-sijIq1BYR95ry0Xa_09BEfCrHk4K2Rt3S-1FdnU0gEW5lF0-HFXWUgkcQ910jm7gf0HVJeg6RvGGXcFOxv8Spnayolrh00c4LucevFRitnUnRjJxyaVsWEuJU3se5QqXmIITQJ1qeomD4B9auaC5sy9XkUelE6gc8iUxcCaJGJmSYvytVnxFFYIw/l9N_WA8IF2_zNJ0neZAZvDywF9Y27CXyB20IsopE4fk"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/VSIEzrY5eTodXQsu27PJmg/mRt9sU2faerpA7N9XKAWuSOCkPeRZ9zjITbbP4DvOkHQy3l-n7tpbtdExUMxwGX-r9pb-JFNgf64jJLX947AeVkxTuRduhW4uIamy_cNQGtH9vVtsQVq89YNyu9nEekq0JBFAOuPfWi3G5b-2dL9g8dg7_ZiujRRuFDIpdBQjfeu2D6d_ApHdYQBSbvvehcn-erc1yBt8-ZXXkEaWiRyWA/A8fEyXXnQ6yhis-C6o5tnWmsqsyy1gNgLoFoC2Avn8E"
     }
    ],
    "Go to Resource": {
@@ -1885,6 +1935,7 @@
    "Link": "https://www.litcharts.com/poetry/anne-bradstreet/before-the-birth-of-one-of-her-children",
    "Name": "Before the Birth of One of Her Children - Lit Charts",
    "Record ID": "recPSUQgUwmbeuhRX",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -1906,6 +1957,7 @@
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_27_bradstreet_64kb.mp3",
    "Name": "Before the Birth of One of Her Children - Audio",
    "Record ID": "recPp7J5FbyuECk19",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -1927,6 +1979,7 @@
    "Link": "https://lecturia.org/en/summaries/nathaniel-hawthorne-earths-holocaust-summary-and-analysis/22301/",
    "Name": "Earth's Holocaust - Lecturia Summary",
    "Record ID": "recRjadJcA0DC6xst",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -1949,17 +2002,17 @@
      "thumbnails": {
       "large": {
        "height": 724,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/pT_5Gi8BmVP0nFGa_8KI2w/lRGoMjsr6CpEHjOhDUY4640QDQUw1OGeSXtflaBqcAUlhFwsm8XNM5b3aF4Lf6aPuLiFl5m6tFuqlVIL-zHnhSe1RidQ7ZCflM_rpVLPNriJhxCgkwDqDMLwk2DIJQDZeVDmkQwAB2tZ95mXaRfd_w/hXzOPPfD7AFexofhFTZGSvvwgd23cJIhrv5Tv3ebJAQ",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/97YZyR_Lh882jzxPlY490Q/NkVIjHnY67D-nkw-jfXmpwV_47vk2LHs_NkAxQ43JBZhAyOnRT1Ci49HCf9QTT_0mUP4xetF7-4TTo7CkQ9tQMfQiLLdE40DWNfrPSc_paiSMikzCD_Ps5SC63svOfD2i5ZqnmO46S1DLPFgQc0i5w/K2GiSqWPyShXDHDNs2v4FR_rBCW88UkTnZOWxN8QS3M",
        "width": 512
       },
       "small": {
        "height": 35,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/cIl9pJo1JqtDNwHYK5EDPA/hRp-kJnQpIFjEyy0_CV4w-N03SQ-dYIkhdY0JZ2E1Rhb5gb-WxpjFkS1OpawqjTRz4QXnPtaI6ZSC0YMyNT6O4wS2RXSwPtRd0WRvQJwqzInWu_IY-II9L5inPCtbuM5dn5JZ2Ea2IByL0zgWX4HhA/hktLE9pqOaTQuP_as_u7D29Ld0IyApjHJ3a02BAd7JQ",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/hkWm3KFjC6EGMXkH03yjlg/gzJH9LpaeoJ1x1uCUbDg3aC8Aoc4aD6Tv50mL2RI5Yjsa-Y-exAOe7HdFm-u0CGEKJrUvKPNxYNontAAPJzgA2nRhOeyhIhBPwQAnjtZQW8G-oT8g_lueP0FlkHuka2TmMQFt2KqXJH_Lc0CX62TXw/nG8CFYaL3yN_xR0MgTa2c31ji8wRtM86_no957PoBQs",
        "width": 25
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/NuAQCBrUOcCk7XK3fy8Blg/4BrFraFc1u6p-o_VqAMZ0E_DmyV5WnHtdN-6BNHBGA880y4gc6qE65u-bt_wEGkBkD85qZ-P8e2tXCEqO6_lDautgQDCL0eP4CXy8s1AnubXV7lrJT7FFmHOAKoNt1ahIdOeJ40gnWfF6Ce9CbJT65keNpHs1_7-VwICtNL9hVm18EVXUCijbehO0AjnbDg3rzUYCJY-hr9GEL2SPSCI26RvPaBHE0Pnt7IT9C0ZzNfwAwLseyGdCZLUqXOs13Qb/mi5EpedWgGoVpPdba9e2PAGI39fCEOlyZQM7Qph5EWU"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/OsdvttE_QD5u1UAu47y-fA/KF97tsxjFOlTGM21TlPMckEspMBlJ8Eu6SLC4M5DCWgBqsBkYBVawNcOi5dZHKIXB4SGv5jqBjKaZcnDtn99QQWGO1nyNMej1CSCKr_DwvSMt8fcwFXbC4KyiFAZNkBPzBVGtSwQzt_NGU0eoGrb5hSoNTK2-7Ll-E11bl8IxQBL5pwFVK1RbVfVjj9xKIGCylqBM1rR9o5A_1SWwdupczvJIUWKbNWiO6gjw1p8vE1lXObSC72P6kwLgSlN1jzy/2WgIdPsAt6pluNu0OtfAE4aG7em_mk0xd2rFjN8kJDM"
     }
    ],
    "Go to Resource": {
@@ -1968,6 +2021,7 @@
    },
    "Name": "In Honour of that High and Mighty Princess, Queen Elizabeth - Poem Analysis",
    "Record ID": "recRpAoWFml8COvQn",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -1989,6 +2043,7 @@
    "Link": "https://www.amazon.com/s?k=9780679408901",
    "Name": "Purchase - Random House Edition",
    "Record ID": "recT7yMjbshLt2LRI",
+   "Share File": true,
    "Type": "Purchase",
    "Type Text": "Purchase",
    "Work": [
@@ -2037,6 +2092,7 @@
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_23_bradstreet_64kb.mp3",
    "Name": "The Vanity of All Worldly Things - Audio",
    "Record ID": "recUdGIYPiqJXS0Tb",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -2059,17 +2115,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/1Wr7GSVOZDsSL6f9yXUZCg/I59SrtQ_cKSGcUZ8hba6fAWrFI_ipRU7l1eNxCzKUluHCe5oB1SNn4T3XoDM61Td5wRUo5PevaJqer4R19xrzN9_1y5DOemC_D7kuFnLT9VMdv7AYc3giqaYK0h1euwPhIeZ-xPTag9kX20pUGk6hQ/DL7oO8QqnKgnt5Ru_us-jd4jRfxrKk-4JL8P3cIk0ZI",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/geNd5VOQAFPVFgI3Vz6Ijw/HNflbDTzpDWjWbOsrWAfXWcJU9ElJhDikr2NyI7GKK2Aq4QSDsZMLjeTJXePpKh6tOpozO92imblSDaFBb5uPLBYQ8ewbbgPiOsCcgQOc7uEKY6nfLBvJpHgT-PKV495vIQ98G0Rvl7PFjovaipjcA/pskV0U7peAJgp84hmMRgLM61NjE2p6-iahJw0Evi5nI",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/VmsMQiKr8AnGNDLqid_rww/1gmpEjtYRuAVs7yava-_eSilrqhVWPL3XwwYs8YKIMRMiKRG04Hku4qIUnvdziMGsbmGVO_wrqpyBhTuBIcDNmUxtTwQEexDRWUS_tg-nldLR8kzQCTHXZ7IFKIle8ZWDk-8YqWOQNwi85h0hLpneA/RrZfrYeSaQHMXNpoBnNabeSQvy79vpDv9jurvJvSxR0",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/RauutGju1xUtkwRGFrT8mg/PvzQxsfFWkntE9Whk3qQNO59OLXMeM0TOi7btq-efZXRHIa6jr4-v6EFn4bh4QpvqXTN0YVWz1-givJfBbqgBjPHyc2FFa7Bm6QDeb58E_Kxv6tqg-Cfj2i4JxKbUrCxkSDrlPPToJTUQl9qSbexKQ/B-L23V0FiFU22OQbcu1rOrbjo1h2-vbzUNTGSdFW8A0",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/paxTVOsYkcnyjAphQAIpSg/D6JoSeXvqgseRVOiyCD2ruuLAzsxkvgjwsgOP7ec0OYKKsv9CQI5NDu3I8r-p-YRVfIBz2dyyUrNw4f-w9-fQzqsvdEPmQKvDhufoC4TRBgR9mfJVcpb0nKNMxdDJXLXcCEt_5MZHxF2twR0yNaLypBV-hEjNA9OKeGpShh-Il6b0_5RPr0EpOEHF5LJBjKd/HD9tUbVfQENqOCm_qbTdeA4NzEu3dt1ohQsiBsibHpg"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/UFp0y9qZdUioW9CZ2wbq6Q/tXxt0aybWhwJaESnyi8Z1DSrPkpQKw_Q82NKCGls8b0UmZYW7FBG6x-E9fPMWVj74qvVhEACMly9182nsHHNbHYmM_KDSRtd5vA3WFw79Dg7nw0K6C8g7UJ-2Vki5fhLG7MWuTgZ3A5ofoYsTNd6qhdgk7XmvWP8iDoqwWGGBMHn4lV5UGjXPMoNt4mWP2Lt/pkY-xI0gXcXuqcsJmhFAvhP6RCqO-FMf4u2cDZq04CA"
     }
    ],
    "From field: Self-Link": [
@@ -2188,17 +2244,17 @@
      "thumbnails": {
       "large": {
        "height": 724,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/OvTvxokaPOoN5ZlG2xlFew/kA1NPusbvT2rmMhC_9EQuqBJkDfGAqX5-W7Wwu8zSeTNELroDXsuk-wM7jBZLoOdOzkpdGw2aR3o5iKZuI4NpwJq4TQQris_xh54KIcnZmC5ZkTo1P9-1u7AoZfFNyrQ1IjIGT8qzOONEdcLzcaY9A/wHjK50w18OWZ7gBnKPBezIK_45Rmq5GMoz6S3dYjZWY",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/bJZj2-0c671LNtkrUhLzpQ/rorEITcgg7faFjnKkiMuVQoj4psEu0DytuAMH-6vOdgpzajkUnmpNtGJGXyYVeE_QaTGPRPzYWfaqCRzFfPq9C0MBYTrwNp531F-XZTH7zcOjBdwRKj_EPk4XSob26fJfZ7Emji9Sk_bAHD_LyxasA/J-5NK77j9dzgaaUziYn8c1ftP0WphQE59Zz8J7sFuI8",
        "width": 512
       },
       "small": {
        "height": 35,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ldtsFD1HOTxiAsnprZKZDg/Prp879KbfSSBES_qUEOsk_fsfv6IoFUHas8aV90kqt3gL-fp7aIa6l7KGX1Ok2_15Tx_Rzfs1ZoWwnCI0wUk2wmY0uEFUKFnmHajm75dLD-XKlLLSpUUsAquYrE_xuxue-zRm64sLhVRZdEYe8hXJA/l099ahTFAPu0fjJxw9XsfTG7Tv8CHuX7IgCWVTrmtCM",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/z8sETNuHzs5IpiMWryMiAw/PDIym832usyxx1XElSecIyz_-H_OovCkkh5O7qoMQGYyPZSWtFbpq0fN8OCSfhStu5fy5cV0WmPmidEBQXoVpifzg4ly7qons_h5luU-zhwxWKY83no6BawHGaJL9j4y2u5augGcaEc7QaZ-W-E12A/t2ppzwL_m9ZpfzO1FL19V_yoqIVPQdWAfn5j_35WWdA",
        "width": 25
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/I8L5pjSfcfopVuFJoNy-Ew/84rQvSilu2jk_3i1YAVE3lsHltsRWgtRjn5ATQIfXcFVoRc-fFOhO7BFy6frI1vKDN3LOsjMZe_-HPUTHhxkWICqmXgJ3WcVLzkrcAm_8Sc69yUBO22HRHkkM7Ho5Rt-Ir4yrPq6QDO5RtMA7Yek_yBjj4MPm2481lA0rWkqdwMRTfGx_R3RykVYQiE6dLs0F1hmE9GfEbKho-sGuADIHAQTRo22RsQ8lJY7ZidGDffXiNLQMTnLLF2bzjmuxt8m/AKt68Oro1XeGplpb_eeiwSFLm8FuOJUvyyHP_P17Y2I"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/8XcJugzc9D0cI7DK4avbuQ/b0JftQcTujEcvg2OYiI9oOMVM41v2rEGj3YVT_IS117INAsRLWA_N42uNeIJOVJ1UnxY2lH6Bup_jrY4gJy9iX7rij_hoE_Mnw4p6Kdi3PLcgmwrKJszoGPKemDesL-3egX_BaOt0nBs7FlyPXJJGN3MBtJMEeKt5Jibt1XSBv9OHXLjLOp802gpq2ntSsyKbxJkrm826-vQkhRpUCZ4X9YghMuVjDbiqBNKR31oE-c8ehmR7hjUbPX7nUKso0Uo/3cjsogm4eDqmPEyYlVTX2eNBvv-nnnt5lQfdTffSc4Y"
     }
    ],
    "Go to Resource": {
@@ -2207,6 +2263,7 @@
    },
    "Name": "A Letter to her Husband, absent upon Publick employment - Poem Analysis",
    "Record ID": "recViRwItgiHFJMkc",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -2228,6 +2285,7 @@
    "Link": "https://www.encyclopedia.com/arts/educational-magazines/lost-yonkers",
    "Name": "Drama for Students",
    "Record ID": "recVil6zJSXC7HUDZ",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -2249,6 +2307,7 @@
    "Link": "https://www.archive.org/download/twice_told_tales_1206_librivox/twicetoldtales_27_hawthorne_64kb.mp3",
    "Name": "The Ambitious Guest - Audio",
    "Record ID": "recVk0y0C7YOHf9Br",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -2325,17 +2384,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/86FAK1uYQvRtkcmQEhL1cQ/jmTwM5pCG53efoDil3ymS_WtRaLzl9e6pI38X9eepk5XKYTKBhIuSen0Y1flLmfM6kh2xuDqkwBlJ5kuSNprkR00j9MFK1nOsP6NIZe_d1yVWEUlypDGS-DMgwlZXo44t0ZDnNuAP9NAdQ2A7jW-Fw/xs5UGBKMxN-y9qz2EBoAVBkuqWRBoxa3K2iTV5ISJeY",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/J0zfFFMR9lbrpwAAcRBnnw/jXbwki2kI-b-mlrDJEZwaRNWE61Q4pAH_N9I0DrAh0esJw5XbhWwfCW_eVJSAlQtVcZCkworsK_0B_8WSoCVYipuLeTXeCsRY2BFrFSsFvmhhBwjni95DHJ1az8RSnUJGauS1bJlftNQi4xXdcFuag/RLLje8b-CbTfneq6EX1sphWqEdTIHsyMp_fa5BoBTEw",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/d7tH4e23ICCWjMvCfxARjQ/rdqbPT5UEN0E5x0j4IHDXe0OIy7SkcdATliRRfcWqG0UMfzFickBJ9pqJaRkL81_dmu_YmnGSrLK3vi6c-Vurlz-CueAVt0HgqBga32SqTEShMa-4Pxv7Cuz28MYU7NbIygL8NRK0qB5w5dZlZuDrg/E2OdYSLEa7AtZ0Lp6CfLQ18iZf2MEQlraDqUe0pGuu0",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/Ts4BKlUBM0wrUHdLnNgOxg/ikxcpa6Rsefq1MCF5Ln62clnOHSQnxM-uxSL9cMfc2A0D4-KbbqJEFZag0CWHegxrUeMdY0XdUZUqZJBAEhRW9G9UXmeDuGJiXvxIxFjihHqRSoCrGwdS_0j70zsBAJFAyCj5xwKpvYwdL1JSWCtng/O_i0KXWFRWTFSYPJnC1tvpdsvOt1HQudTCCsJqn5xzA",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/hONo4u5UhKHYzn6ir4e2ug/RR2KEHTGUbPvCpWH2I9alUqQUA5_i_nx4GZA3BOKCLK14Vp0cuAk77gxQnXSFzBStZjEIiMBtTboMo87v4jAwxj5V3niIgbAv4XEn0BmfcDk82gw5piFELjXP2o8cdqVRejrAxO_ENyv8pBKbJDQtZvnKojWRxdTxoMxAw2GfHiuZVRMSjki1zFjMHvccmaP/C-pEDUKjVqEOSPZK9px8xv2wJClVz5nXjEkaXsGvF0U"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/WHLwwbjcRhozN4nUsTTN2Q/oKZmMmulyvozqr13NdzpysOE9R9B_oKDAIKO6C775o6rCE0u6ZssrobEaCdPVvPAAuHe7BZgqcZJqh4hIRrUjvzymAV_jI9eeXMIVbJRLXoZAH4Gvv9JTJ4IcBmAXPG6HS7dp8XAWIMlfoYYnT4wKsBo1ZobsSkdrzUJpb9bIAtnc1aLDNRWoeH_h5ifY47x/37JSpDXqFxDWn4masQ-df6w-LLDg3tL7Zq6OlbIEypA"
     }
    ],
    "Go to Resource": {
@@ -2345,6 +2404,7 @@
    "Link": "https://www.supersummary.com/lost-in-yonkers/summary/",
    "Name": "SuperSummary",
    "Record ID": "recVtiK8o3C5uTuBK",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -2420,6 +2480,7 @@
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_17_bradstreet_64kb.mp3",
    "Name": "In Honour of Queen Elizabeth - Audio",
    "Record ID": "recY147zlklYnCli4",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -2468,6 +2529,7 @@
    "Link": "https://rpo.library.utoronto.ca/content/flesh-and-spirit",
    "Name": "The Flesh and the Spirit - Text",
    "Record ID": "recYo505pAdWMLczi",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -2489,6 +2551,7 @@
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_06_hawthorne_64kb.mp3",
    "Name": "Young Goodman Brown - Audio",
    "Record ID": "recZfmOrjwRAMSW5M",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -2511,17 +2574,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/gP8hKPfZfBQJ5-dAbGXWNQ/DgsdPAax3Tjl1leGA8kpX7dwagNJ8HKtPYIAobu91pvfm5Efs6gsMQWfjSdT-qi9UMamNdoQVBWpghPZ7JLeR-LgXtsKeR4z2baIYyh28LsRIUP0HpwFGZzzEeDCjCi1HKmp275hocMgkysNun0m-g/gQ0TLnez7BwAkm9OmCQrXAS54bLocUa0CdmKMhNvurg",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/VzyXsUUJ2kqFw3N0abRrIw/qnXLHwRlKg670MpXkUh1wLEye0fa-KtINlsKv6dkNMUrGBaKiTO2wUbJuamhOr62tSst-fwy7y_RgtVajYKsxs7sRyqeZ-Jw1I9u9AXddjRY_uM0EXkhcsIPLXAhTRRcHkb8VTEwRiP_isHKFcVfRw/2AoKNUTR4hTwntstg4jv3YlIv6hnmlgPG6G3LMJbFIs",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/bmW3KuEZZIzG5Tfzrnc22A/MINeQN_OCmfW5rA4gpi8RB_N74HTLf2Ue0fbM7qaz2XrZJoKzbvoVEqpyjpV4HLkB_3Tjh3zMtr3dN7v4tOhnafZY1W3BjMctPCCAHuUYcWjhO5irGOGEen-SB8V335TfhEx9D6bHlBtgQgaP-XU8g/adbXjrxRG52EFVjFzFrAiTOkm5KOeiOmBTOIvFLujb8",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/cFXoSACsAd3D-VE7nbSsgQ/9VH8koIDCHpKZVHGjlHxrwKD-xiy8o1X9OYacciOp1QPwOODvxLiRxJw_2YLyuk-yw5HvMtLe4CckMn-uQmVgsAb0Vm_taEkHUYH8yvHAGJUWXzL4lJy2QXpQwYEW1FzUTMwIVjMoH9wU6Jn6y4_UQ/65HS1lO4v4Naeg0HuNb1L_QIj4Bh7cj_ToBCQ5QoxCc",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/jEdvgslIihCLuTxPwRlwnA/tEUfL7MzNNPZ33_q7WdmEAVYw6y5ohk_MuUGwM7lpi-Cs5Ra2mE9bkq8v7jAyCpkwULKzWE3eh_0Tr8lol68qCPK3F9gJ0V5EN3jyE5fTgFyEDn0zhxEyWmiIiYP1TWyM7mxShECus_-EIjtNB6fXV2qKRn90AqQzGrWTDc4Tk0/o1uNEvRO36CwUAw_fKyx57hsaNg4nkJeLap0KR1FzCo"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/bKPoKgqecMmmPOy0hbTdCw/sV1nF8WZSE8yz-z_Oyp_30oHsunkL7MFBqeu_ObglLzaVu6xYcyjsUeU0L8QtSLftnPEZFf_E1U5dS55i-sEh7YQio4t-NmUTwFp9zRbdeYqVqzK9zjLKwUKmvuiWl8t9TZ7Rkr2jSxqzbejVCw7vkMiF4hb6PbSXh8OJM8j7V4/4Y0oxLpwTD59DkInfSPjTtcNh5VQ6OcguTnIOgAMTNw"
     }
    ],
    "From field: Self-Link": [
@@ -2585,17 +2648,17 @@
      "thumbnails": {
       "large": {
        "height": 512,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/nfu1I4QIq3Dt8YtatlMUjg/iHwIqmXa2jvP5lR4F9qP6F5BoI8Fm3za8f9A27ezvr6uwAKP-9fqk1nVwF-arvEyjeMuYywl_KBqqRuzP2NOJ2_JHbg-e44jI1WgEkviVEhd4bqz5jSYmoPBqSiihv3Kq2zrEs5v26xAaNagkoBI_w/3s7nNFn8AM5zpwsZ3s5frmTBZdpYC7j22pSMn2I-YT8",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/var7ZKHIU0P-nA11Ehd8-w/ImZmiTL8m117YY2ba68cVeqmTvVqsEGhHJusC4qiTfSfTlDiQQd_IGm0V_NyRjPOsYzix-hNXmLvIA22xokBCmQWeDfPEf8wCs4EZLNcos7YVqTzJWxHKzAsMn3XoXgNHK7ClbHGEkRetMKtO16OAQ/GqG5Co_FKrtTSksMFHfdPkpHMoJyFjC3Y7d-aYPVP2Y",
        "width": 663
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/AwfW_GWdKUNKq4jxTfk_ag/pJG9lpw8-rm_xd8Ah_oQ5lrJBYLEkL3jNtaiGJDBOW3LjjdVfComBcCeQ8-bmTARJjuQ9YN5xmFCgapOAhGTnAP8Mxuh1Gz0YGma2mxA8tRw_P1eWRPzPWUIa_VebbZFY7rhXHyLOh6Kv16k2Me3-w/7JyKvVmNuD1elS3bUE4M1zIE-6t3KDTEyHpdL-egczs",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/ouUAo8lmImMha_JNjH1ZNQ/grpIZ6OXQBWHoJjpshNTZ54okivpTmcZqMwI8JlNzMCZ9RPxToyQu2Gw_sNwDZvaO1wnp_oTtcQZ91jkwfd4HIFLtd3Jv-IsDyjNmAGOlIw3Ad0GbwpyLIaBZlLil41R10Ni-pcDaQvwxvZjdGMrWw/lL-pfAXfBN4jwrXcwkpAaye1pShHJGrbABmjCfUTpfo",
        "width": 47
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/Jr-xP8Ygme3q5g4Cbga7PQ/KvNsUV_XgLhJeLFjbzTKGiZMErw_QBt8RHfY-Ns-AbaoCo9yIzMWEBjj76DIJAoF13ZTJgsQ4XsA8prRJ4FjsQdm0kflCMlI4HX-kFz5AGNV--fEGrTaInpjd5U-Q_gT8eBwWM3SWxQ8sVi85LGgV1z0t22tMcyDlySkh9zqBL6xoSINw3-BuOTXyVISQ7fP/6X4g2EfAhBMNnaGlUFpYdcYRdvjNEL6sKA3SIoo0rDU"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/SZvlpPg-s59_MvznZwVuVg/-qQ5UMev9sXgibsCQ5AsRNEiR7rX1-nkLwir6Ou5TxGTBnHdo0ONgtlJxCXqVer2bLjW1YkM6AxSe_WVxEm0yUCWPBwGUVRC1vY9vgubxt7QNF7BzSwBSpoLqkJlrZb2s2dsPszpudiWFlCYOgaT8K7EoR8q-nOL5zp00bNvhpilsZmZApcZFD1rcH-R38-l/D3gN3pFW9DtjyHwKpETx2mvTmUeauaF5hJLwKzxzY7g"
     }
    ],
    "Go to Resource": {
@@ -2604,6 +2667,7 @@
    },
    "Name": "Lost in Yonkers - Full Text",
    "Record ID": "reccHGtZjbohnOygN",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -2626,17 +2690,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/Hl_FAT5QdMCt9JILiI6LRg/BbPXJqcqkLBylnjr4s_qUHldzjgTenqiZ4Yz7WF7RArKi60MrTgiPruGYIDz5qOfR4beIjNI4YHsxfbG0bmM0nsO86J6gZjIIQanaS8A7uF-9HJTmUqRm29ex5xQZ6a6i5pC3and5_y38kzGpjewFQ/cDWkzMTxxPnoutzh4gXte59ZyW-B3M0CK9JUzJ1IMQ0",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/KdgD4_HRAPk1_VCHjSKg3g/aASLEfeoIGHC-xj2FkQtC_7A6GtPPilknfkvQ1gv0PZSH2uptUarfw0VyDSlLHj4DzLHjvifcFvsgmOt9nxWAWY9aH8nznLAmgUqleKvCVeRkkXDF1ldFNPpXgrlY6RdIejID2M0_0hS96E6YppTIA/V2DzH1bdpkv6-xDMTWX7e1Q3kqLdrwlKG1-wh1pfgE8",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/JmGiCqMcRLD2Hmz7iWJqNA/HjSUDyqxVBUqGsNGXvmY-eZyA60hzWzpumvC2xDX2rrvIJ72hrHHXFC3KmJxbEiYMwyRlUOZ_6eFV3jFXAIeXjRMyrA5LXweo_pzKtQ0BSSeOyDHsONx5eCd-0yPphgZaB4-RGc_id1N6fo0_E7pYg/m8IL1_oRMVLmsnyss9HEYbHBH2D3eJYrlaQGClCgkwM",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/cdxc65QDL--P4pfZiDCbUA/OoodnNH0CeonfpuNrhs_U-7VPew0YY5e0huifT2Onsvl6fOV_QoPPjnard2qUDb9f5EzLH0FEAwniY9qe1J_bTFrG38fBsd7sAwbRTqOJAekwWLW8KuPibTj1abJS30T_rxaSridKZeE1LifETzZDA/3oaYLQpSoQa356ZggjTvGonNGoeKyPzedCHNomJs7Lg",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/DJ6DOVQ87vRtEd1HclFfRw/jKfHk7o--GjTmnlIUHMGHV8amvV5oXaGpwjoUrjTf5Pz8VMJ4tk8K5u_A2B9OyFiy2kbUaCor1TEMO1BwzFxcFK_bgnyx_-zyWERerjfCh9fJAcEOnkQrDwRnOIKjMgfhvDJuZERCprus7Dg48fMvko0q0Q5phN_2pVAM2TPDdO1X_dmi5lOn6kp0k7XF1F7/-uh0CRiUbYSF62VTN4tNoaNqdCrhoJ3O-H3ibLFpMVk"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/HLvMts5RYKfaZvWSsP1wZw/HeLN06EYlk41jUnyKWDuFUgyCaV8y7Ng8fzbf2tWw2VhHIdWBDIp5-62m4iHfA4Sfdc9-_sDs7y1j6l24LVe_nwD8Uvfxt7BIdEYZT0bhxYzGhNmqJBglVPhq_B0p7jn-synxnma-JmVLLeRKuUfYSbndk-fCREaKD4k4NI4GoRuNXjnGcl0rWPdbLMtf4x4/ZLSeW9nsQD81jzOeyGk6Ur0yM7H9OO9tREl-IdmDtNQ"
     }
    ],
    "Go to Resource": {
@@ -2646,6 +2710,7 @@
    "Link": "https://www.litcharts.com/lit/the-birthmark",
    "Name": "The Birthmark - Lit Charts",
    "Record ID": "reccK2BwbbBnwogw2",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -2668,17 +2733,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/np4HIXDubJvQYXcDQAUk8w/iOje00YAx_jBZBb-iwFB7eQyqyQ0dD1cj58FpCO9bg6GrOdrNzvZ_YzKRPO_pRfiNkhiHALaLKICO3-cXtYd8RTbi8t4tqjvWLD4ngizbSaRc15oGhDpuwvx5jc_UdEtENtYldQxhyrf19PCvBGP5A/qqUNO0oKec7YwMgxsvjvUo7kXNE36hEzS5uIXlkj8hQ",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/4lQhx9xtSEABamwCFShXfA/kvIWWorgcO63hG3P6tZwzwmPhdGbOeu9WOitbBVLNhDcSji6aCBKRwwzfapqGaTxa4tbQx2BRcdA4TBuWUoZvJsm_S9NBRubcA_jO9jdB9WHVdy9lcWOfGwHrLvbyw7S6htMs4AkWKG7_GCuELyAtw/Is3-DbJsJJ_vsEX9rEb8OH7pTiZm8FKWfAJo8CXwNMI",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/gXjUXJuAeNwUxiiQiDDicw/bXxoBBdbDmSvXgRoehljT6HABK0W0Vm20IKtw_2auW8fSUADdDOgLq-Hm51ib50CLgilROL9BvAGNYeK9567NQUpbHvyC8uSPqtsU5w2H-C6SSGqMJ7LxzqdMB1XNN01TCAwaToBwu2MK_nIrfu7oA/d88jbC91Hrkx7AiDUHuScWnYSowjd2Pb_-WB49DwPwU",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/-_F886dNvmI5vKnOHgNUog/4dug7rDeGUL2RkmJ46vngdPqS0TmgWbnemClRnKaxVtobk2bRiQGZdwDSdPWvHP17zznikXuJn9FxmYfFwEfd34nzPHw6qulZXtwOjZwJO9XIK-p2YSQX6xdSuKqPtUwNbepGSzwwTQN-4kVm7Diqg/fGbN7UIZQFL5GFXBAoLFowNy3IdtnfBvOSgllA8iLmo",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/xrRcUw2aEL0L7HT_PqB26w/21_DboeeiRzGWTvll_YyYYqqF6tAdYOqa-k2MNtqr5m-Giz2AqlGAeaiTmVumE5mTtT6NEeSdjOC0utdeCuVHxKQxcVL1UADlO2mISRZnHqF-LvRfEk8x_o1YIM9zU3oWh2-128K6WiXCEPRIWVMoCDoxs7RJhKoipgXSiGXFcU-8rFTCfm3WcvwzeIej3GL/Jd7_3YRKVb1IN14Vh_TsK04x5zZzAlEflH8okRZ8YLc"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/Q34lfbr9RthdYbJPrwTXOA/uXxEgpiEEtdd6ai8ofzYGLa-DFpDLH1OESdU133VCGXLguh8dIa3G_nK4goOtV03CtViigRqyBSVPu4rbKOtx1ojiN-SuQEg7DCjqo4PUaOHohGWAZP-PKNLtOfWWtzdhghdiTPgHtSPFjh2-Zf-I0ZMC04V_5FIxOKaHVFVy5G0eCa9-DxI6zIisRc_GNUR/LHqclsyEe7K8hYnwR5bUh5d5RygF66Y1L0atO4voDRk"
     }
    ],
    "Go to Resource": {
@@ -2688,6 +2753,7 @@
    "Link": "https://www.litcharts.com/lit/rappaccini-s-daughter",
    "Name": "Rappaccini's Daughter - Lit Charts",
    "Record ID": "reccQ1fmnmJ3OR1um",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -2817,6 +2883,7 @@
    "Link": "https://interestingliterature.com/2017/11/29/the-best-anne-bradstreet-poems-everyone-should-read/",
    "Name": "The Best Anne Bradstreet Poems - Interesting Literature",
    "Record ID": "recdpN1OskdbH7Gnf",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -2892,6 +2959,7 @@
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_03_bradstreet_64kb.mp3",
    "Name": "The Prologue - Audio",
    "Record ID": "recfngH4KEJCZs63z",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -2913,6 +2981,7 @@
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_26_hawthorne_64kb.mp3",
    "Name": "Earth's Holocaust - Audio",
    "Record ID": "recfqC2FqGN17NQxj",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -2961,6 +3030,7 @@
    "Link": "https://rpo.library.utoronto.ca/content/author-her-book",
    "Name": "The Author to Her Book - Text",
    "Record ID": "recgFbzAFWuO4hUv9",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -3036,6 +3106,7 @@
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_10_hawthorne_64kb.mp3",
    "Name": "The Celestial Railroad - Audio",
    "Record ID": "rech9oQVTGyJqIKSx",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -3057,6 +3128,7 @@
    "Link": "https://www.archive.org/download/poemsannebradstreet_2606_librivox/poems_22_bradstreet_64kb.mp3",
    "Name": "The Flesh and the Spirit - Audio",
    "Record ID": "reckWwHKnjKqjMHTq",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -3133,17 +3205,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/DKW1NOTjqSZExJMH0ZqBXg/4uAQjPRChorSa9CFMo4-5H5Fq7lESwFOQ1OQwXBCDRR3NfHkTzPmdAVIaXZc1eAALC9QzVwkOL0hEhUuSI6OvZ1bCUQOvAHLdaITWYH4KeDzQkpZC5R8suzkqMRMYaYll9R_KCEQHsbMOkycBhFXdA/F96BFguk58po2zRRaKd2zcRh4MunokGr_91jAcg7rhw",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/jnKgHCbDDGqH7CclPP6cMQ/w0pOkgSixM27Bkl6w_8U9uTW2bc09QPTdN6Gdc27R2-fIq3j14G1KQgIw0j2RN5zLxyXaMOtNiRk8pG5cdDB0OnHFTqvETxykpnEk4USGv9Rpz4xNDtMnLUMitOKd2V8w_VNK-uD4zxAt_Ow-cY0Ug/iArgNIoe0lnIcAcryGLhjcAyAfqfHFiYq3DDW4Ch8ug",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/8myzTUrSFV7RuO8tnlKXcg/IYQLIZ2hHhuTUZ_V0osO-BRa3vf8-vJyKwRSeFy4lrwjIsaIfdROoczPWvUQPEMMaLCPANPTC9om1yt63OlzX9lDZ0hlwiQ5MdSRfVk80Trxv7HQ1yhWim54stg8yKf7shUu_Buo-CgWJL9V1a3V2g/hfbMD5QzBje7WOG0eOQ5ZqdNl8Uc4SenDoIccc6yWBA",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/2bAzONWd2O38qK5_xN9JLQ/jlh8499G8Q4LnWhgbvGY-oP3_aJVza6Dgnam6OlkAInA6ejhgW1yeN8bCTxcYTX00Ah32_I2aWSuksuyAv9hSe1qyFZJT1cPANyy9G-N-jfU-XvLp0kgT3-XRsXhHWQ7un_sDrk1KrCcSEWjOz6mcw/82IjklbcwnWqdzBIug8PmtMFMQwFV6T3k2Cgr-vuvH4",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/LbpE0qfOc2cB2YlYvCCxjw/_2R_ihiTpOlNj2VXADSdBbLwuwfeCrx565j2G-XZF0PiN6s123ncTUvbW6Vo55ampAUXWhfj0ouBv0FR6j4EwmM6iYjj7bjz5_VuhpIyCWJwkJvwfLctI500NZBga6yHRTynfN-QauuneTFvZyDnNYZA-lMLmspfrNUCRKX9M1M/Bs0qYVfkw5biwVKs_4ljJOoQi2IMqG7gcc7P3WsINfE"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/21ctNq1c5W-HWfjvjxqUsw/38TH08Tb-Vfw9FVehms_a1mdrKwI9tJxepuR0EueAMuljUlfXqUpl7uWi3vr_hypQhpU3pkrBVgudr20c3DRbiff4E0OcYcf-k92bbsSLeGd6UZDPsQFZjmmPjOInNz08Iv7s2njteaPbZnKzIQGey2iMoJBigdrWtmfeW5aBs8/mI0EYYYpNj2wAOrNbVihoVDoG9C6PRCs2h6NQUxmBjg"
     }
    ],
    "From field: Self-Link": [
@@ -3180,17 +3252,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/SMjCC6XD9t9f5yBHeeyyFw/8Kgvf4PS926a7Td4cECE8h0mnndxf4AU2HeHAgrfwLAV1VO-EDHcneDCTj4RP2qPLgEFLmF5rjHoy3r1Uueo2TgkeXsQs4zKhaYhEQJQ2k_E1F1vDxcKoHb04FMVryPHDGzm9jZfAUBNAOlWq8s34A/WiCvDK-ccveJtY0eiJc780lZ71vYk0e3wnApub4VADU",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/0Z7FV5SbyU1Oy5RwGZ2Cow/LXci4yrZmCEhhwF3hWQEF570Rp7Tw22PFu35VbfNTsIsLjAHf2jv3smL0rD-7vj7xwQn1ijyZDYekEl0RqWE6z89xp9pamGYLtFPy-x5nZZ-hlsf7is9xNgSNm1FTGvRhlCNonmtsKxQz4Z5lPQnlw/sIagwWmoRyrkqA-bDg1FvQhGOOax53UwfG1DzjgOJtc",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/9zNvAXhp7bNRko6KrHgU1Q/RcZEb4-vfb-eeUSffOC0q-6zK5-9EfjR62EtW4AystmXnnyoAHXrSbKpLO4EQScWRJZT0czSfknbAw4ynTB9HyijuoTznBnzUYvQT9N6ibv359cR0kUccHQE8AdVixTx0ZvWKQ4f1ROKiqPfQiou7Q/VY3FwUcvosa9OpDCzNHlbZbYj5xKN4W1Sn8wlgTmbVU",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/lZCHZ37-AbPP96gU9vlxXA/IPhqQ-uDIyTaJP5AT0G7Rzvzq0OyqwsFNdajs4KXlKqQtKQKNskVeKz8H-SHIYcpoTZY6x7XVSCg1X2qPnbZ7SmcW7qlkMrZY62uayZjZUWXc8rnPWTyXgRhHRvaLV0jmqQABhYNU63099woW412Cw/Z6ZYWSDtb9avNEErRxmmI4CCWB2SnLLAmQVCan-bTqg",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/L8Qn0z1HhqtxUfvT2TxNtA/jLge800EkcrrDfx7VrMQpe3qST9lU1RSKblSTOXQ93oil7TWl3yQdo8xy_XYpCGsyI6mLi5s25Q7V5WEGDD7U6MaNQXuM2d_UeDKttqJiRRcmvAJMapK59u7_pD1jRJmxXu35q5AEJRUc5-Y2lkUz0GiuAGDMDEVEi0Xr6-y8Yc/Xioqo28xSP6qxVxbOv5KNwi8xxuqMK4emp6UYeHva5s"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/HWTN2LNpeT9fQ1hQGuISEQ/QgcmWE6kAKtZJjrKkNM1qTO74ha52EdU3kIg6EvunhjzRPql85eO6V7HpYsiCtT2aeCebkhMcblotqzefV9cmogUiHjAA62_7NJP52c6SNbui2Slcw6wqgoI1dPFyWq4BdCPECyE-uKtL8yoLvJWjP6eChjWr6JJZMSwxUwUEbk/d4fZYq5VCprZjjVAhy2b1PQN19ts1k9ENvySM8voxUw"
     }
    ],
    "Go to Resource": {
@@ -3199,6 +3271,7 @@
    },
    "Name": "Bradstreet Poems - Full Text",
    "Record ID": "recnEJFlmq1IHvMZQ",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -3247,6 +3320,7 @@
    "Link": "https://eada.lib.umd.edu/text-entries/here-follow-several-occasional-meditations/",
    "Name": "Occasional Meditations (incl. For Deliverance from a Fever) - Text",
    "Record ID": "recq3SyINVQmUWIHL",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -3322,6 +3396,7 @@
    "Link": "https://www.flyingcarsandfoodpills.com/the-celestial-rail-road",
    "Name": "The Celestial Railroad - Summary and Annotated Text",
    "Record ID": "recsJQVjSCWeDWOvg",
+   "Share File": true,
    "Type": "Summary",
    "Type Text": "Summary",
    "Work": [
@@ -3343,6 +3418,7 @@
    "Link": "https://www.archive.org/download/mosses_old_manse_1201_librivox/mossesfromoldmanse_17_hawthorne_64kb.mp3",
    "Name": "The Artist of the Beautiful (Part 2) - Audio",
    "Record ID": "recsM2Hs1Fa7JgEEZ",
+   "Share File": true,
    "Type": "Audio",
    "Type Text": "Audio",
    "Work": [
@@ -3419,17 +3495,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/lZgQf1sO4YsEISVfWg8Wwg/JRDFR2CzMSwPKMYnstrd7EKknU1vYy0tj3YosyfajgqWl02porua3Er-cTcBcmN5eyiWS4GqtxTqko9bV_w7ZxC7iV56wwjncsOx2A2NQ1ZDB9Qk9YKp45kwByinzCMqYji-ffzv8N6c-96Z9vjZdA/YcO0C75N9wv4tmBz028hqoxLG7htQQ787ZS7ctH8YG0",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/-dVQOy_kW-i6FzfTS2rANw/pvbIikigMVA-p0yYkqU3Rylj673vG54eJzCWrlTYojJKAtoUb2JbvaAdAXaAnOC7cXmslO4bfn3FwFpi8LMwelRbz5h1qiS-sn8ZlvAJbmpWWc4H0DHi8Lr6lYrbOEmEa5oSa0fzDxX3b1Fh7jP_Cg/EYe918hRPuCSry_51I77nYl9BpcFGuw0lz8Ao_7GFL8",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/ZkknTD28KDdcEvt5-qED8w/PaKPfLgRXYf7WQ2dNI5wZXNRDN1dc1hyeLek6AHayphvtvtHaV68MNaUqRM4Toh8qIZr8KQlT27f-HLSmRQZPZTeInHsd0y_nh3WjiZbAOceRY1KJsKHG7luUp1NwjsACVqbw0Jo9NowOSKrOl_GDQ/2Po33ap3LubYJvt4ZgYcG9Uo6hZ2dEZURJXltXXTWJY",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/ePl9flcGHtaRDBhwMp4qGw/Gzvyg0zyu6ui5MYqQSGl6NJAhsz3iTYZnMFJTdI-rUo9KL0YxU4AA2ZKmEj1-U-UQI0g7KlWEa1f8NuNoCIoQZKrdnhc1btxUvswng5ipoRqrZrIhOdCxOLKwktKUnmVfTwLM89QCfRAAV0C6qcPoQ/kmlv7QHhatwchZcdmyJ1zOHbkH5dho-8pbQi481DLZ4",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/kSV6rn3OaPKy6Zft3pFOaQ/ahQF594QhOZd5BF1IwqC_1ZaaUpTLrc_6mjAshCIuoBEaYb0H0XQbU3at4MoQXKT595UeILGr-J1PrJgW6TPvK50h4zw0kVcygQ121m1yks5gFw8BhiK_psBKUoqiFFWF8NFWeFM1t1fQ9A8vwLyWrv6x3bH1I3IO9Mfgroqt-k/xiYkKI_F6PEBh2pPCNYnHVomHrXS2Nn2BeAN7XCUsI8"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/LVzxO2BKrMB7cabb7rJJQw/Ug2Ur8y8kBNFnxY7qGDfHeo-FhcC42vO4KCHbRJppRVTe_RLEi28CMQGUE-JjQdkeayZg_HjnJtUaHoGVjFC67a5q7rTVtWYNHTapURJ1ZT1Cu_sXe2SW7qgx094CQgB0QXufsCE8UJ_LxudLLC7oSEXLHbPYTYG9M-vY0hB-nE/WNtgJ0zPRH314pw2Q2lYIwmBYjjG_yboIouETppf4ig"
     }
    ],
    "From field: Self-Link": [
@@ -3521,17 +3597,17 @@
      "thumbnails": {
       "large": {
        "height": 724,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/wXenJeAPXXp3wYsufcD--g/Qx1YSnv2oQWpXhJFDQ94XV6drFL4DutqIaGzt7R0tUQD0tYkXi_XMVMbclCvqVjPTKQoctkL9oftqj5Iv2QAdh3A20HhcwNKTfdy81MmgEAi2YDO8nz90ICpsDdM5_WmVChSMLB2vGhW3QGsl60XBg/Q7SoFv8662IJA4zKrmVYy3njd3rg59XZ308MPPKhPNo",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/9xC8vowMXwxFbBfEOiO4Og/YHZc0it0htq_Swrax3Fhy6GNY9YvXPsMfvj0n5N0hmhp-hrtB-u1Qu9AY6_5Wvy-YNwopLBQMPMDoZzwWd1xD2Z-dqjhMJEwNVGdtJi3b5pgwlezOUQiuMvWF_ywJzFyvUXn1Ec281xJm4MFlFpZQg/dlt6-9-F1awVukf5AnfCAtZEIrm2HY08lYCcTbO18E8",
        "width": 512
       },
       "small": {
        "height": 35,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/w-_sXgiyCEBc48ohFE48Cw/KuZa_eIoEj0QKKxzvGsft2M1myBrlW4CVH3qwVDuasQA3Hgh6xH9ppETauoKJGj8JDl56g1oSpnnwEQrdqAh_D5sUolempb9JDlvfS-24TA4HsgzQWOIbhYXaGTTzxYxIAvoY8LuHxYh-pF77YcgZw/V1zvesOJ2py7Jk4wMD54arMyx_a6f6RBGTPmfZhIvL4",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/3ZpqNMkNuFspdtimDJKtPQ/Nkgfys3MDa5eRErXsmygS7mjkOFURkbRq-x320OOAbIHgXCEDETEnnXxrWzLOzLsasmCgqGd3QF2ddxRRoGg_FYOwESQWSIIDIaHR8j7YY14ctdqhISATNWkZxFR0-X2PYGye5y3IhkAQHefa8SNtQ/jffenRAqTJmTKNaoGKKrbvjzQ2QiWG8o1EninCSAChY",
        "width": 25
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/240zQyaZrStMZOFC5o1rwA/3CuB6p7Hga9DM10gT2LReK6UOu6FstphLExnPrq_AE9iHxnkzdrvsTZsFls1Uuhxba2NFKvL7D5CU5WmeXFNUPtbbdFG8JV6BIA5DiaME7B_9Mil7xuNvdJaa62jaWnHdlb8aDXIktqbWIj1KNCt4hX4KHam4SDQBPt3y0TB9d8cBsSaPs5yMa7Q7Nmq9cyJ5DwveXfFaUeFYcRwsNOC5Q/e4Wskh6sLWUoRc7R4Lc1yP_TxwCa-GB2k7zoDx0MQtQ"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/p9qlzZhYINlmKEkRjQu3_w/4MdISr4oXt8z5uLuPSLDXWi0KXLFarpddVCiTeLC2efo2202yZ9vcj5PBvD2GlCiHMExtfzroXZHjbfgFCGfXfi3b0_mBARFQYPXGXNFHItiZAelRxXJf8TSLueIanoZo_7SZAoqYhap3DNjRnL-Vq4-BXfYhFZd-U-AoE9Kgv5gSm505ZbIZfDoErqHrV1w8VuOpbbf5ttvCq4JKZkzsQ/BSCOGYSc1htP-KNyM9E8uSNM5o9zccRYekNjMISlTYw"
     }
    ],
    "Go to Resource": {
@@ -3540,6 +3616,7 @@
    },
    "Name": "The Prologue - Poem Analysis",
    "Record ID": "rectGAIypIzTXlTtb",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -3562,17 +3639,17 @@
      "thumbnails": {
       "large": {
        "height": 724,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/4lrK-8bojsy8WfvtXou21w/zxlBiFshzgmltmDT__FzGSwcxaChJSJBlXj1VdSmZMZQ9VzPGNO2yq0oTGtif0ZYveQO6nu2vom7VS3nn5WUppym57uC_qg-bb4_Cs5d6mv5YZ9L9OoisIgPvf2DkoxyrEOLHvLuIPDOsFNjik2obw/gc3xFQUp1pYVoBjt9vM5FmVVsP4ks3_WG_bcKt3XXEI",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/NTjh-xa1wwLBdOR6tzVwfg/LNmzDhshkeBdmKuxWu8_RRDYrusSY6qhq25LQRuF5amPKGSof7kWl10V7CDRtrdC1s6Yn9SrtCL-5mcOk9J6WVXscGWKBLJqCY5hc8DPbDe7Uya-ChuSk4c7wqKR579bdVsK-j7lsWKczPh6gzNE3w/fndDcf8QRwF3TKefZQwq1hG4JJY09vlLBUrvJd_jorA",
        "width": 512
       },
       "small": {
        "height": 35,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/Dt3Mp3oMADY_Hju2y-GEiQ/78G15B9dXsbEMtwNCE6DZwq62pistw288HXXftpQ3dlkzMi-yod56jdYsJSSARfnbOOMpwZLQtUkaEeum9mQSeHLTg27kaZEpOXs3gU_X0JiPs7kMx928vXKb2uQEnF0r0icdN8sxicXuRfW1tT6RA/fZTD6AKMPvC9zJDr_IKLTiKnZ-gQOI1sMs73V0vgnWA",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/8BcBXIgbIwPhVLb3q4TInw/qFyl9p5gEoCtvy2MmZncFaP095SC71UeL54JeWiA0vc7b1wSSDPpasJM6thqCrmVwd4v70ILD5Ip_1cczEtFhaxXyMySPLwDiJh1XoBWvKGnC0aR5ikFFxb_kVxepCm7bcFipywz0eLb1h3vqKF0sQ/QrguAgTOYZ3y4WpZpo79zJYHtKpJbo7o2ANh-pxtbaM",
        "width": 25
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/N-PzApKvfs32e_-y4xBJmg/jixJLgzdhabe20zMvozQbSgMfW6ib2vrVzDIbPucaO4b9bwg1rEy_jSMPI5To_wV22ZGdw4Ex6u7t6_wrIj_GVeVXL8KNccqTLJ7a2g7DWYArzxMeTrRzW70Vj2lbZgx4uC_sogRgProqZjQcLorUOBCWP6NQHr6hZSJJMvoISDdlla2D0xi29j7PZ7j97WTTN-_A-15wz5QW_N_hIq8jCo42cybXdJ2mxzIHA5Gctg/fVOKNav4-Iuc5hP15dGq4VuT52DiKJqb8DD-s1L95Fc"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/Gjl37Js8SywrwrNlOsvGxQ/44t96ifoWz1Vnb3aHaxuXGcAy9PIA0ydZTAtOuaCG2sJYj5WPoozyVeQc0k7cjmbmvbnO1sNzqLRpsPmi_vlKstg1dMq8O3XrBgjvNng68xblK9IxZKHJGlSwshqETDIoZKPDCSLQW5QgN9G5PFBKmtUVGlEddR7bmyxd_pkSLtY4DMpOkWh2VBroTkUCxj575dJJlpyBP07Irxj5jMKj2njafJtSvjf0aFOhm-aLcI/BwoOkJHvRyRDyZxr0XepFzHPiSsXCctcx34mcoSRRes"
     }
    ],
    "Go to Resource": {
@@ -3581,6 +3658,7 @@
    },
    "Name": "Before the Birth of One of Her Children - Poem Analysis",
    "Record ID": "rectLZWSNetx6XniB",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -3602,6 +3680,7 @@
    "Link": "https://www.poetryfoundation.org/poems/43703/in-honour-of-that-high-and-mighty-princess-queen-elizabeth",
    "Name": "In Honour of that High and Mighty Princess, Queen Elizabeth - Text",
    "Record ID": "recu2Jx5yYrBgHbfc",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -3624,17 +3703,17 @@
      "thumbnails": {
       "large": {
        "height": 663,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/d4DT4oAnzJWR5Is0obHPow/aM3xesqBFyFojKOQf7zj4FUFkzIEH6usrEQVEx415mpWh9q3yN1zgX63LfLp52JgCX63nGNuRopXhBW0c-2OaHxe4GXCsYH8D-mzDNJBWRjS6MmoJrEK3uWXmwq2b6MHGUc_LFYZcSE95iLnuE521A/BWE2d325h6Q0St3fX7ruok6SHq_5PLJ02gMYSauvUe0",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/8ZbxtnfyWUJN-sXWIZDNQQ/teNigZy5aN8OHwF_dKw6Ln28Ctzd7SXetjRHA-3n-ElX3pWUEwBEApWxXCObguWqyZJ6Vb-3LPbuZBGXQn7cFB9-rb139UqwrQb4_Yo6PhFfUY4lGe-vW6orw1pv9MIFMsFypIeqT57NoGnrns4jbw/9m-kKMXVB7L7jX1FPEg3sqIspTRxdVw3grvgjTS_Igg",
        "width": 512
       },
       "small": {
        "height": 36,
-       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/iUMethfC_3qHsNvXKSSvMA/77vmSK-UJ7a-QFuUoyOGqa1R0HefYtAqhLsgktMGYNacMutl8ScbWYnCAbMoSef9GoN88tPTR4Krxbl91lPjyo117mUcMMK1gUxTvl_ZLhefi29saz10ypL_EiRSUcjWPoiTJwElrwL_t9fH83qGTw/BO5GtOuEPIcc6MDWkl4pYwfv7QJTMCYpvYw5_a800Cc",
+       "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/VIq429DTSYC25tYTej7s1Q/wPgBp0xqk1RIIka0C7UUO_ERj65dYst7sb1C-AdHdrxO5p1sL8q8XI_WLtNMJzH4KM4-5aZj6_KhoHHDtueg_ykUgYU8Ru4mBdOgsn_vHtxpoVeIo4IC8oEpoq_bqf36Oelx-Hwq6yRrKjJu8K0fRg/CngKGdyjZKWcKaK25s2UWKkj58huSbu-jfvEdhlbBZs",
        "width": 28
       }
      },
      "type": "application/pdf",
-     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1794765600000/H0kfjgTuHmjVMOaZx52kBA/J_-dFXZ6DtyveSjGKqqqHv1kxLfbQuJpwjPNsQcAD2H0TkPFGT4UV7am2URKxtKizhsOtoazGRvlZp_sxQ1_jLgAk5b5hLfVsIxlFussbeZodI8Feb4qKqWO29M6Rj3hcfRBCltmBvBRYCWPtEU5sXXRvJdyFGa-ruEz5dkhtxJNF_oAVBjj49d9d1TLXcRaMgIgMdgJA3RZqy_sWUN8Ig/c86VeIrdYaPEzxBLHY9zDcIJ0a9eMIBxNAKRK_d9fdo"
+     "url": "https://v5.airtableusercontent.com/v3/u/59/59/1795377600000/vBecgGtdRIo7_8zDcqJKZg/ReJ2cRfgM46Gq0UBlR9mx2rmdVCet23xLuOyDaVYmLvV6eCz9HxzYlhT_a8AFzoCxG6lS6SmKEj4Npa5QjlgbBPBwYTbGT3-xzHsf4-Wec7UhQXrM5eXDQ0RL_Zn9hS_s7BepFFj02__fUFpt8SOhjBKgqUfvF_YyQxrJRCELuKLR7keWc-uV1t1kpR6U0-k85d3Og4_UmDBB0lhFIjHEg/dA-yr_SBba8opeqtgVJUvAd3MKIzxPG3OJAxtwGootw"
     }
    ],
    "Go to Resource": {
@@ -3644,6 +3723,7 @@
    "Link": "https://www.gradesaver.com/anne-bradstreet-poems",
    "Name": "Anne Bradstreet: Poems - GradeSaver",
    "Record ID": "recuEFwsuP8H5vZGi",
+   "Share File": true,
    "Type": "Poetry Guide",
    "Type Text": "Poetry Guide",
    "Work": [
@@ -3665,6 +3745,7 @@
    "Link": "https://www.amazon.com/s?k=9780307741219",
    "Name": "Purchase",
    "Record ID": "recuTCkQMSoy8RjqR",
+   "Share File": true,
    "Type": "Purchase",
    "Type Text": "Purchase",
    "Work": [
@@ -3767,6 +3848,7 @@
    "Link": "https://openlibrary.org/works/OL35420W",
    "Name": "Borrow - Open Library",
    "Record ID": "recxqfmuLyyMcvI68",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -3788,6 +3870,7 @@
    "Link": "https://www.gutenberg.org/ebooks/13707",
    "Name": "Twice-Told Tales - Full Text",
    "Record ID": "recyO0EwFSSNwwbS8",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -3809,6 +3892,7 @@
    "Link": "https://archive.org/details/worksofannebrads00brad",
    "Name": "Works of Anne Bradstreet (Ellis, 1867) - Full Text",
    "Record ID": "recyYeoEy8Qd5KmtQ",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [
@@ -3830,6 +3914,7 @@
    "Link": "https://archive.org/details/cu31924020766345/",
    "Name": "Poems of Mrs. Anne Bradstreet (Norton, 1897) - Full Text",
    "Record ID": "recyh3JhcgaUQCYur",
+   "Share File": true,
    "Type": "Text",
    "Type Text": "Text",
    "Work": [

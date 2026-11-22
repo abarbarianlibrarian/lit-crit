@@ -532,14 +532,14 @@
   "fields": {
    "Choice A": "birth and death",
    "Choice B": "morning and night",
-   "Choice C": "spring and autumn",
+   "Choice C": "seedtime and harvest",
    "Choice D": "war and peace",
    "Choice E": "winter and summer",
    "Correct Answer": "winter and summer",
    "Correct Choice": [
     "E"
    ],
-   "Full Text": "In Bradstreet's \"A Letter to Her Husband, Absent upon Public Employment,\" the zodiac signs \"Capricorn\" (line 12) and \"Cancer\" (line 21) stand for\n\nA. birth and death\nB. morning and night\nC. spring and autumn\nD. war and peace\nE. winter and summer",
+   "Full Text": "In Bradstreet's \"A Letter to Her Husband, Absent upon Public Employment,\" the zodiac signs \"Capricorn\" (line 12) and \"Cancer\" (line 21) stand for\n\nA. birth and death\nB. morning and night\nC. seedtime and harvest\nD. war and peace\nE. winter and summer",
    "Name": "District 2026–27 Practice Test 3 #47",
    "Notes": "The sun enters Capricorn at the winter solstice and Cancer at the summer solstice: his absence is winter, his return summer.",
    "Part": "Part 2",
@@ -979,6 +979,36 @@
    "Test Year": "2013"
   },
   "id": "rec0Ad3slNq0nw9Tt"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recpaesuZQaeOuor4"
+   ],
+   "Choice A": "Arty to Bella",
+   "Choice B": "Arty to Jay",
+   "Choice C": "Bella to Arty",
+   "Choice D": "Jay to Arty",
+   "Choice E": "Louie to Jay",
+   "Correct Answer": "Arty to Jay",
+   "Correct Choice": [
+    "B"
+   ],
+   "Full Text": "The mischievous scheme to sell Grandma's braids \"to the army for barbed wire\" is proposed by\n\nA. Arty to Bella\nB. Arty to Jay\nC. Bella to Arty\nD. Jay to Arty\nE. Louie to Jay",
+   "Name": "Wk 1 · Lost in Yonkers · Act One, Scene 2: Grandma's braids",
+   "Notes": "Quotation speaker/addressee. Act One, Scene 2, book pp. 40-41, late at night after Eddie's letter; Jay answers him.",
+   "Part": "Part 2",
+   "Prompt": "The mischievous scheme to sell Grandma's braids \"to the army for barbed wire\" is proposed by",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Lost in Yonkers",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recihHOGCdbc79QIe"
+   ]
+  },
+  "id": "rec0C48MElsqxukTT"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -2169,20 +2199,20 @@
    "Choice A": "alliteration",
    "Choice B": "assonance",
    "Choice C": "consonance",
-   "Choice D": "onomatopoeia",
+   "Choice D": "internal rhyme",
    "Choice E": "sigmatism",
    "Correct Answer": "alliteration",
    "Correct Choice": [
     "A"
    ],
-   "Full Text": "The repetition of initial h sounds in \"Her hardest hue to hold\" (line 2) is\n\nA. alliteration\nB. assonance\nC. consonance\nD. onomatopoeia\nE. sigmatism",
+   "Full Text": "The repeated h sounds of \"Her hardest hue to hold\" (line 2) constitute\n\nA. alliteration\nB. assonance\nC. consonance\nD. internal rhyme\nE. sigmatism",
    "Name": "District 2026–27 Practice Test 3 #63",
    "Notes": "her, hardest, hue, hold.",
    "Part": "Part 3",
    "Poems and Passages": [
     "recNxn3K3MVBYZxor"
    ],
-   "Prompt": "The repetition of initial h sounds in \"Her hardest hue to hold\" (line 2) is",
+   "Prompt": "The repeated h sounds of \"Her hardest hue to hold\" (line 2) constitute",
    "Question Number": 63,
    "Source": "Generated",
    "Status": "Draft",
@@ -2284,6 +2314,45 @@
    ]
   },
   "id": "rec0UnJIMQkRWW392"
+ },
+ {
+  "createdTime": "2026-11-16T16:56:48.000Z",
+  "fields": {
+   "Authors Link": [
+    "recSzI12q6erohUw3"
+   ],
+   "Choice A": "curtal sonnet",
+   "Choice B": "English sonnet",
+   "Choice C": "Italian sonnet",
+   "Choice D": "Spenserian sonnet",
+   "Choice E": "terza rima sonnet",
+   "Correct Answer": "Italian sonnet",
+   "Correct Answer (Term)": "Italian sonnet",
+   "Correct Choice": [
+    "C"
+   ],
+   "Correct Term": [
+    "recOIg2yoSd116rqy"
+   ],
+   "Full Text": "Christina Rossetti's \"Remember\" is a(n)\n\nA. curtal sonnet\nB. English sonnet\nC. Italian sonnet\nD. Spenserian sonnet\nE. terza rima sonnet",
+   "Name": "P3 · Rossetti, \"Remember\": form",
+   "Notes": "https://www.gutenberg.org/ebooks/16950 (Goblin Market, The Prince's Progress, and Other Poems; read via the GITenberg mirror). Clue: none. Octave abbaabba, sestet cddece; turn at line 9. Form & stanza classification.",
+   "Part": "Part 3",
+   "Poems and Passages": [
+    "recriL3vceg4sYGtG"
+   ],
+   "Prompt": "Christina Rossetti's \"Remember\" is a(n)",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Christina Rossetti, \"Remember\"",
+   "Terms Link": [
+    "reccZbkY4yXWoLxZd",
+    "recxDjeIESX0lLAwN",
+    "recOIg2yoSd116rqy",
+    "recJfZljlvpHBVtxH"
+   ]
+  },
+  "id": "rec0VC9Fl7A0Lk6Vq"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -14388,6 +14457,35 @@
   "id": "rec3PTTctYLKqQd5t"
  },
  {
+  "createdTime": "2026-11-16T16:56:48.000Z",
+  "fields": {
+   "Authors Link": [
+    "recSzI12q6erohUw3"
+   ],
+   "Choice A": "keep the plans they made",
+   "Choice B": "marry within the year",
+   "Choice C": "pray for her soul each day",
+   "Choice D": "remember her and be sad",
+   "Choice E": "smile and forget her",
+   "Correct Answer": "smile and forget her",
+   "Correct Choice": [
+    "E"
+   ],
+   "Full Text": "In lines 13-14 the speaker concludes that the one she addresses would do better to\n\nA. keep the plans they made\nB. marry within the year\nC. pray for her soul each day\nD. remember her and be sad\nE. smile and forget her",
+   "Name": "P3 · Rossetti, \"Remember\": the closing wish",
+   "Notes": "https://www.gutenberg.org/ebooks/16950. Clue: none. Lines 13-14: \"Better by far you should forget and smile / Than that you should remember and be sad.\" Line/passage meaning.",
+   "Part": "Part 3",
+   "Poems and Passages": [
+    "recriL3vceg4sYGtG"
+   ],
+   "Prompt": "In lines 13-14 the speaker concludes that the one she addresses would do better to",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Christina Rossetti, \"Remember\""
+  },
+  "id": "rec3PlO3YWcIZnuDB"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Literary Terms",
@@ -15604,6 +15702,42 @@
    ]
   },
   "id": "rec3jUVdzq4HFwidr"
+ },
+ {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Category": "Literary History",
+   "Choice A": "Beat Generation",
+   "Choice B": "Fugitives",
+   "Choice C": "Imagists",
+   "Choice D": "New York School",
+   "Choice E": "Spasmodic School",
+   "Correct Answer": "Fugitives",
+   "Correct Answer (Term)": "Fugitives",
+   "Correct Choice": [
+    "B"
+   ],
+   "Correct Term": [
+    "recQVYInzAuMZ12VC"
+   ],
+   "Full Text": "The group of poets and critics at Vanderbilt University, among them John Crowe Ransom, Allen Tate, and Robert Penn Warren, who published a little magazine of verse from 1922 to 1925 are the\n\nA. Beat Generation\nB. Fugitives\nC. Imagists\nD. New York School\nE. Spasmodic School",
+   "Name": "P1 · Groups, schools & circles · Fugitives",
+   "Notes": "Handbook: Fugitives, The (Terms table). Tier: State (rare; not keyed in the released bank). Agrarians left out of the choices because the same men later formed that group. Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "The group of poets and critics at Vanderbilt University, among them John Crowe Ransom, Allen Tate, and Robert Penn Warren, who published a little magazine of verse from 1922 to 1925 are the",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Groups, schools & circles",
+   "Subcategory": "Groups, schools & circles",
+   "Terms Link": [
+    "rec3QzFHctsIhKJde",
+    "recQVYInzAuMZ12VC",
+    "recUJnrhY8mQQsS7p",
+    "recV3nPpS8RzyoVWv",
+    "rec9WwAnWSyaC8FWR"
+   ]
+  },
+  "id": "rec3jiOA3R1OkgstK"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -17795,20 +17929,20 @@
   "createdTime": "2026-11-15T14:36:20.000Z",
   "fields": {
    "Choice A": "Zora Neale Hurston",
-   "Choice B": "Carson McCullers",
-   "Choice C": "Flannery O'Connor",
-   "Choice D": "Katherine Anne Porter",
+   "Choice B": "Flannery O'Connor",
+   "Choice C": "Katherine Anne Porter",
+   "Choice D": "Marjorie Kinnan Rawlings",
    "Choice E": "Eudora Welty",
    "Correct Answer": "Katherine Anne Porter",
    "Correct Choice": [
-    "D"
+    "C"
    ],
-   "Full Text": "The twentieth-century Texas-born writer whose stories include \"Flowering Judas,\" \"The Jilting of Granny Weatherall,\" and \"Pale Horse, Pale Rider\" and whose only novel is Ship of Fools is\n\nA. Zora Neale Hurston\nB. Carson McCullers\nC. Flannery O'Connor\nD. Katherine Anne Porter\nE. Eudora Welty",
-   "Name": "District 2026–27 Practice Test 3 #14",
+   "Full Text": "The twentieth-century Texas-born writer whose stories include \"Flowering Judas,\" \"The Jilting of Granny Weatherall,\" and \"Pale Horse, Pale Rider\" and whose only novel is Ship of Fools is\n\nA. Zora Neale Hurston\nB. Flannery O'Connor\nC. Katherine Anne Porter\nD. Marjorie Kinnan Rawlings\nE. Eudora Welty",
+   "Name": "District 2026–27 Practice Test 3 #4",
    "Notes": "Katherine Anne Porter (born Indian Creek, Texas, 1890); Ship of Fools (1962).",
    "Part": "Part 1",
    "Prompt": "The twentieth-century Texas-born writer whose stories include \"Flowering Judas,\" \"The Jilting of Granny Weatherall,\" and \"Pale Horse, Pale Rider\" and whose only novel is Ship of Fools is",
-   "Question Number": 14,
+   "Question Number": 4,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -17953,6 +18087,36 @@
    "Test Year": "2018"
   },
   "id": "rec4H4jwZTRPEOIcv"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:34.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Choice A": "a broad-brimmed Quaker hat",
+   "Choice B": "a false black beard",
+   "Choice C": "a new wig of reddish hair",
+   "Choice D": "a pair of green spectacles",
+   "Choice E": "a sailor's tarred jacket",
+   "Correct Answer": "a new wig of reddish hair",
+   "Correct Choice": [
+    "C"
+   ],
+   "Full Text": "The narrator of \"Wakefield\" supposes that, to make himself \"another man,\" Wakefield buys\n\nA. a broad-brimmed Quaker hat\nB. a false black beard\nC. a new wig of reddish hair\nD. a pair of green spectacles\nE. a sailor's tarred jacket",
+   "Name": "Wk 1 · Hawthorne · Wakefield: his disguise",
+   "Notes": "Middle of the tale: \"We may suppose him, as the result of deep deliberation, buying a new wig, of reddish hair, and selecting sundry garments, in a fashion unlike his customary suit of brown [...] It is accomplished. Wakefield is another man.\" Text: Twice-Told Tales, GITenberg mirror (508.txt). Region/State story.",
+   "Part": "Part 2",
+   "Prompt": "The narrator of \"Wakefield\" supposes that, to make himself \"another man,\" Wakefield buys",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Wakefield",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recTt1S84QNrm48Ik"
+   ]
+  },
+  "id": "rec4HGDet9uVFVyhC"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -20311,6 +20475,40 @@
   "id": "rec4sATf9O5GNbPMx"
  },
  {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "pun",
+   "Choice B": "synesthesia",
+   "Choice C": "tmesis",
+   "Choice D": "understatement",
+   "Choice E": "zeugma",
+   "Correct Answer": "pun",
+   "Correct Answer (Term)": "pun",
+   "Correct Choice": [
+    "A"
+   ],
+   "Full Text": "In line 15, \"feet\" means both the child's limbs and the units of the poem's meter, making it a(n)\n\nA. pun\nB. synesthesia\nC. tmesis\nD. understatement\nE. zeugma",
+   "Name": "Wk 1 · Bradstreet · The Author to Her Book: 'even feet' (line 15)",
+   "Notes": "Clue: definition (double meaning described). Line 15, with \"hobling\" in line 16.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZACh2JfoRWJiWv"
+   ],
+   "Prompt": "In line 15, \"feet\" means both the child's limbs and the units of the poem's meter, making it a(n)",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Author to Her Book",
+   "Terms Link": [
+    "rec7sYQFrwoC8SFaH"
+   ],
+   "Week": "2026-11-16"
+  },
+  "id": "rec4sqzqNaEhnMpuR"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Literary Terms",
@@ -20952,6 +21150,36 @@
   "id": "rec52cRNt4oWiVie5"
  },
  {
+  "createdTime": "2026-11-16T16:46:53.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Choice A": "a length of sable gauze",
+   "Choice B": "a square of dark linen",
+   "Choice C": "a strip of black silk",
+   "Choice D": "a widow's mourning lace",
+   "Choice E": "two folds of crape",
+   "Correct Answer": "two folds of crape",
+   "Correct Choice": [
+    "E"
+   ],
+   "Full Text": "In Nathaniel Hawthorne's \"The Minister's Black Veil,\" Mr. Hooper's veil, on a nearer view, seems to consist of\n\nA. a length of sable gauze\nB. a square of dark linen\nC. a strip of black silk\nD. a widow's mourning lace\nE. two folds of crape",
+   "Name": "Wk 1 · Hawthorne · The Minister's Black Veil: what the veil is made of",
+   "Notes": "Opening scene, 4th paragraph: \"On a nearer view it seemed to consist of two folds of crape, which entirely concealed his features, except the mouth and chin.\" Text: Twice-Told Tales, GITenberg mirror (508.txt). Region/State story.",
+   "Part": "Part 2",
+   "Prompt": "In Nathaniel Hawthorne's \"The Minister's Black Veil,\" Mr. Hooper's veil, on a nearer view, seems to consist of",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Minister's Black Veil",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recTt1S84QNrm48Ik"
+   ]
+  },
+  "id": "rec52ggewykg1K0Wo"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Literary Terms",
@@ -21251,6 +21479,36 @@
    ]
   },
   "id": "rec567WhuofWqnZ9o"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recpaesuZQaeOuor4"
+   ],
+   "Choice A": "a boxer in training",
+   "Choice B": "a buddy in the navy",
+   "Choice C": "a policeman on vacation",
+   "Choice D": "an ailing night watchman",
+   "Choice E": "his boss's chauffeur",
+   "Correct Answer": "a policeman on vacation",
+   "Correct Choice": [
+    "C"
+   ],
+   "Full Text": "When the boys stare at his pistol, Louie first claims that he is only holding it for\n\nA. a boxer in training\nB. a buddy in the navy\nC. a policeman on vacation\nD. an ailing night watchman\nE. his boss's chauffeur",
+   "Name": "Wk 1 · Lost in Yonkers · Act One, Scene 4: Louie explains the pistol",
+   "Notes": "Plot detail. Act One, Scene 4, book pp. 56-57; he then calls himself a bodyguard for a political figure.",
+   "Part": "Part 2",
+   "Prompt": "When the boys stare at his pistol, Louie first claims that he is only holding it for",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Lost in Yonkers",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recihHOGCdbc79QIe"
+   ]
+  },
+  "id": "rec56IIqmYojasxTz"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -24803,23 +25061,23 @@
  {
   "createdTime": "2026-11-15T14:39:06.000Z",
   "fields": {
-   "Choice A": "a storm destroyed the farmhouse",
-   "Choice B": "the family's life was broken off suddenly",
-   "Choice C": "the toys were left as gifts for the next family",
-   "Choice D": "the weather has grown harsher each year",
-   "Choice E": "the yard became a playground for the neighbors",
-   "Correct Answer": "the family's life was broken off suddenly",
+   "Choice A": "anacrusis",
+   "Choice B": "aposiopesis",
+   "Choice C": "caesura",
+   "Choice D": "end-stopped line",
+   "Choice E": "enjambment",
+   "Correct Answer": "caesura",
    "Correct Choice": [
-    "B"
+    "C"
    ],
-   "Full Text": "The comparison of the child's scattered toys to \"branches after a storm\" (line 22) suggests that\n\nA. a storm destroyed the farmhouse\nB. the family's life was broken off suddenly\nC. the toys were left as gifts for the next family\nD. the weather has grown harsher each year\nE. the yard became a playground for the neighbors",
+   "Full Text": "The strong pause marked by the period in the middle of line 18, \"in the weed-choked yard. Stones in the fields,\" is a(n)\n\nA. anacrusis\nB. aposiopesis\nC. caesura\nD. end-stopped line\nE. enjambment",
    "Name": "District 2026–27 Practice Test 3 #59",
-   "Notes": "With \"Something went wrong\" and \"she left in a nervous haste,\" the image implies abrupt disaster, not a planned move.",
+   "Notes": "caesura: a pause within a line. An end-stopped line pauses at its end; enjambment runs on past it; aposiopesis breaks a sentence off unfinished; anacrusis is an extra unstressed syllable before a line's first foot.",
    "Part": "Part 3",
    "Poems and Passages": [
     "recaSqlZ9QHfcsnyA"
    ],
-   "Prompt": "The comparison of the child's scattered toys to \"branches after a storm\" (line 22) suggests that",
+   "Prompt": "The strong pause marked by the period in the middle of line 18, \"in the weed-choked yard. Stones in the fields,\" is a(n)",
    "Question Number": 59,
    "Source": "Generated",
    "Status": "Draft",
@@ -30256,6 +30514,36 @@
   "id": "rec7fOE15Sm6a8oS7"
  },
  {
+  "createdTime": "2026-11-16T16:46:53.000Z",
+  "fields": {
+   "Authors Link": [
+    "recpaesuZQaeOuor4"
+   ],
+   "Choice A": "a baseball bat and glove",
+   "Choice B": "a football and a basketball",
+   "Choice C": "a radio and a flashlight",
+   "Choice D": "two pairs of roller skates",
+   "Choice E": "two tickets to a Yankees game",
+   "Correct Answer": "a football and a basketball",
+   "Correct Choice": [
+    "B"
+   ],
+   "Full Text": "Bella's parting gifts to Jay and Arty in the final scene are\n\nA. a baseball bat and glove\nB. a football and a basketball\nC. a radio and a flashlight\nD. two pairs of roller skates\nE. two tickets to a Yankees game",
+   "Name": "Wk 1 · Lost in Yonkers · Act Two, final scene: Bella's parting gifts",
+   "Notes": "Act Two, final scene, pp. 116-117 (scan page 60): Bella \"takes out a basketball and a football.\" Arty: \"I never owned a football in my life, Grandma.\" The stage directions and dialogue disagree on which boy gets which ball, so the question asks only what the gifts are. Checked against the page image.",
+   "Part": "Part 2",
+   "Prompt": "Bella's parting gifts to Jay and Arty in the final scene are",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Act Two, final scene",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recihHOGCdbc79QIe"
+   ]
+  },
+  "id": "rec7gT4OK4HkxefFT"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Literary Terms",
@@ -32651,20 +32939,20 @@
  {
   "createdTime": "2026-11-15T14:39:06.000Z",
   "fields": {
-   "Choice A": "beneath the ruins of ancient Troy",
+   "Choice A": "beneath the ruined walls of ancient Troy",
    "Choice B": "in a cave beneath Mount Etna",
    "Choice C": "in a grotto high in the Andes",
-   "Choice D": "in a hidden valley of Tibet",
+   "Choice D": "in a hidden valley among the peaks of Tibet",
    "Choice E": "in the southern part of the Floridian peninsula",
    "Correct Answer": "in the southern part of the Floridian peninsula",
    "Correct Choice": [
     "E"
    ],
-   "Full Text": "Dr. Heidegger claims that the Fountain of Youth, which Ponce De Leon never found because \"he never sought it in the right place,\" is situated\n\nA. beneath the ruins of ancient Troy\nB. in a cave beneath Mount Etna\nC. in a grotto high in the Andes\nD. in a hidden valley of Tibet\nE. in the southern part of the Floridian peninsula",
+   "Full Text": "Dr. Heidegger claims that the Fountain of Youth, which Ponce De Leon never found because he looked for it in the wrong place, is situated\n\nA. beneath the ruined walls of ancient Troy\nB. in a cave beneath Mount Etna\nC. in a grotto high in the Andes\nD. in a hidden valley among the peaks of Tibet\nE. in the southern part of the Floridian peninsula",
    "Name": "District 2026–27 Practice Test 3 #41",
    "Notes": "\"Dr. Heidegger's Experiment\": \"...not far from Lake Macaco,\" its source shaded by gigantic magnolias.",
    "Part": "Part 2",
-   "Prompt": "Dr. Heidegger claims that the Fountain of Youth, which Ponce De Leon never found because \"he never sought it in the right place,\" is situated",
+   "Prompt": "Dr. Heidegger claims that the Fountain of Youth, which Ponce De Leon never found because he looked for it in the wrong place, is situated",
    "Question Number": 41,
    "Source": "Generated",
    "Status": "Draft",
@@ -33740,23 +34028,23 @@
  {
   "createdTime": "2026-11-15T14:39:06.000Z",
   "fields": {
-   "Choice A": "interviewing the neighbors down the road",
-   "Choice B": "reading letters found in the cellar",
-   "Choice C": "reading the evidence of the things they left behind",
-   "Choice D": "recalling his own childhood on the farm",
-   "Choice E": "studying the county's land records",
-   "Correct Answer": "reading the evidence of the things they left behind",
+   "Choice A": "ballad stanzas",
+   "Choice B": "common measure",
+   "Choice C": "free verse",
+   "Choice D": "ottava rima",
+   "Choice E": "terza rima",
+   "Correct Answer": "free verse",
    "Correct Choice": [
     "C"
    ],
-   "Full Text": "The speaker pieces together the family's story chiefly by\n\nA. interviewing the neighbors down the road\nB. reading letters found in the cellar\nC. reading the evidence of the things they left behind\nD. recalling his own childhood on the farm\nE. studying the county's land records",
+   "Full Text": "The verse form of Kooser's poem, an inventory of an abandoned farm, is\n\nA. ballad stanzas\nB. common measure\nC. free verse\nD. ottava rima\nE. terza rima",
    "Name": "District 2026–27 Practice Test 3 #58",
-   "Notes": "Every claim is tied to an object: shoes, bed, Bible, wallpaper, sandbox, jars, rags, toys.",
+   "Notes": "Line lengths and stresses vary freely; only \"cow\" and \"plow\" (lines 22-23) rhyme. The four distractors are all rhymed, metered forms.",
    "Part": "Part 3",
    "Poems and Passages": [
     "recaSqlZ9QHfcsnyA"
    ],
-   "Prompt": "The speaker pieces together the family's story chiefly by",
+   "Prompt": "The verse form of Kooser's poem, an inventory of an abandoned farm, is",
    "Question Number": 58,
    "Source": "Generated",
    "Status": "Draft",
@@ -36946,6 +37234,36 @@
    "Test Year": "2025"
   },
   "id": "rec9OCnNGyp5B2Y9S"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:34.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "Daniel",
+   "Choice B": "Exodus",
+   "Choice C": "Genesis",
+   "Choice D": "Psalms",
+   "Choice E": "Revelation",
+   "Correct Answer": "Revelation",
+   "Correct Choice": [
+    "E"
+   ],
+   "Full Text": "Spirit's description of the heavenly city, with walls of \"precious jasper stone\" and \"gates of pearl\" (lines 88-89), draws on the Book of\n\nA. Daniel\nB. Exodus\nC. Genesis\nD. Psalms\nE. Revelation",
+   "Name": "Wk 1 · Bradstreet · The Flesh and the Spirit: heavenly city allusion (lines 87-89)",
+   "Notes": "Clue: none. Lines 85-100: \"Are made of precious jasper stone, / The gates of pearl\" (88-89), streets of \"transparent gold,\" the river from \"the Lamb's throne,\" no need of sun or moon: Revelation 21-22 (walls of jasper 21:18, gates of pearl 21:21).",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZqHLhHcnZ2Cxrh"
+   ],
+   "Prompt": "Spirit's description of the heavenly city, with walls of \"precious jasper stone\" and \"gates of pearl\" (lines 88-89), draws on the Book of",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Flesh and the Spirit",
+   "Week": "2026-11-16"
+  },
+  "id": "rec9OfUGErVPuQYM7"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -41262,6 +41580,40 @@
   "id": "recAbIR0up5PjNu7Q"
  },
  {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "broken rhyme",
+   "Choice B": "feminine rhyme",
+   "Choice C": "internal rhyme",
+   "Choice D": "rime riche",
+   "Choice E": "slant rhyme",
+   "Correct Answer": "slant rhyme",
+   "Correct Answer (Term)": "slant rhyme",
+   "Correct Choice": [
+    "E"
+   ],
+   "Full Text": "The pairing of \"roam\" (line 19) with \"come\" (line 20) is a(n)\n\nA. broken rhyme\nB. feminine rhyme\nC. internal rhyme\nD. rime riche\nE. slant rhyme",
+   "Name": "Wk 1 · Bradstreet · The Author to Her Book: 'roam' / 'come' (lines 19-20)",
+   "Notes": "Clue: none. Lines 19-20; judged by modern sound (released-test practice). Rhyme and sound.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZACh2JfoRWJiWv"
+   ],
+   "Prompt": "The pairing of \"roam\" (line 19) with \"come\" (line 20) is a(n)",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Author to Her Book",
+   "Terms Link": [
+    "rec4IAt1VYc70jwKS"
+   ],
+   "Week": "2026-11-16"
+  },
+  "id": "recAbRubex5Rdg2Pu"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Authors Link": [
@@ -42271,6 +42623,35 @@
   "id": "recArx31oChHYtXQu"
  },
  {
+  "createdTime": "2026-11-16T16:56:48.000Z",
+  "fields": {
+   "Authors Link": [
+    "recSzI12q6erohUw3"
+   ],
+   "Choice A": "Better",
+   "Choice B": "Nor",
+   "Choice C": "Only",
+   "Choice D": "Yet",
+   "Choice E": "You",
+   "Correct Answer": "Yet",
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "The poem's turn, where the speaker shifts from asking to be remembered to permitting herself to be forgotten, begins with the word\n\nA. Better\nB. Nor\nC. Only\nD. Yet\nE. You",
+   "Name": "P3 · Rossetti, \"Remember\": where the turn begins",
+   "Notes": "https://www.gutenberg.org/ebooks/16950. Clue: none. Line 9 opens the sestet with \"Yet\"; the other choices open lines 4, 6, 7 and 13. Locate the line / structure and turns.",
+   "Part": "Part 3",
+   "Poems and Passages": [
+    "recriL3vceg4sYGtG"
+   ],
+   "Prompt": "The poem's turn, where the speaker shifts from asking to be remembered to permitting herself to be forgotten, begins with the word",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Christina Rossetti, \"Remember\""
+  },
+  "id": "recAsrqpmKlP0qMon"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Part 2 – Play",
@@ -42706,6 +43087,36 @@
    ]
   },
   "id": "recAwfn4ahjbDQ0y3"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recpaesuZQaeOuor4"
+   ],
+   "Choice A": "Capitol Theatre",
+   "Choice B": "Orpheum Theatre",
+   "Choice C": "Palace Theatre",
+   "Choice D": "Rialto Theatre",
+   "Choice E": "Roxy Theatre",
+   "Correct Answer": "Orpheum Theatre",
+   "Correct Choice": [
+    "B"
+   ],
+   "Full Text": "Bella met Johnny, the man who has asked her to marry him, at the\n\nA. Capitol Theatre\nB. Orpheum Theatre\nC. Palace Theatre\nD. Rialto Theatre\nE. Roxy Theatre",
+   "Name": "Wk 1 · Lost in Yonkers · Act One, Scene 3: where Bella met Johnny",
+   "Notes": "Plot detail. Act One, Scene 3, book p. 44: \"ten days ago at the movies,\" where he works as an usher.",
+   "Part": "Part 2",
+   "Prompt": "Bella met Johnny, the man who has asked her to marry him, at the",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Lost in Yonkers",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recihHOGCdbc79QIe"
+   ]
+  },
+  "id": "recAwtE6pda496PUV"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -44880,6 +45291,36 @@
    "Test Year": "2026"
   },
   "id": "recBbcVqLJq7ayIBP"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:34.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Choice A": "at a grave beneath a lone fir-tree",
+   "Choice B": "beside a brook deep in the forest",
+   "Choice C": "in the stocks on the village green",
+   "Choice D": "on the steps of the meeting-house",
+   "Choice E": "outside the gate of the Boston jail",
+   "Correct Answer": "at a grave beneath a lone fir-tree",
+   "Correct Choice": [
+    "A"
+   ],
+   "Full Text": "In \"The Gentle Boy,\" Tobias Pearson first comes upon the weeping Ilbrahim\n\nA. at a grave beneath a lone fir-tree\nB. beside a brook deep in the forest\nC. in the stocks on the village green\nD. on the steps of the meeting-house\nE. outside the gate of the Boston jail",
+   "Name": "Wk 1 · Hawthorne · The Gentle Boy: where Tobias finds Ilbrahim",
+   "Notes": "Opening scene: the wailing comes \"from beneath a tall and lonely fir-tree,\" where the executed Quakers' bodies lie \"in one hasty grave\"; the boy \"leaned his face upon a hillock of fresh-turned and half-frozen earth.\" He names himself Ilbrahim a little later. Text: Twice-Told Tales, GITenberg mirror (508.txt). Region/State story.",
+   "Part": "Part 2",
+   "Prompt": "In \"The Gentle Boy,\" Tobias Pearson first comes upon the weeping Ilbrahim",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Gentle Boy",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recTt1S84QNrm48Ik"
+   ]
+  },
+  "id": "recBbkhvHWQbXzTiv"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -48549,11 +48990,11 @@
     "A"
    ],
    "Full Text": "In Greek mythology, the three sisters Clotho, Lachesis, and Atropos, who spin, measure, and cut the thread of every human life, are the\n\nA. Fates\nB. Furies\nC. Graces\nD. Muses\nE. Pleiades",
-   "Name": "District 2026–27 Practice Test 3 #20",
+   "Name": "District 2026–27 Practice Test 3 #7",
    "Notes": "The Fates (Moirai): Clotho spins, Lachesis measures, Atropos cuts.",
    "Part": "Part 1",
    "Prompt": "In Greek mythology, the three sisters Clotho, Lachesis, and Atropos, who spin, measure, and cut the thread of every human life, are the",
-   "Question Number": 20,
+   "Question Number": 7,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -51244,6 +51685,36 @@
   "id": "recD83I89EndEx2AC"
  },
  {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Choice A": "the bonfire's ashes",
+   "Choice B": "the earth's crust",
+   "Choice C": "the gallows tree",
+   "Choice D": "the human heart",
+   "Choice E": "the toper's bottle",
+   "Correct Answer": "the human heart",
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "The dark-complexioned stranger warns that unless the reformers find a way of purifying \"that foul cavern,\" all the old shapes of wrong will reissue from it. The cavern is\n\nA. the bonfire's ashes\nB. the earth's crust\nC. the gallows tree\nD. the human heart\nE. the toper's bottle",
+   "Name": "Wk 1 · Hawthorne · Earth's Holocaust: the 'foul cavern'",
+   "Notes": "Device in the work (metaphor). Near the end, the stranger speaks to the hangman, thief, murderer and toper (GITenberg 9231, Earth's Holocaust).",
+   "Part": "Part 2",
+   "Prompt": "The dark-complexioned stranger warns that unless the reformers find a way of purifying \"that foul cavern,\" all the old shapes of wrong will reissue from it. The cavern is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Earth's Holocaust",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recTt1S84QNrm48Ik"
+   ]
+  },
+  "id": "recD90EjsYphuFSGH"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Literary Terms",
@@ -53240,11 +53711,11 @@
     "E"
    ],
    "Full Text": "Not a quatrain, that is, a stanza of four lines, is (the)\n\nA. ballad stanza\nB. envelope stanza\nC. heroic quatrain\nD. In Memoriam stanza\nE. Spenserian stanza",
-   "Name": "District 2026–27 Practice Test 3 #2",
+   "Name": "District 2026–27 Practice Test 3 #9",
    "Notes": "The Spenserian stanza has nine lines (ababbcbcc). The other four are quatrains.",
    "Part": "Part 1",
    "Prompt": "Not a quatrain, that is, a stanza of four lines, is (the)",
-   "Question Number": 2,
+   "Question Number": 9,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -58460,6 +58931,40 @@
   "id": "recEuju0WEWET9u9r"
  },
  {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "aubade",
+   "Choice B": "débat",
+   "Choice C": "eclogue",
+   "Choice D": "epithalamium",
+   "Choice E": "palinode",
+   "Correct Answer": "débat",
+   "Correct Answer (Term)": "débat",
+   "Correct Choice": [
+    "B"
+   ],
+   "Full Text": "In \"The Flesh and the Spirit,\" two allegorical sisters argue opposing views of how to live, placing the poem in the medieval tradition of the\n\nA. aubade\nB. débat\nC. eclogue\nD. epithalamium\nE. palinode",
+   "Name": "Wk 1 · Bradstreet · The Flesh and the Spirit: genre of the poem",
+   "Notes": "Clue: definition (\"argue opposing views\"). Lines 3-8 set up the debate; Flesh speaks lines 9-36, Spirit lines 37-108. Form/genre.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZqHLhHcnZ2Cxrh"
+   ],
+   "Prompt": "In \"The Flesh and the Spirit,\" two allegorical sisters argue opposing views of how to live, placing the poem in the medieval tradition of the",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Flesh and the Spirit",
+   "Terms Link": [
+    "recHqEAwINi0ETcLS"
+   ],
+   "Week": "2026-11-16"
+  },
+  "id": "recEunpbaviWt2RIS"
+ },
+ {
   "createdTime": "2026-10-31T11:40:28.000Z",
   "fields": {
    "Category": "Literary Terms",
@@ -63531,14 +64036,14 @@
    "Correct Choice": [
     "D"
    ],
-   "Full Text": "\"Nature's first green is gold\" (line 1), a statement that seems self-contradictory yet holds a truth about the first buds of spring, is an example of\n\nA. apostrophe\nB. hyperbole\nC. onomatopoeia\nD. paradox\nE. zeugma",
+   "Full Text": "The apparent contradiction of \"Nature's first green is gold\" (line 1) is an example of\n\nA. apostrophe\nB. hyperbole\nC. onomatopoeia\nD. paradox\nE. zeugma",
    "Name": "District 2026–27 Practice Test 3 #62",
    "Notes": "Early willow and maple buds are yellow-gold before they turn green.",
    "Part": "Part 3",
    "Poems and Passages": [
     "recNxn3K3MVBYZxor"
    ],
-   "Prompt": "\"Nature's first green is gold\" (line 1), a statement that seems self-contradictory yet holds a truth about the first buds of spring, is an example of",
+   "Prompt": "The apparent contradiction of \"Nature's first green is gold\" (line 1) is an example of",
    "Question Number": 62,
    "Source": "Generated",
    "Status": "Draft",
@@ -65454,6 +65959,36 @@
    "Test Year": "2026"
   },
   "id": "recGf9JR9KLjSWPQa"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recpaesuZQaeOuor4"
+   ],
+   "Choice A": "Aaron",
+   "Choice B": "Bella",
+   "Choice C": "Eddie",
+   "Choice D": "Gert",
+   "Choice E": "Louie",
+   "Correct Answer": "Louie",
+   "Correct Choice": [
+    "E"
+   ],
+   "Full Text": "The Kurnitz child who claims to have run away from home twelve times, \"Still a record in Yonkers,\" is\n\nA. Aaron\nB. Bella\nC. Eddie\nD. Gert\nE. Louie",
+   "Name": "Wk 1 · Lost in Yonkers · Act Two, Scene 1: ran away twelve times",
+   "Notes": "Character identification. Act Two, Scene 1, book pp. 73-74, Louie telling Arty about Grandma; the last time she told the policeman she didn't know him.",
+   "Part": "Part 2",
+   "Prompt": "The Kurnitz child who claims to have run away from home twelve times, \"Still a record in Yonkers,\" is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Lost in Yonkers",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recihHOGCdbc79QIe"
+   ]
+  },
+  "id": "recGfZPLtzhKs7p3n"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -70515,13 +71050,13 @@
    "Choice A": "assume a more dazzling whiteness",
    "Choice B": "burst into green flame",
    "Choice C": "scatter across the prairie",
-   "Choice D": "turn to gleaming gold",
+   "Choice D": "turn slowly into sheets of gleaming gold",
    "Choice E": "vanish without leaving any ash",
    "Correct Answer": "assume a more dazzling whiteness",
    "Correct Choice": [
     "A"
    ],
-   "Full Text": "Among the flames of \"Earth's Holocaust,\" the pages of the Holy Scriptures, instead of being blackened into tinder,\n\nA. assume a more dazzling whiteness\nB. burst into green flame\nC. scatter across the prairie\nD. turn to gleaming gold\nE. vanish without leaving any ash",
+   "Full Text": "Among the flames of \"Earth's Holocaust,\" the pages of the Holy Scriptures, instead of being blackened into tinder,\n\nA. assume a more dazzling whiteness\nB. burst into green flame\nC. scatter across the prairie\nD. turn slowly into sheets of gleaming gold\nE. vanish without leaving any ash",
    "Name": "District 2026–27 Practice Test 3 #42",
    "Notes": "\"...only assumed a more dazzling whiteness as the fingermarks of human imperfection were purified away.\"",
    "Part": "Part 2",
@@ -74292,6 +74827,45 @@
    "Test Year": "2026"
   },
   "id": "recIzBK8oYLutB23t"
+ },
+ {
+  "createdTime": "2026-11-16T16:56:48.000Z",
+  "fields": {
+   "Authors Link": [
+    "recSzI12q6erohUw3"
+   ],
+   "Choice A": "euphemism",
+   "Choice B": "hyperbole",
+   "Choice C": "litotes",
+   "Choice D": "oxymoron",
+   "Choice E": "synecdoche",
+   "Correct Answer": "euphemism",
+   "Correct Answer (Term)": "euphemism",
+   "Correct Choice": [
+    "A"
+   ],
+   "Correct Term": [
+    "recf17VObdp8S8ijt"
+   ],
+   "Full Text": "Line 2's \"the silent land,\" a gentle way of naming the grave the speaker expects to enter, is an example of\n\nA. euphemism\nB. hyperbole\nC. litotes\nD. oxymoron\nE. synecdoche",
+   "Name": "P3 · Rossetti, \"Remember\": 'the silent land' (line 2)",
+   "Notes": "https://www.gutenberg.org/ebooks/16950. Clue: key word (\"gentle way of naming\"). Line 2. Metaphor left out of the choices because the phrase is also metaphorical. Rhetorical & figurative devices.",
+   "Part": "Part 3",
+   "Poems and Passages": [
+    "recriL3vceg4sYGtG"
+   ],
+   "Prompt": "Line 2's \"the silent land,\" a gentle way of naming the grave the speaker expects to enter, is an example of",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Christina Rossetti, \"Remember\"",
+   "Terms Link": [
+    "recf17VObdp8S8ijt",
+    "rec1ZCVxXElWBrpiZ",
+    "recYfzfDnOmJdN6gZ",
+    "recvNDm3LOlnjfidW"
+   ]
+  },
+  "id": "recIzb2OxvQFcPPuc"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -80795,23 +81369,23 @@
  {
   "createdTime": "2026-11-15T14:39:06.000Z",
   "fields": {
-   "Choice A": "night returns before the day is done",
-   "Choice B": "sunrise brings new hope each morning",
-   "Choice C": "the golden light of sunrise soon fades into ordinary daylight",
-   "Choice D": "the seasons pass without any change",
-   "Choice E": "the speaker rises early to work the fields",
-   "Correct Answer": "the golden light of sunrise soon fades into ordinary daylight",
+   "Choice A": "aabbccdd",
+   "Choice B": "abababcc",
+   "Choice C": "ababcdcd",
+   "Choice D": "abbaabba",
+   "Choice E": "abcbdefe",
+   "Correct Answer": "aabbccdd",
    "Correct Choice": [
-    "C"
+    "A"
    ],
-   "Full Text": "\"So dawn goes down to day\" (line 7) suggests that\n\nA. night returns before the day is done\nB. sunrise brings new hope each morning\nC. the golden light of sunrise soon fades into ordinary daylight\nD. the seasons pass without any change\nE. the speaker rises early to work the fields",
+   "Full Text": "The rhyme scheme of Frost's brief lyric is\n\nA. aabbccdd\nB. abababcc\nC. ababcdcd\nD. abbaabba\nE. abcbdefe",
    "Name": "District 2026–27 Practice Test 3 #64",
-   "Notes": "Like the gold leaf and Eden, dawn's brief glory gives way to something plainer.",
+   "Notes": "Four rhymed couplets: gold/hold, flower/hour, leaf/grief, day/stay.",
    "Part": "Part 3",
    "Poems and Passages": [
     "recNxn3K3MVBYZxor"
    ],
-   "Prompt": "\"So dawn goes down to day\" (line 7) suggests that",
+   "Prompt": "The rhyme scheme of Frost's brief lyric is",
    "Question Number": 64,
    "Source": "Generated",
    "Status": "Draft",
@@ -81761,6 +82335,42 @@
   "id": "recKiyRW30Kw4JvNZ"
  },
  {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRuRe0OiJIaTg1M",
+    "recFBlJFHQEz34gyU",
+    "recmfM3u3uujs9ovO",
+    "reciZhpXe0AFMi65c",
+    "reczdpC45QjLcigjW"
+   ],
+   "Category": "Authors & Works",
+   "Choice A": "Thomas Carew",
+   "Choice B": "Robert Herrick",
+   "Choice C": "Richard Lovelace",
+   "Choice D": "Andrew Marvell",
+   "Choice E": "Sir John Suckling",
+   "Correct Answer": "Andrew Marvell",
+   "Correct Answer (Author)": "Andrew Marvell",
+   "Correct Author": [
+    "reciZhpXe0AFMi65c"
+   ],
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "Not among the Cavalier lyricists, the courtier-poets loyal to Charles I who wrote graceful verse on love, war, and honor, is\n\nA. Thomas Carew\nB. Robert Herrick\nC. Richard Lovelace\nD. Andrew Marvell\nE. Sir John Suckling",
+   "Name": "P1 · Which author does NOT belong (group/era/genre) · Andrew Marvell",
+   "Notes": "Handbook: Cavalier Lyricists (Carew, Lovelace, Suckling named). Herrick is commonly grouped with them; Marvell served Cromwell's Commonwealth. Tier: District/Region. Please check this one. Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "Not among the Cavalier lyricists, the courtier-poets loyal to Charles I who wrote graceful verse on love, war, and honor, is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Which author does NOT belong (group/era/genre)",
+   "Subcategory": "Which author does NOT belong (group/era/genre)"
+  },
+  "id": "recKjBaKDxJQ98rKn"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Literary History",
@@ -82587,23 +83197,23 @@
  {
   "createdTime": "2026-11-15T14:39:06.000Z",
   "fields": {
-   "Choice A": "Eden can be regained through honest labor",
-   "Choice B": "gold is worth more than anything in nature",
-   "Choice C": "spring lasts longer than any other season",
-   "Choice D": "the most precious beauty is the most fleeting",
-   "Choice E": "youth should be spent in preparing for age",
-   "Correct Answer": "the most precious beauty is the most fleeting",
+   "Choice A": "beauty and innocence cannot last",
+   "Choice B": "Eden can be regained through labor",
+   "Choice C": "gold outshines anything in nature",
+   "Choice D": "spring outlasts the other seasons",
+   "Choice E": "youth should prepare for old age",
+   "Correct Answer": "beauty and innocence cannot last",
    "Correct Choice": [
-    "D"
+    "A"
    ],
-   "Full Text": "Thematically, the poem suggests that\n\nA. Eden can be regained through honest labor\nB. gold is worth more than anything in nature\nC. spring lasts longer than any other season\nD. the most precious beauty is the most fleeting\nE. youth should be spent in preparing for age",
+   "Full Text": "Thematically, the poem's movement from \"first green\" to \"Nothing gold can stay\" suggests that\n\nA. beauty and innocence cannot last\nB. Eden can be regained through labor\nC. gold outshines anything in nature\nD. spring outlasts the other seasons\nE. youth should prepare for old age",
    "Name": "District 2026–27 Practice Test 3 #65",
-   "Notes": "\"Nothing gold can stay.\"",
+   "Notes": "\"Nothing gold can stay\": the gold of spring, the flower, Eden and dawn all give way.",
    "Part": "Part 3",
    "Poems and Passages": [
     "recNxn3K3MVBYZxor"
    ],
-   "Prompt": "Thematically, the poem suggests that",
+   "Prompt": "Thematically, the poem's movement from \"first green\" to \"Nothing gold can stay\" suggests that",
    "Question Number": 65,
    "Source": "Generated",
    "Status": "Draft",
@@ -82711,18 +83321,18 @@
    "Choice A": "Galway Kinnell",
    "Choice B": "Philip Levine",
    "Choice C": "W. S. Merwin",
-   "Choice D": "Richard Wilbur",
+   "Choice D": "Robert Penn Warren",
    "Choice E": "James Wright",
    "Correct Answer": "Galway Kinnell",
    "Correct Choice": [
     "A"
    ],
-   "Full Text": "The poet whose Selected Poems earned him the 1983 Pulitzer Prize for Poetry, and whose \"The Bear\" and \"Blackberry Eating\" render the natural world through the senses of the body, is\n\nA. Galway Kinnell\nB. Philip Levine\nC. W. S. Merwin\nD. Richard Wilbur\nE. James Wright",
-   "Name": "District 2026–27 Practice Test 3 #19",
+   "Full Text": "The poet whose Selected Poems earned him the 1983 Pulitzer Prize for Poetry, and whose \"The Bear\" and \"Blackberry Eating\" render the natural world through the senses of the body, is\n\nA. Galway Kinnell\nB. Philip Levine\nC. W. S. Merwin\nD. Robert Penn Warren\nE. James Wright",
+   "Name": "District 2026–27 Practice Test 3 #15",
    "Notes": "Galway Kinnell, Pulitzer Poetry 1983 (Selected Poems), within the District range (1964-1983). \"Blackberry Eating\" was a 2013 District Part 3 poem.",
    "Part": "Part 1",
    "Prompt": "The poet whose Selected Poems earned him the 1983 Pulitzer Prize for Poetry, and whose \"The Bear\" and \"Blackberry Eating\" render the natural world through the senses of the body, is",
-   "Question Number": 19,
+   "Question Number": 15,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -84515,6 +85125,66 @@
   "id": "recLL0zlZKFEkpLdD"
  },
  {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Choice A": "climb Mount Washington",
+   "Choice B": "drink from the Flume",
+   "Choice C": "ride to Ethan Crawford's",
+   "Choice D": "see the ocean at Portland",
+   "Choice E": "walk the road to Burlington",
+   "Correct Answer": "drink from the Flume",
+   "Correct Choice": [
+    "B"
+   ],
+   "Full Text": "In Nathaniel Hawthorne's \"The Ambitious Guest,\" a little boy in the next room wishes that the whole household, the stranger too, would start at once to\n\nA. climb Mount Washington\nB. drink from the Flume\nC. ride to Ethan Crawford's\nD. see the ocean at Portland\nE. walk the road to Burlington",
+   "Name": "Wk 1 · Hawthorne · The Ambitious Guest: the little boy's wish",
+   "Notes": "Plot detail. The boy's cry from the children's room, just before the wagon of travelers passes (Twice-Told Tales, GITenberg 508). Invitational/District story.",
+   "Part": "Part 2",
+   "Prompt": "In Nathaniel Hawthorne's \"The Ambitious Guest,\" a little boy in the next room wishes that the whole household, the stranger too, would start at once to",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Ambitious Guest",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recTt1S84QNrm48Ik"
+   ]
+  },
+  "id": "recLLDdMTzIGAVt3z"
+ },
+ {
+  "createdTime": "2026-11-16T16:46:53.000Z",
+  "fields": {
+   "Authors Link": [
+    "recpaesuZQaeOuor4"
+   ],
+   "Choice A": "Eddie to Jay",
+   "Choice B": "Grandma to Arty",
+   "Choice C": "Louie to Arty",
+   "Choice D": "Louie to Eddie",
+   "Choice E": "Louie to Jay",
+   "Correct Answer": "Louie to Arty",
+   "Correct Choice": [
+    "C"
+   ],
+   "Full Text": "The grudging compliment \"You got a smart brother there\" is paid by\n\nA. Eddie to Jay\nB. Grandma to Arty\nC. Louie to Arty\nD. Louie to Eddie\nE. Louie to Jay",
+   "Name": "Wk 1 · Lost in Yonkers · Act One, Scene 4: \"You got a smart brother\" (speaker)",
+   "Notes": "Act One, Scene 4, p. 57 (scan page 30): Louie \"(Looks at him, then at ARTY)\": \"You got a smart brother there, Arty, you know that? You're right, Jay.\" The smart brother is Jay, who has seen through the policeman story. Checked against the page image.",
+   "Part": "Part 2",
+   "Prompt": "The grudging compliment \"You got a smart brother there\" is paid by",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Act One, Scene 4",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recihHOGCdbc79QIe"
+   ]
+  },
+  "id": "recLMjBljpEGiTp85"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Authors Link": [
@@ -85614,6 +86284,36 @@
    "Test Year": "2026"
   },
   "id": "recLiXKVkUhNMy2Sw"
+ },
+ {
+  "createdTime": "2026-11-16T16:46:53.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Choice A": "Beatrice",
+   "Choice B": "Dame Lisabetta",
+   "Choice C": "Giovanni Guasconti",
+   "Choice D": "Pietro Baglioni",
+   "Choice E": "Signor Rappaccini",
+   "Correct Answer": "Pietro Baglioni",
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "In \"Rappaccini's Daughter,\" the cry of mingled triumph and horror \"Rappaccini! Rappaccini! and is THIS the upshot of your experiment!\" is uttered by\n\nA. Beatrice\nB. Dame Lisabetta\nC. Giovanni Guasconti\nD. Pietro Baglioni\nE. Signor Rappaccini",
+   "Name": "Wk 1 · Hawthorne · Rappaccini's Daughter: \"upshot of your experiment\" (speaker)",
+   "Notes": "Last paragraph: \"Professor Pietro Baglioni looked forth from the window, and called loudly, in a tone of triumph mixed with horror, to the thunderstricken man of science\". THIS is italic in the source. Text: Mosses from an Old Manse, GITenberg mirror (512.txt). Region/State story.",
+   "Part": "Part 2",
+   "Prompt": "In \"Rappaccini's Daughter,\" the cry of mingled triumph and horror \"Rappaccini! Rappaccini! and is THIS the upshot of your experiment!\" is uttered by",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Rappaccini's Daughter",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recTt1S84QNrm48Ik"
+   ]
+  },
+  "id": "recLidFhUBPVmLio9"
  },
  {
   "createdTime": "2026-10-31T11:40:28.000Z",
@@ -88194,6 +88894,41 @@
   "id": "recMLpAq9WW3C7DYP"
  },
  {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Category": "Literary Terms",
+   "Choice A": "aubade",
+   "Choice B": "elegy",
+   "Choice C": "epithalamium",
+   "Choice D": "nocturne",
+   "Choice E": "serenade",
+   "Correct Answer": "aubade",
+   "Correct Answer (Term)": "aubade",
+   "Correct Choice": [
+    "A"
+   ],
+   "Correct Term": [
+    "recou0GJLxuAX6vS9"
+   ],
+   "Full Text": "A lyric of the dawn, often a song in which lovers lament that morning has come to part them, as in Donne's \"The Sun Rising,\" is a(n)\n\nA. aubade\nB. elegy\nC. epithalamium\nD. nocturne\nE. serenade",
+   "Name": "P1 · Poem types & occasions · aubade",
+   "Notes": "Handbook: Aubade (Terms table). Poem types. Tier: Invitational/District (2 released keys). Alba left out of the choices because it also fits. Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "A lyric of the dawn, often a song in which lovers lament that morning has come to part them, as in Donne's \"The Sun Rising,\" is a(n)",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Poem types & occasions",
+   "Subcategory": "Poem types & occasions",
+   "Terms Link": [
+    "recou0GJLxuAX6vS9",
+    "rec1u0pHyPv4VNZH2",
+    "recRfezTkKhW0jw9j",
+    "recI1kOJWaHLi3ZwD"
+   ]
+  },
+  "id": "recMLx1Up1bQOAeqF"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Literary History",
@@ -88468,6 +89203,35 @@
    "Test Year": "2015"
   },
   "id": "recMSvT1hELqT8UEf"
+ },
+ {
+  "createdTime": "2026-11-16T16:56:48.000Z",
+  "fields": {
+   "Authors Link": [
+    "recSzI12q6erohUw3"
+   ],
+   "Choice A": "anapestic tetrameter",
+   "Choice B": "dactylic pentameter",
+   "Choice C": "iambic hexameter",
+   "Choice D": "iambic pentameter",
+   "Choice E": "trochaic pentameter",
+   "Correct Answer": "iambic pentameter",
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "Line 1, \"Remember me when I am gone away,\" is written in\n\nA. anapestic tetrameter\nB. dactylic pentameter\nC. iambic hexameter\nD. iambic pentameter\nE. trochaic pentameter",
+   "Name": "P3 · Rossetti, \"Remember\": meter of line 1",
+   "Notes": "https://www.gutenberg.org/ebooks/16950. Clue: none. Line 1: re-MEM-ber ME when I am GONE a-WAY (ten syllables, five iambs). Meter & scansion.",
+   "Part": "Part 3",
+   "Poems and Passages": [
+    "recriL3vceg4sYGtG"
+   ],
+   "Prompt": "Line 1, \"Remember me when I am gone away,\" is written in",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Christina Rossetti, \"Remember\""
+  },
+  "id": "recMTNpb9q7LSW8Xj"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -95702,14 +96466,14 @@
    "Correct Choice": [
     "C"
    ],
-   "Full Text": "Throughout Ted Kooser's \"Abandoned Farmhouse,\" objects such as the shoes, the bed, and the Bible are made to \"say\" what happened, an example of\n\nA. apostrophe\nB. onomatopoeia\nC. personification\nD. synaesthesia\nE. understatement",
+   "Full Text": "In Ted Kooser's \"Abandoned Farmhouse,\" \"says the size of his shoes\" (line 1) and \"says the Bible with a broken back\" (line 5) are examples of\n\nA. apostrophe\nB. onomatopoeia\nC. personification\nD. synaesthesia\nE. understatement",
    "Name": "District 2026–27 Practice Test 3 #56",
    "Notes": "The things left behind testify: \"says the size of his shoes,\" \"says the narrow country road.\"",
    "Part": "Part 3",
    "Poems and Passages": [
     "recaSqlZ9QHfcsnyA"
    ],
-   "Prompt": "Throughout Ted Kooser's \"Abandoned Farmhouse,\" objects such as the shoes, the bed, and the Bible are made to \"say\" what happened, an example of",
+   "Prompt": "In Ted Kooser's \"Abandoned Farmhouse,\" \"says the size of his shoes\" (line 1) and \"says the Bible with a broken back\" (line 5) are examples of",
    "Question Number": 56,
    "Source": "Generated",
    "Status": "Draft",
@@ -97252,6 +98016,40 @@
    "Test Year": "2012"
   },
   "id": "recOsu4ZlWvPMjfvQ"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "conceit",
+   "Choice B": "epic simile",
+   "Choice C": "euphemism",
+   "Choice D": "litotes",
+   "Choice E": "synecdoche",
+   "Correct Answer": "conceit",
+   "Correct Answer (Term)": "conceit",
+   "Correct Choice": [
+    "A"
+   ],
+   "Full Text": "In Anne Bradstreet's \"The Author to Her Book,\" the sustained comparison of the printed volume to an \"ill-form'd offspring\" (line 1) is a(n)\n\nA. conceit\nB. epic simile\nC. euphemism\nD. litotes\nE. synecdoche",
+   "Name": "Wk 1 · Bradstreet · The Author to Her Book: the poem's governing comparison",
+   "Notes": "Clue: none. Lines 1-24 throughout. Rhetorical/figurative device.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZACh2JfoRWJiWv"
+   ],
+   "Prompt": "In Anne Bradstreet's \"The Author to Her Book,\" the sustained comparison of the printed volume to an \"ill-form'd offspring\" (line 1) is a(n)",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Author to Her Book",
+   "Terms Link": [
+    "recvYEvdphQsE1meP"
+   ],
+   "Week": "2026-11-16"
+  },
+  "id": "recOt2Ib85qeegQgC"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -99946,11 +100744,11 @@
     "B"
    ],
    "Full Text": "The religious revival that swept the American colonies in the 1730s and 1740s, stirred by Jonathan Edwards and the open-air preaching of George Whitefield, is the\n\nA. Enlightenment\nB. Great Awakening\nC. Oxford Movement\nD. Puritanism\nE. Transcendentalism",
-   "Name": "District 2026–27 Practice Test 3 #18",
+   "Name": "District 2026–27 Practice Test 3 #20",
    "Notes": "The Great Awakening; Edwards preached \"Sinners\" at Enfield in 1741; Whitefield toured the colonies from 1739.",
    "Part": "Part 1",
    "Prompt": "The religious revival that swept the American colonies in the 1730s and 1740s, stirred by Jonathan Edwards and the open-air preaching of George Whitefield, is the",
-   "Question Number": 18,
+   "Question Number": 20,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -110270,6 +111068,42 @@
    "Test Year": "2017"
   },
   "id": "recS0jyyixv6fKNa5"
+ },
+ {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Category": "Literary Terms",
+   "Choice A": "anagnorisis",
+   "Choice B": "antistrophe",
+   "Choice C": "catastrophe",
+   "Choice D": "parodos",
+   "Choice E": "stichomythia",
+   "Correct Answer": "stichomythia",
+   "Correct Answer (Term)": "stichomythia",
+   "Correct Choice": [
+    "E"
+   ],
+   "Correct Term": [
+    "recf25S4MarxZkPcg"
+   ],
+   "Full Text": "The rapid exchange of single alternating lines between characters, a kind of verbal fencing match found in Greek tragedy and in Senecan imitations of the Elizabethan age, is\n\nA. anagnorisis\nB. antistrophe\nC. catastrophe\nD. parodos\nE. stichomythia",
+   "Name": "P1 · Drama & theater · stichomythia",
+   "Notes": "Handbook: Stichomythia (Terms table). Tier: District/Region (2 released keys, none since 2021). Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "The rapid exchange of single alternating lines between characters, a kind of verbal fencing match found in Greek tragedy and in Senecan imitations of the Elizabethan age, is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Drama & theater",
+   "Subcategory": "Drama & theater",
+   "Terms Link": [
+    "recc4Sy8EQIwB7qxE",
+    "recBRtmr1CRflI4MC",
+    "recONyQRJxcZiQ5Pq",
+    "recpAeL1TyycmrtGg",
+    "recf25S4MarxZkPcg"
+   ]
+  },
+  "id": "recS1IN38yfav9HEr"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -121031,11 +121865,11 @@
    "Correct Choice": [
     "E"
    ],
-   "Full Text": "Louie identifies one of the two men in the black Studebaker who are hunting him, the one who wears a Betty Grable tie from a collection with \"all the stars hand-painted on silk,\" as\n\nA. Broadway Benny\nB. Dapper Dan\nC. Fancy Freddie\nD. Gentleman Jim\nE. Hollywood Harry",
+   "Full Text": "Louie identifies one of the two men in the black Studebaker who are hunting him, the one who wears a Betty Grable tie from his collection of movie stars hand-painted on silk, as\n\nA. Broadway Benny\nB. Dapper Dan\nC. Fancy Freddie\nD. Gentleman Jim\nE. Hollywood Harry",
    "Name": "District 2026–27 Practice Test 3 #34",
    "Notes": "Act One, Scene 4: \"Hollywood Harry. Got all the stars hand-painted on silk.\" The other names are invented.",
    "Part": "Part 2",
-   "Prompt": "Louie identifies one of the two men in the black Studebaker who are hunting him, the one who wears a Betty Grable tie from a collection with \"all the stars hand-painted on silk,\" as",
+   "Prompt": "Louie identifies one of the two men in the black Studebaker who are hunting him, the one who wears a Betty Grable tie from his collection of movie stars hand-painted on silk, as",
    "Question Number": 34,
    "Source": "Generated",
    "Status": "Draft",
@@ -122860,32 +123694,6 @@
   "id": "recVWLMPzP3EPgb5D"
  },
  {
-  "createdTime": "2026-11-15T14:36:20.000Z",
-  "fields": {
-   "Choice A": "anacoluthon",
-   "Choice B": "hendiadys",
-   "Choice C": "litotes",
-   "Choice D": "oxymoron",
-   "Choice E": "zeugma",
-   "Correct Answer": "zeugma",
-   "Correct Choice": [
-    "E"
-   ],
-   "Full Text": "The figure in which one word governs two others while applying to each in a different sense, as when Pope's Belinda may \"stain her honour, or her new brocade,\" is\n\nA. anacoluthon\nB. hendiadys\nC. litotes\nD. oxymoron\nE. zeugma",
-   "Name": "District 2026–27 Practice Test 3 #27",
-   "Notes": "zeugma: \"stain\" governs both honour and brocade (The Rape of the Lock, canto II).",
-   "Part": "Part 1",
-   "Prompt": "The figure in which one word governs two others while applying to each in a different sense, as when Pope's Belinda may \"stain her honour, or her new brocade,\" is",
-   "Question Number": 27,
-   "Source": "Generated",
-   "Status": "Draft",
-   "Test": [
-    "recjUKkkHWQgiCE7v"
-   ]
-  },
-  "id": "recVWk1JfSOGAPRQB"
- },
- {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Literary Terms",
@@ -123019,21 +123827,21 @@
  {
   "createdTime": "2026-11-15T14:36:20.000Z",
   "fields": {
-   "Choice A": "hypallage",
-   "Choice B": "kenning",
-   "Choice C": "oxymoron",
-   "Choice D": "synecdoche",
-   "Choice E": "tmesis",
+   "Choice A": "anacoluthon",
+   "Choice B": "catachresis",
+   "Choice C": "enallage",
+   "Choice D": "epanalepsis",
+   "Choice E": "hypallage",
    "Correct Answer": "hypallage",
    "Correct Choice": [
-    "A"
+    "E"
    ],
-   "Full Text": "The figure, also called a transferred epithet, in which a modifier is shifted from the word it logically describes to a neighboring word, as when Thomas Gray's ploughman \"homeward plods his weary way,\" is\n\nA. hypallage\nB. kenning\nC. oxymoron\nD. synecdoche\nE. tmesis",
-   "Name": "District 2026–27 Practice Test 3 #25",
+   "Full Text": "The figure, also called a transferred epithet, in which a modifier is shifted from the word it logically describes to a neighboring word, as when Thomas Gray's ploughman \"homeward plods his weary way,\" is\n\nA. anacoluthon\nB. catachresis\nC. enallage\nD. epanalepsis\nE. hypallage",
+   "Name": "District 2026–27 Practice Test 3 #22",
    "Notes": "hypallage: the ploughman, not the way, is weary (\"Elegy Written in a Country Churchyard,\" line 3).",
    "Part": "Part 1",
    "Prompt": "The figure, also called a transferred epithet, in which a modifier is shifted from the word it logically describes to a neighboring word, as when Thomas Gray's ploughman \"homeward plods his weary way,\" is",
-   "Question Number": 25,
+   "Question Number": 22,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -123286,6 +124094,39 @@
    ]
   },
   "id": "recVbcPtx9c8SVDDA"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:34.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "apostrophes",
+   "Choice B": "litotes",
+   "Choice C": "paradoxes",
+   "Choice D": "rhetorical questions",
+   "Choice E": "understatements",
+   "Correct Answer": "rhetorical questions",
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "In \"The Flesh and the Spirit,\" Flesh's barrage of questions to her sister in lines 9-20, such as \"Can Speculation satisfy / Notion without Reality?\", consists chiefly of\n\nA. apostrophes\nB. litotes\nC. paradoxes\nD. rhetorical questions\nE. understatements",
+   "Name": "Wk 1 · Bradstreet · The Flesh and the Spirit: Flesh's questions (lines 9-20)",
+   "Notes": "Clue: key word. Lines 9-20: \"what liv'st thou on, / Nothing but Meditation?\" through \"To catch at shadows which are not?\" Flesh mocks rather than seeks answers. Key is the uniquely longest choice.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZqHLhHcnZ2Cxrh"
+   ],
+   "Prompt": "In \"The Flesh and the Spirit,\" Flesh's barrage of questions to her sister in lines 9-20, such as \"Can Speculation satisfy / Notion without Reality?\", consists chiefly of",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Flesh and the Spirit",
+   "Terms Link": [
+    "rec9r5hjTu5LP0hqK"
+   ],
+   "Week": "2026-11-16"
+  },
+  "id": "recVbdqzu3ZdL0I04"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -125899,6 +126740,36 @@
   "id": "recWAOYhjovRq4yDS"
  },
  {
+  "createdTime": "2026-11-16T16:46:53.000Z",
+  "fields": {
+   "Authors Link": [
+    "recpaesuZQaeOuor4"
+   ],
+   "Choice A": "German surname",
+   "Choice B": "New York accent",
+   "Choice C": "Northern manners",
+   "Choice D": "salesman's patter",
+   "Choice E": "Yiddish phrases",
+   "Correct Answer": "New York accent",
+   "Correct Choice": [
+    "B"
+   ],
+   "Full Text": "In a letter from the South, Eddie reports that many people there have trouble with his\n\nA. German surname\nB. New York accent\nC. Northern manners\nD. salesman's patter\nE. Yiddish phrases",
+   "Name": "Wk 1 · Lost in Yonkers · Act One, Scene 4: Eddie's letter about his accent",
+   "Notes": "Act One, Scene 4 opening voice-over, p. 51 (scan page 27): \"A lot of people have trouble with my New York accent. I didn't even know I had one till I got here.\" Checked against the page image.",
+   "Part": "Part 2",
+   "Prompt": "In a letter from the South, Eddie reports that many people there have trouble with his",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Act One, Scene 4",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recihHOGCdbc79QIe"
+   ]
+  },
+  "id": "recWAToCi2oCURBHF"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Authors Link": [
@@ -126679,6 +127550,36 @@
    "Test Year": "2021"
   },
   "id": "recWMwYPONayCShxh"
+ },
+ {
+  "createdTime": "2026-11-16T16:46:53.000Z",
+  "fields": {
+   "Authors Link": [
+    "recpaesuZQaeOuor4"
+   ],
+   "Choice A": "henchman",
+   "Choice B": "hoodlum",
+   "Choice C": "racketeer",
+   "Choice D": "stooge",
+   "Choice E": "triggerman",
+   "Correct Answer": "henchman",
+   "Correct Choice": [
+    "A"
+   ],
+   "Full Text": "The word Arty offers for Louie's job as a \"bodyguard,\" which Louie warns him never to repeat, is\n\nA. henchman\nB. hoodlum\nC. racketeer\nD. stooge\nE. triggerman",
+   "Name": "Wk 1 · Lost in Yonkers · Act One, Scene 4: Arty's forbidden word for Louie's job",
+   "Notes": "Act One, Scene 4, p. 57 (scan page 30): Louie: \"I'm a bodyguard for a very prominent and distinguished political figure.\" Arty: \"You mean a henchman?\" Louie: \"Don't ever repeat that word around to anyone again, you understand?\" Checked against the page image.",
+   "Part": "Part 2",
+   "Prompt": "The word Arty offers for Louie's job as a \"bodyguard,\" which Louie warns him never to repeat, is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Act One, Scene 4",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recihHOGCdbc79QIe"
+   ]
+  },
+  "id": "recWNoSJjGMmZCV4M"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -131044,6 +131945,36 @@
   "id": "recXT7ALjV1msMKJL"
  },
  {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recpaesuZQaeOuor4"
+   ],
+   "Choice A": "a bad back",
+   "Choice B": "a bum leg",
+   "Choice C": "a crooked nose",
+   "Choice D": "a prison record",
+   "Choice E": "a weak heart",
+   "Correct Answer": "a bad back",
+   "Correct Choice": [
+    "A"
+   ],
+   "Full Text": "In Neil Simon's Lost in Yonkers, Arty, told that Uncle Louie is some big mobster's \"henchman,\" takes the word to mean that Louie has\n\nA. a bad back\nB. a bum leg\nC. a crooked nose\nD. a prison record\nE. a weak heart",
+   "Name": "Wk 1 · Lost in Yonkers · Act One, Scene 1: Arty mishears 'henchman'",
+   "Notes": "Plot/detail recall. Act One, Scene 1, book pp. 5-6: Arty asks if Louie has a bad back; Jay corrects him, \"Not a hunchback.\" Checked against: Lost in Yonkers Companion Guide (idiom misheard).",
+   "Part": "Part 2",
+   "Prompt": "In Neil Simon's Lost in Yonkers, Arty, told that Uncle Louie is some big mobster's \"henchman,\" takes the word to mean that Louie has",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Lost in Yonkers",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recihHOGCdbc79QIe"
+   ]
+  },
+  "id": "recXTgx4DRGejms0Z"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Authors Link": [
@@ -131110,12 +132041,12 @@
    "Choice B": "capable of judging",
    "Choice C": "capable of prophecy",
    "Choice D": "discovered in the soul",
-   "Choice E": "possessed of a poetic sense of things Required tie-breaking essay prompt",
+   "Choice E": "possessed of a poetic sense of things",
    "Correct Answer": "also of nature",
    "Correct Choice": [
     "A"
    ],
-   "Full Text": "The \"lawful offspring\" assessment found in the eleventh line of Wordsworth's poem finds support in the reasoning that \"the Mind\" (line 6) is\n\nA. also of nature\nB. capable of judging\nC. capable of prophecy\nD. discovered in the soul\nE. possessed of a poetic sense of things Required tie-breaking essay prompt",
+   "Full Text": "The \"lawful offspring\" assessment found in the eleventh line of Wordsworth's poem finds support in the reasoning that \"the Mind\" (line 6) is\n\nA. also of nature\nB. capable of judging\nC. capable of prophecy\nD. discovered in the soul\nE. possessed of a poetic sense of things",
    "Name": "The \"lawful offspring\" assessment found in the eleventh line of Wordsworth's poem finds support in the reasoning that \"the Mind\" (line 6) is",
    "Part": "Part 3",
    "Poems and Passages": [
@@ -131750,6 +132681,42 @@
   "id": "recXerkviLn7JhXjq"
  },
  {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Category": "Literary Terms",
+   "Choice A": "broadside",
+   "Choice B": "chapbook",
+   "Choice C": "colophon",
+   "Choice D": "incunabulum",
+   "Choice E": "verso",
+   "Correct Answer": "colophon",
+   "Correct Answer (Term)": "colophon",
+   "Correct Choice": [
+    "C"
+   ],
+   "Correct Term": [
+    "recu9lpZFC3MxdzVX"
+   ],
+   "Full Text": "A publisher's emblem or device, once printed at the end of a book and now usually found on the title page or spine, is a(n)\n\nA. broadside\nB. chapbook\nC. colophon\nD. incunabulum\nE. verso",
+   "Name": "P1 · Books, printing & publishing · colophon",
+   "Notes": "Handbook: Colophon (Terms table). Books & printing. Tier: State (never keyed). Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "A publisher's emblem or device, once printed at the end of a book and now usually found on the title page or spine, is a(n)",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Books, printing & publishing",
+   "Subcategory": "Books, printing & publishing",
+   "Terms Link": [
+    "recAzjIYXdyvhHxP5",
+    "recLfjnqW1VBmbfKn",
+    "recu9lpZFC3MxdzVX",
+    "recYJ6aqhJ7FsrQR8",
+    "recajSUY620725qxd"
+   ]
+  },
+  "id": "recXeziIHcXkD8m7g"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Authors Link": [
@@ -132173,6 +133140,36 @@
    "Test Year": "2021"
   },
   "id": "recXhPgaIpu5XJSLz"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "Deuteronomy",
+   "Choice B": "Ecclesiastes",
+   "Choice C": "Lamentations",
+   "Choice D": "Leviticus",
+   "Choice E": "Revelation",
+   "Correct Answer": "Revelation",
+   "Correct Choice": [
+    "E"
+   ],
+   "Full Text": "The Spirit's heavenly city, with walls of \"precious jasper stone\" and \"gates of pearl\" (lines 88-89), alludes to the Book of\n\nA. Deuteronomy\nB. Ecclesiastes\nC. Lamentations\nD. Leviticus\nE. Revelation",
+   "Name": "Wk 1 · Bradstreet · The Flesh and the Spirit: the heavenly city (lines 85-94)",
+   "Notes": "Clue: none. Lines 85-100 follow Revelation 21-22 (jasper walls, pearl gates, golden streets, river from the Lamb's throne, no sun or moon). Allusion.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZqHLhHcnZ2Cxrh"
+   ],
+   "Prompt": "The Spirit's heavenly city, with walls of \"precious jasper stone\" and \"gates of pearl\" (lines 88-89), alludes to the Book of",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Flesh and the Spirit",
+   "Week": "2026-11-16"
+  },
+  "id": "recXhTffUvCCJlVIN"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -132722,6 +133719,42 @@
    "Test Year": "2011"
   },
   "id": "recXq3xZ1dPasAUib"
+ },
+ {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Category": "Literary History",
+   "Choice A": "Black Mountain School",
+   "Choice B": "Cavalier Lyricists",
+   "Choice C": "Fireside Poets",
+   "Choice D": "Lake Poets",
+   "Choice E": "Scriblerus Club",
+   "Correct Answer": "Lake Poets",
+   "Correct Answer (Term)": "Lake Poets",
+   "Correct Choice": [
+    "D"
+   ],
+   "Correct Term": [
+    "recnC8FAXWYaD38Ye"
+   ],
+   "Full Text": "Wordsworth, Coleridge, and Southey, grouped together because early in the nineteenth century they lived in the mountainous northwest of England, are called the\n\nA. Black Mountain School\nB. Cavalier Lyricists\nC. Fireside Poets\nD. Lake Poets\nE. Scriblerus Club",
+   "Name": "P1 · Groups, schools & circles · Lake Poets",
+   "Notes": "Handbook: Lake Poets and Lake School (Terms table). Tier: District/Region (familiar name, not keyed in the released bank). Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "Wordsworth, Coleridge, and Southey, grouped together because early in the nineteenth century they lived in the mountainous northwest of England, are called the",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Groups, schools & circles",
+   "Subcategory": "Groups, schools & circles",
+   "Terms Link": [
+    "recCPhJWb2ulwmeqx",
+    "recWX0kuG7zYJQx0X",
+    "recsIjd3evruALkLb",
+    "recnC8FAXWYaD38Ye",
+    "recCO46WauoL7mVx5"
+   ]
+  },
+  "id": "recXqqHsCcyHchAO1"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -137226,20 +138259,20 @@
   "createdTime": "2026-11-15T14:36:20.000Z",
   "fields": {
    "Choice A": "aside",
-   "Choice B": "dumb show",
-   "Choice C": "interlude",
-   "Choice D": "masque",
+   "Choice B": "chorus",
+   "Choice C": "dumb show",
+   "Choice D": "interlude",
    "Choice E": "tableau",
    "Correct Answer": "dumb show",
    "Correct Choice": [
-    "B"
+    "C"
    ],
-   "Full Text": "A pantomime or silent scene inserted into a play, often foreshadowing the action to come, as the mimed poisoning that precedes \"The Murder of Gonzago\" in Shakespeare's Hamlet, is a(n)\n\nA. aside\nB. dumb show\nC. interlude\nD. masque\nE. tableau",
-   "Name": "District 2026–27 Practice Test 3 #3",
+   "Full Text": "A pantomime or silent scene inserted into a play, often foreshadowing the action to come, as the mimed poisoning that precedes \"The Murder of Gonzago\" in Shakespeare's Hamlet, is a(n)\n\nA. aside\nB. chorus\nC. dumb show\nD. interlude\nE. tableau",
+   "Name": "District 2026–27 Practice Test 3 #17",
    "Notes": "dumb show: Hamlet III.ii.",
    "Part": "Part 1",
    "Prompt": "A pantomime or silent scene inserted into a play, often foreshadowing the action to come, as the mimed poisoning that precedes \"The Murder of Gonzago\" in Shakespeare's Hamlet, is a(n)",
-   "Question Number": 3,
+   "Question Number": 17,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -138421,6 +139454,36 @@
   "id": "recZQsEzIfQO3FfIj"
  },
  {
+  "createdTime": "2026-11-16T16:46:53.000Z",
+  "fields": {
+   "Authors Link": [
+    "recpaesuZQaeOuor4"
+   ],
+   "Choice A": "Bella's Kitchen",
+   "Choice B": "Chez Kurnitz",
+   "Choice C": "Johnny's Place",
+   "Choice D": "La Bella Johnnie",
+   "Choice E": "The Yonkers Grill",
+   "Correct Answer": "La Bella Johnnie",
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "In Neil Simon's Lost in Yonkers, the name Bella has thought of for the restaurant she hopes to open with Johnny is\n\nA. Bella's Kitchen\nB. Chez Kurnitz\nC. Johnny's Place\nD. La Bella Johnnie\nE. The Yonkers Grill",
+   "Name": "Wk 1 · Lost in Yonkers · Act One, Scene 3: Bella's name for the restaurant",
+   "Notes": "Act One, Scene 3, p. 49 (scan page 26): Bella: \"I thought of a name for the restaurant, too... 'La Bella Johnnie.'\" Checked against the page image.",
+   "Part": "Part 2",
+   "Prompt": "In Neil Simon's Lost in Yonkers, the name Bella has thought of for the restaurant she hopes to open with Johnny is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Act One, Scene 3",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recihHOGCdbc79QIe"
+   ]
+  },
+  "id": "recZR8JW46WnRpNm1"
+ },
+ {
   "createdTime": "2026-10-31T11:40:28.000Z",
   "fields": {
    "Authors Link": [
@@ -138850,6 +139913,42 @@
    "Test Year": "2019"
   },
   "id": "recZXfwdlgqNvVlQJ"
+ },
+ {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Category": "Literary Terms",
+   "Choice A": "Burns stanza",
+   "Choice B": "ottava rima",
+   "Choice C": "rhyme royal",
+   "Choice D": "Spenserian stanza",
+   "Choice E": "terza rima",
+   "Correct Answer": "rhyme royal",
+   "Correct Answer (Term)": "rhyme royal",
+   "Correct Choice": [
+    "C"
+   ],
+   "Correct Term": [
+    "recyToHUivIBAqUz5"
+   ],
+   "Full Text": "The seven-line stanza of iambic pentameter rhyming ababbcc, used by Chaucer in Troilus and Criseyde and named, by tradition, for its use by King James I of Scotland, is\n\nA. Burns stanza\nB. ottava rima\nC. rhyme royal\nD. Spenserian stanza\nE. terza rima",
+   "Name": "P1 · Stanza & verse forms · rhyme royal",
+   "Notes": "Handbook: Rhyme Royal (or Rime Royal) (Terms table). Tier: District/Region (never keyed; familiar from textbooks). Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "The seven-line stanza of iambic pentameter rhyming ababbcc, used by Chaucer in Troilus and Criseyde and named, by tradition, for its use by King James I of Scotland, is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Stanza & verse forms",
+   "Subcategory": "Stanza & verse forms",
+   "Terms Link": [
+    "recvxKptx0afELDf4",
+    "recoJbpKJBLAaujzR",
+    "recyToHUivIBAqUz5",
+    "recb0fTcz0gTRTogO",
+    "rec2xLBgkg1pvrhuB"
+   ]
+  },
+  "id": "recZXlvhAR0b6vtoI"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -139513,14 +140612,14 @@
    "Correct Choice": [
     "C"
    ],
-   "Full Text": "The closed form of Shakespeare's Sonnet 29 is the\n\nA. caudate sonnet\nB. curtal sonnet\nC. English sonnet\nD. Italian sonnet\nE. Spenserian sonnet",
+   "Full Text": "The closed form of William Shakespeare's Sonnet 29, beginning \"When, in disgrace with Fortune and men's eyes,\" is the\n\nA. caudate sonnet\nB. curtal sonnet\nC. English sonnet\nD. Italian sonnet\nE. Spenserian sonnet",
    "Name": "District 2026–27 Practice Test 3 #51",
    "Notes": "Three quatrains and a couplet, abab cdcd efef gg. (Repeated poem: 2014 District 2, items 61-65.)",
    "Part": "Part 3",
    "Poems and Passages": [
     "recXRPNkQZpSNCfC0"
    ],
-   "Prompt": "The closed form of Shakespeare's Sonnet 29 is the",
+   "Prompt": "The closed form of William Shakespeare's Sonnet 29, beginning \"When, in disgrace with Fortune and men's eyes,\" is the",
    "Question Number": 51,
    "Source": "Generated",
    "Status": "Draft",
@@ -140946,6 +142045,39 @@
    "Test Year": "2022"
   },
   "id": "recZzJDXZiBT1HOtk"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:34.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "ballad stanzas",
+   "Choice B": "blank verse",
+   "Choice C": "free verse",
+   "Choice D": "heroic couplets",
+   "Choice E": "ottava rima",
+   "Correct Answer": "heroic couplets",
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "\"The Author to Her Book\" is written in\n\nA. ballad stanzas\nB. blank verse\nC. free verse\nD. heroic couplets\nE. ottava rima",
+   "Name": "Wk 1 · Bradstreet · The Author to Her Book: verse form",
+   "Notes": "Clue: none. 24 lines of iambic pentameter rhymed in couplets (brain/remain, true/view, trudge/judg ...). Key is the uniquely longest choice.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZACh2JfoRWJiWv"
+   ],
+   "Prompt": "\"The Author to Her Book\" is written in",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Author to Her Book",
+   "Terms Link": [
+    "recO92ako0ljm5wXe"
+   ],
+   "Week": "2026-11-16"
+  },
+  "id": "recZzx8cHKnm7nkYs"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -142937,11 +144069,11 @@
     "C"
    ],
    "Full Text": "A story within which one or more other tales are set, as the Canterbury pilgrimage frames Chaucer's tales and the flight from plague-stricken Florence frames Boccaccio's Decameron, is a\n\nA. chronicle\nB. episodic structure\nC. framework-story\nD. roman-fleuve\nE. saga",
-   "Name": "District 2026–27 Practice Test 3 #29",
+   "Name": "District 2026–27 Practice Test 3 #1",
    "Notes": "framework-story (the Handbook's term; also frame story).",
    "Part": "Part 1",
    "Prompt": "A story within which one or more other tales are set, as the Canterbury pilgrimage frames Chaucer's tales and the flight from plague-stricken Florence frames Boccaccio's Decameron, is a",
-   "Question Number": 29,
+   "Question Number": 1,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -144492,6 +145624,40 @@
    ]
   },
   "id": "recatgZ9L3anw8Iku"
+ },
+ {
+  "createdTime": "2026-11-16T16:46:53.000Z",
+  "fields": {
+   "Authors Link": [
+    "recpaesuZQaeOuor4"
+   ],
+   "Choice A": "apostrophe",
+   "Choice B": "hyperbole",
+   "Choice C": "oxymoron",
+   "Choice D": "paradox",
+   "Choice E": "understatement",
+   "Correct Answer": "understatement",
+   "Correct Answer (Term)": "understatement",
+   "Correct Choice": [
+    "E"
+   ],
+   "Full Text": "Arty's reply when Bella asks whether he will keep her secret from Grandma, \"She and I have very short conversations,\" is an example of\n\nA. apostrophe\nB. hyperbole\nC. oxymoron\nD. paradox\nE. understatement",
+   "Name": "Wk 1 · Lost in Yonkers · Act One, Scene 3: Arty's \"very short conversations\" (device)",
+   "Notes": "Act One, Scene 3, p. 49 (scan page 26): Bella: \"You won't tell her, will you, Jay?\" ... \"Arty?\" Arty: \"She and I have very short conversations.\" Checked against the page image. Key is the uniquely longest choice.",
+   "Part": "Part 2",
+   "Prompt": "Arty's reply when Bella asks whether he will keep her secret from Grandma, \"She and I have very short conversations,\" is an example of",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Act One, Scene 3",
+   "Terms Link": [
+    "recgZMj6hoZRzdKbx"
+   ],
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recihHOGCdbc79QIe"
+   ]
+  },
+  "id": "recatqJPPefDIr8c6"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -147118,11 +148284,11 @@
     "B"
    ],
    "Full Text": "The device that interrupts a story's chronological sequence to present a scene from an earlier time, as the dying writer's memories do in Hemingway's \"The Snows of Kilimanjaro,\" is a(n)\n\nA. digression\nB. flashback\nC. foreshadowing\nD. in medias res\nE. prolepsis",
-   "Name": "District 2026–27 Practice Test 3 #23",
+   "Name": "District 2026–27 Practice Test 3 #8",
    "Notes": "flashback: Harry's remembered scenes, set in italics in the story.",
    "Part": "Part 1",
    "Prompt": "The device that interrupts a story's chronological sequence to present a scene from an earlier time, as the dying writer's memories do in Hemingway's \"The Snows of Kilimanjaro,\" is a(n)",
-   "Question Number": 23,
+   "Question Number": 8,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -147272,11 +148438,11 @@
     "C"
    ],
    "Full Text": "Not among the poets who flourished during England's Romantic Period, from about 1798 to 1832, is\n\nA. William Blake\nB. George Gordon, Lord Byron\nC. John Donne\nD. John Keats\nE. Percy Bysshe Shelley",
-   "Name": "District 2026–27 Practice Test 3 #16",
+   "Name": "District 2026–27 Practice Test 3 #18",
    "Notes": "Era odd-one-out: John Donne (1572-1631) is a seventeenth-century Metaphysical poet; Blake (1757-1827), Byron (1788-1824), Keats (1795-1821) and Shelley (1792-1822) are Romantics.",
    "Part": "Part 1",
    "Prompt": "Not among the poets who flourished during England's Romantic Period, from about 1798 to 1832, is",
-   "Question Number": 16,
+   "Question Number": 18,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -147652,32 +148818,6 @@
    ]
   },
   "id": "recbfzKDin5AYKWxv"
- },
- {
-  "createdTime": "2026-11-15T14:36:20.000Z",
-  "fields": {
-   "Choice A": "Joseph Addison",
-   "Choice B": "Daniel Defoe",
-   "Choice C": "Alexander Pope",
-   "Choice D": "Laurence Sterne",
-   "Choice E": "Jonathan Swift",
-   "Correct Answer": "Jonathan Swift",
-   "Correct Choice": [
-    "E"
-   ],
-   "Full Text": "The eighteenth-century Anglo-Irish satirist and Dean of St. Patrick's Cathedral, Dublin, whose works include the Journal to Stella, The Drapier's Letters, and \"Verses on the Death of Dr. Swift\" is\n\nA. Joseph Addison\nB. Daniel Defoe\nC. Alexander Pope\nD. Laurence Sterne\nE. Jonathan Swift",
-   "Name": "District 2026–27 Practice Test 3 #26",
-   "Notes": "Jonathan Swift, Dean of St. Patrick's from 1713.",
-   "Part": "Part 1",
-   "Prompt": "The eighteenth-century Anglo-Irish satirist and Dean of St. Patrick's Cathedral, Dublin, whose works include the Journal to Stella, The Drapier's Letters, and \"Verses on the Death of Dr. Swift\" is",
-   "Question Number": 26,
-   "Source": "Generated",
-   "Status": "Draft",
-   "Test": [
-    "recjUKkkHWQgiCE7v"
-   ]
-  },
-  "id": "recbgXbt5EL7QI8Jt"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -154913,14 +156053,14 @@
    "Correct Choice": [
     "D"
    ],
-   "Full Text": "The comparison of the speaker's lifted spirits to \"the lark at break of day arising\" (line 11) is a(n)\n\nA. apostrophe\nB. kenning\nC. metonymy\nD. simile\nE. synecdoche",
+   "Full Text": "\"Like to the lark at break of day arising\" (line 11) is an example of\n\nA. apostrophe\nB. kenning\nC. metonymy\nD. simile\nE. synecdoche",
    "Name": "District 2026–27 Practice Test 3 #53",
    "Notes": "\"Like to the lark.\"",
    "Part": "Part 3",
    "Poems and Passages": [
     "recXRPNkQZpSNCfC0"
    ],
-   "Prompt": "The comparison of the speaker's lifted spirits to \"the lark at break of day arising\" (line 11) is a(n)",
+   "Prompt": "\"Like to the lark at break of day arising\" (line 11) is an example of",
    "Question Number": 53,
    "Source": "Generated",
    "Status": "Draft",
@@ -157543,6 +158683,36 @@
    ]
   },
   "id": "recdyHuKFGrLuDAjz"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Choice A": "Colonel Killigrew",
+   "Choice B": "Mr. Gascoigne",
+   "Choice C": "Mr. Medbourne",
+   "Choice D": "Sylvia Ward",
+   "Choice E": "Widow Wycherly",
+   "Correct Answer": "Mr. Gascoigne",
+   "Correct Choice": [
+    "B"
+   ],
+   "Full Text": "Time, the narrator says, has made the ruined politician among Dr. Heidegger's guests \"obscure instead of infamous.\" This guest is\n\nA. Colonel Killigrew\nB. Mr. Gascoigne\nC. Mr. Medbourne\nD. Sylvia Ward\nE. Widow Wycherly",
+   "Name": "Wk 1 · Hawthorne · Dr. Heidegger's Experiment: the ruined politician",
+   "Notes": "Character identification. Opening paragraph, which introduces the four guests (GITenberg 508).",
+   "Part": "Part 2",
+   "Prompt": "Time, the narrator says, has made the ruined politician among Dr. Heidegger's guests \"obscure instead of infamous.\" This guest is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Dr. Heidegger's Experiment",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recTt1S84QNrm48Ik"
+   ]
+  },
+  "id": "recdygafR3GImw8Wg"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -161304,6 +162474,36 @@
   "id": "recew68smqErYNdhm"
  },
  {
+  "createdTime": "2026-11-16T16:46:53.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Choice A": "Edgar to Endicott",
+   "Choice B": "Edith to Edgar",
+   "Choice C": "Edith to Endicott",
+   "Choice D": "Endicott to Edith",
+   "Choice E": "Peter Palfrey to Edith",
+   "Correct Answer": "Edith to Endicott",
+   "Correct Choice": [
+    "C"
+   ],
+   "Full Text": "In \"The May-Pole of Merry Mount,\" the selfless plea \"Be it death [. . .] and lay it all on me!\" is offered by\n\nA. Edgar to Endicott\nB. Edith to Edgar\nC. Edith to Endicott\nD. Endicott to Edith\nE. Peter Palfrey to Edith",
+   "Name": "Wk 1 · Hawthorne · The May-Pole of Merry Mount: \"Be it death\" (speaker)",
+   "Notes": "Near the end, after the Puritans cut down the Maypole. Endicott: \"What sayest thou, maid? Shall thy silken bridegroom suffer thy share of the penalty, besides his own?\" \"Be it death,\" said Edith, \"and lay it all on me!\" Edgar's plea (\"let Edith go untouched!\") comes just before. Text: Twice-Told Tales, GITenberg mirror (508.txt). Region/State story.",
+   "Part": "Part 2",
+   "Prompt": "In \"The May-Pole of Merry Mount,\" the selfless plea \"Be it death [. . .] and lay it all on me!\" is offered by",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The May-Pole of Merry Mount",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recTt1S84QNrm48Ik"
+   ]
+  },
+  "id": "recew8xRhsijGRB6N"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Part 2 – Poetry",
@@ -163775,14 +164975,14 @@
    "Correct Choice": [
     "D"
    ],
-   "Full Text": "The attribution of a human mood to the ground in \"sullen earth\" (line 12) is an example of\n\nA. apostrophe\nB. hyperbole\nC. litotes\nD. pathetic fallacy\nE. synecdoche",
+   "Full Text": "The phrase \"sullen earth\" (line 12), from which the lark rises to sing at heaven's gate, is an example of\n\nA. apostrophe\nB. hyperbole\nC. litotes\nD. pathetic fallacy\nE. synecdoche",
    "Name": "District 2026–27 Practice Test 3 #54",
    "Notes": "pathetic fallacy: the earth is \"sullen\" while the lark rises from it.",
    "Part": "Part 3",
    "Poems and Passages": [
     "recXRPNkQZpSNCfC0"
    ],
-   "Prompt": "The attribution of a human mood to the ground in \"sullen earth\" (line 12) is an example of",
+   "Prompt": "The phrase \"sullen earth\" (line 12), from which the lark rises to sing at heaven's gate, is an example of",
    "Question Number": 54,
    "Source": "Generated",
    "Status": "Draft",
@@ -165546,7 +166746,7 @@
  {
   "createdTime": "2026-11-15T14:39:06.000Z",
   "fields": {
-   "Choice A": "anadiplosis",
+   "Choice A": "antimetabole",
    "Choice B": "antithesis",
    "Choice C": "chiasmus",
    "Choice D": "parallelism",
@@ -165555,7 +166755,7 @@
    "Correct Choice": [
     "D"
    ],
-   "Full Text": "The repeated pattern in lines 13-16 of a claim followed by \"say\" or \"says\" and the object that proves it is an example of\n\nA. anadiplosis\nB. antithesis\nC. chiasmus\nD. parallelism\nE. polyptoton",
+   "Full Text": "The repeated pattern in lines 13-16 of a claim followed by \"say\" or \"says\" and the object that proves it is an example of\n\nA. antimetabole\nB. antithesis\nC. chiasmus\nD. parallelism\nE. polyptoton",
    "Name": "District 2026–27 Practice Test 3 #57",
    "Notes": "\"Money was scarce, say the jars\"; \"And the winters cold, say the rags\"; \"It was lonely here, says the [. . .] road.\"",
    "Part": "Part 3",
@@ -166593,6 +167793,40 @@
   "id": "recgD6dG1SkGpqd3d"
  },
  {
+  "createdTime": "2026-11-16T16:48:34.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "allegory",
+   "Choice B": "conceit",
+   "Choice C": "epic simile",
+   "Choice D": "invocation",
+   "Choice E": "synecdoche",
+   "Correct Answer": "conceit",
+   "Correct Answer (Term)": "conceit",
+   "Correct Choice": [
+    "B"
+   ],
+   "Full Text": "In Anne Bradstreet's \"The Author to Her Book,\" the speaker's elaborate comparison of her book to an ill-formed child, sustained throughout the poem, is a(n)\n\nA. allegory\nB. conceit\nC. epic simile\nD. invocation\nE. synecdoche",
+   "Name": "Wk 1 · Bradstreet · The Author to Her Book: book-as-child comparison",
+   "Notes": "Clue: definition. Lines 1-24: \"Thou ill-form'd offspring of my feeble brain\" (1), \"My rambling brat\" (8), washing its face, stretching its joints, home-spun clothes, no father (22). Checked against: LitCharts The Author to Her Book (extended metaphor).",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZACh2JfoRWJiWv"
+   ],
+   "Prompt": "In Anne Bradstreet's \"The Author to Her Book,\" the speaker's elaborate comparison of her book to an ill-formed child, sustained throughout the poem, is a(n)",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Author to Her Book",
+   "Terms Link": [
+    "recvYEvdphQsE1meP"
+   ],
+   "Week": "2026-11-16"
+  },
+  "id": "recgD6gWqfJzpykyj"
+ },
+ {
   "createdTime": "2026-10-31T11:40:28.000Z",
   "fields": {
    "Category": "Part 2 – Novel",
@@ -167149,14 +168383,14 @@
    "Correct Choice": [
     "E"
    ],
-   "Full Text": "The pairing of \"have\" and \"grave\" (lines 15-16), words whose spellings match more closely than their sounds, is (a/n)\n\nA. beginning rhyme\nB. broken rhyme\nC. chain rhyme\nD. compound rhyme\nE. eye rhyme",
+   "Full Text": "The pairing of \"have\" and \"grave\" (lines 15-16) is (a/n)\n\nA. beginning rhyme\nB. broken rhyme\nC. chain rhyme\nD. compound rhyme\nE. eye rhyme",
    "Name": "District 2026–27 Practice Test 3 #45",
    "Notes": "eye rhyme: -ave / -ave, pronounced differently today.",
    "Part": "Part 2",
    "Poems and Passages": [
     "rec2p8TlAyaTjQvtF"
    ],
-   "Prompt": "The pairing of \"have\" and \"grave\" (lines 15-16), words whose spellings match more closely than their sounds, is (a/n)",
+   "Prompt": "The pairing of \"have\" and \"grave\" (lines 15-16) is (a/n)",
    "Question Number": 45,
    "Source": "Generated",
    "Status": "Draft",
@@ -169583,6 +170817,36 @@
   "id": "rechA2IXqOYUT0ycr"
  },
  {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Choice A": "crafty parting smile",
+   "Choice B": "drab great-coat",
+   "Choice C": "farewell letter",
+   "Choice D": "oilcloth-covered hat",
+   "Choice E": "wave of the umbrella",
+   "Correct Answer": "crafty parting smile",
+   "Correct Choice": [
+    "A"
+   ],
+   "Full Text": "Long after Wakefield leaves, when his wife has been \"more years a widow than a wife,\" what flickers across all her memories of him is his\n\nA. crafty parting smile\nB. drab great-coat\nC. farewell letter\nD. oilcloth-covered hat\nE. wave of the umbrella",
+   "Name": "Wk 1 · Hawthorne · Wakefield: Mrs. Wakefield's memory of his departure",
+   "Notes": "Plot detail. The departure scene, an October evening (Twice-Told Tales, GITenberg 508). Region/State story.",
+   "Part": "Part 2",
+   "Prompt": "Long after Wakefield leaves, when his wife has been \"more years a widow than a wife,\" what flickers across all her memories of him is his",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Wakefield",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recTt1S84QNrm48Ik"
+   ]
+  },
+  "id": "rechA6sySHmOOse72"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Literary Terms",
@@ -170639,6 +171903,36 @@
    "Test Year": "2011"
   },
   "id": "rechOAcMAu4qgBuvp"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:34.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "French Protestant poet",
+   "Choice B": "Greek tragic dramatist",
+   "Choice C": "Italian Renaissance painter",
+   "Choice D": "Roman satirical poet",
+   "Choice E": "Spanish Catholic mystic",
+   "Correct Answer": "French Protestant poet",
+   "Correct Choice": [
+    "A"
+   ],
+   "Full Text": "In \"The Prologue,\" the \"Great Bartas\" whose \"sugar'd lines\" the speaker envies (line 8) was a\n\nA. French Protestant poet\nB. Greek tragic dramatist\nC. Italian Renaissance painter\nD. Roman satirical poet\nE. Spanish Catholic mystic",
+   "Name": "Wk 1 · Bradstreet · The Prologue: who Bartas was (line 8)",
+   "Notes": "Clue: none. Line 8: \"Great Bartas' sugar'd lines do but read o'er\". Guillaume de Salluste du Bartas (1544-1590), French Huguenot poet of La Sepmaine, a model for Bradstreet. Checked against: Poetry+ The Prologue analysis.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "rechTtH1TMtXw2Fvq"
+   ],
+   "Prompt": "In \"The Prologue,\" the \"Great Bartas\" whose \"sugar'd lines\" the speaker envies (line 8) was a",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Prologue",
+   "Week": "2026-11-16"
+  },
+  "id": "rechPIEzw09NzyZa3"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -172281,6 +173575,44 @@
    "Test Year": "2013"
   },
   "id": "rechlMW5xSX40RHA3"
+ },
+ {
+  "createdTime": "2026-11-16T16:56:48.000Z",
+  "fields": {
+   "Authors Link": [
+    "recSzI12q6erohUw3"
+   ],
+   "Choice A": "anadiplosis",
+   "Choice B": "anaphora",
+   "Choice C": "chiasmus",
+   "Choice D": "epistrophe",
+   "Choice E": "polysyndeton",
+   "Correct Answer": "anaphora",
+   "Correct Answer (Term)": "anaphora",
+   "Correct Choice": [
+    "B"
+   ],
+   "Correct Term": [
+    "recJATjHZOagymgFV"
+   ],
+   "Full Text": "Lines 1 and 5 (\"Remember me when I am gone away\" and \"Remember me when no more day by day\") illustrate\n\nA. anadiplosis\nB. anaphora\nC. chiasmus\nD. epistrophe\nE. polysyndeton",
+   "Name": "P3 · Rossetti, \"Remember\": lines 1 and 5",
+   "Notes": "https://www.gutenberg.org/ebooks/16950. Clue: none. Lines 1 and 5 open with \"Remember me when.\" Rhetorical & figurative devices (repetition).",
+   "Part": "Part 3",
+   "Poems and Passages": [
+    "recriL3vceg4sYGtG"
+   ],
+   "Prompt": "Lines 1 and 5 (\"Remember me when I am gone away\" and \"Remember me when no more day by day\") illustrate",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Christina Rossetti, \"Remember\"",
+   "Terms Link": [
+    "recqZP2RQ9TwtKJwE",
+    "recJATjHZOagymgFV",
+    "rec1gzcie8TGRYP3t"
+   ]
+  },
+  "id": "rechmc7qGfKIIkDEw"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -176286,6 +177618,42 @@
   "id": "recio9qtm8HDFUtzV"
  },
  {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Category": "Literary History",
+   "Choice A": "Augustan Age",
+   "Choice B": "Caroline Age",
+   "Choice C": "Edwardian Age",
+   "Choice D": "Georgian Age",
+   "Choice E": "Jacobean Age",
+   "Correct Answer": "Edwardian Age",
+   "Correct Answer (Term)": "Edwardian Age",
+   "Correct Choice": [
+    "C"
+   ],
+   "Correct Term": [
+    "recxiplOTNyammoxG"
+   ],
+   "Full Text": "The period in English literature from the death of Queen Victoria in 1901 to the outbreak of World War I in 1914, named for the king who reigned for most of it, is the\n\nA. Augustan Age\nB. Caroline Age\nC. Edwardian Age\nD. Georgian Age\nE. Jacobean Age",
+   "Name": "P1 · Periods & ages · Edwardian Age",
+   "Notes": "Handbook: Edwardian Age (Terms table). Tier: Invitational (staple: 10 released keys). Georgian Age (1914-1940) is the next period. Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "The period in English literature from the death of Queen Victoria in 1901 to the outbreak of World War I in 1914, named for the king who reigned for most of it, is the",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Periods & ages",
+   "Subcategory": "Periods & ages",
+   "Terms Link": [
+    "recmfvtq1oZumcpi6",
+    "reck09u7VGKiogmFT",
+    "recxiplOTNyammoxG",
+    "reciXyfYBSsOI77Uo",
+    "recnL6mBq0cYHDiMj"
+   ]
+  },
+  "id": "recioPchfV4NNxvRS"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Authors Link": [
@@ -180100,11 +181468,11 @@
     "E"
    ],
    "Full Text": "A narrator whose account cannot be taken at face value because of ignorance, bias, or instability, as with the killer who insists on his sanity in Poe's \"The Tell-Tale Heart,\" is a(n)\n\nA. implied author\nB. intrusive narrator\nC. persona\nD. self-effacing author\nE. unreliable narrator",
-   "Name": "District 2026–27 Practice Test 3 #15",
+   "Name": "District 2026–27 Practice Test 3 #10",
    "Notes": "unreliable narrator.",
    "Part": "Part 1",
    "Prompt": "A narrator whose account cannot be taken at face value because of ignorance, bias, or instability, as with the killer who insists on his sanity in Poe's \"The Tell-Tale Heart,\" is a(n)",
-   "Question Number": 15,
+   "Question Number": 10,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -184675,14 +186043,14 @@
   "fields": {
    "Choice A": "a lover's token",
    "Choice B": "the bond of marriage",
-   "Choice C": "the cord between mother and unborn child",
+   "Choice C": "the cord binding mother and child",
    "Choice D": "the speaker's last will",
    "Choice E": "the ties of friendship",
    "Correct Answer": "the bond of marriage",
    "Correct Choice": [
     "B"
    ],
-   "Full Text": "In Anne Bradstreet's \"Before the Birth of One of Her Children,\" the \"knot\" whose untying the speaker anticipates in line 11 is\n\nA. a lover's token\nB. the bond of marriage\nC. the cord between mother and unborn child\nD. the speaker's last will\nE. the ties of friendship",
+   "Full Text": "In Anne Bradstreet's \"Before the Birth of One of Her Children,\" the \"knot\" whose untying the speaker anticipates in line 11 is\n\nA. a lover's token\nB. the bond of marriage\nC. the cord binding mother and child\nD. the speaker's last will\nE. the ties of friendship",
    "Name": "District 2026–27 Practice Test 3 #43",
    "Notes": "\"That when that knot's untied that made us one\": death will part husband and wife.",
    "Part": "Part 2",
@@ -186712,6 +188080,42 @@
   "id": "reclDygY3YaeHa2fW"
  },
  {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Category": "Literary History",
+   "Choice A": "Aestheticism",
+   "Choice B": "Decadence",
+   "Choice C": "Pre-Raphaelitism",
+   "Choice D": "Symbolism",
+   "Choice E": "Transcendentalism",
+   "Correct Answer": "Pre-Raphaelitism",
+   "Correct Answer (Term)": "Pre-Raphaelitism",
+   "Correct Choice": [
+    "C"
+   ],
+   "Correct Term": [
+    "recrChQzyuspw5vas"
+   ],
+   "Full Text": "The movement founded in 1848 by Dante Gabriel Rossetti, Holman Hunt, and John Everett Millais as a protest against academic painting, whose literary side includes the poems of the Rossettis and William Morris, is\n\nA. Aestheticism\nB. Decadence\nC. Pre-Raphaelitism\nD. Symbolism\nE. Transcendentalism",
+   "Name": "P1 · Movements & -isms · Pre-Raphaelitism",
+   "Notes": "Handbook: Pre-Raphaelitism (Terms table). Tier: District/Region (1 released key). Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "The movement founded in 1848 by Dante Gabriel Rossetti, Holman Hunt, and John Everett Millais as a protest against academic painting, whose literary side includes the poems of the Rossettis and William Morris, is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Movements & -isms",
+   "Subcategory": "Movements & -isms",
+   "Terms Link": [
+    "rec6olTGQiQfMdAIu",
+    "reccF5OC45uTKYchj",
+    "recrChQzyuspw5vas",
+    "recZ3LwjXIfW9hDpP",
+    "recedHff51tCWjhIc"
+   ]
+  },
+  "id": "reclErdHpsO0TklMF"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Part 2 – Novel",
@@ -187139,14 +188543,14 @@
   "fields": {
    "Choice A": "eye rhyme",
    "Choice B": "feminine rhyme",
-   "Choice C": "masculine rhyme",
-   "Choice D": "slant rhyme",
-   "Choice E": "triple rhyme",
+   "Choice C": "heteromerous rhyme",
+   "Choice D": "masculine rhyme",
+   "Choice E": "slant rhyme",
    "Correct Answer": "masculine rhyme",
    "Correct Choice": [
-    "C"
+    "D"
    ],
-   "Full Text": "The words \"cow\" and \"plow\" (lines 22-23), the poem's only pair of rhyming line endings, form (a/n)\n\nA. eye rhyme\nB. feminine rhyme\nC. masculine rhyme\nD. slant rhyme\nE. triple rhyme",
+   "Full Text": "The words \"cow\" and \"plow\" (lines 22-23), the poem's only pair of rhyming line endings, form (a/n)\n\nA. eye rhyme\nB. feminine rhyme\nC. heteromerous rhyme\nD. masculine rhyme\nE. slant rhyme",
    "Name": "District 2026–27 Practice Test 3 #60",
    "Notes": "Single stressed syllables rhyme: cow / plow.",
    "Part": "Part 3",
@@ -190553,6 +191957,40 @@
   "id": "recmNnsRIBoeLdcw4"
  },
  {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recpaesuZQaeOuor4"
+   ],
+   "Choice A": "litotes",
+   "Choice B": "metonymy",
+   "Choice C": "simile",
+   "Choice D": "synecdoche",
+   "Choice E": "understatement",
+   "Correct Answer": "simile",
+   "Correct Answer (Term)": "simile",
+   "Correct Choice": [
+    "C"
+   ],
+   "Full Text": "Arty's recollection that kissing Grandma felt like \"putting your lips on a wrinkled ice cube\" is an example of\n\nA. litotes\nB. metonymy\nC. simile\nD. synecdoche\nE. understatement",
+   "Name": "Wk 1 · Lost in Yonkers · Act One, Scene 1: kissing Grandma",
+   "Notes": "Device in the work. Act One, Scene 1, book p. 4. Checked against: Lost in Yonkers Companion Guide (simile).",
+   "Part": "Part 2",
+   "Prompt": "Arty's recollection that kissing Grandma felt like \"putting your lips on a wrinkled ice cube\" is an example of",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Lost in Yonkers",
+   "Terms Link": [
+    "recvq6O1t4ludHdyX"
+   ],
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recihHOGCdbc79QIe"
+   ]
+  },
+  "id": "recmOeFO4OKbljVTd"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Poem Analysis",
@@ -191864,20 +193302,20 @@
  {
   "createdTime": "2026-11-15T14:36:20.000Z",
   "fields": {
-   "Choice A": "Guadalcanal",
-   "Choice B": "Iwo Jima",
-   "Choice C": "Midway",
-   "Choice D": "Okinawa",
-   "Choice E": "Saipan",
+   "Choice A": "Bougainville",
+   "Choice B": "Guadalcanal",
+   "Choice C": "Iwo Jima",
+   "Choice D": "Midway",
+   "Choice E": "Okinawa",
    "Correct Answer": "Guadalcanal",
    "Correct Choice": [
-    "A"
+    "B"
    ],
-   "Full Text": "In the final scene, Arty jokes that Uncle Louie, now a soldier fighting in the South Pacific, is \"probably the richest guy on\n\nA. Guadalcanal\nB. Iwo Jima\nC. Midway\nD. Okinawa\nE. Saipan",
+   "Full Text": "In the final scene, Arty jokes that Uncle Louie, now a soldier fighting in the South Pacific, is probably the richest man on\n\nA. Bougainville\nB. Guadalcanal\nC. Iwo Jima\nD. Midway\nE. Okinawa",
    "Name": "District 2026–27 Practice Test 3 #36",
-   "Notes": "Act Two, Scene 4. (The last scene is set in 1943; Iwo Jima, Okinawa and Saipan were later battles.)",
+   "Notes": "Act Two, Scene 4. (The last scene is set in 1943; Bougainville, Iwo Jima and Okinawa were later battles.)",
    "Part": "Part 2",
-   "Prompt": "In the final scene, Arty jokes that Uncle Louie, now a soldier fighting in the South Pacific, is \"probably the richest guy on",
+   "Prompt": "In the final scene, Arty jokes that Uncle Louie, now a soldier fighting in the South Pacific, is probably the richest man on",
    "Question Number": 36,
    "Source": "Generated",
    "Status": "Draft",
@@ -192054,6 +193492,42 @@
    "Test Year": "2025"
   },
   "id": "recmkeOZtrwklOZX0"
+ },
+ {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Authors Link": [
+    "recPiIc9gVIuEcFrO",
+    "recRKlDpYaUqhVFoc",
+    "recyh9XkDqPzHPErE",
+    "rec60a7DHzPycIijn",
+    "recaSCQhJM4XmGNtu"
+   ],
+   "Category": "Authors & Works",
+   "Choice A": "James Fenimore Cooper",
+   "Choice B": "Nathaniel Hawthorne",
+   "Choice C": "Washington Irving",
+   "Choice D": "Herman Melville",
+   "Choice E": "Edgar Allan Poe",
+   "Correct Answer": "Nathaniel Hawthorne",
+   "Correct Answer (Author)": "Nathaniel Hawthorne",
+   "Correct Author": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Correct Choice": [
+    "B"
+   ],
+   "Full Text": "The nineteenth-century American author of the romances The House of the Seven Gables, The Blithedale Romance, and The Marble Faun, as well as the tales collected in Mosses from an Old Manse, is\n\nA. James Fenimore Cooper\nB. Nathaniel Hawthorne\nC. Washington Irving\nD. Herman Melville\nE. Edgar Allan Poe",
+   "Name": "P1 · Identify author from works/bio · Nathaniel Hawthorne",
+   "Notes": "Tier: Invitational (staple; this year's reading-list author, so Invitational tests only). Works checked in the Works/Authors tables and Mosses (GITenberg 512). Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "The nineteenth-century American author of the romances The House of the Seven Gables, The Blithedale Romance, and The Marble Faun, as well as the tales collected in Mosses from an Old Manse, is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Identify author from works/bio",
+   "Subcategory": "Identify author from works/bio"
+  },
+  "id": "recmkiUYD5VNCJ5DA"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -197487,6 +198961,36 @@
    "Test Year": "2023"
   },
   "id": "recoRUNmwjsoV3Osx"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "anapestic tetrameter",
+   "Choice B": "iambic pentameter",
+   "Choice C": "iambic tetrameter",
+   "Choice D": "iambic trimeter",
+   "Choice E": "trochaic tetrameter",
+   "Correct Answer": "iambic tetrameter",
+   "Correct Choice": [
+    "C"
+   ],
+   "Full Text": "Line 1, \"In secret place where once I stood,\" is written in\n\nA. anapestic tetrameter\nB. iambic pentameter\nC. iambic tetrameter\nD. iambic trimeter\nE. trochaic tetrameter",
+   "Name": "Wk 1 · Bradstreet · The Flesh and the Spirit: meter of line 1",
+   "Notes": "Clue: none. Line 1; the whole poem is in iambic tetrameter couplets. Meter.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZqHLhHcnZ2Cxrh"
+   ],
+   "Prompt": "Line 1, \"In secret place where once I stood,\" is written in",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Flesh and the Spirit",
+   "Week": "2026-11-16"
+  },
+  "id": "recoSQvEBaSHBi92o"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -205484,6 +206988,36 @@
   "id": "recqUTB867RkSSSb2"
  },
  {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Choice A": "Despair",
+   "Choice B": "Materialist",
+   "Choice C": "Rationalist",
+   "Choice D": "Transcendentalist",
+   "Choice E": "Unitarian",
+   "Correct Answer": "Transcendentalist",
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "In the cave once held by the giants Pope and Pagan now lurks a German-born giant who fattens travelers on \"smoke, mist, moonshine, raw potatoes, and sawdust,\" Giant\n\nA. Despair\nB. Materialist\nC. Rationalist\nD. Transcendentalist\nE. Unitarian",
+   "Name": "Wk 1 · Hawthorne · The Celestial Railroad: the giant in Pope and Pagan's cave",
+   "Notes": "Plot detail. Just past the Valley of the Shadow of Death (Mosses, GITenberg 512). Giant Despair is Bunyan's, not this story's.",
+   "Part": "Part 2",
+   "Prompt": "In the cave once held by the giants Pope and Pagan now lurks a German-born giant who fattens travelers on \"smoke, mist, moonshine, raw potatoes, and sawdust,\" Giant",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Celestial Railroad",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recTt1S84QNrm48Ik"
+   ]
+  },
+  "id": "recqVq1uJbDwp69qi"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Authors Link": [
@@ -207925,6 +209459,42 @@
    "Test Year": "2018"
   },
   "id": "recqxcn7dsiDlq75W"
+ },
+ {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Authors Link": [
+    "recZT8CSHIZ5jrtQJ",
+    "recOtkQSgcOCDvJWp",
+    "reczntjuomfwQYA9u",
+    "recRoe41wo7gEg6r3",
+    "reckyDpTphv2DUKZc"
+   ],
+   "Category": "Authors & Works",
+   "Choice A": "Willa Cather",
+   "Choice B": "Kate Chopin",
+   "Choice C": "Ellen Glasgow",
+   "Choice D": "Sarah Orne Jewett",
+   "Choice E": "Edith Wharton",
+   "Correct Answer": "Willa Cather",
+   "Correct Answer (Author)": "Willa Cather",
+   "Correct Author": [
+    "recZT8CSHIZ5jrtQJ"
+   ],
+   "Correct Choice": [
+    "A"
+   ],
+   "Full Text": "The American novelist raised in Nebraska whose fiction of prairie settlers includes O Pioneers!, The Song of the Lark, and My Ántonia, and who wrote Death Comes for the Archbishop, is\n\nA. Willa Cather\nB. Kate Chopin\nC. Ellen Glasgow\nD. Sarah Orne Jewett\nE. Edith Wharton",
+   "Name": "P1 · Identify author from works/bio · Willa Cather",
+   "Notes": "Tier: District/Region. Cather's Pulitzer (One of Ours, 1923) deliberately left out of the stem. Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "The American novelist raised in Nebraska whose fiction of prairie settlers includes O Pioneers!, The Song of the Lark, and My Ántonia, and who wrote Death Comes for the Archbishop, is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Identify author from works/bio",
+   "Subcategory": "Identify author from works/bio"
+  },
+  "id": "recqxnjjGwSkXux26"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -213679,11 +215249,11 @@
     "B"
    ],
    "Full Text": "Not among the traditional poetic and dramatic forms of Japan is (the)\n\nA. Bunraku\nB. ghazal\nC. haiku\nD. Kabuki\nE. tanka",
-   "Name": "District 2026–27 Practice Test 3 #8",
+   "Name": "District 2026–27 Practice Test 3 #23",
    "Notes": "The ghazal is an Arabic and Persian lyric of couplets.",
    "Part": "Part 1",
    "Prompt": "Not among the traditional poetic and dramatic forms of Japan is (the)",
-   "Question Number": 8,
+   "Question Number": 23,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -215996,6 +217566,36 @@
   "id": "rectRZyDSiay8FdoP"
  },
  {
+  "createdTime": "2026-11-16T16:48:34.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "binding its loose pages",
+   "Choice B": "correcting printers' errors",
+   "Choice C": "smoothing out its meter",
+   "Choice D": "trimming its long title",
+   "Choice E": "widening its readership",
+   "Correct Answer": "smoothing out its meter",
+   "Correct Choice": [
+    "C"
+   ],
+   "Full Text": "In lines 15-16, \"I stretched thy joynts to make thee even feet, / Yet still thou run'st more hobling then is meet,\" the speaker's efforts refer chiefly to\n\nA. binding its loose pages\nB. correcting printers' errors\nC. smoothing out its meter\nD. trimming its long title\nE. widening its readership",
+   "Name": "Wk 1 · Bradstreet · The Author to Her Book: \"even feet\" (lines 15-16)",
+   "Notes": "Clue: none. Lines 15-16 pun on \"feet\" (limbs / metrical feet) and \"hobling\" (limping / uneven rhythm). \"Errors\" (line 6) belongs to the printing, not these lines. Checked against: LitCharts The Author to Her Book.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZACh2JfoRWJiWv"
+   ],
+   "Prompt": "In lines 15-16, \"I stretched thy joynts to make thee even feet, / Yet still thou run'st more hobling then is meet,\" the speaker's efforts refer chiefly to",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Author to Her Book",
+   "Week": "2026-11-16"
+  },
+  "id": "rectRgaHRWjl5s7Az"
+ },
+ {
   "createdTime": "2026-10-31T11:40:28.000Z",
   "fields": {
    "Category": "Literary Terms",
@@ -216279,6 +217879,40 @@
    "Test Year": "2022"
   },
   "id": "rectXR2q7cU8cd6W4"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "ballad stanza",
+   "Choice B": "blank verse",
+   "Choice C": "heroic couplet",
+   "Choice D": "poulter's measure",
+   "Choice E": "terza rima",
+   "Correct Answer": "heroic couplet",
+   "Correct Answer (Term)": "heroic couplet",
+   "Correct Choice": [
+    "C"
+   ],
+   "Full Text": "Lines 1-2 (\"Thou ill-form'd offspring of my feeble brain, / Who after birth didst by my side remain\") form a(n)\n\nA. ballad stanza\nB. blank verse\nC. heroic couplet\nD. poulter's measure\nE. terza rima",
+   "Name": "Wk 1 · Bradstreet · The Author to Her Book: form of lines 1-2",
+   "Notes": "Clue: none. Rhymed iambic pentameter pair; the whole poem is in such couplets. Form.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZACh2JfoRWJiWv"
+   ],
+   "Prompt": "Lines 1-2 (\"Thou ill-form'd offspring of my feeble brain, / Who after birth didst by my side remain\") form a(n)",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Author to Her Book",
+   "Terms Link": [
+    "recO92ako0ljm5wXe"
+   ],
+   "Week": "2026-11-16"
+  },
+  "id": "rectY5eUpKNNyfhpa"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -217523,6 +219157,42 @@
   "id": "rectrFpAlCAHv1odB"
  },
  {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Category": "Literary Terms",
+   "Choice A": "anadiplosis",
+   "Choice B": "anaphora",
+   "Choice C": "epanalepsis",
+   "Choice D": "epistrophe",
+   "Choice E": "polyptoton",
+   "Correct Answer": "anadiplosis",
+   "Correct Answer (Term)": "anadiplosis",
+   "Correct Choice": [
+    "A"
+   ],
+   "Correct Term": [
+    "recqZP2RQ9TwtKJwE"
+   ],
+   "Full Text": "The figure of repetition in which the closing word or phrase of one clause or line is taken up again to open the next, as in the biblical \"tribulation worketh patience; and patience, experience; and experience, hope,\" is\n\nA. anadiplosis\nB. anaphora\nC. epanalepsis\nD. epistrophe\nE. polyptoton",
+   "Name": "P1 · Rhetorical devices & figures of speech · anadiplosis",
+   "Notes": "Handbook: Anadiplosis (Terms table). Example: Romans 5:3-4 (KJV). Tier: District/Region (5 released keys). Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "The figure of repetition in which the closing word or phrase of one clause or line is taken up again to open the next, as in the biblical \"tribulation worketh patience; and patience, experience; and experience, hope,\" is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Rhetorical devices & figures of speech",
+   "Subcategory": "Rhetorical devices & figures of speech",
+   "Terms Link": [
+    "recqZP2RQ9TwtKJwE",
+    "recJATjHZOagymgFV",
+    "reciUrUg9OuXOmy0S",
+    "rec1gzcie8TGRYP3t",
+    "recHF3iSJOI7bUN9C"
+   ]
+  },
+  "id": "recttJcyir4E1pxs1"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Authors Link": [
@@ -217878,11 +219548,11 @@
     "A"
    ],
    "Full Text": "The term coined by W. K. Wimsatt and Monroe C. Beardsley for the error of judging a poem by its emotional effect on the reader, the companion of their \"intentional fallacy,\" is the\n\nA. affective fallacy\nB. biographical fallacy\nC. heresy of paraphrase\nD. objective correlative\nE. pathetic fallacy",
-   "Name": "District 2026–27 Practice Test 3 #7",
+   "Name": "District 2026–27 Practice Test 3 #27",
    "Notes": "affective fallacy: Wimsatt and Beardsley, Sewanee Review, 1949.",
    "Part": "Part 1",
    "Prompt": "The term coined by W. K. Wimsatt and Monroe C. Beardsley for the error of judging a poem by its emotional effect on the reader, the companion of their \"intentional fallacy,\" is the",
-   "Question Number": 7,
+   "Question Number": 27,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -219818,6 +221488,40 @@
   "id": "recuU1aWr8CKeqMxO"
  },
  {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "anacoluthon",
+   "Choice B": "aporia",
+   "Choice C": "hendiadys",
+   "Choice D": "rhetorical question",
+   "Choice E": "zeugma",
+   "Correct Answer": "rhetorical question",
+   "Correct Answer (Term)": "rhetorical question",
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "Flesh's challenges in lines 9-20, such as \"Doth Contemplation feed thee so / Regardlessly to let earth go?\" (lines 11-12), are each an example of\n\nA. anacoluthon\nB. aporia\nC. hendiadys\nD. rhetorical question\nE. zeugma",
+   "Name": "Wk 1 · Bradstreet · The Flesh and the Spirit: Flesh's questions (lines 9-20)",
+   "Notes": "Clue: none. Lines 9-20. Rhetorical device.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "recZqHLhHcnZ2Cxrh"
+   ],
+   "Prompt": "Flesh's challenges in lines 9-20, such as \"Doth Contemplation feed thee so / Regardlessly to let earth go?\" (lines 11-12), are each an example of",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Flesh and the Spirit",
+   "Terms Link": [
+    "rec9r5hjTu5LP0hqK"
+   ],
+   "Week": "2026-11-16"
+  },
+  "id": "recuUDN5T5gt6JRXv"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Authors Link": [
@@ -220994,6 +222698,36 @@
   "id": "recuojZTHhrBVROdj"
  },
  {
+  "createdTime": "2026-11-16T16:48:40.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Choice A": "drops the wedding ring",
+   "Choice B": "faints before the bride",
+   "Choice C": "forgets the marriage vows",
+   "Choice D": "spills his untasted wine",
+   "Choice E": "tears the veil from his face",
+   "Correct Answer": "spills his untasted wine",
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "At the evening wedding, a glimpse of his own veiled figure in the looking-glass so horrifies Mr. Hooper that he\n\nA. drops the wedding ring\nB. faints before the bride\nC. forgets the marriage vows\nD. spills his untasted wine\nE. tears the veil from his face",
+   "Name": "Wk 1 · Hawthorne · The Minister's Black Veil: Hooper at the wedding",
+   "Notes": "Plot detail. The wedding that follows the young lady's funeral (Twice-Told Tales, GITenberg 508). Region/State story.",
+   "Part": "Part 2",
+   "Prompt": "At the evening wedding, a glimpse of his own veiled figure in the looking-glass so horrifies Mr. Hooper that he",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Minister's Black Veil",
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recTt1S84QNrm48Ik"
+   ]
+  },
+  "id": "recup50HXkNuFcD8T"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Authors Link": [
@@ -222024,6 +223758,36 @@
    "Test Year": "2015"
   },
   "id": "recv0bTLQjTAaFidr"
+ },
+ {
+  "createdTime": "2026-11-16T16:48:34.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "Aeschines",
+   "Choice B": "Demosthenes",
+   "Choice C": "Isocrates",
+   "Choice D": "Pericles",
+   "Choice E": "Themistocles",
+   "Correct Answer": "Demosthenes",
+   "Correct Choice": [
+    "B"
+   ],
+   "Full Text": "The \"fluent sweet-tongued Greek / Who lisp'd at first, in future times speak plain\" (lines 19-20) is the orator\n\nA. Aeschines\nB. Demosthenes\nC. Isocrates\nD. Pericles\nE. Themistocles",
+   "Name": "Wk 1 · Bradstreet · The Prologue: the Greek who lisped (lines 19-20)",
+   "Notes": "Clue: none. Lines 19-22: Demosthenes overcame a speech impediment \"By Art\" (practice). Checked against: Poetry+ The Prologue analysis.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "rechTtH1TMtXw2Fvq"
+   ],
+   "Prompt": "The \"fluent sweet-tongued Greek / Who lisp'd at first, in future times speak plain\" (lines 19-20) is the orator",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Prologue",
+   "Week": "2026-11-16"
+  },
+  "id": "recv45tJr6wd4ayqc"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -223488,6 +225252,40 @@
   "id": "recvQ4Js9C8S2Vql5"
  },
  {
+  "createdTime": "2026-11-16T16:46:53.000Z",
+  "fields": {
+   "Authors Link": [
+    "recRKlDpYaUqhVFoc"
+   ],
+   "Choice A": "anagram",
+   "Choice B": "epithet",
+   "Choice C": "malapropism",
+   "Choice D": "pun",
+   "Choice E": "spoonerism",
+   "Correct Answer": "pun",
+   "Correct Answer (Term)": "pun",
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "In \"Young Goodman Brown,\" the cry \"My Faith is gone!\" after a pink ribbon flutters down through the air plays on his wife's name as a(n)\n\nA. anagram\nB. epithet\nC. malapropism\nD. pun\nE. spoonerism",
+   "Name": "Wk 1 · Hawthorne · Young Goodman Brown: \"My Faith is gone!\" (device)",
+   "Notes": "Forest scene: \"something fluttered lightly down through the air and caught on the branch of a tree. The young man seized it, and beheld a pink ribbon. 'My Faith is gone!' cried he\". Faith = his wife and his religious faith. Text: Mosses from an Old Manse, GITenberg mirror (512.txt). Region/State story.",
+   "Part": "Part 2",
+   "Prompt": "In \"Young Goodman Brown,\" the cry \"My Faith is gone!\" after a pink ribbon flutters down through the air plays on his wife's name as a(n)",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Young Goodman Brown",
+   "Terms Link": [
+    "rec7sYQFrwoC8SFaH"
+   ],
+   "Week": "2026-11-16",
+   "Works Link": [
+    "recTt1S84QNrm48Ik"
+   ]
+  },
+  "id": "recvQLAR5rZf7DUH2"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Part 2 – Novel",
@@ -223908,6 +225706,42 @@
    "Test Year": "2026"
   },
   "id": "recvWuDQISi50ebKL"
+ },
+ {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Authors Link": [
+    "recgR9ZDftYt08IAP",
+    "reccCDrRxK05ii7vJ",
+    "recPA9y8kXlyYUF4Q",
+    "recUbKcvw76vePQ2y",
+    "recBaMlvWQzqFUDY9"
+   ],
+   "Category": "Authors & Works",
+   "Choice A": "Maria Edgeworth",
+   "Choice B": "William Godwin",
+   "Choice C": "Matthew Lewis",
+   "Choice D": "Thomas Love Peacock",
+   "Choice E": "Anne Radcliffe",
+   "Correct Answer": "Thomas Love Peacock",
+   "Correct Answer (Author)": "Thomas Love Peacock",
+   "Correct Author": [
+    "recUbKcvw76vePQ2y"
+   ],
+   "Correct Choice": [
+    "D"
+   ],
+   "Full Text": "The English satirist and friend of Shelley whose conversation novels Headlong Hall, Nightmare Abbey, and Crotchet Castle mock the fashionable ideas of his day is\n\nA. Maria Edgeworth\nB. William Godwin\nC. Matthew Lewis\nD. Thomas Love Peacock\nE. Anne Radcliffe",
+   "Name": "P1 · Identify author from works/bio · Thomas Love Peacock",
+   "Notes": "Tier: State (rare). Please check this one: confirm Peacock's works in the Works table. Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "The English satirist and friend of Shelley whose conversation novels Headlong Hall, Nightmare Abbey, and Crotchet Castle mock the fashionable ideas of his day is",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Identify author from works/bio",
+   "Subcategory": "Identify author from works/bio"
+  },
+  "id": "recvXZ7Uf9jVHwzZZ"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",
@@ -232896,6 +234730,36 @@
   "id": "recy1P86jOyxRgXym"
  },
  {
+  "createdTime": "2026-11-16T16:48:34.000Z",
+  "fields": {
+   "Authors Link": [
+    "recME4lSh6krp4vzb"
+   ],
+   "Choice A": "the laurel of poetic fame",
+   "Choice B": "the myrtle of a bride",
+   "Choice C": "the oak of civic virtue",
+   "Choice D": "the olive of an athlete",
+   "Choice E": "the palm of a martyr",
+   "Correct Answer": "the laurel of poetic fame",
+   "Correct Choice": [
+    "A"
+   ],
+   "Full Text": "The \"Bays\" the speaker declines in line 46, asking only a \"thyme or Parsley wreath,\" stand for\n\nA. the laurel of poetic fame\nB. the myrtle of a bride\nC. the oak of civic virtue\nD. the olive of an athlete\nE. the palm of a martyr",
+   "Name": "Wk 1 · Bradstreet · The Prologue: the \"Bays\" (line 46)",
+   "Notes": "Clue: none. Line 46: \"Give thyme or Parsley wreath, I ask no Bays.\" Bays = the bay-laurel crown of poetic honor, set against humble kitchen herbs. Checked against: Poetry+ The Prologue analysis.",
+   "Part": "Part 2",
+   "Poems and Passages": [
+    "rechTtH1TMtXw2Fvq"
+   ],
+   "Prompt": "The \"Bays\" the speaker declines in line 46, asking only a \"thyme or Parsley wreath,\" stand for",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "The Prologue",
+   "Week": "2026-11-16"
+  },
+  "id": "recy27Ufqypx5opvO"
+ },
+ {
   "createdTime": "2026-10-31T11:40:19.000Z",
   "fields": {
    "Category": "Part 2 – Novel",
@@ -237094,11 +238958,11 @@
     "C"
    ],
    "Full Text": "In prosody, the poetic foot composed of two unaccented syllables is\n\nA. anapest\nB. iamb\nC. pyrrhic\nD. spondee\nE. trochee",
-   "Name": "District 2026–27 Practice Test 3 #12",
+   "Name": "District 2026–27 Practice Test 3 #5",
    "Notes": "Same stem, new answer: 2019 District #29 asked for the foot of two accented syllables (spondee).",
    "Part": "Part 1",
    "Prompt": "In prosody, the poetic foot composed of two unaccented syllables is",
-   "Question Number": 12,
+   "Question Number": 5,
    "Source": "Generated",
    "Status": "Draft",
    "Test": [
@@ -238796,6 +240660,42 @@
    ]
   },
   "id": "reczfl7bia34JRPjI"
+ },
+ {
+  "createdTime": "2026-11-16T16:53:45.000Z",
+  "fields": {
+   "Category": "Literary Terms",
+   "Choice A": "Bildungsroman",
+   "Choice B": "Künstlerroman",
+   "Choice C": "picaresque novel",
+   "Choice D": "roman à clef",
+   "Choice E": "roman-fleuve",
+   "Correct Answer": "Künstlerroman",
+   "Correct Answer (Term)": "Künstlerroman",
+   "Correct Choice": [
+    "B"
+   ],
+   "Correct Term": [
+    "recXSFb2mRHRtRM3u"
+   ],
+   "Full Text": "The variety of apprenticeship novel that traces an artist's growth from childhood toward an understanding of a creative vocation, as in Joyce's A Portrait of the Artist as a Young Man, is the\n\nA. Bildungsroman\nB. Künstlerroman\nC. picaresque novel\nD. roman à clef\nE. roman-fleuve",
+   "Name": "P1 · Fiction & narrative · Künstlerroman",
+   "Notes": "Handbook: Künstlerroman (Terms table). Tier: State (rare; never keyed). Bildungsroman is the broader family; the artist clue settles it. Drafted Nov 16, 2026 (chat batch).",
+   "Part": "Part 1",
+   "Prompt": "The variety of apprenticeship novel that traces an artist's growth from childhood toward an understanding of a creative vocation, as in Joyce's A Portrait of the Artist as a Young Man, is the",
+   "Source": "Generated",
+   "Status": "Draft",
+   "Story or Poem": "Fiction & narrative",
+   "Subcategory": "Fiction & narrative",
+   "Terms Link": [
+    "receHgXlJXm9iRd6i",
+    "recXSFb2mRHRtRM3u",
+    "recfFNmD35P0gLfn3",
+    "rec1weO85KGflAeZd",
+    "recwE9BuwDwHY9IvF"
+   ]
+  },
+  "id": "reczfmZj8VVIWzn74"
  },
  {
   "createdTime": "2026-10-31T11:40:19.000Z",

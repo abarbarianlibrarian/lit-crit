@@ -4442,6 +4442,16 @@
      "description": "Free, Free preview (part of it is behind a paywall or needs a subscription), or Paid. Shown on the website's Resources page."
     },
     {
+     "type": "checkbox",
+     "options": {
+      "icon": "check",
+      "color": "greenBright"
+     },
+     "id": "fld72zxz5ayHFJ63h",
+     "name": "Share File",
+     "description": "Checked: signed-in visitors can open and download this record's File from the website's Resources page (served by the Supabase function resource-file, which checks this box on every request). Unchecked: the file is never served. Only check files you have the right to share."
+    },
+    {
      "type": "formula",
      "options": {
       "isValid": true,
