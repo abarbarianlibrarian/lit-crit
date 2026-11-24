@@ -285,6 +285,7 @@ h2.letter { font: 500 28px/1 var(--serif); text-transform: none; letter-spacing:
   -webkit-user-select: none; user-select: none;
 }
 .poem .pg { display: block; height: 0.9em; }
+.poem .pc .pt { text-indent: 0; }  /* "+ " turnover: starts at the hanging indent */
 .poem .pgl .pt { font-size: 0.8em; color: var(--ink-3); }
 .poem .plb .pt { font-style: italic; }
 .poem.prose .pt { padding-left: calc(var(--i, 0) * 0.3em); text-indent: 0; }

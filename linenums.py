@@ -7,7 +7,8 @@ Rules come from the Style Guide's "Line numbers" section and claude/line-numbers
 Text format (Poems and Passages, Text):
   - no title line and no numbers
   - a blank line is a stanza break; leading spaces are indentation
-  - "+ "  continues the line before it (a turnover or dropped half-line); not counted
+  - "+ "  continues the line before it (a turnover or dropped half-line); not counted. It prints with a
+          hanging indent; extra spaces after "+ " indent it further (a dropped half-line)
   - "* "  a gloss or footnote; not counted
   - "# "  a label (section numeral, epigraph, poet and date); not counted
 Record fields: Line Start (blank = 1), Line Numbering (Auto, Every 3/4/5/6, Every line, None),
@@ -111,7 +112,8 @@ def number(text, numbering=None, start=None, layout=None, blank="Auto"):
     """Rows for a poem or passage. See the module docstring. `blank` is the setting used when
     Line Numbering is empty (the site passes "None" until every record has been migrated)."""
     lines = _split(text)
-    legacy = legacy_numbers(text)
+    # Only an unconverted record (Line Numbering still blank) can hold printed numbers.
+    legacy = {} if numbering else legacy_numbers(text)
     rows = []
     if legacy:
         # Old text: keep UIL's printed numbers where they were printed; count nothing.
