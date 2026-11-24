@@ -651,6 +651,19 @@ h2.letter .count { font: 500 14px/1 var(--sans); color: var(--ink-3); margin-lef
 .flag-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .flag-actions { display: flex; align-items: center; gap: 16px; margin-top: 14px; }
 
+/* Sign-in chooser: keep the account's or this browser's progress (auth.js choose) */
+.sync-choice { width: min(640px, calc(100vw - 32px)); }
+.sync-table { width: 100%; border-collapse: collapse; font: 400 14px/1.4 var(--sans); margin: 4px 0 6px; }
+.sync-table th, .sync-table td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+.sync-table thead th { font-weight: 600; color: var(--ink); }
+.sync-table thead small { display: block; font-weight: 400; font-size: 12.5px; color: var(--ink-3); }
+.sync-table tbody th { font-weight: 500; color: var(--ink-2); width: 30%; }
+.sync-table tr.differs td { background: var(--paper-2); }
+.sync-actions { flex-wrap: wrap; gap: 10px; }
+.sync-actions .sync-alt { background: var(--chip); color: var(--ink); }
+.sync-actions .sync-alt:hover { background: var(--chip-hover); }
+@media (max-width: 520px) { .sync-table { font-size: 13px; } .sync-table th, .sync-table td { padding: 7px 6px; } }
+
 /* Account profile */
 .acct-profile { border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px 2px; margin: 4px 0 18px; }
 .acct-profile legend { font: 600 14px/1.3 var(--sans); color: var(--ink); padding: 0 6px; }

@@ -7,7 +7,8 @@
  * is never loaded.
  * Signed in: on each page load, before the quiz scripts start (window.litcritReady), the saved
  * progress is pulled from the account; every change the quiz scripts make to localStorage is pushed
- * back a moment later. Signing in keeps whatever was answered as a guest in this browser.
+ * back a moment later. Signing in when both this browser (as a guest) and the account hold progress
+ * asks which copy to keep, with a side-by-side comparison (choose); if only one has progress, it is used.
  * Signing out clears this browser's copy.
  *
  * Settings come from the page: window.LITCRIT_AUTH = {url, key, lib}.
@@ -63,6 +64,96 @@
       if (l && (re[id].updated || 0) > (l.updated || 0)) out.essays[id] = re[id];
     });
     return out;
+  }
+
+  // ---- comparing the browser's copy with the account's (the sign-in chooser)
+  function n(o) { return Object.keys(o || {}).length; }
+  function pl(x, w, ws) { return x.toLocaleString() + " " + (x === 1 ? w : (ws || w + "s")); }
+  function fcCardsOf(d) { return n(d.fcCards) ? d.fcCards : {}; }
+  // Is there anything here worth keeping? Default settings and the last-test pointer don't count.
+  function hasProgress(d) {
+    if (!d) return false;
+    var streak = d.fcMeta && d.fcMeta.streak;
+    return ["answers", "scored", "scores", "quiz", "essays", "mockAttempts", "fcCards", "fcCats", "cards", "decks"]
+      .some(function (k) { return n(d[k]) > 0; }) || !!(streak && (streak.n || streak.best));
+  }
+  function dayLabel(day) {
+    var dt = new Date(day * 864e5);
+    return new Date(dt.getUTCFullYear(), dt.getUTCMonth(), dt.getUTCDate()).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  }
+  // One row per kind of progress: [label, text]. Used for both copies so they line up.
+  function summary(d) {
+    d = d || {};
+    var rows = [];
+    var scores = d.scores || {}, tests = Object.keys(scores);
+    var avg = tests.length ? Math.round(tests.reduce(function (s, k) {
+      var t = scores[k] || {}; return s + (t.total ? 100 * (t.score || 0) / t.total : 0);
+    }, 0) / tests.length) : null;
+    rows.push(["Practice questions", n(d.answers) ? pl(n(d.answers), "answer") : "none"]);
+    rows.push(["Practice tests scored", tests.length ? tests.length + " (average " + avg + "%)" : "none"]);
+    rows.push(["Quick-quiz questions", n(d.quiz) ? pl(n(d.quiz), "question") : "none"]);
+    var att = d.mockAttempts || {};
+    rows.push(["Timed mock tests", n(att) ? pl(n(att), "attempt") : "none"]);
+    var c = fcCardsOf(d), box = [0, 0, 0, 0, 0];
+    Object.keys(c).forEach(function (id) { var b = (c[id] || [])[0]; if (b >= 0 && b <= 4) box[b]++; });
+    var total = n(c) || n(d.cards);
+    rows.push(["Flashcards", !total ? "none" : n(c)
+      ? pl(total, "card") + " (" + [[1, "daily"], [2, "weekly"], [3, "monthly"], [4, "mastered"], [0, "waiting"]]
+          .filter(function (x) { return box[x[0]]; }).map(function (x) { return box[x[0]] + " " + x[1]; }).join(", ") + ")"
+      : pl(total, "card")]);
+    var s = (d.fcMeta && d.fcMeta.streak) || {};
+    rows.push(["Flashcard streak", s.n || s.best
+      ? pl(s.n || 0, "day") + (s.best ? ", best " + s.best : "") + (s.last != null ? " (last " + dayLabel(s.last) + ")" : "")
+      : "none"]);
+    var cats = n(d.fcCats) || n(d.decks);
+    rows.push(["Custom flashcard sets", cats ? String(cats) : "none"]);
+    var es = d.essays || {}, words = Object.keys(es).reduce(function (w, k) { return w + ((es[k] || {}).words || 0); }, 0);
+    rows.push(["Essays", n(es) ? pl(n(es), "essay") + ", " + pl(words, "word") : "none"]);
+    return rows;
+  }
+  // Ask which copy to keep. Resolves "account" or "browser". The dialog can't be dismissed without a choice.
+  function choose(remote, local, updated) {
+    return new Promise(function (resolve) {
+      function go() {
+        var a = summary(remote), b = summary(local);
+        var when = updated ? new Date(updated).toLocaleString(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) : "";
+        var dlg = document.createElement("dialog");
+        dlg.className = "flag-dialog sync-choice";
+        dlg.setAttribute("aria-labelledby", "sync-choice-h");
+        dlg.innerHTML =
+          '<h2 id="sync-choice-h">Which progress do you want to keep?</h2>' +
+          '<p class="flag-about">This browser has progress saved while you were signed out, and your account has its own. ' +
+          'Choose one to keep. The other is replaced and can’t be brought back.</p>' +
+          '<table class="sync-table"><thead><tr><th></th><th scope="col">Your account' + (when ? '<small>last saved ' + esc(when) + '</small>' : '') +
+          '</th><th scope="col">This browser<small>while signed out</small></th></tr></thead><tbody>' +
+          a.map(function (r, i) {
+            var diff = r[1] !== b[i][1] ? ' class="differs"' : "";
+            return '<tr' + diff + '><th scope="row">' + esc(r[0]) + '</th><td>' + esc(r[1]) + '</td><td>' + esc(b[i][1]) + '</td></tr>';
+          }).join("") +
+          '</tbody></table>' +
+          '<div class="flag-actions sync-actions">' +
+          '<button type="button" class="acct-btn" data-keep="account">Keep my account’s progress</button>' +
+          '<button type="button" class="acct-btn sync-alt" data-keep="browser">Keep this browser’s progress</button></div>';
+        document.body.appendChild(dlg);
+        dlg.addEventListener("cancel", function (ev) { ev.preventDefault(); });   // Escape doesn't skip the choice
+        dlg.addEventListener("click", function (ev) {
+          var btn = ev.target.closest && ev.target.closest("[data-keep]");
+          if (!btn) return;
+          var pick = btn.getAttribute("data-keep");
+          if (pick === "browser" && !window.confirm("Replace your account’s progress with this browser’s? Your account’s current progress will be gone.")) return;
+          if (dlg.close) dlg.close(); dlg.remove();
+          resolve(pick);
+        });
+        if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+        dlg.querySelector('[data-keep="account"]').focus();
+      }
+      onDom(go);
+    });
+  }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
   }
 
   // ---- the Supabase library, loaded only when needed
@@ -123,25 +214,31 @@
   window.addEventListener("pagehide", function () { if (pushTimer) push(); });
 
   // Bring this browser's copy in line with the account. Returns a promise.
-  function pull(uid) {
+  // When both this browser (as a guest) and the account hold progress, the student chooses which to keep
+  // (choose); otherwise whichever copy has progress is used, as before.
+  // onChoice runs after a choice was made (the page-load path reloads the page, since its scripts may have started).
+  function pull(uid, onChoice) {
     return client().then(function (sb) {
-      return sb.from("progress").select("data").eq("user_id", uid).maybeSingle();
+      return sb.from("progress").select("data, updated_at").eq("user_id", uid).maybeSingle();
     }).then(function (res) {
       if (res.error) throw res.error;
       var remote = res.data ? res.data.data : null, local = localData(), m = meta();
-      var result, needPush = false;
-      if (m.uid === uid && !m.dirty) {
-        result = remote || local;                     // the account is the latest copy
-      } else if (m.uid === uid) {
-        result = local; needPush = true;              // changes made here weren't saved yet
-      } else {
-        result = merge(remote, m.uid ? {} : local); // guest progress joins the account
-        needPush = !remote || !isEmpty(local);
+      var updated = res.data ? res.data.updated_at : null;
+      if (m.uid === uid && !m.dirty) return apply(remote || local, false);      // the account is the latest copy
+      if (m.uid === uid) return apply(local, true);                             // changes made here weren't saved yet
+      if (m.uid) return apply(merge(remote, {}), !remote);                      // another account's copy: ignore it
+      if (hasProgress(remote) && hasProgress(local)) {
+        return choose(remote, local, updated).then(function (pick) {
+          return apply(pick === "browser" ? local : remote, pick === "browser");
+        }).then(function () { if (onChoice) onChoice(); });
       }
+      return apply(hasProgress(local) ? merge(remote, local) : (remote || local), !remote || hasProgress(local));
+    });
+    function apply(result, needPush) {
       writeLocal(result);
       setMeta({ uid: uid, dirty: needPush });
       if (needPush) return push();
-    });
+    }
   }
 
   // ---- header link and status
@@ -174,10 +271,12 @@
       var s = r && r.data && r.data.session;
       if (!s) { window.litcritUser = null; return; }
       window.litcritUser = s.user;
-      return pull(s.user.id);
+      // If the student had to choose after the page's scripts started, reload so they show the kept copy.
+      return pull(s.user.id, function () { if (timedOut) location.reload(); });
     }).catch(function () { setStatus("offline"); });
     // Never hold the page up for long.
-    ready = Promise.race([ready, new Promise(function (r) { setTimeout(r, 4000); })]);
+    var timedOut = false;
+    ready = Promise.race([ready, new Promise(function (r) { setTimeout(function () { timedOut = true; r(); }, 4000); })]);
   }
   window.litcritReady = ready;
   function onDom(fn) { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fn); else fn(); }
