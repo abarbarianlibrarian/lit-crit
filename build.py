@@ -42,6 +42,9 @@ TABLES = {
         "mentioned": "fldJhXfzL9A99oyos", "related": "fldXvNAT4jPJaR3E7", "tags": "fld0t6v2AZqeWicCI",
         "authors": "fld7yDp5hGXqHPeFG", "date": "fld6XeHIEPN4OjisU", "today": "fldHS2sW665ELiWYo",
         "appearances": "flda3zLGAsqOWUu2Y",
+        # Flashcard Name / Flashcard Definition (Nov 23, 2026): the term without dates, alternates or
+        # inversion, and the short definition reworded so it doesn't give the term away. Blank = fall back.
+        "fc_name": "fldMd2lxUWYd1VuE1", "fc_def": "fldCfl5cOhkoC4HLK",
     }),
     "authors": ("tblv2LTIvL1vj36zt", {
         "name": "fldir5h8wsLHZmNkd", "nationality": "fldNiSyQVIr0teads", "birth": "fldf97H8m30BZfQuE",
@@ -51,6 +54,9 @@ TABLES = {
         "first": "fldSm5ftkHEn0C596", "last": "fld3cDnR7vH49g28M", "alternate": "fld83eZxzidKWyNUC",
         "terms": "fldJhoUfxqtEGQHwi", "works": "fldvgfsTJz4vMzRxj",
         "date": "fldWBIqAW0L1a9VDl", "today": "fldt7E7Wqjn2tjVeA", "appearances": "fldYwAcza9A8qNjFN",
+        # Flashcard Name (uninverted name) / Flashcard Definition (formula: notable works, or all works if
+        # none are notable, oldest first, "; "-separated, the author's name blanked out). Nov 23, 2026.
+        "fc_name": "fldWq4SRC4IlVyMXP", "fc_def": "fldXK5nwyi9vqLcjh",
     }),
     "works": ("tblOom8qyFC4XhuTI", {
         "name": "fldu0qLBaWaNcb8h2", "authors": "fldsMj4EbbCQnngB4", "quoted": "fldqR6C6tqa2Xm6Zl",
@@ -1636,6 +1642,11 @@ def year_of(*vals):
     return ""
 
 
+def card_name(r):
+    """The name a flashcard shows: Airtable's Flashcard Name, or the record's title when that's blank."""
+    return (r.get("fc_name") or "").strip() or r["title"]
+
+
 def card_data(db, rel):
     global FC_SCRIPT
     FC_SCRIPT = f'<script>window.FC_V = "{BUILD_ID}";</script><script src="{BASE}assets/flashcards.js?v={BUILD_ID}" defer></script>'
@@ -1646,10 +1657,11 @@ def card_data(db, rel):
         return ", ".join(db["authors"][a]["title"] for a in author_ids)
 
     for t in db["terms"].values():
-        short = cap_first(t["short"] or re.sub(r"\s+", " ", t["definition"])[:240])
+        # Flashcard Name / Flashcard Definition from Airtable (Nov 23, 2026); blank falls back to Term / Short Definition.
+        short = cap_first(t["fc_def"] or t["short"] or re.sub(r"\s+", " ", t["definition"])[:240])
         if not short:
             continue
-        out["t"][t["id"]] = [t["title"], f'<p class="fc-def">{e(short)}</p>', path(t), short]
+        out["t"][t["id"]] = [card_name(t), f'<p class="fc-def">{e(short)}</p>', path(t), short]
 
     tested_w = {w for w in db["works"] if rel[("works", w)].get("questions")}
     for a in db["authors"].values():
@@ -1670,7 +1682,7 @@ def card_data(db, rel):
         more = f'<p class="muted fc-more">and {len(works) - 8} more</p>' if len(works) > 8 else ""
         years = " – ".join(x for x in (a["birth"], a["death"]) if x)
         sub = " · ".join(x for x in (a["nationality"], years) if x)
-        out["a"][a["id"]] = [a["title"], (f'<p class="fc-sub">{e(sub)}</p>' if sub else "") + f'<ul class="fc-list">{items}</ul>{more}', path(a)]
+        out["a"][a["id"]] = [card_name(a), (f'<p class="fc-sub">{e(sub)}</p>' if sub else "") + f'<ul class="fc-list">{items}</ul>{more}', path(a)]
 
     for w in db["works"].values():
         authors = rel[("works", w["id"])].get("authors", [])
@@ -2126,7 +2138,11 @@ def mc_data(db, rel, resolver=None):
                     break
                 if o not in have and ok(o):
                     pool.append(o); have.add(o)
-        out["t"][t] = ["t", [idx["t"][t]], [idx["t"][o] for o in pool], [], list(term_forms(me["title"]))]
+        show, names = term_forms(me["title"])
+        if (me.get("fc_name") or "").strip():          # Flashcard Name is what multiple choice shows (Nov 23, 2026)
+            show = me["fc_name"].strip()
+            names = names + ([show] if show not in names else [])
+        out["t"][t] = ["t", [idx["t"][t]], [idx["t"][o] for o in pool], [], [show, names]]
 
     # ---- similar authors (shared questions, then same nationality and closest birth year)
     authors = db["authors"]
@@ -2208,6 +2224,32 @@ def mc_data(db, rel, resolver=None):
                     out_t = re.sub(r"(?<![A-Za-z])" + re.escape(n) + r"(?:'s|’s)?(?![A-Za-z])", "_____", out_t, flags=re.I)
         return out_t
 
+    # Author clues from Airtable's Flashcard Definition (Nov 23, 2026): its titles, in the site's order (tested
+    # works first, then by year; up to 8), with years. Titles that match no work keep Airtable's order at the end.
+    def airtable_clues(a, shown):
+        r = authors[a]
+        items = [x.strip() for x in (r.get("fc_def") or "").split("; ") if x.strip()]
+        if not items:
+            return []
+        full, last = strip_paren(r["title"]), (r.get("last") or "").strip()
+
+        def blanked(title):
+            t = title.replace(full, "_____") if full else title
+            return re.sub(r"\b" + re.escape(last) + r"\b", "_____", t) if last else t
+        order = works_of(a)
+        rank = {}
+        for i, w in enumerate(order):
+            for k in (fold(db["works"][w]["title"]), fold(blanked(db["works"][w]["title"]))):
+                rank.setdefault(k, (i, w))
+        hit = sorted([(rank[fold(x)][0], x, rank[fold(x)][1]) for x in items if fold(x) in rank])
+        miss = [x for x in items if fold(x) not in rank]
+        out_c = []
+        for _, x, w in hit:
+            yr = year_of(db["works"][w]["year_written"], db["works"][w]["published"])
+            out_c.append(mask_names(x, [a]) + (f" ({yr})" if yr else ""))
+        out_c += [mask_names(x, [a]) for x in miss]
+        return out_c[:8]
+
     # ---- authors: show some of their works → who wrote them?
     for a in CARD_IDS["a"]:
         shown = works_of(a)
@@ -2226,6 +2268,9 @@ def mc_data(db, rel, resolver=None):
         for w in shown:
             yr = year_of(db["works"][w]["year_written"], db["works"][w]["published"])
             clues.append(mask_names(db["works"][w]["title"], [a]) + (f" ({yr})" if yr else ""))
+        fc = airtable_clues(a, shown)
+        if fc:
+            clues = fc
         out["a"][a] = ["a", [idx["a"][a]], [idx["a"][o] for o in pool], [], clues]
 
     # ---- prizes → who won? Pulitzer: year, prize and work. Nobel (and prizes with no work): year, prize, nationality.
