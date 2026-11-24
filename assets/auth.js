@@ -43,6 +43,20 @@
   function merge(remote, local) {     // local wins where both have an entry (essays: the newer draft wins)
     var out = {};
     Object.keys(KEYS).forEach(function (k) { out[k] = Object.assign({}, (remote && remote[k]) || {}, local[k] || {}); });
+    // Flashcard settings and streak: the account's copy wins. Signing out leaves this browser as a guest,
+    // and any flashcard page then saves default settings and an empty streak; letting those win wiped the
+    // account's streak on the next sign-in (Nov 23, 2026). A guest streak is kept only if it's longer.
+    var rm = (remote && remote.fcMeta) || {}, lm = local.fcMeta || {};
+    out.fcMeta = Object.assign({}, Object.keys(rm).length ? rm : lm);
+    var rs = rm.streak, ls = lm.streak;
+    if (rs || ls) {
+      var s = Object.assign({}, rs && (!ls || (rs.n || 0) >= (ls.n || 0)) ? rs : ls);
+      s.best = Math.max((rs && rs.best) || 0, (ls && ls.best) || 0, s.n || 0);
+      var days = {};
+      [rs, ls].forEach(function (x) { ((x && x.days) || []).forEach(function (d) { days[d] = 1; }); });
+      s.days = Object.keys(days).map(Number).sort(function (a, b) { return a - b; }).slice(-30);
+      out.fcMeta.streak = s;
+    }
     var re = (remote && remote.essays) || {};
     Object.keys(re).forEach(function (id) {
       var l = (local.essays || {})[id];
