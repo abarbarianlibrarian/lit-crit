@@ -11,6 +11,18 @@
      "name": "Term"
     },
     {
+     "type": "singleLineText",
+     "id": "fldMd2lxUWYd1VuE1",
+     "name": "Flashcard Name",
+     "description": "The term as shown on flashcards: no dates, alternate spellings or other extras, and not inverted (\"The Movement\", not \"Movement, The\"). Filled Nov 23, 2026 from Term; edit freely."
+    },
+    {
+     "type": "multilineText",
+     "id": "fldCfl5cOhkoC4HLK",
+     "name": "Flashcard Definition",
+     "description": "Short Definition reworded so it doesn't give the term away (no eponyms like Milton for Miltonic Sonnet, no repeating the term's distinctive words). Same as Short Definition when nothing needed changing. Filled Nov 23, 2026; edit freely."
+    },
+    {
      "type": "multilineText",
      "id": "fldGMKdtfyu03CK6B",
      "name": "Short Definition"
@@ -271,6 +283,28 @@
     {
      "type": "multipleRecordLinks",
      "options": {
+      "linkedTableId": "tblcPkKHdlXKFszGP",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldJhXfzL9A99oyos"
+     },
+     "id": "fldAznR1x68dQY0B4",
+     "name": "From field: Mentioned Terms 4"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblcPkKHdlXKFszGP",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldXvNAT4jPJaR3E7"
+     },
+     "id": "fld1G37Xz73L13YOG",
+     "name": "From field: Related Terms 3"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
       "linkedTableId": "tblv2LTIvL1vj36zt",
       "isReversed": false,
       "prefersSingleRecordLink": false,
@@ -289,6 +323,17 @@
      },
      "id": "fldGoQ90fPJyMeJS4",
      "name": "Self-Link"
+    },
+    {
+     "type": "multipleRecordLinks",
+     "options": {
+      "linkedTableId": "tblcPkKHdlXKFszGP",
+      "isReversed": false,
+      "prefersSingleRecordLink": false,
+      "inverseLinkFieldId": "fldGoQ90fPJyMeJS4"
+     },
+     "id": "fldKuCEVtONcG6cZ1",
+     "name": "From field: Self-Link"
     },
     {
      "type": "multipleRecordLinks",
@@ -317,39 +362,6 @@
      },
      "id": "fldDDQge4BRamO86c",
      "name": "Linked Questions"
-    },
-    {
-     "type": "multipleRecordLinks",
-     "options": {
-      "linkedTableId": "tblcPkKHdlXKFszGP",
-      "isReversed": false,
-      "prefersSingleRecordLink": false,
-      "inverseLinkFieldId": "fldJhXfzL9A99oyos"
-     },
-     "id": "fldAznR1x68dQY0B4",
-     "name": "From field: Mentioned Terms 4"
-    },
-    {
-     "type": "multipleRecordLinks",
-     "options": {
-      "linkedTableId": "tblcPkKHdlXKFszGP",
-      "isReversed": false,
-      "prefersSingleRecordLink": false,
-      "inverseLinkFieldId": "fldXvNAT4jPJaR3E7"
-     },
-     "id": "fld1G37Xz73L13YOG",
-     "name": "From field: Related Terms 3"
-    },
-    {
-     "type": "multipleRecordLinks",
-     "options": {
-      "linkedTableId": "tblcPkKHdlXKFszGP",
-      "isReversed": false,
-      "prefersSingleRecordLink": false,
-      "inverseLinkFieldId": "fldGoQ90fPJyMeJS4"
-     },
-     "id": "fldKuCEVtONcG6cZ1",
-     "name": "From field: Self-Link"
     },
     {
      "type": "singleLineText",
@@ -861,6 +873,14 @@
      },
      "id": "fldcVlPDr4UnkZ9CC",
      "name": "Commonly in Choices With"
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldPIW2Doj4iIDUzg",
+     "name": "Handbook Page"
     }
    ],
    "views": [
@@ -2311,6 +2331,94 @@
      },
      "id": "fldgfrEzHqwdXJJIq",
      "name": "Core For"
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldvgfsTJz4vMzRxj",
+      "fieldIdInLinkedTable": "fldu0qLBaWaNcb8h2",
+      "referencedFieldIds": [],
+      "filters": {
+       "operator": "and",
+       "operands": [
+        {
+         "operator": "isNotEmpty",
+         "operands": [
+          "flds3WJ6k8wuJnzKY"
+         ]
+        }
+       ]
+      },
+      "sorts": [
+       {
+        "fieldId": "fld0VavM96rXTHOv5",
+        "direction": "asc"
+       }
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldlZ5j7fo0xlQcxK",
+     "name": "Flashcard Notable Works (helper)",
+     "description": "Helper for Flashcard Definition: titles of this author's Notable (★) works, oldest first."
+    },
+    {
+     "type": "rollup",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldvgfsTJz4vMzRxj",
+      "fieldIdInLinkedTable": "fldu0qLBaWaNcb8h2",
+      "referencedFieldIds": [],
+      "sorts": [
+       {
+        "fieldId": "fld0VavM96rXTHOv5",
+        "direction": "asc"
+       }
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fld8qqyY1bgpvh1yw",
+     "name": "Flashcard All Works (helper)",
+     "description": "Helper for Flashcard Definition: titles of all this author's works, oldest first (used when none are Notable)."
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "{fldir5h8wsLHZmNkd}",
+      "referencedFieldIds": [
+       "fldir5h8wsLHZmNkd"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldWq4SRC4IlVyMXP",
+     "name": "Flashcard Name",
+     "description": "The author's name as shown on flashcards, not inverted (Prefix First Last Suffix, same as Name)."
+    },
+    {
+     "type": "formula",
+     "options": {
+      "isValid": true,
+      "formula": "IF({fld3cDnR7vH49g28M}, REGEX_REPLACE(SUBSTITUTE(IF({fldlZ5j7fo0xlQcxK}, {fldlZ5j7fo0xlQcxK}, {fld8qqyY1bgpvh1yw}), {fldir5h8wsLHZmNkd}, \"_____\"), \"\\\\b\" & {fld3cDnR7vH49g28M} & \"\\\\b\", \"_____\"), SUBSTITUTE(IF({fldlZ5j7fo0xlQcxK}, {fldlZ5j7fo0xlQcxK}, {fld8qqyY1bgpvh1yw}), {fldir5h8wsLHZmNkd}, \"_____\"))",
+      "referencedFieldIds": [
+       "fld3cDnR7vH49g28M",
+       "fldlZ5j7fo0xlQcxK",
+       "fld8qqyY1bgpvh1yw",
+       "fldir5h8wsLHZmNkd"
+      ],
+      "result": {
+       "type": "singleLineText"
+      }
+     },
+     "id": "fldXK5nwyi9vqLcjh",
+     "name": "Flashcard Definition",
+     "description": "The author's Notable (★) works, oldest first, separated by semicolons; all works if none are Notable. The author's name is blanked out of any title (\"Lais of _____\"). Updates itself when works change."
     }
    ],
    "views": [
@@ -4658,6 +4766,11 @@
      "name": "Title"
     },
     {
+     "type": "url",
+     "id": "fldrstuxXm8lqi6UE",
+     "name": "Source Link"
+    },
+    {
      "type": "multilineText",
      "id": "fldJLtOZ8fZi1FEGB",
      "name": "Text"
@@ -4731,6 +4844,91 @@
      "id": "fldlhWt3kbxWuurf9",
      "name": "Needs Manual Check",
      "description": "Text was auto-extracted from the test PDF; a check flagged a possible layout glitch. Compare with the test and uncheck when verified."
+    },
+    {
+     "type": "multilineText",
+     "id": "fldQDQXXW5U6idxAO",
+     "name": "Line Number Review",
+     "description": "Nov 24, 2026 audit for removing line numbers from Text. Each line is a fix needed by hand before the automatic cleanup. Markers: '+ ' = continues the line above (turnover or dropped half-line, not counted); '* ' = gloss or footnote; '# ' = label (section numeral, epigraph, poet/date). Clear the field when fixed. See claude/line-numbers-plan.md and the Style Guide's Line numbers section."
+    },
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldo5D7AI9X0Fahsv",
+     "name": "Line Start",
+     "description": "Number of the first counted line, for excerpts (e.g. 9 for the third stanza of \"London\"). Blank = 1."
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "selWIBhkvfP4BAUoP",
+        "name": "Auto",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selqznDt6FpYnfR3q",
+        "name": "Every 3",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selQmANYLQ6oevF9M",
+        "name": "Every 4",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selvEO34EfVopghhI",
+        "name": "Every 5",
+        "color": "grayLight2"
+       },
+       {
+        "id": "sel2659jO8L1cNa2e",
+        "name": "Every 6",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selTwkKesdxdMntyY",
+        "name": "Every line",
+        "color": "grayLight2"
+       },
+       {
+        "id": "seljvePyKilPKweng",
+        "name": "None",
+        "color": "grayLight2"
+       }
+      ]
+     },
+     "id": "fld3g02pBAmsQRoDG",
+     "name": "Line Numbering",
+     "description": "How often the site and practice-test PDFs print a line number. Auto follows the Style Guide's Line numbers rules. Blank = Auto."
+    },
+    {
+     "type": "singleSelect",
+     "options": {
+      "choices": [
+       {
+        "id": "sel6w3ycRAKutKjK0",
+        "name": "Verse",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selglma1ivSf5oHZS",
+        "name": "Prose (UIL lines)",
+        "color": "grayLight2"
+       },
+       {
+        "id": "selQf52k8RLuKz1wW",
+        "name": "Prose (paragraphs)",
+        "color": "grayLight2"
+       }
+      ]
+     },
+     "id": "fldAsx6tVA38uGcGy",
+     "name": "Layout",
+     "description": "Verse: lines as typed. Prose (UIL lines): prose kept with UIL's printed line breaks, numbered. Prose (paragraphs): flowing prose, no line numbers. Blank = Verse."
     }
    ],
    "views": [
@@ -5431,6 +5629,343 @@
      "id": "fldc3OT7lu9ulnNLQ",
      "name": "Week",
      "description": "Generated questions: Monday of the week the question was drafted for."
+    },
+    {
+     "type": "multipleSelects",
+     "options": {
+      "choices": [
+       {
+        "id": "selIxVuadIp3upEr8",
+        "name": "Literary Terms",
+        "color": "blueLight1"
+       },
+       {
+        "id": "selxZ0xPF3qlwjv1Y",
+        "name": "Literary History",
+        "color": "blueLight1"
+       },
+       {
+        "id": "sel66Of9B2C81G1fV",
+        "name": "Prizes & Awards",
+        "color": "blueLight1"
+       },
+       {
+        "id": "selbn7v1L6ip4AhTS",
+        "name": "Authors & Works",
+        "color": "blueLight1"
+       },
+       {
+        "id": "sel5bPiBefDRy1yKH",
+        "name": "Mythology, Bible & Legend",
+        "color": "blueLight1"
+       },
+       {
+        "id": "selznEXPyUbGh0xia",
+        "name": "Recall",
+        "color": "blueLight1"
+       },
+       {
+        "id": "selnRa2TkoQrqQ590",
+        "name": "Craft & devices",
+        "color": "blueLight1"
+       },
+       {
+        "id": "sel9OMITqNWXomBWs",
+        "name": "Devices & imagery",
+        "color": "blueLight1"
+       },
+       {
+        "id": "sel7o9dUmkQXxhffq",
+        "name": "Form & sound",
+        "color": "blueLight1"
+       },
+       {
+        "id": "selPTNbO6XLgpDA6F",
+        "name": "Interpretation",
+        "color": "blueLight1"
+       },
+       {
+        "id": "selsJYBn9zIZZaZqx",
+        "name": "Characters in famous works",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selr6yWMg8WzYVAOJ",
+        "name": "Identify author from works/bio",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selurOLNgYIgyINQs",
+        "name": "Pen names & identities",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selWR8WsCl4kam3QH",
+        "name": "Which author does NOT belong (group/era/genre)",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selsS3RTfcOj21sZ9",
+        "name": "Which work is NOT by an author",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selFiF5D46bC7EoNo",
+        "name": "Groups, schools & circles",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel78tWOn1s1wKTW6",
+        "name": "Movements & -isms",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel1P5xn8F9rRrr5u",
+        "name": "Periods & ages",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selia4QdB1kkqG22I",
+        "name": "Books, printing & publishing",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selfxyf8X7g9nHYZJ",
+        "name": "Criticism & theory",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selKYRgDd19outBkB",
+        "name": "Drama & theater",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selg41pWoInRdGNoE",
+        "name": "Fiction & narrative",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel0HYnoBys0ra4mS",
+        "name": "Other terms",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selR38SYdLtGGtNBk",
+        "name": "Philosophy & ideas",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel4DoD4GwdPWLJ39",
+        "name": "Poem types & occasions",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selkvv1R28UhgYiz6",
+        "name": "Poetic feet & meter",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selYSlDvLeWDfF1MK",
+        "name": "Rhetorical devices & figures of speech",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selju3jxl02r0F0Mq",
+        "name": "Rhyme types",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selj3healRbHqxLiq",
+        "name": "Satire, humor & wit",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selFbyvWEEiY03B12",
+        "name": "Sonnets",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel4CYslKJXJVSrQS",
+        "name": "Sound devices",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selZKzk3ojbiNPt9p",
+        "name": "Stanza & verse forms",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selSRgOqL9nWCgqRX",
+        "name": "Words, language & usage",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selMfyAuIo8ylnJvn",
+        "name": "Arthurian & legend",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selhracbmaSECSiel",
+        "name": "Bible & religion",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selJNNrPpzqz5UnKq",
+        "name": "Greek/Roman/Norse mythology",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selV3yVfPJRxFzWPd",
+        "name": "Nobel Prize in Literature",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selXcH3dExbNQAq9X",
+        "name": "Other prizes (Booker, National Book Award, etc.)",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel05ptnoFo2KdfeE",
+        "name": "Poet Laureate",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selSqklefvNme2fKt",
+        "name": "Pulitzer – Drama",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selxosiE3nzfH29q6",
+        "name": "Pulitzer – Fiction/Novel",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selpti26c1UOYGxJJ",
+        "name": "Pulitzer – Poetry",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selA4urV1MslJLyVA",
+        "name": "Pulitzer – other",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selDHAoXZpkJAMHMS",
+        "name": "Plot & detail recall",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel8Dxi80BTkXsWVj",
+        "name": "Character identification",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selqKupV67ZEgkRji",
+        "name": "Quotation: speaker / addressee / context",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selGrblpJ4a5zpTKS",
+        "name": "Allusion",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sell5qBsN40OkNfzz",
+        "name": "Literary device in the work",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selYACV6GQt1vtto6",
+        "name": "Theme, meaning & interpretation",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel53rW689gQM86Hu",
+        "name": "Rhetorical & figurative devices",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel0VLs0PwccrXRk5",
+        "name": "Imagery type",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selM6mQCmzPQ3cWUC",
+        "name": "Rhyme types & sound devices",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selaUzD7EHG8xiz4S",
+        "name": "Meter & scansion",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selZOM4JVzVg1YXQ1",
+        "name": "Form & stanza classification",
+        "color": "greenLight2"
+       },
+       {
+        "id": "sel6DLp5hNEuPR11k",
+        "name": "Rhyme scheme (letter pattern)",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selpHx1CyYMvVWJnN",
+        "name": "Line/passage meaning & reference",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selAxyVlHyfmVZ3Pf",
+        "name": "Overall comprehension",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selGDFzxlDwglmyD1",
+        "name": "Speaker, addressee & situation",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selGpAQxieRhpJ1Ll",
+        "name": "Locate the line/stanza",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selnODiKkJsoVus2u",
+        "name": "Structure, turn & shifts",
+        "color": "greenLight2"
+       },
+       {
+        "id": "seliNUa4u5n4piZxe",
+        "name": "Theme & central idea",
+        "color": "greenLight2"
+       },
+       {
+        "id": "selQRMNnGYL0ffRTC",
+        "name": "Tone, mood & attitude",
+        "color": "greenLight2"
+       }
+      ]
+     },
+     "id": "fldp3OyiUFPRDenna",
+     "name": "Tags",
+     "description": "Question type (blue) and subtype (green), from the released-test analysis (claude/question-categories-2011-2026.csv). Part 1: type = Category. Parts 2 and 3: type = Part 2/3 Group. Subtype = Subcategory."
+    },
+    {
+     "type": "multipleLookupValues",
+     "options": {
+      "isValid": true,
+      "recordLinkFieldId": "fldxo5vOdLp63ohVZ",
+      "fieldIdInLinkedTable": "fldlhWt3kbxWuurf9",
+      "result": {
+       "type": "checkbox",
+       "options": {
+        "icon": "check",
+        "color": "orangeBright"
+       }
+      }
+     },
+     "id": "fldCfOiCC8g5F1ohu",
+     "name": "Passage Flag"
     }
    ],
    "views": [
