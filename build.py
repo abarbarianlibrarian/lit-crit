@@ -32,6 +32,8 @@ import urllib.request
 from collections import defaultdict
 from pathlib import Path
 
+import linenums
+
 BASE_ID = "appIwriYb9qeDgwst"
 
 # Tables and the fields the site uses (Airtable field IDs, so renaming a field in
@@ -96,6 +98,7 @@ TABLES = {
     "poems": ("tblQ2KWCeyNrWshMF", {
         "name": "fldheIjKBCv88NxiU", "text": "fldJLtOZ8fZi1FEGB", "authors": "fldycqc8GJHDMnJot",
         "essays": "fldWFdsdA7r3ydtAR", "questions": "fld2W4ywICtx1aslc",
+        "line_start": "fldo5D7AI9X0Fahsv", "numbering": "fld3g02pBAmsQRoDG", "layout": "fldAsx6tVA38uGcGy",
     }),
     "questions": ("tblOCo90Gz36SYv10", {
         "name": "fldRhddsjYnpVrK71", "test": "fldilaCNMHb6EYsJn", "prompt": "fld5RLsrVQAr8fhfo",
@@ -1258,7 +1261,7 @@ def question_passages(db, q, shown):
             continue
         first = pid not in shown
         shown.add(pid)
-        text = (f'<div class="poem">{multiline(p["text"])}</div>' if p["text"]
+        text = (poem_html(p) if p["text"]
                 else '<p class="muted">The text of this passage isn’t in the database yet.</p>')
         label = "Passage" if first else "Passage (also above)"
         out += (f'<details class="qpassage"{" open" if first else ""}><summary><span class="passage-label">{label}</span> '
@@ -1278,6 +1281,31 @@ def reading_list_links(db, ids):
 
 def multiline(text):
     return "<br>".join(e(line) for line in text.strip().split("\n"))
+
+
+# Line Numbering left blank on a record means this. "None" while the texts are being migrated
+# (unmigrated texts still hold title lines and turnovers that Auto would count); old texts that still
+# carry UIL's printed numbers show those. Change to "Auto" once every record has been migrated.
+LINE_NUMBERS_BLANK = "None"
+
+
+def poem_html(p):
+    """A poem or passage, one row per line, with UIL-style line numbers on the right (see linenums.py
+    and the Style Guide's "Line numbers"). Numbers are user-select: none, so copied text stays clean."""
+    rows = linenums.number(p["text"], p.get("numbering"), p.get("line_start"), p.get("layout"), blank=LINE_NUMBERS_BLANK)
+    prose = p.get("layout") == "Prose (paragraphs)"
+    numbered = linenums.has_numbers(rows)
+    out = []
+    for r in rows:
+        if r.kind == "gap":
+            out.append('<span class="pg"></span>'); continue
+        cls = {"line": "pl", "cont": "pl pc", "gloss": "pl pgl", "label": "pl plb"}[r.kind]
+        ind = f' style="--i:{min(r.indent, 40)}"' if r.indent else ""
+        # every row of a numbered poem keeps the number column, so all lines wrap at the same width
+        num = f'<span class="ln">{r.show}</span>' if numbered else ""
+        out.append(f'<span class="{cls}"{ind}><span class="pt">{e(r.text)}</span>{num}</span>')
+    cls = "poem" + (" numbered" if numbered else "") + (" prose" if prose else "")
+    return f'<div class="{cls}">{"".join(out)}</div>'
 
 
 def question_part(q):
@@ -1389,7 +1417,7 @@ def passage_html(db, rel, pid, first):
             + (f'<p class="passage-by">by {by}</p>' if by else ""))
     if not first:
         return (f'<div class="passage again">{head}<p class="muted"><a href="#passage-{pid}">See the text above</a></p></div>')
-    text = f'<div class="poem">{multiline(p["text"])}</div>' if p["text"] else \
+    text = poem_html(p) if p["text"] else \
         '<p class="muted">The text of this passage isn’t in the database yet.</p>'
     return f'<div class="passage" id="passage-{pid}">{head}{text}</div>'
 
@@ -1466,7 +1494,7 @@ def mock_essay_html(db, rel, x):
         by = ", ".join(e(db["authors"][a]["title"]) for a in authors)
         texts += (f'<div class="passage"><p class="passage-label">Text</p><h3 class="passage-title">{e(p["title"])}</h3>'
                   + (f'<p class="passage-by">by {by}</p>' if by else "")
-                  + (f'<div class="poem">{multiline(p["text"])}</div>' if p["text"] else "") + "</div>")
+                  + (poem_html(p) if p["text"] else "") + "</div>")
     return f"""<section class="mock-essay" id="mock-essay" data-mock-essay hidden>
 <h2 class="letter">Part 4: Essay</h2>
 <blockquote class="essay-prompt">{multiline(x['prompt'])}</blockquote>
@@ -1524,7 +1552,7 @@ def poem_page(db, rel, p):
 <h1 data-record="{p['id']}">{e(p['title'])}</h1>
 {f'<p class="lede">by {by}</p>' if by else ''}
 {study_box("text", "poem", pid, len(rel[('poems', pid)].get('questions', [])), '')}
-{f'<div class="poem">{multiline(p["text"])}</div>' if p['text'] else ''}
+{poem_html(p) if p['text'] else ''}
 </article>
 {section('Appeared on', chips(db, 'tests', tests, sort=False), len(tests))}
 {section('Essay prompts', essay_html, len(essays))}
@@ -3849,7 +3877,8 @@ def quiz_bank(db, rel):
     for pid in used["poems"]:
         p = db["poems"].get(pid)
         if p:
-            poems[pid] = [p["title"], p["url"], p["text"], rel[("poems", pid)].get("authors", [])]
+            # [2] is the passage already rendered as HTML, with line numbers (poem_html)
+            poems[pid] = [p["title"], p["url"], poem_html(p) if p["text"] else "", rel[("poems", pid)].get("authors", [])]
             used["authors"].update(poems[pid][3])
     # Topics: sets (terms), reading lists (works and authors), periods (authors).
     # A set quiz uses only questions whose correct answer is one of the set's terms ("ta"),

@@ -193,7 +193,7 @@
         var x = bank.poems[p];
         if (!x) return "";
         return '<details class="qpassage" open><summary><span class="passage-label">Passage</span> <span class="qpassage-title">' + esc(x[0]) +
-          "</span></summary>" + (x[2] ? '<div class="poem">' + lines(x[2]) + "</div>" : '<p class="muted">The text of this passage isn’t in the database yet.</p>') +
+          "</span></summary>" + (x[2] ? x[2] : '<p class="muted">The text of this passage isn’t in the database yet.</p>') +
           '<p class="qpassage-link"><a href="' + esc(x[1]) + '">Open ' + esc(x[0]) + "</a></p></details>";
       }).join("");
       var choices = q.c.map(function (c, k) {

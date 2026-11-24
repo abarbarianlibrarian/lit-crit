@@ -272,6 +272,23 @@ h2.letter { font: 500 28px/1 var(--serif); text-transform: none; letter-spacing:
   background: var(--paper-2); border-left: 3px solid var(--accent-soft); border-radius: 0 8px 8px 0;
 }
 .essay h3 { font: 600 15px/1.4 var(--sans); margin: 0 0 4px; }
+/* Poem lines (build.py poem_html, linenums.py): one row per line; wrapped lines hang;
+   UIL-style line numbers sit small and muted at the right, on the line's last row. */
+.poem .pl { display: flex; align-items: flex-end; gap: 12px; }
+.poem .pt {
+  flex: 1; min-width: 0; white-space: pre-wrap;
+  padding-left: calc(1.5em + var(--i, 0) * 0.3em); text-indent: -1.5em;
+}
+.poem .ln {
+  flex: none; min-width: 2.2em; text-align: right; color: var(--ink-3);
+  font-family: var(--sans); font-size: 0.68em; line-height: calc(1.75em / 0.68); font-variant-numeric: tabular-nums;
+  -webkit-user-select: none; user-select: none;
+}
+.poem .pg { display: block; height: 0.9em; }
+.poem .pgl .pt { font-size: 0.8em; color: var(--ink-3); }
+.poem .plb .pt { font-style: italic; }
+.poem.prose .pt { padding-left: calc(var(--i, 0) * 0.3em); text-indent: 0; }
+
 .essay p { margin: 0 0 16px; }
 
 /* Reading lists */
