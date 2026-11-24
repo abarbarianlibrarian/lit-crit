@@ -1642,9 +1642,20 @@ def year_of(*vals):
     return ""
 
 
-def card_name(r):
-    """The name a flashcard shows: Airtable's Flashcard Name, or the record's title when that's blank."""
-    return (r.get("fc_name") or "").strip() or r["title"]
+def card_name(r, term=False):
+    """The name a flashcard shows: Airtable's Flashcard Name. When that's blank, the title; for terms, cleaned the
+    same way as claude/fill-flashcard-fields-airtable-script.js (no trailing dates or parenthetical, article first)."""
+    name = (r.get("fc_name") or "").strip()
+    if name or not term:
+        return name or r["title"]
+    t = re.sub(r",\s*\d{3,4}\s*[-\u2013\u2014]\s*(\d{3,4})?\s*$", "", r["title"].strip())
+    t = re.sub(r"\s*\([^)]*\)\s*$", "", t)
+    m = re.match(r"^(.*),\s*(The|A|An)$", t)
+    if m:
+        t = m.group(2) + " " + m.group(1)
+    if t.startswith("\u201c") and t.endswith("\u201d"):
+        t = t[1:-1]
+    return t.strip() or r["title"]
 
 
 def card_data(db, rel):
@@ -1661,7 +1672,7 @@ def card_data(db, rel):
         short = cap_first(t["fc_def"] or t["short"] or re.sub(r"\s+", " ", t["definition"])[:240])
         if not short:
             continue
-        out["t"][t["id"]] = [card_name(t), f'<p class="fc-def">{e(short)}</p>', path(t), short]
+        out["t"][t["id"]] = [card_name(t, True), f'<p class="fc-def">{e(short)}</p>', path(t), short]
 
     tested_w = {w for w in db["works"] if rel[("works", w)].get("questions")}
     for a in db["authors"].values():
@@ -2139,9 +2150,8 @@ def mc_data(db, rel, resolver=None):
                 if o not in have and ok(o):
                     pool.append(o); have.add(o)
         show, names = term_forms(me["title"])
-        if (me.get("fc_name") or "").strip():          # Flashcard Name is what multiple choice shows (Nov 23, 2026)
-            show = me["fc_name"].strip()
-            names = names + ([show] if show not in names else [])
+        show = card_name(me, True)                     # Flashcard Name is what multiple choice shows (Nov 23, 2026)
+        names = names + ([show] if show not in names else [])
         out["t"][t] = ["t", [idx["t"][t]], [idx["t"][o] for o in pool], [], [show, names]]
 
     # ---- similar authors (shared questions, then same nationality and closest birth year)
