@@ -107,6 +107,7 @@ TABLES = {
         "number": "fldwadHhF7fbzuedS", "part": "fldJrtGYQyU2sq55x", "poems": "fldxo5vOdLp63ohVZ",
         "rl_works": "fld8BtUvVz4VEyl6w", "terms": "fldHfOfZ0ImhwX5V7", "authors": "fldXuzM3SSDbXZoPi",
         "works": "fldWpu4MAkgQe8Mvv", "source": "fldFtTKHbwhQJ7SuJ", "status": "fldBEhpYKTv5x9LWJ",
+        "story": "fldiSDnwZg5EUjEG9",
     }),
     "tests": ("tblDASF9lXxJby0kz", {
         "name": "fldkWtaAfrRmC1lpK", "year": "fld1PomM202MScaic", "type": "fldYZkncJfj653B49",
@@ -130,7 +131,7 @@ TABLES = {
 }
 
 # Tables shown inside other pages rather than with pages of their own.
-NO_PAGES = {"resources", "questions", "reading-lists", "events", "examples"}
+NO_PAGES = {"resources", "questions", "practice", "reading-lists", "events", "examples"}
 
 SECTIONS = [  # url folder, nav label, singular label
     ("terms", "Terms", "Term"),
@@ -349,6 +350,10 @@ PRIVATE_FILE_FIELDS = {"files"}   # served only through the resource-file functi
 CHECKBOX_FIELDS = {"share"}
 
 
+# Generated questions with this Status are shown on the site as practice questions (Katy, Nov 24, 2026).
+PRACTICE_STATUS = "Approved"
+
+
 def normalize(raw):
     db = {}
     for key, (_, fields) in TABLES.items():
@@ -372,7 +377,13 @@ def normalize(raw):
                     r[name] = as_text(v)
             db[key][rec["id"]] = r
     # Questions and Tests hold both released (Source = Official) and AI-drafted (Source = Generated)
-    # records. Only released ones are on the site for now; a blank Source counts as Official.
+    # records; a blank Source counts as Official. Generated questions with Status = Approved go to
+    # db["practice"], kept apart from db["questions"] so they never reach the Tests pages, the
+    # appearance counts on term/author/work/poem pages, or anything else that counts released
+    # questions. They are used only by the Quick quiz (quiz_bank) and the Study page's counts.
+    # Generated tests, and Draft or Rejected questions, are not on the site.
+    db["practice"] = {i: r for i, r in db["questions"].items()
+                      if r.get("source") == "Generated" and r.get("status") == PRACTICE_STATUS}
     for key in ("questions", "tests"):
         db[key] = {i: r for i, r in db[key].items() if r.get("source") != "Generated"}
     # Drop links that point at records that aren't on the site.
@@ -380,6 +391,10 @@ def normalize(raw):
         for r in db[key].values():
             for field, target in links.items():
                 r[field] = [x for x in dict.fromkeys(r[field]) if x in db[target] and x != r["id"]]
+    for r in db["practice"].values():
+        for field, target in LINK_FIELDS["questions"].items():
+            r[field] = [x for x in dict.fromkeys(r[field]) if x in db[target]]
+        r["test"] = []  # generated practice tests aren't on the site
     return db
 
 
@@ -413,7 +428,7 @@ def display_name(key, r):
         return name or f'{r["year"]} {r["type"]}'.strip() or "Prize"
     if key == "resources":
         return r["name"] or "Resource"
-    if key == "questions":
+    if key in ("questions", "practice"):
         return (r["prompt"] or r["name"] or "Question").strip()
     if key == "reading-lists":
         return r["year"] or r["name"] or "Reading list"
@@ -3642,6 +3657,22 @@ def reference_page(db):
     write("reference/index.html", page("Reference", body, "reference", lede, "reference/"))
 
 
+def practice_link(db, kind, rid):
+    """'N practice questions' on a reading-list card: approved generated questions linked to the
+    work, or to the author directly or through a linked poem (as the quick quiz's topic filter counts)."""
+    n = 0
+    for q in db["practice"].values():
+        if kind == "works":
+            hit = rid in q["works"] or rid in q["rl_works"]
+        else:
+            hit = rid in q["authors"] or any(rid in db["poems"][p]["authors"] for p in q["poems"] if p in db["poems"])
+        n += hit
+    if not n:
+        return ""
+    param = "work" if kind == "works" else "author"
+    return f'<a href="{BASE}study/quiz/?{param}={rid}&amp;source=practice">{n} practice question{"s" if n != 1 else ""}</a>'
+
+
 def study_page(db, rel):
     rl = current_list(db)
     year_html = ""
@@ -3657,7 +3688,8 @@ def study_page(db, rel):
                       f'<a class="rlcard-title" href="{r["url"]}">{title}</a>'
                       f'{f"<span class=rlcard-by>{e(by)}</span>" if by else ""}'
                       f'<span class="rlcard-links"><a href="{BASE}resources/?list={e(rl["year"], quote=True)}">Resources</a>'
-                      f'<a href="{BASE}study/quiz/?{"work" if kind == "works" else "author"}={r["id"]}">Quiz on it</a></span></div>')
+                      f'<a href="{BASE}study/quiz/?{"work" if kind == "works" else "author"}={r["id"]}">Quiz on it</a>'
+                      f'{practice_link(db, kind, r["id"])}</span></div>')
         year_html = f"""<section class="block" id="this-year"><h2>This year’s reading list · {e(rl['year'].replace('-', '–'))}</h2>
 <div class="rlcards">{cards}</div>
 <p class="more-line"><a href="{BASE}study/quiz/?list={rl['id']}">Quiz on the whole list →</a> · <a href="{BASE}reading-lists/">Past reading lists</a></p></section>"""
@@ -3850,7 +3882,8 @@ def distinct_answers(qs, want):
 
 
 def quiz_bank(db, rel):
-    """Every answerable released question, for the Quick quiz page (assets/data/qbank.json)."""
+    """Every answerable released question, plus the approved practice (generated) questions,
+    for the Quick quiz page (assets/data/qbank.json)."""
     tests, test_ix = [], {}
     for t in sorted(db["tests"].values(), key=test_sort):
         test_ix[t["id"]] = len(tests)
@@ -3869,6 +3902,23 @@ def quiz_bank(db, rel):
         used["works"].update(works); used["poems"].update(q["poems"])
     qs.sort(key=lambda x: (x["t"], int(x["n"] or 0)))
     qs = merge_repeats(qs)
+    # Approved generated questions ("pr": 1, no test: "t" = -1), after the released ones.
+    # "s" = the Story or Poem field (shown in the answer note).
+    pqs = []
+    for q in db["practice"].values():
+        letters = [l for l in "abcde" if q[l]]
+        correct = "".join(c.strip().upper() for c in q["correct"] if c.strip())
+        if not letters or not correct or not (q["prompt"] or "").strip():
+            continue
+        works = list(dict.fromkeys(q["works"] + q["rl_works"]))
+        pqs.append({"i": q["id"], "p": int(question_part(q) or 0), "t": -1, "n": "", "pr": 1,
+                    "s": re.sub(r"\s+", " ", q.get("story") or "").strip(),
+                    "q": q["prompt"].strip(), "c": [q[l] for l in letters], "l": "".join(letters).upper(),
+                    "a": correct, "tm": q["terms"], "ta": answer_terms(q, RESOLVER), "au": q["authors"], "w": works, "po": q["poems"]})
+        used["terms"].update(q["terms"]); used["authors"].update(q["authors"])
+        used["works"].update(works); used["poems"].update(q["poems"])
+    pqs.sort(key=lambda x: (x["p"], x["q"]))
+    qs += pqs
     for x in qs:
         ak = answer_records(x)
         if ak:
@@ -3918,6 +3968,7 @@ def quiz_bank(db, rel):
 
 def quiz_page(db, rel):
     bank = quiz_bank(db, rel)
+    npr = sum(1 for x in bank["q"] if x.get("pr"))
     lists = sorted(db["reading-lists"].values(), key=lambda r: r["year"], reverse=True)
     sets = sorted((g for g in db["tags"].values() if g["id"] in bank["sets"]), key=lambda g: sort_key(g["title"]))
     opt = lambda v, label: f'<option value="{v}">{e(label)}</option>'
@@ -3940,9 +3991,17 @@ def quiz_page(db, rel):
       <label><input type="radio" name="part" value="3"><span>Part 3</span></label>
     </div>
   </fieldset>
+  <fieldset class="qq-parts"><legend>Questions from</legend>
+    <div class="pills">
+      <label><input type="radio" name="source" value="" checked><span>All</span></label>
+      <label><input type="radio" name="source" value="official"><span>Official only</span></label>
+      <label><input type="radio" name="source" value="practice"><span>Practice only</span></label>
+    </div>
+    <p class="qq-hint">Official questions are from released UIL tests. Practice questions were written for this site{f" ({npr:,} so far)" if npr else ""}.</p>
+  </fieldset>
   <label for="qq-topic">Topic</label>
   <select id="qq-topic" name="topic">{topics}</select>
-  <label for="qq-years">Tests from</label>
+  <label for="qq-years">Official tests from</label>
   <select id="qq-years" name="years"><option value="">All years</option><option value="5">Last 5 years</option><option value="3">Last 3 years</option></select>
   <label for="qq-n">Questions</label>
   <select id="qq-n" name="n"><option>10</option><option>20</option><option>30</option></select>
@@ -3952,7 +4011,7 @@ def quiz_page(db, rel):
 </form>
 <section class="qq-main" data-qq-main aria-live="polite">
   <noscript><p>The quick quiz needs JavaScript turned on. You can still take the <a href="{BASE}tests/">practice tests</a>.</p></noscript>
-  <p class="qq-empty" data-qq-empty>Pick what to practice, then press <b>New quiz</b>. Questions come from the {len(bank['tests'])} released tests.</p>
+  <p class="qq-empty" data-qq-empty>Pick what to practice, then press <b>New quiz</b>. Questions come from the {len(bank['tests'])} released tests{f" and {npr:,} practice questions" if npr else ""}. Each one is marked <span class="qbadge qbadge-official">Official</span> or <span class="qbadge qbadge-practice">Practice</span>.</p>
 </section>
 </div>"""
     write("study/quiz/index.html", page("Quick quiz", body, "study", "Ten-question quizzes from released UIL Literary Criticism tests.",

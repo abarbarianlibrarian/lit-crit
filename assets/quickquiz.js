@@ -1,8 +1,11 @@
 /*
- * Quick quiz (/study/quiz/): a short quiz drawn at random from the released test questions
- * (assets/data/qbank.json, written by quiz_bank in build.py).
+ * Quick quiz (/study/quiz/): a short quiz drawn at random from the released test questions and the
+ * approved practice (generated) questions (assets/data/qbank.json, written by quiz_bank in build.py).
+ * Practice questions have q.pr = 1 and q.t = -1 (no test); q.s is their story or poem.
+ * Every question carries an Official or Practice badge; "Questions from" (?source=official or
+ * ?source=practice) limits a quiz to one kind. The years filter applies to official questions only.
  *
- * Filters: part, topic (set, period, reading list, or a term, author, work or poem passed in the
+ * Filters: source, part, topic (set, period, reading list, or a term, author, work or poem passed in the
  * address as ?term=, ?author=, ?work=, ?poem=, ?set=, ?period=, ?list=), test years, number of
  * questions, and "only ones I missed before". A topic in the address starts a quiz right away.
  * Questions repeated across tests appear once (merge_repeats in build.py; q.d, q.o list the copies).
@@ -64,10 +67,12 @@
       var id = params.get(k);
       if (id && topicSel.querySelector('option[value="' + k + ":" + id + '"]')) { topicSel.value = k + ":" + id; autostart = true; }
     });
+    if (params.get("source")) { var sr = form.querySelector('input[name=source][value="' + params.get("source") + '"]'); if (sr) sr.checked = true; }
     if (params.get("part")) { var r = form.querySelector('input[name=part][value="' + params.get("part") + '"]'); if (r) r.checked = true; }
 
     function matcher() {
       var part = (form.querySelector("input[name=part]:checked") || {}).value || "";
+      var source = (form.querySelector("input[name=source]:checked") || {}).value || "";
       var topic = topicSel.value, kind = topic.split(":")[0], id = topic.split(":")[1];
       var years = +form.elements.years.value || 0, missedOnly = form.elements.missed.checked;
       var terms, works, authors;
@@ -83,8 +88,10 @@
         Object.keys(scores).forEach(function (p) { (scores[p].qids || []).forEach(function (qid) { if (answers[qid] && !(qid in rec)) missed[qid] = "t"; }); });
       }
       return function (q) {
+        if (source === "official" && q.pr) return false;
+        if (source === "practice" && !q.pr) return false;
         if (part && String(q.p) !== part) return false;
-        if (years && bank.tests[q.t][2] < maxYear - years + 1) return false;
+        if (years && !q.pr && bank.tests[q.t][2] < maxYear - years + 1) return false;
         if (kind === "term" && q.tm.indexOf(id) < 0) return false;
         if (kind === "author" && authorsOf(q).indexOf(id) < 0) return false;
         if (kind === "work" && q.w.indexOf(id) < 0) return false;
@@ -144,11 +151,16 @@
       return best;
     }
     function newQuiz() { return bestPick(pool(), +form.elements.n.value); }
+    var nPractice = bank.q.filter(function (q) { return q.pr; }).length;
     function refreshCount() {
       var all = pool(), n = all.length, want = +form.elements.n.value;
       var most = n ? bestPick(all, want).length : 0; // how many different answers there are, up to the quiz length
-      countEl.textContent = !n ? "No questions match. Try a different part or topic."
+      var src = (form.querySelector("input[name=source]:checked") || {}).value || "";
+      var np = all.filter(function (q) { return q.pr; }).length;
+      countEl.textContent = !n ? (src === "practice" && !nPractice ? "No practice questions are on the site yet. Choose All or Official only."
+          : "No questions match. Try a different part or topic.")
         : n.toLocaleString() + " question" + (n === 1 ? "" : "s") + " match." +
+          (np && np < n ? " (" + (n - np).toLocaleString() + " official, " + np.toLocaleString() + " practice)" : "") +
           (most < Math.min(n, want) ? " Only " + most + " have different answers, so a quiz has " + most + "." : "");
       goBtn.disabled = !n;
       goBtn.textContent = n ? "New quiz · " + most + " question" + (most === 1 ? "" : "s") : "New quiz";
@@ -169,7 +181,16 @@
       if (list.length) begin(list);
     });
 
+    // The Official / Practice label shown on every question.
+    function badge(q) {
+      return q.pr ? '<span class="qbadge qbadge-practice" title="Written for this site, not from a released UIL test">Practice</span>'
+        : '<span class="qbadge qbadge-official" title="From a released UIL test">Official</span>';
+    }
     function sourceHtml(q) {
+      if (q.pr) {
+        return "Practice question" + (q.s ? " on " + esc(q.s) : "") + ", written for " +
+          (q.p === 2 ? "this year’s reading list" : "practice") + ", not from a released test.";
+      }
       var t = bank.tests[q.t];
       var also = (q.o || []).map(function (o) {
         var u = bank.tests[o[0]];
@@ -202,7 +223,7 @@
           '</span><span class="ctext">' + esc(c) + '</span><span class="cmark" aria-hidden="true"></span></button></li>';
       }).join("");
       main.innerHTML =
-        '<div class="qq-progress"><span>Question ' + (quiz.i + 1) + " of " + n + (q.p ? " · Part " + q.p : "") + "</span><span>" +
+        '<div class="qq-progress"><span>' + badge(q) + " Question " + (quiz.i + 1) + " of " + n + (q.p ? " · Part " + q.p : "") + "</span><span>" +
         quiz.right + " correct so far</span></div>" +
         '<div class="qq-track" aria-hidden="true"><span style="width:' + Math.round(100 * quiz.i / n) + '%"></span></div>' +
         passages +
@@ -247,7 +268,7 @@
       var n = quiz.items.length, missed = quiz.results.filter(function (r) { return !r.right; }).length;
       var rows = quiz.results.map(function (r, k) {
         return '<li class="' + (r.right ? "ok" : "no") + '"><span class="qq-mark" aria-hidden="true">' + (r.right ? "✓" : "✗") + "</span><span>" +
-          '<span class="sr">' + (r.right ? "Right: " : "Missed: ") + "</span>" + esc(r.q.q.length > 140 ? r.q.q.slice(0, 137) + "…" : r.q.q) +
+          '<span class="sr">' + (r.right ? "Right: " : "Missed: ") + "</span>" + badge(r.q) + " " + esc(r.q.q.length > 140 ? r.q.q.slice(0, 137) + "…" : r.q.q) +
           ' <span class="muted">' + sourceHtml(r.q) + "</span></span></li>";
       }).join("");
       main.innerHTML = '<h2 class="qq-score" tabindex="-1">' + quiz.right + " of " + n + " correct</h2>" +
